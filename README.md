@@ -17,12 +17,26 @@ This material is a work in progress, so your feedback is welcome.  The best way 
 
 For each of the notebooks below, you have two options: if you view the notebook on NBViewer, you can read it, but you can't run the code.  If you run the notebook on Colab, you'll be able to run the code, do the exercises, and save your modified version of the notebook in a Google Drive (if you have one).
 
+### Notebook 1
+
 **Variables and values**: The first notebook explains how to use Jupyter and introduces the most basic programming features in Python, variables and values.
 
-* [Click here to read the notebook on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
+* [Click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
 
-* [Click here to run the notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
+* [Click here to run Notebook 1 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
 
-* [Click here to read the solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
+* [Click here to read Notebook 1 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
 
-* [Click here to run the solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
+* [Click here to run Notebook 1 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
+
+### Notebook 2
+
+**Times and places**: The first second notebook show how to represent times, dates, and locations in Python, and uses the GeoPandas library to plot points on a map. 
+
+* [Click here to read Notebook 2 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/times.ipynb)
+
+* [Click here to run Notebook 2 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/times.ipynb)
+
+* [Click here to read Notebook 2 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/times_soln.ipynb)
+
+* [Click here to run Notebook 2 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/times_soln.ipynb)
