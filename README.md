@@ -29,7 +29,7 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 ### Notebook 2
 
-**Times and places**: The first second notebook show how to represent times, dates, and locations in Python, and uses the GeoPandas library to plot points on a map. 
+**Times and places**: This notebook shows how to represent times, dates, and locations in Python, and uses the GeoPandas library to plot points on a map. 
 
 * [Click here to read Notebook 2 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/times.ipynb)
 
@@ -38,3 +38,16 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 2 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/times_soln.ipynb)
 
 * [Click here to run Notebook 2 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/times_soln.ipynb)
+
+
+### Notebook 3
+
+**Lists and Arrays**: This notebooks presents lists and NumPu arrays.  It discusses absolute, relative, and percent errors, and ways to summarize them. 
+
+* [Click here to read Notebook 3 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/arrays.ipynb)
+
+* [Click here to run Notebook 3 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/arrays.ipynb)
+
+* [Click here to read Notebook 3 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/arrays_soln.ipynb)
+
+* [Click here to run Notebook 3 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/arrays_soln.ipynb)
