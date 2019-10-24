@@ -1,5 +1,3 @@
-# Elements of Data Science
-
 *Elements of Data Science* is an introduction to data science in Python for people with no programming experience.  My goal is to present a small, powerful subset of Python that allows you to do real work in data science as quickly as possible.  
 
 At the same time, I want to make sure the material is presented clearly.  I don't assume that the reader knows anything about programming, statistics, or data science.  When I use a term, I try to define it immediately, and when I use a programming feature, I try to explain it.
@@ -17,12 +15,39 @@ This material is a work in progress, so your feedback is welcome.  The best way 
 
 For each of the notebooks below, you have two options: if you view the notebook on NBViewer, you can read it, but you can't run the code.  If you run the notebook on Colab, you'll be able to run the code, do the exercises, and save your modified version of the notebook in a Google Drive (if you have one).
 
+### Notebook 1
+
 **Variables and values**: The first notebook explains how to use Jupyter and introduces the most basic programming features in Python, variables and values.
 
-* [Click here to read the notebook on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
+* [Click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
 
-* [Click here to run the notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
+* [Click here to run Notebook 1 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
 
-* [Click here to read the solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
+* [Click here to read Notebook 1 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
 
-* [Click here to run the solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
+* [Click here to run Notebook 1 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
+
+### Notebook 2
+
+**Times and places**: This notebook shows how to represent times, dates, and locations in Python, and uses the GeoPandas library to plot points on a map. 
+
+* [Click here to read Notebook 2 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/times.ipynb)
+
+* [Click here to run Notebook 2 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/times.ipynb)
+
+* [Click here to read Notebook 2 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/times_soln.ipynb)
+
+* [Click here to run Notebook 2 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/times_soln.ipynb)
+
+
+### Notebook 3
+
+**Lists and Arrays**: This notebooks presents lists and NumPu arrays.  It discusses absolute, relative, and percent errors, and ways to summarize them. 
+
+* [Click here to read Notebook 3 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/arrays.ipynb)
+
+* [Click here to run Notebook 3 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/arrays.ipynb)
+
+* [Click here to read Notebook 3 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/arrays_soln.ipynb)
+
+* [Click here to run Notebook 3 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/arrays_soln.ipynb)
