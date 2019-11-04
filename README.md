@@ -19,35 +19,48 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 **Variables and values**: The first notebook explains how to use Jupyter and introduces the most basic programming features in Python, variables and values.
 
-* [Click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
+* [Click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
-* [Click here to run Notebook 1 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables.ipynb)
+* [Click here to run Notebook 1 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
-* [Click here to read Notebook 1 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
+* [Click here to read Notebook 1 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables_soln.ipynb)
 
-* [Click here to run Notebook 1 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/variables_soln.ipynb)
+* [Click here to run Notebook 1 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables_soln.ipynb)
 
 ### Notebook 2
 
-**Times and places**: This notebook shows how to represent times, dates, and locations in Python, and uses the GeoPandas library to plot points on a map. 
+**Times and places**: This notebook shows how to represent times, dates, and locations in Python, and uses the GeoPandas library to plot points on a map.
 
-* [Click here to read Notebook 2 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/times.ipynb)
+* [Click here to read Notebook 2 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb)
 
-* [Click here to run Notebook 2 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/times.ipynb)
+* [Click here to run Notebook 2 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb)
 
-* [Click here to read Notebook 2 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/times_soln.ipynb)
+* [Click here to read Notebook 2 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/02_times_soln.ipynb)
 
-* [Click here to run Notebook 2 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/times_soln.ipynb)
+* [Click here to run Notebook 2 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times_soln.ipynb)
 
 
 ### Notebook 3
 
-**Lists and Arrays**: This notebooks presents lists and NumPu arrays.  It discusses absolute, relative, and percent errors, and ways to summarize them. 
+**Lists and Arrays**: This notebook presents lists and NumPy arrays.  It discusses absolute, relative, and percent errors, and ways to summarize them.
 
-* [Click here to read Notebook 3 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/arrays.ipynb)
+* [Click here to read Notebook 3 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
 
-* [Click here to run Notebook 3 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/arrays.ipynb)
+* [Click here to run Notebook 3 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
 
-* [Click here to read Notebook 3 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/arrays_soln.ipynb)
+* [Click here to read Notebook 3 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays_soln.ipynb)
 
-* [Click here to run Notebook 3 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/arrays_soln.ipynb)
+* [Click here to run Notebook 3 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays_soln.ipynb)
+
+
+### Notebook 4
+
+**Loops and Files**: This notebook presents the for loop and the if statement; then it uses them to speed-read *War and Peace* and count the words.
+
+* [Click here to read Notebook 4 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
+
+* [Click here to run Notebook 4 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
+
+* [Click here to read Notebook 4 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops_soln.ipynb)
+
+* [Click here to run Notebook 4 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops_soln.ipynb)
