@@ -68,7 +68,7 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 ### Notebook 5
 
-**Loops and Files**: This notebook presents the for loop and the if statement; then it uses them to speed-read *War and Peace* and count the words.
+**Dictionaries**: This notebook presents one of the most powerful features of Python, dictionaries, and uses them to count the unique words in *War and Peace*.
 
 * [Click here to read Notebook 5 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
 
