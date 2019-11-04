@@ -64,3 +64,16 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 4 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops_soln.ipynb)
 
 * [Click here to run Notebook 4 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops_soln.ipynb)
+
+
+### Notebook 5
+
+**Loops and Files**: This notebook presents the for loop and the if statement; then it uses them to speed-read *War and Peace* and count the words.
+
+* [Click here to read Notebook 5 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
+
+* [Click here to run Notebook 5 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
+
+* [Click here to read Notebook 5 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries_soln.ipynb)
+
+* [Click here to run Notebook 5 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries_soln.ipynb)
