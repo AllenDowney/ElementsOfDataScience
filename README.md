@@ -77,3 +77,16 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 5 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries_soln.ipynb)
 
 * [Click here to run Notebook 5 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries_soln.ipynb)
+
+
+### Notebook 6
+
+**DataFrames**: This notebook presents DataFrames, which are used to represent tables of data.  And it uses data from the National Survey of Family Growth to find the average weight of babies in the U.S.
+
+* [Click here to read Notebook 6 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes.ipynb)
+
+* [Click here to run Notebook 6 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes.ipynb)
+
+* [Click here to read Notebook 6 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes_soln.ipynb)
+
+* [Click here to run Notebook 6 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes_soln.ipynb)
