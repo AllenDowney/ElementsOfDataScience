@@ -90,3 +90,16 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 6 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes_soln.ipynb)
 
 * [Click here to run Notebook 6 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes_soln.ipynb)
+
+
+### Notebook 7
+
+**Distributions**: This notebook explains what a distribution is and presents 3 ways to represent a distribution: a PMF, CDF, or PDF.  It also shows how to compare a distribution to another distribution or a mathematical model.
+
+* [Click here to read Notebook 7 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
+
+* [Click here to run Notebook 7 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
+
+* [Click here to read Notebook 7 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
+
+* [Click here to run Notebook 7 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
