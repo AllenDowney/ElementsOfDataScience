@@ -100,6 +100,19 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 * [Click here to run Notebook 7 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
 
-* [Click here to read Notebook 7 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
+* [Click here to read Notebook 7 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions_soln.ipynb)
 
-* [Click here to run Notebook 7 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
+* [Click here to run Notebook 7 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions_soln.ipynb)
+
+
+### Notebook 8
+
+**Relationships**: This notebook 
+
+* [Click here to read Notebook 8 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships.ipynb)
+
+* [Click here to run Notebook 8 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships.ipynb)
+
+* [Click here to read Notebook 8 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships_soln.ipynb)
+
+* [Click here to run Notebook 8 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships_soln.ipynb)
