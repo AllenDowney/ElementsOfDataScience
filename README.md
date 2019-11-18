@@ -107,7 +107,7 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 ### Notebook 8
 
-**Relationships**: This notebook 
+**Relationships**: This notebook explores relationships between variables using scatter plot, violin plots, and box plots.  It quantifies the strength of a relationship using the correlation coefficient, and uses simple regression to estimate the slope of a line.
 
 * [Click here to read Notebook 8 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships.ipynb)
 
@@ -116,3 +116,18 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 8 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships_soln.ipynb)
 
 * [Click here to run Notebook 8 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships_soln.ipynb)
+
+
+
+
+### Notebook 9
+
+**Regression**: This notebook presents multiple regression and uses it to explore the relationship between age, eduction, and income.  It uses visualization to interpret multivariate models.  It also presents binary variables and logistic regression.
+
+* [Click here to read Notebook 9 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression.ipynb)
+
+* [Click here to run Notebook 9 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression.ipynb)
+
+* [Click here to read Notebook 9 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression_soln.ipynb)
+
+* [Click here to run Notebook 9 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression_soln.ipynb)
