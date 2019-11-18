@@ -131,3 +131,17 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 9 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression_soln.ipynb)
 
 * [Click here to run Notebook 9 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression_soln.ipynb)
+
+
+
+### Notebook 10
+
+**Regression**: This notebook presents computational inference, a process for computing p-values, standard errors, and confidence intervals using randomization methods rather than analysis.
+
+* [Click here to read Notebook 10 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_inference.ipynb)
+
+* [Click here to run Notebook 10 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_inference.ipynb)
+
+* [Click here to read Notebook 10 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_inference_soln.ipynb)
+
+* [Click here to run Notebook 10 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_inference_soln.ipynb)
