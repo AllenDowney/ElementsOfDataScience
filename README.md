@@ -81,67 +81,80 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 ### Notebook 6
 
-**DataFrames**: This notebook presents DataFrames, which are used to represent tables of data.  And it uses data from the National Survey of Family Growth to find the average weight of babies in the U.S.
+**Plotting**: This notebook ...
 
-* [Click here to read Notebook 6 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes.ipynb)
+* [Click here to read Notebook 6 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
 
-* [Click here to run Notebook 6 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes.ipynb)
+* [Click here to run Notebook 6 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
 
-* [Click here to read Notebook 6 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes_soln.ipynb)
+* [Click here to read Notebook 6 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting_soln.ipynb)
 
-* [Click here to run Notebook 6 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_dataframes_soln.ipynb)
+* [Click here to run Notebook 6 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting_soln.ipynb)
 
 
 ### Notebook 7
 
-**Distributions**: This notebook explains what a distribution is and presents 3 ways to represent a distribution: a PMF, CDF, or PDF.  It also shows how to compare a distribution to another distribution or a mathematical model.
+**DataFrames**: This notebook presents DataFrames, which are used to represent tables of data.  And it uses data from the National Survey of Family Growth to find the average weight of babies in the U.S.
 
-* [Click here to read Notebook 7 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
+* [Click here to read Notebook 7 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
 
-* [Click here to run Notebook 7 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions.ipynb)
+* [Click here to run Notebook 7 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
 
-* [Click here to read Notebook 7 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions_soln.ipynb)
+* [Click here to read Notebook 7 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes_soln.ipynb)
 
-* [Click here to run Notebook 7 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_distributions_soln.ipynb)
+* [Click here to run Notebook 7 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes_soln.ipynb)
 
 
 ### Notebook 8
 
-**Relationships**: This notebook explores relationships between variables using scatter plot, violin plots, and box plots.  It quantifies the strength of a relationship using the correlation coefficient, and uses simple regression to estimate the slope of a line.
+**Distributions**: This notebook explains what a distribution is and presents 3 ways to represent a distribution: a PMF, CDF, or PDF.  It also shows how to compare a distribution to another distribution or a mathematical model.
 
-* [Click here to read Notebook 8 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships.ipynb)
+* [Click here to read Notebook 8 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
 
-* [Click here to run Notebook 8 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships.ipynb)
+* [Click here to run Notebook 8 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
 
-* [Click here to read Notebook 8 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships_soln.ipynb)
+* [Click here to read Notebook 8 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions_soln.ipynb)
 
-* [Click here to run Notebook 8 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_relationships_soln.ipynb)
-
-
+* [Click here to run Notebook 8 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions_soln.ipynb)
 
 
 ### Notebook 9
 
-**Regression**: This notebook presents multiple regression and uses it to explore the relationship between age, eduction, and income.  It uses visualization to interpret multivariate models.  It also presents binary variables and logistic regression.
+**Relationships**: This notebook explores relationships between variables using scatter plot, violin plots, and box plots.  It quantifies the strength of a relationship using the correlation coefficient, and uses simple regression to estimate the slope of a line.
 
-* [Click here to read Notebook 9 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression.ipynb)
+* [Click here to read Notebook 9 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
 
-* [Click here to run Notebook 9 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression.ipynb)
+* [Click here to run Notebook 9 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
 
-* [Click here to read Notebook 9 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression_soln.ipynb)
+* [Click here to read Notebook 9 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships_soln.ipynb)
 
-* [Click here to run Notebook 9 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_regression_soln.ipynb)
+* [Click here to run Notebook 9 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships_soln.ipynb)
+
 
 
 
 ### Notebook 10
 
-**Regression**: This notebook presents computational inference, a process for computing p-values, standard errors, and confidence intervals using randomization methods rather than analysis.
+**Regression**: This notebook presents multiple regression and uses it to explore the relationship between age, eduction, and income.  It uses visualization to interpret multivariate models.  It also presents binary variables and logistic regression.
 
-* [Click here to read Notebook 10 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_inference.ipynb)
+* [Click here to read Notebook 10 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
 
-* [Click here to run Notebook 10 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_inference.ipynb)
+* [Click here to run Notebook 10 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
 
-* [Click here to read Notebook 10 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_inference_soln.ipynb)
+* [Click here to read Notebook 10 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression_soln.ipynb)
 
-* [Click here to run Notebook 10 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_inference_soln.ipynb)
+* [Click here to run Notebook 10 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression_soln.ipynb)
+
+
+
+### Notebook 11
+
+**Inference**: This notebook presents computational inference, a process for computing p-values, standard errors, and confidence intervals using randomization methods rather than analysis.
+
+* [Click here to read Notebook 11 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
+
+* [Click here to run Notebook 11 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
+
+* [Click here to read Notebook 11 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference_soln.ipynb)
+
+* [Click here to run Notebook 11 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference_soln.ipynb)
