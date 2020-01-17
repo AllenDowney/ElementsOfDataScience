@@ -19,97 +19,118 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 **Variables and values**: The first notebook explains how to use Jupyter and introduces the most basic programming features in Python, variables and values.
 
-Press this button to run Notebook 1 on Colab:
+Press this button to run this notebook on Colab:
+
 [<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
-[or click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
 
 ### Notebook 2
 
 **Times and places**: This notebook shows how to represent times, dates, and locations in Python, and uses the GeoPandas library to plot points on a map.
 
-* [Click here to read Notebook 2 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 2 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb)
+
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb)
 
 
 ### Notebook 3
 
 **Lists and Arrays**: This notebook presents lists and NumPy arrays.  It discusses absolute, relative, and percent errors, and ways to summarize them.
 
-* [Click here to read Notebook 3 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 3 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
+[Click here to run Notebook 3 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
+
+[<img src="run_on_colab_small.png">](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
 
 
 ### Notebook 4
 
 **Loops and Files**: This notebook presents the for loop and the if statement; then it uses them to speed-read *War and Peace* and count the words.
 
-* [Click here to read Notebook 4 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 4 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
+[Click here to run Notebook 4 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
+
+[Click here to read Notebook 4 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
 
 
 ### Notebook 5
 
 **Dictionaries**: This notebook presents one of the most powerful features of Python, dictionaries, and uses them to count the unique words in *War and Peace*.
 
-* [Click here to read Notebook 5 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 5 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
+[Click here to run Notebook 5 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
+
+[Click here to read Notebook 5 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
 
 
 ### Notebook 6
 
 **Plotting**: This notebook ...
 
-* [Click here to read Notebook 6 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 6 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
+[Click here to run Notebook 6 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
+
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
 
 
 ### Notebook 7
 
 **DataFrames**: This notebook presents DataFrames, which are used to represent tables of data.  And it uses data from the National Survey of Family Growth to find the average weight of babies in the U.S.
 
-* [Click here to read Notebook 7 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 7 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
+[Click here to run Notebook 7 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
+
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
 
 
 ### Notebook 8
 
 **Distributions**: This notebook explains what a distribution is and presents 3 ways to represent a distribution: a PMF, CDF, or PDF.  It also shows how to compare a distribution to another distribution or a mathematical model.
 
-* [Click here to read Notebook 8 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 8 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
+[Click here to run Notebook 8 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
+
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
 
 
 ### Notebook 9
 
 **Relationships**: This notebook explores relationships between variables using scatter plot, violin plots, and box plots.  It quantifies the strength of a relationship using the correlation coefficient, and uses simple regression to estimate the slope of a line.
 
-* [Click here to read Notebook 9 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 9 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
+[Click here to run Notebook 9 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
+
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
 
 
 ### Notebook 10
 
 **Regression**: This notebook presents multiple regression and uses it to explore the relationship between age, eduction, and income.  It uses visualization to interpret multivariate models.  It also presents binary variables and logistic regression.
 
-* [Click here to read Notebook 10 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 10 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
+[Click here to run Notebook 10 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
+
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
 
 
 ### Notebook 11
 
 **Inference**: This notebook presents computational inference, a process for computing p-values, standard errors, and confidence intervals using randomization methods rather than analysis.
 
-* [Click here to read Notebook 11 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
+Press this button to run this notebook on Colab:
 
-* [Click here to run Notebook 11 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
+[Click here to run Notebook 11 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
+
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
