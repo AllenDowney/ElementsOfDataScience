@@ -19,9 +19,10 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 **Variables and values**: The first notebook explains how to use Jupyter and introduces the most basic programming features in Python, variables and values.
 
+Press this button to run Notebook 1 on Colab:
 [<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
-[Click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
+[or click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
 
 ### Notebook 2
