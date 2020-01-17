@@ -43,9 +43,9 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 3 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
 
-[<img src="run_on_colab_small.png">](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
 
 
 ### Notebook 4
@@ -54,9 +54,9 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 4 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
 
-[Click here to read Notebook 4 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
 
 
 ### Notebook 5
@@ -65,9 +65,9 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 5 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
 
-[Click here to read Notebook 5 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
+[or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
 
 
 ### Notebook 6
@@ -76,7 +76,7 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 6 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
 
 [or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
 
@@ -87,7 +87,7 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 7 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
 
 [or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
 
@@ -98,7 +98,7 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 8 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
 
 [or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
 
@@ -109,7 +109,7 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 9 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
 
 [or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
 
@@ -120,7 +120,7 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 10 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
 
 [or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
 
@@ -131,6 +131,6 @@ Press this button to run this notebook on Colab:
 
 Press this button to run this notebook on Colab:
 
-[Click here to run Notebook 11 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
 
 [or click here to read it on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
