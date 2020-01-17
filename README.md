@@ -4,11 +4,11 @@ At the same time, I want to make sure the material is presented clearly.  I don'
 
 There are a few places where I use a programming feature before it is fully explained, but I keep them to a minimum, and I'll let you know what you don't need to know.
 
-This "book" is in the form of Jupyter notebooks.  Jupyter is a software development tool you can run in a web browser, so you don't have to install any software.  A Jupyter notebook is a document that contains text, Python code, and results, so you can read it like a book.  But you can also modify the code, run it, develop new programs, and test them.
+This "book" is in the form of Jupyter notebooks.  Jupyter is a software development tool you can run in a web browser, so you don't have to install any software.  A Jupyter notebook is a document that contains text, Python code, and results.  So you can read it like a book, but you can also modify the code, run it, develop new programs, and test them.
 
-The notebooks contains exercises where you can practice what you are learning.  Most of the exercises are meant to be quick, but a few are more substantial.  The solutions are also available if you get stuck.
+The notebooks contains exercises where you can practice what you learn.  Most of the exercises are meant to be quick, but a few are more substantial.
 
-This material is a work in progress, so your feedback is welcome.  The best way to provide that feedback is to [click here and create an issue in this GitHub repository](https://github.com/AllenDowney/ElementsOfDataScience/issues).
+This material is a work in progress, so suggestions are welcome.  The best way to provide feedback is to [click here and create an issue in this GitHub repository](https://github.com/AllenDowney/ElementsOfDataScience/issues).
 
 
 ## The notebooks
@@ -19,13 +19,10 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 **Variables and values**: The first notebook explains how to use Jupyter and introduces the most basic programming features in Python, variables and values.
 
-* [Click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
+[<img src="run_on_colab_small.png">](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
-* [Click here to run Notebook 1 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
+[Click here to read Notebook 1 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
-* [Click here to read Notebook 1 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables_soln.ipynb)
-
-* [Click here to run Notebook 1 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables_soln.ipynb)
 
 ### Notebook 2
 
@@ -34,10 +31,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 2 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb)
 
 * [Click here to run Notebook 2 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb)
-
-* [Click here to read Notebook 2 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/02_times_soln.ipynb)
-
-* [Click here to run Notebook 2 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times_soln.ipynb)
 
 
 ### Notebook 3
@@ -48,10 +41,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 * [Click here to run Notebook 3 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb)
 
-* [Click here to read Notebook 3 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays_soln.ipynb)
-
-* [Click here to run Notebook 3 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays_soln.ipynb)
-
 
 ### Notebook 4
 
@@ -60,10 +49,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 4 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
 
 * [Click here to run Notebook 4 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb)
-
-* [Click here to read Notebook 4 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops_soln.ipynb)
-
-* [Click here to run Notebook 4 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops_soln.ipynb)
 
 
 ### Notebook 5
@@ -74,10 +59,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 * [Click here to run Notebook 5 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb)
 
-* [Click here to read Notebook 5 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries_soln.ipynb)
-
-* [Click here to run Notebook 5 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries_soln.ipynb)
-
 
 ### Notebook 6
 
@@ -86,10 +67,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 6 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
 
 * [Click here to run Notebook 6 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
-
-* [Click here to read Notebook 6 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting_soln.ipynb)
-
-* [Click here to run Notebook 6 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting_soln.ipynb)
 
 
 ### Notebook 7
@@ -100,10 +77,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 * [Click here to run Notebook 7 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
 
-* [Click here to read Notebook 7 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes_soln.ipynb)
-
-* [Click here to run Notebook 7 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes_soln.ipynb)
-
 
 ### Notebook 8
 
@@ -112,10 +85,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 8 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
 
 * [Click here to run Notebook 8 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
-
-* [Click here to read Notebook 8 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions_soln.ipynb)
-
-* [Click here to run Notebook 8 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions_soln.ipynb)
 
 
 ### Notebook 9
@@ -126,12 +95,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 * [Click here to run Notebook 9 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb)
 
-* [Click here to read Notebook 9 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships_soln.ipynb)
-
-* [Click here to run Notebook 9 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships_soln.ipynb)
-
-
-
 
 ### Notebook 10
 
@@ -141,11 +104,6 @@ For each of the notebooks below, you have two options: if you view the notebook 
 
 * [Click here to run Notebook 10 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
 
-* [Click here to read Notebook 10 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression_soln.ipynb)
-
-* [Click here to run Notebook 10 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression_soln.ipynb)
-
-
 
 ### Notebook 11
 
@@ -154,7 +112,3 @@ For each of the notebooks below, you have two options: if you view the notebook 
 * [Click here to read Notebook 11 on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
 
 * [Click here to run Notebook 11 on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
-
-* [Click here to read Notebook 11 solutions on NBViewer](https://nbviewer.jupyter.org/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference_soln.ipynb)
-
-* [Click here to run Notebook 11 solutions on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference_soln.ipynb)
