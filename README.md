@@ -50,7 +50,7 @@ Press this button to run this notebook on Colab:
 
 ### Notebook 4
 
-**Loops and Files**: This notebook presents the for loop and the if statement; then it uses them to speed-read *War and Peace* and count the words.
+**Loops and Files**: This notebook presents the `for` loop and the `if` statement; then it uses them to speed-read *War and Peace* and count the words.
 
 Press this button to run this notebook on Colab:
 
@@ -72,7 +72,7 @@ Press this button to run this notebook on Colab:
 
 ### Notebook 6
 
-**Plotting**: This notebook ...
+**Plotting**: This notebook introduces Matplotlib, a plotting library for Python, and uses it to generate a few common data visualizations and one less common one, a Zipf plot.
 
 Press this button to run this notebook on Colab:
 
@@ -105,7 +105,7 @@ Press this button to run this notebook on Colab:
 
 ### Notebook 9
 
-**Relationships**: This notebook explores relationships between variables using scatter plot, violin plots, and box plots.  It quantifies the strength of a relationship using the correlation coefficient, and uses simple regression to estimate the slope of a line.
+**Relationships**: This notebook explores relationships between variables using scatter plots, violin plots, and box plots.  It quantifies the strength of a relationship using the correlation coefficient and uses simple regression to estimate the slope of a line.
 
 Press this button to run this notebook on Colab:
 
