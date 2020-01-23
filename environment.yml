@@ -10,6 +10,8 @@ dependencies:
   - pytables
   - scipy
   - scikit-learn
+  - geopandas
+  - descartes
   - pip
   - pip:
     - empiricaldist
