@@ -5,9 +5,11 @@ dependencies:
   - jupyter
   - numpy
   - matplotlib
+  - statsmodels
   - seaborn
   - pandas
-    sympy
+  - lxml
+  - sympy
   - xlrd
   - pytables
   - scipy
