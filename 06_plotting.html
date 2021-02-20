@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plotting &#8212; Elements of Data Science</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dataframes" href="07_dataframes.html" />
+    <link rel="prev" title="Dictionaries" href="05_dictionaries.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   The notebooks
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_variables.html">
+   Variables and values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_times.html">
+   Times and places
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_arrays.html">
+   Lists and arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_loops.html">
+   Loops and files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_dictionaries.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_dataframes.html">
+   Dataframes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_dataframes.html#dataframes-and-series">
+   DataFrames and Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_distributions.html">
+   Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_relationships.html">
+   Relationships
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_inference.html">
+   Inference
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/06_plotting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/06_plotting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#goals">
+   Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#keyword-arguments">
+   Keyword arguments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#religious-affiliation">
+   Religious affiliation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decorating-the-axes">
+   Decorating the axes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sandwiches">
+   Sandwiches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zipf-s-law">
+   Zipf’s law
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frequencies-and-ranks">
+   Frequencies and ranks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logarithmic-scales">
+   Logarithmic scales
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="plotting">
+<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
+<p>Elements of Data Science</p>
+<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
+<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<p>This notebook presents ways to create figures and graphs, more generally called “data visualizations”.  As examples, we’ll generate three figures:</p>
+<ul class="simple">
+<li><p>We’ll replicate a figure from the Pew Research Center that shows changes in religious affiliation in the U.S. over time.</p></li>
+<li><p>We’ll replicate the figure from <em>The Economist</em> that shows the prices of sandwiches in Boston and London (we saw this data back in Notebook 03).</p></li>
+<li><p>We’ll make a plot to test Zipf’s law, which describes the relationship between word frequencies and their ranks.</p></li>
+</ul>
+<p>With the tools in this notebook, you can generate a variety of simple graphs.  We will see more visualization tools in later notebooks.</p>
+<p>But before we get started with plotting, we need a new language feature: keyword arguments.</p>
+</div>
+<div class="section" id="keyword-arguments">
+<h2>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h2>
+<p>When you call most functions, you have to provide values.  For example, when you call <code class="docutils literal notranslate"><span class="pre">np.exp</span></code>, the value you provide is a number:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When you call <code class="docutils literal notranslate"><span class="pre">np.power</span></code>, you have to provide two numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The values you provide are called “arguments”.  Specifically, the values in these examples are “positional arguments” because their position determines how they are used.</p>
+<p>In the second example, <code class="docutils literal notranslate"><span class="pre">power</span></code> computes <code class="docutils literal notranslate"><span class="pre">10</span></code> to the sixth power, not <code class="docutils literal notranslate"><span class="pre">6</span></code> to the 10th power because of the order of the arguments.</p>
+<p>Many functions also take “keyword arguments”, which are optional.  For example, we have previously used <code class="docutils literal notranslate"><span class="pre">int</span></code> to convert a string to an integer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;21&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">int</span></code> assumes that the number is in base 10.  But you can provide a keyword argument that specifies a different base.</p>
+<p>For example, the string <code class="docutils literal notranslate"><span class="pre">'21'</span></code>, interpreted in base 8, represents the number <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">8</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">=</span> <span class="pre">17</span></code>.  Here’s how we do this conversion using <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;21&#39;</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The string <code class="docutils literal notranslate"><span class="pre">'21'</span></code> is a positional argument.  The integer value <code class="docutils literal notranslate"><span class="pre">8</span></code> is a keyword argument, with the keyword <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p>
+<p>Specifying a keyword argument looks like an assignment statement, but it does not create a new variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And when you specify a keyword argument, you don’t choose the variable name.  In this example, the keyword name, <code class="docutils literal notranslate"><span class="pre">base</span></code>, is part of the definition of <code class="docutils literal notranslate"><span class="pre">int</span></code>.  If you specify another keyword name, you get an error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">,</span> <span class="n">bass</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">int</span></code> to compute the value of <code class="docutils literal notranslate"><span class="pre">&quot;123&quot;</span></code> interpreted in base 5.  What happens if you try to interpret <code class="docutils literal notranslate"><span class="pre">&quot;123&quot;</span></code> as a base 3 number?</p>
+<p><strong>Exercise:</strong> The <code class="docutils literal notranslate"><span class="pre">print</span></code> function takes a keyword argument called <code class="docutils literal notranslate"><span class="pre">end</span></code> that specifies the character it prints at the end of the line.  By default, <code class="docutils literal notranslate"><span class="pre">end</span></code> is the newline character, <code class="docutils literal notranslate"><span class="pre">\n</span></code>.  So if you call <code class="docutils literal notranslate"><span class="pre">print</span></code> more than once, the results normally appear on separate lines, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Modify the previous example so it prints the elements of the list, all on one line, with spaces between them.</p>
+<p>Then modify it to print an open bracket at the beginning and a close bracket and newline at the end.</p>
+</div>
+<div class="section" id="religious-affiliation">
+<h2>Religious affiliation<a class="headerlink" href="#religious-affiliation" title="Permalink to this headline">¶</a></h2>
+<p>Now we’re ready to make some graphs.</p>
+<p>In October 2019 the Pew Research Center published “<a class="reference external" href="https://www.pewforum.org/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace/">In U.S., Decline of Christianity Continues at Rapid Pace</a>: An update on America’s changing religious landscape”.</p>
+<p>It includes this figure, which shows changes in religious affiliation among adults in the U.S. over the previous 10 years.</p>
+<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/pew_religion_figure1.png" width="300">
+<p>As an exercise, we’ll replicate this figure.  It shows results from two sources, Religious Landscape Studies and Pew Research Political Surveys.  The political surveys provide data from more years, so we’ll focus on that.</p>
+<p><a class="reference external" href="https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf">The data from the figure are available directly from Pew Research</a>, but they are in a PDF document.  Later you’ll learn how to extract data from PDF documents, but for now we’ll enter the data by hand.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">christian</span> <span class="o">=</span> <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unaffiliated</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The library we’ll use for plotting is Matplotlib; more specifically, we’ll use a part of it called Pyplot, which we’ll import with the nickname <code class="docutils literal notranslate"><span class="pre">plt</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pyplot provides a function called <code class="docutils literal notranslate"><span class="pre">plot</span></code> that makes a line plot.  It takes two sequences as arguments, the <code class="docutils literal notranslate"><span class="pre">x</span></code> values and the <code class="docutils literal notranslate"><span class="pre">y</span></code> values.  The sequences can be tuples, lists, or arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">christian</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In addition to the plot, Jupyter also displays the result from <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, which is a value that represents the plotted line.</p>
+<p>For now we won’t do anything with this value.  If you prefer not to see it, you can put a semi-colon at the end of the line to suppress it.</p>
+<p>If you plot multiple lines in a single cell, they appear on the same axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">christian</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">unaffiliated</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, plotting them on the same axes makes it possible to compare them directly.</p>
+<p>However, notice that Pyplot chooses the range for the axes automatically; in this example the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis starts around 15, not zero.</p>
+<p>As a result, it provides a misleading picture, making the ratio of the two lines look bigger than it really is.</p>
+<p>We can set the limits of the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis using the function <code class="docutils literal notranslate"><span class="pre">plt.ylim</span></code>.  The argument is a list with two values, the lower bound and the upper bound.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">christian</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">unaffiliated</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s better, but this graph is missing some of the most important elements: labels for the axes, and a title.</p>
+</div>
+<div class="section" id="decorating-the-axes">
+<h2>Decorating the axes<a class="headerlink" href="#decorating-the-axes" title="Permalink to this headline">¶</a></h2>
+<p>To label the axes and add a title, we’ll use Pyplot functions <code class="docutils literal notranslate"><span class="pre">xlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">ylabel</span></code>, and <code class="docutils literal notranslate"><span class="pre">title</span></code>.  All of them take strings as arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">christian</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">unaffiliated</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">% o</span><span class="s1">f adults&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Religious affiliation of U.S adults&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s add another important element, a legend that indicates which line is which.</p>
+<p>To do that, we add a label to each line, using the keyword argument <code class="docutils literal notranslate"><span class="pre">label</span></code>.</p>
+<p>Then we call <code class="docutils literal notranslate"><span class="pre">plt.legend</span></code> to create the legend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">christian</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Christian&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">unaffiliated</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Unaffiliated&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">% o</span><span class="s1">f adults&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Religious affiliation of U.S adults&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> The orginal figure plots lines between the data points, but it also plots “markers” showing the location of each data point.  It is generally good practice to include markers, especially if data are not available for every year.</p>
+<p>Modify the previous example to include a keyword argument <code class="docutils literal notranslate"><span class="pre">marker</span></code> with the string value <code class="docutils literal notranslate"><span class="pre">'o'</span></code>, which indicates that you want to plot circles as markers.</p>
+<p><strong>Exercise:</strong> In the original figure, the line labelled <code class="docutils literal notranslate"><span class="pre">'Christian'</span></code> is red and the line labeled <code class="docutils literal notranslate"><span class="pre">'Unaffiliated'</span></code> is grey.</p>
+<p>Find the online documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> and figure out how to use keyword arguments to specify colors.  Choose colors to (roughly) match the original figure.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">legend</span></code> function takes a keyword argument that speficies the location of the legend.  Read the documentation of this function and move the legend to the center left of the figure.</p>
+</div>
+<div class="section" id="sandwiches">
+<h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">¶</a></h2>
+<p>In a previous notebook we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”</p>
+<p>The article includes this graph showing prices of several sandwiches in the two cities:</p>
+<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" width="400"/>
+<p>As an exercise, let’s see if we can replicate this figure.</p>
+<p>Here’s the data from the article again: the names of the sandwiches and the price list for each city.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lobster roll&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Chicken caesar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Bang bang chicken&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Ham and cheese&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Tuna and cucumber&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Egg&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">9.99</span><span class="p">,</span> <span class="mf">7.99</span><span class="p">,</span> <span class="mf">7.49</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.29</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">london_price_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">3.75</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous section we plotted percentages on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis versus time on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.</p>
+<p>Now we want to plot the sandwich names on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis and the prices on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  Here’s how:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Price in USD&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name_list</span></code> is a list of strings; Pyplot orders them from top to bottom, equally spaced.</p>
+<p>By default Pyplot connects the points with lines, but in this example the lines don’t make sense because the sandwich names are “categorical”, not numerical.  You can’t interpolate between an egg sandwich and a tuna sandwich.</p>
+<p>We can turn on markers and turn off lines with keyword arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Price in USD&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or we can do the same thing more concisely by providing a “format string” as a positional argument.  You can read the documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> to learn more about format strings.</p>
+<p>I added a title at the same time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">london_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Price in USD&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pret a Manger prices in Boston and London&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To approximate the colors in the original figure, I use the strings <code class="docutils literal notranslate"><span class="pre">'C3'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C0'</span></code> to specify colors from the default color sequence.  <a class="reference external" href="https://matplotlib.org/3.1.1/tutorials/colors/colors.html">You can read the documentation to learn more about specifying colors in Pyplot</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">london_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Price in USD&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pret a Manger prices in Boston and London&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To connect the dots with lines, I use <code class="docutils literal notranslate"><span class="pre">plt.hlines</span></code>, which draws horizontal lines.  It takes three arguments: a sequence of values on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, which are the sandwich names in this example, and two sequences of values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, which are the London prices and Boston prices in this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">london_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">name_list</span><span class="p">,</span> <span class="n">london_price_list</span><span class="p">,</span> <span class="n">boston_price_list</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Price in USD&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pret a Manger prices in Boston and London&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> To finish off this example, add a legend that identifies the London and Boston prices.  Remember that you have to add a <code class="docutils literal notranslate"><span class="pre">label</span></code> keyword each time you call <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, and then call <code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>.</p>
+<p>Notice that the sandwiches in our figure are in the opposite order of the sandwiches in the original figure.  There is a Pyplot function that inverts the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis; see if you can find it and use it to reverse the order of the sandwich list.</p>
+</div>
+<div class="section" id="zipf-s-law">
+<h2>Zipf’s law<a class="headerlink" href="#zipf-s-law" title="Permalink to this headline">¶</a></h2>
+<p>In the previous notebook we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.</p>
+<p>Then we used a dictionary to count the number of unique words and the number of times each one appears.</p>
+<p>Now we’ll use those results to generate a “Zipf plot”, which shows the frequency of the words on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, ordered from the most common word to the least.</p>
+<p>First, let’s download the book again.  If you run the following cell, it checks to see whether you already have a file named <code class="docutils literal notranslate"><span class="pre">2600-0.txt</span></code>; if not, it uses <code class="docutils literal notranslate"><span class="pre">wget</span></code> to copy a book from Project Gutenberg to your computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">):</span>
+    <span class="o">!</span>wget https://www.gutenberg.org/files/2600/2600-0.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the code from the previous notebook that loops through the book and makes a dictionary that contains all punctuation characters.  Again, you don’t have to understand all of the details here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span>
+
+<span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
+<span class="n">punc_marks</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">category</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span>
+            <span class="n">punc_marks</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        
+<span class="n">all_punctuation</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">punc_marks</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_punctuation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s a solution to one of the previous exercises.  It loops through the book and makes a dictionary that maps from each word to the number of times it appears.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_line</span> <span class="o">=</span> <span class="s2">&quot;CHAPTER I</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">last_line</span> <span class="o">=</span> <span class="s2">&quot;End of the Project Gutenberg EBook of War and Peace, by Leo Tolstoy</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">first_line</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="n">unique_words</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">last_line</span><span class="p">:</span>
+        <span class="k">break</span>
+        
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">all_punctuation</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">unique_words</span><span class="p">:</span>
+            <span class="n">unique_words</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">unique_words</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="frequencies-and-ranks">
+<h2>Frequencies and ranks<a class="headerlink" href="#frequencies-and-ranks" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Zipf%27s_law">According to Wikipedia</a>, Zipf’s law</p>
+<blockquote>
+<div><p>was originally formulated in terms of quantitative linguistics, stating that given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc.</p>
+</div></blockquote>
+<p>To see if this law holds for the words in <em>War and Peace</em>, we’ll make a plot that shows:</p>
+<ul class="simple">
+<li><p>The frequency of each word on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, and</p></li>
+<li><p>The rank of each word on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, where the rank of the most frequent word is 1, the rank of the frequent most common word is 2, etc.</p></li>
+</ul>
+<p>In <code class="docutils literal notranslate"><span class="pre">unique_words</span></code>, the keys are words and the values are their frequencies.  We can use the <code class="docutils literal notranslate"><span class="pre">values</span></code> function to get the values from the dictionary.  The result has the type <code class="docutils literal notranslate"><span class="pre">dict_values</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freqs</span> <span class="o">=</span> <span class="n">unique_words</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we plot them, we have to sort them, but the <code class="docutils literal notranslate"><span class="pre">sort</span></code> function doesn’t work with <code class="docutils literal notranslate"><span class="pre">dict_values</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freqs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">list</span></code> to make a list of frequencies:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freqs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">unique_words</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the <code class="docutils literal notranslate"><span class="pre">sort</span></code> function works with lists.  By default it sorts in ascending order, but we can pass a keyword argument to reverse the order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freqs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, for the ranks, we need a sequence that counts from 1 to <code class="docutils literal notranslate"><span class="pre">n</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of elements in <code class="docutils literal notranslate"><span class="pre">freqs</span></code>.  We can use the <code class="docutils literal notranslate"><span class="pre">range</span></code> function, which returs a value with type <code class="docutils literal notranslate"><span class="pre">range</span></code>.</p>
+<p>As a small example, here’s the range from 1 to 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, there’s a catch.  If we use the range to make a list, we see that “the range from 1 to 5” includes 1, but it doesn’t include 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That might seem strange, but it is <a class="reference external" href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html">often more convenient</a> to use <code class="docutils literal notranslate"><span class="pre">range</span></code> when it is defined this way, rather than what might seem like the more natural way.</p>
+<p>Anyway, we can get what we want by increasing the second argument by one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, finally, we can make a range that represents the ranks from <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">n</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span>
+<span class="n">ranks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ranks</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now we can plot the frequencies versus the ranks:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranks</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Rank&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;War and Peace and Zipf&#39;s law&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="logarithmic-scales">
+<h2>Logarithmic scales<a class="headerlink" href="#logarithmic-scales" title="Permalink to this headline">¶</a></h2>
+<p>The few most common words are very common, and the great majority of words are much less common.  So that’s consistent with Zipf’s law, but Zipf’s law is more specific.  It claims that the frequencies should be inversely proportional to the ranks.  If that’s true, we can write the mathematical relation:</p>
+<p><span class="math notranslate nohighlight">\(f = k / r\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the rank of a word, <span class="math notranslate nohighlight">\(f\)</span> is its frequency, and <span class="math notranslate nohighlight">\(k\)</span> is an unknown constant of proportionality.  If we take the log of both sides, we get this relation:</p>
+<p><span class="math notranslate nohighlight">\(\log f = \log k - \log r\)</span></p>
+<p>This relation implies that if we plot <span class="math notranslate nohighlight">\(f\)</span> versus <span class="math notranslate nohighlight">\(r\)</span> on a log-log scale, we expect to see a straight line with intercept at <span class="math notranslate nohighlight">\(\log k\)</span> and slope -1.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">plt.xscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis on a log scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranks</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Rank&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;War and Peace and Zipf&#39;s law&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And <code class="docutils literal notranslate"><span class="pre">plt.yscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis on a log scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranks</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Rank&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;War and Peace and Zipf&#39;s law&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is not quite a straight line, but it is close.  We can get a sense of the slope by connecting the end points with a line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ranks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ranks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">freqs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">freqs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">ys</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranks</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Rank&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;War and Peace and Zipf&#39;s law&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The slope of this line is the “rise over run”, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis divided by the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.</p>
+<p>We can compute the rise using <code class="docutils literal notranslate"><span class="pre">np.log</span></code> to compute the log of the first and last values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we can use <code class="docutils literal notranslate"><span class="pre">np.diff</span></code> to compute the difference between the elements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">diff</span></code> to compute the run, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  The divide the rise by the run to get the slope of the grey line.</p>
+<p>Is it close to -1, as Zipf’s law predicts?</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="05_dictionaries.html" title="previous page">Dictionaries</a>
+    <a class='right-next' id="next-link" href="07_dataframes.html" title="next page">Dataframes</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
