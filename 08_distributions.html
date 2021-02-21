@@ -309,9 +309,8 @@
                 
   <div class="section" id="distributions">
 <h1>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/08_distributions.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>In this noteboook we’ll see three ways to describe a set of values:</p>
@@ -393,6 +392,106 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>age</th>
+      <th>cohort</th>
+      <th>sex</th>
+      <th>race</th>
+      <th>educ</th>
+      <th>realinc</th>
+      <th>gunlaw</th>
+      <th>grass</th>
+      <th>wtssall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1972</td>
+      <td>26.0</td>
+      <td>1946.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>18.0</td>
+      <td>13537.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>0.8893</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1972</td>
+      <td>38.0</td>
+      <td>1934.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>12.0</td>
+      <td>18951.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>0.4446</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1972</td>
+      <td>57.0</td>
+      <td>1915.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>12.0</td>
+      <td>30458.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.3339</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1972</td>
+      <td>61.0</td>
+      <td>1911.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>14.0</td>
+      <td>37226.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>0.8893</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1972</td>
+      <td>59.0</td>
+      <td>1913.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>12.0</td>
+      <td>30458.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>0.8893</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="probability-mass-functions">
@@ -417,6 +516,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_15_0.png" src="_images/08_distributions_15_0.png" />
+</div>
 </div>
 <p>Notice that we use <code class="docutils literal notranslate"><span class="pre">dropna</span></code> to drop NaNs from <code class="docutils literal notranslate"><span class="pre">educ</span></code> before we pass it to <code class="docutils literal notranslate"><span class="pre">hist</span></code>.</p>
 <p>Based on the histogram, we can see the general shape of the distribution and the central tendency – it looks like the peak is near 12 years of education.</p>
@@ -440,6 +542,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>empiricaldist.empiricaldist.Pmf
+</pre></div>
+</div>
+</div>
 </div>
 <p>The keyword argument <code class="docutils literal notranslate"><span class="pre">normalize=False</span></code> indicates that we don’t want to normalize this PMF.  I’ll explain what that means soon.</p>
 <p>Here’s what the first and last few rows of the <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> look like.</p>
@@ -449,10 +556,30 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0    144
+1.0     38
+2.0    151
+3.0    246
+4.0    290
+Name: educ, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_educ</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.0    7953
+17.0    1791
+18.0    2109
+19.0     774
+20.0    1294
+Name: educ, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -467,6 +594,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7953
+</pre></div>
+</div>
+</div>
 </div>
 <p>Usually when we make a PMF, we want to know the <em>fraction</em> of respondents with each value, rather than the counts.  We can do that by setting <code class="docutils literal notranslate"><span class="pre">normalize=True</span></code>; then we get a normalized PMF, that is, a PMF where the values in the second column add up to 1.</p>
 <div class="cell docutils container">
@@ -477,12 +609,27 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0    0.002311
+1.0    0.000610
+2.0    0.002424
+3.0    0.003948
+4.0    0.004655
+Name: educ, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now if we use the bracket operator, the result is a fraction.</p>
 <p>For example, the fraction of people with 12 years of education is a little more than 30%:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_educ</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3072836414997432
 </pre></div>
 </div>
 </div>
@@ -498,6 +645,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_30_0.png" src="_images/08_distributions_30_0.png" />
 </div>
 </div>
 <p>In this figure, we can see that the most common value is 12 years, but there are also peaks at 14 and 16, which correspond to two and four years of college.</p>
@@ -567,6 +717,9 @@ How many respondents were interviewed in 2016?</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_43_0.png" src="_images/08_distributions_43_0.png" />
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">x</span></code> axis is the ages, from 18 to 89.  The <code class="docutils literal notranslate"><span class="pre">y</span></code> axis is the cumulative probabilities, from 0 to 1.</p>
 <p><code class="docutils literal notranslate"><span class="pre">cdf_age</span></code> can be used as a function, so if you give it an age, it returns the corresponding probability (in a NumPy array).</p>
@@ -575,6 +728,11 @@ How many respondents were interviewed in 2016?</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="mi">51</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">cdf_age</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.66020135)
 </pre></div>
 </div>
 </div>
@@ -591,6 +749,11 @@ How many respondents were interviewed in 2016?</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.25</span>
 <span class="n">q</span> <span class="o">=</span> <span class="n">cdf_age</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 <span class="n">q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(30.)
 </pre></div>
 </div>
 </div>
@@ -666,6 +829,9 @@ How many respondents were interviewed in 2016?</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_66_0.png" src="_images/08_distributions_66_0.png" />
+</div>
 </div>
 <p>It looks like there are more men in their twenties, maybe.  And there are more women in their 70s and 80s.</p>
 <p>In between, the plot is pretty noisy; most of these differences are just random variations.</p>
@@ -681,6 +847,9 @@ How many respondents were interviewed in 2016?</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_69_0.png" src="_images/08_distributions_69_0.png" />
 </div>
 </div>
 <p>In general, CDFs are smoother than PMFs.  Because they smooth out randomness, we can often get a better view of real differences between distributions.</p>
@@ -720,6 +889,9 @@ How many respondents were interviewed in 2016?</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_74_0.png" src="_images/08_distributions_74_0.png" />
+</div>
 </div>
 <p>There are a lot of unique values in this distribution, and none of them appear very often.  As a result, the PMF is so noisy and we can’t really see the shape of the distribution.</p>
 <p>It’s also hard to compare the distributions.
@@ -735,6 +907,9 @@ It looks like there are more people with high incomes after 1995, but it’s har
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_76_0.png" src="_images/08_distributions_76_0.png" />
 </div>
 </div>
 <p>Below $30,000 the CDFs are almost identical; above that, we can see that the orange distribution is shifted to the right.</p>
@@ -787,6 +962,9 @@ It looks like there are more people with high incomes after 1995, but it’s har
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_85_0.png" src="_images/08_distributions_85_0.png" />
+</div>
 </div>
 <p>This sigmoid shape is what we expect to see with values from a normal distribution.</p>
 <p>If we did not know that this sample was drawn from a normal distribution, and we wanted to check, we could compare the CDF of the data to the CDF of an ideal normal distribution, which we can use the SciPy library to compute.</p>
@@ -815,6 +993,9 @@ It looks like there are more people with high incomes after 1995, but it’s har
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_89_0.png" src="_images/08_distributions_89_0.png" />
 </div>
 </div>
 <p>The CDF of the random sample agrees with the normal model, but that’s not surprising because the data were actually sampled from a normal distribution.</p>
@@ -856,6 +1037,9 @@ It looks like there are more people with high incomes after 1995, but it’s har
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_97_0.png" src="_images/08_distributions_97_0.png" />
+</div>
 </div>
 <p>The normal PDF is the classic “bell curve”.</p>
 <p>It is tempting to compare the PMF of the data to the PDF of the normal distribution, but that doesn’t work.</p>
@@ -873,6 +1057,9 @@ It looks like there are more people with high incomes after 1995, but it’s har
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_99_0.png" src="_images/08_distributions_99_0.png" />
 </div>
 </div>
 <p>The PMF of the sample is a flat line across the bottom.  In the random sample, every value is unique, so they all have the same probability, one in 1000.</p>
@@ -893,6 +1080,9 @@ It looks like there are more people with high incomes after 1995, but it’s har
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_101_0.png" src="_images/08_distributions_101_0.png" />
+</div>
 </div>
 <p>Now we can compare the KDE plot and the normal PDF.</p>
 <div class="cell docutils container">
@@ -908,6 +1098,9 @@ It looks like there are more people with high incomes after 1995, but it’s har
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_103_0.png" src="_images/08_distributions_103_0.png" />
 </div>
 </div>
 <p>The KDE plot matches the normal PDF pretty well, although the differences look bigger when we compare PDFs than they did with the CDFs.</p>

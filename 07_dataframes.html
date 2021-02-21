@@ -323,9 +323,8 @@
                 
   <div class="section" id="dataframes">
 <h1>Dataframes<a class="headerlink" href="#dataframes" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/07_dataframes.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>This notebook introduces Pandas, which is a powerful library for working with data.  Pandas provides functions for reading data from files, and it provides two new types for working with data, DataFrames and Series.</p>
@@ -375,6 +374,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result from <code class="docutils literal notranslate"><span class="pre">read_hdf()</span></code> is a DataFrame, which is the primary type Pandas uses to store data.</p>
 <p>For each woman who participated in the survey, this DataFrame has one row for each pregnancy and one column for each survey question.</p>
@@ -385,6 +389,112 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>caseid</th>
+      <th>outcome</th>
+      <th>birthwgt_lb1</th>
+      <th>birthwgt_oz1</th>
+      <th>prglngth</th>
+      <th>nbrnaliv</th>
+      <th>agecon</th>
+      <th>agepreg</th>
+      <th>birthord</th>
+      <th>hpagelb</th>
+      <th>wgt2013_2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>60418</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>40</td>
+      <td>1.0</td>
+      <td>2000</td>
+      <td>2075.0</td>
+      <td>1.0</td>
+      <td>22.0</td>
+      <td>3554.964843</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>60418</td>
+      <td>1</td>
+      <td>4.0</td>
+      <td>12.0</td>
+      <td>36</td>
+      <td>1.0</td>
+      <td>2291</td>
+      <td>2358.0</td>
+      <td>2.0</td>
+      <td>25.0</td>
+      <td>3554.964843</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>60418</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>36</td>
+      <td>1.0</td>
+      <td>3241</td>
+      <td>3308.0</td>
+      <td>3.0</td>
+      <td>52.0</td>
+      <td>3554.964843</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>60419</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>33</td>
+      <td>NaN</td>
+      <td>3650</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2484.535358</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>60420</td>
+      <td>1</td>
+      <td>8.0</td>
+      <td>13.0</td>
+      <td>41</td>
+      <td>1.0</td>
+      <td>2191</td>
+      <td>2266.0</td>
+      <td>1.0</td>
+      <td>24.0</td>
+      <td>2903.782914</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>DataFrames provide “attributes” and “methods”.</p>
 <p>A method is a function that is associated with a particular type.  For example, in a previous notebook, we used the <code class="docutils literal notranslate"><span class="pre">split</span></code> method, which is a function that works with strings.</p>
@@ -392,6 +502,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9358, 11)
 </pre></div>
 </div>
 </div>
@@ -404,11 +519,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;caseid&#39;, &#39;outcome&#39;, &#39;birthwgt_lb1&#39;, &#39;birthwgt_oz1&#39;, &#39;prglngth&#39;,
+       &#39;nbrnaliv&#39;, &#39;agecon&#39;, &#39;agepreg&#39;, &#39;birthord&#39;, &#39;hpagelb&#39;, &#39;wgt2013_2015&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The column names are stored in an <code class="docutils literal notranslate"><span class="pre">Index</span></code>, which is another Pandas type, similar to a list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">nsfg</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.indexes.base.Index
 </pre></div>
 </div>
 </div>
@@ -431,6 +558,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result is a Series, which is another Pandas type.</p>
 <p>In this case the Series contains the birth weights, in pounds, of the live births (or in the case of multiple births, the first baby).</p>
@@ -438,6 +570,16 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    5.0
+1    4.0
+2    5.0
+3    NaN
+4    8.0
+Name: birthwgt_lb1, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -483,11 +625,57 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.0     2146
+6.0     1666
+8.0     1168
+5.0      586
+9.0      363
+4.0      196
+99.0      94
+10.0      82
+3.0       67
+2.0       47
+1.0       34
+11.0      17
+12.0       7
+0.0        6
+14.0       2
+13.0       2
+17.0       1
+98.0       1
+Name: birthwgt_lb1, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <p>By default, the results are sorted with the most frequent value first, so I use <code class="docutils literal notranslate"><span class="pre">sort_index</span></code> to sort them by value instead, with the lightest babies first and heaviest babies last.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0        6
+1.0       34
+2.0       47
+3.0       67
+4.0      196
+5.0      586
+6.0     1666
+7.0     2146
+8.0     1168
+9.0      363
+10.0      82
+11.0      17
+12.0       7
+13.0       2
+14.0       2
+17.0       1
+98.0       1
+99.0      94
+Name: birthwgt_lb1, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -534,6 +722,19 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    6485.000000
+mean        8.055204
+std        11.178893
+min         0.000000
+25%         6.000000
+50%         7.000000
+75%         8.000000
+max        99.000000
+Name: birthwgt_lb1, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">count</span></code> is the number of values, not including <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mean</span></code> and <code class="docutils literal notranslate"><span class="pre">std</span></code> are the mean and standard deviation.</p>
@@ -555,6 +756,19 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds_clean</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    6390.000000
+mean        6.703286
+std         1.429265
+min         0.000000
+25%         6.000000
+50%         7.000000
+75%         8.000000
+max        17.000000
+Name: birthwgt_lb1, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -601,6 +815,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.120977576711251
+</pre></div>
+</div>
+</div>
 </div>
 <p>But it is risky to compute a summary statistic, like the mean, before we look at the whole distribution of values.</p>
 <p>A “distribution” is a set of possible values and their frequencies.  One way to visualize a distribution is a histogram, which shows values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis and their frequencies on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis.</p>
@@ -622,6 +841,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of U.S. birth weight&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/07_dataframes_61_0.png" src="_images/07_dataframes_61_0.png" />
 </div>
 </div>
 <p>Pyplot doesn’t work with NaNs, so we have to use <code class="docutils literal notranslate"><span class="pre">dropna</span></code>, which makes a new Series that contains only the valid values.</p>
@@ -650,11 +872,26 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;bool&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>When you compare a Series to a value, the result is a Boolean Series; that is, each element is a Boolean value, True or False.  In this case, it’s True for each preterm baby and False otherwise.  We can use <code class="docutils literal notranslate"><span class="pre">head</span></code> to see the first 5 elements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
+1     True
+2     True
+3     True
+4    False
+Name: prglngth, dtype: bool
 </pre></div>
 </div>
 </div>
@@ -666,11 +903,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3742
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you compute the mean, you get the <em>fraction</em> of Trues; in this case, it’s close to 0.4; that is, the durations of 40% of the pregnancies are less than 37 weeks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.39987176747168196
 </pre></div>
 </div>
 </div>
@@ -684,12 +931,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6934173968796752
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we can use the logical operator <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> to identify pregnancies where the outcome is a preterm live birth:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">live_preterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">live</span> <span class="o">&amp;</span> <span class="n">preterm</span><span class="p">)</span>
 <span class="n">live_preterm</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.09724300064116265
 </pre></div>
 </div>
 </div>
@@ -716,6 +973,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.577598314606742
+</pre></div>
+</div>
+</div>
 </div>
 <p>To select full-term babies, we can create a Boolean Series like this:</p>
 <div class="cell docutils container">
@@ -733,6 +995,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.372323879231473
+</pre></div>
+</div>
+</div>
 </div>
 <p>As expected, full term babies are heavier, on average, than preterm babies.</p>
 <p>To be more explicit, we could also limit the results to live births, like this:</p>
@@ -740,6 +1007,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full_term_weight</span> <span class="o">=</span> <span class="n">birth_weight</span><span class="p">[</span><span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span><span class="p">]</span>
 <span class="n">full_term_weight</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.372323879231473
 </pre></div>
 </div>
 </div>
@@ -770,6 +1042,19 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;wgt2013_2015&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count     9358.000000
+mean     10759.200147
+std      11400.179222
+min       1859.105000
+25%       4340.053407
+50%       7062.994158
+75%      12629.322982
+max      75399.410000
+Name: wgt2013_2015, dtype: float64
 </pre></div>
 </div>
 </div>

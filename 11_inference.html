@@ -308,15 +308,13 @@
                 
   <div class="section" id="inference">
 <h1>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_inference.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>This notebook introduces “statistical inference”, which is the process of using a sample to make inferences about a population.  This <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_inference">figure from Wikipedia</a> illustrates the idea:</p>
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Simple_random_sampling.PNG" width="400">
-<p>On the left, the “population” is the group we are interested in.  Sometimes it is a group of people, but in general it can be any kind of group.</p>
-<p>If we can observe the entire group, we might not need statistical inference.  If not, sometimes we can observe a “sample” (or subset) of the population and use those observations to make claims about the population.</p>
+<p>This notebook introduces <strong>statistical inference</strong>, which is the process of using a sample to make inferences about a population.</p>
+<p>The <strong>population</strong> is the group we are interested in.  Sometimes it is a group of people, but in general it can be any kind of group.</p>
+<p>If we can observe the entire group, we might not need statistical inference.  If not, sometimes we can observe a <strong>sample</strong> (or subset) of the population and use those observations to make claims about the population.</p>
 <p>If you have studied statistics before, you might have encountered some of these ideas before: hypothesis testing, p-values, estimation, standard error, and confidence intervals.</p>
 <p>In this notebook we’ll approach these topics using computation and simulation, as opposed to mathematical analysis.  I hope this approach makes the ideas clearer.</p>
 <p>If you have not seen these ideas before, don’t worry.  That might even be better.</p>
@@ -352,7 +350,7 @@ getting a result as extreme as that would be less than 7%’.*</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False,  True, False,  True, False,  True, False,  True,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True,  True,  True,  True,  True,  True,  True, False,  True,
        False])
 </pre></div>
 </div>
@@ -367,7 +365,7 @@ getting a result as extreme as that would be less than 7%’.*</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
 </pre></div>
 </div>
 </div>
@@ -398,7 +396,7 @@ getting a result as extreme as that would be less than 7%’.*</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>115
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>130
 </pre></div>
 </div>
 </div>
@@ -416,16 +414,16 @@ getting a result as extreme as that would be less than 7%’.*</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140
-128
-125
-113
-130
-124
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>119
+133
+121
+122
 119
-125
-117
-120
+131
+121
+98
+118
+133
 </pre></div>
 </div>
 </div>
@@ -452,7 +450,7 @@ getting a result as extreme as that would be less than 7%’.*</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124.867
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>124.907
 </pre></div>
 </div>
 </div>
@@ -488,7 +486,7 @@ getting a result as extreme as that would be less than 7%’.*</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.239
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.429
 </pre></div>
 </div>
 </div>
@@ -526,7 +524,7 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11_inference_25_0.png" src="_images/11_inference_25_0.png" />
+<img alt="_images/11_inference_28_0.png" src="_images/11_inference_28_0.png" />
 </div>
 </div>
 <p>This is the “sampling distribution” of deviations.  It shows how much variation we should expect between experiments with this sample size (n = 250).</p>
@@ -558,7 +556,7 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.025
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.035
 </pre></div>
 </div>
 </div>
@@ -573,7 +571,7 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.039
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.032
 </pre></div>
 </div>
 </div>
@@ -586,7 +584,7 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.064
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.067
 </pre></div>
 </div>
 </div>
@@ -626,7 +624,7 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11_inference_38_0.png" src="_images/11_inference_38_0.png" />
+<img alt="_images/11_inference_41_0.png" src="_images/11_inference_41_0.png" />
 </div>
 </div>
 <p>These results show that there is a non-negligible chance of getting a result as extreme as 140 heads, even if the coin is actually fair.</p>
@@ -640,118 +638,9 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <li><p>What is the expected number of 3s if the die is fair?</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">plot_hist</span></code> to plot the results.  The histogram you plot approximates the sampling distribution.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">300</span>
-<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
-
-<span class="n">outcomes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)):</span>
-    <span class="n">outcomes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">spin</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.089
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expected</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">p</span>
-<span class="n">expected</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs</span> <span class="o">=</span> <span class="n">outcomes</span> <span class="o">-</span> <span class="n">expected</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampling distribution (n=300, p=1/6)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Deviation from expected number of 3s&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/11_inference_45_0.png" src="_images/11_inference_45_0.png" />
-</div>
-</div>
 <p><strong>Exercise:</strong> Continuing the previous exercise, compute the probability of seeing a deviation from the expected value that is “as extreme” as the observed difference.</p>
 <p>For this context, what do you think is the best definition of “as extreme”?</p>
 <p>Plot the histogram of the random deviations again, and use <code class="docutils literal notranslate"><span class="pre">fill_hist</span></code> to fill the region of the histogram that corresponds to the p-value you computed.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">observed_diff</span> <span class="o">=</span> <span class="mi">63</span> <span class="o">-</span> <span class="n">expected</span>
-<span class="n">observed_diff</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since we started with the suspicion that the die comes up 3</span>
-<span class="c1"># more often than it should, it might make sense to check how</span>
-<span class="c1"># often the random deviation EXCEEDS the observed difference;</span>
-<span class="c1"># we are less interested in how often it is too low.</span>
-
-<span class="n">p_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diffs</span> <span class="o">&gt;</span> <span class="n">observed_diff</span><span class="p">)</span>
-<span class="n">p_value</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.02
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patch</span> <span class="o">=</span> <span class="n">plot_hist</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span>
-
-<span class="c1"># fill the right tail of the hist</span>
-<span class="n">low</span> <span class="o">=</span> <span class="n">observed_diff</span>
-<span class="n">high</span> <span class="o">=</span> <span class="n">diffs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">fill_hist</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">patch</span><span class="p">)</span>
-
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampling distribution (n=100, p=1/6)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Deviation from expected number of 3s&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/11_inference_49_0.png" src="_images/11_inference_49_0.png" />
-</div>
-</div>
 </div>
 <div class="section" id="are-first-babies-more-likely-to-be-late">
 <h2>Are first babies more likely to be late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Permalink to this headline">¶</a></h2>
@@ -792,6 +681,112 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>caseid</th>
+      <th>outcome</th>
+      <th>birthwgt_lb1</th>
+      <th>birthwgt_oz1</th>
+      <th>prglngth</th>
+      <th>nbrnaliv</th>
+      <th>agecon</th>
+      <th>agepreg</th>
+      <th>birthord</th>
+      <th>hpagelb</th>
+      <th>wgt2013_2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>60418</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>40</td>
+      <td>1.0</td>
+      <td>2000</td>
+      <td>2075.0</td>
+      <td>1.0</td>
+      <td>22.0</td>
+      <td>3554.964843</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>60418</td>
+      <td>1</td>
+      <td>4.0</td>
+      <td>12.0</td>
+      <td>36</td>
+      <td>1.0</td>
+      <td>2291</td>
+      <td>2358.0</td>
+      <td>2.0</td>
+      <td>25.0</td>
+      <td>3554.964843</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>60418</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>36</td>
+      <td>1.0</td>
+      <td>3241</td>
+      <td>3308.0</td>
+      <td>3.0</td>
+      <td>52.0</td>
+      <td>3554.964843</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>60419</td>
+      <td>6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>33</td>
+      <td>NaN</td>
+      <td>3650</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2484.535358</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>60420</td>
+      <td>1</td>
+      <td>8.0</td>
+      <td>13.0</td>
+      <td>41</td>
+      <td>1.0</td>
+      <td>2191</td>
+      <td>2266.0</td>
+      <td>1.0</td>
+      <td>24.0</td>
+      <td>2903.782914</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>The variables we need are <code class="docutils literal notranslate"><span class="pre">birthord</span></code>, which indicates birth order, and <code class="docutils literal notranslate"><span class="pre">prglength</span></code>, which is pregnancy length in weeks.</p>
 <p>I’ll make two boolean Series, one for first babies and one for others.</p>
@@ -801,6 +796,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <span class="n">others</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="o">.</span><span class="n">birthord</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">firsts</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">others</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3067, 3422)
 </pre></div>
 </div>
 </div>
@@ -817,6 +817,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(38.57124225627649, 38.36908240794857)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Here’s the difference in means, in weeks.</p>
 <div class="cell docutils container">
@@ -826,11 +831,21 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20215984832792344
+</pre></div>
+</div>
+</div>
 </div>
 <p>Here it is converted to days:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">*</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.415118938295464
 </pre></div>
 </div>
 </div>
@@ -880,6 +895,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20215984832792344
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we have to define the null hypothesis, which is a model of the world where there is no difference in pregnancy length between first babies and others.</p>
 <p>One way to do that is to put the two groups together and then divide them up again at random.  That way the distribution of pregnancy lengths is the same for both groups.</p>
@@ -890,11 +910,21 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3067, 3422)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pool</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">])</span>
 <span class="n">pool</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6489,)
 </pre></div>
 </div>
 </div>
@@ -922,11 +952,21 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3067, 3422)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we can compute the test statistic for the simulated data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_stat</span><span class="p">(</span><span class="n">sim_group1</span><span class="p">,</span> <span class="n">sim_group2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.03278589963444034
 </pre></div>
 </div>
 </div>
@@ -954,6 +994,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.00028424679527189054
+</pre></div>
+</div>
+</div>
 </div>
 <p>And here’s what the whole distribution looks like.</p>
 <div class="cell docutils container">
@@ -965,6 +1010,9 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/11_inference_86_0.png" src="_images/11_inference_86_0.png" />
+</div>
 </div>
 <p>If there were actually no difference between the groups, we would expect to see a difference as big as 0.15 weeks by chance, at least occasionally.  But a difference as big as 0.2 would be rare.</p>
 <p>To quantify that surprise, we can estimate the probability that the test statistic, under the null hypothesis, exceeds the observed differences in the means.</p>
@@ -973,6 +1021,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diffs</span> <span class="o">&gt;=</span> <span class="n">actual_diff</span><span class="p">)</span>
 <span class="n">p_value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001
 </pre></div>
 </div>
 </div>
@@ -1024,12 +1077,22 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100000, 9)
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">SEX</span></code> to select male respondents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">male</span> <span class="o">=</span> <span class="p">(</span><span class="n">brfss</span><span class="o">.</span><span class="n">SEX</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">male</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.48589
 </pre></div>
 </div>
 </div>
@@ -1050,6 +1113,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.338430508962934
+</pre></div>
+</div>
+</div>
 </div>
 <p>About 4% of the values are missing.</p>
 <p>Here are the mean and standard deviation, ignoring missing data.</p>
@@ -1057,6 +1125,12 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean male height in cm =&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Std male height in cm =&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean male height in cm = 177.53804780447925
+Std male height in cm = 8.350063691943435
 </pre></div>
 </div>
 </div>
@@ -1086,6 +1160,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(48589,)
+</pre></div>
+</div>
+</div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">replace=True</span></code>, we sample with replacement, which means that some measurements might be chosen more than once, and some might not be chosen at all.</p>
 <p>(If we sample <em>without</em> replacement, the resampled data is always identical to the original, so that’s no good.)</p>
@@ -1093,6 +1172,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">sim_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>177.5641565811819
 </pre></div>
 </div>
 </div>
@@ -1119,6 +1203,9 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/11_inference_118_0.png" src="_images/11_inference_118_0.png" />
+</div>
 </div>
 <p>The width of this distribution shows how much the results vary from one experiment to the next.</p>
 <p>We can quantify this variability by computing the standard deviation of the sampling distribution, which is called “standard error”.</p>
@@ -1126,6 +1213,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
 <span class="n">std_err</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.038826975009464165
 </pre></div>
 </div>
 </div>
@@ -1139,11 +1231,20 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([177.47365037, 177.60182072])
+</pre></div>
+</div>
+</div>
 </div>
 <p>The following function plots a histogram and shades the 90% confidence interval.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sampling_dist</span><span class="p">(</span><span class="n">outcomes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot sampling distribution.</span>
+<span class="sd">    </span>
+<span class="sd">    outcomes: sequence of values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">patch</span> <span class="o">=</span> <span class="n">plot_hist</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
     <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">outcomes</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span>
     <span class="n">fill_hist</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">patch</span><span class="p">)</span>
@@ -1162,6 +1263,14 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean =  177.53776636543165
+Std error =  0.038826975009464165
+90% CI =  (177.4736503656478, 177.60182072134162)
+</pre></div>
+</div>
+<img alt="_images/11_inference_126_1.png" src="_images/11_inference_126_1.png" />
+</div>
 </div>
 <p>For an experiment like this, we can compute the standard error analytically.</p>
 <div class="cell docutils container">
@@ -1179,6 +1288,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.03788094526418763, 0.038826975009464165)
+</pre></div>
+</div>
+</div>
 </div>
 <p>This result indicates that our estimate of the mean is <em>precise</em>; that is, if we ran this experiment many times, the results would fall in a narrow range.</p>
 <p>But this range reflects only variability due to random sampling.  If there are systematic errors in the sampling process, or in the measurement process, the result would not be <em>accurate</em>.</p>
@@ -1189,6 +1303,11 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">cv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04703253074596872
 </pre></div>
 </div>
 </div>

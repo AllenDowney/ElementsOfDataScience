@@ -294,9 +294,8 @@
                 
   <div class="section" id="relationships">
 <h1>Relationships<a class="headerlink" href="#relationships" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/09_relationships.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>This notebook explores relationships between variables.</p>
@@ -346,6 +345,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100000, 9)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Like the NSFG, the BRFSS deliberately oversamples some groups, so each respondent has a sampling weight, stored in the <code class="docutils literal notranslate"><span class="pre">_LLCPWT</span></code> column.  I used these weights to resample the data, so the subset we just loaded is representative of adult residents of the U.S.</p>
 <p>The BRFSS includes hundreds of variables.  For the examples in this notebook, I chose just nine.  I’ll explain what the columns mean as we go along.</p>
@@ -355,6 +359,100 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SEX</th>
+      <th>HTM4</th>
+      <th>WTKG3</th>
+      <th>INCOME2</th>
+      <th>_LLCPWT</th>
+      <th>_AGEG5YR</th>
+      <th>_VEGESU1</th>
+      <th>_HTMG10</th>
+      <th>AGE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>96230</th>
+      <td>2.0</td>
+      <td>160.0</td>
+      <td>60.33</td>
+      <td>8.0</td>
+      <td>1398.525290</td>
+      <td>6.0</td>
+      <td>2.14</td>
+      <td>150.0</td>
+      <td>47.0</td>
+    </tr>
+    <tr>
+      <th>244920</th>
+      <td>2.0</td>
+      <td>163.0</td>
+      <td>58.97</td>
+      <td>5.0</td>
+      <td>84.057503</td>
+      <td>13.0</td>
+      <td>3.14</td>
+      <td>160.0</td>
+      <td>89.5</td>
+    </tr>
+    <tr>
+      <th>57312</th>
+      <td>2.0</td>
+      <td>163.0</td>
+      <td>72.57</td>
+      <td>8.0</td>
+      <td>390.248599</td>
+      <td>5.0</td>
+      <td>2.64</td>
+      <td>160.0</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>32573</th>
+      <td>2.0</td>
+      <td>165.0</td>
+      <td>74.84</td>
+      <td>1.0</td>
+      <td>11566.705300</td>
+      <td>3.0</td>
+      <td>1.46</td>
+      <td>160.0</td>
+      <td>32.0</td>
+    </tr>
+    <tr>
+      <th>355929</th>
+      <td>2.0</td>
+      <td>170.0</td>
+      <td>108.86</td>
+      <td>3.0</td>
+      <td>844.485450</td>
+      <td>3.0</td>
+      <td>1.81</td>
+      <td>160.0</td>
+      <td>32.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>A common way to visualize the relationship between two variables is a “scatter plot”.</p>
 <p>Scatter plots are common and readily understood, but they are surprisingly hard to get right.</p>
@@ -381,6 +479,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_13_0.png" src="_images/09_relationships_13_0.png" />
+</div>
 </div>
 <p>In general, it looks like taller people are heavier, but there are a few things about this scatter plot that make it hard to interpret.</p>
 <p>Most importantly, it is “overplotted”, which means that there are data points piled on top of each other so you can’t tell where there are a lot of points and where there is just one.</p>
@@ -397,6 +498,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_15_0.png" src="_images/09_relationships_15_0.png" />
+</div>
 </div>
 <p>This is better, but there are so many data points, the scatter plot is still overplotted.  The next step is to make the markers smaller.</p>
 <p>With <code class="docutils literal notranslate"><span class="pre">markersize=1</span></code> and a low value of alpha, the scatter plot is less saturated.</p>
@@ -410,6 +514,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter plot of weight versus height&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_17_0.png" src="_images/09_relationships_17_0.png" />
 </div>
 </div>
 <p>Again, this is better, but now we can see that the points fall in discrete columns.  That’s because most heights were reported in inches and converted to centimeters.</p>
@@ -431,6 +538,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_19_0.png" src="_images/09_relationships_19_0.png" />
+</div>
 </div>
 <p>The columns are gone, but now we can see that there are rows where people rounded off their weight.  We can fix that by jittering weight, too.</p>
 <div class="cell docutils container">
@@ -444,6 +554,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter plot of weight versus height&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_21_0.png" src="_images/09_relationships_21_0.png" />
 </div>
 </div>
 <p>Finally, let’s zoom in on the area where most of the data points are.</p>
@@ -462,6 +575,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter plot of weight versus height&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_23_0.png" src="_images/09_relationships_23_0.png" />
 </div>
 </div>
 <p>Now we have a reliable picture of the relationship between height and weight.</p>
@@ -497,6 +613,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_25_0.png" src="_images/09_relationships_25_0.png" />
 </div>
 </div>
 <p>The point of this example is that it takes some effort to make an effective scatter plot.</p>
@@ -552,6 +671,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_42_0.png" src="_images/09_relationships_42_0.png" />
+</div>
 </div>
 <p>It looks like older people might be heavier, but it is hard to see clearly.</p>
 <p>Here’s another version of the same plot:</p>
@@ -574,6 +696,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_44_0.png" src="_images/09_relationships_44_0.png" />
+</div>
 </div>
 <p>Here’s what I changed:</p>
 <ul class="simple">
@@ -591,11 +716,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100000, 9)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">brfss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;WTKG3&#39;</span><span class="p">])</span>
 <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(92729, 9)
 </pre></div>
 </div>
 </div>
@@ -615,6 +750,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_50_0.png" src="_images/09_relationships_50_0.png" />
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arguments mean we want <code class="docutils literal notranslate"><span class="pre">AGE</span></code> on the x-axis and <code class="docutils literal notranslate"><span class="pre">WTKG3</span></code> on the y-axis.  <code class="docutils literal notranslate"><span class="pre">data</span></code> is the DataFrame we just created, which contains the variables we’re going to plot.  The argument <code class="docutils literal notranslate"><span class="pre">inner=None</span></code> simplifies the plot a little.</p>
 <p>In the figure, each shape represents the distribution of weight in one age group.  The width of these shapes is proportional to the estimated density, so it’s like two vertical KDEs plotted back to back (and filled in with nice colors).</p>
@@ -629,6 +767,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Weight versus age&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_52_0.png" src="_images/09_relationships_52_0.png" />
 </div>
 </div>
 <p>I included the argument <code class="docutils literal notranslate"><span class="pre">whis=10</span></code> to turn off a feature we don’t need.  If you are curious about it, you can read the documentation.</p>
@@ -651,6 +792,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Weight versus age&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_54_0.png" src="_images/09_relationships_54_0.png" />
 </div>
 </div>
 <p>Here’s what it looks like.  To show the relationship between age and weight most clearly, this is probably the figure I would use.</p>
@@ -694,6 +838,52 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>HTM4</th>
+      <th>WTKG3</th>
+      <th>AGE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>HTM4</th>
+      <td>1.000000</td>
+      <td>0.474203</td>
+      <td>-0.093684</td>
+    </tr>
+    <tr>
+      <th>WTKG3</th>
+      <td>0.474203</td>
+      <td>1.000000</td>
+      <td>0.021641</td>
+    </tr>
+    <tr>
+      <th>AGE</th>
+      <td>-0.093684</td>
+      <td>0.021641</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>The result is a “correlation matrix”.  Reading across the first row, the correlation of <code class="docutils literal notranslate"><span class="pre">HTM4</span></code> with itself is 1.  That’s expected; the correlation of anything with itself is 1.</p>
 <p>The next entry is more interesting; the correlation of height and weight is about 0.47.  It’s positive, which means taller people are heavier, and it is moderate in strength, which means it has some predictive value.  If you know someone’s height, you can make a better guess about their weight, and vice versa.</p>
@@ -710,6 +900,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Weight versus age&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_67_0.png" src="_images/09_relationships_67_0.png" />
 </div>
 </div>
 <p>People in their 40s are the heaviest; younger and older people are lighter.  So this relationship is nonlinear.</p>
@@ -734,12 +927,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_71_0.png" src="_images/09_relationships_71_0.png" />
+</div>
 </div>
 <p>It’s clear that this is a strong relationship; if you are given <code class="docutils literal notranslate"><span class="pre">x</span></code>, you can make a much better guess about <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <p>But here’s the correlation matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.        , -0.01101448],
+       [-0.01101448,  1.        ]])
 </pre></div>
 </div>
 </div>
@@ -767,6 +969,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_75_0.png" src="_images/09_relationships_75_0.png" />
+</div>
 </div>
 <p>And here’s the second dataset:</p>
 <div class="cell docutils container">
@@ -782,6 +987,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_77_0.png" src="_images/09_relationships_77_0.png" />
+</div>
 </div>
 <p>I constructed these examples so they look similar, but they have substantially different correlations:</p>
 <div class="cell docutils container">
@@ -791,11 +999,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7579660563439401
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span> <span class="n">ys2</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">rho2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4782776976576317
 </pre></div>
 </div>
 </div>
@@ -846,6 +1064,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_89_0.png" src="_images/09_relationships_89_0.png" />
+</div>
 </div>
 <p>They look similar, and one on the left has higher correlation, about 0.75 compared to 0.5.</p>
 <p>But in this context, the statistic we probably care about is the slope of the line, not the correlation coefficient.</p>
@@ -860,12 +1081,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=0.018821034903244386, intercept=75.08049023710964, rvalue=0.7579660563439402, pvalue=1.8470158725246148e-10, stderr=0.002337849260560818, intercept_stderr=0.08439154079040358)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">LinregressResult</span></code> that contains five values: <code class="docutils literal notranslate"><span class="pre">slope</span></code> is the slope of the line of best fit for the data; <code class="docutils literal notranslate"><span class="pre">intercept</span></code> is the intercept.</p>
 <p>For Fake dataset #1, the estimated slope is about 0.019 kilograms per year or about 0.56 kilograms over the 30-year range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res1</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5646310470973316
 </pre></div>
 </div>
 </div>
@@ -878,11 +1109,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=0.17642069806488855, intercept=66.60980474219305, rvalue=0.47827769765763173, pvalue=0.0004430600283776241, stderr=0.04675698521121631, intercept_stderr=1.6878308158080697)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The estimated slope is almost 10 times higher: about 0.18 kilograms per year or about 5.3 kilograms per 30 years:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res2</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.292620941946657
 </pre></div>
 </div>
 </div>
@@ -905,6 +1146,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_99_0.png" src="_images/09_relationships_99_0.png" />
+</div>
 </div>
 <p>And the same thing for the second example.</p>
 <div class="cell docutils container">
@@ -920,6 +1164,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake dataset #2&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_101_0.png" src="_images/09_relationships_101_0.png" />
 </div>
 </div>
 <p>The visualization here might be misleading unless you look closely at the vertical scales; the slope in the second figure is almost 10 times higher.</p>
@@ -940,6 +1187,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_104_0.png" src="_images/09_relationships_104_0.png" />
+</div>
 </div>
 <p>Now we can compute the regression line.  <code class="docutils literal notranslate"><span class="pre">linregress()</span></code> can’t handle NaNs, so we have to use <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> to remove rows that are missing the data we need.</p>
 <div class="cell docutils container">
@@ -957,6 +1207,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_hw</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">height_clean</span><span class="p">,</span> <span class="n">weight_clean</span><span class="p">)</span>
 <span class="n">res_hw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=0.9192115381848297, intercept=-75.12704250330233, rvalue=0.47420308979024584, pvalue=0.0, stderr=0.005632863769802998, intercept_stderr=0.9608860265433182)
 </pre></div>
 </div>
 </div>
@@ -986,6 +1241,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_112_0.png" src="_images/09_relationships_112_0.png" />
+</div>
 </div>
 <p>The slope of this line seems consistent with the scatter plot.</p>
 <p>However, linear regression has the same problem as correlation; it only measures the strength of a linear relationship.</p>
@@ -1005,6 +1263,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_114_0.png" src="_images/09_relationships_114_0.png" />
+</div>
 </div>
 <p>People in their 40s are the heaviest; younger and older people are lighter.  So the relationship is nonlinear.</p>
 <p>If we don’t look at the scatter plot and blindly compute the regression line, here’s what we get.</p>
@@ -1016,6 +1277,11 @@
 
 <span class="n">res_aw</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">age_clean</span><span class="p">,</span> <span class="n">weight_clean</span><span class="p">)</span>
 <span class="n">res_aw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=0.023981159566968724, intercept=80.07977583683224, rvalue=0.021641432889064068, pvalue=4.374327493007566e-11, stderr=0.003638139410742186, intercept_stderr=0.18688508176870167)
 </pre></div>
 </div>
 </div>
@@ -1038,6 +1304,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Weight versus age&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09_relationships_118_0.png" src="_images/09_relationships_118_0.png" />
 </div>
 </div>
 <p>A straight line does not capture the relationship between these variables well.</p>

@@ -299,9 +299,8 @@
                 
   <div class="section" id="dictionaries">
 <h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/05_dictionaries.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>In the previous notebook we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.  In this notebook, you’ll learn about a new type called a “dictionary”, and we will use it to count the number of unique words and the number of times each one appears.</p>
@@ -326,6 +325,11 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;zero&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>To select the second element, we put <code class="docutils literal notranslate"><span class="pre">1</span></code> in brackets:</p>
 <div class="cell docutils container">
@@ -334,11 +338,21 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;one&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>To select the third element, we put <code class="docutils literal notranslate"><span class="pre">2</span></code> in brackets:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;two&#39;
 </pre></div>
 </div>
 </div>
@@ -353,6 +367,11 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;one&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Or an expression with variables, values, and operators:</p>
 <div class="cell docutils container">
@@ -361,29 +380,22 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
-</div>
-<p>But if the index goes past the end of the list or tuple, you get an error:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;two&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>The index has to be an integer; if it is any other type, you get an error.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mf">1.5</span><span class="p">]</span>
+<p>But if the index goes past the end of the list or tuple, you get an error.</p>
+<p>Run this line of code in the next cell to see what happens.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span>
+<p>The index has to be an integer; if it is any other type, you get an error.
+Run these lines of code in the next cell to see what happens.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mf">1.5</span><span class="p">]</span>
+<span class="n">t</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p><strong>Exercise:</strong> You can use negative integers as indices.  Try using <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">-2</span></code> as indices, and see if you can figure out what they do.</p>
 </div>
@@ -414,12 +426,22 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;one&#39;: 1, &#39;two&#39;: 2}
+</pre></div>
+</div>
+</div>
 </div>
 <p>Instead of creating an empty dictionary and then adding elements, you can create a dictionary and specify the elements at the same time:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
 <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;one&#39;: 1, &#39;two&#39;: 2, &#39;three&#39;: 3}
 </pre></div>
 </div>
 </div>
@@ -433,20 +455,27 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
-</div>
-<p>But don’t forget the quotation marks.  If you write something like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="n">two</span><span class="p">]</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
+</div>
+<p>But don’t forget the quotation marks.
+Try running the following line to see what happens.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="n">two</span><span class="p">]</span>
+</pre></div>
 </div>
 <p>Python looks for a variable named <code class="docutils literal notranslate"><span class="pre">two</span></code> and doesn’t find one.</p>
 <p>To check whether a particular key is in a dictionary, you can use the special word <code class="docutils literal notranslate"><span class="pre">in</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;one&#39;</span> <span class="ow">in</span> <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -457,14 +486,16 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
-</div>
-<p>The word <code class="docutils literal notranslate"><span class="pre">in</span></code> is actually an operator in Python, so you can’t use it as a variable name:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">in</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
+</div>
+<p>The word <code class="docutils literal notranslate"><span class="pre">in</span></code> is actually an operator in Python, so you can’t use it as a variable name.</p>
+<p>Try this to see what happens:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">in</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
 </div>
 <p>If a key is already in a dictionary, adding it again has no effect:</p>
 <div class="cell docutils container">
@@ -473,11 +504,21 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;one&#39;: 1, &#39;two&#39;: 2, &#39;three&#39;: 3}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;one&#39;: 1, &#39;two&#39;: 2, &#39;three&#39;: 3}
 </pre></div>
 </div>
 </div>
@@ -490,12 +531,24 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;one&#39;: 100, &#39;two&#39;: 2, &#39;three&#39;: 3}
+</pre></div>
+</div>
+</div>
 </div>
 <p>You can loop through the keys in a dictionary like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one
+two
+three
 </pre></div>
 </div>
 </div>
@@ -508,12 +561,26 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one 100
+two 2
+three 3
+</pre></div>
+</div>
+</div>
 </div>
 <p>Or you can loop through both at the same time, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one 100
+two 2
+three 3
 </pre></div>
 </div>
 </div>
@@ -549,6 +616,11 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>566317
+</pre></div>
+</div>
+</div>
 </div>
 <p>To count the number of unique words, I’ll loop through the words in each line and add as keys in a dictionary:</p>
 <div class="cell docutils container">
@@ -580,12 +652,30 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The
+Project
+Gutenberg
+EBook
+of
+War
+and
+Peace,
+by
+</pre></div>
+</div>
+</div>
 </div>
 <p>So far, it looks like all the words in the file, in order.</p>
 <p>But each word only appears once, so the number of keys is the number of unique words:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">unique_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41991
 </pre></div>
 </div>
 </div>
@@ -613,11 +703,21 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;the&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;the&#39;</span>
 <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;the&#39;
 </pre></div>
 </div>
 </div>
@@ -630,10 +730,20 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;the&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;THE&#39;
 </pre></div>
 </div>
 </div>
@@ -654,6 +764,11 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;the&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> Modify the previous loop so it makes a lowercase version of each word before adding it to the dictionary.  How many unique words are there, if we ignore the difference between uppercase and lowercase?</p>
 </div>
@@ -667,12 +782,22 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;racadabr&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>In this example, <code class="docutils literal notranslate"><span class="pre">strip</span></code> removes all instances of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> from the beginning and end of the word, but not from the middle.</p>
 <p>But note that it makes a new word; it doesn’t modify the original:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;abracadabra&#39;
 </pre></div>
 </div>
 </div>
@@ -686,6 +811,11 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;!&quot;#$%&amp;\&#39;()*+,-./:;&lt;=&gt;?@[\\]^_`{|}~&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code> contains the most common punctuation marks, but as we’ll see, not all of them.</p>
 <p>Nevertheless, we can use it to handle most cases.  Here’s an example:</p>
@@ -696,6 +826,21 @@ You can select an element using the bracket operator, <code class="docutils lite
 <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
     <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>It&#39;s
+not
+given
+to
+people
+to
+judge
+what&#39;s
+right
+or
+wrong
 </pre></div>
 </div>
 </div>
@@ -715,6 +860,11 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;anyone, and so you don’t deserve to have them.”\n&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>And try to remove punctuation from the words:</p>
 <div class="cell docutils container">
@@ -722,6 +872,19 @@ You can select an element using the bracket operator, <code class="docutils lite
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
     <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anyone
+and
+so
+you
+don’t
+deserve
+to
+have
+them.”
 </pre></div>
 </div>
 </div>
@@ -749,6 +912,11 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>,.-:[#]*/“’—‘!?”;()%@
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> Modify the word-counting loop from the previous section to convert words to lower case <em>and</em> strip punctuation before adding them to the dictionary.  Now how many unique words are there?</p>
 <p>Optional: You might want to skip over the frontmatter and start with the text of Chapter 1, and skip over the license at the end, as we did in the previous notebook.</p>
@@ -770,6 +938,32 @@ You can select an element using the bracket operator, <code class="docutils lite
         <span class="n">letter_counts</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
         
 <span class="n">letter_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;I&#39;: 1,
+ &#39;f&#39;: 3,
+ &#39; &#39;: 11,
+ &#39;e&#39;: 7,
+ &#39;v&#39;: 2,
+ &#39;r&#39;: 5,
+ &#39;y&#39;: 1,
+ &#39;o&#39;: 8,
+ &#39;n&#39;: 5,
+ &#39;u&#39;: 2,
+ &#39;g&#39;: 1,
+ &#39;h&#39;: 3,
+ &#39;t&#39;: 4,
+ &#39;i&#39;: 3,
+ &#39;w&#39;: 3,
+ &#39;c&#39;: 2,
+ &#39;s&#39;: 1,
+ &#39;l&#39;: 1,
+ &#39;d&#39;: 1,
+ &#39;b&#39;: 1,
+ &#39;a&#39;: 1,
+ &#39;.&#39;: 1}
 </pre></div>
 </div>
 </div>
@@ -798,11 +992,21 @@ You can select an element using the bracket operator, <code class="docutils lite
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>collections.Counter
+</pre></div>
+</div>
+</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Counter</span></code> provides a function called <code class="docutils literal notranslate"><span class="pre">most_common</span></code> we can use to get the most common characters:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39; &#39;, 11), (&#39;o&#39;, 8), (&#39;e&#39;, 7)]
 </pre></div>
 </div>
 </div>

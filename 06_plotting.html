@@ -306,9 +306,8 @@
                 
   <div class="section" id="plotting">
 <h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/06_plotting.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>This notebook presents ways to create figures and graphs, more generally called “data visualizations”.  As examples, we’ll generate three figures:</p>
@@ -331,11 +330,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.718281828459045
+</pre></div>
+</div>
+</div>
 </div>
 <p>When you call <code class="docutils literal notranslate"><span class="pre">np.power</span></code>, you have to provide two numbers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1000000
 </pre></div>
 </div>
 </div>
@@ -349,6 +358,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21
+</pre></div>
+</div>
+</div>
 </div>
 <p>By default, <code class="docutils literal notranslate"><span class="pre">int</span></code> assumes that the number is in base 10.  But you can provide a keyword argument that specifies a different base.</p>
 <p>For example, the string <code class="docutils literal notranslate"><span class="pre">'21'</span></code>, interpreted in base 8, represents the number <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">8</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">=</span> <span class="pre">17</span></code>.  Here’s how we do this conversion using <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
@@ -358,30 +372,32 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+</pre></div>
+</div>
+</div>
 </div>
 <p>The string <code class="docutils literal notranslate"><span class="pre">'21'</span></code> is a positional argument.  The integer value <code class="docutils literal notranslate"><span class="pre">8</span></code> is a keyword argument, with the keyword <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p>
 <p>Specifying a keyword argument looks like an assignment statement, but it does not create a new variable.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>And when you specify a keyword argument, you don’t choose the variable name.  In this example, the keyword name, <code class="docutils literal notranslate"><span class="pre">base</span></code>, is part of the definition of <code class="docutils literal notranslate"><span class="pre">int</span></code>.  If you specify another keyword name, you get an error.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">,</span> <span class="n">bass</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<p>Run the following line in the next cell to see what happens.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">,</span> <span class="n">bass</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">int</span></code> to compute the value of <code class="docutils literal notranslate"><span class="pre">&quot;123&quot;</span></code> interpreted in base 5.  What happens if you try to interpret <code class="docutils literal notranslate"><span class="pre">&quot;123&quot;</span></code> as a base 3 number?</p>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">int</span></code> to compute the value of <code class="docutils literal notranslate"><span class="pre">&quot;123&quot;</span></code> interpreted in base 5.  What happens if you try to interpret <code class="docutils literal notranslate"><span class="pre">&quot;123&quot;</span></code> as a base 2 number?</p>
 <p><strong>Exercise:</strong> The <code class="docutils literal notranslate"><span class="pre">print</span></code> function takes a keyword argument called <code class="docutils literal notranslate"><span class="pre">end</span></code> that specifies the character it prints at the end of the line.  By default, <code class="docutils literal notranslate"><span class="pre">end</span></code> is the newline character, <code class="docutils literal notranslate"><span class="pre">\n</span></code>.  So if you call <code class="docutils literal notranslate"><span class="pre">print</span></code> more than once, the results normally appear on separate lines, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
 </pre></div>
 </div>
 </div>
@@ -433,6 +449,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f9c55554ad0&gt;]
+</pre></div>
+</div>
+<img alt="_images/06_plotting_28_1.png" src="_images/06_plotting_28_1.png" />
+</div>
 </div>
 <p>In addition to the plot, Jupyter also displays the result from <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, which is a value that represents the plotted line.</p>
 <p>For now we won’t do anything with this value.  If you prefer not to see it, you can put a semi-colon at the end of the line to suppress it.</p>
@@ -443,6 +465,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">unaffiliated</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_30_0.png" src="_images/06_plotting_30_0.png" />
 </div>
 </div>
 <p>In this example, plotting them on the same axes makes it possible to compare them directly.</p>
@@ -457,6 +482,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">]);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_32_0.png" src="_images/06_plotting_32_0.png" />
 </div>
 </div>
 <p>That’s better, but this graph is missing some of the most important elements: labels for the axes, and a title.</p>
@@ -476,6 +504,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_35_0.png" src="_images/06_plotting_35_0.png" />
+</div>
 </div>
 <p>Now let’s add another important element, a legend that indicates which line is which.</p>
 <p>To do that, we add a label to each line, using the keyword argument <code class="docutils literal notranslate"><span class="pre">label</span></code>.</p>
@@ -492,6 +523,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_37_0.png" src="_images/06_plotting_37_0.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> The orginal figure plots lines between the data points, but it also plots “markers” showing the location of each data point.  It is generally good practice to include markers, especially if data are not available for every year.</p>
@@ -543,6 +577,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_47_0.png" src="_images/06_plotting_47_0.png" />
+</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">name_list</span></code> is a list of strings; Pyplot orders them from top to bottom, equally spaced.</p>
 <p>By default Pyplot connects the points with lines, but in this example the lines don’t make sense because the sandwich names are “categorical”, not numerical.  You can’t interpolate between an egg sandwich and a tuna sandwich.</p>
@@ -553,6 +590,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Price in USD&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_49_0.png" src="_images/06_plotting_49_0.png" />
 </div>
 </div>
 <p>Or we can do the same thing more concisely by providing a “format string” as a positional argument.  You can read the documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> to learn more about format strings.</p>
@@ -567,6 +607,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_51_0.png" src="_images/06_plotting_51_0.png" />
+</div>
 </div>
 <p>To approximate the colors in the original figure, I use the strings <code class="docutils literal notranslate"><span class="pre">'C3'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C0'</span></code> to specify colors from the default color sequence.  <a class="reference external" href="https://matplotlib.org/3.1.1/tutorials/colors/colors.html">You can read the documentation to learn more about specifying colors in Pyplot</a>.</p>
 <div class="cell docutils container">
@@ -578,6 +621,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pret a Manger prices in Boston and London&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_53_0.png" src="_images/06_plotting_53_0.png" />
 </div>
 </div>
 <p>To connect the dots with lines, I use <code class="docutils literal notranslate"><span class="pre">plt.hlines</span></code>, which draws horizontal lines.  It takes three arguments: a sequence of values on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, which are the sandwich names in this example, and two sequences of values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, which are the London prices and Boston prices in this example.</p>
@@ -592,6 +638,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pret a Manger prices in Boston and London&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_55_0.png" src="_images/06_plotting_55_0.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> To finish off this example, add a legend that identifies the London and Boston prices.  Remember that you have to add a <code class="docutils literal notranslate"><span class="pre">label</span></code> keyword each time you call <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, and then call <code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>.</p>
@@ -628,6 +677,11 @@
         
 <span class="n">all_punctuation</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">punc_marks</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">all_punctuation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>,.-:[#]*/“’—‘!?”;()%@
 </pre></div>
 </div>
 </div>
@@ -679,20 +733,27 @@
 </pre></div>
 </div>
 </div>
-</div>
-<p>Before we plot them, we have to sort them, but the <code class="docutils literal notranslate"><span class="pre">sort</span></code> function doesn’t work with <code class="docutils literal notranslate"><span class="pre">dict_values</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freqs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_values
 </pre></div>
 </div>
 </div>
+</div>
+<p>Before we plot them, we have to sort them, but the <code class="docutils literal notranslate"><span class="pre">sort</span></code> function doesn’t work with <code class="docutils literal notranslate"><span class="pre">dict_values</span></code>.</p>
+<p>Try this to see what happens:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">freqs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</pre></div>
 </div>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">list</span></code> to make a list of frequencies:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freqs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">unique_words</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -713,11 +774,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>range(1, 5)
+</pre></div>
+</div>
+</div>
 </div>
 <p>However, there’s a catch.  If we use the range to make a list, we see that “the range from 1 to 5” includes 1, but it doesn’t include 5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
 </pre></div>
 </div>
 </div>
@@ -730,6 +801,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
 </div>
 <p>So, finally, we can make a range that represents the ranks from <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">n</span></code>:</p>
 <div class="cell docutils container">
@@ -737,6 +813,11 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span>
 <span class="n">ranks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ranks</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>range(1, 20479)
 </pre></div>
 </div>
 </div>
@@ -751,6 +832,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;War and Peace and Zipf&#39;s law&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_82_0.png" src="_images/06_plotting_82_0.png" />
 </div>
 </div>
 </div>
@@ -773,6 +857,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_84_0.png" src="_images/06_plotting_84_0.png" />
+</div>
 </div>
 <p>And <code class="docutils literal notranslate"><span class="pre">plt.yscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis on a log scale.</p>
 <div class="cell docutils container">
@@ -787,6 +874,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_86_0.png" src="_images/06_plotting_86_0.png" />
+</div>
 </div>
 <p>The result is not quite a straight line, but it is close.  We can get a sense of the slope by connecting the end points with a line.</p>
 <div class="cell docutils container">
@@ -796,11 +886,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 20478]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">freqs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">freqs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 <span class="n">ys</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34388, 1]
 </pre></div>
 </div>
 </div>
@@ -818,6 +918,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/06_plotting_90_0.png" src="_images/06_plotting_90_0.png" />
+</div>
 </div>
 <p>The slope of this line is the “rise over run”, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis divided by the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.</p>
 <p>We can compute the rise using <code class="docutils literal notranslate"><span class="pre">np.log</span></code> to compute the log of the first and last values:</p>
@@ -827,11 +930,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([10.44546295,  0.        ])
+</pre></div>
+</div>
+</div>
 </div>
 <p>Then we can use <code class="docutils literal notranslate"><span class="pre">np.diff</span></code> to compute the difference between the elements:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-10.44546295])
 </pre></div>
 </div>
 </div>

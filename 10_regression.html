@@ -299,9 +299,8 @@
                 
   <div class="section" id="regression">
 <h1>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/10_regression.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>In the previous notebook we used simple regression to quantify the relationship between two variables.</p>
@@ -397,11 +396,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>statsmodels.regression.linear_model.RegressionResultsWrapper
+</pre></div>
+</div>
+</div>
 </div>
 <p>Results is a <code class="docutils literal notranslate"><span class="pre">RegressionResultsWrapper</span></code>, which contains a lot of information, but the first thing we’ll look at is the attribute <code class="docutils literal notranslate"><span class="pre">params</span></code>, which contains the estimated intercept and the slope associated with <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    5.450700
+_VEGESU1     0.204935
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -454,6 +465,13 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept   -11539.147837
+educ          3586.523659
+dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>On the left, “real income” is the variable we are trying to predict; on the right, “education” is the variable we are using to inform the predictions.</p>
 <p>And here are the results.  The estimated slope is almost 3600, which means that each additional year of education is associated with an additional $3600 of income.</p>
@@ -463,6 +481,14 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;realinc ~ educ + age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">gss</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept   -16117.275684
+educ          3655.166921
+age             83.731804
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -480,6 +506,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">grouped</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.groupby.generic.DataFrameGroupBy
 </pre></div>
 </div>
 </div>
@@ -504,6 +535,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/10_regression_35_0.png" src="_images/10_regression_35_0.png" />
+</div>
 </div>
 <p>Average income increases from age 20 to age 50, then starts to fall.</p>
 <p>And that explains why the estimated slope is so small, because the relationship is non-linear.  Remember that correlation and single regression can’t measure non-linear relationships.</p>
@@ -522,6 +556,15 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;realinc ~ educ + age + age2&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">gss</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept   -48058.679679
+educ          3442.447178
+age           1748.232631
+age2           -17.437552
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -556,6 +599,16 @@
 <span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;realinc ~ educ + educ2 + age + age2&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">gss</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept   -23241.884034
+educ          -528.309369
+educ2          159.966740
+age           1696.717149
+age2           -17.196984
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -607,6 +660,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/10_regression_54_0.png" src="_images/10_regression_54_0.png" />
+</div>
 </div>
 <p>The blue dots show the average income in each age group.</p>
 <p>The orange line shows the predictions generated by the model, holding education constant.</p>
@@ -634,6 +690,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/10_regression_56_0.png" src="_images/10_regression_56_0.png" />
 </div>
 </div>
 <p>The lines show mean income, as predicted by the model, as a function of age, for three levels of education.</p>
@@ -672,6 +731,17 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept     -22369.453641
+C(sex)[T.2]    -4156.113865
+educ            -310.247419
+educ2            150.514091
+age             1703.047502
+age2             -17.238711
+dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>The regression treats the value <code class="docutils literal notranslate"><span class="pre">sex=1</span></code>, which is male, as the default, and reports the difference associated with the value <code class="docutils literal notranslate"><span class="pre">sex=2</span></code>, which is female.</p>
 <p>So this result indicates that income for women is about $4100 less than for men, after controlling for age and education.</p>
@@ -682,6 +752,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;gunlaw&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0    30918
+2.0     9632
+Name: gunlaw, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -701,12 +778,26 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0    30918
+0.0     9632
+Name: gunlaw, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we can run the regression.  Instead of <code class="docutils literal notranslate"><span class="pre">ols()</span></code>, we use <code class="docutils literal notranslate"><span class="pre">logit()</span></code>, which is named for the logit function, which is related to logistic regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;gunlaw ~ age + age2 + educ + educ2 + C(sex)&#39;</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">gss</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.533674
+         Iterations 6
 </pre></div>
 </div>
 </div>
@@ -717,6 +808,17 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept      1.653862
+C(sex)[T.2]    0.757249
+age           -0.018849
+age2           0.000189
+educ          -0.124373
+educ2          0.006653
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -778,6 +880,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/10_regression_84_0.png" src="_images/10_regression_84_0.png" />
 </div>
 </div>
 <p>According to the model, people near age 50 are least likely to support gun control (at least as this questions was posed).</p>

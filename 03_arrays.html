@@ -311,9 +311,8 @@
                 
   <div class="section" id="lists-and-arrays">
 <h1>Lists and arrays<a class="headerlink" href="#lists-and-arrays" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/03_arrays.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>In the previous notebook we used tuples to represent latitude and longitude.  In this notebook, you’ll see how to use tuples more generally to represent a sequence of values.  And we’ll see two more ways to represent sequences: lists and arrays.</p>
@@ -331,12 +330,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Notice that when Python displays a tuple, it puts the elements in parentheses.</p>
 <p>When you type a tuple, you can put it in parentheses if you think it is easier to read that way, but you don’t have to.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3)
 </pre></div>
 </div>
 </div>
@@ -348,6 +357,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Data&#39;, &#39;Science&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The elements don’t have to be the same type.  Here’s a tuple with a string, an integer, and a floating-point number.</p>
 <div class="cell docutils container">
@@ -356,11 +370,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;one&#39;, 2, 3.14159)
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you have a string, you can convert it to a tuple using the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;DataScience&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;D&#39;, &#39;a&#39;, &#39;t&#39;, &#39;a&#39;, &#39;S&#39;, &#39;c&#39;, &#39;i&#39;, &#39;e&#39;, &#39;n&#39;, &#39;c&#39;, &#39;e&#39;)
 </pre></div>
 </div>
 </div>
@@ -374,11 +398,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
 </div>
 <p>But you will find that the result is just a number, not a tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
 </pre></div>
 </div>
 </div>
@@ -391,10 +425,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5,)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
 </pre></div>
 </div>
 </div>
@@ -407,6 +451,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
 </pre></div>
 </div>
 </div>
@@ -427,6 +476,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
 </div>
 <p>It is also possible to make a list with no elements, like this:</p>
 <div class="cell docutils container">
@@ -442,11 +496,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">len</span></code> function computes the length (number of elements) in a list or tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
@@ -457,10 +521,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -512,15 +586,16 @@
 </pre></div>
 </div>
 </div>
-</div>
-<p>But it concatenates the two lists, which is not very useful in this example.</p>
-<p>To compute differences between prices, you might try subtracting lists, but you would get an error.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">-</span> <span class="n">london_price_list</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9.99, 7.99, 7.49, 7, 6.29, 4.99, 7.5, 5, 4.4, 5, 3.75, 2.25]
 </pre></div>
 </div>
 </div>
+</div>
+<p>But it concatenates the two lists, which is not very useful in this example.</p>
+<p>To compute differences between prices, you might try subtracting lists, but you would get an error.  Run this code in the following cell to see what the error message is.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">-</span> <span class="n">london_price_list</span>
+</pre></div>
 </div>
 <p>We can solve this problem with a NumPy array.</p>
 </div>
@@ -545,6 +620,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
 </div>
 <p>The “nd” stands for “n-dimensional”; NumPy arrays can have any number of dimensions.  But for now we will work with one-dimensional sequences.</p>
 <p>If you display an array, Python displays the elements:</p>
@@ -554,11 +634,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([9.99, 7.99, 7.49, 7.  , 6.29, 4.99])
+</pre></div>
+</div>
+</div>
 </div>
 <p>You can also display the “data type” of the array, which is the type of the elements:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_array</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;float64&#39;)
 </pre></div>
 </div>
 </div>
@@ -573,6 +663,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Lobster roll&#39;, &#39;Chicken caesar&#39;, &#39;Bang bang chicken&#39;,
+       &#39;Ham and cheese&#39;, &#39;Tuna and cucumber&#39;, &#39;Egg&#39;], dtype=&#39;&lt;U17&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>In this example, the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is <code class="docutils literal notranslate"><span class="pre">&lt;U17</span></code>.  You don’t have to understand this code, but if you are curious, the <code class="docutils literal notranslate"><span class="pre">U</span></code> indicates that the elements are Unicode strings; Unicode is the standard Python uses to represent strings.</p>
 <p>Now, here’s why NumPy arrays are useful: they can do arithmetic.  For example, to compute the differences between Boston and London prices, we can write:</p>
@@ -580,6 +676,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">differences</span> <span class="o">=</span> <span class="n">boston_price_array</span> <span class="o">-</span> <span class="n">london_price_array</span>
 <span class="n">differences</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.49, 2.99, 3.09, 2.  , 2.54, 2.74])
 </pre></div>
 </div>
 </div>
@@ -595,6 +696,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.6416666666666666
+</pre></div>
+</div>
+</div>
 </div>
 <p>So we could describe the difference in prices like this: “Sandwiches in Boston are more expensive by $2.64, on average”.</p>
 <p>We could also compute the means first, and then compute their difference:</p>
@@ -604,12 +710,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.6416666666666675
+</pre></div>
+</div>
+</div>
 </div>
 <p>And that turns out to be the same thing: the difference in means is the same as the mean of the differences.</p>
 <p>As an aside, many of the NumPy functions also work with lists, so we could also do this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">london_price_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.6416666666666675
 </pre></div>
 </div>
 </div>
@@ -643,11 +759,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.49
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can express that difference as a fraction of the London price, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">9.99</span> <span class="o">-</span> <span class="mf">7.5</span><span class="p">)</span> <span class="o">/</span> <span class="mf">7.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.332
 </pre></div>
 </div>
 </div>
@@ -659,12 +785,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.2
+</pre></div>
+</div>
+</div>
 </div>
 <p>So we might say that the lobster roll is 33% more expensive in Boston.</p>
 <p>But putting London in the denominator was an arbitrary choice.  We could also compute the difference as a percentage of the Boston price:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">9.99</span> <span class="o">-</span> <span class="mf">7.5</span><span class="p">)</span> <span class="o">/</span> <span class="mf">9.99</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24.924924924924927
 </pre></div>
 </div>
 </div>
@@ -680,6 +816,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.49, 2.99, 3.09, 2.  , 2.54, 2.74])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -688,11 +829,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.332     , 0.598     , 0.70227273, 0.4       , 0.67733333,
+       1.21777778])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_differences</span> <span class="o">=</span> <span class="n">relative_differences</span> <span class="o">*</span> <span class="mi">100</span>
 <span class="n">percent_differences</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 33.2       ,  59.8       ,  70.22727273,  40.        ,
+        67.73333333, 121.77777778])
 </pre></div>
 </div>
 </div>
@@ -705,12 +858,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, 3.09)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The differences are between 2 dollars and $3.10.</p>
 <p>Here is the range of percent differences:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(33.2, 121.77777777777779)
 </pre></div>
 </div>
 </div>
@@ -727,6 +890,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65.4563973063973
+</pre></div>
+</div>
+</div>
 </div>
 <p>So we might say, on average, sandwiches are 65% more expensive in Boston.</p>
 <p>But another way to summarize the data is to compute the mean price in each city, and then compute the percentage difference of the means:</p>
@@ -736,6 +904,11 @@
 <span class="n">london_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">london_price_array</span><span class="p">)</span>
 
 <span class="p">(</span><span class="n">boston_mean</span> <span class="o">-</span> <span class="n">london_mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">london_mean</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56.81003584229393
 </pre></div>
 </div>
 </div>
@@ -766,6 +939,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.970833333333334
+</pre></div>
+</div>
+</div>
 </div>
 <p>This code runs, and it produces an answer, but the answer is not what we expect.  In fact, it’s not easy to figure out where that number came from.</p>
 <p>To debug this code, I would start by splitting the computation into smaller steps and displaying the intermediate results.  For example, we might add the two lists and display the result, like this.</p>
@@ -773,6 +951,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_price</span> <span class="o">=</span> <span class="n">boston_price_list</span> <span class="o">+</span> <span class="n">london_price_list</span>
 <span class="n">total_price</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9.99, 7.99, 7.49, 7, 6.29, 4.99, 7.5, 5, 4.4, 5, 3.75, 2.25]
 </pre></div>
 </div>
 </div>
@@ -789,11 +972,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([17.49, 12.99, 11.89, 12.  , 10.04,  7.24])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">midpoint_price_array</span> <span class="o">=</span> <span class="n">total_price_array</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="n">midpoint_price_array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([8.745, 6.495, 5.945, 6.   , 5.02 , 3.62 ])
 </pre></div>
 </div>
 </div>

@@ -304,9 +304,8 @@
                 
   <div class="section" id="loops-and-files">
 <h1>Loops and files<a class="headerlink" href="#loops-and-files" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/04_loops.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>This notebook presents loops, which are used to express repeated computation, and files, which are used to store data.  As an example, we will download the famous book <em>War and Peace</em> from Project Gutenberg and write a loop that reads the book and counts the words.</p>
@@ -332,6 +331,13 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+</pre></div>
+</div>
+</div>
 </div>
 <p>The first line of the loop is a “header” that specifies the tuple, <code class="docutils literal notranslate"><span class="pre">t</span></code>, and a variable name <code class="docutils literal notranslate"><span class="pre">x</span></code>.  The tuple already exists, but <code class="docutils literal notranslate"><span class="pre">x</span></code> does not; the loop will create it.  The header has to end with a colon, <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
 <p>Inside the loop is a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, which displays the value of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
@@ -352,6 +358,14 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D
+a
+t
+a
+</pre></div>
+</div>
+</div>
 </div>
 <p>When the loop begins, <code class="docutils literal notranslate"><span class="pre">word</span></code> already exists, but <code class="docutils literal notranslate"><span class="pre">letter</span></code> does not.  Again, the loop creates <code class="docutils literal notranslate"><span class="pre">letter</span></code> and assign values to it.</p>
 <p>The variable created by the loop is called the “loop variable”.  You can give it any name you like; in this example, I chose <code class="docutils literal notranslate"><span class="pre">letter</span></code> to remind me what kind of value it contains.</p>
@@ -359,6 +373,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">letter</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;a&#39;
 </pre></div>
 </div>
 </div>
@@ -371,23 +390,30 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;s&#39;, &#39;t&#39;, &#39;r&#39;, &#39;i&#39;, &#39;n&#39;, &#39;g&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you create a variable named <code class="docutils literal notranslate"><span class="pre">list</span></code>, you can’t use the function any more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="nb">list</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Run the following code in the next cell to see what happens.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>In this example, Python tries to use your list as a function, which doesn’t work because you can’t “call” a list like a function.</p>
 <p><strong>Exercise:</strong> After running that cell, we won’t be able to use the <code class="docutils literal notranslate"><span class="pre">list</span></code> function until we restart the Python interpreter.  So this is a good time to find out how.</p>
 <ol class="simple">
-<li><p>“Comment out” the previous cell; that is, add the comment symbol, <code class="docutils literal notranslate"><span class="pre">#</span></code>, to the beginning of the first line so it will be treated as a comment.</p></li>
+<li><p>“Comment out” the line that assigns a value to <code class="docutils literal notranslate"><span class="pre">list</span></code>; that is, add the comment symbol, <code class="docutils literal notranslate"><span class="pre">#</span></code>, to the beginning so it will be treated as a comment.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># list = [1, 2, 3]</span>
-<span class="nb">list</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="simple">
@@ -411,12 +437,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you assign a different value to the same variable, the new value replaces the old one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -429,12 +465,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
 </div>
 <p>Increasing the value of a variable is called an “increment”; decreasing the value is called a “decrement”.  It is such a common operation that there is a special operator for it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
@@ -483,6 +529,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_io.TextIOWrapper name=&#39;2600-0.txt&#39; mode=&#39;r&#39; encoding=&#39;UTF-8&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">TextIOWrapper</span></code>, which is a type of “file pointer”.</p>
 <p>The file pointer contains the name of the file, the mode (which is <code class="docutils literal notranslate"><span class="pre">r</span></code> for “reading”) and the encoding (which is <code class="docutils literal notranslate"><span class="pre">UTF</span></code> for “Unicode Transformation Format”).</p>
@@ -506,6 +557,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>66054
+</pre></div>
+</div>
+</div>
 </div>
 <p>There are about 66,000 lines in this file.</p>
 </div>
@@ -519,12 +575,22 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can use a comparison operator in an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to check for a condition and take action accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">60000</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Long book!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Long book!
 </pre></div>
 </div>
 </div>
@@ -554,6 +620,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Project Gutenberg EBook of War and Peace, by Leo Tolstoy
+</pre></div>
+</div>
+</div>
 </div>
 <p>Notice the indentation in this example:</p>
 <ul class="simple">
@@ -572,6 +643,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>66054
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can avoid reading the whole file by using a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement, like this:</p>
 <div class="cell docutils container">
@@ -586,11 +662,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Project Gutenberg EBook of War and Peace, by Leo Tolstoy
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement ends the loop immediately, skipping the rest of the file.  We can confirm that by checking the last value of <code class="docutils literal notranslate"><span class="pre">count</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -612,10 +698,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Project Gutenberg EBook of War and Peace, by Leo Tolstoy
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The Project Gutenberg EBook of War and Peace, by Leo Tolstoy\n&#39;
 </pre></div>
 </div>
 </div>
@@ -628,6 +724,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Project Gutenberg EBook of War and Peace, by Leo Tolstoy
+</pre></div>
+</div>
+</div>
 </div>
 <p>In other strings, you might see the sequence <code class="docutils literal notranslate"><span class="pre">\t</span></code>, which represents a “tab” character.</p>
 <p>When you print a tab character, it adds enough space to make the next character appear in a column that is a multiple of 8.</p>
@@ -635,6 +736,12 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;01234567&#39;</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a</span><span class="se">\t</span><span class="s1">bc</span><span class="se">\t</span><span class="s1">def</span><span class="se">\t</span><span class="s1">ghij</span><span class="se">\t</span><span class="s1">klmno</span><span class="se">\t</span><span class="s1">pqrstu&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>012345670123456701234567012345670123456701234567
+a	bc	def	ghij	klmno	pqrstu
 </pre></div>
 </div>
 </div>
@@ -651,6 +758,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The Project Gutenberg EBook of War and Peace, by Leo Tolstoy\n&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>To split a line into words, we can use a function called <code class="docutils literal notranslate"><span class="pre">split</span></code> that returns a list of words.</p>
 <p>To be more precise, <code class="docutils literal notranslate"><span class="pre">split</span></code> doesn’t actually know what a word is; it just splits the line wherever there’s a space or other whitespace character.</p>
@@ -660,14 +772,26 @@
 </pre></div>
 </div>
 </div>
-</div>
-<p>Notice that the syntax for <code class="docutils literal notranslate"><span class="pre">split</span></code> is different from other functions we have seen.  Normally when we call a function, we name the function and provide values in parentheses.  So you might have expected to write <code class="docutils literal notranslate"><span class="pre">split(line)</span></code>.  Sadly, that doesn’t work:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">split</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;The&#39;,
+ &#39;Project&#39;,
+ &#39;Gutenberg&#39;,
+ &#39;EBook&#39;,
+ &#39;of&#39;,
+ &#39;War&#39;,
+ &#39;and&#39;,
+ &#39;Peace,&#39;,
+ &#39;by&#39;,
+ &#39;Leo&#39;,
+ &#39;Tolstoy&#39;]
 </pre></div>
 </div>
 </div>
+</div>
+<p>Notice that the syntax for <code class="docutils literal notranslate"><span class="pre">split</span></code> is different from other functions we have seen.  Normally when we call a function, we name the function and provide values in parentheses.  So you might have expected to write <code class="docutils literal notranslate"><span class="pre">split(line)</span></code>.  Sadly, that doesn’t work.</p>
+<p>Run this line of code in the next cell to see what happens.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">split</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>The problem is that the <code class="docutils literal notranslate"><span class="pre">split</span></code> function belongs to the string <code class="docutils literal notranslate"><span class="pre">line</span></code>; in a sense, the function is attached to the string, so we can only refer to it using the string and the dot operator (the period between <code class="docutils literal notranslate"><span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>).</p>
 <p>For historical reasons I won’t try to explain, functions like this are called “methods”.</p>
@@ -685,6 +809,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>566317
 </pre></div>
 </div>
 </div>
@@ -713,10 +842,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>End of the Project Gutenberg EBook of War and Peace, by Leo Tolstoy
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>562482
 </pre></div>
 </div>
 </div>

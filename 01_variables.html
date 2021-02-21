@@ -254,8 +254,8 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals">
-   Goals
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -316,11 +316,10 @@
                 
   <div class="section" id="variables-and-values">
 <h1>Variables and values<a class="headerlink" href="#variables-and-values" title="Permalink to this headline">¶</a></h1>
-<p>Elements of Data Science</p>
-<p>by <a class="reference external" href="https://allendowney.com">Allen Downey</a></p>
-<p><a class="reference external" href="https://opensource.org/licenses/MIT">MIT License</a></p>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/01_variables.ipynb">click here to download it</a>.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>The goal of these notebooks is to give you the tools you need to execute a data science project from beginning to end.  We’ll start with some basic programming concepts and work our way toward data science tools.</p>
 <p>If you already have some programming experience, the first few notebooks might be a little slow.  But there might be some material, specific to data science, that you have not seen before.</p>
 <p>If you have not programmed before, you should expect to face some challenges.  I have done my best to explain everything as we go along; I try not to assume anything.  And there are exercises throughout the notebooks that should help you learn, and remember what you learned.</p>
@@ -361,10 +360,20 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">3.14159</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14159
 </pre></div>
 </div>
 </div>
@@ -383,10 +392,20 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -398,10 +417,20 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666666666
 </pre></div>
 </div>
 </div>
@@ -413,20 +442,26 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
-</div>
-<p>Unlike math notation, Python does not allow “implicit multiplication”.  For example, in math notation, if you write <span class="math notranslate nohighlight">\(3 (2 + 1)\)</span>, that’s understood to be the same as <span class="math notranslate nohighlight">\(3 \times (2+ 1)\)</span>.</p>
-<p>Python does not allow that notation:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
 </pre></div>
 </div>
 </div>
+</div>
+<p>Unlike math notation, Python does not allow “implicit multiplication”.  For example, in math notation, if you write <span class="math notranslate nohighlight">\(3 (2 + 1)\)</span>, that’s understood to be the same as <span class="math notranslate nohighlight">\(3 \times (2+ 1)\)</span>.</p>
+<p>Python does not allow that notation.  Try running this code in the following cell to see what error you get.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>In this example, the error message is not very helpful, which is why I am warning you now.  If you want to multiply, you have to use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
 </pre></div>
 </div>
 </div>
@@ -445,11 +480,21 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
 </div>
 <p>The multiplication happens first.  If that’s not what you want, you can use parentheses to make the order of operations explicit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
 </pre></div>
 </div>
 </div>
@@ -469,18 +514,19 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <p>It is conventional to import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> as <code class="docutils literal notranslate"><span class="pre">np</span></code>, which means we can refer to it by the short name <code class="docutils literal notranslate"><span class="pre">np</span></code> rather than the longer name <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
-<p>Note that pretty much everything is case-sensitive, which means that <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is not the same as <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>.  So even though the name of the library is NumPy, when we import it we have to call it <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  If you run the following cell, you should get an error:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">NumPy</span> <span class="k">as</span> <span class="nn">np</span>
+<p>Note that pretty much everything is case-sensitive, which means that <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is not the same as <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>.  So even though the name of the library is NumPy, when we import it we have to call it <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.  If you run this code in the following cell, you should get an error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">NumPy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>But if we import <code class="docutils literal notranslate"><span class="pre">np</span></code> correctly, we can use it to read the value <code class="docutils literal notranslate"><span class="pre">pi</span></code>, which is an approximation of the mathematical constant <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
 </pre></div>
 </div>
 </div>
@@ -493,10 +539,20 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.605170185988092
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.718281828459045
 </pre></div>
 </div>
 </div>
@@ -508,6 +564,11 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.30000000000000004
 </pre></div>
 </div>
 </div>
@@ -534,11 +595,21 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
 </div>
 <p>If we use <code class="docutils literal notranslate"><span class="pre">x</span></code> as part of an arithmetic operation, it represents the value 5:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
 </div>
@@ -549,11 +620,21 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can also use <code class="docutils literal notranslate"><span class="pre">x</span></code> with <code class="docutils literal notranslate"><span class="pre">numpy</span></code> functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>148.4131591025766
 </pre></div>
 </div>
 </div>
@@ -579,6 +660,11 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>148.4131591025766
 </pre></div>
 </div>
 </div>
@@ -627,6 +713,11 @@ Then the balance after 6 years is found by using the formula above, with</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1938.8368221341054
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> Continuing the example from Wikipedia:</p>
 <p>“Suppose the same amount of $1,500 is compounded biennially”, so <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">1/2</span></code>.</p>
@@ -650,11 +741,21 @@ Then the balance after 6 years is found by using the formula above, with</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+</pre></div>
+</div>
+</div>
 </div>
 <p>Here’s a more complex example with functions, operators, and numbers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0044318484119380075
 </pre></div>
 </div>
 </div>
@@ -669,11 +770,21 @@ Then the balance after 6 years is found by using the formula above, with</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.618033988749895
+</pre></div>
+</div>
+</div>
 </div>
 <p>If you want to display more than one value, you can separate them with commas:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 5, 2.718281828459045, 1.618033988749895)
 </pre></div>
 </div>
 </div>
@@ -695,6 +806,11 @@ Then the balance after 6 years is found by using the formula above, with</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.618033988749895
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> Display the value of <span class="math notranslate nohighlight">\(\phi\)</span> and its inverse, <span class="math notranslate nohighlight">\(1/\phi\)</span>, on a single line.</p>
 </div>
@@ -710,6 +826,16 @@ Then the balance after 6 years is found by using the formula above, with</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="400"
+    height="300"
+    src="https://www.youtube.com/embed/eIY-PsYBrPs"
+    frameborder="0"
+    allowfullscreen
+></iframe>
+</div></div>
 </div>
 </div>
 </div>
