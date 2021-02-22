@@ -1,3 +1,5 @@
+# Elements of Data Science
+
 *Elements of Data Science* is an introduction to data science in Python for people with no programming experience.  My goal is to present a small, powerful subset of Python that allows you to do real work in data science as quickly as possible.  
 
 I don't assume that the reader knows anything about programming, statistics, or data science.  When I use a term, I try to define it immediately, and when I use a programming feature, I try to explain it.

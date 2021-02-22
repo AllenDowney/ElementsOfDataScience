@@ -86,7 +86,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="index.html">
-   The notebooks
+   Elements of Data Science
   </a>
  </li>
 </ul>
@@ -124,11 +124,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
    Dataframes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html#dataframes-and-series">
-   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -493,10 +488,6 @@ Try running the following line to see what happens.</p>
 </div>
 </div>
 <p>The word <code class="docutils literal notranslate"><span class="pre">in</span></code> is actually an operator in Python, so you can’t use it as a variable name.</p>
-<p>Try this to see what happens:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">in</span> <span class="o">=</span> <span class="mi">5</span>
-</pre></div>
-</div>
 <p>If a key is already in a dictionary, adding it again has no effect:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -593,18 +584,7 @@ three 3
 <h2>Unique words<a class="headerlink" href="#unique-words" title="Permalink to this headline">¶</a></h2>
 <p>In the previous notebook we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.</p>
 <p>Now that we have dictionaries, we can also count the number of unique words and the number of times each one appears.</p>
-<p>First, let’s download the book again.  If you run the following cell, it checks to see whether you already have a file named <code class="docutils literal notranslate"><span class="pre">2600-0.txt</span></code>; if not, it uses <code class="docutils literal notranslate"><span class="pre">wget</span></code> to copy the file from Project Gutenberg to your computer.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://www.gutenberg.org/files/2600/2600-0.txt
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we can read the file and count the words as we did in the previous notebook:</p>
+<p>As we did in the previous notebook, we can read the text of <em>War and Peace</em> and count the number of words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
@@ -622,7 +602,7 @@ three 3
 </div>
 </div>
 </div>
-<p>To count the number of unique words, I’ll loop through the words in each line and add as keys in a dictionary:</p>
+<p>To count the number of unique words, I’ll loop through the words in each line and add them as keys in a dictionary:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
@@ -630,6 +610,13 @@ three 3
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
         <span class="n">unique_words</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\ufeff&#39;
 </pre></div>
 </div>
 </div>

@@ -86,7 +86,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="index.html">
-   The notebooks
+   Elements of Data Science
   </a>
  </li>
 </ul>
@@ -124,11 +124,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
    Dataframes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html#dataframes-and-series">
-   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -304,18 +299,6 @@
 <li><p>And we will quantify relationships using correlation and simple regression.</p></li>
 </ul>
 <p>The most important lesson in this notebook is that you should always visualize the relationship between variables before you try to quantify it; otherwise, you are likely to be misled.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the data file</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;brfss.hdf5&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://github.com/AllenDowney/ElementsOfDataScience/raw/master/brfss.hdf5
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If we&#39;re running on Colab, install empiricaldist</span>
@@ -657,7 +640,10 @@
 <p>In a previous exercise, you made a scatter plot of weight versus age that might have looked like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add jittering to age</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract AGE</span>
+<span class="n">age</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">]</span>
+
+<span class="c1"># Add jittering to age</span>
 <span class="n">age_jitter</span> <span class="o">=</span> <span class="n">age</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>
 
 <span class="c1"># Make a scatter plot</span>
@@ -680,7 +666,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Jitter weight</span>
-<span class="n">weight_jitter</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;WTKG3&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>
+<span class="n">weight_jitter</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>
 
 <span class="c1"># Jitter age</span>
 <span class="n">age_jitter</span> <span class="o">=</span> <span class="n">age</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>

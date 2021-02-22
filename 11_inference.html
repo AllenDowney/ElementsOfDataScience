@@ -85,7 +85,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="index.html">
-   The notebooks
+   Elements of Data Science
   </a>
  </li>
 </ul>
@@ -123,11 +123,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
    Dataframes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html#dataframes-and-series">
-   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -650,16 +645,6 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <p>I got the data from their web page, <a class="reference external" href="https://www.cdc.gov/nchs/nsfg/index.htm">https://www.cdc.gov/nchs/nsfg/index.htm</a>, and wrote some code to get it into a Pandas Dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;nsfg.hdf5&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://github.com/AllenDowney/ElementsOfDataScience/raw/master/nsfg.hdf5
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;nsfg.hdf5&#39;</span><span class="p">)</span>
@@ -1058,12 +1043,17 @@ The following function uses Matplotlib to plot a histogram and adjust some of th
 <p>“The Behavioral Risk Factor Surveillance System (BRFSS) is the nation’s premier system of health-related telephone surveys that collect state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services.”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the data file</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;brfss.hdf5&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://github.com/AllenDowney/ElementsOfDataScience/raw/master/brfss.hdf5
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+    
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://github.com/AllenDowney/&#39;</span> <span class="o">+</span>
+         <span class="s1">&#39;ElementsOfDataScience/raw/master/brfss.hdf5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

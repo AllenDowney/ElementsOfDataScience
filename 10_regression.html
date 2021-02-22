@@ -86,7 +86,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="index.html">
-   The notebooks
+   Elements of Data Science
   </a>
  </li>
 </ul>
@@ -124,11 +124,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
    Dataframes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html#dataframes-and-series">
-   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -360,18 +355,6 @@
 <p>For the first example, we’ll load data from the Behavioral Risk Factor Surveillance Survey (BRFSS), which we saw in the previous notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the data file</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;brfss.hdf5&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://github.com/AllenDowney/ElementsOfDataScience/raw/master/brfss.hdf5
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">brfss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;brfss.hdf5&#39;</span><span class="p">,</span> <span class="s1">&#39;brfss&#39;</span><span class="p">)</span>
@@ -436,18 +419,6 @@ dtype: float64
 <p>Now that we have StatsModels, getting from single to multiple regression is easy.</p>
 <p>As an example, we’ll use data from the General Social Survey, which we saw in Notebook 7, and we’ll explore variables that are related to income.</p>
 <p>First, let’s load the GSS data.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the data file</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;gss.hdf5&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://github.com/AllenDowney/ElementsOfDataScience/raw/master/gss.hdf5
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>

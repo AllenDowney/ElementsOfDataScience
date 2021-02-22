@@ -86,7 +86,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="index.html">
-   The notebooks
+   Elements of Data Science
   </a>
  </li>
 </ul>
@@ -124,11 +124,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
    Dataframes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html#dataframes-and-series">
-   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -321,18 +316,6 @@
 </ul>
 <p>We will also see ways to compare distributions and compare real data to a mathematical model.</p>
 <p>For examples, we’ll use data from the General Social Survey (GSS) to look at distributions of age and income, and to explore the relationship between income and education.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the data file</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;gss.hdf5&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://github.com/AllenDowney/ElementsOfDataScience/raw/master/gss.hdf5
-</pre></div>
-</div>
-</div>
-</div>
 <p>The following cell installs one of the libraries we will use in this notebook, <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code>.  The details are not important, but if you are curious:</p>
 <ul class="simple">
 <li><p>It uses the <code class="docutils literal notranslate"><span class="pre">sys</span></code> library to check whether this notebook is running on Colab.</p></li>

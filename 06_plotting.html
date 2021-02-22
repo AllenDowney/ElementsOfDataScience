@@ -88,7 +88,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="index.html">
-   The notebooks
+   Elements of Data Science
   </a>
  </li>
 </ul>
@@ -126,11 +126,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
    Dataframes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html#dataframes-and-series">
-   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -651,17 +646,6 @@
 <p>In the previous notebook we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.</p>
 <p>Then we used a dictionary to count the number of unique words and the number of times each one appears.</p>
 <p>Now we’ll use those results to generate a “Zipf plot”, which shows the frequency of the words on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, ordered from the most common word to the least.</p>
-<p>First, let’s download the book again.  If you run the following cell, it checks to see whether you already have a file named <code class="docutils literal notranslate"><span class="pre">2600-0.txt</span></code>; if not, it uses <code class="docutils literal notranslate"><span class="pre">wget</span></code> to copy a book from Project Gutenberg to your computer.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://www.gutenberg.org/files/2600/2600-0.txt
-</pre></div>
-</div>
-</div>
-</div>
 <p>Here’s the code from the previous notebook that loops through the book and makes a dictionary that contains all punctuation characters.  Again, you don’t have to understand all of the details here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -834,7 +818,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_82_0.png" src="_images/06_plotting_82_0.png" />
+<img alt="_images/06_plotting_83_0.png" src="_images/06_plotting_83_0.png" />
 </div>
 </div>
 </div>
@@ -858,7 +842,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_84_0.png" src="_images/06_plotting_84_0.png" />
+<img alt="_images/06_plotting_85_0.png" src="_images/06_plotting_85_0.png" />
 </div>
 </div>
 <p>And <code class="docutils literal notranslate"><span class="pre">plt.yscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis on a log scale.</p>
@@ -875,7 +859,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_86_0.png" src="_images/06_plotting_86_0.png" />
+<img alt="_images/06_plotting_87_0.png" src="_images/06_plotting_87_0.png" />
 </div>
 </div>
 <p>The result is not quite a straight line, but it is close.  We can get a sense of the slope by connecting the end points with a line.</p>
@@ -919,7 +903,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_90_0.png" src="_images/06_plotting_90_0.png" />
+<img alt="_images/06_plotting_91_0.png" src="_images/06_plotting_91_0.png" />
 </div>
 </div>
 <p>The slope of this line is the “rise over run”, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis divided by the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.</p>

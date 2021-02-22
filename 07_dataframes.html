@@ -86,7 +86,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="index.html">
-   The notebooks
+   Elements of Data Science
   </a>
  </li>
 </ul>
@@ -124,11 +124,6 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Dataframes
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#dataframes-and-series">
-   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -251,64 +246,55 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Dataframes
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#goals">
+   Goals
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataframes-and-series">
    DataFrames and Series
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#series">
-     Series
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validation">
-     Validation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-statistics">
-     Summary statistics
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#series-arithmetic">
-     Series arithmetic
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#histograms">
-     Histograms
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boolean-series">
-     Boolean series
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtering">
-     Filtering
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#resampling">
-     Resampling
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series">
+   Series
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validation">
+   Validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-statistics">
+   Summary statistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series-arithmetic">
+   Series arithmetic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histograms">
+   Histograms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-series">
+   Boolean series
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering">
+   Filtering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resampling">
+   Resampling
+  </a>
  </li>
 </ul>
 
@@ -340,9 +326,8 @@
 </ol>
 <p>Because this notebook presents a data science project from end to end, it is a little longer than some of the previous notebooks.  So, hang in there!</p>
 </div>
-</div>
 <div class="section" id="dataframes-and-series">
-<h1>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">¶</a></h1>
+<h2>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">¶</a></h2>
 <p>The fundamental goal of data science is to use data to answer questions and guide decision making.</p>
 <p>As an example, we’ll start with a simple question: what is the average birth weight of babies in the United States?</p>
 <p>To answer a question like this, we have to find an appropriate dataset or run an experiment to collect it.  Then we have to get the data into our development environment and prepare it for analysis, which involves cleaning and validation.</p>
@@ -357,16 +342,6 @@
 </div>
 </div>
 <p>Pandas can read data in most common formats, including CSV, Excel, and the format the NSFG data is in, HDF5.  <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">You can read about HDF here</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;nsfg.hdf5&#39;</span><span class="p">):</span>
-    <span class="o">!</span>wget https://github.com/AllenDowney/ElementsOfDataScience/raw/master/nsfg.hdf5
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;nsfg.hdf5&#39;</span><span class="p">)</span>
@@ -548,6 +523,7 @@
 <li><p>Click on “BIRTHWGT_LB1” and read the documentation of this variable.</p></li>
 </ul>
 <p>What is the most common value of this variable?</p>
+</div>
 <div class="section" id="series">
 <h2>Series<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h2>
 <p>In many ways a DataFrame is like a Python dictionary, where the column names are the keys and the columns are the values.  You can select a column from a DataFrame using the bracket operator, with a string as the key.</p>
