@@ -252,13 +252,6 @@
   <a class="reference internal nav-link" href="#goals">
    Goals
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-note">
-     A note
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#strings">
@@ -317,20 +310,17 @@
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/02_times.ipynb">click here to download it</a>.</p>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>In the previous notebook, you learned about variables and two kinds of values: integers and floating-point numbers.</p>
-<p>In this notebook, you’ll see some additional types:</p>
+<p>In the previous chapter, you learned about variables and two kinds of values: integers and floating-point numbers.</p>
+<p>In this chapter, you’ll see some additional types:</p>
 <ul class="simple">
 <li><p>Strings, which contain sequences of letters, are used to represent text data.</p></li>
 <li><p>Timestamp values are used to represent dates and times.</p></li>
 <li><p>And several ways to represent and display geographical locations.</p></li>
 </ul>
 <p>Not every data science project uses all of these types, but many projects use at least one.</p>
-<div class="section" id="a-note">
-<h3>A note<a class="headerlink" href="#a-note" title="Permalink to this headline">¶</a></h3>
-<p>In these notebooks, I generally try to define terms when they are first used, and to explain the code examples as we go along.</p>
+<p><strong>Note:</strong> In these notebooks, I generally try to define terms when they are first used, and to explain the code examples as we go along.</p>
 <p>However, there are a few places where I provide code with the expectation that you will not understand all of the details yet.  When that happens, I’ll explain what you should or should not understand.</p>
 <p>If you are able to do the exercises, that probably means you understand what you need.</p>
-</div>
 </div>
 <div class="section" id="strings">
 <h2>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
@@ -410,11 +400,12 @@
 </div>
 </div>
 </div>
-<p>If you try to do math with these strings, you <em>might</em> get an error.  Try the following example to see what the error message is.</p>
+<p>If you try to do math with these strings, you <em>might</em> get an error.
+For example, try the following example to see what the error message is.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>But you might not get an error; instead, you might get a surprising result:</p>
+<p>But you might not get an error; instead, you might get a surprising result.  For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span>
@@ -422,7 +413,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1231&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">457</span><span class="n">f51b40578</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">not_actually_a_number</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span>
+
+<span class="ne">NameError</span>: name &#39;not_actually_a_number&#39; is not defined
 </pre></div>
 </div>
 </div>

@@ -247,11 +247,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals">
-   Goals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dataframes-and-series">
    DataFrames and Series
   </a>
@@ -311,9 +306,7 @@
 <h1>Dataframes<a class="headerlink" href="#dataframes" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/07_dataframes.ipynb">click here to download it</a>.</p>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>This notebook introduces Pandas, which is a powerful library for working with data.  Pandas provides functions for reading data from files, and it provides two new types for working with data, DataFrames and Series.</p>
+<p>This chapter introduces Pandas, which is a powerful library for working with data.  Pandas provides functions for reading data from files, and it provides two new types for working with data, DataFrames and Series.</p>
 <p>We’ll use these tools to estimate the average birth weight of babies in the U.S.  This example demonstrates the important steps in almost any data science project:</p>
 <ol class="simple">
 <li><p>Identifying data that can answer a question.</p></li>
@@ -324,8 +317,7 @@
 <li><p>Using summary statistics to describe the data in a way that best answers the question.</p></li>
 <li><p>Considering possible sources of error and limitations in our conclusions.</p></li>
 </ol>
-<p>Because this notebook presents a data science project from end to end, it is a little longer than some of the previous notebooks.  So, hang in there!</p>
-</div>
+<p>Because this chapter presents a data science project from end to end, it is a little longer than some of the previous chapters.  So, hang in there!</p>
 <div class="section" id="dataframes-and-series">
 <h2>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">¶</a></h2>
 <p>The fundamental goal of data science is to use data to answer questions and guide decision making.</p>
@@ -472,7 +464,7 @@
 </div></div></div>
 </div>
 <p>DataFrames provide “attributes” and “methods”.</p>
-<p>A method is a function that is associated with a particular type.  For example, in a previous notebook, we used the <code class="docutils literal notranslate"><span class="pre">split</span></code> method, which is a function that works with strings.</p>
+<p>A method is a function that is associated with a particular type.  For example, in a previous chapter, we used the <code class="docutils literal notranslate"><span class="pre">split</span></code> method, which is a function that works with strings.</p>
 <p>An attribute is a variable associated with a particular type.  For example, DataFrame has an attribute called <code class="docutils literal notranslate"><span class="pre">shape</span></code>, which is the number of rows and columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,32 +587,9 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 <p>Before we do anything with this data, we have to validate it.  One part of validation is confirming that we are interpreting the data correctly.</p>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> method to see what values appear in <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and how many times each value appears.</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.0     2146
-6.0     1666
-8.0     1168
-5.0      586
-9.0      363
-4.0      196
-99.0      94
-10.0      82
-3.0       67
-2.0       47
-1.0       34
-11.0      17
-12.0       7
-0.0        6
-14.0       2
-13.0       2
-17.0       1
-98.0       1
-Name: birthwgt_lb1, dtype: int64
 </pre></div>
 </div>
 </div>

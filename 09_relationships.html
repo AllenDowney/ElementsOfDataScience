@@ -247,11 +247,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals">
-   Goals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exploring-relationships">
    Exploring relationships
   </a>
@@ -291,14 +286,12 @@
 <h1>Relationships<a class="headerlink" href="#relationships" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/09_relationships.ipynb">click here to download it</a>.</p>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>This notebook explores relationships between variables.</p>
+<p>This chapter explores relationships between variables.</p>
 <ul class="simple">
 <li><p>We will visualize relationships using scatter plots, box plots, and violin plots,</p></li>
 <li><p>And we will quantify relationships using correlation and simple regression.</p></li>
 </ul>
-<p>The most important lesson in this notebook is that you should always visualize the relationship between variables before you try to quantify it; otherwise, you are likely to be misled.</p>
+<p>The most important lesson in this chapter is that you should always visualize the relationship between variables before you try to quantify it; otherwise, you are likely to be misled.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If we&#39;re running on Colab, install empiricaldist</span>
@@ -310,7 +303,6 @@
 <span class="k">if</span> <span class="n">IN_COLAB</span><span class="p">:</span>
     <span class="o">!</span>pip install empiricaldist
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -335,7 +327,7 @@
 </div>
 </div>
 <p>Like the NSFG, the BRFSS deliberately oversamples some groups, so each respondent has a sampling weight, stored in the <code class="docutils literal notranslate"><span class="pre">_LLCPWT</span></code> column.  I used these weights to resample the data, so the subset we just loaded is representative of adult residents of the U.S.</p>
-<p>The BRFSS includes hundreds of variables.  For the examples in this notebook, I chose just nine.  I’ll explain what the columns mean as we go along.</p>
+<p>The BRFSS includes hundreds of variables.  For the examples in this chapter, I chose just nine.  I’ll explain what the columns mean as we go along.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1296,7 +1288,7 @@
 </div>
 </div>
 <p>A straight line does not capture the relationship between these variables well.</p>
-<p>In the next notebook, you’ll see how to use multiple regression to estimate non-linear relationships.  But first, let’s practice simple regression.</p>
+<p>In the next chapter, you’ll see how to use multiple regression to estimate non-linear relationships.  But first, let’s practice simple regression.</p>
 <p><strong>Exercise:</strong> Who do you think eats more vegetables, people with low income, or people with high income?  Let’s find out.</p>
 <p>As we’ve seen previously, the column <code class="docutils literal notranslate"><span class="pre">INCOME2</span></code> represents income level and <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code> represents the number of vegetable servings respondents reported eating per day.</p>
 <p>Make a scatter plot with vegetable servings versus income, that is, with vegetable servings on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis and income group on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.</p>

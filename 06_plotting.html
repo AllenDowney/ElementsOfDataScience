@@ -249,11 +249,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals">
-   Goals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#keyword-arguments">
    Keyword arguments
   </a>
@@ -303,17 +298,14 @@
 <h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/06_plotting.ipynb">click here to download it</a>.</p>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>This notebook presents ways to create figures and graphs, more generally called “data visualizations”.  As examples, we’ll generate three figures:</p>
+<p>This chapter presents ways to create figures and graphs, more generally called “data visualizations”.  As examples, we’ll generate three figures:</p>
 <ul class="simple">
 <li><p>We’ll replicate a figure from the Pew Research Center that shows changes in religious affiliation in the U.S. over time.</p></li>
-<li><p>We’ll replicate the figure from <em>The Economist</em> that shows the prices of sandwiches in Boston and London (we saw this data back in Notebook 03).</p></li>
+<li><p>We’ll replicate the figure from <em>The Economist</em> that shows the prices of sandwiches in Boston and London (we saw this data back in Chapter 3).</p></li>
 <li><p>We’ll make a plot to test Zipf’s law, which describes the relationship between word frequencies and their ranks.</p></li>
 </ul>
-<p>With the tools in this notebook, you can generate a variety of simple graphs.  We will see more visualization tools in later notebooks.</p>
+<p>With the tools in this chapter, you can generate a variety of simple graphs.  We will see more visualization tools in later chapters.</p>
 <p>But before we get started with plotting, we need a new language feature: keyword arguments.</p>
-</div>
 <div class="section" id="keyword-arguments">
 <h2>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h2>
 <p>When you call most functions, you have to provide values.  For example, when you call <code class="docutils literal notranslate"><span class="pre">np.exp</span></code>, the value you provide is a number:</p>
@@ -531,7 +523,7 @@
 </div>
 <div class="section" id="sandwiches">
 <h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">¶</a></h2>
-<p>In a previous notebook we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”</p>
+<p>In a previous chapter we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”</p>
 <p>The article includes this graph showing prices of several sandwiches in the two cities:</p>
 <img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" width="400"/>
 <p>As an exercise, let’s see if we can replicate this figure.</p>
@@ -643,10 +635,10 @@
 </div>
 <div class="section" id="zipf-s-law">
 <h2>Zipf’s law<a class="headerlink" href="#zipf-s-law" title="Permalink to this headline">¶</a></h2>
-<p>In the previous notebook we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.</p>
+<p>In the previous chapter we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.</p>
 <p>Then we used a dictionary to count the number of unique words and the number of times each one appears.</p>
 <p>Now we’ll use those results to generate a “Zipf plot”, which shows the frequency of the words on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, ordered from the most common word to the least.</p>
-<p>Here’s the code from the previous notebook that loops through the book and makes a dictionary that contains all punctuation characters.  Again, you don’t have to understand all of the details here.</p>
+<p>Here’s the code from the previous chapter that loops through the book and makes a dictionary that contains all punctuation characters.  Again, you don’t have to understand all of the details here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span>

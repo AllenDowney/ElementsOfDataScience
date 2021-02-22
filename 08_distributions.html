@@ -247,11 +247,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals">
-   Goals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    Distributions
   </a>
@@ -306,9 +301,7 @@
 <h1>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/08_distributions.ipynb">click here to download it</a>.</p>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>In this noteboook we’ll see three ways to describe a set of values:</p>
+<p>In this chapter we’ll see three ways to describe a set of values:</p>
 <ul class="simple">
 <li><p>A probability mass function (PMF), which represents a set of values and the number of times each one appears in a dataset.</p></li>
 <li><p>A cumulative distribution function (CDF), which contains the same information as a PMF in a form that makes it easier to visualize, compare distributions, and perform some computations.</p></li>
@@ -316,7 +309,7 @@
 </ul>
 <p>We will also see ways to compare distributions and compare real data to a mathematical model.</p>
 <p>For examples, we’ll use data from the General Social Survey (GSS) to look at distributions of age and income, and to explore the relationship between income and education.</p>
-<p>The following cell installs one of the libraries we will use in this notebook, <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code>.  The details are not important, but if you are curious:</p>
+<p>The following cell installs one of the libraries we will use in this chapter, <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code>.  The details are not important, but if you are curious:</p>
 <ul class="simple">
 <li><p>It uses the <code class="docutils literal notranslate"><span class="pre">sys</span></code> library to check whether this notebook is running on Colab.</p></li>
 <li><p>It uses <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install the library.  <code class="docutils literal notranslate"><span class="pre">pip</span></code> is not part of the Python language; the <code class="docutils literal notranslate"><span class="pre">!</span></code> indicates that it is a “shell command”.</p></li>
@@ -336,7 +329,6 @@
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="id1">
 <h2>Distributions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>A distribution is a set of values and their corresponding probabilities.  For example, if you roll a six-sided die, there are six possible outcomes, the number 1 through 6, and they all have the same probability, 1/6.</p>
@@ -351,11 +343,11 @@
 </pre></div>
 </div>
 <p>More generally, there can be any number of values, the values can be any type, and the probabilities do not have to be equal.</p>
-<p>In this notebook, we explore distributions of age, income, and other quantities.  We’ll see two ways to represent distributions, PMFs and CDFs, and several ways to visualize them.</p>
+<p>In this chapter, we explore distributions of age, income, and other quantities.  We’ll see two ways to represent distributions, PMFs and CDFs, and several ways to visualize them.</p>
 </div>
 <div class="section" id="the-general-social-survey">
 <h2>The General Social Survey<a class="headerlink" href="#the-general-social-survey" title="Permalink to this headline">¶</a></h2>
-<p>In this notebook we’ll work with a new dataset, the General Social Survey.</p>
+<p>In this chapter we’ll work with a new dataset, the General Social Survey.</p>
 <p>The General Social Survey, or GSS, has run annually since 1972; it surveys a representative sample of the adult population in the U.S. and asks questions about demographics and beliefs about social and political issues.</p>
 <p>It is widely used by politicians, policy makers, and researchers, including me.</p>
 <p>The GSS dataset contains hundreds of columns; I’ve selected just a few.  And I have already cleaned and validated them, so we just have to read the file, like this.</p>

@@ -247,11 +247,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals">
-   Goals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#indexing">
    Indexing
   </a>
@@ -296,11 +291,8 @@
 <h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/05_dictionaries.ipynb">click here to download it</a>.</p>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>In the previous notebook we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.  In this notebook, you’ll learn about a new type called a “dictionary”, and we will use it to count the number of unique words and the number of times each one appears.</p>
+<p>In the previous chapter we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.  In this chapter, you’ll learn about a new type called a “dictionary”, and we will use it to count the number of unique words and the number of times each one appears.</p>
 <p>Along the way, you will also see how to use an index to select an element from a sequence (tuple, list, or array).  And you will learn a little about Unicode, which is used to represent letters, numbers, and punctuation for almost every language in the world.</p>
-</div>
 <div class="section" id="indexing">
 <h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you have a variable named <code class="docutils literal notranslate"><span class="pre">t</span></code> that refers to a list or tuple.
@@ -582,9 +574,9 @@ three 3
 </div>
 <div class="section" id="unique-words">
 <h2>Unique words<a class="headerlink" href="#unique-words" title="Permalink to this headline">¶</a></h2>
-<p>In the previous notebook we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.</p>
+<p>In the previous chapter we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.</p>
 <p>Now that we have dictionaries, we can also count the number of unique words and the number of times each one appears.</p>
-<p>As we did in the previous notebook, we can read the text of <em>War and Peace</em> and count the number of words.</p>
+<p>As we did in the previous chapter, we can read the text of <em>War and Peace</em> and count the number of words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
@@ -906,7 +898,7 @@ them.”
 </div>
 </div>
 <p><strong>Exercise:</strong> Modify the word-counting loop from the previous section to convert words to lower case <em>and</em> strip punctuation before adding them to the dictionary.  Now how many unique words are there?</p>
-<p>Optional: You might want to skip over the frontmatter and start with the text of Chapter 1, and skip over the license at the end, as we did in the previous notebook.</p>
+<p>Optional: You might want to skip over the front matter and start with the text of Chapter 1, and skip over the license at the end, as we did in the previous chapter.</p>
 </div>
 <div class="section" id="word-frequencies">
 <h2>Word frequencies<a class="headerlink" href="#word-frequencies" title="Permalink to this headline">¶</a></h2>
@@ -1013,7 +1005,7 @@ them.”
 <li><p>How many times does the #1000 ranked word appear?</p></li>
 <li><p>How many times does the #10000 ranked word appear?</p></li>
 </ol>
-<p>Do you see a pattern in the results?  We will explore this pattern more in the next notebook.</p>
+<p>Do you see a pattern in the results?  We will explore this pattern more in the next chapter.</p>
 <p><strong>Exercise:</strong> Write a loop that counts how many words appear 200 times.  What are they?  How many words appear 100 times, 50 times, and 20 times?</p>
 <p><strong>Optional:</strong> If you know how to define a function, write a function that takes a <code class="docutils literal notranslate"><span class="pre">Counter</span></code> and a frequency as arguments, prints all words with that frequency, and returns the number of words with that frequency.</p>
 </div>
