@@ -249,11 +249,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals">
-   Goals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#strings">
    Strings
   </a>
@@ -308,44 +303,38 @@
 <h1>Times and places<a class="headerlink" href="#times-and-places" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/02_times.ipynb">click here to download it</a>.</p>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>In the previous chapter, you learned about variables and two kinds of values: integers and floating-point numbers.</p>
 <p>In this chapter, you’ll see some additional types:</p>
 <ul class="simple">
-<li><p>Strings, which contain sequences of letters, are used to represent text data.</p></li>
-<li><p>Timestamp values are used to represent dates and times.</p></li>
+<li><p>Strings, which represent text.</p></li>
+<li><p>Time stamps, which represent dates and times.</p></li>
 <li><p>And several ways to represent and display geographical locations.</p></li>
 </ul>
 <p>Not every data science project uses all of these types, but many projects use at least one.</p>
-<p><strong>Note:</strong> In these notebooks, I generally try to define terms when they are first used, and to explain the code examples as we go along.</p>
-<p>However, there are a few places where I provide code with the expectation that you will not understand all of the details yet.  When that happens, I’ll explain what you should or should not understand.</p>
-<p>If you are able to do the exercises, that probably means you understand what you need.</p>
-</div>
 <div class="section" id="strings">
 <h2>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
-<p>A <strong>string</strong> is a sequence of letters, numbers, and punctuation marks.</p>
-<p>In Python you can create a string by typing letters between single or double quotation marks.</p>
+<p>A <strong>string</strong> is a sequence of letters, numbers, and punctuation marks.
+In Python you can create a string by typing letters between single or double quotation marks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Data&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Elements&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Data&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Elements&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Science&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;of&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Science&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;of&#39;
 </pre></div>
 </div>
 </div>
@@ -401,31 +390,25 @@
 </div>
 </div>
 <p>If you try to do math with these strings, you <em>might</em> get an error.
-For example, try the following example to see what the error message is.</p>
+For example, the following expression causes a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> with the message “can only concatenate <code class="docutils literal notranslate"><span class="pre">str</span></code> (not <code class="docutils literal notranslate"><span class="pre">int</span></code>) to <code class="docutils literal notranslate"><span class="pre">str</span></code>”.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>But you might not get an error; instead, you might get a surprising result.  For example:</p>
+<p>But you don’t always get an error; instead, you might get a surprising result.  For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">*</span> <span class="mi">3</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">457</span><span class="n">f51b40578</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">not_actually_a_number</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span>
-
-<span class="ne">NameError</span>: name &#39;not_actually_a_number&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;123123123&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>In this example, both operands are strings, so Python concatenates them.</p>
-<p>Fortunately, you can convert strings to numbers.
-If you have a string that contains only digits, you can convert it to an integer using the <code class="docutils literal notranslate"><span class="pre">int</span></code> function:</p>
+<p>If you multiply a string by an integer, Python repeats the string the given number of times.</p>
+<p>If you have a string that contains only digits, you can convert it to an integer using the <code class="docutils literal notranslate"><span class="pre">int</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
@@ -451,11 +434,8 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p>But if the string contains a decimal point, you can’t convert it to an <code class="docutils literal notranslate"><span class="pre">int</span></code>.  Try this example to see what happens.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;12.3&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Going in the other direction, you can convert almost any type of value to a string using <code class="docutils literal notranslate"><span class="pre">str</span></code>:</p>
+<p>But if the string contains a decimal point, you can’t convert it to an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>Going in the other direction, you can convert any type of value to a string using <code class="docutils literal notranslate"><span class="pre">str</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -480,7 +460,7 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p><strong>Exercise</strong>: When personal names are stored in a database, they are usually stored in three variables: a given name, a family name, and sometimes a middle name.  For example, a list of great rock drummers might include:</p>
+<p><strong>Exercise</strong>: When personal names are stored in a database, they are often stored in three variables: a given name, a family name, and sometimes a middle name.  For example, a list of great rock drummers might include:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">given</span> <span class="o">=</span> <span class="s1">&#39;Neil&#39;</span>
@@ -521,13 +501,7 @@ If you have a string that contains only digits, you can convert it to an integer
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_really_a_time</span> <span class="o">=</span> <span class="s1">&#39;6:30:00&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">not_really_a_time</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">not_really_a_time</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -537,9 +511,9 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p>Representing dates and times using strings provides human-readable values, but they are not useful for doing computation.</p>
-<p>Fortunately, Python provides libraries for working with date and time data; the one we’ll use is called Pandas.</p>
-<p>As always, we have to import a library before we use it; it is conventional to import Pandas with the abbreviated name <code class="docutils literal notranslate"><span class="pre">pd</span></code>:</p>
+<p>Strings that represent dates and times a readable for people, but they are not useful for computation.</p>
+<p>Fortunately, Python provides libraries for working with date and time data; the one we’ll use is called Pandas.
+As always, we have to import a library before we use it; it is conventional to import Pandas with the abbreviated name <code class="docutils literal notranslate"><span class="pre">pd</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -556,7 +530,7 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2021-02-20 06:30:00&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2021-02-23 06:30:00&#39;)
 </pre></div>
 </div>
 </div>
@@ -569,7 +543,7 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2021-02-20 06:30:00&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2021-02-23 06:30:00&#39;)
 </pre></div>
 </div>
 </div>
@@ -625,7 +599,7 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2021-02-20 15:27:25.600480&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2021-02-23 11:59:43.399056&#39;)
 </pre></div>
 </div>
 </div>
@@ -643,13 +617,13 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timedelta(&#39;11584 days 15:27:25.600480&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timedelta(&#39;11587 days 11:59:43.399056&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>The result is a <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> that represents the current age of someone born on <code class="docutils literal notranslate"><span class="pre">date_of_birth</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> contains <code class="docutils literal notranslate"><span class="pre">components</span></code> that store the number of days, hours, etc. between the two <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> values.</p>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> that represents the current age of someone born on <code class="docutils literal notranslate"><span class="pre">date_of_birth</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> contains <code class="docutils literal notranslate"><span class="pre">components</span></code> that store the number of days, hours, etc. between the two <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span><span class="o">.</span><span class="n">components</span>
@@ -657,7 +631,7 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Components(days=11584, hours=15, minutes=27, seconds=25, milliseconds=600, microseconds=480, nanoseconds=0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Components(days=11587, hours=11, minutes=59, seconds=43, milliseconds=399, microseconds=56, nanoseconds=0)
 </pre></div>
 </div>
 </div>
@@ -670,7 +644,7 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11584
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11587
 </pre></div>
 </div>
 </div>
@@ -685,7 +659,7 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31.716131858503996
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31.724345635746356
 </pre></div>
 </div>
 </div>
@@ -718,12 +692,14 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p>We can also compare <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> values to see which comes first.</p>
-<p>For example, let’s see if a person with a given birthdate has already had a birthday this year.</p>
-<p>We can create a new <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> with the year from <code class="docutils literal notranslate"><span class="pre">now</span></code> and the month and day from <code class="docutils literal notranslate"><span class="pre">date_of_birth</span></code>.</p>
+<p>We can also compare <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> values to see which comes first.
+For example, let’s see if a person with a given birthdate has already had a birthday this year.
+Here’s a new <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> with the year from <code class="docutils literal notranslate"><span class="pre">now</span></code> and the month and day from <code class="docutils literal notranslate"><span class="pre">date_of_birth</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bday_this_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">date_of_birth</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">date_of_birth</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bday_this_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">now</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> 
+                              <span class="n">date_of_birth</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> 
+                              <span class="n">date_of_birth</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
 <span class="n">bday_this_year</span>
 </pre></div>
 </div>
@@ -747,8 +723,8 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p>The result is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, which are special values in Python used to represent results from this kind of comparison.</p>
-<p>These values belong to a type called <code class="docutils literal notranslate"><span class="pre">bool</span></code>, short for “Boolean algebra”, which is a branch of algebra where all values are either true or false.</p>
+<p>The result is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+These values belong to a type called <code class="docutils literal notranslate"><span class="pre">bool</span></code>, short for “Boolean algebra”, which is a branch of algebra where all values are either true or false.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -773,19 +749,13 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> Any two people with different birthdays have a “Double Day” when one is twice as old as the other.</p>
-<p>Suppose you are given two <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> values, <code class="docutils literal notranslate"><span class="pre">d1</span></code> and <code class="docutils literal notranslate"><span class="pre">d2</span></code>, that represent birthdays for two people.  Use <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> arithmetic to compute their double day.</p>
-<p>Here are two example dates; with these dates, the result should be December 19, 2009.</p>
+<p><strong>Exercise:</strong> Any two people with different birthdays have a “Double Day” when one is twice as old as the other.
+Suppose you are given two <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> values, <code class="docutils literal notranslate"><span class="pre">d1</span></code> and <code class="docutils literal notranslate"><span class="pre">d2</span></code>, that represent birthdays for two people.  Use <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> arithmetic to compute their double day.
+With the following dates, the result should be December 19, 2009.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2003-07-12&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2006-09-30&#39;</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2006-09-30&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -871,17 +841,17 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 <p>Notice that I assigned latitude to <code class="docutils literal notranslate"><span class="pre">y</span></code> and longitude to <code class="docutils literal notranslate"><span class="pre">x</span></code>, because a <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinate usually goes up and down like latitude, and an <code class="docutils literal notranslate"><span class="pre">x</span></code> coordinate usually goes side-to-side like longitude.</p>
-<p><strong>Exercise:</strong> Find the latitude and longitude of the place you were born or someplace you think of as your “home town”.  <a class="reference external" href="https://www.latlong.net/">You can use this web page to look it up</a>.</p>
-<p>Make a tuple of floating-point numbers that represents this location.</p>
+<p><strong>Exercise:</strong> Find the latitude and longitude of the place you were born or someplace you think of as your “home town”.  <a class="reference external" href="https://www.latlong.net/">You can use this web page to look it up</a>.
+Make a tuple of floating-point numbers that represents that location.</p>
 </div>
 <div class="section" id="distance">
 <h2>Distance<a class="headerlink" href="#distance" title="Permalink to this headline">¶</a></h2>
-<p>If you are given two tuples that represent locations, you can compute the approximate distance between them, along the surface of the globe, using the haversine function.</p>
-<p>If you are curious about it, <a class="reference external" href="https://janakiev.com/blog/gps-points-distance-python/">you can read an explanation in this article</a>.</p>
-<p>To estimate a haversine distance, we have to compute the haversine function, which is defined:</p>
+<p>If you are given two tuples that represent locations, you can compute the approximate distance between them, along the surface of the globe, using the haversine function.
+If you are curious about it, <a class="reference external" href="https://janakiev.com/blog/gps-points-distance-python/">you can read an explanation in this article</a>.
+To estimate a haversine distance, we have to compute the haversine function, which is defined:</p>
 <p><span class="math notranslate nohighlight">\(\mathrm{haversine}(\theta)=\sin^2(\theta/2)\)</span></p>
-<p>Where <span class="math notranslate nohighlight">\(\theta\)</span> is an angle in radians.</p>
-<p>We can compute this function in Python like this:</p>
+<p>Where <span class="math notranslate nohighlight">\(\theta\)</span> is an angle in radians.
+We can compute this function in Python like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -912,14 +882,13 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> This is a good time to remind you that the operator for exponentiation is <code class="docutils literal notranslate"><span class="pre">**</span></code>.</p>
-<p>In some other languages the operator for exponentiation is <code class="docutils literal notranslate"><span class="pre">^</span></code>.  That is also an operator in Python, but it performs another operation altogether.</p>
-<p>Try out the previous expression, replacing <code class="docutils literal notranslate"><span class="pre">**</span></code> with <code class="docutils literal notranslate"><span class="pre">^</span></code>, and see what error message you get.  Remember this message in case you see it in the future!</p>
+<p>Remember that the operator for exponentiation is <code class="docutils literal notranslate"><span class="pre">**</span></code>.<br />
+In some other languages it’s <code class="docutils literal notranslate"><span class="pre">^</span></code>, which is also an operator in Python, but it performs another operation altogether.</p>
 </div>
 <div class="section" id="defining-functions">
 <h2>Defining functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">¶</a></h2>
-<p>At this point you don’t have to understand how to define a new function.  But you will see function defininitions, so I want to explain the basics now.</p>
-<p>If we are planning to use an expression like <code class="docutils literal notranslate"><span class="pre">np.sin(theta/2)**2</span></code> more than a few times, we can define a new function that compute it, like this:</p>
+<p>At this point you don’t have to know how to define a new function.  But you will see function definitions, so I want to explain the basics now.</p>
+<p>If we are planning to use an expression like <code class="docutils literal notranslate"><span class="pre">np.sin(theta/2)**2</span></code> more than a few times, we can define a new function that computes it, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">haversine</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
@@ -958,8 +927,8 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p>So <code class="docutils literal notranslate"><span class="pre">haversine</span></code> is a variable that refers to a function.</p>
-<p>To run the function and compute a result, we have to “call” the function and provide a value for <code class="docutils literal notranslate"><span class="pre">theta</span></code>:</p>
+<p>So <code class="docutils literal notranslate"><span class="pre">haversine</span></code> is a variable that refers to a function.
+To run the function and compute a result, we have to “call” the function and provide a value for <code class="docutils literal notranslate"><span class="pre">theta</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haversine</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -976,8 +945,8 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 <div class="section" id="haversine-distance">
 <h2>Haversine distance<a class="headerlink" href="#haversine-distance" title="Permalink to this headline">¶</a></h2>
-<p>Now we can use <code class="docutils literal notranslate"><span class="pre">haversine</span></code> as part of a function that computes haversine distances.</p>
-<p>I won’t explain this function in as much detail, but if you read through it, you might get a sense of how it works.</p>
+<p>Now we can use <code class="docutils literal notranslate"><span class="pre">haversine</span></code> as part of a function that computes haversine distances.
+I won’t explain this function in as much detail, but if you read through it, you might get a sense of how it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">haversine_distance</span><span class="p">(</span><span class="n">coord1</span><span class="p">,</span> <span class="n">coord2</span><span class="p">):</span>
@@ -1005,8 +974,8 @@ If you have a string that contains only digits, you can convert it to an integer
 </div>
 </div>
 </div>
-<p>When we call this function, we provide two tuples, each representing a latitude and a longitude.</p>
-<p>We already have a tuple that represents the location of Boston.
+<p>When we call this function, we provide two tuples, each representing a latitude and a longitude.
+We already have a tuple that represents the location of Boston.
 Now here’s a tuple that represents the location of London, England, UK:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1034,8 +1003,8 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 </div>
 <div class="section" id="geopandas">
 <h2>Geopandas<a class="headerlink" href="#geopandas" title="Permalink to this headline">¶</a></h2>
-<p>Python provides libraries for working with geographical data.  One of the most popular is Geopandas, which is based on another library called Shapely.  I’ll introduce these libraries here, and we’ll come back to them later.</p>
-<p>Shapely provides <code class="docutils literal notranslate"><span class="pre">Point</span></code> and <code class="docutils literal notranslate"><span class="pre">LineString</span></code> values, which we’ll use to represent geographic locations and lines between locations.</p>
+<p>Python provides libraries for working with geographical data.  One of the most popular is Geopandas, which is based on another library called Shapely.
+Shapely provides <code class="docutils literal notranslate"><span class="pre">Point</span></code> and <code class="docutils literal notranslate"><span class="pre">LineString</span></code> values, which we’ll use to represent geographic locations and lines between them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">LineString</span>
@@ -1043,7 +1012,7 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 </div>
 </div>
 </div>
-<p>We can use the tuples we defined in the previous section to create Shapely <code class="docutils literal notranslate"><span class="pre">Point</span></code> values, but we have to reverse the order of the coordinates, providing them in x-y order rather than lat-lon order, because that’s the order the <code class="docutils literal notranslate"><span class="pre">Point</span></code> function expects.</p>
+<p>We can use the tuples we defined in the previous section to create Shapely <code class="docutils literal notranslate"><span class="pre">Point</span></code> values, but we have to reverse the order of the coordinates, providing them in <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> order rather than <code class="docutils literal notranslate"><span class="pre">lat</span></code>-<code class="docutils literal notranslate"><span class="pre">lon</span></code> order, because that’s the order the <code class="docutils literal notranslate"><span class="pre">Point</span></code> function expects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">boston</span>
@@ -1068,9 +1037,8 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_126_0.svg" src="_images/02_times_126_0.svg" /></div>
+<img alt="_images/02_times_122_0.svg" src="_images/02_times_122_0.svg" /></div>
 </div>
-<p>Soon we will see how to plot a <code class="docutils literal notranslate"><span class="pre">Point</span></code>, more usefully, on a map.</p>
 <p>We can use the points we just defined to create a <code class="docutils literal notranslate"><span class="pre">LineString</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1087,22 +1055,9 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_131_0.svg" src="_images/02_times_131_0.svg" /></div>
+<img alt="_images/02_times_126_0.svg" src="_images/02_times_126_0.svg" /></div>
 </div>
-<p>However, now we can use Geopandas to show these points and lines on a map.</p>
-<p>If you are running this notebook on Colab, the following cell will install Geopandas, which should only take a few seconds.  It uses features we have not seen yet; you might be able to read it and guess how it works, but you don’t have to.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">IN_COLAB</span> <span class="o">=</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span>
-
-<span class="k">if</span> <span class="n">IN_COLAB</span><span class="p">:</span>
-    <span class="o">!</span>pip install geopandas
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now the following import statement should work.</p>
+<p>Now we can use Geopandas to show these points and lines on a map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
@@ -1110,7 +1065,6 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 </div>
 </div>
 </div>
-<p>If you are running this notebook on Colab, the libraries you install disappear when you shut down the notebook.  When you start the notebook again, you have to install them again.</p>
 <p>The following code loads a map of the world and plots it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1121,47 +1075,25 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_138_0.png" src="_images/02_times_138_0.png" />
+<img alt="_images/02_times_132_0.png" src="_images/02_times_132_0.png" />
 </div>
 </div>
-<p>Here’s a version that just plots North America and Europe:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">north_america</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">continent</span> <span class="o">==</span> <span class="s1">&#39;North America&#39;</span>
-<span class="n">europe</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">continent</span> <span class="o">==</span> <span class="s1">&#39;Europe&#39;</span>
-<span class="n">region</span> <span class="o">=</span> <span class="n">world</span><span class="p">[</span><span class="n">north_america</span> <span class="o">|</span> <span class="n">europe</span><span class="p">]</span>
-<span class="n">region</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/02_times_140_0.png" src="_images/02_times_140_0.png" />
-</div>
-</div>
-<p>Notice:</p>
-<ul class="simple">
-<li><p>By default, Geopandas uses the political definition of “Europe”, which includes the part of Russia that is on the Asian continent.</p></li>
-<li><p>It also uses an <a class="reference external" href="https://en.wikipedia.org/wiki/Equirectangular_projection">equirectangular projection</a>, which provides a misleading picture of relative land areas.</p></li>
-</ul>
-<p>You can’t make a map without making visualization decisions.</p>
-<p>Now let’s put dots on the map for Boston and London.  We have to put the <code class="docutils literal notranslate"><span class="pre">Point</span></code> values and the <code class="docutils literal notranslate"><span class="pre">LineString</span></code> into a <code class="docutils literal notranslate"><span class="pre">GeoSeries</span></code>, which provides a <code class="docutils literal notranslate"><span class="pre">plot</span></code> function:</p>
+<p>By default, Geopandas uses an <a class="reference external" href="https://en.wikipedia.org/wiki/Equirectangular_projection">equirectangular projection</a>, which provides a misleading picture of relative land areas.
+You can’t make a map without making visualization decisions.</p>
+<p>Now let’s put dots on the map for Boston and London.  We have to put the <code class="docutils literal notranslate"><span class="pre">Point</span></code> values and the <code class="docutils literal notranslate"><span class="pre">LineString</span></code> into a <code class="docutils literal notranslate"><span class="pre">GeoSeries</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">line</span><span class="p">]</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-<span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/02_times_142_0.png" src="_images/02_times_142_0.png" />
 </div>
 </div>
 <p>Here’s a first attempt to plot the maps and the lines together:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the map</span>
-<span class="n">region</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 
 <span class="c1"># plot Boston, London, and the line</span>
 <span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
@@ -1169,11 +1101,11 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_144_0.png" src="_images/02_times_144_0.png" />
-<img alt="_images/02_times_144_1.png" src="_images/02_times_144_1.png" />
+<img alt="_images/02_times_136_0.png" src="_images/02_times_136_0.png" />
+<img alt="_images/02_times_136_1.png" src="_images/02_times_136_1.png" />
 </div>
 </div>
-<p>GeoPandas puts the two plots on different axes, which is not what we want in this case.</p>
+<p>The two plots are on different axes, which is not what we want in this case.</p>
 <p>To get the points and the map on the same axes, we have to use a function from Matplotlib, which is a visualization library we will use extensively.  We’ll import it like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1186,40 +1118,18 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-
-<span class="c1"># plot the map</span>
-<span class="n">region</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-
-<span class="c1"># plot Boston, London, and the line</span>
-<span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/02_times_148_0.png" src="_images/02_times_148_0.png" />
-</div>
-</div>
-<p>We can also use <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code> to set the figure size.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-
-<span class="c1"># plot the map</span>
 <span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-
-<span class="c1"># plot Boston, London, and the line</span>
 <span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_150_0.png" src="_images/02_times_150_0.png" />
+<img alt="_images/02_times_140_0.png" src="_images/02_times_140_0.png" />
 </div>
 </div>
-<p>There are a few features in this example we have not explained completely, but hopefully you get the idea.</p>
-<p><strong>Exercise:</strong> Modify the code in the previous section to plot a point that shows the home town you chose in a previous exercise and a line from there to Boston.</p>
-<p>Then go to <a class="reference external" href="https://forms.gle/2LDcqxJmcWY3Q3X47">this online survey</a> and answer the questions there.  We will use your responses for an upcoming example.</p>
+<p>There are a few features in this example I have not explained completely, but hopefully you get the idea.</p>
+<p><strong>Exercise:</strong> Modify the code in this section to plot a point that shows the home town you chose in a previous exercise and a line from there to Boston.
+Then go to <a class="reference external" href="https://forms.gle/2LDcqxJmcWY3Q3X47">this online survey</a> and answer the questions there.</p>
 </div>
 </div>
 

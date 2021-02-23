@@ -249,11 +249,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals">
-   Goals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tuples">
    Tuples
   </a>
@@ -279,8 +274,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#absolute-and-relative-differences">
-   Absolute and relative differences
+  <a class="reference internal nav-link" href="#relative-differences">
+   Relative differences
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -308,17 +303,14 @@
 <h1>Lists and arrays<a class="headerlink" href="#lists-and-arrays" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/03_arrays.ipynb">click here to download it</a>.</p>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
-<p>In the previous notebook we used tuples to represent latitude and longitude.  In this notebook, you’ll see how to use tuples more generally to represent a sequence of values.  And we’ll see two more ways to represent sequences: lists and arrays.</p>
+<p>In the previous chapter we used tuples to represent latitude and longitude.  In this chapter, you’ll see how to use tuples more generally to represent a sequence of values.  And we’ll see two more ways to represent sequences: lists and arrays.</p>
 <p>You might wonder why we need three ways to represent the same thing.  Most of the time you don’t, but each of them has different capabilities.  For work with data, we will use arrays most of the time.</p>
-<p>As an example, we will use a small dataset from an article in <em>The Economist</em> about the price of sandwiches.  It’s a silly example, but we’ll use it to discuss the idea of absolute and relative differences, and different ways to summarize a dataset.</p>
-</div>
+<p>As an example, we will use a small dataset from an article in <em>The Economist</em> about the price of sandwiches.  It’s a silly example, but I’ll use it to introduce the idea of relative differences and different ways to summarize them.</p>
 <div class="section" id="tuples">
 <h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h2>
-<p>A tuple is a sequence of elements.  When we use a tuple to represent latitude and longitude, the sequence only contains two elements, and they are both floating-point numbers.</p>
-<p>But in general a tuple can contain any number of elements, and the elements can be values of any type.</p>
-<p>The following is a tuple of three integers:</p>
+<p>A tuple is a sequence of elements.  When we use a tuple to represent latitude and longitude, the sequence only contains two elements, and they are both floating-point numbers.
+But in general a tuple can contain any number of elements, and the elements can be values of any type.
+The following is a tuple of three integers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
@@ -331,20 +323,8 @@
 </div>
 </div>
 </div>
-<p>Notice that when Python displays a tuple, it puts the elements in parentheses.</p>
-<p>When you type a tuple, you can put it in parentheses if you think it is easier to read that way, but you don’t have to.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3)
-</pre></div>
-</div>
-</div>
-</div>
+<p>Notice that when Python displays a tuple, it puts the elements in parentheses.
+When you type a tuple, you can put it in parentheses if you think it is easier to read that way, but you don’t have to.</p>
 <p>The elements can be any type.  Here’s a tuple of strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -400,18 +380,6 @@
 </div>
 </div>
 <p>But you will find that the result is just a number, not a tuple.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
-</pre></div>
-</div>
-</div>
-</div>
 <p>To make a tuple with a single element, you need a comma:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -426,18 +394,7 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tuple
-</pre></div>
-</div>
-</div>
-</div>
+<p>That might look funny, but it does the job.</p>
 </div>
 <div class="section" id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
@@ -455,24 +412,13 @@
 </div>
 </div>
 </div>
-<p>Lists and tuples are very similar.  They can contain any number of elements, the elements can be any type, and the elements don’t have to be the same type.</p>
-<p>The only difference is that you can modify a list; tuples are immutable (cannot be modified).  This difference will matter later, but for now we can ignore it.</p>
+<p>Lists and tuples are very similar.
+They can contain any number of elements, the elements can be any type, and the elements don’t have to be the same type.
+The difference is that you can modify a list; tuples are immutable (cannot be modified).  This difference will matter later, but for now we can ignore it.</p>
 <p>When you make a list, the brackets are required, but if there is a single element, you don’t need a comma.  So you can make a list like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">single</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -485,51 +431,15 @@
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">len</span></code> function returns the length (number of elements) in a list or tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">single</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">len</span></code> function computes the length (number of elements) in a list or tuple.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">single</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">empty</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 1, 0)
 </pre></div>
 </div>
 </div>
@@ -544,7 +454,8 @@
 <img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" width="400"/><p>Here are the sandwich names from the graph, as a list of strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lobster roll&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Lobster roll&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Chicken caesar&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Bang bang chicken&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Ham and cheese&#39;</span><span class="p">,</span>
@@ -555,17 +466,15 @@
 </div>
 </div>
 </div>
-<p>I contacted <em>The Economist</em> to ask for the data they used to create that graph, and they were kind enough to share it with me.</p>
-<p>Here are the corresponding sandwich prices in Boston:</p>
+<p>I contacted <em>The Economist</em> to ask for the data they used to create that graph, and they were kind enough to share it with me.
+Here are the sandwich prices in Boston:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">9.99</span><span class="p">,</span> <span class="mf">7.99</span><span class="p">,</span> <span class="mf">7.49</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.29</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">9.99</span><span class="p">,</span> <span class="mf">7.99</span><span class="p">,</span> <span class="mf">7.49</span><span class="p">,</span> <span class="mf">7.00</span><span class="p">,</span> <span class="mf">6.29</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>So the lobster roll is $9.99 in Boston.</p>
-<p>The egg sandwich is $4.99.</p>
 <p>Here are the prices in London, converted to dollars at $1.25 / £1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,22 +491,19 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9.99, 7.99, 7.49, 7, 6.29, 4.99, 7.5, 5, 4.4, 5, 3.75, 2.25]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9.99, 7.99, 7.49, 7.0, 6.29, 4.99, 7.5, 5, 4.4, 5, 3.75, 2.25]
 </pre></div>
 </div>
 </div>
 </div>
-<p>But it concatenates the two lists, which is not very useful in this example.</p>
-<p>To compute differences between prices, you might try subtracting lists, but you would get an error.  Run this code in the following cell to see what the error message is.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">-</span> <span class="n">london_price_list</span>
-</pre></div>
-</div>
+<p>But it concatenates the two lists, which is not very useful in this example.
+To compute differences between prices, you might try subtracting lists, but you would get an error.</p>
 <p>We can solve this problem with a NumPy array.</p>
 </div>
 <div class="section" id="numpy-arrays">
 <h2>NumPy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h2>
-<p>We’ve already seen that the NumPy library provides math functions.  It also provides a type of sequence called an array.</p>
-<p>You can create a new array with the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function, starting with a list or tuple.</p>
+<p>We’ve already seen that the NumPy library provides math functions.  It also provides a type of sequence called an array.
+You can create a new array with the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function, starting with a list or tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -649,8 +555,8 @@
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">float64</span></code> means that the elements are floating-point numbers that take up 64 bits each.  You don’t need to know about the storage format of these numbers, but if you are curious, <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Internal_representation">you can read about it here</a>.</p>
-<p>The elements of a NumPy array can be any type, but they all have to be the same type.</p>
-<p>Most often the elements are numbers, but you can also make an array of strings.</p>
+<p>The elements of a NumPy array can be any type, but they all have to be the same type.
+Most often the elements are numbers, but you can also make an array of strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">name_list</span><span class="p">)</span>
@@ -665,7 +571,7 @@
 </div>
 </div>
 </div>
-<p>In this example, the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is <code class="docutils literal notranslate"><span class="pre">&lt;U17</span></code>.  You don’t have to understand this code, but if you are curious, the <code class="docutils literal notranslate"><span class="pre">U</span></code> indicates that the elements are Unicode strings; Unicode is the standard Python uses to represent strings.</p>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is <code class="docutils literal notranslate"><span class="pre">&lt;U17</span></code>.  The <code class="docutils literal notranslate"><span class="pre">U</span></code> indicates that the elements are Unicode strings; Unicode is the standard Python uses to represent strings.</p>
 <p>Now, here’s why NumPy arrays are useful: they can do arithmetic.  For example, to compute the differences between Boston and London prices, we can write:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -734,20 +640,13 @@
 <p><span class="math notranslate nohighlight">\(\sigma = \sqrt{\frac{1}{N} \sum_i (x_i - \mu)^2}\)</span></p>
 <p>Compute the standard deviation of <code class="docutils literal notranslate"><span class="pre">boston_price_list</span></code> using NumPy functions <code class="docutils literal notranslate"><span class="pre">np.mean</span></code> and <code class="docutils literal notranslate"><span class="pre">np.sqrt</span></code> and see if you get the same result as <code class="docutils literal notranslate"><span class="pre">np.std</span></code>.</p>
 <p>Note: You should do this exercise using only features we have discussed so far.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">boston_price_list</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Note: This definition of standard deviation is sometimes called the “population standard deviation”.  You might have seen another definition with <span class="math notranslate nohighlight">\(N-1\)</span> in the denominator; that’s the “sample standard deviation”.  We’ll use the population standard deviation for now and come back to this issue later.</p>
 </div>
-<div class="section" id="absolute-and-relative-differences">
-<h2>Absolute and relative differences<a class="headerlink" href="#absolute-and-relative-differences" title="Permalink to this headline">¶</a></h2>
-<p>In the previous section we computed “absolute” differences in price; that’s what you get when you subtract two quantities.</p>
-<p>But often when we make this kind of comparison, we are interested in “relative” difference, which are differences expressed as a fraction or percentage of a quantity.</p>
-<p>Taking the lobster roll as an example, the absolute difference in price is:</p>
+<div class="section" id="relative-differences">
+<h2>Relative differences<a class="headerlink" href="#relative-differences" title="Permalink to this headline">¶</a></h2>
+<p>In the previous section we computed differences between prices.
+But often when we make this kind of comparison, we are interested in <strong>relative difference</strong>, which are differences expressed as a fraction or percentage of a quantity.</p>
+<p>Taking the lobster roll as an example, the difference in price is:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">9.99</span> <span class="o">-</span> <span class="mf">7.5</span>
@@ -773,7 +672,7 @@
 </div>
 </div>
 </div>
-<p>Or as a percentage of the London price, like this:</p>
+<p>Or as a <em>percentage</em> of the London price, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">9.99</span> <span class="o">-</span> <span class="mf">7.5</span><span class="p">)</span> <span class="o">/</span> <span class="mf">7.5</span> <span class="o">*</span> <span class="mi">100</span>
@@ -786,8 +685,8 @@
 </div>
 </div>
 </div>
-<p>So we might say that the lobster roll is 33% more expensive in Boston.</p>
-<p>But putting London in the denominator was an arbitrary choice.  We could also compute the difference as a percentage of the Boston price:</p>
+<p>So we might say that the lobster roll is 33% more expensive in Boston.
+But putting London in the denominator was an arbitrary choice.  We could also compute the difference as a percentage of the Boston price:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">9.99</span> <span class="o">-</span> <span class="mf">7.5</span><span class="p">)</span> <span class="o">/</span> <span class="mf">9.99</span> <span class="o">*</span> <span class="mi">100</span>
@@ -800,14 +699,14 @@
 </div>
 </div>
 </div>
-<p>If we do that calculation, we might say the lobster roll is 25% cheaper in London.</p>
-<p>When you read this kind of comparison, you should make sure you understand which quantity is in the denominator, and you might want to think about why that choice was made.</p>
-<p>In this example, if you want to make the difference seem bigger, you might put London prices in the denominator.</p>
-<p>Now we can use the arrays to compute all of the relative differences:</p>
+<p>If we do that calculation, we might say the lobster roll is 25% cheaper in London.
+When you read this kind of comparison, you should make sure you understand which quantity is in the denominator, and you might want to think about why that choice was made.
+In this example, if you want to make the difference seem bigger, you might put London prices in the denominator.</p>
+<p>We can use the arrays to compute all of the relative differences:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">absolute_differences</span> <span class="o">=</span> <span class="n">boston_price_array</span> <span class="o">-</span> <span class="n">london_price_array</span>
-<span class="n">absolute_differences</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">differences</span> <span class="o">=</span> <span class="n">boston_price_array</span> <span class="o">-</span> <span class="n">london_price_array</span>
+<span class="n">differences</span>
 </pre></div>
 </div>
 </div>
@@ -819,7 +718,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_differences</span> <span class="o">=</span> <span class="n">absolute_differences</span> <span class="o">/</span> <span class="n">london_price_array</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_differences</span> <span class="o">=</span> <span class="n">differences</span> <span class="o">/</span> <span class="n">london_price_array</span>
 <span class="n">relative_differences</span>
 </pre></div>
 </div>
@@ -845,11 +744,13 @@
 </div>
 </div>
 </div>
-<p>In this example, relative differences are more variable than absolute differences.</p>
-<p>We can use <code class="docutils literal notranslate"><span class="pre">np.min</span></code> and <code class="docutils literal notranslate"><span class="pre">np.max</span></code> to compute the range of absolute differences:</p>
+</div>
+<div class="section" id="summarizing-relative-differences">
+<h2>Summarizing relative differences<a class="headerlink" href="#summarizing-relative-differences" title="Permalink to this headline">¶</a></h2>
+<p>One way to summarize these results is to report the range, which we can compute with <code class="docutils literal notranslate"><span class="pre">np.min</span></code> and <code class="docutils literal notranslate"><span class="pre">np.max</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">absolute_differences</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">absolute_differences</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">differences</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">differences</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -859,8 +760,8 @@
 </div>
 </div>
 </div>
-<p>The differences are between 2 dollars and $3.10.</p>
-<p>Here is the range of percent differences:</p>
+<p>The differences are between 2 dollars and $3.09.</p>
+<p>Here is the range of percentage differences:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">)</span>
@@ -873,12 +774,9 @@
 </div>
 </div>
 </div>
-<p>The range is quite wide: the lobster roll is only 33% more expensive in Boston; the egg sandwich is 117% percent more (that is, more than twice the price).</p>
+<p>The lobster roll is only 33% more expensive in Boston; the egg sandwich is 121% percent more (that is, more than twice the price).</p>
 <p><strong>Exercise:</strong> What are the percent differences if we put the Boston prices in the denominator?  What is the range of those differences?  Write a sentence that summarizes the results.</p>
-</div>
-<div class="section" id="summarizing-relative-differences">
-<h2>Summarizing relative differences<a class="headerlink" href="#summarizing-relative-differences" title="Permalink to this headline">¶</a></h2>
-<p>Because the range of relative differences is wide, it is not clear how we should best summarize it.  One option is the mean of the percent differences:</p>
+<p>Another way to summarize percentage differences is to report the mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">)</span>
@@ -940,8 +838,9 @@
 </div>
 </div>
 </div>
-<p>This code runs, and it produces an answer, but the answer is not what we expect.  In fact, it’s not easy to figure out where that number came from.</p>
-<p>To debug this code, I would start by splitting the computation into smaller steps and displaying the intermediate results.  For example, we might add the two lists and display the result, like this.</p>
+<p>This code runs, and it produces an answer, but the answer is a single number rather than the list we were expecting.</p>
+<p>You might have already spotted the error, but let’s suppose you did not.
+To debug this code, I would start by splitting the computation into smaller steps and displaying the intermediate results.  For example, we might add the two lists and display the result, like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_price</span> <span class="o">=</span> <span class="n">boston_price_list</span> <span class="o">+</span> <span class="n">london_price_list</span>
@@ -973,6 +872,7 @@
 </div>
 </div>
 </div>
+<p>And then computing the midpoint of each pair of prices, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">midpoint_price_array</span> <span class="o">=</span> <span class="n">total_price_array</span> <span class="o">/</span> <span class="mi">2</span>
@@ -987,7 +887,7 @@
 </div>
 </div>
 <p>As you gain experience, you will be able to write bigger chunks of code before testing.  But while you are getting started, keep it simple!</p>
-<p>As a general rule, each line of code should perform a small number of operations, often one.  And each cell should contain a small number of statements, often one.</p>
+<p>As a general rule, each line of code should perform a small number of operations, and each cell should contain a small number of statements.  When you are getting started, this number should be one.</p>
 </div>
 </div>
 

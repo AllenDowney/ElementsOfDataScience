@@ -291,13 +291,13 @@
 <h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/05_dictionaries.ipynb">click here to download it</a>.</p>
-<p>In the previous chapter we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.  In this chapter, you’ll learn about a new type called a “dictionary”, and we will use it to count the number of unique words and the number of times each one appears.</p>
+<p>In the previous chapter we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.  In this chapter, you’ll learn about a new type called a <strong>dictionary</strong>, and we’ll use it to count the number of unique words and the number of times each one appears.</p>
 <p>Along the way, you will also see how to use an index to select an element from a sequence (tuple, list, or array).  And you will learn a little about Unicode, which is used to represent letters, numbers, and punctuation for almost every language in the world.</p>
 <div class="section" id="indexing">
 <h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you have a variable named <code class="docutils literal notranslate"><span class="pre">t</span></code> that refers to a list or tuple.
-You can select an element using the bracket operator, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
-<p>For example, here’s a tuple of strings:</p>
+You can select an element using the bracket operator, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.<br />
+For example, here’s a tuple of strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="s1">&#39;zero&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span>
@@ -344,8 +344,8 @@ You can select an element using the bracket operator, <code class="docutils lite
 </div>
 </div>
 </div>
-<p>The number in brackets is called an “index” because it indicates which element we want.</p>
-<p>Tuples and lists use <a class="reference external" href="https://en.wikipedia.org/wiki/Zero-based_numbering">zero-based numbering</a>; that is, the index of the first element is 0.  Some other programming languages use one-based numbering.  There are pros and cons of both systems.</p>
+<p>The number in brackets is called an <strong>index</strong> because it indicates which element we want.
+Tuples and lists use <a class="reference external" href="https://en.wikipedia.org/wiki/Zero-based_numbering">zero-based numbering</a>; that is, the index of the first element is 0.  Some other programming languages use one-based numbering.  There are pros and cons of both systems.</p>
 <p>The index in brackets can also be a variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -374,22 +374,13 @@ You can select an element using the bracket operator, <code class="docutils lite
 </div>
 </div>
 <p>But if the index goes past the end of the list or tuple, you get an error.</p>
-<p>Run this line of code in the next cell to see what happens.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>The index has to be an integer; if it is any other type, you get an error.
-Run these lines of code in the next cell to see what happens.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mf">1.5</span><span class="p">]</span>
-<span class="n">t</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
+<p>Also, the index has to be an integer; if it is any other type, you get an error.</p>
 <p><strong>Exercise:</strong> You can use negative integers as indices.  Try using <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">-2</span></code> as indices, and see if you can figure out what they do.</p>
 </div>
 <div class="section" id="id1">
 <h2>Dictionaries<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>A dictionary is similar to a tuple or list, but in a dictionary, the index can be almost any type, not just an integer.</p>
-<p>We can create an empty dictionary like this:</p>
+<p>A dictionary is similar to a tuple or list, but in a dictionary, the index can be almost any type, not just an integer.
+We can create an empty dictionary like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
@@ -406,7 +397,8 @@ Run these lines of code in the next cell to see what happens.</p>
 </div>
 </div>
 </div>
-<p>If you display the dictionary, it shows each index and the corresponding value.</p>
+<p>In this example, the indices are the strings, <code class="docutils literal notranslate"><span class="pre">'one'</span></code> and <code class="docutils literal notranslate"><span class="pre">'two'</span></code>
+If you display the dictionary, it shows each index and the corresponding value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span>
@@ -433,8 +425,8 @@ Run these lines of code in the next cell to see what happens.</p>
 </div>
 </div>
 </div>
-<p>When we are talking about dictionaries, an index is usually called a “key”.  In this example, the keys are strings and the corresponding values are integers.</p>
-<p>A dictionary is also called a “map”, because it represents a mapping, in the sense of a correspondence, between keys and values.  So we might say that this dictionary “maps from” English number names to the corresponding integers.</p>
+<p>When we are talking about dictionaries, an index is usually called a <strong>key</strong>.  In this example, the keys are strings and the corresponding values are integers.</p>
+<p>A dictionary is also called a <strong>map</strong>, because it represents correspondence or “mapping”, between keys and values.  So we might say that this dictionary maps from English number names to the corresponding integers.</p>
 <p>You can use the bracket operator to select an element from a dictionary, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -449,11 +441,7 @@ Run these lines of code in the next cell to see what happens.</p>
 </div>
 </div>
 <p>But don’t forget the quotation marks.
-Try running the following line to see what happens.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="n">two</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>Python looks for a variable named <code class="docutils literal notranslate"><span class="pre">two</span></code> and doesn’t find one.</p>
+Without them, Python looks for a variable named <code class="docutils literal notranslate"><span class="pre">two</span></code> and doesn’t find one.</p>
 <p>To check whether a particular key is in a dictionary, you can use the special word <code class="docutils literal notranslate"><span class="pre">in</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -506,7 +494,7 @@ Try running the following line to see what happens.</p>
 </div>
 </div>
 </div>
-<p>But you can also change the value associated with a key:</p>
+<p>But you can change the value associated with a key:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
@@ -536,7 +524,7 @@ three
 </div>
 </div>
 </div>
-<p>If you want the keys and the values, a simple way to get them is to loop through the keys and look up the values:</p>
+<p>If you want the keys and the values, one way to get them is to loop through the keys and look up the values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
@@ -574,8 +562,8 @@ three 3
 </div>
 <div class="section" id="unique-words">
 <h2>Unique words<a class="headerlink" href="#unique-words" title="Permalink to this headline">¶</a></h2>
-<p>In the previous chapter we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.</p>
-<p>Now that we have dictionaries, we can also count the number of unique words and the number of times each one appears.</p>
+<p>In the previous chapter we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.
+Now that we have dictionaries, we can also count the number of unique words and the number of times each one appears.</p>
 <p>As we did in the previous chapter, we can read the text of <em>War and Peace</em> and count the number of words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -602,13 +590,6 @@ three 3
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
         <span class="n">unique_words</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
-    <span class="k">break</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\ufeff&#39;
 </pre></div>
 </div>
 </div>
@@ -659,10 +640,10 @@ by
 </div>
 </div>
 </div>
-<p>It looks like there are about 42,000 different words in the book, which is substantially less than the total number of words, about 560,000.</p>
-<p>But that’s not quite right, because we have not taken into account capitalization and punctuation.</p>
-<p><strong>Exercise:</strong> Before we deal with those problems, let’s practice with “nested loops”, that is, one loop inside another.</p>
-<p>Suppose you have a list of words, like this:</p>
+<p>It looks like there are about 42,000 different words in the book, which is substantially less than the total number of words, about 560,000.
+But that’s not quite right, because we have not taken into account capitalization and punctuation.</p>
+<p><strong>Exercise:</strong> Before we deal with that problem, let’s practice with <strong>nested loops</strong>, that is, one loop inside another.
+Suppose you have a list of words, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;War&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;Peace&#39;</span><span class="p">]</span>
@@ -688,33 +669,7 @@ by
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;the&#39;</span>
-<span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;the&#39;
-</pre></div>
-</div>
-</div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">lower</span></code> creates a new string; it does not modify the original string.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;THE&#39;</span>
-<span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;the&#39;
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span>
@@ -722,7 +677,7 @@ by
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;THE&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The&#39;
 </pre></div>
 </div>
 </div>
@@ -730,8 +685,7 @@ by
 <p>However, you can assign the new string back to the existing variable, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;THE&#39;</span>
-<span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -767,8 +721,8 @@ by
 </div>
 </div>
 </div>
-<p>In this example, <code class="docutils literal notranslate"><span class="pre">strip</span></code> removes all instances of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> from the beginning and end of the word, but not from the middle.</p>
-<p>But note that it makes a new word; it doesn’t modify the original:</p>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">strip</span></code> removes all instances of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> from the beginning and end of the word, but not from the middle.
+But note that it makes a new word; it doesn’t modify the original:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span>
@@ -796,8 +750,8 @@ by
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code> contains the most common punctuation marks, but as we’ll see, not all of them.</p>
-<p>Nevertheless, we can use it to handle most cases.  Here’s an example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code> contains the most common punctuation marks, but as we’ll see, not all of them.
+Nevertheless, we can use it to handle most cases.  Here’s an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;It&#39;s not given to people to judge what&#39;s right or wrong.&quot;</span>
@@ -824,28 +778,17 @@ wrong
 </div>
 </div>
 </div>
-<p>Notice that <code class="docutils literal notranslate"><span class="pre">strip</span></code> does not remove the apostrophe from the middle of <code class="docutils literal notranslate"><span class="pre">don't</span></code>, which is probably what we want.</p>
-<p>To see how well it works, I’ll select an arbitrary line from the file:</p>
+<p><code class="docutils literal notranslate"><span class="pre">strip</span></code> removes the period at the end of <code class="docutils literal notranslate"><span class="pre">wrong</span></code>, but not the apostrophes in <code class="docutils literal notranslate"><span class="pre">It's</span></code>, <code class="docutils literal notranslate"><span class="pre">don't</span></code> and <code class="docutils literal notranslate"><span class="pre">what's</span></code>.</p>
+<p>That’s good so far, but we have one more problem to solve.
+Here’s another line from the book.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
-<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">1000</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-    
-<span class="n">line</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;anyone, and so you don’t deserve to have them.”\n&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;anyone, and so you don’t deserve to have them.”&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>And try to remove punctuation from the words:</p>
+<p>Here’s what happens when we try to remove the punctuation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
@@ -868,7 +811,9 @@ them.”
 </div>
 </div>
 </div>
-<p>It words pretty well, but the last word is a problem because it ends with a quotation mark that is not in <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code>.  To fix this problem, we’ll use the following loop, which</p>
+<p>It removes the comma after <code class="docutils literal notranslate"><span class="pre">anyone</span></code>, but not the period and quotation mark after <code class="docutils literal notranslate"><span class="pre">them</span></code>.
+The problem is that this kind of quotation mark not in <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code>.</p>
+<p>To fix this problem, we’ll use the following loop, which</p>
 <ol class="simple">
 <li><p>Reads the file and builds a dictionary that contains all punctuation marks that appear in the book, then</p></li>
 <li><p>It uses the <code class="docutils literal notranslate"><span class="pre">join</span></code> function to concatenate the keys of the dictionary in a single string.</p></li>
