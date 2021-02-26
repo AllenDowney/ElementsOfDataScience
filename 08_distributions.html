@@ -289,8 +289,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-distribution-functions">
-   Probability distribution functions
+  <a class="reference internal nav-link" href="#probability-density-functions">
+   Probability Density Functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1311,6 +1311,13 @@ In this context, what I mean by a “model” is a simplified description of the
 <p>In this section, we’ll compute the CDF of a normal distribution and compare it to an empirical distribution of data.
 But before we get to real data, we’ll start with fake data.</p>
 <p>The following statement uses NumPy’s <code class="docutils literal notranslate"><span class="pre">random</span></code> library to generate 1000 values from a normal distribution with mean <code class="docutils literal notranslate"><span class="pre">0</span></code> and standard deviation <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -1388,8 +1395,8 @@ When we collect data in the real world, we do not expect it to fit a normal dist
 </ul>
 <p>How similar are the CDFs of the log-transformed incomes and the normal distribution?</p>
 </div>
-<div class="section" id="probability-distribution-functions">
-<h2>Probability distribution functions<a class="headerlink" href="#probability-distribution-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="probability-density-functions">
+<h2>Probability Density Functions<a class="headerlink" href="#probability-density-functions" title="Permalink to this headline">¶</a></h2>
 <p>We have seen two ways to represent distributions, PMFs and CDFs.  Now we’ll learn another way: a probability density function, or PDF.</p>
 <p><code class="docutils literal notranslate"><span class="pre">norm</span></code>, which we used to compute the normal CDF, can also compute the normal PDF:</p>
 <div class="cell docutils container">
