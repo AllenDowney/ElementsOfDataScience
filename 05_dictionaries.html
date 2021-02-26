@@ -123,7 +123,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes
+   Dataframes and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -847,15 +847,15 @@ The problem is that this kind of quotation mark not in <code class="docutils lit
 </div>
 <div class="section" id="word-frequencies">
 <h2>Word frequencies<a class="headerlink" href="#word-frequencies" title="Permalink to this headline">¶</a></h2>
-<p>In the previous section we counted the number of unique words, but we might also want to know how often each word appears.  Then we can find the most common and least common words in the book.</p>
-<p>To count the frequency of each word, we’ll make a dictionary that maps from each word to the number of times it appears.</p>
+<p>In the previous section we counted the number of unique words, but we might also want to know how often each word appears.  Then we can find the most common and least common words in the book.
+To count the frequency of each word, we’ll make a dictionary that maps from each word to the number of times it appears.</p>
 <p>Here’s an example that loops through a string and counts the number of times each letter appears.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;If everyone fought for their own convictions there would be no war.&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;Mississippi&#39;</span>
 
 <span class="n">letter_counts</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">letter_counts</span><span class="p">:</span>
         <span class="n">letter_counts</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
@@ -866,37 +866,16 @@ The problem is that this kind of quotation mark not in <code class="docutils lit
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;I&#39;: 1,
- &#39;f&#39;: 3,
- &#39; &#39;: 11,
- &#39;e&#39;: 7,
- &#39;v&#39;: 2,
- &#39;r&#39;: 5,
- &#39;y&#39;: 1,
- &#39;o&#39;: 8,
- &#39;n&#39;: 5,
- &#39;u&#39;: 2,
- &#39;g&#39;: 1,
- &#39;h&#39;: 3,
- &#39;t&#39;: 4,
- &#39;i&#39;: 3,
- &#39;w&#39;: 3,
- &#39;c&#39;: 2,
- &#39;s&#39;: 1,
- &#39;l&#39;: 1,
- &#39;d&#39;: 1,
- &#39;b&#39;: 1,
- &#39;a&#39;: 1,
- &#39;.&#39;: 1}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;M&#39;: 1, &#39;i&#39;: 4, &#39;s&#39;: 4, &#39;p&#39;: 2}
 </pre></div>
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement in the previous example uses a feature we have not seen before, an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause.</p>
-<p>Here’s how it works.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement here uses a feature we have not seen before, an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause.
+Here’s how it works.</p>
 <ol class="simple">
-<li><p>First, it checks whether the letter is already a key in the dictionary, <code class="docutils literal notranslate"><span class="pre">letter_counts</span></code>.</p></li>
-<li><p>If so, it runs the first statement, <code class="docutils literal notranslate"><span class="pre">letter_counts[x]</span> <span class="pre">+=</span> <span class="pre">1</span></code>, which increments the value associated with the letter, <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p>First, it checks whether the letter, <code class="docutils literal notranslate"><span class="pre">x</span></code>, is already a key in the dictionary, <code class="docutils literal notranslate"><span class="pre">letter_counts</span></code>.</p></li>
+<li><p>If so, it runs the first statement, <code class="docutils literal notranslate"><span class="pre">letter_counts[x]</span> <span class="pre">+=</span> <span class="pre">1</span></code>, which increments the value associated with the letter.</p></li>
 <li><p>Otherwise, it runs the second statement, <code class="docutils literal notranslate"><span class="pre">letter_counts[x]</span> <span class="pre">=</span> <span class="pre">1</span></code>, which adds <code class="docutils literal notranslate"><span class="pre">x</span></code> as a new key, with the value <code class="docutils literal notranslate"><span class="pre">1</span></code> indicating that we have seen the new letter once.</p></li>
 </ol>
 <p>The result is a dictionary that maps from each letter to the number of times it appears.</p>
@@ -908,7 +887,7 @@ The problem is that this kind of quotation mark not in <code class="docutils lit
 </div>
 </div>
 </div>
-<p>Then we use <code class="docutils literal notranslate"><span class="pre">collections.Counter</span></code> as a function to convert the dictionary to a <code class="docutils literal notranslate"><span class="pre">Counter</span></code> value:</p>
+<p>Then we use <code class="docutils literal notranslate"><span class="pre">collections.Counter</span></code> to convert the dictionary to a <code class="docutils literal notranslate"><span class="pre">Counter</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">letter_counts</span><span class="p">)</span>
@@ -930,13 +909,12 @@ The problem is that this kind of quotation mark not in <code class="docutils lit
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39; &#39;, 11), (&#39;o&#39;, 8), (&#39;e&#39;, 7)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;i&#39;, 4), (&#39;s&#39;, 4), (&#39;p&#39;, 2)]
 </pre></div>
 </div>
 </div>
 </div>
 <p>The result is a list of tuples, where each tuple contains a character and an integer.</p>
-<p>The most common character is a space, followed by <code class="docutils literal notranslate"><span class="pre">o</span></code> and <code class="docutils literal notranslate"><span class="pre">e</span></code>.</p>
 <p><strong>Exercise:</strong> Modify the loop from the previous exercise to count the frequency of the words in <em>War and Peace</em>; then print the 20 most common words and the number of times each one appears.</p>
 <p><strong>Exercise:</strong> You can run <code class="docutils literal notranslate"><span class="pre">most_common</span></code> with no value in parentheses, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">word_freq_pairs</span> <span class="o">=</span> <span class="n">counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>

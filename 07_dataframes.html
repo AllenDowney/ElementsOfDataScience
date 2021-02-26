@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dataframes &#8212; Elements of Data Science</title>
+    <title>Dataframes and Series &#8212; Elements of Data Science</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -123,7 +123,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Dataframes
+   Dataframes and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -247,8 +247,8 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dataframes-and-series">
-   DataFrames and Series
+  <a class="reference internal nav-link" href="#reading-the-data">
+   Reading the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -287,8 +287,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resampling">
-   Resampling
+  <a class="reference internal nav-link" href="#weighted-mean">
+   Weighted mean
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -302,41 +307,78 @@
         
               <div>
                 
-  <div class="section" id="dataframes">
-<h1>Dataframes<a class="headerlink" href="#dataframes" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dataframes-and-series">
+<h1>Dataframes and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/07_dataframes.ipynb">click here to download it</a>.</p>
-<p>This chapter introduces Pandas, which is a powerful library for working with data.  Pandas provides functions for reading data from files, and it provides two new types for working with data, DataFrames and Series.</p>
-<p>We’ll use these tools to estimate the average birth weight of babies in the U.S.  This example demonstrates the important steps in almost any data science project:</p>
+<p>This chapter introduces Pandas, which is a powerful library for working with data.  Pandas provides functions for reading and writing data files, exploring and analyzing data, and generating visualizations.  And it provides two new types for working with data, <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
+<p>We will use these tools to answer a data question: what is the average birth weight of babies in the United States?
+This example will demonstrate important steps in almost any data science project:</p>
 <ol class="simple">
 <li><p>Identifying data that can answer a question.</p></li>
 <li><p>Obtaining the data and loading it in Python.</p></li>
 <li><p>Checking the data and dealing with errors.</p></li>
-<li><p>Selecting the relevant subsets from the data.</p></li>
+<li><p>Selecting relevant subsets from the data.</p></li>
 <li><p>Using histograms to visualize a distribution of values.</p></li>
 <li><p>Using summary statistics to describe the data in a way that best answers the question.</p></li>
 <li><p>Considering possible sources of error and limitations in our conclusions.</p></li>
 </ol>
-<p>Because this chapter presents a data science project from end to end, it is a little longer than some of the previous chapters.  So, hang in there!</p>
-<div class="section" id="dataframes-and-series">
-<h2>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">¶</a></h2>
-<p>The fundamental goal of data science is to use data to answer questions and guide decision making.</p>
-<p>As an example, we’ll start with a simple question: what is the average birth weight of babies in the United States?</p>
-<p>To answer a question like this, we have to find an appropriate dataset or run an experiment to collect it.  Then we have to get the data into our development environment and prepare it for analysis, which involves cleaning and validation.</p>
-<p>For this question we’ll use data from the <a class="reference external" href="https://www.cdc.gov/nchs/nsfg/index.htm">National Survey of Family Growth</a>, which is available from the National Center for Health Statistics.</p>
-<p>Their 2013-2015 dataset includes information about a sample of women in the U.S. and their children.</p>
-<p>The Python library we’ll use to read and analyze data is Pandas, which we’ll import as <code class="docutils literal notranslate"><span class="pre">pd</span></code>.</p>
+<p>Let’s start by getting the data.</p>
+<div class="section" id="reading-the-data">
+<h2>Reading the data<a class="headerlink" href="#reading-the-data" title="Permalink to this headline">¶</a></h2>
+<p>We’ll use data from the <a class="reference external" href="https://www.cdc.gov/nchs/nsfg/index.htm">National Survey of Family Growth</a> (NSFG), which is available from the National Center for Health Statistics.</p>
+<p>To download the data, you have to agree to the <a class="reference external" href="https://www.cdc.gov/nchs/data_access/ftp_dua.htm">Data User’s Agreement</a>.
+You should read those terms carefully, but let me draw your attention to what I think is the most important one:</p>
+<blockquote>
+<div><p>Make no attempt to learn the identity of any person or establishment included in these data.</p>
+</div></blockquote>
+<p>NSFG respondents provide honest answers to questions of the most personal nature with the expectation that their identities will not be revealed.
+As ethical data scientists, we should respect their privacy and adhere to the terms of use.</p>
+<p>Respondents to the NSFG provide general information about themselves, which is stored in the respondent file, and information about each time they have been pregnant, which is stored in the pregnancy file.</p>
+<p>We will work with the pregnancy file, which contains one row for each pregnancy and 248 variables.
+Each variable represents responses to a question on the NSFG questionnaire.</p>
+<p>The data is stored in a <a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SS8JB4_19.x/com.ibm.wbpm.wid.integ.doc/topics/rfixwidth.html">fixed-width format</a>, which means that every row is the same length and each variable spans a fixed range of columns.</p>
+<p>In addition to the data file, we also need the data dictionary, which includes the names of the variables and specifies the range of columns where each variable appears.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dict_file</span> <span class="o">=</span> <span class="s1">&#39;2015_2017_FemPregSetup.dct&#39;</span>
+<span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;2015_2017_FemPregData.dat&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Pandas can read data in most common formats, including CSV, Excel, and the format the NSFG data is in, HDF5.  <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">You can read about HDF here</a>.</p>
+<p>Pandas can read data in most common formats, including CSV, Excel, and fixed-width format, but it cannot read the data dictionary, which is in Stata format.
+For that, we’ll use a Python library called <code class="docutils literal notranslate"><span class="pre">parse_stata_dict</span></code>.</p>
+<p>From <code class="docutils literal notranslate"><span class="pre">parse_stata_dict</span></code>, we’ll import <code class="docutils literal notranslate"><span class="pre">parse_stata_dict</span></code>, which reads the data dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;nsfg.hdf5&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statadict</span> <span class="kn">import</span> <span class="n">parse_stata_dict</span>
+
+<span class="n">stata_dict</span> <span class="o">=</span> <span class="n">parse_stata_dict</span><span class="p">(</span><span class="n">dict_file</span><span class="p">)</span>
+<span class="n">stata_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7ff25831bdd0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is an object that contains</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">names</span></code>, which is a list of variable names, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">colspecs</span></code>, which is a list of tuples.</p></li>
+</ul>
+<p>Each tuple in <code class="docutils literal notranslate"><span class="pre">colspecs</span></code> specifies the first and last column where a variable appears.</p>
+<p>These values are exactly the arguments we need to use <code class="docutils literal notranslate"><span class="pre">read_fwf</span></code>, which is the Pandas function that reads a file in fixed-width format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> 
+                   <span class="n">names</span><span class="o">=</span><span class="n">stata_dict</span><span class="o">.</span><span class="n">names</span><span class="p">,</span> 
+                   <span class="n">colspecs</span><span class="o">=</span><span class="n">stata_dict</span><span class="o">.</span><span class="n">colspecs</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">nsfg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -347,9 +389,8 @@
 </div>
 </div>
 </div>
-<p>The result from <code class="docutils literal notranslate"><span class="pre">read_hdf()</span></code> is a DataFrame, which is the primary type Pandas uses to store data.</p>
-<p>For each woman who participated in the survey, this DataFrame has one row for each pregnancy and one column for each survey question.</p>
-<p>DataFrame has a method called <code class="docutils literal notranslate"><span class="pre">head()</span></code> that shows the first 5 rows:</p>
+<p>The result from <code class="docutils literal notranslate"><span class="pre">read_hdf()</span></code> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, which is the primary type Pandas uses to store data.
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">head()</span></code> that shows the first 5 rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -375,97 +416,160 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>caseid</th>
-      <th>outcome</th>
-      <th>birthwgt_lb1</th>
-      <th>birthwgt_oz1</th>
-      <th>prglngth</th>
-      <th>nbrnaliv</th>
-      <th>agecon</th>
-      <th>agepreg</th>
-      <th>birthord</th>
-      <th>hpagelb</th>
-      <th>wgt2013_2015</th>
+      <th>CASEID</th>
+      <th>PREGORDR</th>
+      <th>HOWPREG_N</th>
+      <th>HOWPREG_P</th>
+      <th>MOSCURRP</th>
+      <th>NOWPRGDK</th>
+      <th>PREGEND1</th>
+      <th>PREGEND2</th>
+      <th>HOWENDDK</th>
+      <th>NBRNALIV</th>
+      <th>...</th>
+      <th>SECU</th>
+      <th>SEST</th>
+      <th>CMINTVW</th>
+      <th>CMLSTYR</th>
+      <th>CMJAN3YR</th>
+      <th>CMJAN4YR</th>
+      <th>CMJAN5YR</th>
+      <th>QUARTER</th>
+      <th>PHASE</th>
+      <th>INTVWYEAR</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>60418</td>
+      <td>70627</td>
       <td>1</td>
-      <td>5.0</td>
-      <td>4.0</td>
-      <td>40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>2000</td>
-      <td>2075.0</td>
-      <td>1.0</td>
-      <td>22.0</td>
-      <td>3554.964843</td>
+      <td>...</td>
+      <td>3</td>
+      <td>322</td>
+      <td>1394</td>
+      <td>1382</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>1333</td>
+      <td>18</td>
+      <td>1</td>
+      <td>2016</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>60418</td>
-      <td>1</td>
-      <td>4.0</td>
-      <td>12.0</td>
-      <td>36</td>
+      <td>70627</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>2291</td>
-      <td>2358.0</td>
-      <td>2.0</td>
-      <td>25.0</td>
-      <td>3554.964843</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>3</td>
+      <td>322</td>
+      <td>1394</td>
+      <td>1382</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>1333</td>
+      <td>18</td>
+      <td>1</td>
+      <td>2016</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>60418</td>
-      <td>1</td>
-      <td>5.0</td>
-      <td>4.0</td>
-      <td>36</td>
+      <td>70627</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>3241</td>
-      <td>3308.0</td>
-      <td>3.0</td>
-      <td>52.0</td>
-      <td>3554.964843</td>
+      <td>...</td>
+      <td>3</td>
+      <td>322</td>
+      <td>1394</td>
+      <td>1382</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>1333</td>
+      <td>18</td>
+      <td>1</td>
+      <td>2016</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>60419</td>
-      <td>6</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>33</td>
-      <td>NaN</td>
-      <td>3650</td>
+      <td>70628</td>
+      <td>1</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>2484.535358</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>2</td>
+      <td>366</td>
+      <td>1409</td>
+      <td>1397</td>
+      <td>1369</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>23</td>
+      <td>1</td>
+      <td>2017</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>60420</td>
+      <td>70628</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>2</td>
+      <td>366</td>
+      <td>1409</td>
+      <td>1397</td>
+      <td>1369</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>23</td>
       <td>1</td>
-      <td>8.0</td>
-      <td>13.0</td>
-      <td>41</td>
-      <td>1.0</td>
-      <td>2191</td>
-      <td>2266.0</td>
-      <td>1.0</td>
-      <td>24.0</td>
-      <td>2903.782914</td>
+      <td>2017</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 248 columns</p>
 </div></div></div>
 </div>
-<p>DataFrames provide “attributes” and “methods”.</p>
-<p>A method is a function that is associated with a particular type.  For example, in a previous chapter, we used the <code class="docutils literal notranslate"><span class="pre">split</span></code> method, which is a function that works with strings.</p>
-<p>An attribute is a variable associated with a particular type.  For example, DataFrame has an attribute called <code class="docutils literal notranslate"><span class="pre">shape</span></code>, which is the number of rows and columns:</p>
+<p>The first column is <code class="docutils literal notranslate"><span class="pre">CASEID</span></code>, which is a unique identifier for each respondent.
+The first three rows have the same <code class="docutils literal notranslate"><span class="pre">CASEID</span></code>, so this respondent reported information about three pregnancies.</p>
+<p>The second column is <code class="docutils literal notranslate"><span class="pre">PREGORDR</span></code>, which indicates the order of the pregnancies for each respondent, starting from <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>We will learn more about the other variables as we go along.</p>
+<p>In addition to methods like <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> has several <strong>attributes</strong>, which are variables associated with a particular type.  For example, <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> has an attribute called <code class="docutils literal notranslate"><span class="pre">shape</span></code>, which is the number of rows and columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="o">.</span><span class="n">shape</span>
@@ -473,13 +577,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9358, 11)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9553, 248)
 </pre></div>
 </div>
 </div>
 </div>
-<p>There are 9358 rows in this dataset, one for each pregnancy, and 11 columns, one for each survey question.</p>
-<p>DataFrame also has an attribute called <code class="docutils literal notranslate"><span class="pre">columns</span></code>, which contains the column names:</p>
+<p>There are 9553 rows in this dataset, one for each pregnancy, and 248 columns, one for each variable.</p>
+<p><code class="docutils literal notranslate"><span class="pre">nsfg</span></code> also has an attribute called <code class="docutils literal notranslate"><span class="pre">columns</span></code>, which contains the column names:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="o">.</span><span class="n">columns</span>
@@ -487,41 +591,35 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;caseid&#39;, &#39;outcome&#39;, &#39;birthwgt_lb1&#39;, &#39;birthwgt_oz1&#39;, &#39;prglngth&#39;,
-       &#39;nbrnaliv&#39;, &#39;agecon&#39;, &#39;agepreg&#39;, &#39;birthord&#39;, &#39;hpagelb&#39;, &#39;wgt2013_2015&#39;],
-      dtype=&#39;object&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;CASEID&#39;, &#39;PREGORDR&#39;, &#39;HOWPREG_N&#39;, &#39;HOWPREG_P&#39;, &#39;MOSCURRP&#39;, &#39;NOWPRGDK&#39;,
+       &#39;PREGEND1&#39;, &#39;PREGEND2&#39;, &#39;HOWENDDK&#39;, &#39;NBRNALIV&#39;,
+       ...
+       &#39;SECU&#39;, &#39;SEST&#39;, &#39;CMINTVW&#39;, &#39;CMLSTYR&#39;, &#39;CMJAN3YR&#39;, &#39;CMJAN4YR&#39;,
+       &#39;CMJAN5YR&#39;, &#39;QUARTER&#39;, &#39;PHASE&#39;, &#39;INTVWYEAR&#39;],
+      dtype=&#39;object&#39;, length=248)
 </pre></div>
 </div>
 </div>
 </div>
-<p>The column names are stored in an <code class="docutils literal notranslate"><span class="pre">Index</span></code>, which is another Pandas type, similar to a list:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">nsfg</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.indexes.base.Index
-</pre></div>
-</div>
-</div>
-</div>
+<p>The column names are stored in an <code class="docutils literal notranslate"><span class="pre">Index</span></code>, which is another Pandas type, similar to a list.</p>
 <p>Based on the column names, you might be able to guess what some of the variables are, but in general you have to read the documentation.</p>
-<p><strong>Exercise:</strong> When you work with datasets like the NSFG, it is important to read the documentation carefully. If you interpret a variable incorrectly, you can generate nonsense results and never realize it. So, before we start looking at data, let’s get familiar with the NSFG codebook, which describes every variable.</p>
+<p>When you work with datasets like the NSFG, it is important to read the documentation carefully. If you interpret a variable incorrectly, you can generate nonsense results and never realize it. So, before we start looking at data, let’s get familiar with the NSFG codebook, which describes every variable.</p>
+<p>Until recently, the NSFG codebook was available in an interactive online format.
+Unfortunately, it is no longer available, so we have to make due with <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf">this PDF file</a>, which contains a short description of each variable.</p>
+<p>If you search that document for “weigh at birth” you should find these variables related to birth weight.</p>
 <ul class="simple">
-<li><p>Follow <a class="reference external" href="https://www.icpsr.umich.edu/icpsradmin/nsfg/index?studyNumber=9999">this link</a> to get to the interactive codebook.</p></li>
-<li><p>Type “birthweight” in the search field, un-select the checkbox that says “Search variable name only”, and press “Search”.  You should see a list of variables related to birthweight.</p></li>
-<li><p>Click on “BIRTHWGT_LB1” and read the documentation of this variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BIRTHWGT_LB1</span></code>: Birthweight in Pounds - 1st baby from this pregnancy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BIRTHWGT_OZ1</span></code>: Birthweight in Ounces - 1st baby from this pregnancy</p></li>
 </ul>
-<p>What is the most common value of this variable?</p>
+<p>There are similar variables for a 2nd or 3rd baby, in the case of twins or triplets.
+For now we will focus on the first baby from each pregnancy, and we will come back to the issue of multiple births.</p>
 </div>
 <div class="section" id="series">
 <h2>Series<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h2>
-<p>In many ways a DataFrame is like a Python dictionary, where the column names are the keys and the columns are the values.  You can select a column from a DataFrame using the bracket operator, with a string as the key.</p>
+<p>In many ways a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is like a Python dictionary, where the column names are the keys and the columns are the values.  You can select a column from a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> using the bracket operator, with a string as the key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;birthwgt_lb1&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_LB1&#39;</span><span class="p">]</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">pounds</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -532,9 +630,9 @@
 </div>
 </div>
 </div>
-<p>The result is a Series, which is another Pandas type.</p>
-<p>In this case the Series contains the birth weights, in pounds, of the live births (or in the case of multiple births, the first baby).</p>
-<p><code class="docutils literal notranslate"><span class="pre">head()</span></code> shows the first five values in the series, the name of the series, and the datatype:</p>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">Series</span></code>, which is another Pandas type.
+In this case the <code class="docutils literal notranslate"><span class="pre">Series</span></code> contains the birth weight, in pounds, for each live birth.</p>
+<p><code class="docutils literal notranslate"><span class="pre">head</span></code> shows the first five values in the series, the name of the series, and the data type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -542,45 +640,34 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    5.0
-1    4.0
-2    5.0
-3    NaN
-4    8.0
-Name: birthwgt_lb1, dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    7.0
+1    NaN
+2    9.0
+3    6.0
+4    7.0
+Name: BIRTHWGT_LB1, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>Remember that <code class="docutils literal notranslate"><span class="pre">head</span></code> is a method, not an attribute; to call it, we have to use parentheses, <code class="docutils literal notranslate"><span class="pre">()</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">float64</span></code> means that these values are 64-bit floating-point numbers.</p>
-<p>One of the values is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, which stands for “Not a Number”.  NaN is a special value used to indicate invalid or missing data.  In this example, the pregnancy did not end in live birth, so birth weight is inapplicable.</p>
-<p><strong>Exercise:</strong>  The variable <code class="docutils literal notranslate"><span class="pre">birthwgt_oz1</span></code> contains the ounces part of birth weight.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.icpsr.umich.edu/icpsradmin/nsfg/variable/815971?studyNumber=9999">Read the documentation of this variable</a>.  What is the “universe” of this variable; that is, when is it applicable?</p></li>
-<li><p>Select the column <code class="docutils literal notranslate"><span class="pre">'birthwgt_oz1'</span></code> from the <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> DataFrame and assign it to a new variable called <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p></li>
-<li><p>Display the first 5 elements of <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p></li>
-</ul>
-<p><strong>Exercise:</strong> The Pandas types we have seen so far at DataFrame, Index, and Series.  You can find the documentation of these types at:</p>
+<p>One of the values is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, which stands for “Not a Number”.  <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is a special value used to indicate invalid or missing data.  In this example, the pregnancy did not end in live birth, so birth weight is inapplicable.</p>
+<p><strong>Exercise:</strong>  The variable <code class="docutils literal notranslate"><span class="pre">BIRTHWGT_OZ1</span></code> contains the ounces part of birth weight.</p>
+<p>Select the column <code class="docutils literal notranslate"><span class="pre">'BIRTHWGT_OZ1'</span></code> from the <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> DataFrame and assign it to a new variable called <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.  Then display the first 5 elements of <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p>
+<p><strong>Exercise:</strong> The Pandas types we have seen so far are <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">Index</span></code>, and <code class="docutils literal notranslate"><span class="pre">Series</span></code>.  You can find the documentation of these types at:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">DataFrame</a></p></li>
 <li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html">Index</a></p></li>
 <li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html">Series</a></p></li>
 </ul>
-<p>For beginners, this documentation can be overwhelming.  I don’t recommend trying to read it all now.  But you might want to skim it so you know where to look later.</p>
-<p>For each type, the documentation lists the associated attributes (which are like variables) and methods (which are like functions).</p>
+<p>This documentation can be overwhelming; I don’t recommend trying to read it all now.  But you might want to skim it so you know where to look later.</p>
 </div>
 <div class="section" id="validation">
 <h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
-<p>At this point we have identified the columns we need to answer the question.</p>
-<ul class="simple">
-<li><p>I’ll select <code class="docutils literal notranslate"><span class="pre">birthwgt_lb1</span></code>, which contains the pound part of birth weight, and assign it to <code class="docutils literal notranslate"><span class="pre">pounds</span></code>.</p></li>
-<li><p>And I’ll select <code class="docutils literal notranslate"><span class="pre">birthwgt_oz1</span></code>, which contains the ounce part of birth weight, and assign it to <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p></li>
-</ul>
+<p>At this point we have identified the columns we need to answer the question and assigned them to variables named <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ounces</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;birthwgt_oz1&#39;</span><span class="p">]</span>
-<span class="n">pounds</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;birthwgt_lb1&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_LB1&#39;</span><span class="p">]</span>
+<span class="n">ounces</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_OZ1&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -594,7 +681,7 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 </div>
 </div>
-<p>By default, the results are sorted with the most frequent value first, so I use <code class="docutils literal notranslate"><span class="pre">sort_index</span></code> to sort them by value instead, with the lightest babies first and heaviest babies last.</p>
+<p>By default, the results are sorted with the most frequent value first, but we can use <code class="docutils literal notranslate"><span class="pre">sort_index</span></code> to sort them by value instead, with the lightest babies first and heaviest babies last.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
@@ -602,32 +689,78 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0        6
-1.0       34
-2.0       47
-3.0       67
-4.0      196
-5.0      586
-6.0     1666
-7.0     2146
-8.0     1168
-9.0      363
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0        2
+1.0       28
+2.0       46
+3.0       76
+4.0      179
+5.0      570
+6.0     1644
+7.0     2268
+8.0     1287
+9.0      396
 10.0      82
 11.0      17
-12.0       7
-13.0       2
-14.0       2
-17.0       1
-98.0       1
-99.0      94
-Name: birthwgt_lb1, dtype: int64
+12.0       2
+13.0       1
+14.0       1
+98.0       2
+99.0      89
+Name: BIRTHWGT_LB1, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<p>As we’d expect, the most frequent values are 6-8 pounds, but there are some very light babies, a few very heavy babies, and two special values, 98, and 99.  <a class="reference external" href="https://www.icpsr.umich.edu/icpsradmin/nsfg/variable/815970?studyNumber=9999">According to the codebook</a>, these values indicate that the respondent declined to answer the question (98) or did not know (99).</p>
-<p>We can validate the results by comparing them to the codebook, which lists the values and their frequencies.  The results here agree with the codebook, so we have some confidence that we are reading and interpreting the data correctly.</p>
-<p><strong>Exercise:</strong> In the <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> DataFrame, the column <code class="docutils literal notranslate"><span class="pre">'outcome'</span></code> encodes the outcome of each pregnancy as shown below:</p>
+<p>As we’d expect, the most frequent values are 6-8 pounds, but there are some very light babies, a few very heavy babies, and two special values, 98, and 99.  According to the codebook, these values indicate that the respondent declined to answer the question (98) or did not know (99).</p>
+<p>We can validate the results by comparing them to the codebook, which lists the values and their frequencies.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p>label</p></th>
+<th class="head"><p>Total</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>.</p></td>
+<td><p>INAPPLICABLE</p></td>
+<td><p>2863</p></td>
+</tr>
+<tr class="row-odd"><td><p>0-5</p></td>
+<td><p>UNDER 6 POUNDS</p></td>
+<td><p>901</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>6 POUNDS</p></td>
+<td><p>1644</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>7 POUNDS</p></td>
+<td><p>2268</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>8 POUNDS</p></td>
+<td><p>1287</p></td>
+</tr>
+<tr class="row-odd"><td><p>9-95</p></td>
+<td><p>9 POUNDS OR MORE</p></td>
+<td><p>499</p></td>
+</tr>
+<tr class="row-even"><td><p>98</p></td>
+<td><p>Refused</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>99</p></td>
+<td><p>Don’t know</p></td>
+<td><p>89</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Total</p></td>
+<td><p>9553</p></td>
+</tr>
+</tbody>
+</table>
+<p>The results from <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> agree with the codebook, so we have some confidence that we are reading and interpreting the data correctly.</p>
+<p><strong>Exercise:</strong> In the <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> DataFrame, the column <code class="docutils literal notranslate"><span class="pre">'OUTCOME'</span></code> encodes the outcome of each pregnancy as shown below:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
@@ -655,11 +788,11 @@ Name: birthwgt_lb1, dtype: int64
 </tr>
 </tbody>
 </table>
-<p>Use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to display the values in this column and how many times each value appears.  Compare the results to the codebook, <a class="reference external" href="https://www.icpsr.umich.edu/icpsradmin/nsfg/variable/816124?studyNumber=9999">which you can find here</a>.  According to the codebook, how many live births are described in this dataset?  How many did you find in the DataFrame?</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to display the values in this column and how many times each value appears.  Are the results consistent with <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf">the codebook</a>?</p>
 </div>
 <div class="section" id="summary-statistics">
 <h2>Summary statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this headline">¶</a></h2>
-<p>Another way to validate the data is with <code class="docutils literal notranslate"><span class="pre">describe</span></code>, which computes summary statistics like the mean, standard deviation, min, and max.</p>
+<p>Another way to validate the data is with <code class="docutils literal notranslate"><span class="pre">describe</span></code>, which computes summary statistics like the mean, standard deviation, minimum, and maximum.</p>
 <p>Here are the results for <code class="docutils literal notranslate"><span class="pre">pounds</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -668,23 +801,24 @@ Name: birthwgt_lb1, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    6485.000000
-mean        8.055204
-std        11.178893
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    6690.000000
+mean        8.008819
+std        10.771360
 min         0.000000
 25%         6.000000
 50%         7.000000
 75%         8.000000
 max        99.000000
-Name: birthwgt_lb1, dtype: float64
+Name: BIRTHWGT_LB1, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">count</span></code> is the number of values, not including <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">mean</span></code> and <code class="docutils literal notranslate"><span class="pre">std</span></code> are the mean and standard deviation.</p>
-<p><code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> are the minimum and maximum values, and in between are the 25th, 50th, and 75th percentiles.  The 50th percentile is the median.</p>
-<p>The mean is about 8.05, but that doesn’t mean much because it includes the special values 98 and 99.  Before we can really compute the mean, we have to replace those values with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> to identify them as missing data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">count</span></code> is the number of values, not including <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.
+For this variable, there are 6690 value that are not <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mean</span></code> and <code class="docutils literal notranslate"><span class="pre">std</span></code> are the mean and standard deviation.
+<code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> are the minimum and maximum values, and in between are the 25th, 50th, and 75th percentiles.  The 50th percentile is the median.</p>
+<p>The mean is about <code class="docutils literal notranslate"><span class="pre">8.05</span></code>, but that doesn’t mean much because it includes the special values 98 and 99.  Before we can really compute the mean, we have to replace those values with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> to identify them as missing data.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">replace()</span></code> method does what we want:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -696,8 +830,8 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">replace</span></code> takes a list of the values we want to replace and the value we want to replace them with.  <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> means we are getting the special value <code class="docutils literal notranslate"><span class="pre">NaN</span></code> from the NumPy library, which is imported as <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
-<p>The result from <code class="docutils literal notranslate"><span class="pre">replace()</span></code> is a new Series, which I assign to <code class="docutils literal notranslate"><span class="pre">pounds_clean</span></code>.</p>
-<p>If we run <code class="docutils literal notranslate"><span class="pre">describe</span></code> again, we see that <code class="docutils literal notranslate"><span class="pre">count</span></code> includes only the valid values.</p>
+<p>The result from <code class="docutils literal notranslate"><span class="pre">replace()</span></code> is a new Series, which I assign to <code class="docutils literal notranslate"><span class="pre">pounds_clean</span></code>.
+If we run <code class="docutils literal notranslate"><span class="pre">describe</span></code> again, we see that <code class="docutils literal notranslate"><span class="pre">count</span></code> includes only the valid values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds_clean</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -705,42 +839,39 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    6390.000000
-mean        6.703286
-std         1.429265
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    6599.000000
+mean        6.754357
+std         1.383268
 min         0.000000
 25%         6.000000
 50%         7.000000
 75%         8.000000
-max        17.000000
-Name: birthwgt_lb1, dtype: float64
+max        14.000000
+Name: BIRTHWGT_LB1, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>The mean of the new series is about 6.7 pounds.</p>
-<p>Remember that the mean of the original series was more than 8 pounds.</p>
-<p>It makes a big difference when you remove a few 99-pound babies!</p>
-<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">describe</span></code> to summarize <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p>
-<p>Then use <code class="docutils literal notranslate"><span class="pre">replace</span></code> to replace the special values 98 and 99 with NaN, and assign the result to <code class="docutils literal notranslate"><span class="pre">ounces_clean</span></code>.</p>
-<p>Run <code class="docutils literal notranslate"><span class="pre">describe</span></code> again.  How much does this cleaning affect the results?</p>
-<p><strong>Exercise:</strong> In the <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> DataFrame, the column <code class="docutils literal notranslate"><span class="pre">'nbrnaliv'</span></code> records the number of babies born alive at the end of each pregnancy.</p>
-<p>If you use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to view the responses, you’ll see that the value <code class="docutils literal notranslate"><span class="pre">8</span></code> appears once, and if you <a class="reference external" href="https://www.icpsr.umich.edu/icpsradmin/nsfg/variable/815953?studyNumber=9999">consult the codebook</a>, you’ll see that this value indicates that the respondent refused to answer the question.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">replace</span></code> to replace this value with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>, then display the responses again and confirm that they are consistent with the codebook.</p>
+<p>The mean of the new series is about 6.7 pounds.
+Remember that the mean of the original series was more than 8 pounds.
+It makes a big difference when you remove a few 99-pound babies!</p>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">describe</span></code> to summarize <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.<br />
+Then use <code class="docutils literal notranslate"><span class="pre">replace</span></code> to replace the special values 98 and 99 with NaN, and assign the result to <code class="docutils literal notranslate"><span class="pre">ounces_clean</span></code>.
+Run <code class="docutils literal notranslate"><span class="pre">describe</span></code> again.  How much does this cleaning affect the results?</p>
 </div>
 <div class="section" id="series-arithmetic">
 <h2>Series arithmetic<a class="headerlink" href="#series-arithmetic" title="Permalink to this headline">¶</a></h2>
-<p>Now we want to combine <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces</span></code> into a single Series that contains total birth weight.</p>
-<p>Arithmetic operators work with Series objects; so, for example, to convert <code class="docutils literal notranslate"><span class="pre">pounds</span></code> to ounces, we could write</p>
+<p>Now we want to combine <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces</span></code> into a single Series that contains total birth weight.
+Arithmetic operators work with Series objects; so, for example, to convert <code class="docutils literal notranslate"><span class="pre">pounds</span></code> to ounces, we could write</p>
 <p><code class="docutils literal notranslate"><span class="pre">pounds</span> <span class="pre">*</span> <span class="pre">16</span></code></p>
 <p>Then we could add in <code class="docutils literal notranslate"><span class="pre">ounces</span></code> like this</p>
 <p><code class="docutils literal notranslate"><span class="pre">pounds</span> <span class="pre">*</span> <span class="pre">16</span> <span class="pre">+</span> <span class="pre">ounces</span></code></p>
 <p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">pounds_clean</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces_clean</span></code> to compute the total birth weight expressed in kilograms (there are roughly 2.2 pounds per kilogram).  What is the mean birth weight in kilograms?</p>
-<p><strong>Exercise:</strong> For each pregnancy in the NSFG dataset, the variable <code class="docutils literal notranslate"><span class="pre">'agecon'</span></code> encodes the respondent’s age at conception, and <code class="docutils literal notranslate"><span class="pre">'agepreg'</span></code> the respondent’s age at the end of the pregnancy.</p>
+<p><strong>Exercise:</strong> For each pregnancy in the NSFG dataset, the variable <code class="docutils literal notranslate"><span class="pre">'AGECON'</span></code> encodes the respondent’s age at conception, and <code class="docutils literal notranslate"><span class="pre">'AGEPREG'</span></code> the respondent’s age at the end of the pregnancy.</p>
 <p>Both variables are recorded as integers with two implicit decimal places, so the value <code class="docutils literal notranslate"><span class="pre">2575</span></code> means that the respondent’s age was <code class="docutils literal notranslate"><span class="pre">25.75</span></code>.</p>
 <ul class="simple">
 <li><p>Read the documentation of these variables.  Are there any special values we have to deal with?</p></li>
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">'agecon'</span></code> and <code class="docutils literal notranslate"><span class="pre">'agepreg'</span></code>, divide them by <code class="docutils literal notranslate"><span class="pre">100</span></code>, and assign them to variables named <code class="docutils literal notranslate"><span class="pre">agecon</span></code> and <code class="docutils literal notranslate"><span class="pre">agepreg</span></code>.</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">'AGECON'</span></code> and <code class="docutils literal notranslate"><span class="pre">'AGEPREG'</span></code>, divide them by <code class="docutils literal notranslate"><span class="pre">100</span></code>, and assign them to variables named <code class="docutils literal notranslate"><span class="pre">agecon</span></code> and <code class="docutils literal notranslate"><span class="pre">agepreg</span></code>.</p></li>
 <li><p>Compute the difference, which is an estimate of the duration of the pregnancy.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> to compute the mean duration and other summary statistics.</p></li>
 </ul>
@@ -748,8 +879,8 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 <div class="section" id="histograms">
 <h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h2>
-<p>Let’s get back to the original queston: what is the average birth weight for babies in the U.S.?</p>
-<p>As an answer we <em>could</em> take the results from the previous section and compute the mean:</p>
+<p>Let’s get back to the original queston: what is the average birth weight for babies in the U.S.?<br />
+As an answer we <em>could</em> take the results from the previous section and compute the mean:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds_clean</span> <span class="o">=</span> <span class="n">pounds</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
@@ -761,26 +892,20 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.120977576711251
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.180217889908257
 </pre></div>
 </div>
 </div>
 </div>
 <p>But it is risky to compute a summary statistic, like the mean, before we look at the whole distribution of values.</p>
-<p>A “distribution” is a set of possible values and their frequencies.  One way to visualize a distribution is a histogram, which shows values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis and their frequencies on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis.</p>
-<p>We’ll use Pyplot to make histograms; as usual, we import it with the short name <code class="docutils literal notranslate"><span class="pre">plt</span></code>:</p>
+<p>A <strong>distribution</strong> is a set of possible values and their frequencies.  One way to visualize a distribution is a histogram, which shows values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis and their frequencies on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Series</span></code> provides a <code class="docutils literal notranslate"><span class="pre">hist</span></code> method that makes histograms.
+And we can use Matplotlib to label the axes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Pyplot provides <code class="docutils literal notranslate"><span class="pre">hist</span></code>, which takes a Series and plots a histogram; that is, it shows the values and how often they appear.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">birth_weight</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 
+<span class="n">birth_weight</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Birth weight in pounds&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of live births&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of U.S. birth weight&#39;</span><span class="p">);</span>
@@ -788,31 +913,29 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/07_dataframes_61_0.png" src="_images/07_dataframes_61_0.png" />
+<img alt="_images/07_dataframes_66_0.png" src="_images/07_dataframes_66_0.png" />
 </div>
 </div>
-<p>Pyplot doesn’t work with NaNs, so we have to use <code class="docutils literal notranslate"><span class="pre">dropna</span></code>, which makes a new Series that contains only the valid values.</p>
-<p>The second argument, <code class="docutils literal notranslate"><span class="pre">bins</span></code>, tells <code class="docutils literal notranslate"><span class="pre">hist</span></code> to divide the range of weights into 30 intervals, called “bins”, and count how many values fall in each bin.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">x</span></code> axis is birth weight in pounds, divided into 30 bins.  The <code class="docutils literal notranslate"><span class="pre">y</span></code> axis is the number of births in each bin.</p>
-<p>The distribution looks a little like a bell curve, but the tail is longer on the left than on the right; that is, there are more light babies than heavy babies.</p>
-<p>That makes sense because the distribution includes some babies that were born preterm.</p>
+<p>The keyword argument, <code class="docutils literal notranslate"><span class="pre">bins</span></code>, tells <code class="docutils literal notranslate"><span class="pre">hist</span></code> to divide the range of weights into 30 intervals, called <strong>bins</strong>, and count how many values fall in each bin.
+The <code class="docutils literal notranslate"><span class="pre">x</span></code> axis is birth weight in pounds; the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis is the number of births in each bin.</p>
+<p>The distribution looks a little like a bell curve, but the tail is longer on the left than on the right; that is, there are more light babies than heavy babies.
+That makes sense, because the distribution includes some babies that were born preterm.</p>
 <p><strong>Exercise:</strong> <code class="docutils literal notranslate"><span class="pre">hist</span></code> takes keyword arguments that specify the type and appearance of the histogram.  Find the documentation of <code class="docutils literal notranslate"><span class="pre">hist</span></code> and see if you can figure out how to plot the histogram as an unfilled line.</p>
-<p><strong>Exercise:</strong> As we saw in a previous exercise, the NSFG dataset includes a column called <code class="docutils literal notranslate"><span class="pre">agecon</span></code> that records age at conception for each pregnancy.</p>
+<p><strong>Exercise:</strong> As we saw in a previous exercise, the NSFG dataset includes a column called <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> that records age at conception for each pregnancy.</p>
 <ul class="simple">
-<li><p>Select this column from the DataFrame, divide by 100 to convert it to years, and assign it to a variable called <code class="docutils literal notranslate"><span class="pre">agecon</span></code>.</p></li>
+<li><p>Select this column from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and divide by 100 to convert it to years.</p></li>
 <li><p>Plot the histogram of these values with 20 bins.</p></li>
 <li><p>Label the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> axes appropriately.</p></li>
 </ul>
 </div>
 <div class="section" id="boolean-series">
 <h2>Boolean series<a class="headerlink" href="#boolean-series" title="Permalink to this headline">¶</a></h2>
-<p>We have seen that the distribution of birth weights is “skewed to the left”; that is, there are more light babies than heavy ones and they are farther from the mean.</p>
-<p>That’s because preterm babies tend to be lighter.  The most common duration for pregnancy is 39 weeks, which is “full term”; “preterm” is usually defined to be less than 37 weeks.</p>
-<p>To see which babies are preterm, we can use <code class="docutils literal notranslate"><span class="pre">prglngth</span></code>, which records pregnancy length in weeks.</p>
-<p>To identify babies that were born preterm, we can compare <code class="docutils literal notranslate"><span class="pre">prglngth</span></code> to 37.</p>
+<p>We have seen that the distribution of birth weights is <strong>skewed</strong> to the left; that is, there are more light babies than heavy ones and they are farther from the mean.
+That’s because preterm babies tend to be lighter.  The most common duration for pregnancy is 39 weeks, which is “full term”; “preterm” is usually defined to be less than 37 weeks.</p>
+<p>To see which babies are preterm, we can use <code class="docutils literal notranslate"><span class="pre">PRGLNGTH</span></code>, which records pregnancy length in weeks and compute it to <code class="docutils literal notranslate"><span class="pre">37</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;prglngth&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">37</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">37</span><span class="p">)</span>
 <span class="n">preterm</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 </div>
@@ -823,7 +946,7 @@ Name: birthwgt_lb1, dtype: float64
 </div>
 </div>
 </div>
-<p>When you compare a Series to a value, the result is a Boolean Series; that is, each element is a Boolean value, True or False.  In this case, it’s True for each preterm baby and False otherwise.  We can use <code class="docutils literal notranslate"><span class="pre">head</span></code> to see the first 5 elements.</p>
+<p>When you compare a <code class="docutils literal notranslate"><span class="pre">Series</span></code> to a value, the result is a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>; that is, each element is a Boolean value, <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.  In this case, it’s <code class="docutils literal notranslate"><span class="pre">True</span></code> for each preterm baby and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.  We can use <code class="docutils literal notranslate"><span class="pre">head</span></code> to see the first 5 elements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -833,15 +956,15 @@ Name: birthwgt_lb1, dtype: float64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
 1     True
-2     True
-3     True
+2    False
+3    False
 4    False
-Name: prglngth, dtype: bool
+Name: PRGLNGTH, dtype: bool
 </pre></div>
 </div>
 </div>
 </div>
-<p>If you compute the sum of a Boolean Series, it treats True as 1 and False as 0, so the sum is the number of Trues, which is the number of preterm babies, about 3700.</p>
+<p>If you compute the sum of a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>, it treats <code class="docutils literal notranslate"><span class="pre">True</span></code> as 1 and <code class="docutils literal notranslate"><span class="pre">False</span></code> as 0, so the sum is the number of <code class="docutils literal notranslate"><span class="pre">True</span></code> values, which is the number of preterm babies, about 3700.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -849,12 +972,13 @@ Name: prglngth, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3742
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3675
 </pre></div>
 </div>
 </div>
 </div>
-<p>If you compute the mean, you get the <em>fraction</em> of Trues; in this case, it’s close to 0.4; that is, the durations of 40% of the pregnancies are less than 37 weeks.</p>
+<p>If you compute the mean of a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>, you get the <em>fraction</em> of <code class="docutils literal notranslate"><span class="pre">True</span></code> values.
+In this case, it’s about 0.38; that is, about 38% of the pregnancies are less than 37 weeks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -862,22 +986,22 @@ Name: prglngth, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.39987176747168196
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.38469590704490736
 </pre></div>
 </div>
 </div>
 </div>
-<p>However, this result might be misleading because it includes all pregnancy outcomes, not just live births.</p>
-<p>We can create another Boolean Series to indicate which pregnancies ended in live birth:</p>
+<p>However, this result might be misleading because it includes all pregnancy outcomes, not just live births.
+We can create another Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> to indicate which pregnancies ended in live birth:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">live</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;outcome&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">live</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;OUTCOME&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">live</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6934173968796752
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7006176070344394
 </pre></div>
 </div>
 </div>
@@ -891,7 +1015,7 @@ Name: prglngth, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.09724300064116265
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08929132209777034
 </pre></div>
 </div>
 </div>
@@ -900,17 +1024,17 @@ Name: prglngth, dtype: bool
 <p>The other common logical operators are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">|</span></code>, which is the OR operator; for example <code class="docutils literal notranslate"><span class="pre">live</span> <span class="pre">|</span> <span class="pre">preterm</span></code> is true if either <code class="docutils literal notranslate"><span class="pre">live</span></code> is true, or <code class="docutils literal notranslate"><span class="pre">preterm</span></code> is true, or both.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">~</span></code>, which is the NOT operator; for example <code class="docutils literal notranslate"><span class="pre">~live</span></code> is true if <code class="docutils literal notranslate"><span class="pre">live</span></code> is false or NaN.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span></code>, which is the NOT operator; for example <code class="docutils literal notranslate"><span class="pre">~live</span></code> is true if <code class="docutils literal notranslate"><span class="pre">live</span></code> is false or <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
 </ul>
-<p>The logical operators treat NaN the same as False.  So you should be careful about using the NOT operator with a Series that contains NaN values.</p>
-<p>For example, <code class="docutils literal notranslate"><span class="pre">~preterm</span></code> would include full term pregnancies, which is probably what you want, and pregnancies with unknown length, which might not be.</p>
-<p><strong>Exercise:</strong> What fraction pregnancies are full term, that is, 37 weeks or more?</p>
-<p>Of all live births, what fraction are full term?</p>
+<p>The logical operators treat <code class="docutils literal notranslate"><span class="pre">NaN</span></code> the same as False.  So you should be careful about using the NOT operator with a Series that contains <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.
+For example, <code class="docutils literal notranslate"><span class="pre">~preterm</span></code> would include not just full term pregnancies, but also pregnancies with unknown length.</p>
+<p><strong>Exercise:</strong> Of all pregnancies, what fraction are full term, that is, 37 weeks or more?
+Of all live births, what fraction are full term?</p>
 </div>
 <div class="section" id="filtering">
 <h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
-<p>We can use a Boolean Series as a filter; that is, we can select only rows that satisfy a condition or meet some criterion.</p>
-<p>For example, we can use <code class="docutils literal notranslate"><span class="pre">preterm</span></code> and the bracket operator to select values from <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code>, so <code class="docutils literal notranslate"><span class="pre">preterm_weight</span></code> gets birth weights for preterm babies.</p>
+<p>We can use a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> as a filter; that is, we can select only rows that satisfy a condition or meet some criterion.
+For example, we can use <code class="docutils literal notranslate"><span class="pre">preterm</span></code> and the bracket operator to select values from <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code>, so <code class="docutils literal notranslate"><span class="pre">preterm_weight</span></code> gets birth weights for preterm babies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm_weight</span> <span class="o">=</span> <span class="n">birth_weight</span><span class="p">[</span><span class="n">preterm</span><span class="p">]</span>
@@ -919,15 +1043,15 @@ Name: prglngth, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.577598314606742
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.480958781362007
 </pre></div>
 </div>
 </div>
 </div>
-<p>To select full-term babies, we can create a Boolean Series like this:</p>
+<p>To select full-term babies, we can create a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;prglngth&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">37</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">37</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -941,13 +1065,13 @@ Name: prglngth, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.372323879231473
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.429609416096791
 </pre></div>
 </div>
 </div>
 </div>
-<p>As expected, full term babies are heavier, on average, than preterm babies.</p>
-<p>To be more explicit, we could also limit the results to live births, like this:</p>
+<p>As expected, full term babies are heavier, on average, than preterm babies.
+To be more explicit, we could also limit the results to live births, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full_term_weight</span> <span class="o">=</span> <span class="n">birth_weight</span><span class="p">[</span><span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span><span class="p">]</span>
@@ -956,85 +1080,130 @@ Name: prglngth, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.372323879231473
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.429609416096791
 </pre></div>
 </div>
 </div>
 </div>
-<p>But in this case it doesn’t make a difference because <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code> is only valid for live births.</p>
-<p><strong>Exercise:</strong> Let’s see if there is a difference in weight between single births and multiple births (twins, triplets, etc.).</p>
-<p>The variable <code class="docutils literal notranslate"><span class="pre">nbrnaliv</span></code> represents the number of babies born alive from a pregnancy.  Here’s a cleaned version of this variable:</p>
+<p>But in this case we get the same result because <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code> is only valid for live births.</p>
+<p><strong>Exercise:</strong> Let’s see if there is a difference in weight between single births and multiple births (twins, triplets, etc.).
+The variable <code class="docutils literal notranslate"><span class="pre">NBRNALIV</span></code> represents the number of babies born alive from a single pregnancy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbrnaliv_clean</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;nbrnaliv&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">nbrnaliv_clean</span></code> and <code class="docutils literal notranslate"><span class="pre">live</span></code> to create a Boolean series called <code class="docutils literal notranslate"><span class="pre">multiple</span></code> that is true for multiple live births.</p>
-<p>Of all live births, what fraction are multiple births?</p>
-<p><strong>Exercise:</strong> Make a Boolean series called <code class="docutils literal notranslate"><span class="pre">single</span></code> that is true for single live births.</p>
-<p>Of all single births, what fraction are preterm?</p>
-<p>Of all multiple births, what fraction are preterm?</p>
-<p><strong>Exercise:</strong> What is the average birth weight for live, single, full-term births?</p>
-</div>
-<div class="section" id="resampling">
-<h2>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h2>
-<p>We are almost ready to compute the average birth weight, but there’s one more thing we have to do: resampling.</p>
-<p>The NSFG is not exactly representative of the U.S. population; by design, some groups are more likely to appear in the sample than others; that is, they are “oversampled”.  Oversampling helps to ensure that you have enough people in every subgroup to get reliable statistics, but it makes the analysis a little more complicated.</p>
-<p>However, we can correct for oversampling by “resampling”.  The key is that each pregnancy in the dataset has a “sampling weight” that indicates how many pregnancies it represents.  In the <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> DataFrame, the sampling weight is stored in a column named <code class="docutils literal notranslate"><span class="pre">wgt2013_2015</span></code>.</p>
-<p>Here’s what it looks like.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;wgt2013_2015&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbrnaliv</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;NBRNALIV&#39;</span><span class="p">]</span>
+<span class="n">nbrnaliv</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count     9358.000000
-mean     10759.200147
-std      11400.179222
-min       1859.105000
-25%       4340.053407
-50%       7062.994158
-75%      12629.322982
-max      75399.410000
-Name: wgt2013_2015, dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0    6573
+2.0     111
+3.0       6
+Name: NBRNALIV, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<p>The lowest value in this column is about 1859, which means that a pregnancy with that weight represents 1859 total pregnancies in the population.</p>
-<p>The highest weight is about 75399, which means that this observed pregnancy represents substantially more pregnancies in the population.</p>
-<p>To take these weights into account, we can resample the DataFrame, which means that we draw a new random sample from the rows in the DataFrame using a weighted sampling process so that rows with higher weights are more likely than rows with lower weights.</p>
-<p>DataFrame provides a method called <code class="docutils literal notranslate"><span class="pre">sample</span></code> that does what we want:</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">nbrnaliv</span></code> and <code class="docutils literal notranslate"><span class="pre">live</span></code> to create a Boolean series called <code class="docutils literal notranslate"><span class="pre">multiple</span></code> that is true for multiple live births.
+Of all live births, what fraction are multiple births?</p>
+<p><strong>Exercise:</strong> Make a Boolean series called <code class="docutils literal notranslate"><span class="pre">single</span></code> that is true for single live births.
+Of all single births, what fraction are preterm?
+Of all multiple births, what fraction are preterm?</p>
+<p><strong>Exercise:</strong> What is the average birth weight for live, single, full-term births?</p>
+</div>
+<div class="section" id="weighted-mean">
+<h2>Weighted mean<a class="headerlink" href="#weighted-mean" title="Permalink to this headline">¶</a></h2>
+<p>We are almost ready to compute the average birth weight, but there’s one more problem we have to solve: oversampling.</p>
+<p>The NSFG is not exactly representative of the U.S. population.  By design, some groups are more likely to appear in the sample than others; that is, they are <strong>oversampled</strong>.  Oversampling helps to ensure that you have enough people in every subgroup to get reliable statistics, but it makes data analysis a little more complicated.</p>
+<p>Each pregnancy in the dataset has a <strong>sampling weight</strong> that indicates how many pregnancies it represents.  In <code class="docutils literal notranslate"><span class="pre">nsfg</span></code>, the sampling weight is stored in a column named <code class="docutils literal notranslate"><span class="pre">wgt2015_2017</span></code>.
+Here’s what it looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nsfg</span><span class="p">)</span>
-<span class="n">weights</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;wgt2013_2015&#39;</span><span class="p">]</span>
-<span class="n">sample</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> 
-                     <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                     <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampling_weight</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;WGT2015_2017&#39;</span><span class="p">]</span>
+<span class="n">sampling_weight</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count      9553.000000
+mean      13337.425944
+std       16138.878271
+min        1924.916000
+25%        4575.221221
+50%        7292.490835
+75%       15724.902673
+max      106774.400000
+Name: WGT2015_2017, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>Here’s what the arguments mean:</p>
-<ul class="simple">
-<li><p>The size of the sample, <code class="docutils literal notranslate"><span class="pre">n</span></code>, is the same as the size of the DataFrame.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">replace</span></code> means that sampling is done “with replacement”, so some rows appear in the sample more than once and some might not appear at all.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">weights</span></code> are used to weight the sampling process, so each rows appears in the sample with frequency proportional to its weight.</p></li>
-</ul>
-<p><strong>Exercise:</strong> Now let’s bring it all together.  To test your recall, try to do this exercise without referring back to previous code.</p>
+<p>The median value (50th percentile) in this column is about 7292, which means that a pregnancy with that weight represents 7292 total pregnancies in the population.
+But the range of values is wide, so some rows represent many more pregnancies than others.</p>
+<p>To take these weights into account, we can compute a <strong>weighted mean</strong>.  Here are the steps:</p>
 <ol class="simple">
-<li><p>From <code class="docutils literal notranslate"><span class="pre">sample</span></code>, extract <code class="docutils literal notranslate"><span class="pre">birthwgt_lb1</span></code> and <code class="docutils literal notranslate"><span class="pre">birthwgt_oz1</span></code> and assign them to <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p></li>
-<li><p>Clean both variables by replacing <code class="docutils literal notranslate"><span class="pre">98</span></code> and <code class="docutils literal notranslate"><span class="pre">99</span></code> with NaN.</p></li>
-<li><p>Compute total birthweight in pounds and display the mean.</p></li>
-<li><p>Compute Boolean Series for live, single, and full-term babies.</p></li>
-<li><p>Select birthweights for live, single, full-term babies and display their mean weight.</p></li>
+<li><p>Multiply the birth weights for each pregnancy by the sampling weights and add up the products.</p></li>
+<li><p>Add up the sampling weights.</p></li>
+<li><p>Divide the first sum by the second.</p></li>
 </ol>
-<p>Most of the time, you will find that the resampled data yields a slightly higher estimate for the average birth weight of single, full-term births in the U.S., compared to the unresampled data.</p>
-<p>But resampling is a random process, so the results will be slightly different each time you run it.  Later we will see how we can use this variability to quantify the precision of the estimate.</p>
+<p>To do this correctly, we have to be careful with missing data.
+To help with that, we’ll use two <code class="docutils literal notranslate"><span class="pre">Series</span></code> methods, <code class="docutils literal notranslate"><span class="pre">isna</span></code> and <code class="docutils literal notranslate"><span class="pre">notna</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">isna</span></code> returns a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> that is <code class="docutils literal notranslate"><span class="pre">True</span></code> where the corresponding value is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing</span> <span class="o">=</span> <span class="n">birth_weight</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="n">missing</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3013
+</pre></div>
+</div>
+</div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code> there are 3013 missing values (mostly for pregnancies that did not end in live birth).</p>
+<p><code class="docutils literal notranslate"><span class="pre">notna</span></code> returns a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> that is <code class="docutils literal notranslate"><span class="pre">True</span></code> where the corresponding value is <em>not</em> <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid</span> <span class="o">=</span> <span class="n">birth_weight</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+<span class="n">valid</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6540
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can combine <code class="docutils literal notranslate"><span class="pre">valid</span></code> with the other Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> we have computed to identify single, full term, live births with valid birth weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single</span> <span class="o">=</span> <span class="p">(</span><span class="n">nbrnaliv</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">selected</span> <span class="o">=</span> <span class="n">valid</span> <span class="o">&amp;</span> <span class="n">live</span> <span class="o">&amp;</span> <span class="n">single</span> <span class="o">&amp;</span> <span class="n">fullterm</span>
+<span class="n">selected</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5648
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">selected</span></code>, <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code>, and <code class="docutils literal notranslate"><span class="pre">sampling_weight</span></code> to compute the weighted mean of birth weight for live, single, full term births.</p>
+<p>You should find that the weighted mean is a little higher than the unweighted mean we computed in the previous section.  That’s because the groups that are oversampled in the NSFG tend to have lighter babies, on average.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This chapter poses what seems like a simple question: what is the average birth weight of babies in the United States?</p>
+<p>To answer it, we found an appropriate dataset and read the files.  Then we validated the data and dealt with special values, missing data, and errors.
+To explore the data, we used <code class="docutils literal notranslate"><span class="pre">value_counts</span></code>, <code class="docutils literal notranslate"><span class="pre">hist</span></code>, <code class="docutils literal notranslate"><span class="pre">describe</span></code>, and other Pandas methods.
+And to select relevant data, we used Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
+<p>Along the way, we had to think more about the question.  What do we mean by “average”, and which babies should we include?  Should we include all live births or exclude preterm babies or multiple births?</p>
+<p>And we had to think about the sampling process.  By design, the NSFG respondents are not representative of the U.S. population, but we can use sampling weights to correct for this effect.</p>
+<p>Even a simple question can be a challenging data science project.</p>
 </div>
 </div>
 
