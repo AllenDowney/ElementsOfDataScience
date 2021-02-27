@@ -4,5 +4,7 @@ infile dictionary {
    _column(41)    numeric                                AGE   %20f  "Age of respondent"
    _column(61)    numeric                               EDUC   %20f  "Highest year of school completed"
    _column(81)    numeric                                SEX   %20f  "Respondents sex"
-  _column(101)      float                            REALINC   %20f  "Family income in constant $"
+  _column(101)    numeric                             GUNLAW   %20f  "Favor or oppose gun permits"
+  _column(121)    numeric                              GRASS   %20f  "Should marijuana be made legal"
+  _column(141)      float                            REALINC   %20f  "Family income in constant $"
 }
