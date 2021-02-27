@@ -644,7 +644,8 @@ Adding random noise like this is called <strong>jittering</strong>.</p>
 <p>I’ll start with a scatter plot of weight versus age.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">]</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>
 <span class="n">age_jitter</span> <span class="o">=</span> <span class="n">age</span> <span class="o">+</span> <span class="n">noise</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age_jitter</span><span class="p">,</span> <span class="n">weight_jitter</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> 
@@ -884,8 +885,8 @@ But here’s the correlation matrix:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.02841022],
-       [0.02841022, 1.        ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.        , -0.01505509],
+       [-0.01505509,  1.        ]])
 </pre></div>
 </div>
 </div>
