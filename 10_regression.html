@@ -56,7 +56,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Randomization" href="11_randomization.html" />
+    <link rel="next" title="Resampling" href="11_resampling.html" />
     <link rel="prev" title="Relationships" href="09_relationships.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -144,8 +144,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="11_randomization.html">
-   Randomization
+  <a class="reference internal" href="11_resampling.html">
+   Resampling
   </a>
  </li>
 </ul>
@@ -397,48 +397,14 @@ As an example, we’ll use data from the General Social Survey (GSS) and we’ll
 <p>First, let’s load the GSS data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dict_file</span> <span class="o">=</span> <span class="s1">&#39;GSS.dct&#39;</span>
-<span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;GSS.dat.gz&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>As we did in Chapter 8, we’ll use <code class="docutils literal notranslate"><span class="pre">statadict</span></code> to read the data dictionary.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statadict</span> <span class="kn">import</span> <span class="n">parse_stata_dict</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">stata_dict</span> <span class="o">=</span> <span class="n">parse_stata_dict</span><span class="p">(</span><span class="n">dict_file</span><span class="p">)</span>
-<span class="n">stata_dict</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7f409bf16f50&gt;
+<span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;gss_eda.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;gss&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>And Pandas to read the data file.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gzip</span>
-
-<span class="n">fp</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-<span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> 
-                  <span class="n">names</span><span class="o">=</span><span class="n">stata_dict</span><span class="o">.</span><span class="n">names</span><span class="p">,</span> 
-                  <span class="n">colspecs</span><span class="o">=</span><span class="n">stata_dict</span><span class="o">.</span><span class="n">colspecs</span><span class="p">)</span>
-<span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64814, 8)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here are the first few rows of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">gss</span></code>:</p>
+<p>Here are the first few rows of <code class="docutils literal notranslate"><span class="pre">gss</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -479,75 +445,60 @@ As an example, we’ll use data from the General Social Survey (GSS) and we’ll
       <th>0</th>
       <td>1972</td>
       <td>1</td>
-      <td>23</td>
-      <td>16</td>
+      <td>23.0</td>
+      <td>16.0</td>
       <td>2</td>
-      <td>1</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>NaN</td>
       <td>18951.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1972</td>
       <td>2</td>
-      <td>70</td>
-      <td>10</td>
+      <td>70.0</td>
+      <td>10.0</td>
       <td>1</td>
-      <td>1</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>NaN</td>
       <td>24366.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1972</td>
       <td>3</td>
-      <td>48</td>
-      <td>12</td>
+      <td>48.0</td>
+      <td>12.0</td>
       <td>2</td>
-      <td>1</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>NaN</td>
       <td>24366.0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>1972</td>
       <td>4</td>
-      <td>27</td>
-      <td>17</td>
+      <td>27.0</td>
+      <td>17.0</td>
       <td>2</td>
-      <td>1</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>NaN</td>
       <td>30458.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>1972</td>
       <td>5</td>
-      <td>61</td>
-      <td>12</td>
+      <td>61.0</td>
+      <td>12.0</td>
       <td>2</td>
-      <td>1</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>NaN</td>
       <td>50763.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
-</div>
-<p>To clean this dataset, we have to replace the special codes that indicate missing data with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.
-We’ll use the <code class="docutils literal notranslate"><span class="pre">replace</span></code> method we have seen before, but this time we’ll use the <code class="docutils literal notranslate"><span class="pre">inplace</span></code> argument to modify each column “in place”, that is, rather than making a new column.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">gss</span><span class="p">[</span><span class="s1">&#39;EDUC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">gss</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">gss</span><span class="p">[</span><span class="s1">&#39;GUNLAW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">gss</span><span class="p">[</span><span class="s1">&#39;GRASS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">gss</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 <p>We’ll start with another simple regression, estimating the parameters of real income as a function of years of education.</p>
 <div class="cell docutils container">
@@ -628,7 +579,7 @@ To see what’s going on, let’s look more closely at the relationship between 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10_regression_46_0.png" src="_images/10_regression_46_0.png" />
+<img alt="_images/10_regression_38_0.png" src="_images/10_regression_38_0.png" />
 </div>
 </div>
 <p>Average income increases from age 20 to age 50, then starts to fall.<br />
@@ -752,7 +703,7 @@ And we can plot the data for comparison.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10_regression_65_0.png" src="_images/10_regression_65_0.png" />
+<img alt="_images/10_regression_57_0.png" src="_images/10_regression_57_0.png" />
 </div>
 </div>
 <p>The dots show the average income in each age group.
@@ -788,7 +739,7 @@ This plot shows the shape of the model, a downward-facing parabola.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10_regression_68_0.png" src="_images/10_regression_68_0.png" />
+<img alt="_images/10_regression_60_0.png" src="_images/10_regression_60_0.png" />
 </div>
 </div>
 <p>The lines show mean income, as predicted by the model, as a function of age, for three levels of education.
@@ -968,7 +919,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10_regression_97_0.png" src="_images/10_regression_97_0.png" />
+<img alt="_images/10_regression_89_0.png" src="_images/10_regression_89_0.png" />
 </div>
 </div>
 <p>According to the model, people near age 50 are least likely to support gun control (at least as this questions was posed).
@@ -1038,7 +989,7 @@ But when you present to audiences that are not familiar with CDFs, you can use P
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="09_relationships.html" title="previous page">Relationships</a>
-    <a class='right-next' id="next-link" href="11_randomization.html" title="next page">Randomization</a>
+    <a class='right-next' id="next-link" href="11_resampling.html" title="next page">Resampling</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
