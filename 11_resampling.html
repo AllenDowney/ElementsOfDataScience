@@ -270,6 +270,11 @@
    The Resampling Framework
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gun-control">
+   Gun Control
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -744,7 +749,7 @@ But we should remember that there are other possible sources of error, so we mig
 </div>
 <div class="section" id="the-resampling-framework">
 <h2>The Resampling Framework<a class="headerlink" href="#the-resampling-framework" title="Permalink to this headline">¶</a></h2>
-<p>The examples we’ve done so far fit into the framework in this diagram:</p>
+<p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/resampling.png" /></p>
 <p>Using data from an experiment, we compute a sample statistic.  In the vaccine example, we computed risks for each group and efficacy.  In the height example, we computed the average height in the sample.</p>
 <p>Then we build a model of the sampling process.
@@ -826,7 +831,10 @@ The following is a version of <code class="docutils literal notranslate"><span c
 </div>
 </div>
 <p>Use this function to simulate 1000 samples with size <code class="docutils literal notranslate"><span class="pre">n=103</span></code>, using <code class="docutils literal notranslate"><span class="pre">mean_height</span></code> for <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">std_height</span></code> for <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.  Plot the sampling distribution of the coefficient of variation, and compute a 90% confidence interval.</p>
-<p><strong>Exercise:</strong> In Chapter 10 we used data from the General Social Survey, specifically a variable called <code class="docutils literal notranslate"><span class="pre">GUNLAW</span></code>, to describe support for a gun control law as a function of age, sex, and years of education.
+</div>
+<div class="section" id="gun-control">
+<h2>Gun Control<a class="headerlink" href="#gun-control" title="Permalink to this headline">¶</a></h2>
+<p>In Chapter 10 we used data from the General Social Survey, specifically a variable called <code class="docutils literal notranslate"><span class="pre">GUNLAW</span></code>, to describe support for a gun control law as a function of age, sex, and years of education.
 Now let’s come back to that dataset and see how the responses have changed over time.</p>
 <p>The following cell reloads the data.</p>
 <div class="cell docutils container">
@@ -952,7 +960,16 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">groupby<
 </div>
 <p>The results vary from year to year.  It is hard to tell how much of this variation is due to real changes in opinion, and how much is due to random sampling.
 We can answer that question by computing confidence intervals for each of these data points.</p>
-<p>Here is a version of <code class="docutils literal notranslate"><span class="pre">simulate_group</span></code> that returns results as a percentage, rather than per 1000.</p>
+<p><strong>Exercise:</strong> Write a loop that goes through the rows in <code class="docutils literal notranslate"><span class="pre">agg</span></code> and computes a confidence interval for each year.
+You can use <code class="docutils literal notranslate"><span class="pre">itertuples</span></code> to iterate the rows, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">agg</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For each row, compute a 90% confidence interval and plot it as a vertical line.
+Then plot the data points and label the axes.
+The result should give you a sense of how much variation we expect to see from year to year due to random sampling.</p>
+<p>You might want to use this version of <code class="docutils literal notranslate"><span class="pre">simulate_group</span></code>, which returns results as a percentage, rather than per 1000.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_group_percent</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
@@ -963,15 +980,6 @@ We can answer that question by computing confidence intervals for each of these 
 </div>
 </div>
 </div>
-<p>Write a loop that goes through the rows in <code class="docutils literal notranslate"><span class="pre">agg</span></code> and computes a confidence interval for each year.
-You can use <code class="docutils literal notranslate"><span class="pre">itertuples</span></code> to iterate the rows, like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">agg</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>For each row, compute a 90% confidence interval and plot it as a vertical line.
-Then plot the data points and label the axes.
-The result should give you a sense of how much variation we expect to see from year to year due to random sampling.</p>
 </div>
 </div>
 
