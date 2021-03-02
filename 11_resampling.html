@@ -288,8 +288,8 @@
                 
   <div class="section" id="resampling">
 <h1>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb">Click here to run this notebook on Colab</a> or
-<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_inference.ipynb">click here to download it</a>.</p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">click here to download it</a>.</p>
 <p>This chapter introduces <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)">resampling methods</a>, which are used to quantify the precision of an estimate.</p>
 <p>As examples, we’ll use results a vaccine trial to estimate the efficacy of the vaccine, data from the BRFSS to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
 <div class="section" id="vaccine-testing">
@@ -564,7 +564,7 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 </div>
-<p>If we call it 1000 times, the result is estimated efficacy from 1000 simulated trials.</p>
+<p>If we call it 1000 times, the result is a list of estimated efficacies from 1000 simulated trials.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_trial</span><span class="p">(</span><span class="n">n_control</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n_treatment</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
@@ -573,7 +573,7 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 </div>
-<p>Again, we can use a KDE plot to visualize the distribution of these estimates.</p>
+<p>We can use a KDE plot to visualize the distribution of these estimates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
@@ -588,7 +588,7 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 <img alt="_images/11_resampling_44_0.png" src="_images/11_resampling_44_0.png" />
 </div>
 </div>
-<p>Again, the mean of this distribution is close to the efficacy we computed with the results of the actual trial.</p>
+<p>The mean of this distribution is close to the efficacy we computed with the results of the actual trial.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t2</span><span class="p">),</span> <span class="n">efficacy</span>
@@ -686,7 +686,7 @@ As we did in the previous examples, we will assume for purposes of simulation th
 </div>
 </div>
 </div>
-<p>Again, we can use a KDE plot to visualize the distribution of these values.</p>
+<p>We can use a KDE plot to visualize the distribution of these values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span>
