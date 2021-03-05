@@ -54,6 +54,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bootstrap Sampling" href="12_bootstrap.html" />
     <link rel="prev" title="Regression" href="10_regression.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -143,6 +144,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Resampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_bootstrap.html">
+   Bootstrap Sampling
   </a>
  </li>
 </ul>
@@ -273,6 +279,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gun-control">
    Gun Control
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -450,7 +461,7 @@ Then the function returns the estimated risk.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.522340376979599
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.933092967002875
 </pre></div>
 </div>
 </div>
@@ -643,10 +654,10 @@ It would be impractical to measure everyone in the country, but if we choose a r
 <p>Ideally, the sample should be <strong>representative</strong>, which means that everyone in the population has an equal chance of appearing in the sample.
 In general, that’s not easy to do.
 Depending on how you recruit people, your sample might have too many tall people or too many short people.</p>
-<p>But let’s suppose we have a representative sample of 103 adult males in the United States, the average height in the sample is 177 cm and the standard deviation is 8.4 cm.</p>
+<p>But let’s suppose we have a representative sample of 103 adult male residents of the United States, the average height in the sample is 177 cm, and the standard deviation is 8.4 cm.</p>
 <p>If someone asks for your best guess about the height of mean in the U.S., you would report 177 cm.
 But how accurate do you think this estimate is?
-If you only measure 100 people from a population of about 100 million adult males, it seems like the average in the population might be substantially higher or lower.</p>
+If you only measure 103 people from a population of about 100 million adult males, it seems like the actual average in the population might be substantially higher or lower.</p>
 <p>Again, we can use random simulation to quantify the uncertainty of this estimate.
 As we did in the previous examples, we will assume for purposes of simulation that the estimates are correct, and simulate the sampling process 1000 times.</p>
 <p>The following function takes as parameters the size of the sample, <code class="docutils literal notranslate"><span class="pre">n</span></code>, the presumed average height in the population, <code class="docutils literal notranslate"><span class="pre">mu</span></code>, and the presumed standard deviation, <code class="docutils literal notranslate"><span class="pre">std</span></code>.</p>
@@ -664,15 +675,15 @@ As we did in the previous examples, we will assume for purposes of simulation th
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_height</span> <span class="o">=</span> <span class="mi">103</span>
-<span class="n">mean_height</span> <span class="o">=</span> <span class="mi">177</span>
-<span class="n">std_height</span> <span class="o">=</span> <span class="mf">8.4</span>
+<span class="n">mean_height</span> <span class="o">=</span> <span class="mi">178</span>
+<span class="n">std_height</span> <span class="o">=</span> <span class="mf">7.97</span>
 
 <span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_height</span><span class="p">,</span> <span class="n">mean_height</span><span class="p">,</span> <span class="n">std_height</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>177.68434963290943
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>178.64931744931997
 </pre></div>
 </div>
 </div>
@@ -711,7 +722,7 @@ If we recruit 100 people and compute the mean of their heights, the result might
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(176.9607008614284, 177)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(177.96271260304573, 178)
 </pre></div>
 </div>
 </div>
@@ -724,7 +735,7 @@ If we recruit 100 people and compute the mean of their heights, the result might
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8058714867150188
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7646185415617497
 </pre></div>
 </div>
 </div>
@@ -737,7 +748,7 @@ If we recruit 100 people and compute the mean of their heights, the result might
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([175.63978221, 178.29356294])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([176.7094124 , 179.22734483])
 </pre></div>
 </div>
 </div>
@@ -755,7 +766,7 @@ But we should remember that there are other possible sources of error, so we mig
 <p>Then we build a model of the sampling process.
 In the vaccine example, the model assumes that everyone in each group has the same probability of getting sick, and we use the data to choose the probability.
 In the height example, the model assumes that heights are drawn from a normal distribution, and we use the data to choose the parameters <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.</p>
-<p>We use the model to simulate the experiment many times.  Each simulation generates a dataset that’s similar to the original, which we use to compute the sample statistic.</p>
+<p>We use the model to simulate the experiment many times.  Each simulation generates a dataset which we use to compute the sample statistic.</p>
 <p>Finally, we collect the sample statistics from the simulations and use them to plot the sampling distribution and compute standard errors and confidence intervals.</p>
 <p>I emphasize the role of the model in this framework because for a given experiment there might be several possible models, each including some elements of the real world and ignoring others.</p>
 <p>For example, our model of the vaccine experiment assumes that everyone in each group has the same risk, but that’s probably not true.
@@ -792,7 +803,7 @@ Then it compares <code class="docutils literal notranslate"><span class="pre">xs
 <p>The return value is the number of cases per 1000.</p>
 <p><strong>Exercise:</strong> Using this function to run 1000 simulations of the treatment group.  Compute the mean of the results and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">risk_treatment</span></code>.  To quantify the spread of the sampling distribution, compute the standard error.  How does it compare to the standard error we computed with the original model, where everyone in the group has the same risk?</p>
 <p><strong>Exercise:</strong> The following is a version of <code class="docutils literal notranslate"><span class="pre">simulate_trial</span></code> that uses <code class="docutils literal notranslate"><span class="pre">simulate_variable_group</span></code>, from the previous exercise, to simulate the vaccine trial using the modified model, with variation in risk within the groups.</p>
-<p>Use this function to simulate 1000 trials.  Compute the mean of the sampling distribution and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">efficacy</span></code>.  Compute the standard error and compare it to the standard error we computed for the original model</p>
+<p>Use this function to simulate 1000 trials.  Compute the mean of the sampling distribution and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">efficacy</span></code>.  Compute the standard error and compare it to the standard error we computed for the original model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_variable_trial</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
@@ -814,7 +825,7 @@ Then it compares <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04745762711864407
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.044775280898876405
 </pre></div>
 </div>
 </div>
@@ -981,6 +992,9 @@ The result should give you a sense of how much variation we expect to see from y
 </div>
 </div>
 </div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1012,6 +1026,7 @@ The result should give you a sense of how much variation we expect to see from y
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="10_regression.html" title="previous page">Regression</a>
+    <a class='right-next' id="next-link" href="12_bootstrap.html" title="next page">Bootstrap Sampling</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

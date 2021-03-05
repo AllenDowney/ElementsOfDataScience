@@ -1,0 +1,1798 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Sampling &#8212; Elements of Data Science</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Resampling" href="11_resampling.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   Elements of Data Science
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_variables.html">
+   Variables and values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_times.html">
+   Times and places
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_arrays.html">
+   Lists and arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_loops.html">
+   Loops and files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_dictionaries.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_dataframes.html">
+   Dataframes and Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_distributions.html">
+   Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_relationships.html">
+   Relationships
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_resampling.html">
+   Resampling
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Bootstrap Sampling
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/12_bootstrap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/12_bootstrap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-average-income">
+   Estimating Average Income
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-percentiles">
+   Estimating Percentiles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bootstrapping">
+   Bootstrapping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bigger-data">
+   Bigger Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weighted-bootstrapping">
+   Weighted Bootstrapping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation-and-regression">
+   Correlation and Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-bootstrapping">
+   Limitations of Bootstrapping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resampling-with-kde">
+   Resampling with KDE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bootstrap-sampling">
+<h1>Bootstrap Sampling<a class="headerlink" href="#bootstrap-sampling" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">click here to download it</a>.</p>
+<p>In the previous chapter we used resampling to compute standard errors and confidence intervals, which quantify the variability in an estimate due to random sampling.</p>
+<p>As one of the examples, we used data from the General Social Survey (GSS) to explore changes in support for gun control over time and to compute confidence intervals for the estimated proportions.</p>
+<p>In this chapter, we’ll use GSS data to estimate average income and the 10th percentile of income.
+We’ll see that the resampling method we used in the previous chapter works for the average income but not for the 10th percentile.</p>
+<p>To solve this problem, we’ll use another kind of resampling, called <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a> or bootstrap sampling.</p>
+<p>Then we’ll use bootstrapping to compute sampling distributions and confidence intervals for other statistics, including the coefficient of correlation and the parameters of linear regression.</p>
+<p>Finally, I’ll point out a problem with bootstrap resampling when there are not enough different values in a dataset, and a way to solve it with KDE resampling.</p>
+<div class="section" id="estimating-average-income">
+<h2>Estimating Average Income<a class="headerlink" href="#estimating-average-income" title="Permalink to this headline">¶</a></h2>
+<p>As a first example, we’ll use data from the General Social Survey to  estimate average family income.
+The following cell loads the data, which I have stored in an HDF file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;gss_eda.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;gss&#39;</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>YEAR</th>
+      <th>ID_</th>
+      <th>AGE</th>
+      <th>EDUC</th>
+      <th>SEX</th>
+      <th>GUNLAW</th>
+      <th>GRASS</th>
+      <th>REALINC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1972</td>
+      <td>1</td>
+      <td>23.0</td>
+      <td>16.0</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>18951.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1972</td>
+      <td>2</td>
+      <td>70.0</td>
+      <td>10.0</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>24366.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1972</td>
+      <td>3</td>
+      <td>48.0</td>
+      <td>12.0</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>24366.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1972</td>
+      <td>4</td>
+      <td>27.0</td>
+      <td>17.0</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>30458.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1972</td>
+      <td>5</td>
+      <td>61.0</td>
+      <td>12.0</td>
+      <td>2</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>50763.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The column <code class="docutils literal notranslate"><span class="pre">REALINC</span></code> records family income, converted to 1986 dollars.
+We can use <code class="docutils literal notranslate"><span class="pre">notna</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code> to count the number of valid responses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_realinc</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">n_realinc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58293
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can compute the mean and standard deviation of the valid responses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_realinc</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_income</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_realinc</span><span class="p">,</span> <span class="n">std_income</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31742.563372816312 29526.067896235618
+</pre></div>
+</div>
+</div>
+</div>
+<p>The average family income in this dataset is $31,742.  But notice that the standard deviation is almost equal to the mean.  That’s because the distribution of income is long-tailed; many families have incomes below the mean, and there are a few families with incomes much higher than the mean.
+Nevertheless, we can use this function from the previous chapter to simulate the sampling process.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">simulate_sample_mean</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">simulate_sample_mean</span></code> takes as parameters the sample size, <code class="docutils literal notranslate"><span class="pre">n</span></code>, and the presumed mean and standard deviation of income.</p>
+<p>It generates a sample from a normal distribution with the given mean and standard deviation, and returns the mean of the sample.
+If we call it once, we get a random value from the sampling distribution of the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_realinc</span><span class="p">,</span> <span class="n">mean_realinc</span><span class="p">,</span> <span class="n">std_income</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31893.30052036822
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we call it many times, we get a random sample from the sampling distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_realinc</span><span class="p">,</span> <span class="n">mean_realinc</span><span class="p">,</span> <span class="n">std_income</span><span class="p">)</span>
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ll use the following function to summarize the sampling distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">summarize</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Estimate&#39;</span><span class="p">,</span> <span class="s1">&#39;SE&#39;</span><span class="p">,</span> <span class="s1">&#39;CI90&#39;</span><span class="p">])</span>
+    <span class="n">est</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
+    <span class="n">SE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
+    <span class="n">CI90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">est</span><span class="p">,</span> <span class="n">SE</span><span class="p">,</span> <span class="n">CI90</span>
+    <span class="k">return</span> <span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary1</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">summary1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estimate</th>
+      <th>SE</th>
+      <th>CI90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>31744.6</td>
+      <td>128.9</td>
+      <td>[31537.8, 31958.5]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The result is a table that shows the mean of the sampling distribution, the standard error, and a 90% confidence interval.
+The mean of the sampling distribution is consistent with the mean of the data, which is $31,743.</p>
+</div>
+<div class="section" id="estimating-percentiles">
+<h2>Estimating Percentiles<a class="headerlink" href="#estimating-percentiles" title="Permalink to this headline">¶</a></h2>
+<p>The method in the previous section uses a normal distribution to simulate the sampling process.  In the previous chapter, when we estimated average height, this worked well because human heights are well modeled by a normal distribution.</p>
+<p>But income is not.  We can see that by computing the CDF of a normal distribution with the same mean and standard as the income data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">150000</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mean_realinc</span><span class="p">,</span> <span class="n">std_income</span><span class="p">)</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And comparing it to the CDF of the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">cdf_realinc</span> <span class="o">=</span> <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;normal model&#39;</span><span class="p">)</span>
+<span class="n">cdf_realinc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;GSS data&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Family income (1986 $)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of income&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12_bootstrap_27_0.png" src="_images/12_bootstrap_27_0.png" />
+</div>
+</div>
+<p>The normal distribution is not a good model for the data.  As we saw in the previous section, it is good enough to compute the sampling distribution of the mean.
+But for other statistics, like percentiles, it is not good enough.</p>
+<p>To demonstrate, here’s a function that generates a sample from a normal distribution and returns the 10th percentile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_sample_percentile</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use it to generate a sample from the sampling distribution of the 10th percentile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_percentile</span><span class="p">(</span><span class="n">n_realinc</span><span class="p">,</span> <span class="n">mean_realinc</span><span class="p">,</span> <span class="n">std_income</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s a summary of the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary2</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<span class="n">summary2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estimate</th>
+      <th>SE</th>
+      <th>CI90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>-6098.16</td>
+      <td>218.66</td>
+      <td>[-6474.69, -5761.44]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The mean of the sampling distribution is negative, which is not consistent with the actual 10th percentile of the data, which is $5631.</p>
+<p>In this example, resampling based on a normal model doesn’t produce sensible results.
+Fortunately there is a simple alternative that is more robust: bootstrapping.</p>
+</div>
+<div class="section" id="bootstrapping">
+<h2>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">¶</a></h2>
+<p>Bootstrapping is a kind of resampling, based on the framework we saw in the previous chapter:</p>
+<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/resampling.png" /></p>
+<p>The idea is that we treat the sample as if it were the entire population, and simulate the sampling process by choosing random rows with replacement.
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> provides a method called <code class="docutils literal notranslate"><span class="pre">sample</span></code> we can use to select a random sample of the rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrapped</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n_realinc</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bootstrapped</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(58293, 8)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The argument <code class="docutils literal notranslate"><span class="pre">n=n_realinc</span></code> means that the bootstrapped sample has the same size as the original.</p>
+<p><code class="docutils literal notranslate"><span class="pre">replace=True</span></code> means that sampling is done with replacement; that is, the same row can be chosen more than once.
+To see how many times each row appears in the bootstrapped sample, we can use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> and the <code class="docutils literal notranslate"><span class="pre">_ID</span></code> column, which contains a unique identifier for each respondent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repeats</span> <span class="o">=</span> <span class="n">bootstrapped</span><span class="p">[</span><span class="s1">&#39;ID_&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">repeats</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>272     46
+1262    46
+1116    46
+208     44
+192     44
+Name: ID_, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since some rows appear many times, other rows don’t appear at all.  To see how many, we can use <code class="docutils literal notranslate"><span class="pre">set</span></code> subtraction to count the values of <code class="docutils literal notranslate"><span class="pre">ID_</span></code> that appear in the original dataset but not the bootstrapped sample.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unused</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;ID_&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">bootstrapped</span><span class="p">[</span><span class="s1">&#39;ID_&#39;</span><span class="p">])</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">unused</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>565
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can use bootstrapping to generate a sampling distribution.
+For example, the following function takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, generates a bootstrapped sample, and returns the average income.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bootstrap_mean</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">varname</span><span class="p">):</span>
+    <span class="n">bootstrapped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bootstrapped</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we run it many times, we get a sample from the sampling distribution of the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t3</span> <span class="o">=</span> <span class="p">[</span><span class="n">bootstrap_mean</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="s1">&#39;REALINC&#39;</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s a summary of the results, compared to the results based on the normal model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary3</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">summary1</span><span class="p">,</span> <span class="n">summary3</span><span class="p">])</span>
+<span class="n">table</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;normal model&#39;</span><span class="p">,</span> <span class="s1">&#39;bootstrapping&#39;</span><span class="p">]</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estimate</th>
+      <th>SE</th>
+      <th>CI90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>normal model</th>
+      <td>31744.6</td>
+      <td>128.90</td>
+      <td>[31537.8, 31958.5]</td>
+    </tr>
+    <tr>
+      <th>bootstrapping</th>
+      <td>31741.6</td>
+      <td>121.74</td>
+      <td>[31551.65, 31944.21]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The results from bootstrap sampling are consistent with the results based on the normal model.
+Now let’s see what happens when we estimate the 10th percentile.</p>
+<p>The following function generates a bootstrapped sample and returns the 10th percentile.
+Instead of <code class="docutils literal notranslate"><span class="pre">percentile</span></code> from Numpy, it uses <code class="docutils literal notranslate"><span class="pre">quantile</span></code> from Pandas, which drops <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.
+The parameter of <code class="docutils literal notranslate"><span class="pre">quantile</span></code> is a probability between 0 and 1, rather than a percentage between 0 and 100.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bootstrap_percentile</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">bootstrapped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bootstrapped</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use it to generate a sample from the sampling distribution of the 10th percentile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t4</span> <span class="o">=</span> <span class="p">[</span><span class="n">bootstrap_percentile</span><span class="p">(</span><span class="n">gss</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the results along with the results based on the normal model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary4</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t4</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">summary2</span><span class="p">,</span> <span class="n">summary4</span><span class="p">])</span>
+<span class="n">table</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;normal model&#39;</span><span class="p">,</span> <span class="s1">&#39;bootstrapping&#39;</span><span class="p">]</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estimate</th>
+      <th>SE</th>
+      <th>CI90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>normal model</th>
+      <td>-6098.16</td>
+      <td>218.66</td>
+      <td>[-6474.69, -5761.44]</td>
+    </tr>
+    <tr>
+      <th>bootstrapping</th>
+      <td>5647.85</td>
+      <td>83.76</td>
+      <td>[5512.5, 5806.0]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The mean of the sampling distribution is consistent with the 10th percentile of the data, which is $5631.
+So the results from bootstrapping are more sensible than the results based on the normal model.</p>
+<p>In general, bootstrapping is robust; that is, it works well with many different distributions and many different statistics.
+However, at the end of the chapter, we’ll see one example where it fails.</p>
+</div>
+<div class="section" id="bigger-data">
+<h2>Bigger Data<a class="headerlink" href="#bigger-data" title="Permalink to this headline">¶</a></h2>
+<p>As sample size increases, errors due to random sampling get smaller.
+To demonstrate this effect, I’ll use data from the Behavioral Risk Factor Surveillance System (BRFSS).</p>
+<p>In previous chapters, we used BRFSS data to explore the relationship between height and weight, and the relationship between income and vegetable consumption.
+In this section, we’ll use it to estimate the average height for men in the United States.</p>
+<p>First, let’s read the 2019 data, which I have stored in an HDF file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">brfss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;brfss.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;brfss&#39;</span><span class="p">)</span>
+<span class="n">brfss</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(418268, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This dataset contains 418 268 rows, one for each respondent, and 11 columns, one for each variable I selected.
+Here are the first few rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SEQNO</th>
+      <th>HTM4</th>
+      <th>WTKG3</th>
+      <th>_SEX</th>
+      <th>_AGEG5YR</th>
+      <th>_SMOKER3</th>
+      <th>_VEGESU1</th>
+      <th>_INCOMG</th>
+      <th>_EDUCAG</th>
+      <th>_LLCPWT</th>
+      <th>AGE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019000001</td>
+      <td>157.0</td>
+      <td>69.85</td>
+      <td>2</td>
+      <td>13.0</td>
+      <td>3</td>
+      <td>114.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>135.304080</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019000002</td>
+      <td>163.0</td>
+      <td>48.99</td>
+      <td>2</td>
+      <td>11.0</td>
+      <td>4</td>
+      <td>121.0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1454.882220</td>
+      <td>72.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019000003</td>
+      <td>165.0</td>
+      <td>86.18</td>
+      <td>2</td>
+      <td>10.0</td>
+      <td>4</td>
+      <td>164.0</td>
+      <td>5</td>
+      <td>4</td>
+      <td>215.576852</td>
+      <td>67.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019000004</td>
+      <td>165.0</td>
+      <td>55.34</td>
+      <td>2</td>
+      <td>13.0</td>
+      <td>9</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>3</td>
+      <td>261.282838</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019000005</td>
+      <td>152.0</td>
+      <td>49.90</td>
+      <td>2</td>
+      <td>13.0</td>
+      <td>3</td>
+      <td>178.0</td>
+      <td>9</td>
+      <td>3</td>
+      <td>535.270103</td>
+      <td>82.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here’s a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> that’s <code class="docutils literal notranslate"><span class="pre">True</span></code> for male respondents.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">male</span> <span class="o">=</span> <span class="p">(</span><span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;_SEX&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">male</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>189835
+</pre></div>
+</div>
+</div>
+</div>
+<p>The column <code class="docutils literal notranslate"><span class="pre">HTM4</span></code> contains their heights in centimeters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;HTM4&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">notna</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code> to count the number of rows with valid height data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_height</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">male</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">n_height</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>182269
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are 182 269 male respondents with known heights.
+Here is the mean and standard deviation of these values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_height</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">male</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_height</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">male</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">mean_height</span><span class="p">,</span> <span class="n">std_height</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(178.0768644146838, 7.966455313471575)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The average height for men in the U.S. is about 178.1 cm; the standard deviation is about 8 cm.
+We can use bootstrapping to generate values from the sampling distribution of the mean.
+To reduce computation time, I reduced the number of iterations to 201.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t5</span> <span class="o">=</span> <span class="p">[</span><span class="n">bootstrap_mean</span><span class="p">(</span><span class="n">brfss</span><span class="p">[</span><span class="n">male</span><span class="p">],</span> <span class="s1">&#39;HTM4&#39;</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">201</span><span class="p">)]</span>
+
+<span class="n">summarize</span><span class="p">(</span><span class="n">t5</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estimate</th>
+      <th>SE</th>
+      <th>CI90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>178.075</td>
+      <td>0.017</td>
+      <td>[178.048, 178.105]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Because the sample size is so large, the standard error is small and the confidence interval is narrow.
+This result suggests that our estimate is very precise, which is true in the sense that the error due to random sampling is small.</p>
+<p>But there are other sources of error.  For example, the heights and weights in this dataset are based on self-reports, so they are vulnerable to <a class="reference external" href="https://en.wikipedia.org/wiki/Social-desirability_bias">social desirability bias</a>.  It’s also possible that there are errors in recording the data.  In a previous year of the BRFSS, there are a suspicious number of heights recorded as 60 or 61 centimeters.  I suspect that many of them are six feet, or six feet and one inch, and something went wrong in the preparation of the data.</p>
+<p>And that brings us to the first point of this example:</p>
+<blockquote>
+<div><p>With large sample sizes, error due to random sampling is small, but with real-world data, that usually means that there are other sources of error that are bigger.  So we can’t be sure that the estimate is accurate.</p>
+</div></blockquote>
+<p>In fact, there is another source of error in this example that we have not taken into account: oversampling.</p>
+</div>
+<div class="section" id="weighted-bootstrapping">
+<h2>Weighted Bootstrapping<a class="headerlink" href="#weighted-bootstrapping" title="Permalink to this headline">¶</a></h2>
+<p>By design, the BRFSS oversamples some groups; that is, people in some groups are more likely than others to appear in the sample.
+If people in these groups are taller than others on average, or shorter, our estimated mean would not be accurate.</p>
+<p>We encountered this issue in Chapter 7, where we used data from the National Survey of Family Growth (NSFG) to compute the average birth weight for babies in the United States.
+In that example, we corrected for oversampling by computing a weighted mean.</p>
+<p>In this example, we will use a different method, <strong>weighted bootstrapping</strong>, to estimate the mean and compute a confidence interval.</p>
+<p>The BRFSS dataset includes a column, <code class="docutils literal notranslate"><span class="pre">_LLCPWT</span></code>, that contains sampling weights.
+The sampling weight for each respondent is the number of people in the population they represent.
+People in oversampled groups have lower sampling weights; people in undersampled groups have higher sampling weights.
+Here’s what the range of values looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    418268.000000
+mean        603.513276
+std        1082.430311
+min           1.016173
+25%         111.160528
+50%         272.869258
+75%         654.211787
+max       42066.730900
+Name: _LLCPWT, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The lowest sampling weight is about 1; the largest is 42 066.
+So that’s a very wide range!</p>
+<p>We can take these weights into account by passing them as an argument to <code class="docutils literal notranslate"><span class="pre">sample</span></code>.
+That way, the probability that any row is selected is proportional to its sampling weight.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">)</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">]</span>
+<span class="n">bootstrapped</span> <span class="o">=</span> <span class="n">brfss</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we saw with unweighted bootstrapping, the same row can appear more than once.
+To see how many times, we can use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> and the <code class="docutils literal notranslate"><span class="pre">SEQNO</span></code> column, which contains a unique identifier for each respondent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repeats</span> <span class="o">=</span> <span class="n">bootstrapped</span><span class="p">[</span><span class="s1">&#39;SEQNO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">repeats</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019000108    145
+2019000096    115
+2019000851    105
+2019006167    105
+2019000047    103
+Name: SEQNO, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some rows appear more than 100 times.  Most likely, these are the rows with the highest sampling rates, which correspond to people from undersampled groups.</p>
+<p>To see how many rows don’t appear at all, we can use <code class="docutils literal notranslate"><span class="pre">set</span></code> subtraction to count the values of <code class="docutils literal notranslate"><span class="pre">SEQNO</span></code> that appear in the original dataset but not the sample.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unused</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;SEQNO&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">bootstrapped</span><span class="p">[</span><span class="s1">&#39;SEQNO&#39;</span><span class="p">])</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">unused</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>828
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are several hundred rows that don’t appear in this sample, but they are not dropped altogether; when we repeat this process, they will appear in other samples.</p>
+<p>We can use weighted bootstrapping to generate values from the sampling distribution of the mean.
+The following function uses <code class="docutils literal notranslate"><span class="pre">sample</span></code> and the <code class="docutils literal notranslate"><span class="pre">_LLCPWT</span></code> column to generate a bootstrapped sample, then returns the average height.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">weighted_bootstrap_mean</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">]</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;HTM4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ll test this function with a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> that contains only male respondents.
+If we run it once, we get a random value from the sampling distribution of the weighted mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">male_df</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="n">male</span><span class="p">]</span>
+<span class="n">weighted_bootstrap_mean</span><span class="p">(</span><span class="n">male_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>177.6261509207366
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we run it many times, we get a random sample from the sampling distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t6</span> <span class="o">=</span> <span class="p">[</span><span class="n">weighted_bootstrap_mean</span><span class="p">(</span><span class="n">male_df</span><span class="p">)</span> 
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">201</span><span class="p">)]</span>
+
+<span class="n">summarize</span><span class="p">(</span><span class="n">t6</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estimate</th>
+      <th>SE</th>
+      <th>CI90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>177.642</td>
+      <td>0.02</td>
+      <td>[177.606, 177.671]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The mean of the sampling distribution estimates the average height for men in the U.S., corrected for oversampling.
+If we compare it to the unweighted mean we computed, it is a little lower.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">t6</span><span class="p">),</span> <span class="n">mean_height</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>177.64150154229662 178.0768644146838
+</pre></div>
+</div>
+</div>
+</div>
+<p>So it seems like people in the oversampled groups are taller than others, on average, by enough to bring the unweighted mean up by about half a centimeter.</p>
+<p>The difference between the weighted and unweighted means is bigger than the width of the confidence interval.
+So in this example the error if we fail to correct for oversampling is bigger than variability due to random sampling.</p>
+</div>
+<div class="section" id="correlation-and-regression">
+<h2>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Permalink to this headline">¶</a></h2>
+<p>Bootstrap resampling can be used to estimate other statistics and their sampling distributions.
+For example, in Chapter 9 we computed the correlation between height and weight, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HTM4&#39;</span><span class="p">,</span> <span class="s1">&#39;WTKG3&#39;</span><span class="p">]</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>HTM4</th>
+      <th>WTKG3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>HTM4</th>
+      <td>1.000000</td>
+      <td>0.477151</td>
+    </tr>
+    <tr>
+      <th>WTKG3</th>
+      <td>0.477151</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>That correlation does not take into account oversampling.
+We can correct it with this function, which generates a weighted bootstrapped sample and uses it to compute the correlation of height and weight.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">weighted_bootstrap_corr</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">]</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">corr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Use this function to draw 101 values from the sampling distribution of the correlation between height and weight.
+What is the mean of these values?  Is it substantially different from the correlation we computed without correcting for oversampling?
+Compute the standard error and 90% confidence interval for the estimated correlation.</p>
+<p><strong>Exercise:</strong> In Chapter 9 we also computed the slope of the regression line for weight as a function of height.
+Here’s the result with with 2019 data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+
+<span class="n">subset</span> <span class="o">=</span> <span class="n">brfss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WTKG3&#39;</span><span class="p">,</span> <span class="s1">&#39;HTM4&#39;</span><span class="p">])</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HTM4&#39;</span><span class="p">],</span> <span class="n">subset</span><span class="p">[</span><span class="s1">&#39;WTKG3&#39;</span><span class="p">])</span>
+<span class="n">res</span><span class="o">.</span><span class="n">slope</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.932929241334935
+</pre></div>
+</div>
+</div>
+</div>
+<p>The estimated slope is 0.93 kg/cm, which means that we expect someone 1 cm taller than average to be about 0.93 kg heavier than average.</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">weighted_bootstrap_slope</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, generates a weighted bootstrapped sample, runs <code class="docutils literal notranslate"><span class="pre">linregress</span></code> with height and weight, and returns the slope of the regression line.</p>
+<p>Run it 101 times and collect the results.  Use the sampling distribution to compute the mean of the slope estimates, standard error, and a 90% confidence interval.</p>
+</div>
+<div class="section" id="limitations-of-bootstrapping">
+<h2>Limitations of Bootstrapping<a class="headerlink" href="#limitations-of-bootstrapping" title="Permalink to this headline">¶</a></h2>
+<p>One limitation of bootstrapping is that it can be computationally expensive.
+With small datasets, it is usually fast enough that we can generate 1000 values from the sampling distribution, which means that we can compute standard errors and confidence intervals precisely.
+With larger datasets, we can cut the computation time by generating fewer values.
+With 100-200 values, the standard errors we get are usually precise enough, but the bounds of the confidence intervals might be noisier.</p>
+<p>The other limitation, which can be more problematic, is that bootstrap sampling does not work well with datasets that contain a small number of different values.
+To demonstrate, I’ll select data from the GSS for one year, 2018:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss2018</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2018</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And I’ll use bootstrapping to generate values from the sampling distribution of income.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t9</span> <span class="o">=</span> <span class="p">[</span><span class="n">bootstrap_percentile</span><span class="p">(</span><span class="n">gss2018</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary9</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t9</span><span class="p">)</span>
+<span class="n">summary9</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estimate</th>
+      <th>SE</th>
+      <th>CI90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>5150.02</td>
+      <td>217.76</td>
+      <td>[5107.5, 5107.5]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The mean of the sampling distribution and the standard error look plausible at first glance, but the width of the confidence interval is 0, which suggests that something has gone wrong!</p>
+<p>The problem is that <code class="docutils literal notranslate"><span class="pre">REALINC</span></code> is not really a numerical variable; it is a categorical variable in disguise.
+Using <code class="docutils literal notranslate"><span class="pre">value_counts</span></code>, we can see that there are only 26 distinct values in this column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">gss2018</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26
+</pre></div>
+</div>
+</div>
+</div>
+<p>The reason is that the GSS does not ask respondents to report their incomes.
+Instead, it gives them a list of ranges and asks them to pick the range their income falls in.
+The ranges are described in the documentation of the related variable <a class="reference external" href="https://gssdataexplorer.norc.org/variables/104/vshow"><code class="docutils literal notranslate"><span class="pre">INCOME</span></code></a>.</p>
+<p>Then GSS analysts compute the midpoint of each range and convert to 1986 dollars by adjusting for inflation.
+Details of the methodology are in <a class="reference external" href="https://gss.norc.org/Documents/reports/methodological-reports/MR101%20Getting%20the%20Most%20Out%20of%20the%20GSS%20Income%20Measures.pdf">this paper</a></p>
+<p>As a result, there are only 26 distinct values in <code class="docutils literal notranslate"><span class="pre">REALINC</span></code>.
+When we generate a bootstrapped sample and compute the 10th percentile, we get a small subset of them.  Here are the values that appear in our sample:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">t9</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4086.0      1
+5107.5    960
+5675.0      2
+5902.0      1
+6015.5      1
+6129.0      1
+6242.5     35
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are only 5 different values, and one of them appears more than 95% of the time.
+When we compute a 90% confidence interval, this value is both the 5th and the 95th percentile.</p>
+<p>In general, bootstrapping works well for many distributions and many statistics.
+But the one thing it cannot handle is lack of diversity in the data.</p>
+<p>However, even this problem can be solved.
+The fundamental cause is that the data have been discretized excessively, so the solution is to smooth it.
+Jittering is one option.  Another is to use kernel density estimation (KDE).</p>
+</div>
+<div class="section" id="resampling-with-kde">
+<h2>Resampling with KDE<a class="headerlink" href="#resampling-with-kde" title="Permalink to this headline">¶</a></h2>
+<p>We have used KDE several times to estimate and plot a probability density based on a sample.
+We can also use it to smooth data that have been discretized.</p>
+<p>In Chapter 7 we saw that the distribution of income is well modeled by a lognormal distribution, so if we take the log of income, it is well modeled by a normal distribution.
+Here are the logarithms of the income data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_realinc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">gss2018</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s what the estimated density looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">log_realinc</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income (log10 1986 dollars)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimated distribution of income&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12_bootstrap_117_0.png" src="_images/12_bootstrap_117_0.png" />
+</div>
+</div>
+<p>To draw samples from this distribution, we’ll use a Scipy function called <code class="docutils literal notranslate"><span class="pre">gaussian_kde</span></code>, which takes the data and returns an object that represents the estimated density.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">log_realinc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">kde</span></code> provides a method called <code class="docutils literal notranslate"><span class="pre">resample</span></code> that draws random values from the estimated density.
+As we’ve done in previous examples, we’ll generate a resampled dataset with the same size as the original.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">gss2018</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">n</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2152
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can draw a sample, compute the 10th percentile, and convert from a logarithm to a dollar value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">kde</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="mi">10</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5624.877370535091
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is a random value from the sampling distribution of the 10th percentile.
+The following function encapsulates these steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resample_kde_percentile</span><span class="p">(</span><span class="n">kde</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">kde</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">kde</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can generate a sample from the sampling distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t10</span> <span class="o">=</span> <span class="p">[</span><span class="n">resample_kde_percentile</span><span class="p">(</span><span class="n">kde</span><span class="p">)</span>
+       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+
+<span class="n">summary10</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following table compares the results with KDE resampling to the previous result with bootstrapping.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">summary9</span><span class="p">,</span> <span class="n">summary10</span><span class="p">])</span>
+<span class="n">table</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bootstrapping&#39;</span><span class="p">,</span> <span class="s1">&#39;KDE resampling&#39;</span><span class="p">]</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estimate</th>
+      <th>SE</th>
+      <th>CI90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>bootstrapping</th>
+      <td>5150.02</td>
+      <td>217.76</td>
+      <td>[5107.5, 5107.5]</td>
+    </tr>
+    <tr>
+      <th>KDE resampling</th>
+      <td>5092.76</td>
+      <td>264.18</td>
+      <td>[4666.12, 5538.53]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The means and standard errors are about the same with either method.  The difference is that the confidence interval we get from KDE resampling is much more reasonable.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>There are ten examples in this chapter so far; let’s review them:</p>
+<ol class="simple">
+<li><p>First we used resampling based on a normal model to estimate average family income in the GSS and compute a confidence interval.</p></li>
+<li><p>Then we used the same method to estimate the 10th percentile of income, and we found that the width of the confidence interval was 0.  The problem is that the normal model does not fit the distribution of income.</p></li>
+<li><p>To solve this problem, we switched to bootstrap sampling.  First we estimated average family income and confirmed that the results are consistent with the results based on the normal model.</p></li>
+<li><p>Then we used bootstrapping to estimate the 10th percentile of income.  The results are much more plausible.</p></li>
+</ol>
+<ol class="simple">
+<li><p>Next we used data from the BRFSS to estimate the average height of men in the U.S.  Since this dataset is large, the confidence interval is very small.  That means that the estimate is precise, in the sense that variability due to random sampling is small, but we don’t know whether it is accurate, because there are other possible sources of error.</p></li>
+<li><p>One of those sources of error is oversampling; that is, some people are more likely to appear in the sample than others.  In the BFRSS, each respondent has a sampling weight that indicates how many people in the population they represent.  We used these weighted to do weighted bootstrapping, and found that the error due to oversampling is larger than the variability due to random sampling.</p></li>
+<li><p>In one exercise you used weighted bootstrapping to estimate the correlation of height and weight and compute a confidence interval.</p></li>
+<li><p>In another exercise you estimated the slope of a regression line and computed a confidence interval.</p></li>
+<li><p>Finally, I demonstrated a problem with bootstrap sampling when the dataset has only a few different values,</p></li>
+<li><p>And presented a solution using KDE to smooth the data and draw samples from an estimated distribution.</p></li>
+</ol>
+<p>In the exercise below, you can work on one more example.</p>
+<p><strong>Exercise:</strong> In Chapter 10 we used logistic regression to model support for legalizing marijuana as a function of age, sex, and education level.
+Going back to that example, let’s explore changes in support over time and generate predictions for the next decade.</p>
+<p>To prepare the data for logistic regression, we have to recode the <code class="docutils literal notranslate"><span class="pre">GRASS</span></code> column so <code class="docutils literal notranslate"><span class="pre">1</span></code> means in favor of legalization and <code class="docutils literal notranslate"><span class="pre">0</span></code> means not in favor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;GRASS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gss</span><span class="p">[</span><span class="s1">&#39;GRASS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0    25662
+1.0    11884
+Name: GRASS, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>As explanatory variables we’ll use <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> and <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> squared, which I’ll store in a column called <code class="docutils literal notranslate"><span class="pre">YEAR2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;YEAR2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can run the model like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+
+<span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;GRASS ~ YEAR + YEAR2&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">gss</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/downey/anaconda3/envs/ElementsOfDataScience/lib/python3.7/site-packages/statsmodels/base/model.py:568: ConvergenceWarning: Maximum Likelihood optimization failed to converge. Check mle_retvals
+  ConvergenceWarning)
+</pre></div>
+</div>
+</div>
+</div>
+<p>To generate predictions, I’ll create a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with a range of values of <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> up to 2030, and corresponding values of <code class="docutils literal notranslate"><span class="pre">YEAR2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1972</span><span class="p">,</span> <span class="mi">2030</span><span class="p">)</span>
+<span class="n">df_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">years</span>
+<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;YEAR2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">pred</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ll use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to compute the fraction of respondents in favor of legalization during each year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grass_by_year</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;YEAR&#39;</span><span class="p">)[</span><span class="s1">&#39;GRASS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function plots the data and decorates the axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_data</span><span class="p">():</span>
+    <span class="n">grass_by_year</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction in favor&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Support for legalization of marijuana&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the predictions look like, plotted along with the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;logistic model&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plot_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12_bootstrap_146_0.png" src="_images/12_bootstrap_146_0.png" />
+</div>
+</div>
+<p>The model fits past data reasonably well and makes plausible predictions for the next decade, although we can never be sure that trends like this will continue.</p>
+<p>This way of representing the results could be misleading because it does not show our uncertainty about the predictions.
+Random sampling is just one source of uncertainty among many, and for this kind of prediction it is certainly not the biggest.
+But it is the easiest to quantify, so let’s do it, if only as an exercise.</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">bootstrap_regression_line</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, uses <code class="docutils literal notranslate"><span class="pre">sample</span></code> to resample the rows, runs the logistic regression model, generates predictions for the rows in <code class="docutils literal notranslate"><span class="pre">df_pred</span></code>, and returns the predictions.</p>
+<p>Call this function 101 times and save the results as a list of <code class="docutils literal notranslate"><span class="pre">Series</span></code> objects.
+To visualize the results, you have two options:</p>
+<ol class="simple">
+<li><p>Loop through the list and plot each prediction using a gray line with a low value of <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.  The overlapping lines will form a region showing the range of uncertainty over time.</p></li>
+<li><p>Pass the list of <code class="docutils literal notranslate"><span class="pre">Series</span></code> to <code class="docutils literal notranslate"><span class="pre">np.percentile</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> to compute the 5th and 95th percentile in each column.  Plot these percentiles as two lines, or use <code class="docutils literal notranslate"><span class="pre">plt.fill_between</span></code> to plot a shaded region between them.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="11_resampling.html" title="previous page">Resampling</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
