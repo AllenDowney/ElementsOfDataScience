@@ -107,8 +107,30 @@ For each of the notebooks below, you have two options: If you run the notebook o
 
 ### Notebook 11
 
-**Inference**: This notebook presents computational inference -- a process for computing p-values, standard errors, and confidence intervals -- using randomization methods rather than analysis.
+**Resampling**: This notebook presents computational methods we can use to
+quantify variation due to random sampling, which is one of several sources
+of error in statistical estimation.
 
-[Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_inference.ipynb)
+[Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb)
 
-[or click here to download it](https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_inference.ipynb)
+[or click here to download it](https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb)
+
+
+### Notebook 12
+
+**Bootstrapping**: Bootstrapping is a kind of resampling that is well suited
+to the kind of survey data we've been working with.
+
+[Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/12_bootstrap.ipynb)
+
+[or click here to download it](https://github.com/AllenDowney/ElementsOfDataScience/raw/master/12_bootstrap.ipynb)
+
+### Notebook 13
+
+**Hypothesis Testing**: Hypothesis testing is the bugbear of classical statistics.
+This notebook presents a computational approach to the topic that makes is clear
+that there is only one test.
+
+[Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb)
+
+[or click here to download it](https://github.com/AllenDowney/ElementsOfDataScience/raw/master/13_hypothesis.ipynb)
