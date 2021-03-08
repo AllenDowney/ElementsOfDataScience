@@ -312,20 +312,20 @@
 <h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/13_hypothesis.ipynb">click here to download it</a>.</p>
-<p>This chapter introduces hypothesis testing, which has a controversial topic in the last decade or so.
+<p>This chapter introduces hypothesis testing, which has been a controversial topic in the last decade or so.
 What I present here is different from what you might see in a statistics book.</p>
 <p>Instead of mathematical analysis, we will use computational simulations.
 This approach has two advantages and one disadvantage:</p>
 <ul class="simple">
-<li><p>PRO: The standard statistic curriculum includes many different tests, and many people find it hard to remember which one to use. In my opinion, simulation makes it clearer that there is only one testing framework.</p></li>
-<li><p>PRO: Simulations make modeling decision explicit.  All statistical methods are based on models. When we use mathematical methods, it is easy to forget the assumptions they are based on.  With computation, the assumption are more visible, and it is easier to try different models.</p></li>
-<li><p>CON: Simulation can take a lot of computation.  Some of the examples in this notebook take several seconds to run, and the results are only approximate.  For some problems, there are analytic methods that are faster and more accurate.</p></li>
+<li><p>PRO: The standard statistics curriculum includes many different tests, and many people find it hard to remember which one to use. In my opinion, simulation makes it clearer that there is only one testing framework.</p></li>
+<li><p>PRO: Simulations make modeling decision explicit.  All statistical methods are based on models, but when we use mathematical methods, it is easy to forget the assumptions they are based on.  With computation, the assumptions are more visible, and it is easier to try different models.</p></li>
+<li><p>CON: Simulation uses a lot of computation.  Some of the examples in this notebook take several seconds to run and the results are only approximate.  For some problems, there are analytic methods that are faster and more accurate.</p></li>
 </ul>
-<p>The examples in this chapter include results from a clinical trial related to peanut allergies, and data from the National Survey of Family Growth (NSFG) and the Behavioral Risk Factor Surveillance System (BRFSS).</p>
+<p>The examples in this chapter include results from a clinical trial related to peanut allergies, and survey data from the National Survey of Family Growth (NSFG) and the Behavioral Risk Factor Surveillance System (BRFSS).</p>
 <div class="section" id="peanut-allergies">
 <h2>Peanut Allergies<a class="headerlink" href="#peanut-allergies" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA">LEAP study</a> was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies.
-The subjects were infants who were thought to be at high risk of developing peanut allergies because they had been diagnosed with other food allergies.</p>
+The subjects were infants who were at high risk of developing peanut allergies because they had been diagnosed with other food allergies.</p>
 <p>Over a period of several years, half of the subjects were periodically given a snack containing peanuts; the other half were given no peanuts at all.</p>
 <p>The conclusion of the study, reported in 2015 is:</p>
 <blockquote>
