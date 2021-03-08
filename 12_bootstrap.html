@@ -54,6 +54,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hypothesis Testing" href="13_hypothesis.html" />
     <link rel="prev" title="Resampling" href="11_resampling.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -148,6 +149,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Bootstrap Sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_hypothesis.html">
+   Hypothesis Testing
   </a>
  </li>
 </ul>
@@ -308,8 +314,8 @@
                 
   <div class="section" id="bootstrap-sampling">
 <h1>Bootstrap Sampling<a class="headerlink" href="#bootstrap-sampling" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a> or
-<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">click here to download it</a>.</p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/12_bootstrap.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/12_bootstrap.ipynb">click here to download it</a>.</p>
 <p>In the previous chapter we used resampling to compute standard errors and confidence intervals, which quantify the variability in an estimate due to random sampling.</p>
 <p>As one of the examples, we used data from the General Social Survey (GSS) to explore changes in support for gun control over time and to compute confidence intervals for the estimated proportions.</p>
 <p>In this chapter, we’ll use GSS data to estimate average income and the 10th percentile of income.
@@ -563,7 +569,7 @@ The mean of the sampling distribution is consistent with the mean of the data, w
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="n">cdf_realinc</span> <span class="o">=</span> <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -571,7 +577,9 @@ The mean of the sampling distribution is consistent with the mean of the data, w
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;normal model&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;normal model&#39;</span><span class="p">)</span>
 <span class="n">cdf_realinc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;GSS data&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Family income (1986 $)&#39;</span><span class="p">)</span>
@@ -582,7 +590,7 @@ The mean of the sampling distribution is consistent with the mean of the data, w
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12_bootstrap_27_0.png" src="_images/12_bootstrap_27_0.png" />
+<img alt="_images/12_bootstrap_28_0.png" src="_images/12_bootstrap_28_0.png" />
 </div>
 </div>
 <p>The normal distribution is not a good model for the data.  As we saw in the previous section, it is good enough to compute the sampling distribution of the mean.
@@ -1140,8 +1148,7 @@ That way, the probability that any row is selected is proportional to its sampli
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">)</span>
-<span class="n">weights</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">]</span>
-<span class="n">bootstrapped</span> <span class="o">=</span> <span class="n">brfss</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+<span class="n">bootstrapped</span> <span class="o">=</span> <span class="n">brfss</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1156,11 +1163,11 @@ To see how many times, we can use <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019000108    145
-2019000096    115
-2019000851    105
-2019006167    105
-2019000047    103
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2019000851    143
+2019006167    130
+2019000108    127
+2019000048    105
+2019000051    105
 Name: SEQNO, dtype: int64
 </pre></div>
 </div>
@@ -1176,7 +1183,7 @@ Name: SEQNO, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>828
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>844
 </pre></div>
 </div>
 </div>
@@ -1188,8 +1195,7 @@ The following function uses <code class="docutils literal notranslate"><span cla
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">weighted_bootstrap_mean</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">]</span>
-    <span class="n">sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;HTM4&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1205,7 +1211,7 @@ If we run it once, we get a random value from the sampling distribution of the w
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>177.6261509207366
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>177.64468307781377
 </pre></div>
 </div>
 </div>
@@ -1247,9 +1253,9 @@ If we run it once, we get a random value from the sampling distribution of the w
   <tbody>
     <tr>
       <th></th>
-      <td>177.642</td>
-      <td>0.02</td>
-      <td>[177.606, 177.671]</td>
+      <td>177.64</td>
+      <td>0.019</td>
+      <td>[177.611, 177.672]</td>
     </tr>
   </tbody>
 </table>
@@ -1276,63 +1282,30 @@ So in this example the error if we fail to correct for oversampling is bigger th
 <div class="section" id="correlation-and-regression">
 <h2>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Permalink to this headline">¶</a></h2>
 <p>Bootstrap resampling can be used to estimate other statistics and their sampling distributions.
-For example, in Chapter 9 we computed the correlation between height and weight, like this:</p>
+For example, in Chapter 9 we computed the correlation between height and weight, which is about 0.48.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HTM4&#39;</span><span class="p">,</span> <span class="s1">&#39;WTKG3&#39;</span><span class="p">]</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
-<span class="n">subset</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span> <span class="o">=</span> <span class="s1">&#39;HTM4&#39;</span><span class="p">,</span> <span class="s1">&#39;WTKG3&#39;</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="n">var1</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">brfss</span><span class="p">[</span><span class="n">var2</span><span class="p">])</span>
+<span class="n">corr</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>HTM4</th>
-      <th>WTKG3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>HTM4</th>
-      <td>1.000000</td>
-      <td>0.477151</td>
-    </tr>
-    <tr>
-      <th>WTKG3</th>
-      <td>0.477151</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.47715146283881427
+</pre></div>
+</div>
+</div>
 </div>
 <p>That correlation does not take into account oversampling.
-We can correct it with this function, which generates a weighted bootstrapped sample and uses it to compute the correlation of height and weight.</p>
+We can correct it with this function, which generates a weighted bootstrapped sample and uses it to compute the correlation of the columns with names <code class="docutils literal notranslate"><span class="pre">var1</span></code> and <code class="docutils literal notranslate"><span class="pre">var2</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">weighted_bootstrap_corr</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">weighted_bootstrap_corr</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">]</span>
-    <span class="n">sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
-    <span class="n">corr</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">corr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;_LLCPWT&#39;</span><span class="p">)</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="n">var1</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="n">var2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">corr</span>
 </pre></div>
 </div>
 </div>
@@ -1505,7 +1478,7 @@ Here are the logarithms of the income data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12_bootstrap_117_0.png" src="_images/12_bootstrap_117_0.png" />
+<img alt="_images/12_bootstrap_118_0.png" src="_images/12_bootstrap_118_0.png" />
 </div>
 </div>
 <p>To draw samples from this distribution, we’ll use a Scipy function called <code class="docutils literal notranslate"><span class="pre">gaussian_kde</span></code>, which takes the data and returns an object that represents the estimated density.</p>
@@ -1660,7 +1633,7 @@ Name: GRASS, dtype: int64
 <p>As explanatory variables we’ll use <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> and <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> squared, which I’ll store in a column called <code class="docutils literal notranslate"><span class="pre">YEAR2</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;YEAR2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;YEAR2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1990</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -1675,12 +1648,6 @@ Name: GRASS, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/downey/anaconda3/envs/ElementsOfDataScience/lib/python3.7/site-packages/statsmodels/base/model.py:568: ConvergenceWarning: Maximum Likelihood optimization failed to converge. Check mle_retvals
-  ConvergenceWarning)
-</pre></div>
-</div>
-</div>
 </div>
 <p>To generate predictions, I’ll create a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with a range of values of <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> up to 2030, and corresponding values of <code class="docutils literal notranslate"><span class="pre">YEAR2</span></code>.</p>
 <div class="cell docutils container">
@@ -1688,7 +1655,7 @@ Name: GRASS, dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1972</span><span class="p">,</span> <span class="mi">2030</span><span class="p">)</span>
 <span class="n">df_pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">years</span>
-<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;YEAR2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;YEAR2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_pred</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1990</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 
 <span class="n">pred</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_pred</span><span class="p">)</span>
 </pre></div>
@@ -1711,7 +1678,7 @@ Name: GRASS, dtype: int64
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction in favor&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Support for legalization of marijuana&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1725,7 +1692,7 @@ Name: GRASS, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12_bootstrap_146_0.png" src="_images/12_bootstrap_146_0.png" />
+<img alt="_images/12_bootstrap_147_0.png" src="_images/12_bootstrap_147_0.png" />
 </div>
 </div>
 <p>The model fits past data reasonably well and makes plausible predictions for the next decade, although we can never be sure that trends like this will continue.</p>
@@ -1771,6 +1738,7 @@ To visualize the results, you have two options:</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="11_resampling.html" title="previous page">Resampling</a>
+    <a class='right-next' id="next-link" href="13_hypothesis.html" title="next page">Hypothesis Testing</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -151,6 +151,11 @@
    Bootstrap Sampling
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_hypothesis.html">
+   Hypothesis Testing
+  </a>
+ </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -302,7 +307,7 @@
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">click here to download it</a>.</p>
 <p>This chapter introduces <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)">resampling methods</a>, which are used to quantify the precision of an estimate.</p>
-<p>As examples, we’ll use results a vaccine trial to estimate the efficacy of the vaccine, data from the BRFSS to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
+<p>As examples, we’ll use results a vaccine trial to estimate the efficacy of the vaccine, data from the Behavioral Risk Factor Surveillance System to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
 <div class="section" id="vaccine-testing">
 <h2>Vaccine Testing<a class="headerlink" href="#vaccine-testing" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you read a report about a new vaccine and the manufacturer says it is 67% effective at preventing disease.
@@ -994,6 +999,15 @@ The result should give you a sense of how much variation we expect to see from y
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Let’s review the examples in this chapter:</p>
+<ol class="simple">
+<li><p>We started with results from a vaccine trial.  We estimated the effectiveness of the vaccine and used simulation to draw a random sample from the sampling distribution of effectiveness.  We used that sample to compute a standard error and a 90% confidence interval, which measure the variability we would expect if we ran the experiment again (assuming that the observed efficacy is correct).</p></li>
+<li><p>As a second example, we estimated the height of adult males in the U.S. and used simulation based on a normal model to compute the sampling distribution of the mean, standard error, and a confidence interval.</p></li>
+<li><p>I presented the resampling framework, which shows what these examples have in common. We implemented a second model of the vaccine trial, based on the assumption that there is variation in risk within the treatment and control groups. The results from both models are similar, which suggests that the simple model is good enough for practical purposes.</p></li>
+<li><p>One of the advantages of resampling, compared to mathematical analysis, is that it is easy to compute the sampling distribution of almost any statistic.  As an exercise, you computed the sampling distribution of the coefficient of variation.</p></li>
+<li><p>Finally, we used data from the General Social Survey to explore changes in support for gun control over time.  We used resampling to compute and plot a confidence interval for the percentage of respondents in favor of a proposed law, for each year of the survey.</p></li>
+</ol>
+<p>The next chapter presents bootstrap sampling, which is a kind of resampling particularly well suited for the kind of survey data we’ve been working with.</p>
 </div>
 </div>
 

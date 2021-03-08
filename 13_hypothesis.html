@@ -52,8 +52,11 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Bootstrap Sampling" href="12_bootstrap.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -88,7 +91,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and values
@@ -147,6 +150,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="12_bootstrap.html">
    Bootstrap Sampling
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Hypothesis Testing
   </a>
  </li>
 </ul>
@@ -255,6 +263,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#p-values">
+   p-values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">
    Are first babies more likely to be late?
   </a>
@@ -265,8 +278,23 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gun-control">
-   Gun Control
+  <a class="reference internal nav-link" href="#testing-correlation">
+   Testing Correlation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-regression-models">
+   Testing Regression Models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#controlling-for-age">
+   Controlling for Age
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -284,9 +312,30 @@
 <h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">click here to download it</a>.</p>
-<p>Intro</p>
+<p>This chapter introduces hypothesis testing, which has a controversial topic in the last decade or so.
+What I present here is different from what you might see in a statistics book.</p>
+<p>Instead of mathematical analysis, we will use computational simulations.
+This approach has two advantages and one disadvantage:</p>
+<ul class="simple">
+<li><p>PRO: The standard statistic curriculum includes many different tests, and many people find it hard to remember which one to use. In my opinion, simulation makes it clearer that there is only one testing framework.</p></li>
+<li><p>PRO: Simulations make modeling decision explicit.  All statistical methods are based on models. When we use mathematical methods, it is easy to forget the assumptions they are based on.  With computation, the assumption are more visible, and it is easier to try different models.</p></li>
+<li><p>CON: Simulation can take a lot of computation.  Some of the examples in this notebook take several seconds to run, and the results are only approximate.  For some problems, there are analytic methods that are faster and more accurate.</p></li>
+</ul>
+<p>The examples in this chapter include results from a clinical trial related to peanut allergies, and data from the National Survey of Family Growth (NSFG) and the Behavioral Risk Factor Surveillance System (BRFSS).</p>
 <div class="section" id="peanut-allergies">
 <h2>Peanut Allergies<a class="headerlink" href="#peanut-allergies" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA">LEAP study</a> was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies.
+The subjects were infants who were thought to be at high risk of developing peanut allergies because they had been diagnosed with other food allergies.</p>
+<p>Over a period of several years, half of the subjects were periodically given a snack containing peanuts; the other half were given no peanuts at all.</p>
+<p>The conclusion of the study, reported in 2015 is:</p>
+<blockquote>
+<div><p>Of the children who avoided peanut, 17% developed peanut allergy by the age of 5 years. Remarkably, only 3% of the children who were randomized to eating the peanut snack developed allergy by age 5. Therefore, in high-risk infants, sustained consumption of peanut beginning in the first 11 months of life was highly effective in preventing the development of peanut allergy.</p>
+</div></blockquote>
+<p>These results seem impressive, but as skeptical data scientists we should wonder whether it is possible that we are getting fooled by randomness.
+Maybe the apparent difference between the groups is due to chance, not the effectiveness of the treatment.</p>
+<p>To see whether this is likely, we will simulate the experiment using a model where the treatment has no effect, and see how often we see such a big difference between the groups.</p>
+<p>Detailed results of the study are reported in <a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJMoa1414850">this article</a> from the <em>New England Journal of Medicine</em>.
+Their Figure 1 shows the number of subjects in the treatment and control groups, which happened to be equal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_control</span> <span class="o">=</span> <span class="mi">314</span>
@@ -295,6 +344,8 @@
 </div>
 </div>
 </div>
+<p>And from their Figure 2 we can extract the number of subjects who developed peanut allergies in each group.
+Specifically, we’ll use the numbers from the “intention to treat analysis for both cohorts”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_control</span> <span class="o">=</span> <span class="mi">54</span>
@@ -303,6 +354,7 @@
 </div>
 </div>
 </div>
+<p>Using these numbers, we can compute the risk in each group as a percentage.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">risk_control</span> <span class="o">=</span> <span class="n">k_control</span> <span class="o">/</span> <span class="n">n_control</span> <span class="o">*</span> <span class="mi">100</span>
@@ -329,6 +381,8 @@
 </div>
 </div>
 </div>
+<p>These are consistent with the percentages reported in the paper.</p>
+<p>To quantify the difference between the groups, we’ll use <a class="reference external" href="https://en.wikipedia.org/wiki/Relative_risk">relative risk</a>, which is the ratio of the risks in the two groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_risk_actual</span> <span class="o">=</span> <span class="n">risk_treatment</span> <span class="o">/</span> <span class="n">risk_control</span>
@@ -342,12 +396,16 @@
 </div>
 </div>
 </div>
+<p>The risk in the treatment group is about 18% of the risk in the control group.
+So it seems like the treatment is highly effective.</p>
+<p>To check, let’s imagine a world where the treatment is completely ineffective, so the risk is actually the same in both groups, and the difference we saw is due to chance.
+If that’s true, we can estimate the hypothetical risk by combining the two groups:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_total</span> <span class="o">=</span> <span class="n">n_control</span> <span class="o">+</span> <span class="n">n_treatment</span>
-<span class="n">k_total</span> <span class="o">=</span> <span class="n">k_control</span> <span class="o">+</span> <span class="n">k_treatment</span>
-<span class="n">p_null</span> <span class="o">=</span> <span class="n">k_total</span> <span class="o">/</span> <span class="n">n_total</span>
-<span class="n">p_null</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_all</span> <span class="o">=</span> <span class="n">n_control</span> <span class="o">+</span> <span class="n">n_treatment</span>
+<span class="n">k_all</span> <span class="o">=</span> <span class="n">k_control</span> <span class="o">+</span> <span class="n">k_treatment</span>
+<span class="n">risk_all</span> <span class="o">=</span> <span class="n">k_all</span> <span class="o">/</span> <span class="n">n_all</span>
+<span class="n">risk_all</span>
 </pre></div>
 </div>
 </div>
@@ -357,11 +415,16 @@
 </div>
 </div>
 </div>
+<p>If the risk is the same for both groups, it is close to 10%.</p>
+<p>Now we can use this hypothetical risk to simulate the experiment.
+Here’s <code class="docutils literal notranslate"><span class="pre">simulate_group_percent</span></code>, which we saw in Chapter 11.
+It takes as parameters the size of the group, <code class="docutils literal notranslate"><span class="pre">n</span></code>, and the risk, <code class="docutils literal notranslate"><span class="pre">p</span></code>.
+It simulates the experiment and returns the number of cases as a percentage of the group, which is the observed risk.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">simulate_group</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">simulate_group_percent</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
     <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xs</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">k</span> <span class="o">/</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">100</span>
@@ -369,31 +432,34 @@
 </div>
 </div>
 </div>
+<p>If we call this function many times, the result is a list of observed risks, one for each simulated experiment.
+Here’s the list for the treatment group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_group</span><span class="p">(</span><span class="n">n_treatment</span><span class="p">,</span> <span class="n">p_null</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_group_percent</span><span class="p">(</span><span class="n">n_treatment</span><span class="p">,</span> <span class="n">risk_all</span><span class="p">)</span>
       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>And the control group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_group</span><span class="p">(</span><span class="n">n_control</span><span class="p">,</span> <span class="n">p_null</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_group_percent</span><span class="p">(</span><span class="n">n_control</span><span class="p">,</span> <span class="n">risk_all</span><span class="p">)</span>
       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>If we divide these lists elementwise, the result is a list of relative risks, one for each simulated experiment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_risks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_risks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The result is a list of estimated risks that shows how much we expect the results of the trial to vary due to randomness.
-We can use a KDE plot to visualize the distribution of these estimates</p>
+<p>We can use a KDE plot to visualize the distribution of these results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -403,397 +469,91 @@ We can use a KDE plot to visualize the distribution of these estimates</p>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Relative risk&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relative risks from simulation with p_null&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relative risks from simulation with risk_all&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_22_0.png" src="_images/13_hypothesis_22_0.png" />
+<img alt="_images/13_hypothesis_27_0.png" src="_images/13_hypothesis_27_0.png" />
 </div>
 </div>
-<p>The mean of this distribution is about 5.3, which is close to the observed risk, as we should expect.</p>
+<p>Remember that these simulations are based on the assumption that the risk is the same for both groups, so we expect the relative risk to be near 1 most of the time.
+And it is.</p>
+<p>In some simulated experiments, the relative risk is as low as 0.5 or as high as 2, which means it is plausible we could see results like that by chance, even if there is no difference between groups.</p>
+<p>But the relative risk in the actual experiment was 0.18, and we never see a result like that in the simulated experiment.
+We can conclude that the relative risk we saw is unlikely if the risk is actually the same in both groups.</p>
+</div>
+<div class="section" id="p-values">
+<h2>p-values<a class="headerlink" href="#p-values" title="Permalink to this headline">¶</a></h2>
+<p>Now suppose that in addition to the treatment and control groups, the experiment included a <a class="reference external" href="https://en.wikipedia.org/wiki/Placebo">placebo</a> group that was given a snack that contained no peanuts.
+Suppose this group was the same size as the others, and 42 of the subjects developed peanut allergies.</p>
+<p>To be clear, there was no third group, and I made up these numbers, but let’s see how this hypothetical works out.
+Here’s the risk in the placebo group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">relative_risks</span> <span class="o">&lt;=</span> <span class="n">relative_risk_actual</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_placebo</span> <span class="o">=</span> <span class="mi">314</span>
+<span class="n">k_placebo</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="n">risk_placebo</span> <span class="o">=</span> <span class="n">k_placebo</span> <span class="o">/</span> <span class="n">n_placebo</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">risk_placebo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.375796178343949
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s the relative risk compared to the control group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_risk_placebo</span> <span class="o">=</span> <span class="n">risk_placebo</span> <span class="o">/</span> <span class="n">risk_control</span>
+<span class="n">relative_risk_placebo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7777777777777778
+</pre></div>
+</div>
+</div>
+</div>
+<p>The relative risk is less than 1, which means the risk in the placebo group is a bit lower than in the control group.
+So we might wonder whether the placebo was actually effective.
+To answer that question, at least partially, we can go back to the results from the simulated experiment.</p>
+<p>Under the assumption that there is actually no difference between the groups, it would not be unusual to see a relative risk as low as 0.77 by chance.
+In fact, we can compute the probability of seeing a relative risk as low or lower than <code class="docutils literal notranslate"><span class="pre">relative_risk_placebo</span></code>, even if the two groups are the same, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">relative_risks</span> <span class="o">&lt;=</span> <span class="n">relative_risk_placebo</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">p_value</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.137
 </pre></div>
 </div>
 </div>
 </div>
-<p>This result is called a</p>
+<p>This probability is called a <a class="reference external" href="https://en.wikipedia.org/wiki/P-value">p-value</a>.  In this case, the p-value is about 14%, which means that even if the two groups are the same, we expect to see a relative risk as low as 0.77 about 14% of the time.
+So, for this imagined experiment, we can’t rule out the possibility that the apparent difference is due to chance.</p>
 </div>
 <div class="section" id="are-first-babies-more-likely-to-be-late">
 <h2>Are first babies more likely to be late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-    
-<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://github.com/AllenDowney/&#39;</span> <span class="o">+</span>
-         <span class="s1">&#39;ElementsOfDataScience/raw/master/data/nsfg.hdf&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>In the previous example, we saw a difference in proportion between two groups.
+As a second example, let’s consider a difference in means.</p>
+<p>When my wife and I were expecting out first child, we heard that first babies are more likely to be born late.  But we also heard that first babies are more likely to be born early.  So which is it? As a data scientist with too much time on my hands, I decided to find out.</p>
+<p>I got data from the National Survey of Family Growth (NSFG), the same survey we have used in previous chapters.
+I’ve put the results from the 2015-2017 survey in an HDF file.
+Here are the first few rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;nsfg.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;nsfg&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">live</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;OUTCOME&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">live</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6693
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">37</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">48</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHORD&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">first</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2724
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">other</span> <span class="o">=</span> <span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHORD&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">other</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3115
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_first</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">first</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
-<span class="n">length_first</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.39647577092511
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_other</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">other</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
-<span class="n">length_other</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.19775280898877
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_actual</span> <span class="o">=</span> <span class="n">length_first</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">length_other</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">diff_actual</span><span class="p">,</span> <span class="n">diff_actual</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">24</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.19872296193634043, 33.38545760530519)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
-
-<span class="n">cdf_first</span> <span class="o">=</span> <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">length_first</span><span class="p">)</span>
-<span class="n">cdf_other</span> <span class="o">=</span> <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">length_other</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_first</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;first babies&#39;</span><span class="p">)</span>
-<span class="n">cdf_other</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;others&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pregnancy length (weeks)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of pregnancy lengths&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_38_0.png" src="_images/13_hypothesis_38_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">live</span><span class="o">&amp;</span><span class="n">fullterm</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">length</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">std</span> <span class="o">=</span> <span class="n">length</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">mean</span><span class="p">,</span> <span class="n">std</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(39.29046069532454, 1.1864094701037655)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_sample_mean</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
-    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_first</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">length_first</span><span class="p">)</span>
-<span class="n">n_first</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2724
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_other</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">length_other</span><span class="p">)</span>
-<span class="n">n_other</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3115
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we run it 1000 times, it simulates the sampling and measurement process and returns a list of results from 1000 simulated experiments.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_first</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_first</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_other</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_other</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_first</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_other</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can use a KDE plot to visualize the distribution of these values.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Difference in pregnancy length (weeks)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of differences&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_49_0.png" src="_images/13_hypothesis_49_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">diff_actual</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">p_value</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="the-hypothesis-testing-framework">
-<h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Permalink to this headline">¶</a></h2>
-<p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
-<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/hypothesis_testing.png" /></p>
-<p>I emphasize the role of the model in this framework because for a given experiment there might be several possible models, each including some elements of the real world and ignoring others.</p>
-<p>For example, our model of the vaccine experiment assumes that everyone in each group has the same risk, but that’s probably not true.
-Here’s another version of <code class="docutils literal notranslate"><span class="pre">simulate_group</span></code> that includes variation in risk within each group.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_two_groups</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
-    <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">)</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">group1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
-    <span class="n">group2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">group2</span><span class="p">)</span> <span class="o">==</span> <span class="n">m</span>
-    <span class="k">return</span> <span class="n">group1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">group2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulate_two_groups</span><span class="p">(</span><span class="n">length_first</span><span class="p">,</span> <span class="n">length_other</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01361478611144662
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise:</strong> Using this function to run 1000 simulations of the treatment group.  Compute the mean of the results and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">risk_treatment</span></code>.  To quantify the spread of the sampling distribution, compute the standard error.  How does it compare to the standard error we computed with the original model, where everyone in the group has the same risk?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">diffs2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">diff_actual</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">p_value</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise:</strong> The following is a version of <code class="docutils literal notranslate"><span class="pre">simulate_trial</span></code> that uses <code class="docutils literal notranslate"><span class="pre">simulate_variable_group</span></code>, from the previous exercise, to simulate the vaccine trial using the modified model, with variation in risk within the groups.</p>
-<p>Use this function to simulate 1000 trials.  Compute the mean of the sampling distribution and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">efficacy</span></code>.  Compute the standard error and compare it to the standard error we computed for the original model</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_variable_trial</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
-    <span class="n">risk1</span> <span class="o">=</span> <span class="n">simulate_variable_group</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">)</span>
-    <span class="n">risk2</span> <span class="o">=</span> <span class="n">simulate_variable_group</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
-    <span class="n">efficacy</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">risk2</span> <span class="o">/</span> <span class="n">risk1</span>
-    <span class="k">return</span> <span class="n">efficacy</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise:</strong> One nice thing about the resampling framework is that it is easy to compute the sampling distribution for other statistics.</p>
-<p>For example, suppose we want to estimate the coefficient of variation (standard deviation as a fraction of the mean) for adult male height.  Here’s how we can compute it.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">std_height</span> <span class="o">/</span> <span class="n">mean_height</span>
-<span class="n">cv</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04745762711864407
-</pre></div>
-</div>
-</div>
-</div>
-<p>In this example, the standard deviation is about 5% of the mean.
-The following is a version of <code class="docutils literal notranslate"><span class="pre">simulate_sample</span></code> that generates a random sample of heights and returns the coefficient of variation, rather than the mean.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_sample_cv</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
-    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sample</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Use this function to simulate 1000 samples with size <code class="docutils literal notranslate"><span class="pre">n=103</span></code>, using <code class="docutils literal notranslate"><span class="pre">mean_height</span></code> for <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">std_height</span></code> for <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.  Plot the sampling distribution of the coefficient of variation, and compute a 90% confidence interval.</p>
-</div>
-<div class="section" id="gun-control">
-<h2>Gun Control<a class="headerlink" href="#gun-control" title="Permalink to this headline">¶</a></h2>
-<p>In Chapter 10 we used data from the General Social Survey, specifically a variable called <code class="docutils literal notranslate"><span class="pre">GUNLAW</span></code>, to describe support for a gun control law as a function of age, sex, and years of education.
-Now let’s come back to that dataset and see how the responses have changed over time.</p>
-<p>The following cell reloads the data.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;gss_eda.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;gss&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The column named <code class="docutils literal notranslate"><span class="pre">GUNLAW</span></code> records responses to the question “Would you favor or oppose a law which would require a person to obtain a police permit before he or she could buy a gun?”</p>
-<p>The response code <code class="docutils literal notranslate"><span class="pre">1</span></code> means yes; <code class="docutils literal notranslate"><span class="pre">2</span></code> means no.  It will be easier to work with this variable if we recode it so <code class="docutils literal notranslate"><span class="pre">0</span></code> means no.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;GUNLAW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">gss</span><span class="p">[</span><span class="s1">&#39;GUNLAW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0    32038
-0.0     9975
-Name: GUNLAW, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>For each year of the survey, I would like to compute the number of respondents and the number who said they favor this law.
-I’ll use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to group the respondents by year of interview and <code class="docutils literal notranslate"><span class="pre">agg</span></code> to compute two aggregation functions, <code class="docutils literal notranslate"><span class="pre">sum</span></code> and <code class="docutils literal notranslate"><span class="pre">count</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;YEAR&#39;</span><span class="p">)[</span><span class="s1">&#39;GUNLAW&#39;</span><span class="p">]</span>
-<span class="n">agg</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
-<span class="n">agg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">nsfg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -816,94 +576,996 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">groupby<
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sum</th>
-      <th>count</th>
-    </tr>
-    <tr>
-      <th>YEAR</th>
-      <th></th>
-      <th></th>
+      <th>CASEID</th>
+      <th>OUTCOME</th>
+      <th>BIRTHWGT_LB1</th>
+      <th>BIRTHWGT_OZ1</th>
+      <th>PRGLNGTH</th>
+      <th>NBRNALIV</th>
+      <th>AGECON</th>
+      <th>AGEPREG</th>
+      <th>BIRTHORD</th>
+      <th>HPAGELB</th>
+      <th>WGT2015_2017</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>1972</th>
-      <td>1131.0</td>
-      <td>1562</td>
+      <th>0</th>
+      <td>70627</td>
+      <td>1</td>
+      <td>7.0</td>
+      <td>8.0</td>
+      <td>40</td>
+      <td>1.0</td>
+      <td>28</td>
+      <td>29.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>19877.457610</td>
     </tr>
     <tr>
-      <th>1973</th>
-      <td>1099.0</td>
-      <td>1470</td>
+      <th>1</th>
+      <td>70627</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14</td>
+      <td>NaN</td>
+      <td>32</td>
+      <td>32.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>19877.457610</td>
     </tr>
     <tr>
-      <th>1974</th>
-      <td>1112.0</td>
-      <td>1459</td>
+      <th>2</th>
+      <td>70627</td>
+      <td>1</td>
+      <td>9.0</td>
+      <td>2.0</td>
+      <td>39</td>
+      <td>1.0</td>
+      <td>33</td>
+      <td>33.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>19877.457610</td>
     </tr>
     <tr>
-      <th>1975</th>
-      <td>1096.0</td>
-      <td>1450</td>
+      <th>3</th>
+      <td>70628</td>
+      <td>1</td>
+      <td>6.0</td>
+      <td>9.0</td>
+      <td>39</td>
+      <td>1.0</td>
+      <td>17</td>
+      <td>18.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>4221.017695</td>
     </tr>
     <tr>
-      <th>1976</th>
-      <td>1068.0</td>
-      <td>1472</td>
+      <th>4</th>
+      <td>70628</td>
+      <td>1</td>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>39</td>
+      <td>1.0</td>
+      <td>19</td>
+      <td>20.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>4221.017695</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>The result is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with two columns: <code class="docutils literal notranslate"><span class="pre">sum</span></code> is the number of respondents who said “yes”; <code class="docutils literal notranslate"><span class="pre">count</span></code> is the number of respondents who were asked the question.</p>
-<p>In some years the question was not asked, so I’ll use <code class="docutils literal notranslate"><span class="pre">drop</span></code> to remove those rows.</p>
+<p>I’ll use the <code class="docutils literal notranslate"><span class="pre">OUTCOME</span></code> column to select pregnancies that ended with a live birth.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zero</span> <span class="o">=</span> <span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">agg</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">zero</span><span class="p">]</span>
-<span class="n">agg</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we can plot the percentage of respondents who favor gun control (at least for this wording of the question) during each year.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent</span> <span class="o">=</span> <span class="n">agg</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">agg</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
-<span class="n">percent</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year of survey&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percent in favor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Support for gun control over time&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">live</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;OUTCOME&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">live</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_86_0.png" src="_images/13_hypothesis_86_0.png" />
-</div>
-</div>
-<p>The results vary from year to year.  It is hard to tell how much of this variation is due to real changes in opinion, and how much is due to random sampling.
-We can answer that question by computing confidence intervals for each of these data points.</p>
-<p><strong>Exercise:</strong> Write a loop that goes through the rows in <code class="docutils literal notranslate"><span class="pre">agg</span></code> and computes a confidence interval for each year.
-You can use <code class="docutils literal notranslate"><span class="pre">itertuples</span></code> to iterate the rows, like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">agg</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6693
 </pre></div>
 </div>
-<p>For each row, compute a 90% confidence interval and plot it as a vertical line.
-Then plot the data points and label the axes.
-The result should give you a sense of how much variation we expect to see from year to year due to random sampling.</p>
-<p>You might want to use this version of <code class="docutils literal notranslate"><span class="pre">simulate_group</span></code>, which returns results as a percentage, rather than per 1000.</p>
+</div>
+</div>
+<p>And I’ll use <code class="docutils literal notranslate"><span class="pre">PRGLNGTH</span></code> to select babies that were born full term, that is, during or after the 37th week of pregnancy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_group_percent</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xs</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">k</span> <span class="o">/</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">100</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">37</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">48</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>This dataset includes data from 2724 first babies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHORD&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">n_first</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">n_first</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2724
+</pre></div>
+</div>
+</div>
+</div>
+<p>And 3115 other (not first) babies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">other</span> <span class="o">=</span> <span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHORD&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">n_other</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">n_other</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3115
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">loc</span></code> to select pregnancy lengths for the first babies and others.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_first</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">first</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
+<span class="n">length_other</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">other</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the mean pregnancy lengths for the two groups, in weeks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">length_first</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">length_other</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.39647577092511 39.19775280898877
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this dataset, first babies are born a little later on average.
+The difference is about 0.2 weeks, or 33 hours.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_actual</span> <span class="o">=</span> <span class="n">length_first</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">length_other</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">diff_actual</span><span class="p">,</span> <span class="n">diff_actual</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">24</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.19872296193634043, 33.38545760530519)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Relative to an average length of 39 weeks, that’s not a very big difference.  We might wonder if a difference as big as this would be likely, even if the two groups are the same.</p>
+<p>To answer that question, let’s imagine a world where there is no difference in pregnancy length between first babies and others.  How should we model a world like that?</p>
+<p>As always with modeling decisions, there are many options.  A simple one is to combine the two groups and compute the mean and standard deviation of pregnancy length, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">live</span><span class="o">&amp;</span><span class="n">fullterm</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">length</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">length</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">std</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(39.29046069532454, 1.1864094701037655)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can use <code class="docutils literal notranslate"><span class="pre">simulate_sample_mean</span></code> from Chapter 11 to draw a random sample from a normal distribution with the given parameters and return the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_sample_mean</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we run it 1000 times, it simulates the sampling and measurement process and returns a list of results from 1000 simulated experiments.</p>
+<p>Here are the simulated results with sample size <code class="docutils literal notranslate"><span class="pre">n_first</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_first</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_first</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
+           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And with sample size <code class="docutils literal notranslate"><span class="pre">n_other</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_other</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_other</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
+           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we subtract the simulated means elementwise, the result is a list of observed differences from simulated experiments where the distribution is the same for both groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">t_first</span><span class="p">,</span> <span class="n">t_other</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use a KDE plot to visualize the distribution of these values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">diffs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Difference in pregnancy length (weeks)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of differences&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_hypothesis_65_0.png" src="_images/13_hypothesis_65_0.png" />
+</div>
+</div>
+<p>The center of this distribution is near zero, which makes sense if the distribution in both group is the same.
+Just by chance, we sometimes see differences as big as 0.1 weeks, but in 1000 simulations, we never see a difference as big as the observed difference in the data, which is almost 0.2 weeks.</p>
+<p>Based on this result, we can pretty much rule out the possibility that the difference we saw is due to random sampling.
+But we should remember that there are other possible sources of error.  For one, pregnancy lengths in the NSFG are based on self reports.  When the respondents are interviewed, their recollection of first babies might be less accurate than their recollection of more recent babies.  Or the estimation of pregnancy length might be less accurate with less experienced mothers.</p>
+<p>A colleague of mine, who knows more than me about giving birth, suggested yet another possibility.  If a first baby is born by <a class="reference external" href="https://en.wikipedia.org/wiki/Caesarean_section">Caesarean section</a>, it is more likely that subsequent deliveries will be scheduled, and less likely that they will go much past 39 weeks.  So that could bring the average down for non-first babies.</p>
+<p>In summary, the results in this section suggest that the observed difference is unlikely to be due to chance, but there are still several other possible explanations.</p>
+</div>
+<div class="section" id="the-hypothesis-testing-framework">
+<h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Permalink to this headline">¶</a></h2>
+<p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
+<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/hypothesis_testing.png" /></p>
+<p>Using data from an experiment, we compute a <a class="reference external" href="https://en.wikipedia.org/wiki/Test_statistic">test statistic</a>.  In the peanut allergy example, the test statistic is relative risk.  In the pregnancy length example, it is the difference in the means.  In both cases, the test statistic quantifies the size of the observed effect, denoted <span class="math notranslate nohighlight">\(\delta^*\)</span> in the diagram.</p>
+<p>Then we build a model of a world where the effect does not exist.
+This model is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Exclusion_of_the_null_hypothesis">null hypothesis</a> and denoted <span class="math notranslate nohighlight">\(H_0\)</span>.
+In the peanut allergy example, the model assumes that the risk is the same in both groups.  In the pregnancy example, it assumes that the lengths are drawn from the same normal distribution.</p>
+<p>Next we use the model to simulate the experiment many times.
+Each simulation generates a dataset which we use to compute the test statistic, <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
+<p>Finally, we collect the test statistics from the simulations and compute a p-value, which is the probability under the null hypothesis of seeing a test statistic as big as the observed effect, <span class="math notranslate nohighlight">\(\delta*\)</span>.</p>
+<p>If the p-value is small, we can usually rule out the possibility that the observed effect is due to random variation.
+But often there are other explanations we can’t rule out, including measurement error and unrepresentative sampling.</p>
+<p>I emphasize the role of the model in this framework because for a given experiment there might be several possible models, each including some elements of the real world and ignoring others.</p>
+<p>For example, we used a normal distribution to model variation in pregnancy length.
+If we don’t want to make this assumption, an alternative is to simulate the null hypothesis by shuffling the pregnancy lengths.</p>
+<p>The following function takes two sequences representing the pregnancy lengths for the two groups.
+It appends them into a single sequence, shuffles it, and then splits it again into groups with the same size as the originals.
+The return value is the difference in means between the groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_two_groups</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">group1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">group2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">group1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">group2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we call this function once, we get a random difference in means from a simulated world where the distribution of pregnancy lengths is the same in both groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulate_two_groups</span><span class="p">(</span><span class="n">length_first</span><span class="p">,</span> <span class="n">length_other</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.03111395525888838
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Using this function to run 1000 simulations of the null hypothesis and save the results as <code class="docutils literal notranslate"><span class="pre">diff2</span></code>.  Make a KDE plot to compare the distribution of <code class="docutils literal notranslate"><span class="pre">diff2</span></code> to the results from the normal model, <code class="docutils literal notranslate"><span class="pre">diff</span></code>.</p>
+<p>Compute the probability of seeing a difference as big as <code class="docutils literal notranslate"><span class="pre">diff_actual</span></code>.  Is this p-value consistent with the results we got with the normal model?</p>
+<p><strong>Exercise:</strong> Are first babies more likely to be light?  To find out, we can use the birth weight data from the NSFG.  The variables we need use special codes to represent missing data, so I’ll replace them with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_LB1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_OZ1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And combine pounds and ounces into a single variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">birthwgt</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_LB1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_OZ1&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">16</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code> to select birth weights for first babies and others, dropping the <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">birthwgt_first</span> <span class="o">=</span> <span class="n">birthwgt</span><span class="p">[</span><span class="n">first</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">birthwgt_other</span> <span class="o">=</span> <span class="n">birthwgt</span><span class="p">[</span><span class="n">other</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this dataset, it looks like first babies are  a little lighter, on average.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">birthwgt_first</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">birthwgt_other</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.3370276162790695 7.507115749525616
+</pre></div>
+</div>
+</div>
+</div>
+<p>But as usual, we should wonder whether we are being fooled by randomness.
+To find out, compute the actual difference between the means.
+Then use <code class="docutils literal notranslate"><span class="pre">simulate_two_groups</span></code> to simulate a world where birth weights for both groups are drawn from the same distribution.
+Under the null hypothesis, how often does the difference in means exceed the actual difference in the dataset?  What conclusion can you draw from this result?</p>
+</div>
+<div class="section" id="testing-correlation">
+<h2>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Permalink to this headline">¶</a></h2>
+<p>The method we used in the previous section is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">permutation test</a> because “permutation” is another word for shuffling.
+Permutation tests are also useful for testing whether an observed correlation might be do to chance.</p>
+<p>As an example, let’s look again at the correlations we computed in Chapter 9, using data from the Behavioral Risk Factor Surveillance System (BRFSS).
+The following cell reads the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">brfss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;brfss.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;brfss&#39;</span><span class="p">)</span>
+<span class="n">brfss</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(418268, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The correlations we computed were between height, weight and age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HTM4&#39;</span><span class="p">,</span> <span class="s1">&#39;WTKG3&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">corr_actual</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">corr_actual</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>HTM4</th>
+      <th>WTKG3</th>
+      <th>AGE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>HTM4</th>
+      <td>1.000000</td>
+      <td>0.477151</td>
+      <td>-0.135980</td>
+    </tr>
+    <tr>
+      <th>WTKG3</th>
+      <td>0.477151</td>
+      <td>1.000000</td>
+      <td>-0.064951</td>
+    </tr>
+    <tr>
+      <th>AGE</th>
+      <td>-0.135980</td>
+      <td>-0.064951</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The correlation between height and weight is about 0.48, which is moderately strong.  If you know someone’s height, you can make a better guess about their weight.
+The other correlations are weaker.
+Knowing someone’s age would not substantially improve your guesses about their height or weight.</p>
+<p>Because these correlations are so small, we might wonder whether they are due to chance.
+To answer this question, we can use permutation to simulate a world where there is actually no correlation between two variables.</p>
+<p>But first we have to take a detour to figure out how to shuffle a Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>.
+As an example, I’ll extract the height data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;HTM4&#39;</span><span class="p">]</span>
+<span class="n">series</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    157.0
+1    163.0
+2    165.0
+3    165.0
+4    152.0
+Name: HTM4, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <a class="reference external" href="https://stackoverflow.com/questions/29576430/shuffle-dataframe-rows">idiomatic way</a> to shuffle a <code class="docutils literal notranslate"><span class="pre">Series</span></code> is to use <code class="docutils literal notranslate"><span class="pre">sample</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">frac=1</span></code>, which means that the fraction of the elements we want is <code class="docutils literal notranslate"><span class="pre">1</span></code>, that is, all of them.
+By default, <code class="docutils literal notranslate"><span class="pre">sample</span></code> chooses elements without replacement, so the result contains all of the elements in a random order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shuffled</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">shuffled</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56215     165.0
+306509    152.0
+358724    165.0
+150802    178.0
+221703    168.0
+Name: HTM4, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we check the first few elements, it seems like a random sample, so that’s good.
+But let’s see what happens if we use the shuffled <code class="docutils literal notranslate"><span class="pre">Series</span></code> to compute a correlation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">shuffled</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;WTKG3&#39;</span><span class="p">])</span>
+<span class="n">corr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.47715146283881316
+</pre></div>
+</div>
+</div>
+</div>
+<p>That result looks familiar: it is the correlation of the unshuffled columns.
+The problem is that when we shuffle a <code class="docutils literal notranslate"><span class="pre">Series</span></code>, the index gets shuffled along with it.
+When we compute a correlation, Pandas uses the index to line up the elements from the first <code class="docutils literal notranslate"><span class="pre">Series</span></code> with the elements of the second <code class="docutils literal notranslate"><span class="pre">Series</span></code>.
+For many operations, that’s the behavior we want, but in this case it defeats the purpose of shuffling!</p>
+<p>The solution is to use <code class="docutils literal notranslate"><span class="pre">reset_index</span></code>, which gives the <code class="docutils literal notranslate"><span class="pre">Series</span></code> a new index, with the argument <code class="docutils literal notranslate"><span class="pre">drop=True</span></code>, which drops the old one.
+So we have to shuffle <code class="docutils literal notranslate"><span class="pre">series</span></code> like this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shuffled</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can compute a correlation with the shuffled <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">shuffled</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;WTKG3&#39;</span><span class="p">])</span>
+<span class="n">corr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.003417891522999634
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is small, as we expect it to be when the elements are aligned at random.</p>
+<p>Rather than repeat this awful idiom, let’s put it in a function and never speak of it again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and two column names, makes a shuffled copy of one column, and computes its correlation with the other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_correlation</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">):</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">var1</span><span class="p">])</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">var2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">corr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We only have to shuffle one of the columns; it doesn’t get any more random if we shuffle both.
+Now we can use this function to generate a sample of correlations with shuffled columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_correlation</span><span class="p">(</span><span class="n">brfss</span><span class="p">,</span> <span class="s1">&#39;HTM4&#39;</span><span class="p">,</span> <span class="s1">&#39;WTKG3&#39;</span><span class="p">)</span>
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the distribution of the correlations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Correlation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation from simulations with permutation&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_hypothesis_113_0.png" src="_images/13_hypothesis_113_0.png" />
+</div>
+</div>
+<p>The center of the distribution is near 0, and the largest values (positive or negative) are around 0.005.
+If we compute the same distribution with different columns, the results are pretty much the same.
+With samples this big, the correlation between shuffled columns is generally small.</p>
+<p>How do these values compare to the observed correlations?</p>
+<ul class="simple">
+<li><p>The correlation of height and weight is about 0.48, so it’s extremely unlikely we would see a correlation as big as that by chance.</p></li>
+<li><p>The correlation of height and age is smaller, around -0.14, but even that value would be unlikely by chance.</p></li>
+<li><p>And the correlation of weight and age is even smaller, about -0.06, but that’s still 10 times bigger than the biggest correlation in the simulations.</p></li>
+</ul>
+<p>We can conclude that these correlations are probably not due to chance.
+And that’s useful in the sense that it rules out one possible explanation.
+But this example also demonstrates a limitation of this kind of hypothesis testing.
+With large sample sizes, variability due to randomness tends to be small, so it seldom explains the effects we see in real data.</p>
+<p>And hypothesis testing can be a distraction from more important questions.
+In Chapter 9, we saw that the relationship between weight and age is nonlinear.
+But the coefficient of correlation only measures linear relationships, so it does not capture the real strength of the relationship.
+So testing a correlation might not be the more useful thing to do in the first place.
+We can do better by testing a regression model.</p>
+</div>
+<div class="section" id="testing-regression-models">
+<h2>Testing Regression Models<a class="headerlink" href="#testing-regression-models" title="Permalink to this headline">¶</a></h2>
+<p>In the previous sections we used permutation to simulate a world where there is no correlation between two variables.
+In this section we’ll apply the same method to regression models.</p>
+<p>As an example, we’ll use NSFG data to explore the relationship between a mother’s age and her baby’s birth weight.</p>
+<p>In previous sections we computed birth weight and a Boolean variable that identifies first babies.
+Now I’ll store them as columns in <code class="docutils literal notranslate"><span class="pre">nsfg</span></code>, so we can use them with StatsModels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">birthwgt</span>
+<span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;FIRST&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ll select the subset of the rows that represent live, full-term births.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+<span class="n">n</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5839
+</pre></div>
+</div>
+</div>
+</div>
+<p>I tried a few different ways to visualize the relationship between mother’s age and birth weight, including a scatter plot and a violin plot.
+The one that worked best is a box plot with mother’s age grouped into 3-year bins.</p>
+<p>I used <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> to make the bin boundaries, and <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> to put the values from <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> into bins.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">subset</span><span class="p">[</span><span class="s1">&#39;AGEGRP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">],</span> 
+                          <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The label for each bin is the midpoint of the range; I used a slice to remove the last label because the number of bins is one less than the number of bin boundaries.</p>
+<p>Here’s the box plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;AGEGRP&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;BIRTHWGT&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span> 
+            <span class="n">whis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;plum&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mother&#39;s age (years)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Birthweight (pounds)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13_hypothesis_123_0.png" src="_images/13_hypothesis_123_0.png" />
+</div>
+</div>
+<p>It looks like the average birth weight is highest if the mother is 25-31 years old, and lower if she is younger or older.
+So the relationship might be nonlinear.</p>
+<p>Nevertheless, let’s start with a linear model and work our way up.
+Here’s a simple regression of birth weight as a function of the mother’s age at conception.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;BIRTHWGT ~ AGECON&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    7.025486
+AGECON       0.016407
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The slope of the regression line is 0.016 pounds per year, which means that if one mother is a year older than another, we expect her baby to be about 0.016 pounds heavier, which is about a quarter of an ounce.</p>
+<p>This parameter is small, so we might wonder whether the apparent effect is due to chance.</p>
+<p>To answer that question, we will use permutation to simulate a world where there is no relationship between mother’s age and birth weight.</p>
+<p>As a test statistic, we’ll use the <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a>, denoted <span class="math notranslate nohighlight">\(R^2\)</span>, which quantifies the predictive power of the model.
+The regression results include <span class="math notranslate nohighlight">\(R^2\)</span> in a variable called <code class="docutils literal notranslate"><span class="pre">rsquared</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">rsquared</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.007578923866134457
+</pre></div>
+</div>
+</div>
+</div>
+<p>The value of <span class="math notranslate nohighlight">\(R^2\)</span> for this model is very small, which means that our guesses about a baby’s weight are barely improved if we know the mother’s age (and use a linear model).</p>
+<p>So it seems possible that the apparent relationship between these variables is due to chance.
+We can test this possibility by using permutation to simulate a world where there is no such relationship.</p>
+<p>The following function takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, shuffles the <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> column, computes a linear regression model, and returns <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_rsquared</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;SHUFFLED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">])</span>
+    <span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ SHUFFLED&#39;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">rsquared</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we call it many times, we get a sample from the distribution of <span class="math notranslate nohighlight">\(R^2\)</span> under the null hypothesis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsquared_null</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_rsquared</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After 200 attempts, the largest value of <span class="math notranslate nohighlight">\(R^2\)</span> is about 0.003, which is smaller than the observed value of <span class="math notranslate nohighlight">\(R^2\)</span>, about 0.008.
+We conclude that the observed effect is bigger than we would expect to see by chance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">rsquared_null</span><span class="p">),</span> <span class="n">results</span><span class="o">.</span><span class="n">rsquared</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0018894074007291817 0.007578923866134457
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> The box plot suggests that the relationship between mother’s age and birth weight is nonlinear, so let’s try a nonlinear model.
+I’ll add a column to the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with the square of mother’s age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;AGECON2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And run the model again with both the linear and quadratic terms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ AGECON + AGECON2&#39;</span>
+<span class="n">results2</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results2</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    5.894125
+AGECON       0.109487
+AGECON2     -0.001810
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The parameter of <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code> is quite small, so we might wonder whether it actually improves the model, or might be the product of randomness.
+One way to answer this question is to look at the improvement in <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results2</span><span class="o">.</span><span class="n">rsquared</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01186101019657615
+</pre></div>
+</div>
+</div>
+</div>
+<p>The value of <span class="math notranslate nohighlight">\(R^2\)</span> is about 0.012, compared to 0.008 with the linear model.
+By this criterion, the quadratic model is a better, but when we add variables to a model, we might get some improvement just by chance.</p>
+<p>To see how much, write a function called <code class="docutils literal notranslate"><span class="pre">simulate_rsquared2</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, runs a regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and the shuffled values, and returns <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
+<p>Run your function 200 times and count how often <span class="math notranslate nohighlight">\(R^2\)</span> from the model exceeds the observed value from the dataset.  What conclusion can you draw?</p>
+</div>
+<div class="section" id="controlling-for-age">
+<h2>Controlling for Age<a class="headerlink" href="#controlling-for-age" title="Permalink to this headline">¶</a></h2>
+<p>In a previous exercise, you computed the difference in birth weight between first babies and others, which is about 0.17 pounds, and you checked whether we are likely to see a difference as big as that by chance.  If things went according to plan, you found that it is very unlikely.</p>
+<p>But that doesn’t necessarily mean that there is anything special about first babies that makes them lighter than others.
+Rather, knowing a baby’s birth order might provide information about some other factor that is related to birth weight.
+The mother’s age could be that factor.</p>
+<p>First babies are likely to have younger mothers than other babies, and younger mothers tend to have lighter babies.
+The difference we see in first babies might be explained by their mothers’ ages.
+So let’s see what happens if we control for age.</p>
+<p>Here’s a simple regression of birth weight as a function of the Boolean variable <code class="docutils literal notranslate"><span class="pre">FIRST</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ FIRST&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept        7.507116
+FIRST[T.True]   -0.170088
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The parameter associated with <code class="docutils literal notranslate"><span class="pre">FIRST</span></code> is -0.17 pounds, which is the same as the difference in means we computed.
+But now we can add <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> as a control variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ FIRST + AGECON&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept        7.163240
+FIRST[T.True]   -0.121771
+AGECON           0.013145
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The age effect accounts for some of the difference between first babies and others.
+After controlling for age, the remaining difference is about 0.12 pounds.</p>
+<p>Since the age effect is nonlinear, we can can control for age more effectively by adding <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ FIRST + AGECON + AGECON2&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept        6.128590
+FIRST[T.True]   -0.099338
+AGECON           0.096781
+AGECON2         -0.001615
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_actual</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;FIRST[T.True]&#39;</span><span class="p">]</span>
+<span class="n">slope_actual</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.09933806121560089
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we use a quadratic model to control for the age effect, the remaining difference between first babies and others is smaller again, about 0.10 pounds.</p>
+<p>One of the warning signs of a spurious relationship between two variables is that the effect gradually disappears as you add control variables.
+So we should wonder whether the remaining effect might be due to chance.</p>
+<p>To find out, I’ll use the following function, which simulates a world where there is no difference in weight between first babies and others.
+It takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles the <code class="docutils literal notranslate"><span class="pre">FIRST</span></code> column, runs the regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, and returns the estimated difference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_slope</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;SHUFFLED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;FIRST&#39;</span><span class="p">])</span>
+    <span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ AGECON + AGECON2 + C(SHUFFLED)&#39;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;C(SHUFFLED)[T.True]&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we run it many times, we get a sample from the distribution of the test statistic under the null hypothesis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slopes_null</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_slope</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The range of values is wide enough that it occasionally exceeds the observed effect size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">slopes_null</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">slopes_null</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.11032834278896275 0.13869713337268208
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our estimate of the p-value is only approximate, but it looks like it’s between 1% and 2%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">slopes_null</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">slope_actual</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p_value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.015
+</pre></div>
+</div>
+</div>
+</div>
+<p>This result indicates that an observed difference of 0.1 pounds is possible, but not likely, if the actual difference between the groups is zero.</p>
+<p>So how should we interpret a result like this?
+In the tradition of <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing">statistical hypothesis testing</a>, it is common to use 5% as the threshold between results that are considered “statistically significant” or not.
+By that standard, the weight difference between first babies and others is statistically significant.</p>
+<p>However, there are several problems with this practice:</p>
+<ul class="simple">
+<li><p>First, the choice of the threshold should depend on the context.  For a life-and-death decision, we might choose a more stringent threshold.  For a topic of idle curiosity, like this one, we could be more relaxed.</p></li>
+<li><p>But it might not be useful to apply a threshold at all.  An alternative (which is common in practice) is to report the p-value and let it speak for itself.  It provides no additional value to declare that the result is significant or not.</p></li>
+<li><p>Finally, the use of the word “significant” is dangerously misleading, because it implies that the result is important in practice.  But a small p-value only means that an observed effect would be unlikely to happen by chance.  It doesn’t mean it is important.</p></li>
+</ul>
+<p>This last point is particularly problematic with large datasets, because very small effects can be statistically significant.
+We saw an example with the BRFSS dataset, where the correlations we tested were <em>all</em> statistically significant, even the ones that are too small to matter in practice.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Let’s review the examples in this chapter:</p>
+<ol class="simple">
+<li><p>We started with data from LEAP, which studied the effect of eating peanuts on the development of peanut allergies.  The test statistic was relative risk, and the null hypothesis was that the treatment was ineffective.</p></li>
+<li><p>Then we looked at the difference in pregnancy length for first babies and others.  We used the difference in means as the test statistic, and two models of the null hypothesis: one based on a normal model and the other based on permutation of the data. As an exercise, you tested the difference in weight between first babies and others.</p></li>
+<li><p>Next we used permutation to test correlations, using height, weight, and age data from the BRFSS. This example shows that with large sample sizes, observed effects are often “statistically significant”, even if they are too small to matter in practice.</p></li>
+<li><p>We used regression models to explore the maternal age effect on birth weight.  To see whether the effect might be due to chance, we used permutation to model the null hypothesis and <span class="math notranslate nohighlight">\(R^2\)</span> as a test statistic.</p></li>
+<li><p>Finally, we explored the possibility that the first baby effect is actually an indirect maternal age effect.  After controlling for the mother’s age, we tested whether the remaining difference between first babies and others might happen by chance. We used permutation to model the null hypothesis and the estimated slope as a test statistic.</p></li>
+</ol>
+<p>As an exercise, below, you can use the same methods to explore the paternal age effect.</p>
+<p><strong>Exercise:</strong> A <a class="reference external" href="https://en.wikipedia.org/wiki/Paternal_age_effect">paternal age effect</a> is a relationship between the age of a father and a variety of outcomes for their children.  There is some evidence that young fathers and old fathers tend to have lighter babies than fathers in the middle.  Let’s see if that’s true for the babies in the NSFG dataset.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">HPAGELB</span></code> column encodes the father’s age.  Here are the values, after replacing the codes for missing data with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0     478
+2.0    1391
+3.0    1650
+4.0    1225
+5.0     592
+6.0     411
+Name: HPAGELB, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s what the codes mean:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Age</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Under 20 years</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>20-24 years</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>25-29 years</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>30-34 years</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>35-39 years</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>40 years or older</p></td>
+</tr>
+</tbody>
+</table>
+<p>I’ll create a new column that’s true for the fathers in the youngest and oldest groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;YO_DAD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use this column in a regression model to compute the difference in birth weight for young and old fathers compared to the others.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ YO_DAD&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept         7.447477
+YO_DAD[T.True]   -0.140045
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The difference is negative, which is consistent with the theory, and about 0.14 pounds, which is comparable in size to the (apparent) first baby effect.</p>
+<p>But there is a strong correlation between father’s age and mother’s age.  So what seems like a paternal age effect might actually be an indirect maternal age effect.</p>
+<p>To find out, let’s see what happens if we control for the mother’s age.
+Run this model again with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code> as predictors.  Does the observed effect of paternal age get smaller?</p>
+<p>To see if the remaining effect could be due to randomness, write a function that shuffles <code class="docutils literal notranslate"><span class="pre">YO_DAD</span></code>, runs the regression model, and returns the parameter associated with the shuffled column.  How often does this parameter exceed the observed value?  What conclusion can we draw from the results?</p>
 </div>
 </div>
 
@@ -935,6 +1597,7 @@ The result should give you a sense of how much variation we expect to see from y
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="12_bootstrap.html" title="previous page">Bootstrap Sampling</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
