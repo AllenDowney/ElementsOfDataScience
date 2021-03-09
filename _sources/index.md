@@ -98,7 +98,7 @@ For each of the notebooks below, you have two options: If you run the notebook o
 
 ### Notebook 10
 
-**Regression**: This notebook presents multiple regression and uses it to explore the relationship between age, eduction, and income.  It uses visualization to interpret multivariate models.  It also presents binary variables and logistic regression.
+**Regression**: This notebook presents multiple regression and uses it to explore the relationship between age, education, and income.  It uses visualization to interpret multivariate models.  It also presents binary variables and logistic regression.
 
 [Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb)
 
@@ -128,7 +128,7 @@ to the kind of survey data we've been working with.
 ### Notebook 13
 
 **Hypothesis Testing**: Hypothesis testing is the bugbear of classical statistics.
-This notebook presents a computational approach to the topic that makes is clear
+This notebook presents a computational approach to the topic that makes it clear
 that there is only one test.
 
 [Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb)
