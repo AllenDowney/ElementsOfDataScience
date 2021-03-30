@@ -1,6 +1,6 @@
 # Elements of Data Science
 
-*Elements of Data Science* is an introduction to data science in Python for people with no programming experience.  My goal is to present a small, powerful subset of Python that allows you to do real work in data science as quickly as possible.  
+*Elements of Data Science* is an introduction to data science for people with no programming experience.  My goal is to present a small, powerful subset of Python that allows you to do real work in data science as quickly as possible.  
 
 I don't assume that the reader knows anything about programming, statistics, or data science.  When I use a term, I try to define it immediately, and when I use a programming feature, I try to explain it.
 
@@ -10,14 +10,33 @@ The notebooks contains exercises where you can practice what you learn.  Most of
 
 This material is a work in progress, so suggestions are welcome.  The best way to provide feedback is to [click here and create an issue in this GitHub repository](https://github.com/AllenDowney/ElementsOfDataScience/issues).
 
+## Case Studies
+
+In addition to the notebooks below, the *Elements of Data Science* curriculum includes these case studies:
+
+* [Political Alignment Case Study](https://allendowney.github.io/PoliticalAlignmentCaseStudy/): Using data from the General Social Survey, this case study explore changing opinions on a variety of topics among survey respondents in the United States. Readers choose one of about 120 survey questions and see how responses have changed over time and how these changes relate to political alignment (conservative, moderate, or liberal).
+
+* [Recidivism Case Study](https://allendowney.github.io/RecidivismCaseStudy/): This case study is based on a well known paper, "Machine Bias", which was published by Politico in 2016.  It relates to COMPAS, a statistical tool used in the criminal justice system to assess the risk that a defendant will commit another crime if released. The ProPublica article concludes that COMPAS is unfair to Black defendants because they are more likely to be misclassified as high risk. A response article in the Washington Post suggests that "It's actually not that clear." Using the data from the original article, this case study explains the (many) metrics used to evaluate binary classifiers, shows the challenges of defining algorithmic fairness, and starts a discussion of the context, ethics, and social impact of data science.
+
+* [Bite Size Bayes](https://allendowney.github.io/BiteSizeBayes/): An introduction to probability with a focus on Bayes's Theorem.
+
+* [Astronomical Data in Python](https://allendowney.github.io/AstronomicalData/): An introduction to SQL using data from the Gaia space telescope as an example.
+
 
 ## The notebooks
 
-For each of the notebooks below, you have two options: If you run the notebook on Colab, you'll be able to run the code, do the exercises, and save your modified version of the notebook in a Google Drive (if you have one).  Or, if you download the notebook, you can run it in your own environment.  But in that case it is up to you to make sure you have the libraries you need.
+For each of the notebooks below, you have three options:
+
+* If you view the notebook on NBViewer, you can read it, but you can't run the code.  
+
+* If you run the notebook on Colab, you'll be able to run the code, do the exercises, and save your modified version of the notebook in a Google Drive (if you have one).
+
+* Or, if you download the notebook, you can run it in your own environment.  But in that case it is up to you to make sure you have the libraries you need.
+
 
 ### Notebook 1
 
-**Variables and values**: The first notebook explains how to use Jupyter and introduces the two programming features in Python, variables and values.
+**Variables and values**: The first notebook explains how to use Jupyter and introduces variables, values, and numerical computation.
 
 [Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb)
 
@@ -62,7 +81,7 @@ For each of the notebooks below, you have two options: If you run the notebook o
 
 ### Notebook 6
 
-**Plotting**: This notebook introduces Matplotlib, a plotting library for Python, and uses it to generate a few common data visualizations and one less common one, a Zipf plot.
+**Plotting**: This notebook introduces a plotting library, Matplotlib, and uses it to generate a few common data visualizations and one less common one, a Zipf plot.
 
 [Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb)
 
@@ -71,7 +90,7 @@ For each of the notebooks below, you have two options: If you run the notebook o
 
 ### Notebook 7
 
-**DataFrames**: This notebook presents DataFrames, which are used to represent tables of data.  And it uses data from the National Survey of Family Growth to find the average weight of babies in the U.S.
+**DataFrames**: This notebook presents DataFrames, which are used to represent tables of data.  As an example, it uses data from the National Survey of Family Growth to find the average weight of babies in the U.S.
 
 [Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb)
 
@@ -80,7 +99,7 @@ For each of the notebooks below, you have two options: If you run the notebook o
 
 ### Notebook 8
 
-**Distributions**: This notebook explains what a distribution is and presents 3 ways to represent a distribution: a PMF, CDF, or PDF.  It also shows how to compare a distribution to another distribution or a mathematical model.
+**Distributions**: This notebook explains what a distribution is and presents 3 ways to represent one: a PMF, CDF, or PDF.  It also shows how to compare a distribution to another distribution or a mathematical model.
 
 [Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb)
 
@@ -125,11 +144,12 @@ to the kind of survey data we've been working with.
 
 [or click here to download it](https://github.com/AllenDowney/ElementsOfDataScience/raw/master/12_bootstrap.ipynb)
 
+
 ### Notebook 13
 
 **Hypothesis Testing**: Hypothesis testing is the bugbear of classical statistics.
 This notebook presents a computational approach to the topic that makes it clear
-that there is only one test.
+that [there is only one test](http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html).
 
 [Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb)
 
