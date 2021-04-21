@@ -8,6 +8,8 @@ This book is in the form of Jupyter notebooks.  Jupyter is a software developmen
 
 The notebooks contains exercises where you can practice what you learn.  Most of the exercises are meant to be quick, but a few are more substantial.
 
+The license for this book is the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
 This material is a work in progress, so suggestions are welcome.  The best way to provide feedback is to [click here and create an issue in this GitHub repository](https://github.com/AllenDowney/ElementsOfDataScience/issues).
 
 ## Case Studies
