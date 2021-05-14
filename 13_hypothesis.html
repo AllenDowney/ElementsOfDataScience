@@ -124,7 +124,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -313,29 +313,29 @@
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/13_hypothesis.ipynb">click here to download it</a>.</p>
 <p>This chapter introduces hypothesis testing, which has been a controversial topic in the last decade or so.
-What I present here is different from what you might see in a statistics book.</p>
-<p>Instead of mathematical analysis, we will use computational simulations.
+What I present here is different from what you might see in a statistics book.
+Instead of mathematical analysis, we will use computational simulations.
 This approach has two advantages and one disadvantage:</p>
 <ul class="simple">
 <li><p>PRO: The standard statistics curriculum includes many different tests, and many people find it hard to remember which one to use. In my opinion, simulation makes it clearer that there is only one testing framework.</p></li>
-<li><p>PRO: Simulations make modeling decision explicit.  All statistical methods are based on models, but when we use mathematical methods, it is easy to forget the assumptions they are based on.  With computation, the assumptions are more visible, and it is easier to try different models.</p></li>
-<li><p>CON: Simulation uses a lot of computation.  Some of the examples in this notebook take several seconds to run and the results are only approximate.  For some problems, there are analytic methods that are faster and more accurate.</p></li>
+<li><p>PRO: Simulations make modeling decision explicit.  All statistical methods are based on models, but when we use mathematical methods, it is easy to forget the assumptions they are based on. With computation, the assumptions are more visible, and it is easier to try different models.</p></li>
+<li><p>CON: Simulation uses a lot of computation. Some of the examples in this notebook take several seconds to run and the results are only approximate. For some problems, there are analytic methods that are faster and more accurate.</p></li>
 </ul>
 <p>The examples in this chapter include results from a clinical trial related to peanut allergies, and survey data from the National Survey of Family Growth (NSFG) and the Behavioral Risk Factor Surveillance System (BRFSS).</p>
 <div class="section" id="peanut-allergies">
 <h2>Peanut Allergies<a class="headerlink" href="#peanut-allergies" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA">LEAP study</a> was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies.
-The subjects were infants who were at high risk of developing peanut allergies because they had been diagnosed with other food allergies.</p>
-<p>Over a period of several years, half of the subjects were periodically given a snack containing peanuts; the other half were given no peanuts at all.</p>
+<p>The LEAP study was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies (see <a class="reference external" href="http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA">http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA</a>).
+The subjects were infants who were at high risk of developing peanut allergies because they had been diagnosed with other food allergies.
+Over a period of several years, half of the subjects were periodically given a snack containing peanuts; the other half were given no peanuts at all.</p>
 <p>The conclusion of the study, reported in 2015 is:</p>
 <blockquote>
 <div><p>Of the children who avoided peanut, 17% developed peanut allergy by the age of 5 years. Remarkably, only 3% of the children who were randomized to eating the peanut snack developed allergy by age 5. Therefore, in high-risk infants, sustained consumption of peanut beginning in the first 11 months of life was highly effective in preventing the development of peanut allergy.</p>
 </div></blockquote>
 <p>These results seem impressive, but as skeptical data scientists we should wonder whether it is possible that we are getting fooled by randomness.
-Maybe the apparent difference between the groups is due to chance, not the effectiveness of the treatment.</p>
-<p>To see whether this is likely, we will simulate the experiment using a model where the treatment has no effect, and see how often we see such a big difference between the groups.</p>
-<p>Detailed results of the study are reported in <a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJMoa1414850">this article</a> from the <em>New England Journal of Medicine</em>.
-Their Figure 1 shows the number of subjects in the treatment and control groups, which happened to be equal.</p>
+Maybe the apparent difference between the groups is due to chance, not the effectiveness of the treatment.
+To see whether this is likely, we will simulate the experiment using a model where the treatment has no effect, and see how often we see such a big difference between the groups.</p>
+<p>Detailed results of the study are reported in the <em>New England Journal of Medicine</em> (see <a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJMoa1414850">https://www.nejm.org/doi/full/10.1056/NEJMoa1414850</a>).
+In that article, Figure 1 shows the number of subjects in the treatment and control groups, which happened to be equal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_control</span> <span class="o">=</span> <span class="mi">314</span>
@@ -344,7 +344,7 @@ Their Figure 1 shows the number of subjects in the treatment and control groups,
 </div>
 </div>
 </div>
-<p>And from their Figure 2 we can extract the number of subjects who developed peanut allergies in each group.
+<p>And from Figure 2 we can extract the number of subjects who developed peanut allergies in each group.
 Specifically, we’ll use the numbers from the “intention to treat analysis for both cohorts”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -381,8 +381,8 @@ Specifically, we’ll use the numbers from the “intention to treat analysis fo
 </div>
 </div>
 </div>
-<p>These are consistent with the percentages reported in the paper.</p>
-<p>To quantify the difference between the groups, we’ll use <a class="reference external" href="https://en.wikipedia.org/wiki/Relative_risk">relative risk</a>, which is the ratio of the risks in the two groups.</p>
+<p>These are consistent with the percentages reported in the paper.
+To quantify the difference between the groups, we’ll use relative risk, which is the ratio of the risks in the two groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_risk_actual</span> <span class="o">=</span> <span class="n">risk_treatment</span> <span class="o">/</span> <span class="n">risk_control</span>
@@ -397,8 +397,8 @@ Specifically, we’ll use the numbers from the “intention to treat analysis fo
 </div>
 </div>
 <p>The risk in the treatment group is about 18% of the risk in the control group.
-So it seems like the treatment is highly effective.</p>
-<p>To check, let’s imagine a world where the treatment is completely ineffective, so the risk is actually the same in both groups, and the difference we saw is due to chance.
+So it seems like the treatment is highly effective.
+To check, let’s imagine a world where the treatment is completely ineffective, so the risk is actually the same in both groups, and the difference we saw is due to chance.
 If that’s true, we can estimate the hypothetical risk by combining the two groups:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -415,8 +415,8 @@ If that’s true, we can estimate the hypothetical risk by combining the two gro
 </div>
 </div>
 </div>
-<p>If the risk is the same for both groups, it is close to 10%.</p>
-<p>Now we can use this hypothetical risk to simulate the experiment.
+<p>If the risk is the same for both groups, it is close to 10%.
+Now we can use this hypothetical risk to simulate the experiment.
 Here’s <code class="docutils literal notranslate"><span class="pre">simulate_group_percent</span></code>, which we saw in Chapter 11.
 It takes as parameters the size of the group, <code class="docutils literal notranslate"><span class="pre">n</span></code>, and the risk, <code class="docutils literal notranslate"><span class="pre">p</span></code>.
 It simulates the experiment and returns the number of cases as a percentage of the group, which is the observed risk.</p>
@@ -480,12 +480,12 @@ Here’s the list for the treatment group.</p>
 <p>Remember that these simulations are based on the assumption that the risk is the same for both groups, so we expect the relative risk to be near 1 most of the time.
 And it is.</p>
 <p>In some simulated experiments, the relative risk is as low as 0.5 or as high as 2, which means it is plausible we could see results like that by chance, even if there is no difference between groups.</p>
-<p>But the relative risk in the actual experiment was 0.18, and we never see a result like that in the simulated experiment.
+<p>But the relative risk in the actual experiment was 0.18, and we never see a result as small as that in the simulated experiment.
 We can conclude that the relative risk we saw is unlikely if the risk is actually the same in both groups.</p>
 </div>
 <div class="section" id="p-values">
 <h2>p-values<a class="headerlink" href="#p-values" title="Permalink to this headline">¶</a></h2>
-<p>Now suppose that in addition to the treatment and control groups, the experiment included a <a class="reference external" href="https://en.wikipedia.org/wiki/Placebo">placebo</a> group that was given a snack that contained no peanuts.
+<p>Now suppose that in addition to the treatment and control groups, the experiment included a placebo group that was given a snack that contained no peanuts.
 Suppose this group was the same size as the others, and 42 of the subjects developed peanut allergies.</p>
 <p>To be clear, there was no third group, and I made up these numbers, but let’s see how this hypothetical works out.
 Here’s the risk in the placebo group.</p>
@@ -514,7 +514,13 @@ Here’s the risk in the placebo group.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7777777777777778
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">93</span><span class="n">cea050fda6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">relative_risk_placebo</span> <span class="o">=</span> <span class="n">risk_placebo</span> <span class="o">/</span> <span class="n">risk_control</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">relative_risk_placebo</span>
+
+<span class="ne">NameError</span>: name &#39;risk_control&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -537,15 +543,15 @@ In fact, we can compute the probability of seeing a relative risk as low or lowe
 </div>
 </div>
 </div>
-<p>This probability is called a <a class="reference external" href="https://en.wikipedia.org/wiki/P-value">p-value</a>.  In this case, the p-value is about 14%, which means that even if the two groups are the same, we expect to see a relative risk as low as 0.77 about 14% of the time.
+<p>This probability is called a <strong>p-value</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/P-value">https://en.wikipedia.org/wiki/P-value</a>).  In this case, the p-value is about 14%, which means that even if the two groups are the same, we expect to see a relative risk as low as 0.77 about 14% of the time.
 So, for this imagined experiment, we can’t rule out the possibility that the apparent difference is due to chance.</p>
 </div>
 <div class="section" id="are-first-babies-more-likely-to-be-late">
 <h2>Are first babies more likely to be late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Permalink to this headline">¶</a></h2>
 <p>In the previous example, we saw a difference in proportion between two groups.
 As a second example, let’s consider a difference in means.</p>
-<p>When my wife and I were expecting out first child, we heard that first babies are more likely to be born late.  But we also heard that first babies are more likely to be born early.  So which is it? As a data scientist with too much time on my hands, I decided to find out.</p>
-<p>I got data from the National Survey of Family Growth (NSFG), the same survey we have used in previous chapters.
+<p>When my wife and I were expecting our first child, we heard that first babies are more likely to be born late.  But we also heard that first babies are more likely to be born early.  So which is it? As a data scientist with too much time on my hands, I decided to find out.
+I got data from the National Survey of Family Growth (NSFG), the same survey we have used in previous chapters.
 I’ve put the results from the 2015-2017 survey in an HDF file.
 Here are the first few rows.</p>
 <div class="cell docutils container">
@@ -753,9 +759,9 @@ The difference is about 0.2 weeks, or 33 hours.</p>
 </div>
 </div>
 </div>
-<p>Relative to an average length of 39 weeks, that’s not a very big difference.  We might wonder if a difference as big as this would be likely, even if the two groups are the same.</p>
-<p>To answer that question, let’s imagine a world where there is no difference in pregnancy length between first babies and others.  How should we model a world like that?</p>
-<p>As always with modeling decisions, there are many options.  A simple one is to combine the two groups and compute the mean and standard deviation of pregnancy length, like this:</p>
+<p>Relative to an average length of 39 weeks, that’s not a very big difference.  We might wonder if a difference as big as this would be likely, even if the two groups are the same.
+To answer that question, let’s imagine a world where there is no difference in pregnancy length between first babies and others.  How should we model a world like that?
+As always with modeling decisions, there are many options.  A simple one is to combine the two groups and compute the mean and standard deviation of pregnancy length, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">live</span><span class="o">&amp;</span><span class="n">fullterm</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
@@ -781,8 +787,8 @@ The difference is about 0.2 weeks, or 33 hours.</p>
 </div>
 </div>
 </div>
-<p>If we run it 1000 times, it simulates the sampling and measurement process and returns a list of results from 1000 simulated experiments.</p>
-<p>Here are the simulated results with sample size <code class="docutils literal notranslate"><span class="pre">n_first</span></code>:</p>
+<p>If we run it 1000 times, it simulates the sampling and measurement process and returns a list of results from 1000 simulated experiments.
+Here are the simulated results with sample size <code class="docutils literal notranslate"><span class="pre">n_first</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_first</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_first</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
@@ -826,25 +832,25 @@ The difference is about 0.2 weeks, or 33 hours.</p>
 <p>The center of this distribution is near zero, which makes sense if the distribution in both group is the same.
 Just by chance, we sometimes see differences as big as 0.1 weeks, but in 1000 simulations, we never see a difference as big as the observed difference in the data, which is almost 0.2 weeks.</p>
 <p>Based on this result, we can pretty much rule out the possibility that the difference we saw is due to random sampling.
-But we should remember that there are other possible sources of error.  For one, pregnancy lengths in the NSFG are based on self reports.  When the respondents are interviewed, their recollection of first babies might be less accurate than their recollection of more recent babies.  Or the estimation of pregnancy length might be less accurate with less experienced mothers.</p>
-<p>A colleague of mine, who knows more than me about giving birth, suggested yet another possibility.  If a first baby is born by <a class="reference external" href="https://en.wikipedia.org/wiki/Caesarean_section">Caesarean section</a>, it is more likely that subsequent deliveries will be scheduled, and less likely that they will go much past 39 weeks.  So that could bring the average down for non-first babies.</p>
+But we should remember that there are other possible sources of error.  For one, pregnancy lengths in the NSFG are self-reported.  When the respondents are interviewed, their recollection of first babies might be less accurate than their recollection of more recent babies.  Or the estimation of pregnancy length might be less accurate with less experienced mothers.</p>
+<p>A correspondent of mine, who knows more than me about giving birth, suggested yet another possibility.  If a first baby is born by <a class="reference external" href="https://en.wikipedia.org/wiki/Caesarean_section">Caesarean section</a>, it is more likely that subsequent deliveries will be scheduled, and less likely that they will go much past 39 weeks.  So that could bring the average down for non-first babies.</p>
 <p>In summary, the results in this section suggest that the observed difference is unlikely to be due to chance, but there are still several other possible explanations.</p>
 </div>
 <div class="section" id="the-hypothesis-testing-framework">
 <h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Permalink to this headline">¶</a></h2>
 <p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/hypothesis_testing.png" /></p>
-<p>Using data from an experiment, we compute a <a class="reference external" href="https://en.wikipedia.org/wiki/Test_statistic">test statistic</a>.  In the peanut allergy example, the test statistic is relative risk.  In the pregnancy length example, it is the difference in the means.  In both cases, the test statistic quantifies the size of the observed effect, denoted <span class="math notranslate nohighlight">\(\delta^*\)</span> in the diagram.</p>
+<p>Using data from an experiment, we compute a <strong>test statistic</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Test_statistic">https://en.wikipedia.org/wiki/Test_statistic</a>).  In the peanut allergy example, the test statistic is relative risk.  In the pregnancy length example, it is the difference in the means.  In both cases, the test statistic quantifies the size of the observed effect, denoted <span class="math notranslate nohighlight">\(\delta^*\)</span> in the diagram.</p>
 <p>Then we build a model of a world where the effect does not exist.
-This model is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Exclusion_of_the_null_hypothesis">null hypothesis</a> and denoted <span class="math notranslate nohighlight">\(H_0\)</span>.
+This model is called the <strong>null hypothesis</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Exclusion_of_the_null_hypothesis">https://en.wikipedia.org/wiki/Exclusion_of_the_null_hypothesis</a>) and denoted <span class="math notranslate nohighlight">\(H_0\)</span>.
 In the peanut allergy example, the model assumes that the risk is the same in both groups.  In the pregnancy example, it assumes that the lengths are drawn from the same normal distribution.</p>
 <p>Next we use the model to simulate the experiment many times.
-Each simulation generates a dataset which we use to compute the test statistic, <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
-<p>Finally, we collect the test statistics from the simulations and compute a p-value, which is the probability under the null hypothesis of seeing a test statistic as big as the observed effect, <span class="math notranslate nohighlight">\(\delta*\)</span>.</p>
+Each simulation generates a dataset which we use to compute the test statistic, <span class="math notranslate nohighlight">\(\delta\)</span>.
+Finally, we collect the test statistics from the simulations and compute a p-value, which is the probability under the null hypothesis of seeing a test statistic as big as the observed effect, <span class="math notranslate nohighlight">\(\delta*\)</span>.</p>
 <p>If the p-value is small, we can usually rule out the possibility that the observed effect is due to random variation.
 But often there are other explanations we can’t rule out, including measurement error and unrepresentative sampling.</p>
-<p>I emphasize the role of the model in this framework because for a given experiment there might be several possible models, each including some elements of the real world and ignoring others.</p>
-<p>For example, we used a normal distribution to model variation in pregnancy length.
+<p>I emphasize the role of the model in this framework because for a given experiment there might be several possible models, each including some elements of the real world and ignoring others.
+For example, we used a normal distribution to model variation in pregnancy length.
 If we don’t want to make this assumption, an alternative is to simulate the null hypothesis by shuffling the pregnancy lengths.</p>
 <p>The following function takes two sequences representing the pregnancy lengths for the two groups.
 It appends them into a single sequence, shuffles it, and then splits it again into groups with the same size as the originals.
@@ -877,7 +883,7 @@ The return value is the difference in means between the groups.</p>
 </div>
 <p><strong>Exercise:</strong> Using this function to run 1000 simulations of the null hypothesis and save the results as <code class="docutils literal notranslate"><span class="pre">diff2</span></code>.  Make a KDE plot to compare the distribution of <code class="docutils literal notranslate"><span class="pre">diff2</span></code> to the results from the normal model, <code class="docutils literal notranslate"><span class="pre">diff</span></code>.</p>
 <p>Compute the probability of seeing a difference as big as <code class="docutils literal notranslate"><span class="pre">diff_actual</span></code>.  Is this p-value consistent with the results we got with the normal model?</p>
-<p><strong>Exercise:</strong> Are first babies more likely to be light?  To find out, we can use the birth weight data from the NSFG.  The variables we need use special codes to represent missing data, so I’ll replace them with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p><strong>Exercise:</strong> Are first babies more likely to be <em>light</em>?  To find out, we can use the birth weight data from the NSFG.  The variables we need use special codes to represent missing data, so I’ll replace them with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_LB1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -923,7 +929,7 @@ Under the null hypothesis, how often does the difference in means exceed the act
 </div>
 <div class="section" id="testing-correlation">
 <h2>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Permalink to this headline">¶</a></h2>
-<p>The method we used in the previous section is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">permutation test</a> because “permutation” is another word for shuffling.
+<p>The method we used in the previous section is called a <strong>permutation test</strong> because “permutation” is another word for shuffling (see <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests</a>).
 Permutation tests are also useful for testing whether an observed correlation might be do to chance.</p>
 <p>As an example, let’s look again at the correlations we computed in Chapter 9, using data from the Behavioral Risk Factor Surveillance System (BRFSS).
 The following cell reads the data.</p>
@@ -999,9 +1005,9 @@ The following cell reads the data.</p>
 </table>
 </div></div></div>
 </div>
-<p>The correlation between height and weight is about 0.48, which is moderately strong.  If you know someone’s height, you can make a better guess about their weight.
-The other correlations are weaker.
-Knowing someone’s age would not substantially improve your guesses about their height or weight.</p>
+<p>The correlation between height and weight is about 0.48, which is moderately strong; if you know someone’s height, you can make a better guess about their weight.
+The other correlations are weaker; for example,
+knowing someone’s age would not substantially improve your guesses about their height or weight.</p>
 <p>Because these correlations are so small, we might wonder whether they are due to chance.
 To answer this question, we can use permutation to simulate a world where there is actually no correlation between two variables.</p>
 <p>But first we have to take a detour to figure out how to shuffle a Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>.
@@ -1024,7 +1030,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 </div>
-<p>The <a class="reference external" href="https://stackoverflow.com/questions/29576430/shuffle-dataframe-rows">idiomatic way</a> to shuffle a <code class="docutils literal notranslate"><span class="pre">Series</span></code> is to use <code class="docutils literal notranslate"><span class="pre">sample</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">frac=1</span></code>, which means that the fraction of the elements we want is <code class="docutils literal notranslate"><span class="pre">1</span></code>, that is, all of them.
+<p>The idiomatic way to shuffle a <code class="docutils literal notranslate"><span class="pre">Series</span></code> is to use <code class="docutils literal notranslate"><span class="pre">sample</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">frac=1</span></code>, which means that the fraction of the elements we want is <code class="docutils literal notranslate"><span class="pre">1</span></code>, that is, all of them (see <a class="reference external" href="https://stackoverflow.com/questions/29576430/shuffle-dataframe-rows">https://stackoverflow.com/questions/29576430/shuffle-dataframe-rows</a>).
 By default, <code class="docutils literal notranslate"><span class="pre">sample</span></code> chooses elements without replacement, so the result contains all of the elements in a random order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1211,8 +1217,8 @@ The one that worked best is a box plot with mother’s age grouped into 3-year b
 </div>
 </div>
 <p>It looks like the average birth weight is highest if the mother is 25-31 years old, and lower if she is younger or older.
-So the relationship might be nonlinear.</p>
-<p>Nevertheless, let’s start with a linear model and work our way up.
+So the relationship might be nonlinear.
+Nevertheless, let’s start with a linear model and work our way up.
 Here’s a simple regression of birth weight as a function of the mother’s age at conception.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1232,9 +1238,9 @@ dtype: float64
 </div>
 </div>
 <p>The slope of the regression line is 0.016 pounds per year, which means that if one mother is a year older than another, we expect her baby to be about 0.016 pounds heavier, which is about a quarter of an ounce.</p>
-<p>This parameter is small, so we might wonder whether the apparent effect is due to chance.</p>
-<p>To answer that question, we will use permutation to simulate a world where there is no relationship between mother’s age and birth weight.</p>
-<p>As a test statistic, we’ll use the <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">coefficient of determination</a>, denoted <span class="math notranslate nohighlight">\(R^2\)</span>, which quantifies the predictive power of the model.
+<p>This parameter is small, so we might wonder whether the apparent effect is due to chance.
+To answer that question, we will use permutation to simulate a world where there is no relationship between mother’s age and birth weight.</p>
+<p>As a test statistic, we’ll use the coefficient of determination, denoted <span class="math notranslate nohighlight">\(R^2\)</span>, which quantifies the predictive power of the model (see <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">https://en.wikipedia.org/wiki/Coefficient_of_determination</a>).
 The regression results include <span class="math notranslate nohighlight">\(R^2\)</span> in a variable called <code class="docutils literal notranslate"><span class="pre">rsquared</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1248,8 +1254,8 @@ The regression results include <span class="math notranslate nohighlight">\(R^2\
 </div>
 </div>
 </div>
-<p>The value of <span class="math notranslate nohighlight">\(R^2\)</span> for this model is very small, which means that our guesses about a baby’s weight are barely improved if we know the mother’s age (and use a linear model).</p>
-<p>So it seems possible that the apparent relationship between these variables is due to chance.
+<p>The value of <span class="math notranslate nohighlight">\(R^2\)</span> for this model is very small, which means that our guesses about a baby’s weight are barely improved if we know the mother’s age (and use a linear model).
+So it seems possible that the apparent relationship between these variables is due to chance.
 We can test this possibility by using permutation to simulate a world where there is no such relationship.</p>
 <p>The following function takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, shuffles the <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> column, computes a linear regression model, and returns <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
 <div class="cell docutils container">
@@ -1328,9 +1334,9 @@ One way to answer this question is to look at the improvement in <span class="ma
 </div>
 </div>
 <p>The value of <span class="math notranslate nohighlight">\(R^2\)</span> is about 0.012, compared to 0.008 with the linear model.
-By this criterion, the quadratic model is a better, but when we add variables to a model, we might get some improvement just by chance.</p>
-<p>To see how much, write a function called <code class="docutils literal notranslate"><span class="pre">simulate_rsquared2</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, runs a regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and the shuffled values, and returns <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
-<p>Run your function 200 times and count how often <span class="math notranslate nohighlight">\(R^2\)</span> from the model exceeds the observed value from the dataset.  What conclusion can you draw?</p>
+By this criterion, the quadratic model is a better, but when we add variables to a model, we might get some improvement just by chance.
+To see how much, write a function called <code class="docutils literal notranslate"><span class="pre">simulate_rsquared2</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, runs a regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and the shuffled values, and returns <span class="math notranslate nohighlight">\(R^2\)</span>.
+Run your function 200 times and count how often <span class="math notranslate nohighlight">\(R^2\)</span> from the model exceeds the observed value from the dataset.  What conclusion can you draw?</p>
 </div>
 <div class="section" id="controlling-for-age">
 <h2>Controlling for Age<a class="headerlink" href="#controlling-for-age" title="Permalink to this headline">¶</a></h2>
@@ -1340,8 +1346,8 @@ Rather, knowing a baby’s birth order might provide information about some othe
 The mother’s age could be that factor.</p>
 <p>First babies are likely to have younger mothers than other babies, and younger mothers tend to have lighter babies.
 The difference we see in first babies might be explained by their mothers’ ages.
-So let’s see what happens if we control for age.</p>
-<p>Here’s a simple regression of birth weight as a function of the Boolean variable <code class="docutils literal notranslate"><span class="pre">FIRST</span></code>.</p>
+So let’s see what happens if we control for age.
+Here’s a simple regression of birth weight as a function of the Boolean variable <code class="docutils literal notranslate"><span class="pre">FIRST</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ FIRST&#39;</span>
@@ -1378,8 +1384,8 @@ dtype: float64
 </div>
 </div>
 <p>The age effect accounts for some of the difference between first babies and others.
-After controlling for age, the remaining difference is about 0.12 pounds.</p>
-<p>Since the age effect is nonlinear, we can can control for age more effectively by adding <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>.</p>
+After controlling for age, the remaining difference is about 0.12 pounds.
+Since the age effect is nonlinear, we can can control for age more effectively by adding <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ FIRST + AGECON + AGECON2&#39;</span>
@@ -1413,8 +1419,8 @@ dtype: float64
 </div>
 <p>When we use a quadratic model to control for the age effect, the remaining difference between first babies and others is smaller again, about 0.10 pounds.</p>
 <p>One of the warning signs of a spurious relationship between two variables is that the effect gradually disappears as you add control variables.
-So we should wonder whether the remaining effect might be due to chance.</p>
-<p>To find out, I’ll use the following function, which simulates a world where there is no difference in weight between first babies and others.
+So we should wonder whether the remaining effect might be due to chance.
+To find out, I’ll use the following function, which simulates a world where there is no difference in weight between first babies and others.
 It takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles the <code class="docutils literal notranslate"><span class="pre">FIRST</span></code> column, runs the regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, and returns the estimated difference.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1465,7 +1471,7 @@ It takes a <code class="docutils literal notranslate"><span class="pre">DataFram
 </div>
 <p>This result indicates that an observed difference of 0.1 pounds is possible, but not likely, if the actual difference between the groups is zero.</p>
 <p>So how should we interpret a result like this?
-In the tradition of <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing">statistical hypothesis testing</a>, it is common to use 5% as the threshold between results that are considered “statistically significant” or not.
+In the tradition of statistical hypothesis testing, it is common to use 5% as the threshold between results that are considered “statistically significant” or not (see <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing">https://en.wikipedia.org/wiki/Statistical_hypothesis_testing</a>).
 By that standard, the weight difference between first babies and others is statistically significant.</p>
 <p>However, there are several problems with this practice:</p>
 <ul class="simple">
@@ -1487,8 +1493,8 @@ We saw an example with the BRFSS dataset, where the correlations we tested were 
 <li><p>Finally, we explored the possibility that the first baby effect is actually an indirect maternal age effect.  After controlling for the mother’s age, we tested whether the remaining difference between first babies and others might happen by chance. We used permutation to model the null hypothesis and the estimated slope as a test statistic.</p></li>
 </ol>
 <p>As an exercise, below, you can use the same methods to explore the paternal age effect.</p>
-<p><strong>Exercise:</strong> A <a class="reference external" href="https://en.wikipedia.org/wiki/Paternal_age_effect">paternal age effect</a> is a relationship between the age of a father and a variety of outcomes for their children.  There is some evidence that young fathers and old fathers tend to have lighter babies than fathers in the middle.  Let’s see if that’s true for the babies in the NSFG dataset.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">HPAGELB</span></code> column encodes the father’s age.  Here are the values, after replacing the codes for missing data with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p><strong>Exercise:</strong> A paternal age effect is a relationship between the age of a father and a variety of outcomes for their children (see <a class="reference external" href="https://en.wikipedia.org/wiki/Paternal_age_effect">https://en.wikipedia.org/wiki/Paternal_age_effect</a>).  There is some evidence that young fathers and old fathers tend to have lighter babies than fathers in the middle.  Let’s see if that’s true for the babies in the NSFG dataset.
+The <code class="docutils literal notranslate"><span class="pre">HPAGELB</span></code> column encodes the father’s age.  Here are the values, after replacing the codes for missing data with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1561,9 +1567,9 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>The difference is negative, which is consistent with the theory, and about 0.14 pounds, which is comparable in size to the (apparent) first baby effect.</p>
-<p>But there is a strong correlation between father’s age and mother’s age.  So what seems like a paternal age effect might actually be an indirect maternal age effect.</p>
-<p>To find out, let’s see what happens if we control for the mother’s age.
+<p>The difference is negative, which is consistent with the theory, and about 0.14 pounds, which is comparable in size to the (apparent) first baby effect.
+But there is a strong correlation between father’s age and mother’s age.  So what seems like a paternal age effect might actually be an indirect maternal age effect.
+To find out, let’s see what happens if we control for the mother’s age.
 Run this model again with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code> as predictors.  Does the observed effect of paternal age get smaller?</p>
 <p>To see if the remaining effect could be due to randomness, write a function that shuffles <code class="docutils literal notranslate"><span class="pre">YO_DAD</span></code>, runs the regression model, and returns the parameter associated with the shuffled column.  How often does this parameter exceed the observed value?  What conclusion can we draw from the results?</p>
 </div>

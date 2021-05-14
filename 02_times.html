@@ -125,7 +125,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -587,7 +587,7 @@ As always, we have to import a library before we use it; it is conventional to i
 </div>
 </div>
 </div>
-<p>You can also gets the name of the month and the day of the week.</p>
+<p>You can also get the name of the month and the day of the week.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_of_birth</span><span class="o">.</span><span class="n">day_name</span><span class="p">(),</span> <span class="n">date_of_birth</span><span class="o">.</span><span class="n">month_name</span><span class="p">()</span>
@@ -660,7 +660,7 @@ The <code class="docutils literal notranslate"><span class="pre">Timedelta</span
 </div>
 </div>
 <p>The biggest component of <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> is days, not years, because days are well defined and years are problematic.</p>
-<p>Most years are 365 days, but some are 366.  The average calendar year is 365.24 days, which is a very good approximation of a solar year, <a class="reference external" href="https://pumas.jpl.nasa.gov/files/04_21_97_1.pdf">but it is not exact</a>.</p>
+<p>Most years are 365 days, but some are 366.  The average calendar year is 365.24 days, which is a very good approximation of a solar year, but it is not exact (see <a class="reference external" href="https://pumas.jpl.nasa.gov/files/04_21_97_1.pdf">https://pumas.jpl.nasa.gov/files/04_21_97_1.pdf</a>).</p>
 <p>One way to compute age in years is to divide age in days by 365.24:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -785,7 +785,7 @@ With the following dates, the result should be December 19, 2009.</p>
 <p>When we compute with location information, we use floating-point numbers, with</p>
 <ul class="simple">
 <li><p>Positive latitude for the northern hemisphere, negative latitude for the southern hemisphere, and</p></li>
-<li><p>Positive longitude for the eastern hemisphere and negative latitude for the western hemisphere.</p></li>
+<li><p>Positive longitude for the eastern hemisphere and negative longitude for the western hemisphere.</p></li>
 </ul>
 <p>Of course, the choice of the origin and the orientation of positive and negative are arbitrary choices that were made for historical reasons.  We might not be able to change conventions like these, but we should be aware that they are conventions.</p>
 <p>Here’s how we might represent the location of Boston with two variables.</p>
@@ -1039,16 +1039,6 @@ Shapely provides <code class="docutils literal notranslate"><span class="pre">Po
 </div>
 </div>
 </div>
-<p>If we display a <code class="docutils literal notranslate"><span class="pre">Point</span></code> value, we get a graphical representation, but not a very useful one.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/02_times_122_0.svg" src="_images/02_times_122_0.svg" /></div>
-</div>
 <p>We can use the points we just defined to create a <code class="docutils literal notranslate"><span class="pre">LineString</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1057,38 +1047,20 @@ Shapely provides <code class="docutils literal notranslate"><span class="pre">Po
 </div>
 </div>
 </div>
-<p>If we display the result, we get another not very useful graphical representation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/02_times_126_0.svg" src="_images/02_times_126_0.svg" /></div>
-</div>
-<p>Now we can use Geopandas to show these points and lines on a map.</p>
+<p>Now we can use Geopandas to show these points and lines on a map.
+The following code loads a map of the world and plots it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The following code loads a map of the world and plots it.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">)</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/02_times_132_0.png" src="_images/02_times_132_0.png" />
 </div>
-</div>
-<p>By default, Geopandas uses an <a class="reference external" href="https://en.wikipedia.org/wiki/Equirectangular_projection">equirectangular projection</a>, which provides a misleading picture of relative land areas.
+<p>By default, Geopandas uses an equirectangular projection, which provides a misleading picture of relative land areas (see <a class="reference external" href="https://en.wikipedia.org/wiki/Equirectangular_projection">https://en.wikipedia.org/wiki/Equirectangular_projection</a>).
 You can’t make a map without making visualization decisions.</p>
 <p>Now let’s put dots on the map for Boston and London.  We have to put the <code class="docutils literal notranslate"><span class="pre">Point</span></code> values and the <code class="docutils literal notranslate"><span class="pre">LineString</span></code> into a <code class="docutils literal notranslate"><span class="pre">GeoSeries</span></code>.</p>
 <div class="cell docutils container">
@@ -1111,8 +1083,8 @@ You can’t make a map without making visualization decisions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_136_0.png" src="_images/02_times_136_0.png" />
-<img alt="_images/02_times_136_1.png" src="_images/02_times_136_1.png" />
+<img alt="_images/02_times_134_0.png" src="_images/02_times_134_0.png" />
+<img alt="_images/02_times_134_1.png" src="_images/02_times_134_1.png" />
 </div>
 </div>
 <p>The two plots are on different axes, which is not what we want in this case.</p>
@@ -1134,12 +1106,12 @@ You can’t make a map without making visualization decisions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_140_0.png" src="_images/02_times_140_0.png" />
+<img alt="_images/02_times_138_0.png" src="_images/02_times_138_0.png" />
 </div>
 </div>
 <p>There are a few features in this example I have not explained completely, but hopefully you get the idea.</p>
-<p><strong>Exercise:</strong> Modify the code in this section to plot a point that shows the home town you chose in a previous exercise and a line from there to Boston.
-Then go to <a class="reference external" href="https://forms.gle/2LDcqxJmcWY3Q3X47">this online survey</a> and answer the questions there.</p>
+<p><strong>Exercise:</strong> Modify the code in this section to plot a point that shows the home town you chose in a previous exercise and a line from there to Boston.</p>
+<p>Then go to <a class="reference external" href="https://forms.gle/2LDcqxJmcWY3Q3X47">this online survey</a> and answer the questions there.</p>
 </div>
 </div>
 

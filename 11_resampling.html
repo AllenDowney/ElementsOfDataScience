@@ -123,7 +123,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,13 +306,13 @@
 <h1>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">click here to download it</a>.</p>
-<p>This chapter introduces <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)">resampling methods</a>, which are used to quantify the precision of an estimate.</p>
-<p>As examples, we’ll use results a vaccine trial to estimate the efficacy of the vaccine, data from the Behavioral Risk Factor Surveillance System to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
+<p>This chapter introduces <strong>resampling methods</strong>, which are used to quantify the precision of an estimate.
+As examples, we’ll use results a vaccine trial to estimate the efficacy of the vaccine, data from the Behavioral Risk Factor Surveillance System to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
 <div class="section" id="vaccine-testing">
 <h2>Vaccine Testing<a class="headerlink" href="#vaccine-testing" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you read a report about a new vaccine and the manufacturer says it is 67% effective at preventing disease.
 You might wonder where that number comes from, what it means, and how confident we should be that it is correct.</p>
-<p>Results like this often come from a <a class="reference external" href="https://en.wikipedia.org/wiki/Randomized_controlled_trial">randomized controlled trial</a> (RCT), which works like this:</p>
+<p>Results like this often come from a randomized controlled trial(RCT), which works like this:</p>
 <ul class="simple">
 <li><p>You recruit a large group of volunteers and divide them into two groups at random: the “treatment group” receives the vaccine; the “control group” does not.</p></li>
 <li><p>Then you follow both groups for a period of time and record the number of people in each group who are diagnosed with the disease.</p></li>
@@ -362,8 +362,8 @@ You might wonder where that number comes from, what it means, and how confident 
 </div>
 </div>
 </div>
-<p>The risk is substantially lower in the treatment group – about 5.2 per 1000, compared to 16 – which suggests that the vaccine is effective.
-We can summarize these results by computing <a class="reference external" href="https://en.wikipedia.org/wiki/Relative_risk">relative risk</a>, which is the ratio of the two risks:</p>
+<p>The risk is substantially lower in the treatment group – about 5 per 1000, compared to 16 – which suggests that the vaccine is effective.
+We can summarize these results by computing relative risk, which is the ratio of the two risks (see <a class="reference external" href="https://en.wikipedia.org/wiki/Relative_risk">https://en.wikipedia.org/wiki/Relative_risk</a>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_risk</span> <span class="o">=</span> <span class="n">risk_treatment</span> <span class="o">/</span> <span class="n">risk_control</span>
@@ -392,8 +392,8 @@ Equivalently, we could report the complement of relative risk, which is <strong>
 </div>
 </div>
 </div>
-<p>In this example the efficacy is <code class="docutils literal notranslate"><span class="pre">0.67</span></code>, which means that the vaccine reduces the risk of disease by 67%.</p>
-<p>That’s good news, but as skeptical data scientists, we should not assume that it is perfectly accurate.
+<p>In this example the efficacy is <code class="docutils literal notranslate"><span class="pre">0.67</span></code>, which means that the vaccine reduces the risk of disease by 67%.
+That’s good news, but as skeptical data scientists, we should not assume that it is perfectly accurate.
 There are any number of things that might have gone wrong.</p>
 <p>For example, if people in the treatment group know they have been vaccinated, they might take fewer precautions to prevent disease, and people in the control group might be more careful.
 That would affect the estimated efficacy, which is why a lot of trials are “blinded”, meaning that the subjects don’t know which group they are in.</p>
@@ -406,7 +406,7 @@ In the next section, I’ll explain what they mean and show how to compute them.
 </div>
 <div class="section" id="simulating-one-group">
 <h2>Simulating One Group<a class="headerlink" href="#simulating-one-group" title="Permalink to this headline">¶</a></h2>
-<p>In our hypothetical example, there are 21 911 people in the treatment group and 116 of them got the disease, so the estimated risk is small.</p>
+<p>In our hypothetical example, there are 21 911 people in the treatment group and 116 of them got the disease, so the estimated risk is about 5 cases per 1000 people.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_treatment</span><span class="p">,</span> <span class="n">k_treatment</span><span class="p">,</span> <span class="n">risk_treatment</span>
@@ -436,8 +436,8 @@ For example, if there had been 10 more cases, the estimated risk would be 5.8 pe
 <p>That’s a big enough difference that we should wonder how much variability there is in the estimate due to random variation.
 We’ll answer that question in three steps:</p>
 <ul class="simple">
-<li><p>We’ll write a function that uses a random number generator to simulate the trial, then</p></li>
-<li><p>We’ll run the function 1000 times to see how much the estimate varies.</p></li>
+<li><p>We’ll write a function that uses a random number generator to simulate the trial.</p></li>
+<li><p>Then we’ll run the function 1000 times to see how much the estimate varies.</p></li>
 <li><p>And we’ll summarize the results.</p></li>
 </ul>
 <p>The following function takes two parameters: <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of people in the group (treatment or control) and <code class="docutils literal notranslate"><span class="pre">p</span></code> is the probability that any of them gets the disease.</p>
@@ -466,7 +466,7 @@ Then the function returns the estimated risk.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.933092967002875
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.613618730318105
 </pre></div>
 </div>
 </div>
@@ -482,7 +482,7 @@ If we run this function 1000 times, it’s like running the trial over and over.
 </div>
 </div>
 <p>The result is a list of estimated risks that shows how much we expect the results of the trial to vary due to randomness.
-We can use a KDE plot to visualize the distribution of these estimates</p>
+We can use a KDE plot to visualize the distribution of these estimates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -492,8 +492,7 @@ We can use a KDE plot to visualize the distribution of these estimates</p>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Risk of disease (cases per 1000)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimated Risks from Simulation&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimated Risks from Simulation&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -529,7 +528,7 @@ One way to quantify the width of the distribution is the standard deviation.</p>
 </div>
 </div>
 </div>
-<p>This result is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error"><strong>standard error</strong></a>.</p>
+<p>This result is called the <strong>standard error</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error">https://en.wikipedia.org/wiki/Standard_error</a>).</p>
 <p>Another way to quantify the width of the distribution is an interval between two percentiles.
 For example, if we compute the 5th and 95th percentiles, the interval we get contains 90% of the simulated estimates.</p>
 <div class="cell docutils container">
@@ -545,7 +544,7 @@ For example, if we compute the 5th and 95th percentiles, the interval we get con
 </div>
 </div>
 </div>
-<p>This result is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Confidence_interval"><strong>confidence interval</strong></a>; specifically, this one is a “90% confidence interval”, or 90% CI.
+<p>This result is called a <strong>confidence interval</strong> ; specifically, this one is a “90% confidence interval”, or 90% CI (see <a class="reference external" href="https://en.wikipedia.org/wiki/Confidence_interval">https://en.wikipedia.org/wiki/Confidence_interval</a>).
 If we assume that the observed risk is correct, and we run the same trial many times, we expect 90% of the estimates to fall in this interval.</p>
 <p>Standard errors and confidence intervals quantify our uncertainty about the estimate due to random variation from one trial to another.</p>
 </div>
@@ -647,8 +646,10 @@ As an alternative, we can use percentiles to compute a 90% confidence interval.<
 <p>In a scientific paper, we could report these results as 0.67, 90% CI [0.61, 0.72]”.</p>
 <p>The standard error and confidence interval represent nearly the same information.
 In general, I prefer to report a confidence interval because it is easier to interpret.</p>
-<p>Formally, it means that if we run the same experiment again, we expect 90% of the results to fall between 61% and 72% (assuming that the estimated risks are correct).</p>
-<p>More casually, it means that it is plausible that the actually efficacy is as low as 61%, or as high as 72% (assuming there are no sources of error other than random variation).</p>
+<ul class="simple">
+<li><p>Formally, it means that if we run the same experiment again, we expect 90% of the results to fall between 61% and 72% (assuming that the estimated risks are correct).</p></li>
+<li><p>More casually, it means that it is plausible that the actually efficacy is as low as 61%, or as high as 72% (assuming there are no sources of error other than random variation).</p></li>
+</ul>
 </div>
 <div class="section" id="estimating-means">
 <h2>Estimating Means<a class="headerlink" href="#estimating-means" title="Permalink to this headline">¶</a></h2>
@@ -717,7 +718,7 @@ As we did in the previous examples, we will assume for purposes of simulation th
 <img alt="_images/11_resampling_59_0.png" src="_images/11_resampling_59_0.png" />
 </div>
 </div>
-<p>This distribution is called a <span class="xref myst"><strong>sampling distribution</strong></span> because it represents the variation in the results due to the random sampling process.
+<p>This distribution is called a <strong>sampling distribution</strong> because it represents the variation in the results due to the random sampling process.
 If we recruit 100 people and compute the mean of their heights, the result might be as low as 175 cm, or as high as 179 cm, due to chance.</p>
 <p>The average of the sampling distribution is close to the presumed mean of the population.</p>
 <div class="cell docutils container">

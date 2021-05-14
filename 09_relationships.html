@@ -125,7 +125,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -308,7 +308,7 @@
 <h2>Exploring relationships<a class="headerlink" href="#exploring-relationships" title="Permalink to this headline">¶</a></h2>
 <p>So far we have only looked at one variable at a time.  Now it’s time to explore relationships between variables.
 As a first example, we’ll look at the relationship between height and weight.</p>
-<p>We’ll use data from the <a class="reference external" href="https://www.cdc.gov/brfss/index.html">Behavioral Risk Factor Surveillance Survey</a> (BRFSS), which is run by the Centers for Disease Control.  The survey includes more than 400,000 respondents, but to keep things manageable, I’ve selected a random subsample of 100,000.</p>
+<p>We’ll use data from the Behavioral Risk Factor Surveillance System (BRFSS), which is run by the Centers for Disease Control at <a class="reference external" href="https://www.cdc.gov/brfss">https://www.cdc.gov/brfss</a>.  The survey includes more than 400,000 respondents, but to keep things manageable, I’ve selected a random subsample of 100,000.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -633,14 +633,7 @@ Adding random noise like this is called <strong>jittering</strong>.</p>
 </div>
 </div>
 <p>To get a better view of this distribution, try plotting the CDF.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Optional Exercise:</strong> Compute the CDF of a normal distribution and compare it with the distribution of weight.  Is the normal distribution a good model for this data?  What about log-transformed weights?</p>
+<p>Compute the CDF of a normal distribution with the same mean and standard deviation, and compare it with the distribution of weight.  Is the normal distribution a good model for this data?  What about log-transformed weights?</p>
 <p><strong>Exercise:</strong> Now let’s make a scatter plot of <code class="docutils literal notranslate"><span class="pre">weight</span></code> versus <code class="docutils literal notranslate"><span class="pre">age</span></code>.  Adjust <code class="docutils literal notranslate"><span class="pre">alpha</span></code> and <code class="docutils literal notranslate"><span class="pre">markersize</span></code> to avoid overplotting.  Use <code class="docutils literal notranslate"><span class="pre">ylim</span></code> to limit the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis from 0 to 200 kilograms.</p>
 <p><strong>Exercise:</strong> In the previous exercise, the ages fall in columns because they’ve been rounded into 5-year bins. If we jitter them, the scatter plot will show the relationship more clearly.</p>
 <ul class="simple">
@@ -669,7 +662,7 @@ Adding random noise like this is called <strong>jittering</strong>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_48_0.png" src="_images/09_relationships_48_0.png" />
+<img alt="_images/09_relationships_46_0.png" src="_images/09_relationships_46_0.png" />
 </div>
 </div>
 <p>In this version of the scatter plot, I adjusted the jittering of the weights so there’s still space between the columns.
@@ -706,7 +699,7 @@ Now we can call <code class="docutils literal notranslate"><span class="pre">vio
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_52_0.png" src="_images/09_relationships_52_0.png" />
+<img alt="_images/09_relationships_50_0.png" src="_images/09_relationships_50_0.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arguments mean we want <code class="docutils literal notranslate"><span class="pre">AGE</span></code> on the x-axis and <code class="docutils literal notranslate"><span class="pre">WTKG3</span></code> on the y-axis.  <code class="docutils literal notranslate"><span class="pre">data</span></code> is the DataFrame we just created, which contains the variables we’re going to plot.  The argument <code class="docutils literal notranslate"><span class="pre">inner=None</span></code> simplifies the plot a little.</p>
@@ -723,7 +716,7 @@ Now we can call <code class="docutils literal notranslate"><span class="pre">vio
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_54_0.png" src="_images/09_relationships_54_0.png" />
+<img alt="_images/09_relationships_52_0.png" src="_images/09_relationships_52_0.png" />
 </div>
 </div>
 <p>I included the argument <code class="docutils literal notranslate"><span class="pre">whis=10</span></code> to turn off a feature we don’t need.  If you are curious about it, you can <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.boxplot.html">read the documentation</a>.</p>
@@ -749,7 +742,7 @@ The spines sticking out of the top and bottom show the minimum and maximum value
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_56_0.png" src="_images/09_relationships_56_0.png" />
+<img alt="_images/09_relationships_54_0.png" src="_images/09_relationships_54_0.png" />
 </div>
 </div>
 <p>To show the relationship between age and weight most clearly, this is probably the figure I would use.</p>
@@ -844,8 +837,8 @@ With this subset of the data, we can use the <code class="docutils literal notra
 <p>The result is a <strong>correlation matrix</strong>.  Reading across the first row, the correlation of <code class="docutils literal notranslate"><span class="pre">HTM4</span></code> with itself is <code class="docutils literal notranslate"><span class="pre">1</span></code>.  That’s expected; the correlation of anything with itself is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <p>The next entry is more interesting; the correlation of height and weight is about <code class="docutils literal notranslate"><span class="pre">0.47</span></code>.  It’s positive, which means taller people are heavier, and it is moderate in strength, which means it has some predictive value.  If you know someone’s height, you can make a better guess about their weight, and vice versa.</p>
 <p>The correlation between height and age is about <code class="docutils literal notranslate"><span class="pre">-0.09</span></code>.  It’s negative, which means that older people tend to be shorter, but it’s weak, which means that knowing someone’s age would not help much if you were trying to guess their height.</p>
-<p>The correlation between age and weight is even smaller.  It is tempting to conclude that there is no relationship between age and weight, but we have already seen that there is.  So why is the correlation so low?</p>
-<p>Remember that the relationship between weight and age looks like this.</p>
+<p>The correlation between age and weight is even smaller.  It is tempting to conclude that there is no relationship between age and weight, but we have already seen that there is.  So why is the correlation so low?
+Remember that the relationship between weight and age looks like this.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">brfss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;WTKG3&#39;</span><span class="p">])</span>
@@ -858,7 +851,7 @@ With this subset of the data, we can use the <code class="docutils literal notra
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_70_0.png" src="_images/09_relationships_70_0.png" />
+<img alt="_images/09_relationships_68_0.png" src="_images/09_relationships_68_0.png" />
 </div>
 </div>
 <p>People in their forties are the heaviest; younger and older people are lighter.  So this relationship is nonlinear.
@@ -883,7 +876,7 @@ But correlation only measures linear relationships.  If the relationship is nonl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_74_0.png" src="_images/09_relationships_74_0.png" />
+<img alt="_images/09_relationships_72_0.png" src="_images/09_relationships_72_0.png" />
 </div>
 </div>
 <p>It’s clear that this is a strong relationship; if you are given <code class="docutils literal notranslate"><span class="pre">x</span></code>, you can make a much better guess about <code class="docutils literal notranslate"><span class="pre">y</span></code>.
@@ -910,8 +903,7 @@ Specifically, correlation says nothing about slope.  If we say that two variable
 <p>For example, suppose we are concerned about the health effects of weight gain, so we plot weight versus age from 20 to 50 years old.
 I’ll generate two fake datasets to demonstrate the point.
 In each dataset, <code class="docutils literal notranslate"><span class="pre">xs</span></code> represents age and <code class="docutils literal notranslate"><span class="pre">ys</span></code> represents weight.</p>
-<p>I use <code class="docutils literal notranslate"><span class="pre">np.random.seed</span></code> to initialize the random number generator so we get the same results every time we run.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">xs1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
@@ -925,11 +917,11 @@ In each dataset, <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_78_0.png" src="_images/09_relationships_78_0.png" />
+<img alt="_images/09_relationships_77_0.png" src="_images/09_relationships_77_0.png" />
 </div>
 </div>
 <p>And here’s the second dataset:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">xs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
@@ -943,7 +935,7 @@ In each dataset, <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_80_0.png" src="_images/09_relationships_80_0.png" />
+<img alt="_images/09_relationships_79_0.png" src="_images/09_relationships_79_0.png" />
 </div>
 </div>
 <p>I constructed these examples so they look similar, but they have substantially different correlations:</p>
@@ -976,8 +968,8 @@ In each dataset, <code class="docutils literal notranslate"><span class="pre">xs
 <p>In the first example, the correlation is strong, close to <code class="docutils literal notranslate"><span class="pre">0.75</span></code>.
 In the second example, the correlation is moderate, close to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.
 So we might think the first relationship is more important.  But look more closely at the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis in both figures.</p>
-<p>In the first example, the average weight gain over 30 years is less than 1 kilogram; in the second it is more than 5 kilograms!</p>
-<p>If we are concerned about the health effects of weight gain, the second relationship is probably more important, even though the correlation is lower.<br />
+<p>In the first example, the average weight gain over 30 years is less than 1 kilogram; in the second it is more than 5 kilograms!
+If we are concerned about the health effects of weight gain, the second relationship is probably more important, even though the correlation is lower.<br />
 The statistic we really care about is the slope of the line, not the coefficient of correlation.</p>
 <p>In the next section, we’ll see how to estimate that slope.  But first, let’s practice with correlation.</p>
 <p><strong>Exercise:</strong> The purpose of the BRFSS is to explore health risk factors, so it includes questions about diet.  The column <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code> represents the number of servings of vegetables respondents reported eating per day.</p>
@@ -1022,7 +1014,7 @@ The statistic we really care about is the slope of the line, not the coefficient
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_92_0.png" src="_images/09_relationships_92_0.png" />
+<img alt="_images/09_relationships_91_0.png" src="_images/09_relationships_91_0.png" />
 </div>
 </div>
 <p>The one on the left has higher correlation, about 0.75 compared to 0.5.
@@ -1113,7 +1105,7 @@ Here’s what that looks like for the first example.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_102_0.png" src="_images/09_relationships_102_0.png" />
+<img alt="_images/09_relationships_101_0.png" src="_images/09_relationships_101_0.png" />
 </div>
 </div>
 <p>And the same thing for the second example.</p>
@@ -1132,7 +1124,7 @@ Here’s what that looks like for the first example.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_104_0.png" src="_images/09_relationships_104_0.png" />
+<img alt="_images/09_relationships_103_0.png" src="_images/09_relationships_103_0.png" />
 </div>
 </div>
 <p>The visualization here might be misleading unless you look closely at the vertical scales; the slope in the second figure is almost 10 times higher.</p>
@@ -1155,7 +1147,7 @@ Here’s the scatter plot of height and weight one more time.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_107_0.png" src="_images/09_relationships_107_0.png" />
+<img alt="_images/09_relationships_106_0.png" src="_images/09_relationships_106_0.png" />
 </div>
 </div>
 <p>Now we can compute the regression line.  <code class="docutils literal notranslate"><span class="pre">linregress</span></code> can’t handle <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, so we have to use <code class="docutils literal notranslate"><span class="pre">dropna</span></code> to remove rows that are missing the data we need.</p>
@@ -1213,7 +1205,7 @@ Here’s the scatter plot of height and weight one more time.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_115_0.png" src="_images/09_relationships_115_0.png" />
+<img alt="_images/09_relationships_114_0.png" src="_images/09_relationships_114_0.png" />
 </div>
 </div>
 <p>The slope of this line seems consistent with the scatter plot.</p>
@@ -1232,7 +1224,7 @@ Here’s the scatter plot of weight versus age, which we saw earlier.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_117_0.png" src="_images/09_relationships_117_0.png" />
+<img alt="_images/09_relationships_116_0.png" src="_images/09_relationships_116_0.png" />
 </div>
 </div>
 <p>People in their 40s are the heaviest; younger and older people are lighter.  So the relationship is nonlinear.</p>
@@ -1278,7 +1270,7 @@ And here’s what the line of best fit looks like.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09_relationships_121_0.png" src="_images/09_relationships_121_0.png" />
+<img alt="_images/09_relationships_120_0.png" src="_images/09_relationships_120_0.png" />
 </div>
 </div>
 <p>A straight line does not capture the relationship between these variables well.</p>
@@ -1293,16 +1285,6 @@ And here’s what the line of best fit looks like.</p>
 <li><p>Extract <code class="docutils literal notranslate"><span class="pre">INCOME2</span></code> and <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code> and compute the simple linear regression of these variables.</p></li>
 </ul>
 <p>What is the slope of the regression line?  What does this slope means in the context of the question we are exploring?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The estimated slope is 0.07, which means that</span>
-<span class="c1"># people in higher income groups eat slightly more vegetables</span>
-<span class="c1"># on average.  Between the lowest and the highest income group</span>
-<span class="c1"># the difference is about half a vegetable serving per day.</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong>Exercise:</strong> Finally, plot the regression line on top of the scatter plot.</p>
 </div>
 </div>

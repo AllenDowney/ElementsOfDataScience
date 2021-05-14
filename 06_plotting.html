@@ -56,7 +56,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Dataframes and Series" href="07_dataframes.html" />
+    <link rel="next" title="DataFrames and Series" href="07_dataframes.html" />
     <link rel="prev" title="Dictionaries" href="05_dictionaries.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -125,7 +125,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -400,11 +400,11 @@ Then modify it to print an open bracket at the beginning and a close bracket and
 <div class="section" id="religious-affiliation">
 <h2>Religious affiliation<a class="headerlink" href="#religious-affiliation" title="Permalink to this headline">¶</a></h2>
 <p>Now we’re ready to make some graphs.</p>
-<p>In October 2019 the Pew Research Center published “<a class="reference external" href="https://www.pewforum.org/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace/">In U.S., Decline of Christianity Continues at Rapid Pace</a>”.
+<p>In October 2019 the Pew Research Center published “In U.S., Decline of Christianity Continues at Rapid Pace” at <a class="reference external" href="https://www.pewforum.org/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace">https://www.pewforum.org/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace</a>.
 It includes this figure, which shows changes in religious affiliation among adults in the U.S. over the previous 10 years.</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/pew_religion_figure1.png" /></p>
 <p>As an exercise, we’ll replicate this figure.  It shows results from two sources, Religious Landscape Studies and Pew Research Political Surveys.  The political surveys provide data from more years, so we’ll focus on that.</p>
-<p><a class="reference external" href="https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf">The data from the figure are available directly from Pew Research</a>, but they are in a PDF document.  It is sometimes possible to extract data from PDF documents, but for now we’ll enter the data by hand.</p>
+<p>The data from the figure are available from Pew Research at <a class="reference external" href="https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf">https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf</a>, but they are in a PDF document.  It is sometimes possible to extract data from PDF documents, but for now we’ll enter the data by hand.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">]</span>
@@ -527,9 +527,9 @@ Then we call <code class="docutils literal notranslate"><span class="pre">plt.le
 </div>
 <div class="section" id="sandwiches">
 <h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">¶</a></h2>
-<p>In a previous chapter we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”.</p>
+<p>In a previous chapter we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “Why Americans pay more for lunch than Britons do” at <a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do</a>.</p>
 <p>The article includes this graph showing prices of several sandwiches in the two cities:</p>
-<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" />{ width=3in }</p>
+<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" /></p>
 <p>As an exercise, let’s see if we can replicate this figure.
 Here’s the data from the article again: the names of the sandwiches and the price list for each city.</p>
 <div class="cell docutils container">
@@ -549,8 +549,9 @@ Here’s the data from the article again: the names of the sandwiches and the pr
 </div>
 </div>
 </div>
-<p>In the previous section we plotted percentages on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis versus time on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.<br />
-Now we want to plot the sandwich names on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis and the prices on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  Here’s how:</p>
+<p>In the previous section we plotted percentages on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis versus time on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.
+Now we want to plot the sandwich names on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis and the prices on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.
+Here’s how:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">)</span>
@@ -593,7 +594,7 @@ Now we want to plot the sandwich names on the <code class="docutils literal notr
 </div>
 </div>
 <p>I added a title at the same time.</p>
-<p>Now, to approximate the colors in the original figure, we can use the strings <code class="docutils literal notranslate"><span class="pre">'C3'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C0'</span></code>, which specify colors from the default color sequence.  <a class="reference external" href="https://matplotlib.org/3.1.1/tutorials/colors/colors.html">You can read the documentation to learn more about specifying colors in Pyplot</a>.</p>
+<p>Now, to approximate the colors in the original figure, we can use the strings <code class="docutils literal notranslate"><span class="pre">'C3'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C0'</span></code>, which specify colors from the default color sequence.  You can read the documentation to learn more about specifying colors in Pyplot: <a class="reference external" href="https://matplotlib.org/3.1.1/tutorials/colors/colors.html">https://matplotlib.org/3.1.1/tutorials/colors/colors.html</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
@@ -630,7 +631,7 @@ Now we want to plot the sandwich names on the <code class="docutils literal notr
 </div>
 <div class="section" id="zipf-s-law">
 <h2>Zipf’s law<a class="headerlink" href="#zipf-s-law" title="Permalink to this headline">¶</a></h2>
-<p>In the previous chapter we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.
+<p>In the previous chapter we downloaded <em>War and Peace</em> from Project Gutenberg and counted the number of lines and words.
 Then we used a dictionary to count the number of unique words and the number of times each one appears.
 Now we’ll use those results to generate a “Zipf plot”, which shows the frequency of the words on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, ordered from the most common word to the least.</p>
 <p>In the previous chapter, we looped through the book and made a string that contains all punctuation characters.
@@ -673,11 +674,12 @@ Here are the results, which we will need again.</p>
 </div>
 <div class="section" id="frequencies-and-ranks">
 <h2>Frequencies and ranks<a class="headerlink" href="#frequencies-and-ranks" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Zipf%27s_law">According to Wikipedia</a>, Zipf’s law</p>
+<p>In this section we’ll test Zipf’s law, which states that</p>
 <blockquote>
-<div><p>was originally formulated in terms of quantitative linguistics, stating that given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc.</p>
+<div><p>given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc.</p>
 </div></blockquote>
-<p>To see if this law holds for the words in <em>War and Peace</em>, we’ll make a plot that shows:</p>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Zipfs_law">https://en.wikipedia.org/wiki/Zipfs_law</a>.
+To see if this law holds for the words in <em>War and Peace</em>, we’ll make a plot that shows:</p>
 <ul class="simple">
 <li><p>The frequency of each word on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, and</p></li>
 <li><p>The rank of each word on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, where the rank of the most frequent word is 1, the rank of the second most common word is 2, etc.</p></li>
@@ -746,7 +748,7 @@ Here are the results, which we will need again.</p>
 </div>
 </div>
 </div>
-<p>That might seem strange, but it is <a class="reference external" href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html">often more convenient</a> to use <code class="docutils literal notranslate"><span class="pre">range</span></code> when it is defined this way, rather than what might seem like the more natural way.
+<p>That might seem strange, but it is often more convenient to use <code class="docutils literal notranslate"><span class="pre">range</span></code> when it is defined this way, rather than what might seem like the more natural way (see <a class="reference external" href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html">https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html</a>).
 Anyway, we can get what we want by increasing the second argument by one:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -906,8 +908,8 @@ I’ll select the first and last elements from <code class="docutils literal not
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">log10</span></code> and <code class="docutils literal notranslate"><span class="pre">diff</span></code> to compute the run, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  The divide the rise by the run to get the slope of the grey line.</p>
-<p>Is it close to -1, as Zipf’s law predicts?</p>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">log10</span></code> and <code class="docutils literal notranslate"><span class="pre">diff</span></code> to compute the run, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  Then divide the rise by the run to get the slope of the grey line.
+Is it close to -1, as Zipf’s law predicts?</p>
 </div>
 </div>
 
@@ -940,7 +942,7 @@ I’ll select the first and last elements from <code class="docutils literal not
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="05_dictionaries.html" title="previous page">Dictionaries</a>
-    <a class='right-next' id="next-link" href="07_dataframes.html" title="next page">Dataframes and Series</a>
+    <a class='right-next' id="next-link" href="07_dataframes.html" title="next page">DataFrames and Series</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

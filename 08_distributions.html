@@ -57,7 +57,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Relationships" href="09_relationships.html" />
-    <link rel="prev" title="Dataframes and Series" href="07_dataframes.html" />
+    <link rel="prev" title="DataFrames and Series" href="07_dataframes.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -125,7 +125,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -279,8 +279,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cdf-of-ages">
-   CDF of Ages
+  <a class="reference internal nav-link" href="#cdf-of-age">
+   CDF of Age
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -463,7 +463,7 @@ The GSS dataset contains hundreds of columns; using an online tool call <a class
 </div>
 </div>
 </div>
-<p>The data file is compressed with <span class="xref myst">gzip</span>, but we can use the <code class="docutils literal notranslate"><span class="pre">gzip</span></code> library to open it.</p>
+<p>The data file is compressed, but we can use the <code class="docutils literal notranslate"><span class="pre">gzip</span></code> library to open it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gzip</span>
@@ -486,7 +486,7 @@ The GSS dataset contains hundreds of columns; using an online tool call <a class
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64814, 6)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64814, 169)
 </pre></div>
 </div>
 </div>
@@ -520,10 +520,25 @@ Here are the first few rows.</p>
       <th></th>
       <th>YEAR</th>
       <th>ID_</th>
+      <th>AGEWED</th>
+      <th>DIVORCE</th>
+      <th>SIBS</th>
+      <th>CHILDS</th>
       <th>AGE</th>
       <th>EDUC</th>
-      <th>SEX</th>
-      <th>REALINC</th>
+      <th>PAEDUC</th>
+      <th>MAEDUC</th>
+      <th>...</th>
+      <th>FEJOBAFF</th>
+      <th>DISCAFFM</th>
+      <th>DISCAFFW</th>
+      <th>FEHIRE</th>
+      <th>MEOVRWRK</th>
+      <th>AVOIDBUY</th>
+      <th>INCOME</th>
+      <th>RINCOME</th>
+      <th>REALRINC</th>
+      <th>CHINA</th>
     </tr>
   </thead>
   <tbody>
@@ -531,53 +546,129 @@ Here are the first few rows.</p>
       <th>0</th>
       <td>1972</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
       <td>23</td>
       <td>16</td>
-      <td>2</td>
-      <td>18951.0</td>
+      <td>10</td>
+      <td>97</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1972</td>
       <td>2</td>
+      <td>21</td>
+      <td>2</td>
+      <td>4</td>
+      <td>5</td>
       <td>70</td>
       <td>10</td>
-      <td>1</td>
-      <td>24366.0</td>
+      <td>8</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1972</td>
       <td>3</td>
+      <td>20</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
       <td>48</td>
       <td>12</td>
-      <td>2</td>
-      <td>24366.0</td>
+      <td>8</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
     </tr>
     <tr>
       <th>3</th>
       <td>1972</td>
       <td>4</td>
+      <td>24</td>
+      <td>2</td>
+      <td>5</td>
+      <td>0</td>
       <td>27</td>
       <td>17</td>
-      <td>2</td>
-      <td>30458.0</td>
+      <td>16</td>
+      <td>12</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
     </tr>
     <tr>
       <th>4</th>
       <td>1972</td>
       <td>5</td>
+      <td>22</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
       <td>61</td>
       <td>12</td>
-      <td>2</td>
-      <td>50763.0</td>
+      <td>8</td>
+      <td>8</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>-1</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 169 columns</p>
 </div></div></div>
 </div>
 <p>You can probably guess what the variables are, and I’ll explain them as we go along.
-But if you want more information, you can always <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/vfilter">read the codebook</a>.</p>
+But if you want more information, you can always read the codebook at <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/vfilter">https://gssdataexplorer.norc.org/projects/52787/variables/vfilter</a>.</p>
 </div>
 <div class="section" id="distribution-of-education">
 <h2>Distribution of Education<a class="headerlink" href="#distribution-of-education" title="Permalink to this headline">¶</a></h2>
@@ -984,12 +1075,13 @@ So the probability of the value <code class="docutils literal notranslate"><span
 <p>The <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> of 2 is <code class="docutils literal notranslate"><span class="pre">3/5</span></code> because three of the five values are less than or equal to 2.</p>
 <p>And the <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> of 5 is <code class="docutils literal notranslate"><span class="pre">5/5</span></code> because all of the values are less than or equal to 5.</p>
 </div>
-<div class="section" id="cdf-of-ages">
-<h2>CDF of Ages<a class="headerlink" href="#cdf-of-ages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cdf-of-age">
+<h2>CDF of Age<a class="headerlink" href="#cdf-of-age" title="Permalink to this headline">¶</a></h2>
 <p>Now let’s look at a more substantial <code class="docutils literal notranslate"><span class="pre">Cdf</span></code>, the distribution of ages for respondents in the General Social Survey.</p>
-<p>The <a class="reference external" href="https://gssdataexplorer.norc.org/variables/53/vshow">variable we’ll use</a> is <code class="docutils literal notranslate"><span class="pre">'AGE'</span></code>.
+<p>The variable we’ll use is <code class="docutils literal notranslate"><span class="pre">'AGE'</span></code>.
 According to the codebook, the range of the values is from <code class="docutils literal notranslate"><span class="pre">18</span></code> to <code class="docutils literal notranslate"><span class="pre">89</span></code>, where <code class="docutils literal notranslate"><span class="pre">89</span></code> means “89 or older”.
-The special codes <code class="docutils literal notranslate"><span class="pre">98</span></code> and <code class="docutils literal notranslate"><span class="pre">99</span></code> mean “Don’t know” and “Didn’t answer”.</p>
+The special codes <code class="docutils literal notranslate"><span class="pre">98</span></code> and <code class="docutils literal notranslate"><span class="pre">99</span></code> mean “Don’t know” and “Didn’t answer”.
+See <a class="reference external" href="https://gssdataexplorer.norc.org/variables/53/vshow">https://gssdataexplorer.norc.org/variables/53/vshow</a>.</p>
 <p>I’ll use <code class="docutils literal notranslate"><span class="pre">replace</span></code> to replace the special codes with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1196,8 +1288,8 @@ But both of those differences might be due to random variation.</p>
 <img alt="_images/08_distributions_94_0.png" src="_images/08_distributions_94_0.png" />
 </div>
 </div>
-<p>In general, CDFs are smoother than PMFs.  Because they smooth out randomness, we can often get a better view of real differences between distributions.</p>
-<p>In this case, the lines are close together until age 40; after that, the CDF is higher for men than women.
+<p>In general, CDFs are smoother than PMFs.  Because they smooth out randomness, we can often get a better view of real differences between distributions.
+In this case, the lines are close together until age 40; after that, the CDF is higher for men than women.
 So what does that mean?</p>
 <p>One way to interpret the difference is that the fraction of men below a given age is generally more than the fraction of women below the same age.
 For example, about 79% of men are 60 or less, compared to 76% of women.</p>
@@ -1309,12 +1401,12 @@ In other words, the fraction of people with high incomes is about the same, but 
 <li><p>13, 14, or 15 years, and</p></li>
 <li><p>16 or more.</p></li>
 </ul>
-<p>Compute and plot the distribution of income for each group.  Remember to label the CDFs, display a legend, and label the axes.</p>
-<p>Write a few sentences that describe and interpret the results.</p>
+<p>Compute and plot the distribution of income for each group.  Remember to label the CDFs, display a legend, and label the axes.
+Write a few sentences that describe and interpret the results.</p>
 </div>
 <div class="section" id="modeling-distributions">
 <h2>Modeling distributions<a class="headerlink" href="#modeling-distributions" title="Permalink to this headline">¶</a></h2>
-<p>Some distributions have names.  For example, you have probably heard of the normal distribution, also called the Gaussian distribution.  And you might have heard of others like the exponential distribution, binomial distribution, or maybe Poisson distribution.</p>
+<p>Some distributions have names.  For example, you might be familiar with the normal distribution, also called the Gaussian distribution or the bell curve.  And you might have heard of others like the exponential distribution, binomial distribution, or maybe Poisson distribution.</p>
 <p>These “distributions with names” are called <strong>analytic</strong> because they are described by analytic mathematical functions, as contrasted with empirical distributions, which are based on data.</p>
 <p>It turns out that many things we measure in the world have distributions that are well approximated by analytic distributions, so these distributions are sometimes good models for the real world.<br />
 In this context, what I mean by a “model” is a simplified description of the world that is accurate enough for its intended purpose.</p>
@@ -1407,8 +1499,8 @@ When we collect data in the real world, we do not expect it to fit a normal dist
 </div>
 <div class="section" id="probability-density-functions">
 <h2>Probability Density Functions<a class="headerlink" href="#probability-density-functions" title="Permalink to this headline">¶</a></h2>
-<p>We have seen two ways to represent distributions, PMFs and CDFs.  Now we’ll learn another way: a probability density function, or PDF.</p>
-<p><code class="docutils literal notranslate"><span class="pre">norm</span></code>, which we used to compute the normal CDF, can also compute the normal PDF:</p>
+<p>We have seen two ways to represent distributions, PMFs and CDFs.  Now we’ll learn another way: a probability density function, or PDF.
+The <code class="docutils literal notranslate"><span class="pre">norm</span></code> function, which we used to compute the normal CDF, can also compute the normal PDF:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -1514,7 +1606,7 @@ It’s hard to tell whether apparent differences mean anything, or if they are j
 <p>In this chapter, we’ve seen three ways to visualize distributions, PMFs, CDFs, and KDE.</p>
 <p>In general, I use CDFs when I am exploring data.  That way, I get the best view of what’s going on without getting distracted by noise.</p>
 <p>Then, if I am presenting results to an audience unfamiliar with CDFs, I might use a PMF if the dataset contains a small number of unique values, or KDE if there are many unique values.</p>
-<p>As an example, see <a class="reference external" href="https://towardsdatascience.com/the-inspection-paradox-is-everywhere-2ef1c2e9d709">this article about the Inspection Paradox</a>.
+<p>As an example, see my article about the Inspection Paradox at <a class="reference external" href="https://towardsdatascience.com/the-inspection-paradox-is-everywhere-2ef1c2e9d709">https://towardsdatascience.com/the-inspection-paradox-is-everywhere-2ef1c2e9d709</a>.
 I wrote it for a general audience, so I use KDE to present and compare distributions.</p>
 </div>
 </div>
@@ -1547,7 +1639,7 @@ I wrote it for a general audience, so I use KDE to present and compare distribut
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="07_dataframes.html" title="previous page">Dataframes and Series</a>
+    <a class='left-prev' id="prev-link" href="07_dataframes.html" title="previous page">DataFrames and Series</a>
     <a class='right-next' id="next-link" href="09_relationships.html" title="next page">Relationships</a>
 
     </div>

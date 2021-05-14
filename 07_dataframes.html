@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dataframes and Series &#8212; Elements of Data Science</title>
+    <title>DataFrames and Series &#8212; Elements of Data Science</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -123,7 +123,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -318,7 +318,7 @@
               <div>
                 
   <div class="section" id="dataframes-and-series">
-<h1>Dataframes and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">¶</a></h1>
+<h1>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/07_dataframes.ipynb">click here to download it</a>.</p>
 <p>This chapter introduces Pandas, which is a powerful library for working with data.  Pandas provides functions for reading and writing data files, exploring and analyzing data, and generating visualizations.  And it provides two new types for working with data, <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
@@ -336,8 +336,8 @@ This example will demonstrate important steps in almost any data science project
 <p>Let’s start by getting the data.</p>
 <div class="section" id="reading-the-data">
 <h2>Reading the data<a class="headerlink" href="#reading-the-data" title="Permalink to this headline">¶</a></h2>
-<p>We’ll use data from the <a class="reference external" href="https://www.cdc.gov/nchs/nsfg/index.htm">National Survey of Family Growth</a> (NSFG), which is available from the National Center for Health Statistics.</p>
-<p>To download the data, you have to agree to the <a class="reference external" href="https://www.cdc.gov/nchs/data_access/ftp_dua.htm">Data User’s Agreement</a>.
+<p>We’ll use data from the National Survey of Family Growth (NSFG), which is available from the National Center for Health Statistics at <a class="reference external" href="https://www.cdc.gov/nchs/nsfg/index.htm">https://www.cdc.gov/nchs/nsfg/index.htm</a>.</p>
+<p>To download the data, you have to agree to the Data User’s Agreement at <a class="reference external" href="https://www.cdc.gov/nchs/data_access/ftp_dua.htm">https://www.cdc.gov/nchs/data_access/ftp_dua.htm</a>.
 You should read those terms carefully, but let me draw your attention to what I think is the most important one:</p>
 <blockquote>
 <div><p>Make no attempt to learn the identity of any person or establishment included in these data.</p>
@@ -347,7 +347,7 @@ As ethical data scientists, we should respect their privacy and adhere to the te
 <p>Respondents to the NSFG provide general information about themselves, which is stored in the respondent file, and information about each time they have been pregnant, which is stored in the pregnancy file.</p>
 <p>We will work with the pregnancy file, which contains one row for each pregnancy and 248 variables.
 Each variable represents responses to a question on the NSFG questionnaire.</p>
-<p>The data is stored in a <a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SS8JB4_19.x/com.ibm.wbpm.wid.integ.doc/topics/rfixwidth.html">fixed-width format</a>, which means that every row is the same length and each variable spans a fixed range of columns.</p>
+<p>The data is stored in a fixed-width format, which means that every row is the same length and each variable spans a fixed range of columns (see <a class="reference external" href="https://www.ibm.com/docs/en/baw/19.x?topic=formats-fixed-width-format">https://www.ibm.com/docs/en/baw/19.x?topic=formats-fixed-width-format</a>).</p>
 <p>In addition to the data file, we also need the data dictionary, which includes the names of the variables and specifies the range of columns where each variable appears.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -615,7 +615,7 @@ The first three rows have the same <code class="docutils literal notranslate"><s
 <p>Based on the column names, you might be able to guess what some of the variables are, but in general you have to read the documentation.</p>
 <p>When you work with datasets like the NSFG, it is important to read the documentation carefully. If you interpret a variable incorrectly, you can generate nonsense results and never realize it. So, before we start looking at data, let’s get familiar with the NSFG codebook, which describes every variable.</p>
 <p>Until recently, the NSFG codebook was available in an interactive online format.
-Unfortunately, it is no longer available, so we have to make due with <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf">this PDF file</a>, which contains a short description of each variable.</p>
+Unfortunately, it is no longer available, so we have to make due with the PDF file at <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf">https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf</a>, which contains a short description of each variable.</p>
 <p>If you search that document for “weigh at birth” you should find these variables related to birth weight.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">BIRTHWGT_LB1</span></code>: Birthweight in Pounds - 1st baby from this pregnancy</p></li>
@@ -665,9 +665,9 @@ Name: BIRTHWGT_LB1, dtype: float64
 <p>Select the column <code class="docutils literal notranslate"><span class="pre">'BIRTHWGT_OZ1'</span></code> from the <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> DataFrame and assign it to a new variable called <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.  Then display the first 5 elements of <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p>
 <p><strong>Exercise:</strong> The Pandas types we have seen so far are <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">Index</span></code>, and <code class="docutils literal notranslate"><span class="pre">Series</span></code>.  You can find the documentation of these types at:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">DataFrame</a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html">Index</a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html">Series</a></p></li>
+<li><p>DataFrame: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html</a></p></li>
+<li><p>Index: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html</a></p></li>
+<li><p>Series: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html</a></p></li>
 </ul>
 <p>This documentation can be overwhelming; I don’t recommend trying to read it all now.  But you might want to skim it so you know where to look later.</p>
 </div>
@@ -798,7 +798,7 @@ Name: BIRTHWGT_LB1, dtype: int64
 </tr>
 </tbody>
 </table>
-<p>Use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to display the values in this column and how many times each value appears.  Are the results consistent with <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf">the codebook</a>?</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to display the values in this column and how many times each value appears.  Are the results consistent with the codebook?</p>
 </div>
 <div class="section" id="summary-statistics">
 <h2>Summary statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this headline">¶</a></h2>

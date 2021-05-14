@@ -125,7 +125,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -283,11 +283,6 @@
    Calculation with variables
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-little-more-jupyter">
-   A little more Jupyter
-  </a>
- </li>
 </ul>
 
         </nav>
@@ -314,11 +309,11 @@ At some point, we need data.</p>
 <li><p>Data: To answer this question, the best data would be results from a well designed experiment.  But if we can’t get ideal data, we have to work with what we can get.</p></li>
 <li><p>Methods: With the right data, simple methods are often enough to find answers and present them clearly.  But sometimes we need more specialized tools.</p></li>
 </ul>
-<p>In an ideal world, we would pose a question, find data, and choose the appropriate methods.
+<p>In an ideal world, we would pose a question, find data, and choose the appropriate methods, in that order.
 More often, the data science is iterative.  We might start with one question, get stuck, and pivot to a different question.
-Or explore a new dataset and discover the questions it can answer.
-Or we might start with a tool and look for problems it can solve.</p>
-<p>Most data science projects require flexibility and persistence.</p>
+Or we might explore a new dataset and discover the questions it can answer.
+Or we might start with a tool and look for problems it can solve.
+Most data science projects require flexibility and persistence.</p>
 <p>The goal of this book is to give you the tools you need to execute a data science project from beginning to end, including these steps:</p>
 <ul class="simple">
 <li><p>Choosing questions, data, and methods that go together.</p></li>
@@ -375,9 +370,6 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">float</span></code> is short for “floating-point”, which is the name for the way these numbers are stored.</p>
-<p><strong>Exercise:</strong> Create a code cell below this one and type in the following number:  <code class="docutils literal notranslate"><span class="pre">1.2345e3</span></code></p>
-<p>Then run the cell.  The output should be <code class="docutils literal notranslate"><span class="pre">1234.5</span></code></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">e</span></code> in <code class="docutils literal notranslate"><span class="pre">1.2345e3</span></code> stands for “exponent”.  This way of writing numbers is a version of scientific notation that means <span class="math notranslate nohighlight">\(1.2345 \times 10^{3}\)</span>.  If you are not familiar with scientific notation, <a class="reference external" href="https://en.wikipedia.org/wiki/Scientific_notation">you might want to read this</a>.</p>
 </div>
 <div class="section" id="arithmetic">
 <h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">¶</a></h2>
@@ -433,12 +425,8 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <p>Unlike math notation, Python does not allow “implicit multiplication”.  For example, in math notation, if you write <span class="math notranslate nohighlight">\(3 (2 + 1)\)</span>, that’s understood to be the same as <span class="math notranslate nohighlight">\(3 \times (2+ 1)\)</span>.
-Python does not allow that notation.</p>
-<p>Try running this code to see what error you get.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>In this example, the error message is not very helpful, which is why I am warning you now.  If you want to multiply, you have to use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator:</p>
+Python does not allow that notation.
+If you want to multiply, you have to use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator.</p>
 <p>The arithmetic operators follow the rules of precedence you might have learned as “PEMDAS”:</p>
 <ul class="simple">
 <li><p>Parentheses before</p></li>
@@ -476,10 +464,10 @@ Python does not allow that notation.</p>
 </div>
 <div class="section" id="math-functions">
 <h2>Math functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">¶</a></h2>
-<p>Python provides functions that compute all the usual mathematical functions, like <code class="docutils literal notranslate"><span class="pre">sin</span></code> and <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code> and <code class="docutils literal notranslate"><span class="pre">log</span></code>.</p>
-<p>However, they are not part of Python itself; they are in a <strong>library</strong>, which is a collection of functions that supplement the Python language.</p>
-<p>Actually, there are several libraries that provide math functions; the one we’ll use is called NumPy, which stands for “Numerical Python”, and is pronounced “num’ pie”.</p>
-<p>Before you can use a library, you have to “import” it.  Here’s how we import NumPy:</p>
+<p>Python provides functions that compute all the usual mathematical functions, like <code class="docutils literal notranslate"><span class="pre">sin</span></code> and <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code> and <code class="docutils literal notranslate"><span class="pre">log</span></code>.
+However, they are not part of Python itself; they are in a <strong>library</strong>, which is a collection of functions that supplement the Python language.</p>
+<p>Actually, there are several libraries that provide math functions; the one we’ll use is called NumPy, which stands for “Numerical Python”, and is pronounced “num’ pie”.
+Before you can use a library, you have to “import” it.  Here’s how we import NumPy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -487,8 +475,8 @@ Python does not allow that notation.</p>
 </div>
 </div>
 </div>
-<p>It is conventional to import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> as <code class="docutils literal notranslate"><span class="pre">np</span></code>, which means we can refer to it by the short name <code class="docutils literal notranslate"><span class="pre">np</span></code> rather than the longer name <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
-<p>Names like this are case-sensitive, which means that <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is not the same as <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>.  So even though the name of the library is NumPy, when we import it we have to call it <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<p>It is conventional to import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> as <code class="docutils literal notranslate"><span class="pre">np</span></code>, which means we can refer to it by the short name <code class="docutils literal notranslate"><span class="pre">np</span></code> rather than the longer name <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.
+Names like this are case-sensitive, which means that <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is not the same as <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>.  So even though the name of the library is NumPy, when we import it we have to call it <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
 <p>But assuming we import <code class="docutils literal notranslate"><span class="pre">np</span></code> correctly, we can use it to read the value <code class="docutils literal notranslate"><span class="pre">pi</span></code>, which is an approximation of the mathematical constant <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -560,19 +548,6 @@ The following statement assigns the value <code class="docutils literal notransl
 </div>
 </div>
 <p>The variable we just created has the name <code class="docutils literal notranslate"><span class="pre">x</span></code> and the value <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p>
-<p>If a variable name appears at the end of a cell, Jupyter displays its value.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
-</pre></div>
-</div>
-</div>
-</div>
 <p>If we use <code class="docutils literal notranslate"><span class="pre">x</span></code> as part of an arithmetic operation, it represents the value <code class="docutils literal notranslate"><span class="pre">5</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,7 +609,7 @@ The following statement assigns the value <code class="docutils literal notransl
 <div class="section" id="calculation-with-variables">
 <h2>Calculation with variables<a class="headerlink" href="#calculation-with-variables" title="Permalink to this headline">¶</a></h2>
 <p>Now let’s use variables to solve a problem involving mathematical calculation.
-Suppose we have the following formula for computing compound interest <a class="reference external" href="https://en.wikipedia.org/wiki/Compound_interest#Periodic_compounding">from Wikipedia</a>:</p>
+Suppose we have the following formula for computing compound interest from Wikipedia (see <a class="reference external" href="https://en.wikipedia.org/wiki/Compound_interest#Periodic_compounding">https://en.wikipedia.org/wiki/Compound_interest#Periodic_compounding</a>):</p>
 <p>“The total accumulated value, including the principal sum <span class="math notranslate nohighlight">\(P\)</span> plus compounded interest <span class="math notranslate nohighlight">\(I\)</span>, is given by the formula:</p>
 <p><span class="math notranslate nohighlight">\(V=P\left(1+{\frac {r}{n}}\right)^{nt}\)</span></p>
 <p>where:</p>
@@ -676,91 +651,6 @@ Then the balance after 6 years is found by using the formula above, with</p>
 <p><strong>Exercise:</strong> If interest is compounded continuously, the value after time <span class="math notranslate nohighlight">\(t\)</span> is given by the formula:</p>
 <p><span class="math notranslate nohighlight">\(V=P~e^{rt}\)</span></p>
 <p>Translate this equation into Python and use it compute the value of the investment in the previous example with continuous compounding.  Hint: we expect the answer to be a bit more than the previous answers.</p>
-<p>The point of this exercise is to practice using variables.  But it is also a reminder about logarithms, which we will use extensively.</p>
-</div>
-<div class="section" id="a-little-more-jupyter">
-<h2>A little more Jupyter<a class="headerlink" href="#a-little-more-jupyter" title="Permalink to this headline">¶</a></h2>
-<p>Here are a few tips on using Jupyter to compute and display values.</p>
-<p>Generally, if there is a single expression in a cell, Jupyter computes the value of the expression and displays the result.
-For example, we’ve already seen how to display the value of <code class="docutils literal notranslate"><span class="pre">np.pi</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here’s a more complex example with functions, operators, and numbers:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0044318484119380075
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you put more than one expression in a cell, Jupyter computes them all, but it only display the result from the last:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
-<span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
-<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.618033988749895
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you want to display more than one value, you can separate them with commas:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 5, 2.718281828459045, 1.618033988749895)
-</pre></div>
-</div>
-</div>
-</div>
-<p>That result is actually a tuple, which you will learn about in the next chapter.</p>
-<p>Here’s one last Jupyter tip: when you assign a value to variable, Jupyter does not display the value:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>So it is idiomatic to assign a value to a variable and immediately display the result:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">phi</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.618033988749895
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise:</strong> Display the value of <span class="math notranslate nohighlight">\(\phi\)</span> and its inverse, <span class="math notranslate nohighlight">\(1/\phi\)</span>, on a single line.</p>
 </div>
 </div>
 

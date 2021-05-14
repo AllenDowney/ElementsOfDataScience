@@ -125,7 +125,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -275,7 +275,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numpy-arrays">
-   NumPy arrays
+   NumPy Arrays
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -284,13 +284,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#relative-differences">
-   Relative differences
+  <a class="reference internal nav-link" href="#relative-difference">
+   Relative Difference
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summarizing-relative-differences">
-   Summarizing relative differences
+   Summarizing Relative Differences
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -389,8 +389,8 @@ When you type a tuple, you can put it in parentheses if you think it is easier t
 </div>
 </div>
 </div>
-<p>But you will find that the result is just a number, not a tuple.</p>
-<p>To make a tuple with a single element, you need a comma:</p>
+<p>But you will find that the result is just a number, not a tuple.
+To make a tuple with a single element, you need a comma:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
@@ -459,9 +459,10 @@ The difference is that you can modify a list; tuples are immutable (cannot be mo
 </div>
 <div class="section" id="sandwiches">
 <h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">¶</a></h2>
-<p>In September 2019, <em>The Economist</em> published an article comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”</p>
-<p>It includes this graph showing prices of several sandwiches in the two cities:</p>
-<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" width="400"/><p>Here are the sandwich names from the graph, as a list of strings.</p>
+<p>In September 2019, <em>The Economist</em> published an article comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”.
+It includes this graph showing prices of several sandwiches in the two cities:</p>
+<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" /></p>
+<p>Here are the sandwich names from the graph, as a list of strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span>
@@ -507,11 +508,11 @@ Here are the sandwich prices in Boston:</p>
 </div>
 </div>
 <p>But it concatenates the two lists, which is not very useful in this example.
-To compute differences between prices, you might try subtracting lists, but you would get an error.</p>
-<p>We can solve this problem with a NumPy array.</p>
+To compute differences between prices, you might try subtracting lists, but you would get an error.<br />
+We can solve this problem with a NumPy array.</p>
 </div>
 <div class="section" id="numpy-arrays">
-<h2>NumPy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h2>
+<h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h2>
 <p>We’ve already seen that the NumPy library provides math functions.  It also provides a type of sequence called an array.
 You can create a new array with the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function, starting with a list or tuple.</p>
 <div class="cell docutils container">
@@ -537,8 +538,9 @@ You can create a new array with the <code class="docutils literal notranslate"><
 </div>
 </div>
 </div>
-<p>The “nd” stands for “n-dimensional”; NumPy arrays can have any number of dimensions.  But for now we will work with one-dimensional sequences.</p>
-<p>If you display an array, Python displays the elements:</p>
+<p>The “nd” stands for “n-dimensional”, which indicates that NumPy arrays can have any number of dimensions.
+But for now we will work with one-dimensional sequences.
+If you display an array, Python displays the elements:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_array</span>
@@ -564,7 +566,7 @@ You can create a new array with the <code class="docutils literal notranslate"><
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">float64</span></code> means that the elements are floating-point numbers that take up 64 bits each.  You don’t need to know about the storage format of these numbers, but if you are curious, <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Internal_representation">you can read about it here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">float64</span></code> means that the elements are floating-point numbers that take up 64 bits each.  You don’t need to know about the storage format of these numbers, but if you are curious, you can read about it at <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Internal_representation">https://en.wikipedia.org/wiki/Floating-point_arithmetic#Internal_representation</a>.</p>
 <p>The elements of a NumPy array can be any type, but they all have to be the same type.
 Most often the elements are numbers, but you can also make an array of strings.</p>
 <div class="cell docutils container">
@@ -613,8 +615,8 @@ Most often the elements are numbers, but you can also make an array of strings.<
 </div>
 </div>
 </div>
-<p>So we could describe the difference in prices like this: “Sandwiches in Boston are more expensive by $2.64, on average”.</p>
-<p>We could also compute the means first, and then compute their difference:</p>
+<p>So we could describe the difference in prices like this: “Sandwiches in Boston are more expensive by $2.64, on average”.
+We could also compute the means first, and then compute their difference:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">boston_price_array</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">london_price_array</span><span class="p">)</span>
@@ -627,8 +629,8 @@ Most often the elements are numbers, but you can also make an array of strings.<
 </div>
 </div>
 </div>
-<p>And that turns out to be the same thing: the difference in means is the same as the mean of the differences.</p>
-<p>As an aside, many of the NumPy functions also work with lists, so we could also do this:</p>
+<p>And that turns out to be the same thing: the difference in means is the same as the mean of the differences.
+As an aside, many of the NumPy functions also work with lists, so we could also do this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">london_price_list</span><span class="p">)</span>
@@ -645,15 +647,15 @@ Most often the elements are numbers, but you can also make an array of strings.<
 <p>Compute the standard deviation of sandwich prices in Boston and London.  By this measure, which set of prices is more variable?</p>
 <p><strong>Exercise:</strong> The definition of the mean, in math notation, is</p>
 <p><span class="math notranslate nohighlight">\(\mu = \frac{1}{N} \sum_i x_i\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> is a sequence of elements, <span class="math notranslate nohighlight">\(x_i\)</span> is the element with index <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(N\)</span> is the number of elements.</p>
-<p>The definition of standard deviation is</p>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is a sequence of elements, <span class="math notranslate nohighlight">\(x_i\)</span> is the element with index <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(N\)</span> is the number of elements.
+The definition of standard deviation is</p>
 <p><span class="math notranslate nohighlight">\(\sigma = \sqrt{\frac{1}{N} \sum_i (x_i - \mu)^2}\)</span></p>
 <p>Compute the standard deviation of <code class="docutils literal notranslate"><span class="pre">boston_price_list</span></code> using NumPy functions <code class="docutils literal notranslate"><span class="pre">np.mean</span></code> and <code class="docutils literal notranslate"><span class="pre">np.sqrt</span></code> and see if you get the same result as <code class="docutils literal notranslate"><span class="pre">np.std</span></code>.</p>
-<p>Note: You should do this exercise using only features we have discussed so far.</p>
+<p>Note: You can (and should) do this exercise using only features we have discussed so far.</p>
 <p>Note: This definition of standard deviation is sometimes called the “population standard deviation”.  You might have seen another definition with <span class="math notranslate nohighlight">\(N-1\)</span> in the denominator; that’s the “sample standard deviation”.  We’ll use the population standard deviation for now and come back to this issue later.</p>
 </div>
-<div class="section" id="relative-differences">
-<h2>Relative differences<a class="headerlink" href="#relative-differences" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="relative-difference">
+<h2>Relative Difference<a class="headerlink" href="#relative-difference" title="Permalink to this headline">¶</a></h2>
 <p>In the previous section we computed differences between prices.
 But often when we make this kind of comparison, we are interested in <strong>relative difference</strong>, which are differences expressed as a fraction or percentage of a quantity.</p>
 <p>Taking the lobster roll as an example, the difference in price is:</p>
@@ -712,11 +714,12 @@ But putting London in the denominator was an arbitrary choice.  We could also co
 <p>If we do that calculation, we might say the lobster roll is 25% cheaper in London.
 When you read this kind of comparison, you should make sure you understand which quantity is in the denominator, and you might want to think about why that choice was made.
 In this example, if you want to make the difference seem bigger, you might put London prices in the denominator.</p>
-<p>We can use the arrays to compute all of the relative differences:</p>
+<p>If we do the same calculation with the arrays <code class="docutils literal notranslate"><span class="pre">boston_price_array</span></code> and <code class="docutils literal notranslate"><span class="pre">boston_price_array</span></code>, we can compute the relative differences for all sandwiches:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">differences</span> <span class="o">=</span> <span class="n">boston_price_array</span> <span class="o">-</span> <span class="n">london_price_array</span>
-<span class="n">differences</span>
+<span class="n">relative_differences</span> <span class="o">=</span> <span class="n">differences</span> <span class="o">/</span> <span class="n">london_price_array</span>
+<span class="n">relative_differences</span>
 </pre></div>
 </div>
 </div>
@@ -726,20 +729,7 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_differences</span> <span class="o">=</span> <span class="n">differences</span> <span class="o">/</span> <span class="n">london_price_array</span>
-<span class="n">relative_differences</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.332     , 0.598     , 0.70227273, 0.4       , 0.67733333,
-       1.21777778])
-</pre></div>
-</div>
-</div>
-</div>
+<p>And the percent differences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_differences</span> <span class="o">=</span> <span class="n">relative_differences</span> <span class="o">*</span> <span class="mi">100</span>
@@ -756,22 +746,9 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </div>
 <div class="section" id="summarizing-relative-differences">
-<h2>Summarizing relative differences<a class="headerlink" href="#summarizing-relative-differences" title="Permalink to this headline">¶</a></h2>
-<p>One way to summarize these results is to report the range, which we can compute with <code class="docutils literal notranslate"><span class="pre">np.min</span></code> and <code class="docutils literal notranslate"><span class="pre">np.max</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">differences</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">differences</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, 3.09)
-</pre></div>
-</div>
-</div>
-</div>
-<p>The differences are between 2 dollars and $3.09.</p>
-<p>Here is the range of percentage differences:</p>
+<h2>Summarizing Relative Differences<a class="headerlink" href="#summarizing-relative-differences" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s think about how to summarize an array of percentage differences.
+One option is to report the range, which we can compute with <code class="docutils literal notranslate"><span class="pre">np.min</span></code> and <code class="docutils literal notranslate"><span class="pre">np.max</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">)</span>
@@ -779,7 +756,12 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(33.2, 121.77777777777779)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">5</span><span class="n">c1b45c0d131</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -799,8 +781,8 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </div>
 </div>
-<p>So we might say, on average, sandwiches are 65% more expensive in Boston.</p>
-<p>But another way to summarize the data is to compute the mean price in each city, and then compute the percentage difference of the means:</p>
+<p>So we might say, on average, sandwiches are 65% more expensive in Boston.
+But another way to summarize the data is to compute the mean price in each city, and then compute the percentage difference of the means:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">boston_price_array</span><span class="p">)</span>
@@ -816,8 +798,8 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </div>
 </div>
-<p>So we might say that the average sandwich price is 56% higher in Boston.</p>
-<p>As this example demonstrates:</p>
+<p>So we might say that the average sandwich price is 56% higher in Boston.
+As this example demonstrates:</p>
 <ul class="simple">
 <li><p>With relative and percentage differences, the mean of the differences is not the same as the difference of the means.</p></li>
 <li><p>When you report data like this, you should think about different ways to summarize the data.</p></li>
@@ -829,8 +811,10 @@ In this example, if you want to make the difference seem bigger, you might put L
 <h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
 <p>So far, most of the exercises have only required a few lines of code.  If you made errors along the way, you probably found them quickly.</p>
 <p>As we go along, the exercises will be more substantial, and you may find yourself spending more time debugging.  Here are a couple of suggestions to help you find errors quickly – and avoid them in the first place.</p>
-<p>Most importantly, you should develop code incrementally; that is, you should write a small amount of code and test it.  If it works, add more code; otherwise, debug what you have.</p>
-<p>Conversely, if you have written too much code, and you are having a hard time debugging it, split it into smaller chunks and debug them separately.</p>
+<ul class="simple">
+<li><p>Most importantly, you should develop code incrementally; that is, you should write a small amount of code and test it.  If it works, add more code; otherwise, debug what you have.</p></li>
+<li><p>Conversely, if you have written too much code, and you are having a hard time debugging it, split it into smaller chunks and debug them separately.</p></li>
+</ul>
 <p>For example, suppose you want to compute, for each sandwich in the sandwich list, the midpoint of the Boston and London prices.  As a first draft, you might write something like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -896,8 +880,8 @@ To debug this code, I would start by splitting the computation into smaller step
 </div>
 </div>
 </div>
-<p>As you gain experience, you will be able to write bigger chunks of code before testing.  But while you are getting started, keep it simple!</p>
-<p>As a general rule, each line of code should perform a small number of operations, and each cell should contain a small number of statements.  When you are getting started, this number should be one.</p>
+<p>As you gain experience, you will be able to write bigger chunks of code before testing.  But while you are getting started, keep it simple!
+As a general rule, each line of code should perform a small number of operations, and each cell should contain a small number of statements.  When you are getting started, this number should be one.</p>
 </div>
 </div>
 

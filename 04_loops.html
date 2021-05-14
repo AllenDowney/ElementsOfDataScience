@@ -123,7 +123,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -307,8 +307,8 @@
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/04_loops.ipynb">click here to download it</a>.</p>
 <p>This chapter presents loops, which are used to express repeated computation, and files, which are used to store data.  As an example, we will download the famous book <em>War and Peace</em> from Project Gutenberg and write a loop that reads the book and counts the words.</p>
-<p>In the next chapter, we’ll extend this example to count the number of unique words and the number of times each word appears.</p>
-<p>This example presents some computational tools you will need; it is also an introduction to working with textual data.</p>
+<p>In the next chapter, we’ll extend this example to count the number of unique words and the number of times each word appears.
+This example presents some computational tools you will need; it is also an introduction to working with textual data.</p>
 <div class="section" id="loops">
 <h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
 <p>One of the most important elements of computation is repetition, and the most common way to express repetition is a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.
@@ -461,8 +461,9 @@ We’ve already seen that you can create a variable and give it a value, like th
 </div>
 <p>In this example, the <code class="docutils literal notranslate"><span class="pre">+=</span></code> operator reads the value of <code class="docutils literal notranslate"><span class="pre">count</span></code>, adds <code class="docutils literal notranslate"><span class="pre">1</span></code>, and assigns the result back to <code class="docutils literal notranslate"><span class="pre">count</span></code>.
 Python also provides <code class="docutils literal notranslate"><span class="pre">-=</span></code> and other update operators like <code class="docutils literal notranslate"><span class="pre">*=</span></code> and <code class="docutils literal notranslate"><span class="pre">/=</span></code>.</p>
-<p><strong>Exercise:</strong> The following is a number trick from <a class="reference external" href="https://www.learn-with-math-games.com/math-number-tricks.html">Learn With Math Games</a></p>
-<p>“Finding Someone’s Age</p>
+<p><strong>Exercise:</strong> The following is a number trick from <em>Learn With Math Games</em> at <a class="reference external" href="https://www.learn-with-math-games.com/math-number-tricks.html">https://www.learn-with-math-games.com/math-number-tricks.html</a>:</p>
+<blockquote>
+<div><p><em>Finding Someone’s Age</em></p>
 <ul class="simple">
 <li><p>Ask the person to multiply the first number of their age by 5.</p></li>
 <li><p>Tell them to add 3.</p></li>
@@ -470,12 +471,13 @@ Python also provides <code class="docutils literal notranslate"><span class="pre
 <li><p>Finally, have the person add the second number of their age to the figure and have them tell you the answer.</p></li>
 <li><p>Deduct 6 and you will have their age.”</p></li>
 </ul>
+</div></blockquote>
 <p>Test this algorithm using your age.  Use a single variable and update it using <code class="docutils literal notranslate"><span class="pre">+=</span></code> and other update operators.</p>
 </div>
 <div class="section" id="files">
 <h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
 <p>Now that we know how to count, let’s see how we can read words from a file.
-We can download <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a>, which is a repository of free books.</p>
+We can download <em>War and Peace</em> from Project Gutenberg, which is a repository of free books at <a class="reference external" href="https://www.gutenberg.org">https://www.gutenberg.org</a>.</p>
 <p>In order to read the contents of the file, you have to “open” it, which you can do with the <code class="docutils literal notranslate"><span class="pre">open</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -522,8 +524,8 @@ So we can count the number of lines like this:</p>
 </div>
 <div class="section" id="if-statements">
 <h2>if statements<a class="headerlink" href="#if-statements" title="Permalink to this headline">¶</a></h2>
-<p>We’ve already see comparison operators, like <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, which compare values and produce a Boolean result, <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<p>For example, we can compare the final value of <code class="docutils literal notranslate"><span class="pre">count</span></code> to a number:</p>
+<p>We’ve already see comparison operators, like <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, which compare values and produce a Boolean result, <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+For example, we can compare the final value of <code class="docutils literal notranslate"><span class="pre">count</span></code> to a number:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">60000</span>
@@ -640,28 +642,17 @@ The other lines are read, but not displayed.</p>
 </div>
 <div class="section" id="whitespace">
 <h2>Whitespace<a class="headerlink" href="#whitespace" title="Permalink to this headline">¶</a></h2>
-<p>If we run the loop again and display the final value of <code class="docutils literal notranslate"><span class="pre">line</span></code>, we see that there are two extra characters at the end:</p>
+<p>If we run the loop again and display the final value of <code class="docutils literal notranslate"><span class="pre">line</span></code>, we see the special sequence <code class="docutils literal notranslate"><span class="pre">\n</span></code> at the end.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
         <span class="k">break</span>
     <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Project Gutenberg EBook of War and Peace, by Leo Tolstoy
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span>
+
+<span class="n">line</span>
 </pre></div>
 </div>
 </div>
@@ -671,7 +662,7 @@ The other lines are read, but not displayed.</p>
 </div>
 </div>
 </div>
-<p>The sequence <code class="docutils literal notranslate"><span class="pre">\n</span></code> represents a single character, called a <strong>newline</strong>, that puts vertical space between lines.
+<p>This sequence represents a single character, called a <strong>newline</strong>, that puts vertical space between lines.
 If we use a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement to display <code class="docutils literal notranslate"><span class="pre">line</span></code>, we don’t see the special sequence, but we do see extra space after the line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

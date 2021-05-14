@@ -123,7 +123,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -316,13 +316,13 @@
 <h1>Bootstrap Sampling<a class="headerlink" href="#bootstrap-sampling" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/12_bootstrap.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/12_bootstrap.ipynb">click here to download it</a>.</p>
-<p>In the previous chapter we used resampling to compute standard errors and confidence intervals, which quantify the variability in an estimate due to random sampling.</p>
-<p>As one of the examples, we used data from the General Social Survey (GSS) to explore changes in support for gun control over time and to compute confidence intervals for the estimated proportions.</p>
+<p>In the previous chapter we used resampling to compute standard errors and confidence intervals, which quantify the variability in an estimate due to random sampling.
+As one of the examples, we used data from the General Social Survey (GSS) to explore changes in support for gun control over time and to compute confidence intervals for the estimated proportions.</p>
 <p>In this chapter, we’ll use GSS data to estimate average income and the 10th percentile of income.
 We’ll see that the resampling method we used in the previous chapter works for the average income but not for the 10th percentile.</p>
-<p>To solve this problem, we’ll use another kind of resampling, called <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a> or bootstrap sampling.</p>
-<p>Then we’ll use bootstrapping to compute sampling distributions and confidence intervals for other statistics, including the coefficient of correlation and the parameters of linear regression.</p>
-<p>Finally, I’ll point out a problem with bootstrap resampling when there are not enough different values in a dataset, and a way to solve it with KDE resampling.</p>
+<p>To solve this problem, we’ll use another kind of resampling, called bootstrapping or bootstrap sampling (see <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">https://en.wikipedia.org/wiki/Bootstrapping_(statistics)</a>).
+Then we’ll use bootstrapping to compute sampling distributions and confidence intervals for other statistics, including the coefficient of correlation and the parameters of linear regression.
+Finally, I’ll point out a problem with bootstrap resampling when there are not enough different values in a dataset, and a way to solve it with KDE resampling.</p>
 <div class="section" id="estimating-average-income">
 <h2>Estimating Average Income<a class="headerlink" href="#estimating-average-income" title="Permalink to this headline">¶</a></h2>
 <p>As a first example, we’ll use data from the General Social Survey to  estimate average family income.
@@ -468,8 +468,8 @@ Nevertheless, we can use this function from the previous chapter to simulate the
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">simulate_sample_mean</span></code> takes as parameters the sample size, <code class="docutils literal notranslate"><span class="pre">n</span></code>, and the presumed mean and standard deviation of income.</p>
-<p>It generates a sample from a normal distribution with the given mean and standard deviation, and returns the mean of the sample.
+<p><code class="docutils literal notranslate"><span class="pre">simulate_sample_mean</span></code> takes as parameters the sample size, <code class="docutils literal notranslate"><span class="pre">n</span></code>, and the presumed mean and standard deviation of income.
+It generates a sample from a normal distribution with the given mean and standard deviation, and returns the mean of the sample.
 If we call it once, we get a random value from the sampling distribution of the mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -553,8 +553,8 @@ The mean of the sampling distribution is consistent with the mean of the data, w
 </div>
 <div class="section" id="estimating-percentiles">
 <h2>Estimating Percentiles<a class="headerlink" href="#estimating-percentiles" title="Permalink to this headline">¶</a></h2>
-<p>The method in the previous section uses a normal distribution to simulate the sampling process.  In the previous chapter, when we estimated average height, this worked well because human heights are well modeled by a normal distribution.</p>
-<p>But income is not.  We can see that by computing the CDF of a normal distribution with the same mean and standard as the income data.</p>
+<p>The method in the previous section uses a normal distribution to simulate the sampling process.  In the previous chapter, when we estimated average height, this worked well because human heights are well modeled by a normal distribution.
+But income is not.  We can see that by computing the CDF of a normal distribution with the same mean and standard as the income data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -594,8 +594,8 @@ The mean of the sampling distribution is consistent with the mean of the data, w
 </div>
 </div>
 <p>The normal distribution is not a good model for the data.  As we saw in the previous section, it is good enough to compute the sampling distribution of the mean.
-But for other statistics, like percentiles, it is not good enough.</p>
-<p>To demonstrate, here’s a function that generates a sample from a normal distribution and returns the 10th percentile.</p>
+But for other statistics, like percentiles, it is not good enough.
+To demonstrate, here’s a function that generates a sample from a normal distribution and returns the 10th percentile.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_sample_percentile</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
@@ -1103,7 +1103,7 @@ To reduce computation time, I reduced the number of iterations to 201.</p>
 </div>
 <p>Because the sample size is so large, the standard error is small and the confidence interval is narrow.
 This result suggests that our estimate is very precise, which is true in the sense that the error due to random sampling is small.</p>
-<p>But there are other sources of error.  For example, the heights and weights in this dataset are based on self-reports, so they are vulnerable to <a class="reference external" href="https://en.wikipedia.org/wiki/Social-desirability_bias">social desirability bias</a>.  It’s also possible that there are errors in recording the data.  In a previous year of the BRFSS, there are a suspicious number of heights recorded as 60 or 61 centimeters.  I suspect that many of them are six feet, or six feet and one inch, and something went wrong in the preparation of the data.</p>
+<p>But there are other sources of error.  For example, the heights and weights in this dataset are based on self-reports, so they are vulnerable to <strong>social desirability bias</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Social-desirability_bias">https://en.wikipedia.org/wiki/Social-desirability_bias</a>).  It’s also possible that there are errors in recording the data.  In a previous year of the BRFSS, there are a suspicious number of heights recorded as 60 or 61 centimeters.  I suspect that many of them are six feet, or six feet and one inch, and something went wrong in the preparation of the data.</p>
 <p>And that brings us to the first point of this example:</p>
 <blockquote>
 <div><p>With large sample sizes, error due to random sampling is small, but with real-world data, that usually means that there are other sources of error that are bigger.  So we can’t be sure that the estimate is accurate.</p>
@@ -1421,7 +1421,7 @@ Using <code class="docutils literal notranslate"><span class="pre">value_counts<
 Instead, it gives them a list of ranges and asks them to pick the range their income falls in.
 The ranges are described in the documentation of the related variable <a class="reference external" href="https://gssdataexplorer.norc.org/variables/104/vshow"><code class="docutils literal notranslate"><span class="pre">INCOME</span></code></a>.</p>
 <p>Then GSS analysts compute the midpoint of each range and convert to 1986 dollars by adjusting for inflation.
-Details of the methodology are in <a class="reference external" href="https://gss.norc.org/Documents/reports/methodological-reports/MR101%20Getting%20the%20Most%20Out%20of%20the%20GSS%20Income%20Measures.pdf">this paper</a></p>
+Details of the methodology are in available from <a class="reference external" href="https://gss.norc.org/Documents/reports/methodological-reports/MR101%20Getting%20the%20Most%20Out%20of%20the%20GSS%20Income%20Measures.pdf">https://gss.norc.org/Documents/reports/methodological-reports/MR101%20Getting%20the%20Most%20Out%20of%20the%20GSS%20Income%20Measures.pdf</a>.</p>
 <p>As a result, there are only 26 distinct values in <code class="docutils literal notranslate"><span class="pre">REALINC</span></code>.
 When we generate a bootstrapped sample and compute the 10th percentile, we get a small subset of them.  Here are the values that appear in our sample:</p>
 <div class="cell docutils container">
@@ -1445,9 +1445,9 @@ dtype: int64
 </div>
 <p>There are only 5 different values, and one of them appears more than 95% of the time.
 When we compute a 90% confidence interval, this value is both the 5th and the 95th percentile.</p>
-<p>In general, bootstrapping works well for many distributions and many statistics.
-But the one thing it cannot handle is lack of diversity in the data.</p>
-<p>However, even this problem can be solved.
+<p>Bootstrapping works well for most distributions and most statistics;
+the one thing it can’t handle is lack of diversity in the data.
+However, even this problem can be solved.
 The fundamental cause is that the data have been discretized excessively, so the solution is to smooth it.
 Jittering is one option.  Another is to use kernel density estimation (KDE).</p>
 </div>

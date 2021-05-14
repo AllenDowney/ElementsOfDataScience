@@ -123,7 +123,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07_dataframes.html">
-   Dataframes and Series
+   DataFrames and Series
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,7 +306,7 @@
 <div class="section" id="indexing">
 <h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you have a variable named <code class="docutils literal notranslate"><span class="pre">t</span></code> that refers to a list or tuple.
-You can select an element using the bracket operator, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.<br />
+You can select an element using the bracket operator, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.
 For example, here’s a tuple of strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -355,7 +355,7 @@ For example, here’s a tuple of strings:</p>
 </div>
 </div>
 <p>The number in brackets is called an <strong>index</strong> because it indicates which element we want.
-Tuples and lists use <a class="reference external" href="https://en.wikipedia.org/wiki/Zero-based_numbering">zero-based numbering</a>; that is, the index of the first element is 0.  Some other programming languages use one-based numbering.  There are pros and cons of both systems.</p>
+Tuples and lists use zero-based numbering; that is, the index of the first element is 0.  Some other programming languages use one-based numbering.  There are pros and cons of both systems (see <a class="reference external" href="https://en.wikipedia.org/wiki/Zero-based_numbering">https://en.wikipedia.org/wiki/Zero-based_numbering</a>).</p>
 <p>The index in brackets can also be a variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -572,7 +572,7 @@ three 3
 </div>
 <div class="section" id="unique-words">
 <h2>Unique words<a class="headerlink" href="#unique-words" title="Permalink to this headline">¶</a></h2>
-<p>In the previous chapter we downloaded <em>War and Peace</em> from <a class="reference external" href="https://www.gutenberg.org">Project Gutenberg</a> and counted the number of lines and words.
+<p>In the previous chapter we downloaded <em>War and Peace</em> from Project Gutenberg and counted the number of lines and words.
 Now that we have dictionaries, we can also count the number of unique words and the number of times each one appears.</p>
 <p>As we did in the previous chapter, we can read the text of <em>War and Peace</em> and count the number of words.</p>
 <div class="cell docutils container">
@@ -636,8 +636,8 @@ by
 </div>
 </div>
 </div>
-<p>So far, it looks like all the words in the file, in order.</p>
-<p>But each word only appears once, so the number of keys is the number of unique words:</p>
+<p>The dictionary contains all the words in the file, in order of first appearance.
+But each word only appears once, so the number of keys is the number of unique words:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">unique_words</span><span class="p">)</span>
@@ -788,8 +788,8 @@ wrong
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">strip</span></code> removes the period at the end of <code class="docutils literal notranslate"><span class="pre">wrong</span></code>, but not the apostrophes in <code class="docutils literal notranslate"><span class="pre">It's</span></code>, <code class="docutils literal notranslate"><span class="pre">don't</span></code> and <code class="docutils literal notranslate"><span class="pre">what's</span></code>.</p>
-<p>That’s good so far, but we have one more problem to solve.
+<p><code class="docutils literal notranslate"><span class="pre">strip</span></code> removes the period at the end of <code class="docutils literal notranslate"><span class="pre">wrong</span></code>, but not the apostrophes in <code class="docutils literal notranslate"><span class="pre">It's</span></code>, <code class="docutils literal notranslate"><span class="pre">don't</span></code> and <code class="docutils literal notranslate"><span class="pre">what's</span></code>.
+So that’s good, but we have one more problem to solve.
 Here’s another line from the book.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,27 +808,26 @@ Here’s another line from the book.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anyone
-and
-so
-you
-don’t
-deserve
-to
-have
-them.”
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">28</span><span class="n">f1a7003571</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;string&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
 <p>It removes the comma after <code class="docutils literal notranslate"><span class="pre">anyone</span></code>, but not the period and quotation mark after <code class="docutils literal notranslate"><span class="pre">them</span></code>.
-The problem is that this kind of quotation mark not in <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code>.</p>
+The problem is that this kind of quotation mark is not in <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code>.</p>
 <p>To fix this problem, we’ll use the following loop, which</p>
 <ol class="simple">
 <li><p>Reads the file and builds a dictionary that contains all punctuation marks that appear in the book, then</p></li>
 <li><p>It uses the <code class="docutils literal notranslate"><span class="pre">join</span></code> function to concatenate the keys of the dictionary in a single string.</p></li>
 </ol>
-<p>You don’t have to understand everything about how it works, but you should read it and see how much you can figure out.  You can read <a class="reference external" href="https://docs.python.org/3/library/unicodedata.html">the documentation of the <code class="docutils literal notranslate"><span class="pre">unicodedata</span></code> library here</a>.</p>
+<p>You don’t have to understand everything about how it works, but you should read it and see how much you can figure out.  You can read the documentation of the <code class="docutils literal notranslate"><span class="pre">unicodedata</span></code> library here at <a class="reference external" href="https://docs.python.org/3/library/unicodedata.html">https://docs.python.org/3/library/unicodedata.html</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span>
