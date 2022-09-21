@@ -4,10 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Bootstrap Sampling &#8212; Elements of Data Science</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,98 +20,113 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Hypothesis Testing" href="13_hypothesis.html" />
     <link rel="prev" title="Resampling" href="11_resampling.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Elements of Data Science
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Elements of Data Science
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
-   Variables and values
+   Variables and Values
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_times.html">
-   Times and places
+   Times and Places
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_arrays.html">
-   Lists and arrays
+   Lists and Arrays
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_loops.html">
-   Loops and files
+   Loops and Files
   </a>
  </li>
  <li class="toctree-l1">
@@ -158,104 +176,178 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/12_bootstrap.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/12_bootstrap.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/12_bootstrap.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ElementsOfDataScience"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/12_bootstrap.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-average-income">
    Estimating Average Income
@@ -303,17 +395,80 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Bootstrap Sampling</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-average-income">
+   Estimating Average Income
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-percentiles">
+   Estimating Percentiles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bootstrapping">
+   Bootstrapping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bigger-data">
+   Bigger Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weighted-bootstrapping">
+   Weighted Bootstrapping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation-and-regression">
+   Correlation and Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-bootstrapping">
+   Limitations of Bootstrapping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resampling-with-kde">
+   Resampling with KDE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="bootstrap-sampling">
-<h1>Bootstrap Sampling<a class="headerlink" href="#bootstrap-sampling" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="bootstrap-sampling">
+<h1>Bootstrap Sampling<a class="headerlink" href="#bootstrap-sampling" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/12_bootstrap.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/12_bootstrap.ipynb">click here to download it</a>.</p>
 <p>In the previous chapter we used resampling to compute standard errors and confidence intervals, which quantify the variability in an estimate due to random sampling.
@@ -323,8 +478,8 @@ We’ll see that the resampling method we used in the previous chapter works for
 <p>To solve this problem, we’ll use another kind of resampling, called bootstrapping or bootstrap sampling (see <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">https://en.wikipedia.org/wiki/Bootstrapping_(statistics)</a>).
 Then we’ll use bootstrapping to compute sampling distributions and confidence intervals for other statistics, including the coefficient of correlation and the parameters of linear regression.
 Finally, I’ll point out a problem with bootstrap resampling when there are not enough different values in a dataset, and a way to solve it with KDE resampling.</p>
-<div class="section" id="estimating-average-income">
-<h2>Estimating Average Income<a class="headerlink" href="#estimating-average-income" title="Permalink to this headline">¶</a></h2>
+<section id="estimating-average-income">
+<h2>Estimating Average Income<a class="headerlink" href="#estimating-average-income" title="Permalink to this headline">#</a></h2>
 <p>As a first example, we’ll use data from the General Social Survey to  estimate average family income.
 The following cell loads the data, which I have stored in an HDF file.</p>
 <div class="cell docutils container">
@@ -487,7 +642,7 @@ If we call it once, we get a random value from the sampling distribution of the 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_realinc</span><span class="p">,</span> <span class="n">mean_realinc</span><span class="p">,</span> <span class="n">std_income</span><span class="p">)</span>
-     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -550,9 +705,9 @@ If we call it once, we get a random value from the sampling distribution of the 
 </div>
 <p>The result is a table that shows the mean of the sampling distribution, the standard error, and a 90% confidence interval.
 The mean of the sampling distribution is consistent with the mean of the data, which is $31,743.</p>
-</div>
-<div class="section" id="estimating-percentiles">
-<h2>Estimating Percentiles<a class="headerlink" href="#estimating-percentiles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="estimating-percentiles">
+<h2>Estimating Percentiles<a class="headerlink" href="#estimating-percentiles" title="Permalink to this headline">#</a></h2>
 <p>The method in the previous section uses a normal distribution to simulate the sampling process.  In the previous chapter, when we estimated average height, this worked well because human heights are well modeled by a normal distribution.
 But income is not.  We can see that by computing the CDF of a normal distribution with the same mean and standard as the income data.</p>
 <div class="cell docutils container">
@@ -590,7 +745,7 @@ But income is not.  We can see that by computing the CDF of a normal distributio
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12_bootstrap_28_0.png" src="_images/12_bootstrap_28_0.png" />
+<img alt="_images/12_bootstrap_27_0.png" src="_images/12_bootstrap_27_0.png" />
 </div>
 </div>
 <p>The normal distribution is not a good model for the data.  As we saw in the previous section, it is good enough to compute the sampling distribution of the mean.
@@ -660,9 +815,9 @@ To demonstrate, here’s a function that generates a sample from a normal distri
 <p>The mean of the sampling distribution is negative, which is not consistent with the actual 10th percentile of the data, which is $5631.</p>
 <p>In this example, resampling based on a normal model doesn’t produce sensible results.
 Fortunately there is a simple alternative that is more robust: bootstrapping.</p>
-</div>
-<div class="section" id="bootstrapping">
-<h2>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bootstrapping">
+<h2>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">#</a></h2>
 <p>Bootstrapping is a kind of resampling, based on the framework we saw in the previous chapter:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/resampling.png" /></p>
 <p>The idea is that we treat the sample as if it were the entire population, and simulate the sampling process by choosing random rows with replacement.
@@ -864,9 +1019,9 @@ The parameter of <code class="docutils literal notranslate"><span class="pre">qu
 So the results from bootstrapping are more sensible than the results based on the normal model.</p>
 <p>In general, bootstrapping is robust; that is, it works well with many different distributions and many different statistics.
 However, at the end of the chapter, we’ll see one example where it fails.</p>
-</div>
-<div class="section" id="bigger-data">
-<h2>Bigger Data<a class="headerlink" href="#bigger-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bigger-data">
+<h2>Bigger Data<a class="headerlink" href="#bigger-data" title="Permalink to this headline">#</a></h2>
 <p>As sample size increases, errors due to random sampling get smaller.
 To demonstrate this effect, I’ll use data from the Behavioral Risk Factor Surveillance System (BRFSS).</p>
 <p>In previous chapters, we used BRFSS data to explore the relationship between height and weight, and the relationship between income and vegetable consumption.
@@ -1109,9 +1264,9 @@ This result suggests that our estimate is very precise, which is true in the sen
 <div><p>With large sample sizes, error due to random sampling is small, but with real-world data, that usually means that there are other sources of error that are bigger.  So we can’t be sure that the estimate is accurate.</p>
 </div></blockquote>
 <p>In fact, there is another source of error in this example that we have not taken into account: oversampling.</p>
-</div>
-<div class="section" id="weighted-bootstrapping">
-<h2>Weighted Bootstrapping<a class="headerlink" href="#weighted-bootstrapping" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="weighted-bootstrapping">
+<h2>Weighted Bootstrapping<a class="headerlink" href="#weighted-bootstrapping" title="Permalink to this headline">#</a></h2>
 <p>By design, the BRFSS oversamples some groups; that is, people in some groups are more likely than others to appear in the sample.
 If people in these groups are taller than others on average, or shorter, our estimated mean would not be accurate.</p>
 <p>We encountered this issue in Chapter 7, where we used data from the National Survey of Family Growth (NSFG) to compute the average birth weight for babies in the United States.
@@ -1278,9 +1433,9 @@ If we compare it to the unweighted mean we computed, it is a little lower.</p>
 <p>So it seems like people in the oversampled groups are taller than others, on average, by enough to bring the unweighted mean up by about half a centimeter.</p>
 <p>The difference between the weighted and unweighted means is bigger than the width of the confidence interval.
 So in this example the error if we fail to correct for oversampling is bigger than variability due to random sampling.</p>
-</div>
-<div class="section" id="correlation-and-regression">
-<h2>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="correlation-and-regression">
+<h2>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Permalink to this headline">#</a></h2>
 <p>Bootstrap resampling can be used to estimate other statistics and their sampling distributions.
 For example, in Chapter 9 we computed the correlation between height and weight, which is about 0.48.</p>
 <div class="cell docutils container">
@@ -1334,9 +1489,9 @@ Here’s the result with with 2019 data.</p>
 <p>The estimated slope is 0.93 kg/cm, which means that we expect someone 1 cm taller than average to be about 0.93 kg heavier than average.</p>
 <p>Write a function called <code class="docutils literal notranslate"><span class="pre">weighted_bootstrap_slope</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, generates a weighted bootstrapped sample, runs <code class="docutils literal notranslate"><span class="pre">linregress</span></code> with height and weight, and returns the slope of the regression line.</p>
 <p>Run it 101 times and collect the results.  Use the sampling distribution to compute the mean of the slope estimates, standard error, and a 90% confidence interval.</p>
-</div>
-<div class="section" id="limitations-of-bootstrapping">
-<h2>Limitations of Bootstrapping<a class="headerlink" href="#limitations-of-bootstrapping" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="limitations-of-bootstrapping">
+<h2>Limitations of Bootstrapping<a class="headerlink" href="#limitations-of-bootstrapping" title="Permalink to this headline">#</a></h2>
 <p>One limitation of bootstrapping is that it can be computationally expensive.
 With small datasets, it is usually fast enough that we can generate 1000 values from the sampling distribution, which means that we can compute standard errors and confidence intervals precisely.
 With larger datasets, we can cut the computation time by generating fewer values.
@@ -1450,12 +1605,12 @@ the one thing it can’t handle is lack of diversity in the data.
 However, even this problem can be solved.
 The fundamental cause is that the data have been discretized excessively, so the solution is to smooth it.
 Jittering is one option.  Another is to use kernel density estimation (KDE).</p>
-</div>
-<div class="section" id="resampling-with-kde">
-<h2>Resampling with KDE<a class="headerlink" href="#resampling-with-kde" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="resampling-with-kde">
+<h2>Resampling with KDE<a class="headerlink" href="#resampling-with-kde" title="Permalink to this headline">#</a></h2>
 <p>We have used KDE several times to estimate and plot a probability density based on a sample.
 We can also use it to smooth data that have been discretized.</p>
-<p>In Chapter 7 we saw that the distribution of income is well modeled by a lognormal distribution, so if we take the log of income, it is well modeled by a normal distribution.
+<p>In Chapter 8 we saw that the distribution of income is well modeled by a lognormal distribution, so if we take the log of income, it is well modeled by a normal distribution.
 Here are the logarithms of the income data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1478,7 +1633,7 @@ Here are the logarithms of the income data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12_bootstrap_118_0.png" src="_images/12_bootstrap_118_0.png" />
+<img alt="_images/12_bootstrap_117_0.png" src="_images/12_bootstrap_117_0.png" />
 </div>
 </div>
 <p>To draw samples from this distribution, we’ll use a Scipy function called <code class="docutils literal notranslate"><span class="pre">gaussian_kde</span></code>, which takes the data and returns an object that represents the estimated density.</p>
@@ -1593,9 +1748,9 @@ The following function encapsulates these steps.</p>
 </div></div></div>
 </div>
 <p>The means and standard errors are about the same with either method.  The difference is that the confidence interval we get from KDE resampling is much more reasonable.</p>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>There are ten examples in this chapter so far; let’s review them:</p>
 <ol class="simple">
 <li><p>First we used resampling based on a normal model to estimate average family income in the GSS and compute a confidence interval.</p></li>
@@ -1686,13 +1841,13 @@ Name: GRASS, dtype: int64
 <p>Here’s what the predictions look like, plotted along with the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;logistic model&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;logistic model&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 <span class="n">plot_data</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12_bootstrap_147_0.png" src="_images/12_bootstrap_147_0.png" />
+<img alt="_images/12_bootstrap_146_0.png" src="_images/12_bootstrap_146_0.png" />
 </div>
 </div>
 <p>The model fits past data reasonably well and makes plausible predictions for the next decade, although we can never be sure that trends like this will continue.</p>
@@ -1706,8 +1861,8 @@ To visualize the results, you have two options:</p>
 <li><p>Loop through the list and plot each prediction using a gray line with a low value of <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.  The overlapping lines will form a region showing the range of uncertainty over time.</p></li>
 <li><p>Pass the list of <code class="docutils literal notranslate"><span class="pre">Series</span></code> to <code class="docutils literal notranslate"><span class="pre">np.percentile</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> to compute the 5th and 95th percentile in each column.  Plot these percentiles as two lines, or use <code class="docutils literal notranslate"><span class="pre">plt.fill_between</span></code> to plot a shaded region between them.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1731,36 +1886,48 @@ To visualize the results, you have two options:</p>
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="11_resampling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Resampling</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="13_hypothesis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hypothesis Testing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="11_resampling.html" title="previous page">Resampling</a>
-    <a class='right-next' id="next-link" href="13_hypothesis.html" title="next page">Hypothesis Testing</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Allen B. Downey<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>

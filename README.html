@@ -4,10 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Elements of Data Science &#8212; Elements of Data Science</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,97 +20,112 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Variables and values" href="01_variables.html" />
-
+    <link rel="next" title="Variables and Values" href="01_variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="reference internal" href="#">
-   Elements of Data Science
-  </a>
- </li>
-</ul>
-<ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Elements of Data Science
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
-   Variables and values
+   Variables and Values
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_times.html">
-   Times and places
+   Times and Places
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_arrays.html">
-   Lists and arrays
+   Lists and Arrays
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_loops.html">
-   Loops and files
+   Loops and Files
   </a>
  </li>
  <li class="toctree-l1">
@@ -157,87 +175,149 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/README.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ElementsOfDataScience"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#case-studies">
    Case Studies
@@ -317,24 +397,119 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Elements of Data Science</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#case-studies">
+   Case Studies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-notebooks">
+   The notebooks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-1">
+     Notebook 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-2">
+     Notebook 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-3">
+     Notebook 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-4">
+     Notebook 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-5">
+     Notebook 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-6">
+     Notebook 6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-7">
+     Notebook 7
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-8">
+     Notebook 8
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-9">
+     Notebook 9
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-10">
+     Notebook 10
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-11">
+     Notebook 11
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-12">
+     Notebook 12
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notebook-13">
+     Notebook 13
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="elements-of-data-science">
-<h1>Elements of Data Science<a class="headerlink" href="#elements-of-data-science" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="elements-of-data-science">
+<h1>Elements of Data Science<a class="headerlink" href="#elements-of-data-science" title="Permalink to this headline">#</a></h1>
 <p><em>Elements of Data Science</em> is an introduction to data science for people with no programming experience.  My goal is to present a small, powerful subset of Python that allows you to do real work in data science as quickly as possible.</p>
 <p>I don’t assume that the reader knows anything about programming, statistics, or data science.  When I use a term, I try to define it immediately, and when I use a programming feature, I try to explain it.</p>
 <p>This book is in the form of Jupyter notebooks.  Jupyter is a software development tool you can run in a web browser, so you don’t have to install any software.  A Jupyter notebook is a document that contains text, Python code, and results.  So you can read it like a book, but you can also modify the code, run it, develop new programs, and test them.</p>
 <p>The notebooks contains exercises where you can practice what you learn.  Most of the exercises are meant to be quick, but a few are more substantial.</p>
 <p>This material is a work in progress, so suggestions are welcome.  The best way to provide feedback is to <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/issues">click here and create an issue in this GitHub repository</a>.</p>
-<div class="section" id="case-studies">
-<h2>Case Studies<a class="headerlink" href="#case-studies" title="Permalink to this headline">¶</a></h2>
+<section id="case-studies">
+<h2>Case Studies<a class="headerlink" href="#case-studies" title="Permalink to this headline">#</a></h2>
 <p>In addition to the notebooks below, the <em>Elements of Data Science</em> curriculum includes these case studies:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://allendowney.github.io/PoliticalAlignmentCaseStudy/">Political Alignment Case Study</a>: Using data from the General Social Survey, this case study explore changing opinions on a variety of topics among survey respondents in the United States. Readers choose one of about 120 survey questions and see how responses have changed over time and how these changes relate to political alignment (conservative, moderate, or liberal).</p></li>
@@ -342,102 +517,102 @@
 <li><p><a class="reference external" href="https://allendowney.github.io/BiteSizeBayes/">Bite Size Bayes</a>: An introduction to probability with a focus on Bayes’s Theorem.</p></li>
 <li><p><a class="reference external" href="https://allendowney.github.io/AstronomicalData/">Astronomical Data in Python</a>: An introduction to SQL using data from the Gaia space telescope as an example.</p></li>
 </ul>
-</div>
-<div class="section" id="the-notebooks">
-<h2>The notebooks<a class="headerlink" href="#the-notebooks" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="the-notebooks">
+<h2>The notebooks<a class="headerlink" href="#the-notebooks" title="Permalink to this headline">#</a></h2>
 <p>For each of the notebooks below, you have three options:</p>
 <ul class="simple">
 <li><p>If you view the notebook on NBViewer, you can read it, but you can’t run the code.</p></li>
 <li><p>If you run the notebook on Colab, you’ll be able to run the code, do the exercises, and save your modified version of the notebook in a Google Drive (if you have one).</p></li>
 <li><p>Or, if you download the notebook, you can run it in your own environment.  But in that case it is up to you to make sure you have the libraries you need.</p></li>
 </ul>
-<div class="section" id="notebook-1">
-<h3>Notebook 1<a class="headerlink" href="#notebook-1" title="Permalink to this headline">¶</a></h3>
+<section id="notebook-1">
+<h3>Notebook 1<a class="headerlink" href="#notebook-1" title="Permalink to this headline">#</a></h3>
 <p><strong>Variables and values</strong>: The first notebook explains how to use Jupyter and introduces variables, values, and numerical computation.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/01_variables.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-2">
-<h3>Notebook 2<a class="headerlink" href="#notebook-2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-2">
+<h3>Notebook 2<a class="headerlink" href="#notebook-2" title="Permalink to this headline">#</a></h3>
 <p><strong>Times and places</strong>: This notebook shows how to represent times, dates, and locations in Python, and uses the GeoPandas library to plot points on a map.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/02_times.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-3">
-<h3>Notebook 3<a class="headerlink" href="#notebook-3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-3">
+<h3>Notebook 3<a class="headerlink" href="#notebook-3" title="Permalink to this headline">#</a></h3>
 <p><strong>Lists and Arrays</strong>: This notebook presents lists and NumPy arrays.  It discusses absolute, relative, and percent errors, and ways to summarize them.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/03_arrays.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-4">
-<h3>Notebook 4<a class="headerlink" href="#notebook-4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-4">
+<h3>Notebook 4<a class="headerlink" href="#notebook-4" title="Permalink to this headline">#</a></h3>
 <p><strong>Loops and Files</strong>: This notebook presents the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement; then it uses them to speed-read <em>War and Peace</em> and count the words.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/04_loops.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-5">
-<h3>Notebook 5<a class="headerlink" href="#notebook-5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-5">
+<h3>Notebook 5<a class="headerlink" href="#notebook-5" title="Permalink to this headline">#</a></h3>
 <p><strong>Dictionaries</strong>: This notebook presents one of the most powerful features of Python, dictionaries, and uses them to count the unique words in a text and their frequencies.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/05_dictionaries.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-6">
-<h3>Notebook 6<a class="headerlink" href="#notebook-6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-6">
+<h3>Notebook 6<a class="headerlink" href="#notebook-6" title="Permalink to this headline">#</a></h3>
 <p><strong>Plotting</strong>: This notebook introduces a plotting library, Matplotlib, and uses it to generate a few common data visualizations and one less common one, a Zipf plot.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/06_plotting.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-7">
-<h3>Notebook 7<a class="headerlink" href="#notebook-7" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-7">
+<h3>Notebook 7<a class="headerlink" href="#notebook-7" title="Permalink to this headline">#</a></h3>
 <p><strong>DataFrames</strong>: This notebook presents DataFrames, which are used to represent tables of data.  As an example, it uses data from the National Survey of Family Growth to find the average weight of babies in the U.S.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/07_dataframes.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-8">
-<h3>Notebook 8<a class="headerlink" href="#notebook-8" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-8">
+<h3>Notebook 8<a class="headerlink" href="#notebook-8" title="Permalink to this headline">#</a></h3>
 <p><strong>Distributions</strong>: This notebook explains what a distribution is and presents 3 ways to represent one: a PMF, CDF, or PDF.  It also shows how to compare a distribution to another distribution or a mathematical model.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/08_distributions.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/08_distributions.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-9">
-<h3>Notebook 9<a class="headerlink" href="#notebook-9" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-9">
+<h3>Notebook 9<a class="headerlink" href="#notebook-9" title="Permalink to this headline">#</a></h3>
 <p><strong>Relationships</strong>: This notebook explores relationships between variables using scatter plots, violin plots, and box plots.  It quantifies the strength of a relationship using the correlation coefficient and uses simple regression to estimate the slope of a line.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/09_relationships.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/09_relationships.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-10">
-<h3>Notebook 10<a class="headerlink" href="#notebook-10" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-10">
+<h3>Notebook 10<a class="headerlink" href="#notebook-10" title="Permalink to this headline">#</a></h3>
 <p><strong>Regression</strong>: This notebook presents multiple regression and uses it to explore the relationship between age, education, and income.  It uses visualization to interpret multivariate models.  It also presents binary variables and logistic regression.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/10_regression.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-11">
-<h3>Notebook 11<a class="headerlink" href="#notebook-11" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-11">
+<h3>Notebook 11<a class="headerlink" href="#notebook-11" title="Permalink to this headline">#</a></h3>
 <p><strong>Resampling</strong>: This notebook presents computational methods we can use to
 quantify variation due to random sampling, which is one of several sources
 of error in statistical estimation.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-12">
-<h3>Notebook 12<a class="headerlink" href="#notebook-12" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-12">
+<h3>Notebook 12<a class="headerlink" href="#notebook-12" title="Permalink to this headline">#</a></h3>
 <p><strong>Bootstrapping</strong>: Bootstrapping is a kind of resampling that is well suited
 to the kind of survey data we’ve been working with.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/12_bootstrap.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/12_bootstrap.ipynb">or click here to download it</a></p>
-</div>
-<div class="section" id="notebook-13">
-<h3>Notebook 13<a class="headerlink" href="#notebook-13" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="notebook-13">
+<h3>Notebook 13<a class="headerlink" href="#notebook-13" title="Permalink to this headline">#</a></h3>
 <p><strong>Hypothesis Testing</strong>: Hypothesis testing is the bugbear of classical statistics.
 This notebook presents a computational approach to the topic that makes it clear
 that <a class="reference external" href="http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html">there is only one test</a>.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb">Click here to run this notebook on Colab</a></p>
 <p><a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/13_hypothesis.ipynb">or click here to download it</a></p>
+</section>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-</div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -461,35 +636,41 @@ that <a class="reference external" href="http://allendowney.blogspot.com/2016/06
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="01_variables.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variables and Values</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='right-next' id="next-link" href="01_variables.html" title="next page">Variables and values</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Allen B. Downey<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>

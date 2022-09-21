@@ -4,10 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Hypothesis Testing &#8212; Elements of Data Science</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,99 +20,114 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Bootstrap Sampling" href="12_bootstrap.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Elements of Data Science
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Elements of Data Science
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
-   Variables and values
+   Variables and Values
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_times.html">
-   Times and places
+   Times and Places
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_arrays.html">
-   Lists and arrays
+   Lists and Arrays
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_loops.html">
-   Loops and files
+   Loops and Files
   </a>
  </li>
  <li class="toctree-l1">
@@ -159,104 +177,178 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/13_hypothesis.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/13_hypothesis.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/13_hypothesis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ElementsOfDataScience"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/13_hypothesis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#peanut-allergies">
    Peanut Allergies
@@ -299,17 +391,75 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Hypothesis Testing</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#peanut-allergies">
+   Peanut Allergies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#p-values">
+   p-values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">
+   Are first babies more likely to be late?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-hypothesis-testing-framework">
+   The Hypothesis Testing Framework
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-correlation">
+   Testing Correlation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-regression-models">
+   Testing Regression Models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#controlling-for-age">
+   Controlling for Age
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="hypothesis-testing">
-<h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing">
+<h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/13_hypothesis.ipynb">click here to download it</a>.</p>
 <p>This chapter introduces hypothesis testing, which has been a controversial topic in the last decade or so.
@@ -322,8 +472,8 @@ This approach has two advantages and one disadvantage:</p>
 <li><p>CON: Simulation uses a lot of computation. Some of the examples in this notebook take several seconds to run and the results are only approximate. For some problems, there are analytic methods that are faster and more accurate.</p></li>
 </ul>
 <p>The examples in this chapter include results from a clinical trial related to peanut allergies, and survey data from the National Survey of Family Growth (NSFG) and the Behavioral Risk Factor Surveillance System (BRFSS).</p>
-<div class="section" id="peanut-allergies">
-<h2>Peanut Allergies<a class="headerlink" href="#peanut-allergies" title="Permalink to this headline">¶</a></h2>
+<section id="peanut-allergies">
+<h2>Peanut Allergies<a class="headerlink" href="#peanut-allergies" title="Permalink to this headline">#</a></h2>
 <p>The LEAP study was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies (see <a class="reference external" href="http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA">http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA</a>).
 The subjects were infants who were at high risk of developing peanut allergies because they had been diagnosed with other food allergies.
 Over a period of several years, half of the subjects were periodically given a snack containing peanuts; the other half were given no peanuts at all.</p>
@@ -482,9 +632,9 @@ And it is.</p>
 <p>In some simulated experiments, the relative risk is as low as 0.5 or as high as 2, which means it is plausible we could see results like that by chance, even if there is no difference between groups.</p>
 <p>But the relative risk in the actual experiment was 0.18, and we never see a result as small as that in the simulated experiment.
 We can conclude that the relative risk we saw is unlikely if the risk is actually the same in both groups.</p>
-</div>
-<div class="section" id="p-values">
-<h2>p-values<a class="headerlink" href="#p-values" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="p-values">
+<h2>p-values<a class="headerlink" href="#p-values" title="Permalink to this headline">#</a></h2>
 <p>Now suppose that in addition to the treatment and control groups, the experiment included a placebo group that was given a snack that contained no peanuts.
 Suppose this group was the same size as the others, and 42 of the subjects developed peanut allergies.</p>
 <p>To be clear, there was no third group, and I made up these numbers, but let’s see how this hypothetical works out.
@@ -514,13 +664,7 @@ Here’s the risk in the placebo group.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">93</span><span class="n">cea050fda6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">relative_risk_placebo</span> <span class="o">=</span> <span class="n">risk_placebo</span> <span class="o">/</span> <span class="n">risk_control</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">relative_risk_placebo</span>
-
-<span class="ne">NameError</span>: name &#39;risk_control&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7777777777777778
 </pre></div>
 </div>
 </div>
@@ -545,9 +689,9 @@ In fact, we can compute the probability of seeing a relative risk as low or lowe
 </div>
 <p>This probability is called a <strong>p-value</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/P-value">https://en.wikipedia.org/wiki/P-value</a>).  In this case, the p-value is about 14%, which means that even if the two groups are the same, we expect to see a relative risk as low as 0.77 about 14% of the time.
 So, for this imagined experiment, we can’t rule out the possibility that the apparent difference is due to chance.</p>
-</div>
-<div class="section" id="are-first-babies-more-likely-to-be-late">
-<h2>Are first babies more likely to be late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="are-first-babies-more-likely-to-be-late">
+<h2>Are first babies more likely to be late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Permalink to this headline">#</a></h2>
 <p>In the previous example, we saw a difference in proportion between two groups.
 As a second example, let’s consider a difference in means.</p>
 <p>When my wife and I were expecting our first child, we heard that first babies are more likely to be born late.  But we also heard that first babies are more likely to be born early.  So which is it? As a data scientist with too much time on my hands, I decided to find out.
@@ -772,7 +916,7 @@ As always with modeling decisions, there are many options.  A simple one is to c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(39.29046069532454, 1.1864094701037655)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(39.29046069532454, 1.1864094701037506)
 </pre></div>
 </div>
 </div>
@@ -835,9 +979,9 @@ Just by chance, we sometimes see differences as big as 0.1 weeks, but in 1000 si
 But we should remember that there are other possible sources of error.  For one, pregnancy lengths in the NSFG are self-reported.  When the respondents are interviewed, their recollection of first babies might be less accurate than their recollection of more recent babies.  Or the estimation of pregnancy length might be less accurate with less experienced mothers.</p>
 <p>A correspondent of mine, who knows more than me about giving birth, suggested yet another possibility.  If a first baby is born by <a class="reference external" href="https://en.wikipedia.org/wiki/Caesarean_section">Caesarean section</a>, it is more likely that subsequent deliveries will be scheduled, and less likely that they will go much past 39 weeks.  So that could bring the average down for non-first babies.</p>
 <p>In summary, the results in this section suggest that the observed difference is unlikely to be due to chance, but there are still several other possible explanations.</p>
-</div>
-<div class="section" id="the-hypothesis-testing-framework">
-<h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="the-hypothesis-testing-framework">
+<h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Permalink to this headline">#</a></h2>
 <p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/hypothesis_testing.png" /></p>
 <p>Using data from an experiment, we compute a <strong>test statistic</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Test_statistic">https://en.wikipedia.org/wiki/Test_statistic</a>).  In the peanut allergy example, the test statistic is relative risk.  In the pregnancy length example, it is the difference in the means.  In both cases, the test statistic quantifies the size of the observed effect, denoted <span class="math notranslate nohighlight">\(\delta^*\)</span> in the diagram.</p>
@@ -926,9 +1070,9 @@ The return value is the difference in means between the groups.</p>
 To find out, compute the actual difference between the means.
 Then use <code class="docutils literal notranslate"><span class="pre">simulate_two_groups</span></code> to simulate a world where birth weights for both groups are drawn from the same distribution.
 Under the null hypothesis, how often does the difference in means exceed the actual difference in the dataset?  What conclusion can you draw from this result?</p>
-</div>
-<div class="section" id="testing-correlation">
-<h2>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="testing-correlation">
+<h2>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Permalink to this headline">#</a></h2>
 <p>The method we used in the previous section is called a <strong>permutation test</strong> because “permutation” is another word for shuffling (see <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests</a>).
 Permutation tests are also useful for testing whether an observed correlation might be do to chance.</p>
 <p>As an example, let’s look again at the correlations we computed in Chapter 9, using data from the Behavioral Risk Factor Surveillance System (BRFSS).
@@ -943,7 +1087,7 @@ The following cell reads the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(418268, 11)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(418268, 9)
 </pre></div>
 </div>
 </div>
@@ -1155,9 +1299,9 @@ In Chapter 9, we saw that the relationship between weight and age is nonlinear.
 But the coefficient of correlation only measures linear relationships, so it does not capture the real strength of the relationship.
 So testing a correlation might not be the more useful thing to do in the first place.
 We can do better by testing a regression model.</p>
-</div>
-<div class="section" id="testing-regression-models">
-<h2>Testing Regression Models<a class="headerlink" href="#testing-regression-models" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="testing-regression-models">
+<h2>Testing Regression Models<a class="headerlink" href="#testing-regression-models" title="Permalink to this headline">#</a></h2>
 <p>In the previous sections we used permutation to simulate a world where there is no correlation between two variables.
 In this section we’ll apply the same method to regression models.</p>
 <p>As an example, we’ll use NSFG data to explore the relationship between a mother’s age and her baby’s birth weight.</p>
@@ -1337,9 +1481,9 @@ One way to answer this question is to look at the improvement in <span class="ma
 By this criterion, the quadratic model is a better, but when we add variables to a model, we might get some improvement just by chance.
 To see how much, write a function called <code class="docutils literal notranslate"><span class="pre">simulate_rsquared2</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, runs a regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and the shuffled values, and returns <span class="math notranslate nohighlight">\(R^2\)</span>.
 Run your function 200 times and count how often <span class="math notranslate nohighlight">\(R^2\)</span> from the model exceeds the observed value from the dataset.  What conclusion can you draw?</p>
-</div>
-<div class="section" id="controlling-for-age">
-<h2>Controlling for Age<a class="headerlink" href="#controlling-for-age" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="controlling-for-age">
+<h2>Controlling for Age<a class="headerlink" href="#controlling-for-age" title="Permalink to this headline">#</a></h2>
 <p>In a previous exercise, you computed the difference in birth weight between first babies and others, which is about 0.17 pounds, and you checked whether we are likely to see a difference as big as that by chance.  If things went according to plan, you found that it is very unlikely.</p>
 <p>But that doesn’t necessarily mean that there is anything special about first babies that makes them lighter than others.
 Rather, knowing a baby’s birth order might provide information about some other factor that is related to birth weight.
@@ -1412,7 +1556,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.09933806121560089
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.0993380612156034
 </pre></div>
 </div>
 </div>
@@ -1450,7 +1594,7 @@ It takes a <code class="docutils literal notranslate"><span class="pre">DataFram
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.11032834278896275 0.13869713337268208
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.11032834278896282 0.13869713337268225
 </pre></div>
 </div>
 </div>
@@ -1481,9 +1625,9 @@ By that standard, the weight difference between first babies and others is stati
 </ul>
 <p>This last point is particularly problematic with large datasets, because very small effects can be statistically significant.
 We saw an example with the BRFSS dataset, where the correlations we tested were <em>all</em> statistically significant, even the ones that are too small to matter in practice.</p>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>Let’s review the examples in this chapter:</p>
 <ol class="simple">
 <li><p>We started with data from LEAP, which studied the effect of eating peanuts on the development of peanut allergies.  The test statistic was relative risk, and the null hypothesis was that the treatment was ineffective.</p></li>
@@ -1572,8 +1716,8 @@ But there is a strong correlation between father’s age and mother’s age.  So
 To find out, let’s see what happens if we control for the mother’s age.
 Run this model again with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code> as predictors.  Does the observed effect of paternal age get smaller?</p>
 <p>To see if the remaining effect could be due to randomness, write a function that shuffles <code class="docutils literal notranslate"><span class="pre">YO_DAD</span></code>, runs the regression model, and returns the parameter associated with the shuffled column.  How often does this parameter exceed the observed value?  What conclusion can we draw from the results?</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1597,35 +1741,41 @@ Run this model again with <code class="docutils literal notranslate"><span class
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="12_bootstrap.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Bootstrap Sampling</p>
+        </div>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="12_bootstrap.html" title="previous page">Bootstrap Sampling</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Allen B. Downey<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>

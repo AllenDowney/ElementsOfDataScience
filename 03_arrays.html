@@ -4,10 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lists and arrays &#8212; Elements of Data Science</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lists and Arrays &#8212; Elements of Data Science</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,100 +20,115 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Loops and files" href="04_loops.html" />
-    <link rel="prev" title="Times and places" href="02_times.html" />
-
+    <link rel="next" title="Loops and Files" href="04_loops.html" />
+    <link rel="prev" title="Times and Places" href="02_times.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Elements of Data Science
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Elements of Data Science
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
-   Variables and values
+   Variables and Values
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_times.html">
-   Times and places
+   Times and Places
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lists and arrays
+   Lists and Arrays
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_loops.html">
-   Loops and files
+   Loops and Files
   </a>
  </li>
  <li class="toctree-l1">
@@ -160,104 +178,178 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/03_arrays.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/03_arrays.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/03_arrays.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ElementsOfDataScience"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/03_arrays.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tuples">
    Tuples
@@ -298,26 +390,94 @@
    Debugging
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lists and Arrays</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuples">
+   Tuples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists">
+   Lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sandwiches">
+   Sandwiches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-arrays">
+   NumPy Arrays
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mean-and-standard-deviation">
+   Mean and standard deviation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relative-difference">
+   Relative Difference
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-relative-differences">
+   Summarizing Relative Differences
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#debugging">
+   Debugging
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="lists-and-arrays">
-<h1>Lists and arrays<a class="headerlink" href="#lists-and-arrays" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lists-and-arrays">
+<h1>Lists and Arrays<a class="headerlink" href="#lists-and-arrays" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/03_arrays.ipynb">click here to download it</a>.</p>
 <p>In the previous chapter we used tuples to represent latitude and longitude.  In this chapter, you’ll see how to use tuples more generally to represent a sequence of values.  And we’ll see two more ways to represent sequences: lists and arrays.</p>
 <p>You might wonder why we need three ways to represent the same thing.  Most of the time you don’t, but each of them has different capabilities.  For work with data, we will use arrays most of the time.</p>
 <p>As an example, we will use a small dataset from an article in <em>The Economist</em> about the price of sandwiches.  It’s a silly example, but I’ll use it to introduce the idea of relative differences and different ways to summarize them.</p>
-<div class="section" id="tuples">
-<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h2>
+<section id="tuples">
+<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">#</a></h2>
 <p>A tuple is a sequence of elements.  When we use a tuple to represent latitude and longitude, the sequence only contains two elements, and they are both floating-point numbers.
 But in general a tuple can contain any number of elements, and the elements can be values of any type.
 The following is a tuple of three integers:</p>
@@ -405,9 +565,9 @@ To make a tuple with a single element, you need a comma:</p>
 </div>
 </div>
 <p>That might look funny, but it does the job.</p>
-</div>
-<div class="section" id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
 <p>Python provides another way to store a sequence of elements: a list.</p>
 <p>To create a list, you put a sequence of elements in square brackets.</p>
 <div class="cell docutils container">
@@ -456,9 +616,9 @@ The difference is that you can modify a list; tuples are immutable (cannot be mo
 </div>
 <p><strong>Exercise:</strong> Create a list with 4 elements; then use <code class="docutils literal notranslate"><span class="pre">type</span></code> to confirm that it’s a list, and <code class="docutils literal notranslate"><span class="pre">len</span></code> to confirm that it has 4 elements.</p>
 <p>There’s a lot more we could do with lists, but that’s enough to get started.  In the next section, we’ll use lists to store data about sandwich prices.</p>
-</div>
-<div class="section" id="sandwiches">
-<h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sandwiches">
+<h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">#</a></h2>
 <p>In September 2019, <em>The Economist</em> published an article comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”.
 It includes this graph showing prices of several sandwiches in the two cities:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" /></p>
@@ -510,9 +670,9 @@ Here are the sandwich prices in Boston:</p>
 <p>But it concatenates the two lists, which is not very useful in this example.
 To compute differences between prices, you might try subtracting lists, but you would get an error.<br />
 We can solve this problem with a NumPy array.</p>
-</div>
-<div class="section" id="numpy-arrays">
-<h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="numpy-arrays">
+<h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">#</a></h2>
 <p>We’ve already seen that the NumPy library provides math functions.  It also provides a type of sequence called an array.
 You can create a new array with the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function, starting with a list or tuple.</p>
 <div class="cell docutils container">
@@ -599,9 +759,9 @@ Most often the elements are numbers, but you can also make an array of strings.<
 </div>
 </div>
 <p>Subtraction is done “elementwise”; that is, NumPy lines up the two arrays and subtracts corresponding elements.  The result is a new array.</p>
-</div>
-<div class="section" id="mean-and-standard-deviation">
-<h2>Mean and standard deviation<a class="headerlink" href="#mean-and-standard-deviation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="mean-and-standard-deviation">
+<h2>Mean and standard deviation<a class="headerlink" href="#mean-and-standard-deviation" title="Permalink to this headline">#</a></h2>
 <p>NumPy provides functions that compute statistical summaries like the mean:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,9 +813,9 @@ The definition of standard deviation is</p>
 <p>Compute the standard deviation of <code class="docutils literal notranslate"><span class="pre">boston_price_list</span></code> using NumPy functions <code class="docutils literal notranslate"><span class="pre">np.mean</span></code> and <code class="docutils literal notranslate"><span class="pre">np.sqrt</span></code> and see if you get the same result as <code class="docutils literal notranslate"><span class="pre">np.std</span></code>.</p>
 <p>Note: You can (and should) do this exercise using only features we have discussed so far.</p>
 <p>Note: This definition of standard deviation is sometimes called the “population standard deviation”.  You might have seen another definition with <span class="math notranslate nohighlight">\(N-1\)</span> in the denominator; that’s the “sample standard deviation”.  We’ll use the population standard deviation for now and come back to this issue later.</p>
-</div>
-<div class="section" id="relative-difference">
-<h2>Relative Difference<a class="headerlink" href="#relative-difference" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="relative-difference">
+<h2>Relative Difference<a class="headerlink" href="#relative-difference" title="Permalink to this headline">#</a></h2>
 <p>In the previous section we computed differences between prices.
 But often when we make this kind of comparison, we are interested in <strong>relative difference</strong>, which are differences expressed as a fraction or percentage of a quantity.</p>
 <p>Taking the lobster roll as an example, the difference in price is:</p>
@@ -724,7 +884,8 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.49, 2.99, 3.09, 2.  , 2.54, 2.74])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.332     , 0.598     , 0.70227273, 0.4       , 0.67733333,
+       1.21777778])
 </pre></div>
 </div>
 </div>
@@ -744,9 +905,9 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="summarizing-relative-differences">
-<h2>Summarizing Relative Differences<a class="headerlink" href="#summarizing-relative-differences" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summarizing-relative-differences">
+<h2>Summarizing Relative Differences<a class="headerlink" href="#summarizing-relative-differences" title="Permalink to this headline">#</a></h2>
 <p>Now let’s think about how to summarize an array of percentage differences.
 One option is to report the range, which we can compute with <code class="docutils literal notranslate"><span class="pre">np.min</span></code> and <code class="docutils literal notranslate"><span class="pre">np.max</span></code>.</p>
 <div class="cell docutils container">
@@ -756,12 +917,7 @@ One option is to report the range, which we can compute with <code class="docuti
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">5</span><span class="n">c1b45c0d131</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">percent_differences</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(33.2, 121.77777777777779)
 </pre></div>
 </div>
 </div>
@@ -806,9 +962,9 @@ As this example demonstrates:</p>
 <li><p>When you read a summary of data like this, make sure you understand what summary was chosen and what it means.</p></li>
 </ul>
 <p>In this example, I think the second option (the relative difference in the means) is more meaningful, because it reflects the difference in price between “baskets of goods” that include one of each sandwich.</p>
-</div>
-<div class="section" id="debugging">
-<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">#</a></h2>
 <p>So far, most of the exercises have only required a few lines of code.  If you made errors along the way, you probably found them quickly.</p>
 <p>As we go along, the exercises will be more substantial, and you may find yourself spending more time debugging.  Here are a couple of suggestions to help you find errors quickly – and avoid them in the first place.</p>
 <ul class="simple">
@@ -882,8 +1038,14 @@ To debug this code, I would start by splitting the computation into smaller step
 </div>
 <p>As you gain experience, you will be able to write bigger chunks of code before testing.  But while you are getting started, keep it simple!
 As a general rule, each line of code should perform a small number of operations, and each cell should contain a small number of statements.  When you are getting started, this number should be one.</p>
-</div>
-</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>This chapter presents three ways to represent a sequence of values: tuples, list, and Numpy arrays. Working with data, we will primarily use arrays.</p>
+<p>It also introduces three ways to represent differences: absolute, relative, and percentage; and several ways to summarize a set of values: minimum, maximum, mean, and standard deviation.</p>
+<p>In the next chapter we’ll start working with data files, and we’ll use loops to process letters and words.</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -907,36 +1069,48 @@ As a general rule, each line of code should perform a small number of operations
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02_times.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Times and Places</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04_loops.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Loops and Files</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="02_times.html" title="previous page">Times and places</a>
-    <a class='right-next' id="next-link" href="04_loops.html" title="next page">Loops and files</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Allen B. Downey<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>

@@ -4,10 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Plotting &#8212; Elements of Data Science</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,100 +20,115 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="DataFrames and Series" href="07_dataframes.html" />
     <link rel="prev" title="Dictionaries" href="05_dictionaries.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Elements of Data Science
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Elements of Data Science
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
-   Variables and values
+   Variables and Values
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_times.html">
-   Times and places
+   Times and Places
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_arrays.html">
-   Lists and arrays
+   Lists and Arrays
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_loops.html">
-   Loops and files
+   Loops and Files
   </a>
  </li>
  <li class="toctree-l1">
@@ -160,104 +178,178 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/06_plotting.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/06_plotting.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/06_plotting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ElementsOfDataScience"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/06_plotting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#keyword-arguments">
    Keyword arguments
@@ -270,7 +362,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decorating-the-axes">
-   Decorating the axes
+   Decorating the Axes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -280,12 +372,12 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#zipf-s-law">
-   Zipf’s law
+   Zipf’s Law
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#frequencies-and-ranks">
-   Frequencies and ranks
+   Frequencies and Ranks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -293,19 +385,82 @@
    Logarithmic scales
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Plotting</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#keyword-arguments">
+   Keyword arguments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#religious-affiliation">
+   Religious affiliation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decorating-the-axes">
+   Decorating the Axes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sandwiches">
+   Sandwiches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zipf-s-law">
+   Zipf’s Law
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frequencies-and-ranks">
+   Frequencies and Ranks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logarithmic-scales">
+   Logarithmic scales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="plotting">
-<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="plotting">
+<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/06_plotting.ipynb">click here to download it</a>.</p>
 <p>This chapter presents ways to create figures and graphs, more generally called <strong>data visualizations</strong>.  As examples, we’ll generate three figures:</p>
@@ -316,8 +471,8 @@
 </ul>
 <p>With the tools in this chapter, you can generate a variety of simple graphs.  We will see more visualization tools in later chapters.</p>
 <p>But before we get started with plotting, we need a new language feature: keyword arguments.</p>
-<div class="section" id="keyword-arguments">
-<h2>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h2>
+<section id="keyword-arguments">
+<h2>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">#</a></h2>
 <p>When you call most functions, you have to provide values.  For example, when you call <code class="docutils literal notranslate"><span class="pre">np.exp</span></code>, the value you provide is a number:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -396,13 +551,13 @@ And when you specify a keyword argument, you don’t choose the variable name.  
 </div>
 <p>Modify the previous example so it prints the elements of the list, all on one line, with spaces between them.
 Then modify it to print an open bracket at the beginning and a close bracket and newline at the end.</p>
-</div>
-<div class="section" id="religious-affiliation">
-<h2>Religious affiliation<a class="headerlink" href="#religious-affiliation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="religious-affiliation">
+<h2>Religious affiliation<a class="headerlink" href="#religious-affiliation" title="Permalink to this headline">#</a></h2>
 <p>Now we’re ready to make some graphs.</p>
 <p>In October 2019 the Pew Research Center published “In U.S., Decline of Christianity Continues at Rapid Pace” at <a class="reference external" href="https://www.pewforum.org/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace">https://www.pewforum.org/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace</a>.
 It includes this figure, which shows changes in religious affiliation among adults in the U.S. over the previous 10 years.</p>
-<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/pew_religion_figure1.png" /></p>
+<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/pew_religion_figure1.png" width="400">
 <p>As an exercise, we’ll replicate this figure.  It shows results from two sources, Religious Landscape Studies and Pew Research Political Surveys.  The political surveys provide data from more years, so we’ll focus on that.</p>
 <p>The data from the figure are available from Pew Research at <a class="reference external" href="https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf">https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf</a>, but they are in a PDF document.  It is sometimes possible to extract data from PDF documents, but for now we’ll enter the data by hand.</p>
 <div class="cell docutils container">
@@ -445,7 +600,7 @@ It includes this figure, which shows changes in religious affiliation among adul
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe71a051e50&gt;]
 </pre></div>
 </div>
-<img alt="_images/06_plotting_26_1.png" src="_images/06_plotting_26_1.png" />
+<img alt="_images/06_plotting_25_1.png" src="_images/06_plotting_25_1.png" />
 </div>
 </div>
 <p>The semi-colon at the end of the line cleans up the output; without it, the return value from <code class="docutils literal notranslate"><span class="pre">plot</span></code> would be displayed above the figure.</p>
@@ -458,7 +613,7 @@ It includes this figure, which shows changes in religious affiliation among adul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_28_0.png" src="_images/06_plotting_28_0.png" />
+<img alt="_images/06_plotting_27_0.png" src="_images/06_plotting_27_0.png" />
 </div>
 </div>
 <p>Plotting them on the same axes makes it possible to compare them directly.
@@ -475,13 +630,13 @@ We can set the limits of the <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_30_0.png" src="_images/06_plotting_30_0.png" />
+<img alt="_images/06_plotting_29_0.png" src="_images/06_plotting_29_0.png" />
 </div>
 </div>
 <p>That’s better, but this graph is missing some of the most important elements: labels for the axes and a title.</p>
-</div>
-<div class="section" id="decorating-the-axes">
-<h2>Decorating the axes<a class="headerlink" href="#decorating-the-axes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="decorating-the-axes">
+<h2>Decorating the Axes<a class="headerlink" href="#decorating-the-axes" title="Permalink to this headline">#</a></h2>
 <p>To label the axes and add a title, we’ll use Pyplot functions <code class="docutils literal notranslate"><span class="pre">xlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">ylabel</span></code>, and <code class="docutils literal notranslate"><span class="pre">title</span></code>.  All of them take strings as arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -496,7 +651,7 @@ We can set the limits of the <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_33_0.png" src="_images/06_plotting_33_0.png" />
+<img alt="_images/06_plotting_32_0.png" src="_images/06_plotting_32_0.png" />
 </div>
 </div>
 <p>Now let’s add another important element, a legend that indicates which line is which.
@@ -516,7 +671,7 @@ Then we call <code class="docutils literal notranslate"><span class="pre">plt.le
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_35_0.png" src="_images/06_plotting_35_0.png" />
+<img alt="_images/06_plotting_34_0.png" src="_images/06_plotting_34_0.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> The orginal figure plots lines between the data points, but it also plots “markers” showing the location of each data point.  It is generally good practice to include markers, especially if data are not available for every year.</p>
@@ -524,12 +679,12 @@ Then we call <code class="docutils literal notranslate"><span class="pre">plt.le
 <p><strong>Exercise:</strong> In the original figure, the line labelled <code class="docutils literal notranslate"><span class="pre">'Christian'</span></code> is red and the line labeled <code class="docutils literal notranslate"><span class="pre">'Unaffiliated'</span></code> is grey.</p>
 <p>Find the online documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> and figure out how to use keyword arguments to specify colors.  Choose colors to (roughly) match the original figure.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">legend</span></code> function takes a keyword argument that speficies the location of the legend.  Read the documentation of this function and move the legend to the center left of the figure.</p>
-</div>
-<div class="section" id="sandwiches">
-<h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sandwiches">
+<h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">#</a></h2>
 <p>In a previous chapter we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “Why Americans pay more for lunch than Britons do” at <a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do</a>.</p>
 <p>The article includes this graph showing prices of several sandwiches in the two cities:</p>
-<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" /></p>
+<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png"  width="400">
 <p>As an exercise, let’s see if we can replicate this figure.
 Here’s the data from the article again: the names of the sandwiches and the price list for each city.</p>
 <div class="cell docutils container">
@@ -560,7 +715,7 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_43_0.png" src="_images/06_plotting_43_0.png" />
+<img alt="_images/06_plotting_42_0.png" src="_images/06_plotting_42_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">name_list</span></code> is a list of strings; Pyplot orders them from top to bottom, equally spaced.</p>
@@ -575,7 +730,7 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_45_0.png" src="_images/06_plotting_45_0.png" />
+<img alt="_images/06_plotting_44_0.png" src="_images/06_plotting_44_0.png" />
 </div>
 </div>
 <p>Or we can do the same thing more concisely by providing a <strong>format string</strong> as a positional argument.  You can read the documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> to learn more about format strings.</p>
@@ -590,7 +745,7 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_47_0.png" src="_images/06_plotting_47_0.png" />
+<img alt="_images/06_plotting_46_0.png" src="_images/06_plotting_46_0.png" />
 </div>
 </div>
 <p>I added a title at the same time.</p>
@@ -606,7 +761,7 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_49_0.png" src="_images/06_plotting_49_0.png" />
+<img alt="_images/06_plotting_48_0.png" src="_images/06_plotting_48_0.png" />
 </div>
 </div>
 <p>To connect the dots with lines, we’ll use <code class="docutils literal notranslate"><span class="pre">plt.hlines</span></code>, which draws horizontal lines.  It takes three arguments: a sequence of values on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, which are the sandwich names in this example, and two sequences of values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, which are the London prices and Boston prices.</p>
@@ -623,14 +778,14 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_51_0.png" src="_images/06_plotting_51_0.png" />
+<img alt="_images/06_plotting_50_0.png" src="_images/06_plotting_50_0.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> To finish off this example, add a legend that identifies the London and Boston prices.  Remember that you have to add a <code class="docutils literal notranslate"><span class="pre">label</span></code> keyword each time you call <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, and then call <code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>.</p>
 <p>Notice that the sandwiches in our figure are in the opposite order of the sandwiches in the original figure.  There is a Pyplot function that inverts the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis; see if you can find it and use it to reverse the order of the sandwich list.</p>
-</div>
-<div class="section" id="zipf-s-law">
-<h2>Zipf’s law<a class="headerlink" href="#zipf-s-law" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="zipf-s-law">
+<h2>Zipf’s Law<a class="headerlink" href="#zipf-s-law" title="Permalink to this headline">#</a></h2>
 <p>In the previous chapter we downloaded <em>War and Peace</em> from Project Gutenberg and counted the number of lines and words.
 Then we used a dictionary to count the number of unique words and the number of times each one appears.
 Now we’ll use those results to generate a “Zipf plot”, which shows the frequency of the words on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, ordered from the most common word to the least.</p>
@@ -647,8 +802,7 @@ Here are the results, which we will need again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_line</span> <span class="o">=</span> <span class="s2">&quot;CHAPTER I</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="n">last_line</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;End of the Project Gutenberg EBook of &quot;</span> <span class="o">+</span>
-             <span class="s2">&quot;War and Peace, by Leo Tolstoy</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">last_line</span> <span class="o">=</span> <span class="s2">&quot;*** END OF THE PROJECT GUTENBERG EBOOK WAR AND PEACE ***</span><span class="se">\n</span><span class="s2">&quot;</span>
 
 <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
@@ -671,9 +825,9 @@ Here are the results, which we will need again.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="frequencies-and-ranks">
-<h2>Frequencies and ranks<a class="headerlink" href="#frequencies-and-ranks" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="frequencies-and-ranks">
+<h2>Frequencies and Ranks<a class="headerlink" href="#frequencies-and-ranks" title="Permalink to this headline">#</a></h2>
 <p>In this section we’ll test Zipf’s law, which states that</p>
 <blockquote>
 <div><p>given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc.</p>
@@ -789,12 +943,12 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_80_0.png" src="_images/06_plotting_80_0.png" />
+<img alt="_images/06_plotting_79_0.png" src="_images/06_plotting_79_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="logarithmic-scales">
-<h2>Logarithmic scales<a class="headerlink" href="#logarithmic-scales" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="logarithmic-scales">
+<h2>Logarithmic scales<a class="headerlink" href="#logarithmic-scales" title="Permalink to this headline">#</a></h2>
 <p>The few most common words are very common, but the great majority of words are rare.  So that’s consistent with Zipf’s law, but Zipf’s law is more specific.  It claims that the frequencies should be inversely proportional to the ranks.  If that’s true, we can write:</p>
 <p><span class="math notranslate nohighlight">\(f = k / r\)</span></p>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> is the rank of a word, <span class="math notranslate nohighlight">\(f\)</span> is its frequency, and <span class="math notranslate nohighlight">\(k\)</span> is an unknown constant of proportionality.  If we take the log of both sides, we get this:</p>
@@ -813,7 +967,7 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_82_0.png" src="_images/06_plotting_82_0.png" />
+<img alt="_images/06_plotting_81_0.png" src="_images/06_plotting_81_0.png" />
 </div>
 </div>
 <p>And <code class="docutils literal notranslate"><span class="pre">plt.yscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis on a log scale.</p>
@@ -830,7 +984,7 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_84_0.png" src="_images/06_plotting_84_0.png" />
+<img alt="_images/06_plotting_83_0.png" src="_images/06_plotting_83_0.png" />
 </div>
 </div>
 <p>The result is not quite a straight line, but it is close.  We can get a sense of the slope by connecting the end points with a line.
@@ -877,7 +1031,7 @@ I’ll select the first and last elements from <code class="docutils literal not
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_90_0.png" src="_images/06_plotting_90_0.png" />
+<img alt="_images/06_plotting_89_0.png" src="_images/06_plotting_89_0.png" />
 </div>
 </div>
 <p>The slope of this line is the “rise over run”, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis divided by the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.</p>
@@ -910,8 +1064,11 @@ I’ll select the first and last elements from <code class="docutils literal not
 </div>
 <p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">log10</span></code> and <code class="docutils literal notranslate"><span class="pre">diff</span></code> to compute the run, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  Then divide the rise by the run to get the slope of the grey line.
 Is it close to -1, as Zipf’s law predicts?</p>
-</div>
-</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -935,36 +1092,48 @@ Is it close to -1, as Zipf’s law predicts?</p>
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="05_dictionaries.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Dictionaries</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="07_dataframes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DataFrames and Series</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="05_dictionaries.html" title="previous page">Dictionaries</a>
-    <a class='right-next' id="next-link" href="07_dataframes.html" title="next page">DataFrames and Series</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Allen B. Downey<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>

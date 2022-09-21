@@ -4,10 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>DataFrames and Series &#8212; Elements of Data Science</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -17,98 +20,113 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Distributions" href="08_distributions.html" />
     <link rel="prev" title="Plotting" href="06_plotting.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="README.html">
-   Elements of Data Science
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Elements of Data Science
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
-   Variables and values
+   Variables and Values
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_times.html">
-   Times and places
+   Times and Places
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_arrays.html">
-   Lists and arrays
+   Lists and Arrays
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_loops.html">
-   Loops and files
+   Loops and Files
   </a>
  </li>
  <li class="toctree-l1">
@@ -158,107 +176,181 @@
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/07_dataframes.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/07_dataframes.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/07_dataframes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ElementsOfDataScience"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/07_dataframes.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-the-data">
-   Reading the data
+   Reading the Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -273,12 +365,12 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary-statistics">
-   Summary statistics
+   Summary Statistics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#series-arithmetic">
-   Series arithmetic
+   Series Arithmetic
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -288,7 +380,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#boolean-series">
-   Boolean series
+   Boolean Series
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -298,7 +390,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#weighted-mean">
-   Weighted mean
+   Weighted Mean
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -308,17 +400,85 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>DataFrames and Series</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-the-data">
+   Reading the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series">
+   Series
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validation">
+   Validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-statistics">
+   Summary Statistics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series-arithmetic">
+   Series Arithmetic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histograms">
+   Histograms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-series">
+   Boolean Series
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering">
+   Filtering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weighted-mean">
+   Weighted Mean
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="dataframes-and-series">
-<h1>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="dataframes-and-series">
+<h1>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/07_dataframes.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/07_dataframes.ipynb">click here to download it</a>.</p>
 <p>This chapter introduces Pandas, which is a powerful library for working with data.  Pandas provides functions for reading and writing data files, exploring and analyzing data, and generating visualizations.  And it provides two new types for working with data, <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
@@ -334,8 +494,8 @@ This example will demonstrate important steps in almost any data science project
 <li><p>Considering possible sources of error and limitations in our conclusions.</p></li>
 </ol>
 <p>Let’s start by getting the data.</p>
-<div class="section" id="reading-the-data">
-<h2>Reading the data<a class="headerlink" href="#reading-the-data" title="Permalink to this headline">¶</a></h2>
+<section id="reading-the-data">
+<h2>Reading the Data<a class="headerlink" href="#reading-the-data" title="Permalink to this headline">#</a></h2>
 <p>We’ll use data from the National Survey of Family Growth (NSFG), which is available from the National Center for Health Statistics at <a class="reference external" href="https://www.cdc.gov/nchs/nsfg/index.htm">https://www.cdc.gov/nchs/nsfg/index.htm</a>.</p>
 <p>To download the data, you have to agree to the Data User’s Agreement at <a class="reference external" href="https://www.cdc.gov/nchs/data_access/ftp_dua.htm">https://www.cdc.gov/nchs/data_access/ftp_dua.htm</a>.
 You should read those terms carefully, but let me draw your attention to what I think is the most important one:</p>
@@ -358,8 +518,8 @@ Each variable represents responses to a question on the NSFG questionnaire.</p>
 </div>
 </div>
 <p>Pandas can read data in most common formats, including CSV, Excel, and fixed-width format, but it cannot read the data dictionary, which is in Stata format.
-For that, we’ll use a Python library called <code class="docutils literal notranslate"><span class="pre">parse_stata_dict</span></code>.</p>
-<p>From <code class="docutils literal notranslate"><span class="pre">parse_stata_dict</span></code>, we’ll import <code class="docutils literal notranslate"><span class="pre">parse_stata_dict</span></code>, which reads the data dictionary.</p>
+For that, we’ll use a Python library called <code class="docutils literal notranslate"><span class="pre">statadict</span></code>.</p>
+<p>From <code class="docutils literal notranslate"><span class="pre">statadict</span></code>, we’ll import <code class="docutils literal notranslate"><span class="pre">parse_stata_dict</span></code>, which reads the data dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statadict</span> <span class="kn">import</span> <span class="n">parse_stata_dict</span>
@@ -370,7 +530,7 @@ For that, we’ll use a Python library called <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7ff25831bdd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7f84a7b6e250&gt;
 </pre></div>
 </div>
 </div>
@@ -399,7 +559,7 @@ For that, we’ll use a Python library called <code class="docutils literal notr
 </div>
 </div>
 </div>
-<p>The result from <code class="docutils literal notranslate"><span class="pre">read_hdf()</span></code> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, which is the primary type Pandas uses to store data.
+<p>The result from <code class="docutils literal notranslate"><span class="pre">read_fwf()</span></code> is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, which is the primary type Pandas uses to store data.
 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">head()</span></code> that shows the first 5 rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -579,7 +739,8 @@ For that, we’ll use a Python library called <code class="docutils literal notr
 The first three rows have the same <code class="docutils literal notranslate"><span class="pre">CASEID</span></code>, so this respondent reported information about three pregnancies.</p>
 <p>The second column is <code class="docutils literal notranslate"><span class="pre">PREGORDR</span></code>, which indicates the order of the pregnancies for each respondent, starting from <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <p>We will learn more about the other variables as we go along.</p>
-<p>In addition to methods like <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> has several <strong>attributes</strong>, which are variables associated with a particular type.  For example, <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> has an attribute called <code class="docutils literal notranslate"><span class="pre">shape</span></code>, which is the number of rows and columns:</p>
+<p>In addition to methods like <code class="docutils literal notranslate"><span class="pre">head</span></code>, a <code class="docutils literal notranslate"><span class="pre">Dataframe</span></code> object has several <strong>attributes</strong>, which are variables associated with the object.
+For example, <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> has an attribute called <code class="docutils literal notranslate"><span class="pre">shape</span></code>, which is the number of rows and columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="o">.</span><span class="n">shape</span>
@@ -614,8 +775,7 @@ The first three rows have the same <code class="docutils literal notranslate"><s
 <p>The column names are stored in an <code class="docutils literal notranslate"><span class="pre">Index</span></code>, which is another Pandas type, similar to a list.</p>
 <p>Based on the column names, you might be able to guess what some of the variables are, but in general you have to read the documentation.</p>
 <p>When you work with datasets like the NSFG, it is important to read the documentation carefully. If you interpret a variable incorrectly, you can generate nonsense results and never realize it. So, before we start looking at data, let’s get familiar with the NSFG codebook, which describes every variable.</p>
-<p>Until recently, the NSFG codebook was available in an interactive online format.
-Unfortunately, it is no longer available, so we have to make due with the PDF file at <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf">https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf</a>, which contains a short description of each variable.</p>
+<p>You can download the codebook for this dataset from <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf">https://github.com/AllenDowney/ElementsOfDataScience/raw/master/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf</a>.</p>
 <p>If you search that document for “weigh at birth” you should find these variables related to birth weight.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">BIRTHWGT_LB1</span></code>: Birthweight in Pounds - 1st baby from this pregnancy</p></li>
@@ -623,9 +783,9 @@ Unfortunately, it is no longer available, so we have to make due with the PDF fi
 </ul>
 <p>There are similar variables for a 2nd or 3rd baby, in the case of twins or triplets.
 For now we will focus on the first baby from each pregnancy, and we will come back to the issue of multiple births.</p>
-</div>
-<div class="section" id="series">
-<h2>Series<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="series">
+<h2>Series<a class="headerlink" href="#series" title="Permalink to this headline">#</a></h2>
 <p>In many ways a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is like a Python dictionary, where the column names are the keys and the columns are the values.  You can select a column from a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> using the bracket operator, with a string as the key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,9 +830,9 @@ Name: BIRTHWGT_LB1, dtype: float64
 <li><p>Series: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html</a></p></li>
 </ul>
 <p>This documentation can be overwhelming; I don’t recommend trying to read it all now.  But you might want to skim it so you know where to look later.</p>
-</div>
-<div class="section" id="validation">
-<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">#</a></h2>
 <p>At this point we have identified the columns we need to answer the question and assigned them to variables named <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -799,9 +959,9 @@ Name: BIRTHWGT_LB1, dtype: int64
 </tbody>
 </table>
 <p>Use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to display the values in this column and how many times each value appears.  Are the results consistent with the codebook?</p>
-</div>
-<div class="section" id="summary-statistics">
-<h2>Summary statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary-statistics">
+<h2>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this headline">#</a></h2>
 <p>Another way to validate the data is with <code class="docutils literal notranslate"><span class="pre">describe</span></code>, which computes summary statistics like the mean, standard deviation, minimum, and maximum.</p>
 <p>Here are the results for <code class="docutils literal notranslate"><span class="pre">pounds</span></code>.</p>
 <div class="cell docutils container">
@@ -841,7 +1001,7 @@ For this variable, there are 6690 value that are not <code class="docutils liter
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">replace</span></code> takes a list of the values we want to replace and the value we want to replace them with.  <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> means we are getting the special value <code class="docutils literal notranslate"><span class="pre">NaN</span></code> from the NumPy library, which is imported as <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
 <p>The result from <code class="docutils literal notranslate"><span class="pre">replace()</span></code> is a new Series, which I assign to <code class="docutils literal notranslate"><span class="pre">pounds_clean</span></code>.
-If we run <code class="docutils literal notranslate"><span class="pre">describe</span></code> again, we see that <code class="docutils literal notranslate"><span class="pre">count</span></code> includes only the valid values.</p>
+If we run <code class="docutils literal notranslate"><span class="pre">describe</span></code> again, we see that <code class="docutils literal notranslate"><span class="pre">count</span></code> is smaller now because it includes only the valid values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds_clean</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -868,9 +1028,9 @@ It makes a big difference when you remove a few 99-pound babies!</p>
 <p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">describe</span></code> to summarize <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.<br />
 Then use <code class="docutils literal notranslate"><span class="pre">replace</span></code> to replace the special values 98 and 99 with NaN, and assign the result to <code class="docutils literal notranslate"><span class="pre">ounces_clean</span></code>.
 Run <code class="docutils literal notranslate"><span class="pre">describe</span></code> again.  How much does this cleaning affect the results?</p>
-</div>
-<div class="section" id="series-arithmetic">
-<h2>Series arithmetic<a class="headerlink" href="#series-arithmetic" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="series-arithmetic">
+<h2>Series Arithmetic<a class="headerlink" href="#series-arithmetic" title="Permalink to this headline">#</a></h2>
 <p>Now we want to combine <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces</span></code> into a single Series that contains total birth weight.
 Arithmetic operators work with Series objects; so, for example, to convert <code class="docutils literal notranslate"><span class="pre">pounds</span></code> to ounces, we could write</p>
 <p><code class="docutils literal notranslate"><span class="pre">pounds</span> <span class="pre">*</span> <span class="pre">16</span></code></p>
@@ -878,17 +1038,16 @@ Arithmetic operators work with Series objects; so, for example, to convert <code
 <p><code class="docutils literal notranslate"><span class="pre">pounds</span> <span class="pre">*</span> <span class="pre">16</span> <span class="pre">+</span> <span class="pre">ounces</span></code></p>
 <p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">pounds_clean</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces_clean</span></code> to compute the total birth weight expressed in kilograms (there are roughly 2.2 pounds per kilogram).  What is the mean birth weight in kilograms?</p>
 <p><strong>Exercise:</strong> For each pregnancy in the NSFG dataset, the variable <code class="docutils literal notranslate"><span class="pre">'AGECON'</span></code> encodes the respondent’s age at conception, and <code class="docutils literal notranslate"><span class="pre">'AGEPREG'</span></code> the respondent’s age at the end of the pregnancy.</p>
-<p>Both variables are recorded as integers with two implicit decimal places, so the value <code class="docutils literal notranslate"><span class="pre">2575</span></code> means that the respondent’s age was <code class="docutils literal notranslate"><span class="pre">25.75</span></code>.</p>
 <ul class="simple">
 <li><p>Read the documentation of these variables.  Are there any special values we have to deal with?</p></li>
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">'AGECON'</span></code> and <code class="docutils literal notranslate"><span class="pre">'AGEPREG'</span></code>, divide them by <code class="docutils literal notranslate"><span class="pre">100</span></code>, and assign them to variables named <code class="docutils literal notranslate"><span class="pre">agecon</span></code> and <code class="docutils literal notranslate"><span class="pre">agepreg</span></code>.</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">'AGECON'</span></code> and <code class="docutils literal notranslate"><span class="pre">'AGEPREG'</span></code> and assign them to variables named <code class="docutils literal notranslate"><span class="pre">agecon</span></code> and <code class="docutils literal notranslate"><span class="pre">agepreg</span></code>.</p></li>
 <li><p>Compute the difference, which is an estimate of the duration of the pregnancy.</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> to compute the mean duration and other summary statistics.</p></li>
 </ul>
-<p>If the mean length of pregnancy seems short, remember that this dataset includes all pregnancies, not just the ones that ended in live birth.</p>
-</div>
-<div class="section" id="histograms">
-<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h2>
+<p>Based on the results, it seems like this might not be a good way to estimate the duration of pregnancy. Why not?</p>
+</section>
+<section id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">#</a></h2>
 <p>Let’s get back to the original queston: what is the average birth weight for babies in the U.S.?<br />
 As an answer we <em>could</em> take the results from the previous section and compute the mean:</p>
 <div class="cell docutils container">
@@ -923,23 +1082,22 @@ And we can use Matplotlib to label the axes.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/07_dataframes_66_0.png" src="_images/07_dataframes_66_0.png" />
+<img alt="_images/07_dataframes_65_0.png" src="_images/07_dataframes_65_0.png" />
 </div>
 </div>
 <p>The keyword argument, <code class="docutils literal notranslate"><span class="pre">bins</span></code>, tells <code class="docutils literal notranslate"><span class="pre">hist</span></code> to divide the range of weights into 30 intervals, called <strong>bins</strong>, and count how many values fall in each bin.
 The <code class="docutils literal notranslate"><span class="pre">x</span></code> axis is birth weight in pounds; the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis is the number of births in each bin.</p>
 <p>The distribution looks a little like a bell curve, but the tail is longer on the left than on the right; that is, there are more light babies than heavy babies.
 That makes sense, because the distribution includes some babies that were born preterm.</p>
-<p><strong>Exercise:</strong> <code class="docutils literal notranslate"><span class="pre">hist</span></code> takes keyword arguments that specify the type and appearance of the histogram.  Find the documentation of <code class="docutils literal notranslate"><span class="pre">hist</span></code> and see if you can figure out how to plot the histogram as an unfilled line.</p>
+<p><strong>Exercise:</strong> <code class="docutils literal notranslate"><span class="pre">hist</span></code> takes keyword arguments that specify the type and appearance of the histogram.  Find the documentation of <code class="docutils literal notranslate"><span class="pre">hist</span></code> and see if you can figure out how to plot the histogram as an unfilled line against a background with no grid lines.</p>
 <p><strong>Exercise:</strong> As we saw in a previous exercise, the NSFG dataset includes a column called <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> that records age at conception for each pregnancy.</p>
 <ul class="simple">
-<li><p>Select this column from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and divide by 100 to convert it to years.</p></li>
-<li><p>Plot the histogram of these values with 20 bins.</p></li>
+<li><p>Select this column from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and plot the histogram of the values with 20 bins.</p></li>
 <li><p>Label the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> axes appropriately.</p></li>
 </ul>
-</div>
-<div class="section" id="boolean-series">
-<h2>Boolean series<a class="headerlink" href="#boolean-series" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="boolean-series">
+<h2>Boolean Series<a class="headerlink" href="#boolean-series" title="Permalink to this headline">#</a></h2>
 <p>We have seen that the distribution of birth weights is <strong>skewed</strong> to the left; that is, there are more light babies than heavy ones and they are farther from the mean.
 That’s because preterm babies tend to be lighter.  The most common duration for pregnancy is 39 weeks, which is “full term”; “preterm” is usually defined to be less than 37 weeks.</p>
 <p>To see which babies are preterm, we can use <code class="docutils literal notranslate"><span class="pre">PRGLNGTH</span></code>, which records pregnancy length in weeks and compute it to <code class="docutils literal notranslate"><span class="pre">37</span></code>.</p>
@@ -974,7 +1132,7 @@ Name: PRGLNGTH, dtype: bool
 </div>
 </div>
 </div>
-<p>If you compute the sum of a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>, it treats <code class="docutils literal notranslate"><span class="pre">True</span></code> as 1 and <code class="docutils literal notranslate"><span class="pre">False</span></code> as 0, so the sum is the number of <code class="docutils literal notranslate"><span class="pre">True</span></code> values, which is the number of preterm babies, about 3700.</p>
+<p>If you compute the sum of a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code>, it treats <code class="docutils literal notranslate"><span class="pre">True</span></code> as 1 and <code class="docutils literal notranslate"><span class="pre">False</span></code> as 0, so the sum is the number of <code class="docutils literal notranslate"><span class="pre">True</span></code> values, which is the number of preterm babies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preterm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1036,13 +1194,13 @@ We can create another Boolean <code class="docutils literal notranslate"><span c
 <li><p><code class="docutils literal notranslate"><span class="pre">|</span></code>, which is the OR operator; for example <code class="docutils literal notranslate"><span class="pre">live</span> <span class="pre">|</span> <span class="pre">preterm</span></code> is true if either <code class="docutils literal notranslate"><span class="pre">live</span></code> is true, or <code class="docutils literal notranslate"><span class="pre">preterm</span></code> is true, or both.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">~</span></code>, which is the NOT operator; for example <code class="docutils literal notranslate"><span class="pre">~live</span></code> is true if <code class="docutils literal notranslate"><span class="pre">live</span></code> is false or <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
 </ul>
-<p>The logical operators treat <code class="docutils literal notranslate"><span class="pre">NaN</span></code> the same as False.  So you should be careful about using the NOT operator with a Series that contains <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.
+<p>The logical operators treat <code class="docutils literal notranslate"><span class="pre">NaN</span></code> the same as <code class="docutils literal notranslate"><span class="pre">False</span></code>.  So you should be careful about using the NOT operator with a Series that contains <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.
 For example, <code class="docutils literal notranslate"><span class="pre">~preterm</span></code> would include not just full term pregnancies, but also pregnancies with unknown length.</p>
 <p><strong>Exercise:</strong> Of all pregnancies, what fraction are full term, that is, 37 weeks or more?
 Of all live births, what fraction are full term?</p>
-</div>
-<div class="section" id="filtering">
-<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">#</a></h2>
 <p>We can use a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> as a filter; that is, we can select only rows that satisfy a condition or meet some criterion.
 For example, we can use <code class="docutils literal notranslate"><span class="pre">preterm</span></code> and the bracket operator to select values from <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code>, so <code class="docutils literal notranslate"><span class="pre">preterm_weight</span></code> gets birth weights for preterm babies.</p>
 <div class="cell docutils container">
@@ -1120,9 +1278,9 @@ Of all live births, what fraction are multiple births?</p>
 Of all single births, what fraction are preterm?
 Of all multiple births, what fraction are preterm?</p>
 <p><strong>Exercise:</strong> What is the average birth weight for live, single, full-term births?</p>
-</div>
-<div class="section" id="weighted-mean">
-<h2>Weighted mean<a class="headerlink" href="#weighted-mean" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="weighted-mean">
+<h2>Weighted Mean<a class="headerlink" href="#weighted-mean" title="Permalink to this headline">#</a></h2>
 <p>We are almost ready to compute the average birth weight, but there’s one more problem we have to solve: oversampling.</p>
 <p>The NSFG is not exactly representative of the U.S. population.  By design, some groups are more likely to appear in the sample than others; that is, they are <strong>oversampled</strong>.  Oversampling helps to ensure that you have enough people in every subgroup to get reliable statistics, but it makes data analysis a little more complicated.</p>
 <p>Each pregnancy in the dataset has a <strong>sampling weight</strong> that indicates how many pregnancies it represents.  In <code class="docutils literal notranslate"><span class="pre">nsfg</span></code>, the sampling weight is stored in a column named <code class="docutils literal notranslate"><span class="pre">wgt2015_2017</span></code>.
@@ -1204,9 +1362,9 @@ To help with that, we’ll use two <code class="docutils literal notranslate"><s
 </div>
 <p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">selected</span></code>, <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code>, and <code class="docutils literal notranslate"><span class="pre">sampling_weight</span></code> to compute the weighted mean of birth weight for live, single, full term births.</p>
 <p>You should find that the weighted mean is a little higher than the unweighted mean we computed in the previous section.  That’s because the groups that are oversampled in the NSFG tend to have lighter babies, on average.</p>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>This chapter poses what seems like a simple question: what is the average birth weight of babies in the United States?</p>
 <p>To answer it, we found an appropriate dataset and read the files.  Then we validated the data and dealt with special values, missing data, and errors.
 To explore the data, we used <code class="docutils literal notranslate"><span class="pre">value_counts</span></code>, <code class="docutils literal notranslate"><span class="pre">hist</span></code>, <code class="docutils literal notranslate"><span class="pre">describe</span></code>, and other Pandas methods.
@@ -1214,8 +1372,8 @@ And to select relevant data, we used Boolean <code class="docutils literal notra
 <p>Along the way, we had to think more about the question.  What do we mean by “average”, and which babies should we include?  Should we include all live births or exclude preterm babies or multiple births?</p>
 <p>And we had to think about the sampling process.  By design, the NSFG respondents are not representative of the U.S. population, but we can use sampling weights to correct for this effect.</p>
 <p>Even a simple question can be a challenging data science project.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1239,36 +1397,48 @@ And to select relevant data, we used Boolean <code class="docutils literal notra
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="06_plotting.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Plotting</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="08_distributions.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Distributions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="06_plotting.html" title="previous page">Plotting</a>
-    <a class='right-next' id="next-link" href="08_distributions.html" title="next page">Distributions</a>
-
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Allen B. Downey<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
 
-
-    
   </body>
 </html>
