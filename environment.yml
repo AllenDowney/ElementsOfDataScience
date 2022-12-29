@@ -9,7 +9,6 @@ dependencies:
   - seaborn
   - pandas
   - lxml
-  - sympy
   - xlrd
   - pytables
   - scipy
@@ -19,6 +18,4 @@ dependencies:
   - pip
   - pip:
     - empiricaldist
-
-
 

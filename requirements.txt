@@ -1,9 +1,11 @@
 # these versions match Colab as of 2022-12-29
+geopandas
 jupyter
-numpy==1.21
+numpy==1.22
 matplotlib
 plotly
 seaborn
+shapely
 tables
 scipy==1.7
 statsmodels==0.12
