@@ -1,0 +1,10 @@
+# these versions match Colab as of 2022-12-29
+jupyter
+numpy==1.21
+matplotlib
+plotly
+seaborn
+tables
+scipy==1.7
+statsmodels==0.12
+
