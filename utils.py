@@ -170,7 +170,7 @@ def count_by_year(gss, varname):
     # zeros are during years when the question was not asked.
     count = count.replace(0, np.nan).dropna()
     return count
-    
+
 def fill_missing(df, varname, badvals=[98, 99]):
     """Fill missing data with random values.
 
