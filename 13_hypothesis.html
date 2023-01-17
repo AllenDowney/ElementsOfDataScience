@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Resampling and Logistic Regression" href="resample_logit.html" />
     <link rel="prev" title="Bootstrap Sampling" href="12_bootstrap.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -109,7 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -173,6 +179,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -350,13 +368,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#peanut-allergies">
-   Peanut Allergies
+  <a class="reference internal nav-link" href="#testing-medical-treatments">
+   Testing Medical Treatments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#p-values">
-   p-values
+  <a class="reference internal nav-link" href="#computing-p-values">
+   Computing p-values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -409,13 +427,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#peanut-allergies">
-   Peanut Allergies
+  <a class="reference internal nav-link" href="#testing-medical-treatments">
+   Testing Medical Treatments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#p-values">
-   p-values
+  <a class="reference internal nav-link" href="#computing-p-values">
+   Computing p-values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -462,18 +480,19 @@ title="Print to PDF"
 <h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/13_hypothesis.ipynb">click here to download it</a>.</p>
-<p>This chapter introduces hypothesis testing, which has been a controversial topic in the last decade or so.
-What I present here is different from what you might see in a statistics book.
+<p>This chapter introduces statistical hypothesis testing, which is such a contentious topic in the history of statistics, it’s hard to provide a simple definition.
+Instead, I’ll start with an example, present the problem hypothesis testing is intended to solve, and then show a solution.</p>
+<p>The solution I’ll show is different from what you might find in a statistics book.
 Instead of mathematical analysis, we will use computational simulations.
 This approach has two advantages and one disadvantage:</p>
 <ul class="simple">
-<li><p>PRO: The standard statistics curriculum includes many different tests, and many people find it hard to remember which one to use. In my opinion, simulation makes it clearer that there is only one testing framework.</p></li>
-<li><p>PRO: Simulations make modeling decision explicit.  All statistical methods are based on models, but when we use mathematical methods, it is easy to forget the assumptions they are based on. With computation, the assumptions are more visible, and it is easier to try different models.</p></li>
-<li><p>CON: Simulation uses a lot of computation. Some of the examples in this notebook take several seconds to run and the results are only approximate. For some problems, there are analytic methods that are faster and more accurate.</p></li>
+<li><p>Advantage: The standard statistics curriculum includes many different tests, and many people find it hard to remember which one to use. In my opinion, simulation makes it clearer that there is only one testing framework.</p></li>
+<li><p>Advantage: Simulations make modeling decision explicit.  All statistical methods are based on models, but when we use mathematical methods, it is easy to forget the assumptions they are based on. With computation, the assumptions are more visible, and it is easier to try different models.</p></li>
+<li><p>Disadvantage: Simulation uses a lot of computation. Some of the examples in this notebook take several seconds to run and the results are only approximate. For some problems, there are analytic methods that are faster and more accurate.</p></li>
 </ul>
 <p>The examples in this chapter include results from a clinical trial related to peanut allergies, and survey data from the National Survey of Family Growth (NSFG) and the Behavioral Risk Factor Surveillance System (BRFSS).</p>
-<section id="peanut-allergies">
-<h2>Peanut Allergies<a class="headerlink" href="#peanut-allergies" title="Permalink to this headline">#</a></h2>
+<section id="testing-medical-treatments">
+<h2>Testing Medical Treatments<a class="headerlink" href="#testing-medical-treatments" title="Permalink to this headline">#</a></h2>
 <p>The LEAP study was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies (see <a class="reference external" href="http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA">http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA</a>).
 The subjects were infants who were at high risk of developing peanut allergies because they had been diagnosed with other food allergies.
 Over a period of several years, half of the subjects were periodically given a snack containing peanuts; the other half were given no peanuts at all.</p>
@@ -624,7 +643,7 @@ Here’s the list for the treatment group.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_27_0.png" src="_images/13_hypothesis_27_0.png" />
+<img alt="_images/13_hypothesis_26_0.png" src="_images/13_hypothesis_26_0.png" />
 </div>
 </div>
 <p>Remember that these simulations are based on the assumption that the risk is the same for both groups, so we expect the relative risk to be near 1 most of the time.
@@ -633,8 +652,8 @@ And it is.</p>
 <p>But the relative risk in the actual experiment was 0.18, and we never see a result as small as that in the simulated experiment.
 We can conclude that the relative risk we saw is unlikely if the risk is actually the same in both groups.</p>
 </section>
-<section id="p-values">
-<h2>p-values<a class="headerlink" href="#p-values" title="Permalink to this headline">#</a></h2>
+<section id="computing-p-values">
+<h2>Computing p-values<a class="headerlink" href="#computing-p-values" title="Permalink to this headline">#</a></h2>
 <p>Now suppose that in addition to the treatment and control groups, the experiment included a placebo group that was given a snack that contained no peanuts.
 Suppose this group was the same size as the others, and 42 of the subjects developed peanut allergies.</p>
 <p>To be clear, there was no third group, and I made up these numbers, but let’s see how this hypothetical works out.
@@ -814,7 +833,7 @@ Here are the first few rows.</p>
 </table>
 </div></div></div>
 </div>
-<p>I’ll use the <code class="docutils literal notranslate"><span class="pre">OUTCOME</span></code> column to select pregnancies that ended with a live birth.</p>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">OUTCOME</span></code> column to select pregnancies that ended with a live birth.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">live</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;OUTCOME&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -828,7 +847,7 @@ Here are the first few rows.</p>
 </div>
 </div>
 </div>
-<p>And I’ll use <code class="docutils literal notranslate"><span class="pre">PRGLNGTH</span></code> to select babies that were born full term, that is, during or after the 37th week of pregnancy.</p>
+<p>And use <code class="docutils literal notranslate"><span class="pre">PRGLNGTH</span></code> to select babies that were born full term, that is, during or after the 37th week of pregnancy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">37</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">48</span><span class="p">)</span>
@@ -866,11 +885,12 @@ Here are the first few rows.</p>
 </div>
 </div>
 </div>
-<p>We can use <code class="docutils literal notranslate"><span class="pre">loc</span></code> to select pregnancy lengths for the first babies and others.</p>
+<p>Now we can select pregnancy lengths for the first babies and others.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_first</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">first</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
-<span class="n">length_other</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">other</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
+<span class="n">length_first</span> <span class="o">=</span> <span class="n">length</span><span class="p">[</span><span class="n">first</span><span class="p">]</span>
+<span class="n">length_other</span> <span class="o">=</span> <span class="n">length</span><span class="p">[</span><span class="n">other</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -908,9 +928,9 @@ To answer that question, let’s imagine a world where there is no difference in
 As always with modeling decisions, there are many options.  A simple one is to combine the two groups and compute the mean and standard deviation of pregnancy length, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">live</span><span class="o">&amp;</span><span class="n">fullterm</span><span class="p">,</span> <span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">length</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">std</span> <span class="o">=</span> <span class="n">length</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_live_full</span> <span class="o">=</span> <span class="n">length</span><span class="p">[</span><span class="n">live</span><span class="o">&amp;</span><span class="n">fullterm</span><span class="p">]</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">length_live_full</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">length_live_full</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 <span class="n">mean</span><span class="p">,</span> <span class="n">std</span>
 </pre></div>
 </div>
@@ -970,7 +990,7 @@ Here are the simulated results with sample size <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_65_0.png" src="_images/13_hypothesis_65_0.png" />
+<img alt="_images/13_hypothesis_64_0.png" src="_images/13_hypothesis_64_0.png" />
 </div>
 </div>
 <p>The center of this distribution is near zero, which makes sense if the distribution in both group is the same.
@@ -978,18 +998,18 @@ Just by chance, we sometimes see differences as big as 0.1 weeks, but in 1000 si
 <p>Based on this result, we can pretty much rule out the possibility that the difference we saw is due to random sampling.
 But we should remember that there are other possible sources of error.  For one, pregnancy lengths in the NSFG are self-reported.  When the respondents are interviewed, their recollection of first babies might be less accurate than their recollection of more recent babies.  Or the estimation of pregnancy length might be less accurate with less experienced mothers.</p>
 <p>A correspondent of mine, who knows more than me about giving birth, suggested yet another possibility.  If a first baby is born by <a class="reference external" href="https://en.wikipedia.org/wiki/Caesarean_section">Caesarean section</a>, it is more likely that subsequent deliveries will be scheduled, and less likely that they will go much past 39 weeks.  So that could bring the average down for non-first babies.</p>
-<p>In summary, the results in this section suggest that the observed difference is unlikely to be due to chance, but there are still several other possible explanations.</p>
+<p>In summary, the results in this section suggest that the observed difference is unlikely to be due to chance, but there are other possible explanations.</p>
 </section>
 <section id="the-hypothesis-testing-framework">
 <h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Permalink to this headline">#</a></h2>
 <p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/hypothesis_testing.png" /></p>
-<p>Using data from an experiment, we compute a <strong>test statistic</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Test_statistic">https://en.wikipedia.org/wiki/Test_statistic</a>).  In the peanut allergy example, the test statistic is relative risk.  In the pregnancy length example, it is the difference in the means.  In both cases, the test statistic quantifies the size of the observed effect, denoted <span class="math notranslate nohighlight">\(\delta^*\)</span> in the diagram.</p>
+<p>Using data from an experiment, we compute the observed <strong>test statistic</strong>, denoted <span class="math notranslate nohighlight">\(\delta^*\)</span> in the diagram, which quantifies the size of the observed effect.  In the peanut allergy example, the test statistic is relative risk.  In the pregnancy length example, it is the difference in the means.</p>
 <p>Then we build a model of a world where the effect does not exist.
-This model is called the <strong>null hypothesis</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Exclusion_of_the_null_hypothesis">https://en.wikipedia.org/wiki/Exclusion_of_the_null_hypothesis</a>) and denoted <span class="math notranslate nohighlight">\(H_0\)</span>.
+This model is called the <strong>null hypothesis</strong> and denoted <span class="math notranslate nohighlight">\(H_0\)</span>.
 In the peanut allergy example, the model assumes that the risk is the same in both groups.  In the pregnancy example, it assumes that the lengths are drawn from the same normal distribution.</p>
 <p>Next we use the model to simulate the experiment many times.
-Each simulation generates a dataset which we use to compute the test statistic, <span class="math notranslate nohighlight">\(\delta\)</span>.
+Each simulation generates a dataset which we use to compute a test statistic, <span class="math notranslate nohighlight">\(\delta\)</span>.
 Finally, we collect the test statistics from the simulations and compute a p-value, which is the probability under the null hypothesis of seeing a test statistic as big as the observed effect, <span class="math notranslate nohighlight">\(\delta*\)</span>.</p>
 <p>If the p-value is small, we can usually rule out the possibility that the observed effect is due to random variation.
 But often there are other explanations we can’t rule out, including measurement error and unrepresentative sampling.</p>
@@ -1027,7 +1047,7 @@ The return value is the difference in means between the groups.</p>
 </div>
 <p><strong>Exercise:</strong> Using this function to run 1000 simulations of the null hypothesis and save the results as <code class="docutils literal notranslate"><span class="pre">diff2</span></code>.  Make a KDE plot to compare the distribution of <code class="docutils literal notranslate"><span class="pre">diff2</span></code> to the results from the normal model, <code class="docutils literal notranslate"><span class="pre">diff</span></code>.</p>
 <p>Compute the probability of seeing a difference as big as <code class="docutils literal notranslate"><span class="pre">diff_actual</span></code>.  Is this p-value consistent with the results we got with the normal model?</p>
-<p><strong>Exercise:</strong> Are first babies more likely to be <em>light</em>?  To find out, we can use the birth weight data from the NSFG.  The variables we need use special codes to represent missing data, so I’ll replace them with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p><strong>Exercise:</strong> Are first babies more likely to be <em>light</em>?  To find out, we can use the birth weight data from the NSFG.  The variables we need use special codes to represent missing data, so let’s replace them with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT_LB1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1073,8 +1093,8 @@ Under the null hypothesis, how often does the difference in means exceed the act
 </section>
 <section id="testing-correlation">
 <h2>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Permalink to this headline">#</a></h2>
-<p>The method we used in the previous section is called a <strong>permutation test</strong> because “permutation” is another word for shuffling (see <a class="reference external" href="https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests">https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests</a>).
-Permutation tests are also useful for testing whether an observed correlation might be do to chance.</p>
+<p>The method we used in the previous section is called a <strong>permutation test</strong> because we permuted the pregnancy lengths before dividing them into groups (“permute” is another word for shuffle).
+As another example, in this section we’ll use a permutation tests to check whether an observed correlation might be due to chance.</p>
 <p>As an example, let’s look again at the correlations we computed in Chapter 9, using data from the Behavioral Risk Factor Surveillance System (BRFSS).
 The following cell reads the data.</p>
 <div class="cell docutils container">
@@ -1278,7 +1298,7 @@ Now we can use this function to generate a sample of correlations with shuffled 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_113_0.png" src="_images/13_hypothesis_113_0.png" />
+<img alt="_images/13_hypothesis_112_0.png" src="_images/13_hypothesis_112_0.png" />
 </div>
 </div>
 <p>The center of the distribution is near 0, and the largest values (positive or negative) are around 0.005.
@@ -1306,7 +1326,7 @@ We can do better by testing a regression model.</p>
 In this section we’ll apply the same method to regression models.</p>
 <p>As an example, we’ll use NSFG data to explore the relationship between a mother’s age and her baby’s birth weight.</p>
 <p>In previous sections we computed birth weight and a Boolean variable that identifies first babies.
-Now I’ll store them as columns in <code class="docutils literal notranslate"><span class="pre">nsfg</span></code>, so we can use them with StatsModels.</p>
+Now we’ll store them as columns in <code class="docutils literal notranslate"><span class="pre">nsfg</span></code>, so we can use them with StatsModels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;BIRTHWGT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">birthwgt</span>
@@ -1315,7 +1335,7 @@ Now I’ll store them as columns in <code class="docutils literal notranslate"><
 </div>
 </div>
 </div>
-<p>I’ll select the subset of the rows that represent live, full-term births.</p>
+<p>We can select the subset of the rows that represent live, full-term births, and make a copy so we can modify the subset without affecting the original.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1330,9 +1350,8 @@ Now I’ll store them as columns in <code class="docutils literal notranslate"><
 </div>
 </div>
 </div>
-<p>I tried a few different ways to visualize the relationship between mother’s age and birth weight, including a scatter plot and a violin plot.
-The one that worked best is a box plot with mother’s age grouped into 3-year bins.</p>
-<p>I used <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> to make the bin boundaries, and <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> to put the values from <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> into bins.</p>
+<p>To visualize the relationship between mother’s age and birth weight, we’ll use a box plot with mother’s age grouped into 3-year bins.
+We can use <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> to make the bin boundaries, and <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> to put the values from <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> into bins.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -1357,7 +1376,7 @@ The one that worked best is a box plot with mother’s age grouped into 3-year b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_123_0.png" src="_images/13_hypothesis_123_0.png" />
+<img alt="_images/13_hypothesis_122_0.png" src="_images/13_hypothesis_122_0.png" />
 </div>
 </div>
 <p>It looks like the average birth weight is highest if the mother is 25-31 years old, and lower if she is younger or older.
@@ -1564,7 +1583,7 @@ dtype: float64
 <p>When we use a quadratic model to control for the age effect, the remaining difference between first babies and others is smaller again, about 0.10 pounds.</p>
 <p>One of the warning signs of a spurious relationship between two variables is that the effect gradually disappears as you add control variables.
 So we should wonder whether the remaining effect might be due to chance.
-To find out, I’ll use the following function, which simulates a world where there is no difference in weight between first babies and others.
+To find out, we’ll use the following function, which simulates a world where there is no difference in weight between first babies and others.
 It takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles the <code class="docutils literal notranslate"><span class="pre">FIRST</span></code> column, runs the regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, and returns the estimated difference.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1636,7 +1655,7 @@ We saw an example with the BRFSS dataset, where the correlations we tested were 
 <li><p>We used regression models to explore the maternal age effect on birth weight.  To see whether the effect might be due to chance, we used permutation to model the null hypothesis and <span class="math notranslate nohighlight">\(R^2\)</span> as a test statistic.</p></li>
 <li><p>Finally, we explored the possibility that the first baby effect is actually an indirect maternal age effect.  After controlling for the mother’s age, we tested whether the remaining difference between first babies and others might happen by chance. We used permutation to model the null hypothesis and the estimated slope as a test statistic.</p></li>
 </ol>
-<p>As an exercise, below, you can use the same methods to explore the paternal age effect.</p>
+<p>As a final exercise, below, you can use the same methods to explore the paternal age effect.</p>
 <p><strong>Exercise:</strong> A paternal age effect is a relationship between the age of a father and a variety of outcomes for their children (see <a class="reference external" href="https://en.wikipedia.org/wiki/Paternal_age_effect">https://en.wikipedia.org/wiki/Paternal_age_effect</a>).  There is some evidence that young fathers and old fathers tend to have lighter babies than fathers in the middle.  Let’s see if that’s true for the babies in the NSFG dataset.
 The <code class="docutils literal notranslate"><span class="pre">HPAGELB</span></code> column encodes the father’s age.  Here are the values, after replacing the codes for missing data with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <div class="cell docutils container">
@@ -1686,7 +1705,7 @@ Name: HPAGELB, dtype: int64
 </tr>
 </tbody>
 </table>
-<p>I’ll create a new column that’s true for the fathers in the youngest and oldest groups.</p>
+<p>Let’s create a new column that’s true for the fathers in the youngest and oldest groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;YO_DAD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
@@ -1752,6 +1771,13 @@ Run this model again with <code class="docutils literal notranslate"><span class
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Bootstrap Sampling</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="resample_logit.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Resampling and Logistic Regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

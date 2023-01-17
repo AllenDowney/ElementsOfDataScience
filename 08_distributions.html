@@ -110,7 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -174,6 +179,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -381,8 +398,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#income">
-   Income
+  <a class="reference internal nav-link" href="#comparing-incomes">
+   Comparing Incomes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -391,8 +408,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-density-functions">
-   Probability Density Functions
+  <a class="reference internal nav-link" href="#kernel-density-estimation">
+   Kernel Density Estimation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -450,8 +467,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#income">
-   Income
+  <a class="reference internal nav-link" href="#comparing-incomes">
+   Comparing Incomes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -460,8 +477,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-density-functions">
-   Probability Density Functions
+  <a class="reference internal nav-link" href="#kernel-density-estimation">
+   Kernel Density Estimation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -522,8 +539,8 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>More generally, there can be any number of values, the values can be any type, and the probabilities do not have to be equal.</p>
-<p>To represent distributions in Python, we will use a library called <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code>, for “empirical distribution”, which means it is based on data rather than a mathematical formula.</p>
+<p>More generally, a distributions can have any number of values, the values can be any type, and the probabilities do not have to be equal.</p>
+<p>To represent distributions in Python, we will use a library called <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code>, for “empirical distribution”, where “empirical” means it is based on data rather than a mathematical formula.</p>
 <p><code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code> provides an object called <code class="docutils literal notranslate"><span class="pre">Pmf</span></code>, which stands for “probability mass function”.
 A <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> object contains a set of possible outcomes and their probabilities.</p>
 <p>For example, here’s a <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> that represents the outcome of rolling a six-sided die:</p>
@@ -545,15 +562,65 @@ We can display the result like this.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>probs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.166667</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.166667</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.166667</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.166667</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.166667</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.166667</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>A <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> object is a specialized version of a Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>, so it provides all of the attributes and methods of a <code class="docutils literal notranslate"><span class="pre">Series</span></code>, plus some additional methods we’ll see soon.</p>
 </section>
 <section id="the-general-social-survey">
 <h2>The General Social Survey<a class="headerlink" href="#the-general-social-survey" title="Permalink to this headline">#</a></h2>
-<p>The examples in this chapter are based on a new dataset, the General Social Survey (GSS).
-The GSS has run annually since 1972; it surveys a representative sample of adult residents of the U.S. and asks questions about demographics, personal history, and beliefs about social and political issues.</p>
-<p>It is widely used by politicians, policy makers, and researchers, including me.
-The GSS dataset contains hundreds of columns; using an online tool call <a class="reference external" href="https://gssdataexplorer.norc.org/">GSS Explorer</a> I’ve selected just a few and created a data extract.</p>
+<p>Now we’ll use <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> objects to represent distributions of values from a new dataset, the General Social Survey (GSS).
+The GSS surveys a representative sample of adult residents of the U.S. and asks questions about demographics, personal history, and beliefs about social and political issues.
+It is widely used by politicians, policy makers, and researchers.</p>
+<p>The GSS dataset contains hundreds of columns; using an online tool call <a class="reference external" href="https://gssdataexplorer.norc.org/">GSS Explorer</a> I’ve selected just a few and created a subset of the data, called an <strong>extract</strong>.</p>
 <p>Like the NSFG data we used in the previous chapter, the GSS data is stored in a fixed-width format, described by a Stata data dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,6 +662,11 @@ The GSS dataset contains hundreds of columns; using an online tool call <a class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64814, 8)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with one row for each respondent, and one column for each variable.
 Here are the first few rows.</p>
@@ -604,16 +676,131 @@ Here are the first few rows.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>YEAR</th>
+      <th>ID_</th>
+      <th>AGE</th>
+      <th>EDUC</th>
+      <th>SEX</th>
+      <th>GUNLAW</th>
+      <th>GRASS</th>
+      <th>REALINC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1972</td>
+      <td>1</td>
+      <td>23</td>
+      <td>16</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>18951.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1972</td>
+      <td>2</td>
+      <td>70</td>
+      <td>10</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>24366.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1972</td>
+      <td>3</td>
+      <td>48</td>
+      <td>12</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>24366.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1972</td>
+      <td>4</td>
+      <td>27</td>
+      <td>17</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>30458.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1972</td>
+      <td>5</td>
+      <td>61</td>
+      <td>12</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>50763.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<p>You can probably guess what the variables are, and I’ll explain them as we go along.
-But if you want more information, you can always read the codebook at <a class="reference external" href="https://gssdataexplorer.norc.org/projects/52787/variables/vfilter">https://gssdataexplorer.norc.org/projects/52787/variables/vfilter</a>.</p>
+<p>I’ll explain these variables as we go along, but if you want more information, you can read the online documentation at <a class="reference external" href="https://gssdataexplorer.norc.org/variables/vfilter">https://gssdataexplorer.norc.org/variables/vfilter</a>.</p>
 </section>
 <section id="distribution-of-education">
 <h2>Distribution of Education<a class="headerlink" href="#distribution-of-education" title="Permalink to this headline">#</a></h2>
-<p>To get started with this dataset, let’s look at the distribution of <code class="docutils literal notranslate"><span class="pre">EDUC</span></code>, which records the number of years of education for each respondent.  First I’ll select a column from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to see what values are in it.</p>
+<p>To get started with this dataset, let’s look at the distribution of <code class="docutils literal notranslate"><span class="pre">EDUC</span></code>, which records the number of years of education for each respondent.  First we’ll select a column from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to see what values are in it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;EDUC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       165
+1        47
+2       152
+3       257
+4       319
+5       402
+6       828
+7       879
+8      2724
+9      2083
+10     2880
+11     3743
+12    19663
+13     5360
+14     7160
+15     2910
+16     8355
+17     1967
+18     2384
+19      920
+20     1439
+98       73
+99      104
+Name: EDUC, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -642,15 +829,23 @@ We’ll use <code class="docutils literal notranslate"><span class="pre">replace
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_33_0.png" src="_images/08_distributions_33_0.png" />
+</div>
 </div>
 <p>Based on the histogram, we can see the general shape of the distribution and the central tendency – it looks like the peak is near 12 years of education.
-But a histogram is not the best way to visualize this distribution.</p>
-<p>An alternative is a <code class="docutils literal notranslate"><span class="pre">Pmf</span></code>.
-<code class="docutils literal notranslate"><span class="pre">Pmf</span></code> provides a function called <code class="docutils literal notranslate"><span class="pre">from_seq</span></code> that takes any kind of sequence – like a list, tuple, or Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> – and computes the distribution of the values in the sequence.</p>
+But a histogram is not the best way to visualize this distribution because it obscures some important details.</p>
+<p>An alternative is to use a <code class="docutils literal notranslate"><span class="pre">Pmf</span></code>.
+The function <code class="docutils literal notranslate"><span class="pre">Pmf.from_seq</span></code> takes any kind of sequence – like a list, tuple, or Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> – and computes the distribution of the values in the sequence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_educ</span> <span class="o">=</span> <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">educ</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">pmf_educ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>empiricaldist.empiricaldist.Pmf
 </pre></div>
 </div>
 </div>
@@ -663,6 +858,44 @@ But a histogram is not the best way to visualize this distribution.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>probs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>165</td>
+    </tr>
+    <tr>
+      <th>1.0</th>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>2.0</th>
+      <td>152</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>In this dataset, there are <code class="docutils literal notranslate"><span class="pre">165</span></code> respondents who report that they have had no formal education, and <code class="docutils literal notranslate"><span class="pre">47</span></code> who have only one year.
 Here the last few rows.</p>
@@ -672,17 +905,60 @@ Here the last few rows.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>probs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>18.0</th>
+      <td>2384</td>
+    </tr>
+    <tr>
+      <th>19.0</th>
+      <td>920</td>
+    </tr>
+    <tr>
+      <th>20.0</th>
+      <td>1439</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>There are <code class="docutils literal notranslate"><span class="pre">1439</span></code> respondents who report that they have 20 or more years of formal education, which probably means they attended college and graduate school.</p>
-<p>You can use the bracket operator to look up a value in a Pmf and get the corresponding count:</p>
+<p>You can use the bracket operator to look up a value in a <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> and get the corresponding count:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_educ</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1439
+</pre></div>
 </div>
-<p>Usually when we make a PMF, we want to know the <em>fraction</em> of respondents with each value, rather than the counts.  We can do that by setting <code class="docutils literal notranslate"><span class="pre">normalize=True</span></code>; then we get a normalized PMF, that is, a PMF where the values in the second column add up to 1.</p>
+</div>
+</div>
+<p>Usually when we make a PMF, we want to know the <em>fraction</em> of respondents with each value, rather than the counts.  We can do that by setting <code class="docutils literal notranslate"><span class="pre">normalize=True</span></code>; then we get a <strong>normalized</strong> PMF, that is, a PMF where the values in the second column add up to 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_educ_norm</span> <span class="o">=</span> <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">educ</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -690,12 +966,55 @@ Here the last few rows.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>probs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>0.002553</td>
+    </tr>
+    <tr>
+      <th>1.0</th>
+      <td>0.000727</td>
+    </tr>
+    <tr>
+      <th>2.0</th>
+      <td>0.002352</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Now if we use the bracket operator, the result is a fraction.
 For example, the fraction of people with 12 years of education is about 30%:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_educ_norm</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_educ_norm</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.30420656899299164
 </pre></div>
 </div>
 </div>
@@ -713,13 +1032,17 @@ For example, the fraction of people with 12 years of education is about 30%:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_47_0.png" src="_images/08_distributions_47_0.png" />
+</div>
 </div>
 <p>In this figure, we can see that the most common value is 12 years, but there are also peaks at 14 and 16, which correspond to two and four years of college.</p>
 <p>For this data, the PMF is probably a better choice than the histogram.  The PMF shows all unique values, so we can see where the peaks are.
-Because the histogram puts values into bins, it obscures some details.  With this dataset, and the default number of bins, we couldn’t see the peaks at 14 and 16 years.</p>
-<p>But PMFs have limitations, too, as we’ll see.  But first, let’s get some practice with PMFs.</p>
-<p><strong>Exercise:</strong> Let’s look at another column in this <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">YEAR</span></code>, which represents the year each respondent was interviewed.</p>
-<p>Make an unnormalized PMF for <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> and display the result.
+Because the histogram puts values into bins, it obscures these details.  With this dataset, and the default number of bins, we couldn’t see the peaks at 14 and 16 years.
+But PMFs have limitations, too, as we’ll see.</p>
+<p>First, here’s an exercise where you can practice with PMFs.</p>
+<p><strong>Exercise:</strong> Let’s look at the <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> column in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, which represents the year each respondent was interviewed.</p>
+<p>Make an unnormalized <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> for <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> and display the result.
 How many respondents were interviewed in 2018?</p>
 </section>
 <section id="cumulative-distribution-functions">
@@ -749,17 +1072,101 @@ We can import it like this:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>probs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-<p>If you draw a random value from <code class="docutils literal notranslate"><span class="pre">values</span></code>, the PMF tells you the chance of getting <code class="docutils literal notranslate"><span class="pre">x</span></code>, for any value of <code class="docutils literal notranslate"><span class="pre">x</span></code>.
+<p>If you draw a random value from <code class="docutils literal notranslate"><span class="pre">values</span></code>, the <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> tells you the chance of getting <code class="docutils literal notranslate"><span class="pre">x</span></code>, for any value of <code class="docutils literal notranslate"><span class="pre">x</span></code>.
 So the probability of the value <code class="docutils literal notranslate"><span class="pre">1</span></code> is <code class="docutils literal notranslate"><span class="pre">1/5</span></code>; the probability of the value <code class="docutils literal notranslate"><span class="pre">2</span></code> is <code class="docutils literal notranslate"><span class="pre">2/5</span></code>; and the probabilities for <code class="docutils literal notranslate"><span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span></code> are <code class="docutils literal notranslate"><span class="pre">1/5</span></code> each.</p>
-<p>A CDF is similar in the sense that it contains values and their probabilities; the difference is that the probabilities in the CDF are the the cumulative sum of the probabilities in the PMF.</p>
-<p>Here’s the <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> for the same five values.</p>
+<p>A CDF is similar to a PMF in the sense that it contains values and their probabilities; the difference is that the probabilities in the CDF are the cumulative sum of the probabilities in the PMF.</p>
+<p>Here’s a <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> object for the same five values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>probs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>If you draw a random value from <code class="docutils literal notranslate"><span class="pre">values</span></code>, <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> tells you the chance of getting a value <em>less than or equal to</em> <code class="docutils literal notranslate"><span class="pre">x</span></code>, for any given <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <p>So the <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> of <code class="docutils literal notranslate"><span class="pre">1</span></code> is <code class="docutils literal notranslate"><span class="pre">1/5</span></code> because one of the five values in the sequence is less than or equal to 1.</p>
@@ -773,7 +1180,7 @@ So the probability of the value <code class="docutils literal notranslate"><span
 According to the codebook, the range of the values is from <code class="docutils literal notranslate"><span class="pre">18</span></code> to <code class="docutils literal notranslate"><span class="pre">89</span></code>, where <code class="docutils literal notranslate"><span class="pre">89</span></code> means “89 or older”.
 The special codes <code class="docutils literal notranslate"><span class="pre">98</span></code> and <code class="docutils literal notranslate"><span class="pre">99</span></code> mean “Don’t know” and “Didn’t answer”.
 See <a class="reference external" href="https://gssdataexplorer.norc.org/variables/53/vshow">https://gssdataexplorer.norc.org/variables/53/vshow</a>.</p>
-<p>I’ll use <code class="docutils literal notranslate"><span class="pre">replace</span></code> to replace the special codes with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">replace</span></code> to replace the special codes with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
@@ -800,6 +1207,9 @@ See <a class="reference external" href="https://gssdataexplorer.norc.org/variabl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_66_0.png" src="_images/08_distributions_66_0.png" />
+</div>
 </div>
 <p>The <span class="math notranslate nohighlight">\(x\)</span>-axis is the ages, from 18 to 89.  The <span class="math notranslate nohighlight">\(y\)</span>-axis is the cumulative probabilities, from 0 to 1.</p>
 <p><code class="docutils literal notranslate"><span class="pre">cdf_age</span></code> can be used as a function, so if you give it an age, it returns the corresponding probability (in a NumPy array).</p>
@@ -808,6 +1218,11 @@ See <a class="reference external" href="https://gssdataexplorer.norc.org/variabl
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="mi">51</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">cdf_age</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.63318676)
 </pre></div>
 </div>
 </div>
@@ -831,6 +1246,9 @@ That means that about 63% of the respondents are 51 years old or younger.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_71_0.png" src="_images/08_distributions_71_0.png" />
+</div>
 </div>
 <p>The CDF is an invertible function, which means that if you have a probability, <code class="docutils literal notranslate"><span class="pre">p</span></code>, you can look up the corresponding quantity, <code class="docutils literal notranslate"><span class="pre">q</span></code>.
 <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> provides a method called <code class="docutils literal notranslate"><span class="pre">inverse</span></code> that computes the inverse of the cumulative distribution function.</p>
@@ -839,6 +1257,11 @@ That means that about 63% of the respondents are 51 years old or younger.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="mf">0.25</span>
 <span class="n">q1</span> <span class="o">=</span> <span class="n">cdf_age</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
 <span class="n">q1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(31.)
 </pre></div>
 </div>
 </div>
@@ -851,6 +1274,11 @@ That means that 25% of the respondents are age 31 or less.  Another way to say t
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p2</span> <span class="o">=</span> <span class="mf">0.75</span>
 <span class="n">q2</span> <span class="o">=</span> <span class="n">cdf_age</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
 <span class="n">q2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(59.)
 </pre></div>
 </div>
 </div>
@@ -874,6 +1302,9 @@ That means that 25% of the respondents are age 31 or less.  Another way to say t
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_77_0.png" src="_images/08_distributions_77_0.png" />
+</div>
 </div>
 <p>The distance from the 25th to the 75th percentile is called the <strong>interquartile range</strong>, or IQR.  It measures the spread of the distribution, so it is similar to standard deviation or variance.</p>
 <p>Because it is based on percentiles, it doesn’t get thrown off by extreme values or outliers, the way standard deviation does.  So IQR is more <strong>robust</strong> than variance, which means it works well even if there are errors in the data or extreme values.</p>
@@ -886,7 +1317,7 @@ In the GSS dataset, the column <code class="docutils literal notranslate"><span 
 <h2>Comparing Distributions<a class="headerlink" href="#comparing-distributions" title="Permalink to this headline">#</a></h2>
 <p>So far we’ve seen two ways to represent distributions, PMFs and CDFs.  Now we’ll use PMFs and CDFs to compare distributions, and we’ll see the pros and cons of each.</p>
 <p>One way to compare distributions is to plot multiple PMFs on the same axes.  For example, suppose we want to compare the distribution of age for male and female respondents.</p>
-<p>First I’ll create a Boolean Series that’s true for male respondents.</p>
+<p>First we’ll create a Boolean Series that’s true for male respondents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">male</span> <span class="o">=</span> <span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;SEX&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -902,7 +1333,7 @@ In the GSS dataset, the column <code class="docutils literal notranslate"><span 
 </div>
 </div>
 </div>
-<p>Now I can select ages for the male and female respondents.</p>
+<p>Now we can select ages for the male and female respondents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">male_age</span> <span class="o">=</span> <span class="n">age</span><span class="p">[</span><span class="n">male</span><span class="p">]</span>
@@ -911,7 +1342,7 @@ In the GSS dataset, the column <code class="docutils literal notranslate"><span 
 </div>
 </div>
 </div>
-<p>And plot a Pmf for each.</p>
+<p>And plot a PMF for each.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_male_age</span> <span class="o">=</span> <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">male_age</span><span class="p">)</span>
@@ -926,6 +1357,9 @@ In the GSS dataset, the column <code class="docutils literal notranslate"><span 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_90_0.png" src="_images/08_distributions_90_0.png" />
 </div>
 </div>
 <p>The plot is pretty noisy.
@@ -948,6 +1382,9 @@ But both of those differences might be due to random variation.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_92_0.png" src="_images/08_distributions_92_0.png" />
+</div>
 </div>
 <p>In general, CDFs are smoother than PMFs.  Because they smooth out randomness, we can often get a better view of real differences between distributions.
 In this case, the lines are close together until age 40; after that, the CDF is higher for men than women.
@@ -960,6 +1397,11 @@ For example, about 79% of men are 60 or less, compared to 76% of women.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array(0.78599958), array(0.75529908))
+</pre></div>
+</div>
+</div>
 </div>
 <p>Going the other way, we could also compare percentiles.
 For example, the median age woman is older than the median age man, by about one year.</p>
@@ -969,14 +1411,19 @@ For example, the median age woman is older than the median age man, by about one
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array(43.), array(44.))
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Exercise:</strong> What fraction of men are over 80?  What fraction of women?</p>
 </section>
-<section id="income">
-<h2>Income<a class="headerlink" href="#income" title="Permalink to this headline">#</a></h2>
+<section id="comparing-incomes">
+<h2>Comparing Incomes<a class="headerlink" href="#comparing-incomes" title="Permalink to this headline">#</a></h2>
 <p>As another example, let’s look at household income and compare the distribution before and after 1995 (I chose 1995 because it’s roughly the midpoint of the survey).
 The variable <code class="docutils literal notranslate"><span class="pre">REALINC</span></code> represents household income in 1986 dollars.</p>
-<p>I’ll make a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> to select respondents interviewed before and after 1995.</p>
+<p>We’ll make a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> to select respondents interviewed before and after 1995.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre95</span> <span class="o">=</span> <span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1995</span><span class="p">)</span>
@@ -1000,6 +1447,9 @@ The variable <code class="docutils literal notranslate"><span class="pre">REALIN
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_102_0.png" src="_images/08_distributions_102_0.png" />
+</div>
 </div>
 <p>There are a lot of unique values in this distribution, and none of them appear very often.  As a result, the PMF is so noisy and we can’t really see the shape of the distribution.</p>
 <p>It’s also hard to compare the distributions.
@@ -1016,13 +1466,16 @@ It looks like there are more people with high incomes after 1995, but it’s har
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_104_0.png" src="_images/08_distributions_104_0.png" />
+</div>
 </div>
 <p>Below $30,000 the CDFs are almost identical; above that, we can see that the post-1995 distribution is shifted to the right.
 In other words, the fraction of people with high incomes is about the same, but the income of high earners has increased.</p>
 <p>In general, I recommend CDFs for exploratory analysis.  They give you a clear view of the distribution, without too much noise, and they are good for comparing distributions, especially if you have more than two.</p>
 <p><strong>Exercise:</strong> In the previous figure, the dollar amounts are big enough that the labels on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis are crowded.  Improve the figure by expressing income in 1000s of dollars (and update the <code class="docutils literal notranslate"><span class="pre">x</span></code> label accordingly).</p>
 <p><strong>Exercise:</strong> Let’s compare incomes for different levels of education in the GSS dataset</p>
-<p>To do that we’ll create Boolean Series to identify respondents with different levels of education.</p>
+<p>To do that we’ll create Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> to identify respondents with different levels of education.</p>
 <ul class="simple">
 <li><p>In the U.S, 12 years of education usually means the respondent has completed high school (secondary education).</p></li>
 <li><p>A respondent with 14 years of education has probably completed an associate degree (two years of college)</p></li>
@@ -1072,6 +1525,9 @@ But before we get to real data, we’ll start with fake data.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_115_0.png" src="_images/08_distributions_115_0.png" />
+</div>
 </div>
 <p>If we did not know that this sample was drawn from a normal distribution, and we wanted to check, we could compare the CDF of the data to the CDF of an ideal normal distribution, which we can use the SciPy library to compute.</p>
 <div class="cell docutils container">
@@ -1100,6 +1556,9 @@ But before we get to real data, we’ll start with fake data.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_119_0.png" src="_images/08_distributions_119_0.png" />
+</div>
 </div>
 <p>The CDF of the random sample agrees with the normal model.
 And that’s not surprising because the data were actually sampled from a normal distribution.
@@ -1114,7 +1573,7 @@ When we collect data in the real world, we do not expect it to fit a normal dist
 <li><p>Plot the CDF of the ages in the GSS.</p></li>
 </ul>
 <p>How well do the plotted CDFs agree?</p>
-<p><strong>Exercise:</strong> In many datasets, the distribution of income is approximately <strong>lognormal</strong>, which means that the logarithms of the incomes fit a normal distribution.  We’ll see whether that’s true for the GSS data.</p>
+<p><strong>Exercise:</strong> In many datasets, the distribution of income is approximately <strong>lognormal</strong>, which means that the logarithms of the incomes fit a normal distribution.  Let’s see whether that’s true for the GSS data.</p>
 <ul class="simple">
 <li><p>Extract <code class="docutils literal notranslate"><span class="pre">REALINC</span></code> from <code class="docutils literal notranslate"><span class="pre">gss</span></code> and compute its logarithm using <code class="docutils literal notranslate"><span class="pre">np.log10()</span></code>.  Hint: Replace the value <code class="docutils literal notranslate"><span class="pre">0</span></code> with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> before computing logarithms.</p></li>
 <li><p>Compute the mean and standard deviation of the log-transformed incomes.</p></li>
@@ -1124,8 +1583,8 @@ When we collect data in the real world, we do not expect it to fit a normal dist
 </ul>
 <p>How similar are the CDFs of the log-transformed incomes and the normal distribution?</p>
 </section>
-<section id="probability-density-functions">
-<h2>Probability Density Functions<a class="headerlink" href="#probability-density-functions" title="Permalink to this headline">#</a></h2>
+<section id="kernel-density-estimation">
+<h2>Kernel Density Estimation<a class="headerlink" href="#kernel-density-estimation" title="Permalink to this headline">#</a></h2>
 <p>We have seen two ways to represent distributions, PMFs and CDFs.  Now we’ll learn another way: a probability density function, or PDF.
 The <code class="docutils literal notranslate"><span class="pre">norm</span></code> function, which we used to compute the normal CDF, can also compute the normal PDF:</p>
 <div class="cell docutils container">
@@ -1140,6 +1599,9 @@ The <code class="docutils literal notranslate"><span class="pre">norm</span></co
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_127_0.png" src="_images/08_distributions_127_0.png" />
 </div>
 </div>
 <p>The normal PDF is the classic “bell curve”.</p>
@@ -1159,11 +1621,14 @@ Let’s see what happens if we try:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_129_0.png" src="_images/08_distributions_129_0.png" />
+</div>
 </div>
 <p>The PMF of the sample is a flat line across the bottom.  In the random sample, every value is unique, so they all have the same probability, one in 1000.</p>
 <p>However, we can use the points in the sample to estimate the PDF of the distribution they came from.
 This process is called <strong>kernel density estimation</strong>, or KDE.  It’s a way of getting from a PMF, a probability mass function, to a PDF, a probability density function.</p>
-<p>To generate a KDE plot, we’ll use the Seaborn library, which I’ll import as <code class="docutils literal notranslate"><span class="pre">sns</span></code>.
+<p>To generate a KDE plot, we’ll use the Seaborn library, imported as <code class="docutils literal notranslate"><span class="pre">sns</span></code>.
 Seaborn provides <code class="docutils literal notranslate"><span class="pre">kdeplot</span></code>, which takes the sample, estimates the PDF, and plots it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1178,6 +1643,9 @@ Seaborn provides <code class="docutils literal notranslate"><span class="pre">kd
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_131_0.png" src="_images/08_distributions_131_0.png" />
+</div>
 </div>
 <p>Now we can compare the KDE plot and the normal PDF.</p>
 <div class="cell docutils container">
@@ -1191,6 +1659,9 @@ Seaborn provides <code class="docutils literal notranslate"><span class="pre">kd
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08_distributions_133_0.png" src="_images/08_distributions_133_0.png" />
 </div>
 </div>
 <p>The KDE plot matches the normal PDF pretty well, although the differences look bigger when we compare PDFs than they did with the CDFs.
@@ -1218,11 +1689,10 @@ It’s hard to tell whether apparent differences mean anything, or if they are j
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>In this chapter, we’ve seen three ways to visualize distributions, PMFs, CDFs, and KDE.</p>
-<p>In general, I use CDFs when I am exploring data.  That way, I get the best view of what’s going on without getting distracted by noise.</p>
+<p>In this chapter, we’ve seen four ways to visualize distributions, PMFs, CDFs, and KDE plots.</p>
+<p>In general, I use CDFs when I am exploring data.
+That way, I get the best view of what’s going on without getting distracted by noise.</p>
 <p>Then, if I am presenting results to an audience unfamiliar with CDFs, I might use a PMF if the dataset contains a small number of unique values, or KDE if there are many unique values.</p>
-<p>As an example, see my article about the Inspection Paradox at <a class="reference external" href="https://towardsdatascience.com/the-inspection-paradox-is-everywhere-2ef1c2e9d709">https://towardsdatascience.com/the-inspection-paradox-is-everywhere-2ef1c2e9d709</a>.
-I wrote it for a general audience, so I use KDE to present and compare distributions.</p>
 </section>
 </section>
 

@@ -110,7 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -174,6 +179,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -352,12 +369,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#keyword-arguments">
-   Keyword arguments
+   Keyword Arguments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#religious-affiliation">
-   Religious affiliation
+  <a class="reference internal nav-link" href="#graphing-religious-affiliation">
+   Graphing Religious Affiliation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -366,8 +383,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sandwiches">
-   Sandwiches
+  <a class="reference internal nav-link" href="#plotting-sandwich-prices">
+   Plotting Sandwich Prices
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -376,13 +393,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#frequencies-and-ranks">
-   Frequencies and Ranks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logarithmic-scales">
-   Logarithmic scales
+   Logarithmic Scales
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -411,12 +423,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#keyword-arguments">
-   Keyword arguments
+   Keyword Arguments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#religious-affiliation">
-   Religious affiliation
+  <a class="reference internal nav-link" href="#graphing-religious-affiliation">
+   Graphing Religious Affiliation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -425,8 +437,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sandwiches">
-   Sandwiches
+  <a class="reference internal nav-link" href="#plotting-sandwich-prices">
+   Plotting Sandwich Prices
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -435,13 +447,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#frequencies-and-ranks">
-   Frequencies and Ranks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logarithmic-scales">
-   Logarithmic scales
+   Logarithmic Scales
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -469,11 +476,11 @@ title="Print to PDF"
 <li><p>We’ll replicate the figure from <em>The Economist</em> that shows the prices of sandwiches in Boston and London (we saw this data back in Chapter 3).</p></li>
 <li><p>We’ll make a plot to test Zipf’s law, which describes the relationship between word frequencies and their ranks.</p></li>
 </ul>
-<p>With the tools in this chapter, you can generate a variety of simple graphs.  We will see more visualization tools in later chapters.</p>
-<p>But before we get started with plotting, we need a new language feature: keyword arguments.</p>
+<p>With the tools in this chapter, you can generate a variety of simple graphs.  We will see more visualization tools in later chapters.
+But before we get started with plotting, we need a new language feature: keyword arguments.</p>
 <section id="keyword-arguments">
-<h2>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">#</a></h2>
-<p>When you call most functions, you have to provide values.  For example, when you call <code class="docutils literal notranslate"><span class="pre">np.exp</span></code>, the value you provide is a number:</p>
+<h2>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">#</a></h2>
+<p>When you call most functions, you have to provide values.  For example, when you call <code class="docutils literal notranslate"><span class="pre">np.exp</span></code>, which raises <span class="math notranslate nohighlight">\(e\)</span> to a given power, the value you provide is a number:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -503,7 +510,8 @@ title="Print to PDF"
 </div>
 <p>The values you provide are called <strong>arguments</strong>.  Specifically, the values in these examples are <strong>positional arguments</strong> because their position determines how they are used.
 In the second example, <code class="docutils literal notranslate"><span class="pre">power</span></code> computes <code class="docutils literal notranslate"><span class="pre">10</span></code> to the sixth power, not <code class="docutils literal notranslate"><span class="pre">6</span></code> to the 10th power because of the order of the arguments.</p>
-<p>Many functions also take <strong>keyword arguments</strong>, which are optional.  For example, we have previously used <code class="docutils literal notranslate"><span class="pre">int</span></code> to convert a string to an integer.</p>
+<p>Many functions also take <strong>keyword arguments</strong>, which are identified by name.  For example, we have previously used <code class="docutils literal notranslate"><span class="pre">int</span></code> to convert a string to an integer.
+Here’s how we use it with a string as a positional argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;21&#39;</span><span class="p">)</span>
@@ -530,7 +538,7 @@ For example, the string <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 </div>
-<p>The string <code class="docutils literal notranslate"><span class="pre">'21'</span></code> is a positional argument.  The integer value <code class="docutils literal notranslate"><span class="pre">8</span></code> is a keyword argument, with the keyword <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p>
+<p>The integer value <code class="docutils literal notranslate"><span class="pre">8</span></code> is a keyword argument, with the keyword <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p>
 <p>Specifying a keyword argument looks like an assignment statement, but it does not create a new variable.
 And when you specify a keyword argument, you don’t choose the variable name.  In this example, the keyword name, <code class="docutils literal notranslate"><span class="pre">base</span></code>, is part of the definition of <code class="docutils literal notranslate"><span class="pre">int</span></code>.  If you specify another keyword name, you get an error.</p>
 <p><strong>Exercise:</strong> The <code class="docutils literal notranslate"><span class="pre">print</span></code> function takes a keyword argument called <code class="docutils literal notranslate"><span class="pre">end</span></code> that specifies the character it prints at the end of the line.  By default, <code class="docutils literal notranslate"><span class="pre">end</span></code> is the newline character, <code class="docutils literal notranslate"><span class="pre">\n</span></code>.  So if you call <code class="docutils literal notranslate"><span class="pre">print</span></code> more than once, the results normally appear on separate lines, like this:</p>
@@ -552,10 +560,10 @@ And when you specify a keyword argument, you don’t choose the variable name.  
 <p>Modify the previous example so it prints the elements of the list, all on one line, with spaces between them.
 Then modify it to print an open bracket at the beginning and a close bracket and newline at the end.</p>
 </section>
-<section id="religious-affiliation">
-<h2>Religious affiliation<a class="headerlink" href="#religious-affiliation" title="Permalink to this headline">#</a></h2>
-<p>Now we’re ready to make some graphs.</p>
-<p>In October 2019 the Pew Research Center published “In U.S., Decline of Christianity Continues at Rapid Pace” at <a class="reference external" href="https://www.pewforum.org/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace">https://www.pewforum.org/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace</a>.
+<section id="graphing-religious-affiliation">
+<h2>Graphing Religious Affiliation<a class="headerlink" href="#graphing-religious-affiliation" title="Permalink to this headline">#</a></h2>
+<p>Now we’re ready to make some graphs.
+In October 2019 the Pew Research Center published “In U.S., Decline of Christianity Continues at Rapid Pace” at <a class="reference external" href="https://www.pewresearch.org/religion/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace/">https://www.pewresearch.org/religion/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace/</a>.
 It includes this figure, which shows changes in religious affiliation among adults in the U.S. over the previous 10 years.</p>
 <img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/pew_religion_figure1.png" width="400">
 <p>As an exercise, we’ll replicate this figure.  It shows results from two sources, Religious Landscape Studies and Pew Research Political Surveys.  The political surveys provide data from more years, so we’ll focus on that.</p>
@@ -563,20 +571,10 @@ It includes this figure, which shows changes in religious affiliation among adul
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">christian</span> <span class="o">=</span> <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unaffiliated</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+
+<span class="n">christian</span> <span class="o">=</span> <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+
+<span class="n">unaffiliated</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -597,13 +595,10 @@ It includes this figure, which shows changes in religious affiliation among adul
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe71a051e50&gt;]
-</pre></div>
-</div>
-<img alt="_images/06_plotting_25_1.png" src="_images/06_plotting_25_1.png" />
+<img alt="_images/06_plotting_23_0.png" src="_images/06_plotting_23_0.png" />
 </div>
 </div>
-<p>The semi-colon at the end of the line cleans up the output; without it, the return value from <code class="docutils literal notranslate"><span class="pre">plot</span></code> would be displayed above the figure.</p>
+<p>The semi-colon at the end of the line prevents the return value from <code class="docutils literal notranslate"><span class="pre">plot</span></code>, which is an object representing the line, from being displayed.</p>
 <p>If you plot multiple lines in a single cell, they appear on the same axes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -613,7 +608,7 @@ It includes this figure, which shows changes in religious affiliation among adul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_27_0.png" src="_images/06_plotting_27_0.png" />
+<img alt="_images/06_plotting_25_0.png" src="_images/06_plotting_25_0.png" />
 </div>
 </div>
 <p>Plotting them on the same axes makes it possible to compare them directly.
@@ -630,7 +625,7 @@ We can set the limits of the <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_29_0.png" src="_images/06_plotting_29_0.png" />
+<img alt="_images/06_plotting_27_0.png" src="_images/06_plotting_27_0.png" />
 </div>
 </div>
 <p>That’s better, but this graph is missing some of the most important elements: labels for the axes and a title.</p>
@@ -651,7 +646,7 @@ We can set the limits of the <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_32_0.png" src="_images/06_plotting_32_0.png" />
+<img alt="_images/06_plotting_30_0.png" src="_images/06_plotting_30_0.png" />
 </div>
 </div>
 <p>Now let’s add another important element, a legend that indicates which line is which.
@@ -671,18 +666,19 @@ Then we call <code class="docutils literal notranslate"><span class="pre">plt.le
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_34_0.png" src="_images/06_plotting_34_0.png" />
+<img alt="_images/06_plotting_32_0.png" src="_images/06_plotting_32_0.png" />
 </div>
 </div>
-<p><strong>Exercise:</strong> The orginal figure plots lines between the data points, but it also plots “markers” showing the location of each data point.  It is generally good practice to include markers, especially if data are not available for every year.</p>
+<p>The legend shows the labels we provided when we created the lines.</p>
+<p><strong>Exercise:</strong> The original figure plots lines between the data points, but it also plots markers showing the location of each data point.  It is generally good practice to include markers, especially if data are not available for every year.</p>
 <p>Modify the previous example to include a keyword argument <code class="docutils literal notranslate"><span class="pre">marker</span></code> with the string value <code class="docutils literal notranslate"><span class="pre">'o'</span></code>, which indicates that you want to plot circles as markers.</p>
-<p><strong>Exercise:</strong> In the original figure, the line labelled <code class="docutils literal notranslate"><span class="pre">'Christian'</span></code> is red and the line labeled <code class="docutils literal notranslate"><span class="pre">'Unaffiliated'</span></code> is grey.</p>
+<p><strong>Exercise:</strong> In the original figure, the line labeled <code class="docutils literal notranslate"><span class="pre">'Christian'</span></code> is red and the line labeled <code class="docutils literal notranslate"><span class="pre">'Unaffiliated'</span></code> is grey.</p>
 <p>Find the online documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> and figure out how to use keyword arguments to specify colors.  Choose colors to (roughly) match the original figure.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">legend</span></code> function takes a keyword argument that speficies the location of the legend.  Read the documentation of this function and move the legend to the center left of the figure.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">legend</span></code> function takes a keyword argument that specifies the location of the legend.  Read the documentation of this function and move the legend to the center left of the figure.</p>
 </section>
-<section id="sandwiches">
-<h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">#</a></h2>
-<p>In a previous chapter we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “Why Americans pay more for lunch than Britons do” at <a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do</a>.</p>
+<section id="plotting-sandwich-prices">
+<h2>Plotting Sandwich Prices<a class="headerlink" href="#plotting-sandwich-prices" title="Permalink to this headline">#</a></h2>
+<p>In Chapter 3 we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “Why Americans pay more for lunch than Britons do” at <a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do</a>.</p>
 <p>The article includes this graph showing prices of several sandwiches in the two cities:</p>
 <img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png"  width="400">
 <p>As an exercise, let’s see if we can replicate this figure.
@@ -715,11 +711,11 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_42_0.png" src="_images/06_plotting_42_0.png" />
+<img alt="_images/06_plotting_41_0.png" src="_images/06_plotting_41_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">name_list</span></code> is a list of strings; Pyplot orders them from top to bottom, equally spaced.</p>
-<p>By default Pyplot connects the points with lines, but in this example the lines don’t make sense because the sandwich names are <strong>categorical</strong>, not numerical.  You can’t interpolate between an egg sandwich and a tuna sandwich.</p>
+<p>By default Pyplot connects the points with lines, but in this example the lines don’t make sense because the sandwich names are discrete; there are no intermediate points between an egg sandwich and a tuna sandwich.</p>
 <p>We can turn on markers and turn off lines with keyword arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -730,10 +726,13 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_44_0.png" src="_images/06_plotting_44_0.png" />
+<img alt="_images/06_plotting_43_0.png" src="_images/06_plotting_43_0.png" />
 </div>
 </div>
-<p>Or we can do the same thing more concisely by providing a <strong>format string</strong> as a positional argument.  You can read the documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> to learn more about format strings.</p>
+<p>Or we can do the same thing more concisely by providing a <strong>format string</strong> as a positional argument.
+In this example, <code class="docutils literal notranslate"><span class="pre">'o'</span></code> indicates a circle marker and <code class="docutils literal notranslate"><span class="pre">'s'</span></code> indicates a square.
+You can read the documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> to learn more about format strings.</p>
+<p>And let’s add a title while we’re at it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
@@ -745,11 +744,10 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_46_0.png" src="_images/06_plotting_46_0.png" />
+<img alt="_images/06_plotting_45_0.png" src="_images/06_plotting_45_0.png" />
 </div>
 </div>
-<p>I added a title at the same time.</p>
-<p>Now, to approximate the colors in the original figure, we can use the strings <code class="docutils literal notranslate"><span class="pre">'C3'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C0'</span></code>, which specify colors from the default color sequence.  You can read the documentation to learn more about specifying colors in Pyplot: <a class="reference external" href="https://matplotlib.org/3.1.1/tutorials/colors/colors.html">https://matplotlib.org/3.1.1/tutorials/colors/colors.html</a>.</p>
+<p>Now, to approximate the colors in the original figure, we can use the strings <code class="docutils literal notranslate"><span class="pre">'C3'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C0'</span></code>, which specify colors from the default color sequence.  You can read more about specifying colors in the Pyplot documentation: <a class="reference external" href="https://matplotlib.org/3.1.1/tutorials/colors/colors.html">https://matplotlib.org/3.1.1/tutorials/colors/colors.html</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
@@ -761,16 +759,16 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_48_0.png" src="_images/06_plotting_48_0.png" />
+<img alt="_images/06_plotting_47_0.png" src="_images/06_plotting_47_0.png" />
 </div>
 </div>
 <p>To connect the dots with lines, we’ll use <code class="docutils literal notranslate"><span class="pre">plt.hlines</span></code>, which draws horizontal lines.  It takes three arguments: a sequence of values on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, which are the sandwich names in this example, and two sequences of values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, which are the London prices and Boston prices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">london_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">name_list</span><span class="p">,</span> <span class="n">london_price_list</span><span class="p">,</span> <span class="n">boston_price_list</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">name_list</span><span class="p">,</span> <span class="n">london_price_list</span><span class="p">,</span> <span class="n">boston_price_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">london_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Price in USD&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pret a Manger prices in Boston and London&#39;</span><span class="p">);</span>
@@ -778,7 +776,7 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_50_0.png" src="_images/06_plotting_50_0.png" />
+<img alt="_images/06_plotting_49_0.png" src="_images/06_plotting_49_0.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> To finish off this example, add a legend that identifies the London and Boston prices.  Remember that you have to add a <code class="docutils literal notranslate"><span class="pre">label</span></code> keyword each time you call <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, and then call <code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>.</p>
@@ -786,9 +784,14 @@ Here’s how:</p>
 </section>
 <section id="zipf-s-law">
 <h2>Zipf’s Law<a class="headerlink" href="#zipf-s-law" title="Permalink to this headline">#</a></h2>
-<p>In the previous chapter we downloaded <em>War and Peace</em> from Project Gutenberg and counted the number of lines and words.
-Then we used a dictionary to count the number of unique words and the number of times each one appears.
-Now we’ll use those results to generate a “Zipf plot”, which shows the frequency of the words on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, ordered from the most common word to the least.</p>
+<p>In almost any book, in almost any language, if you count the number of unique words the the number of times each word appears, you will find a remarkable pattern: the most common word appears twice as often as the second most common, at least approximately, three times as often as the third most common, and so on.</p>
+<p>In general, if we sort the words in descending order of frequency, there is an inverse relationship between the rank of the words – first, second, third, etc. – and the number of times they appear.
+This observation was most famously made by George Kingsley Zipf, so it is called Zipf’s law.</p>
+<p>To see if this law holds for the words in <em>War and Peace</em>, we’ll make a Zipf plot, which shows:</p>
+<ul class="simple">
+<li><p>The frequency of each word on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, and</p></li>
+<li><p>The rank of each word on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, starting from 1.</p></li>
+</ul>
 <p>In the previous chapter, we looped through the book and made a string that contains all punctuation characters.
 Here are the results, which we will need again.</p>
 <div class="cell docutils container">
@@ -798,7 +801,7 @@ Here are the results, which we will need again.</p>
 </div>
 </div>
 </div>
-<p>And here’s a solution to one of the previous exercises.  It loops through the book and makes a dictionary that maps from each word to the number of times it appears.</p>
+<p>The following code loops through the book and makes a dictionary that maps from each word to the number of times it appears.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_line</span> <span class="o">=</span> <span class="s2">&quot;CHAPTER I</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -825,19 +828,6 @@ Here are the results, which we will need again.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="frequencies-and-ranks">
-<h2>Frequencies and Ranks<a class="headerlink" href="#frequencies-and-ranks" title="Permalink to this headline">#</a></h2>
-<p>In this section we’ll test Zipf’s law, which states that</p>
-<blockquote>
-<div><p>given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc.</p>
-</div></blockquote>
-<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Zipfs_law">https://en.wikipedia.org/wiki/Zipfs_law</a>.
-To see if this law holds for the words in <em>War and Peace</em>, we’ll make a plot that shows:</p>
-<ul class="simple">
-<li><p>The frequency of each word on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, and</p></li>
-<li><p>The rank of each word on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, where the rank of the most frequent word is 1, the rank of the second most common word is 2, etc.</p></li>
-</ul>
 <p>In <code class="docutils literal notranslate"><span class="pre">unique_words</span></code>, the keys are words and the values are their frequencies.  We can use the <code class="docutils literal notranslate"><span class="pre">values</span></code> function to get the values from the dictionary.  The result has the type <code class="docutils literal notranslate"><span class="pre">dict_values</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -926,7 +916,7 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>range(1, 20479)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>range(1, 20683)
 </pre></div>
 </div>
 </div>
@@ -943,17 +933,17 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_79_0.png" src="_images/06_plotting_79_0.png" />
+<img alt="_images/06_plotting_78_0.png" src="_images/06_plotting_78_0.png" />
 </div>
 </div>
-</section>
-<section id="logarithmic-scales">
-<h2>Logarithmic scales<a class="headerlink" href="#logarithmic-scales" title="Permalink to this headline">#</a></h2>
 <p>The few most common words are very common, but the great majority of words are rare.  So that’s consistent with Zipf’s law, but Zipf’s law is more specific.  It claims that the frequencies should be inversely proportional to the ranks.  If that’s true, we can write:</p>
 <p><span class="math notranslate nohighlight">\(f = k / r\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(r\)</span> is the rank of a word, <span class="math notranslate nohighlight">\(f\)</span> is its frequency, and <span class="math notranslate nohighlight">\(k\)</span> is an unknown constant of proportionality.  If we take the log of both sides, we get this:</p>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the rank of a word, <span class="math notranslate nohighlight">\(f\)</span> is its frequency, and <span class="math notranslate nohighlight">\(k\)</span> is an unknown constant of proportionality.  If we take the log of both sides, we get</p>
 <p><span class="math notranslate nohighlight">\(\log f = \log k - \log r\)</span></p>
 <p>This equation implies that if we plot <span class="math notranslate nohighlight">\(f\)</span> versus <span class="math notranslate nohighlight">\(r\)</span> on a log-log scale, we expect to see a straight line with intercept at <span class="math notranslate nohighlight">\(\log k\)</span> and slope -1.</p>
+</section>
+<section id="logarithmic-scales">
+<h2>Logarithmic Scales<a class="headerlink" href="#logarithmic-scales" title="Permalink to this headline">#</a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">plt.xscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis on a log scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -988,7 +978,7 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <p>The result is not quite a straight line, but it is close.  We can get a sense of the slope by connecting the end points with a line.
-I’ll select the first and last elements from <code class="docutils literal notranslate"><span class="pre">xs</span></code>.</p>
+We’ll select the first and last elements from <code class="docutils literal notranslate"><span class="pre">xs</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">ranks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ranks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -997,7 +987,7 @@ I’ll select the first and last elements from <code class="docutils literal not
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 20478)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 20682)
 </pre></div>
 </div>
 </div>
@@ -1011,7 +1001,7 @@ I’ll select the first and last elements from <code class="docutils literal not
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(34388, 1)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(34559, 1)
 </pre></div>
 </div>
 </div>
@@ -1062,11 +1052,15 @@ I’ll select the first and last elements from <code class="docutils literal not
 </div>
 </div>
 </div>
+<p>In the following exercise, you’ll compute the run and the slope of the gray line.</p>
 <p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">log10</span></code> and <code class="docutils literal notranslate"><span class="pre">diff</span></code> to compute the run, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  Then divide the rise by the run to get the slope of the grey line.
 Is it close to -1, as Zipf’s law predicts?</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>This chapter introduces the Matplotlib library, which we used to replicate two figures a Zipf plot.
+These examples demonstrate the most common elements of data visualization, including lines and markers, values and labels on the axes, a legend and a title.
+The Zipf plot also shows the power of plotting data on logarithmic scales.</p>
 </section>
 </section>
 

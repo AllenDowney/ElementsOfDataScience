@@ -108,7 +108,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -172,6 +177,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -354,8 +371,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#looping-and-counting">
-   Looping and Counting
+  <a class="reference internal nav-link" href="#counting-with-loops">
+   Counting with Loops
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -413,8 +430,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#looping-and-counting">
-   Looping and Counting
+  <a class="reference internal nav-link" href="#counting-with-loops">
+   Counting with Loops
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -461,12 +478,11 @@ title="Print to PDF"
 <h1>Loops and Files<a class="headerlink" href="#loops-and-files" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/04_loops.ipynb">click here to download it</a>.</p>
-<p>This chapter presents loops, which are used to express repeated computation, and files, which are used to store data.  As an example, we will download the famous book <em>War and Peace</em> from Project Gutenberg and write a loop that reads the book and counts the words.</p>
-<p>In the next chapter, we’ll extend this example to count the number of unique words and the number of times each word appears.
-This example presents some computational tools you will need; it is also an introduction to working with textual data.</p>
+<p>This chapter presents loops, which are used to represent repeated computation, and files, which are used to store data.  As an example, we will download the famous book <em>War and Peace</em> from Project Gutenberg and write a loop that reads the book and counts the words.
+This example presents some new computational tools; it is also an introduction to working with textual data.</p>
 <section id="loops">
 <h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">#</a></h2>
-<p>One of the most important elements of computation is repetition, and the most common way to express repetition is a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.
+<p>One of the most important elements of computation is repetition, and the most common way to represent repetition is a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.
 As a simple example, suppose we want to display the elements of a tuple.  Here’s a tuple of three integers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,7 +507,7 @@ As a simple example, suppose we want to display the elements of a tuple.  Here�
 </div>
 </div>
 </div>
-<p>The first line of the loop is a <strong>header</strong> that specifies the tuple, <code class="docutils literal notranslate"><span class="pre">t</span></code>, and a variable name <code class="docutils literal notranslate"><span class="pre">x</span></code>.  The tuple already exists, but <code class="docutils literal notranslate"><span class="pre">x</span></code> does not; the loop will create it.  The header has to end with a colon, <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
+<p>The first line of the loop is a <strong>header</strong> that specifies the tuple, <code class="docutils literal notranslate"><span class="pre">t</span></code>, and a variable name, <code class="docutils literal notranslate"><span class="pre">x</span></code>.  The tuple already exists, but <code class="docutils literal notranslate"><span class="pre">x</span></code> does not; the loop will create it.  Note that the header ends with a colon, <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
 <p>Inside the loop is a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, which displays the value of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <p>So here’s what happens:</p>
 <ol class="simple">
@@ -519,8 +535,8 @@ a
 </div>
 </div>
 </div>
-<p>When the loop begins, <code class="docutils literal notranslate"><span class="pre">word</span></code> already exists, but <code class="docutils literal notranslate"><span class="pre">letter</span></code> does not.  Again, the loop creates <code class="docutils literal notranslate"><span class="pre">letter</span></code> and assign values to it.</p>
-<p>The variable created by the loop is called the “loop variable”.  You can give it any name you like; in this example, I chose <code class="docutils literal notranslate"><span class="pre">letter</span></code> to remind me what kind of value it contains.</p>
+<p>When the loop begins, <code class="docutils literal notranslate"><span class="pre">word</span></code> already exists, but <code class="docutils literal notranslate"><span class="pre">letter</span></code> does not.  Again, the loop creates <code class="docutils literal notranslate"><span class="pre">letter</span></code> and assigns values to it.</p>
+<p>The variable created by the loop is called the <strong>loop variable</strong>.  You can give it any name you like; in this example, I chose <code class="docutils literal notranslate"><span class="pre">letter</span></code> to remind me what kind of value it contains.</p>
 <p>After the loop ends, the loop variable contains the last value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -550,15 +566,11 @@ a
 </div>
 <p>If you create a variable named <code class="docutils literal notranslate"><span class="pre">list</span></code>, you can’t use the function any more.</p>
 </section>
-<section id="looping-and-counting">
-<h2>Looping and Counting<a class="headerlink" href="#looping-and-counting" title="Permalink to this headline">#</a></h2>
-<p><em>War and Peace</em> is a famously long book; let’s see how long it is.  To count the words in a book, we need to</p>
-<ol class="simple">
-<li><p>Loop through a book and</p></li>
-<li><p>Count.</p></li>
-</ol>
-<p>We’ll start with counting.
-We’ve already seen that you can create a variable and give it a value, like this:</p>
+<section id="counting-with-loops">
+<h2>Counting with Loops<a class="headerlink" href="#counting-with-loops" title="Permalink to this headline">#</a></h2>
+<p><em>War and Peace</em> is a famously long book; let’s see how long it is.  To count the words we need two elements: looping through the words in a text, and counting.
+We’ll start with counting.</p>
+<p>We’ve already seen that you can create a variable and give it a value, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
@@ -600,7 +612,7 @@ We’ve already seen that you can create a variable and give it a value, like th
 </div>
 </div>
 </div>
-<p>Increasing the value of a variable is called an <strong>increment</strong>; decreasing the value is called a <strong>decrement</strong>.  These operations are so common that there are special operators for them.</p>
+<p>Increasing the value of a variable is called <strong>incrementing</strong>; decreasing the value is called <strong>decrementing</strong>.  These operations are so common that there are special operators for them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -624,7 +636,7 @@ Python also provides <code class="docutils literal notranslate"><span class="pre
 <li><p>Tell them to add 3.</p></li>
 <li><p>Now tell them to double this figure.</p></li>
 <li><p>Finally, have the person add the second number of their age to the figure and have them tell you the answer.</p></li>
-<li><p>Deduct 6 and you will have their age.”</p></li>
+<li><p>Deduct 6 and you will have their age.</p></li>
 </ul>
 </div></blockquote>
 <p>Test this algorithm using your age.  Use a single variable and update it using <code class="docutils literal notranslate"><span class="pre">+=</span></code> and other update operators.</p>
@@ -633,7 +645,7 @@ Python also provides <code class="docutils literal notranslate"><span class="pre
 <h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">#</a></h2>
 <p>Now that we know how to count, let’s see how we can read words from a file.
 We can download <em>War and Peace</em> from Project Gutenberg, which is a repository of free books at <a class="reference external" href="https://www.gutenberg.org">https://www.gutenberg.org</a>.</p>
-<p>In order to read the contents of the file, you have to “open” it, which you can do with the <code class="docutils literal notranslate"><span class="pre">open</span></code> function.</p>
+<p>In order to read the contents of the file, you have to <strong>open</strong> it, which you can do with the <code class="docutils literal notranslate"><span class="pre">open</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
@@ -648,7 +660,7 @@ We can download <em>War and Peace</em> from Project Gutenberg, which is a reposi
 </div>
 </div>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">TextIOWrapper</span></code>, which is a type of <strong>file pointer</strong>.
-The file pointer contains the name of the file, the mode (which is <code class="docutils literal notranslate"><span class="pre">r</span></code> for “reading”) and the encoding (which is <code class="docutils literal notranslate"><span class="pre">UTF</span></code> for “Unicode Transformation Format”).
+It contains the name of the file, the mode (which is <code class="docutils literal notranslate"><span class="pre">r</span></code> for “reading”) and the encoding (which is <code class="docutils literal notranslate"><span class="pre">UTF</span></code> for “Unicode Transformation Format”).
 A file pointer is like a bookmark; it keeps track of which parts of the file you have read.</p>
 <p>If you use a file pointer in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, it loops through the lines in the file.
 So we can count the number of lines like this:</p>
@@ -714,7 +726,7 @@ In the following example, the condition is false, so the <code class="docutils l
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Novella!&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Short book!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -877,7 +889,7 @@ To be more precise, <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 <p>Notice that the syntax for <code class="docutils literal notranslate"><span class="pre">split</span></code> is different from other functions we have seen.  Normally when we call a function, we name the function and provide values in parentheses.  So you might have expected to write <code class="docutils literal notranslate"><span class="pre">split(line)</span></code>.  Sadly, that doesn’t work.</p>
-<p>The problem is that the <code class="docutils literal notranslate"><span class="pre">split</span></code> function belongs to the string <code class="docutils literal notranslate"><span class="pre">line</span></code>; in a sense, the function is attached to the string, so we can only refer to it using the string and the dot operator (the period between <code class="docutils literal notranslate"><span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>).
+<p>The problem is that the <code class="docutils literal notranslate"><span class="pre">split</span></code> function belongs to the string <code class="docutils literal notranslate"><span class="pre">line</span></code>; in a sense, the function is attached to the string, so we can only refer to it using the string and the <strong>dot operator</strong> (the period between <code class="docutils literal notranslate"><span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>).
 For historical reasons, functions like this are called <strong>methods</strong>.</p>
 <p>Now that we can split a line into a list of words, we can use <code class="docutils literal notranslate"><span class="pre">len</span></code> to get the number of words in each list, and increment <code class="docutils literal notranslate"><span class="pre">count</span></code> accordingly.</p>
 <div class="cell docutils container">
@@ -906,7 +918,7 @@ For historical reasons, functions like this are called <strong>methods</strong>.
 <p>Actually, there aren’t quite that many, because the file we got from Project Gutenberg has some introductory text and a table of contents before the text.  And it has some license information at the end.
 To skip this “front matter”, we can use one loop to read lines until we get to <code class="docutils literal notranslate"><span class="pre">CHAPTER</span> <span class="pre">I</span></code>, and then a second loop to count the words in the remaining lines.</p>
 <p>The file pointer, <code class="docutils literal notranslate"><span class="pre">fp</span></code>, keeps track of where it is in the file, so the second loop picks up where the first loop leaves off.
-In the second loop, we check for the end of the book and stop, so we ignore the “end matter” at the end of the file.</p>
+In the second loop, we check for the end of the book and stop, so we ignore the “back matter” at the end of the file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_line</span> <span class="o">=</span> <span class="s2">&quot;CHAPTER I</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -954,8 +966,8 @@ In the second loop, we check for the end of the book and stop, so we ignore the 
 <li><p>In the previous program, replace <code class="docutils literal notranslate"><span class="pre">==</span></code> with <code class="docutils literal notranslate"><span class="pre">=</span></code> and see what happens.  This is a common error, so it is good to see what the error message looks like.</p></li>
 <li><p>Correct the previous error, then remove the newline character after <code class="docutils literal notranslate"><span class="pre">CHAPTER</span> <span class="pre">I</span></code>, and see what happens.</p></li>
 </ol>
-<p>The first error is a “syntax error”, which means that the program violates the rules of Python.  If your program has a syntax error, the Python interpreter prints an error message, and the program never runs.</p>
-<p>The second error is a “logic error”, which means that there is something wrong with the logic of the program.  The syntax is legal, and the program runs, but it doesn’t do what we wanted.  Logic errors can be hard to find because we don’t get any error messages.</p>
+<p>The first error is a <strong>syntax error</strong>, which means that the program violates the rules of Python.  If your program has a syntax error, the Python interpreter prints an error message, and the program never runs.</p>
+<p>The second error is a <strong>logic error</strong>, which means that there is something wrong with the logic of the program.  The syntax is legal, and the program runs, but it doesn’t do what we wanted.  Logic errors can be hard to find because we don’t get any error messages.</p>
 <p>If you have a logic error, here are two strategies for debugging:</p>
 <ol class="simple">
 <li><p>Add print statements so the program displays additional information while it runs.</p></li>

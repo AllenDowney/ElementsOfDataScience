@@ -110,7 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Variables and Values
@@ -174,6 +179,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -362,7 +379,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#math-functions">
-   Math functions
+   Math Functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -371,8 +388,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculation-with-variables">
-   Calculation with Variables
+  <a class="reference internal nav-link" href="#calculating-with-variables">
+   Calculating with Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -411,7 +428,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#math-functions">
-   Math functions
+   Math Functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -420,8 +437,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculation-with-variables">
-   Calculation with Variables
+  <a class="reference internal nav-link" href="#calculating-with-variables">
+   Calculating with Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -558,7 +575,18 @@ Here’s an example of an <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <p>And the operator for exponentiation is <code class="docutils literal notranslate"><span class="pre">**</span></code>:</p>
-<p>2**3</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
 <p>Unlike math notation, Python does not allow “implicit multiplication”.  For example, in math notation, if you write <span class="math notranslate nohighlight">\(3 (2 + 1)\)</span>, that’s understood to be the same as <span class="math notranslate nohighlight">\(3 \times (2+ 1)\)</span>.
 Python does not allow that notation.
 If you want to multiply, you have to use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator.</p>
@@ -598,7 +626,7 @@ If you want to multiply, you have to use the <code class="docutils literal notra
 <p><strong>Exercise:</strong> Write a Python expression that raises <code class="docutils literal notranslate"><span class="pre">1+2</span></code> to the power <code class="docutils literal notranslate"><span class="pre">3*4</span></code>.  The answer should be <code class="docutils literal notranslate"><span class="pre">531441</span></code>.</p>
 </section>
 <section id="math-functions">
-<h2>Math functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">#</a></h2>
+<h2>Math Functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">#</a></h2>
 <p>Python provides functions that compute all the usual mathematical functions, like <code class="docutils literal notranslate"><span class="pre">sin</span></code> and <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code> and <code class="docutils literal notranslate"><span class="pre">log</span></code>.
 However, they are not part of Python itself; they are in a <strong>library</strong>, which is a collection of functions that supplement the Python language.</p>
 <p>Actually, there are several libraries that provide math functions; the one we’ll use is called NumPy, which stands for “Numerical Python”, and is pronounced “num pie”.
@@ -626,7 +654,7 @@ Names like this are case-sensitive, which means that <code class="docutils liter
 </div>
 </div>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">float</span></code> with 16 digits.  As you might know, we can’t represent <span class="math notranslate nohighlight">\(\pi\)</span> with a finite number of digits, so this result is only approximate.</p>
-<p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> provides <code class="docutils literal notranslate"><span class="pre">log</span></code>, which computes the natural logarithm</p>
+<p>NumPy provides <code class="docutils literal notranslate"><span class="pre">log</span></code>, which computes the natural logarithm</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -639,7 +667,7 @@ Names like this are case-sensitive, which means that <code class="docutils liter
 </div>
 </div>
 </div>
-<p>And <code class="docutils literal notranslate"><span class="pre">exp</span></code>, which raises the constant <code class="docutils literal notranslate"><span class="pre">e</span></code> to a power.</p>
+<p>NumPy also provides <code class="docutils literal notranslate"><span class="pre">exp</span></code>, which raises the constant <code class="docutils literal notranslate"><span class="pre">e</span></code> to a power.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -741,8 +769,8 @@ The following statement assigns the value <code class="docutils literal notransl
 <p><span class="math notranslate nohighlight">\(\phi = \frac{1 + \sqrt{5}}{2}\)</span></p>
 <p>Hint: The result should be close to <code class="docutils literal notranslate"><span class="pre">1.618</span></code>.</p>
 </section>
-<section id="calculation-with-variables">
-<h2>Calculation with Variables<a class="headerlink" href="#calculation-with-variables" title="Permalink to this headline">#</a></h2>
+<section id="calculating-with-variables">
+<h2>Calculating with Variables<a class="headerlink" href="#calculating-with-variables" title="Permalink to this headline">#</a></h2>
 <p>Now we’ll use variables to solve a problem involving compound interest.
 It might not be the most exciting example, but it uses everything we have done so far, and it reviews exponentiation and logarithms, which we are going to need.</p>
 <p>If we start with a principal sum, <span class="math notranslate nohighlight">\(P\)</span>, and earn compounded interest, the total accumulated value, <span class="math notranslate nohighlight">\(V\)</span>, at the end of time <span class="math notranslate nohighlight">\(t\)</span> is:</p>

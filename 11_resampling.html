@@ -108,7 +108,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -172,6 +177,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -374,8 +391,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gun-control">
-   Gun Control
+  <a class="reference internal nav-link" href="#support-for-gun-control">
+   Support for Gun Control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -428,8 +445,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gun-control">
-   Gun Control
+  <a class="reference internal nav-link" href="#support-for-gun-control">
+   Support for Gun Control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -452,12 +469,12 @@ title="Print to PDF"
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">click here to download it</a>.</p>
 <p>This chapter introduces <strong>resampling methods</strong>, which are used to quantify the precision of an estimate.
-As examples, we’ll use results a vaccine trial to estimate the efficacy of the vaccine, data from the Behavioral Risk Factor Surveillance System to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
+As examples, we’ll use results from a vaccine trial to estimate the efficacy of the vaccine, data from the Behavioral Risk Factor Surveillance System to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
 <section id="vaccine-testing">
 <h2>Vaccine Testing<a class="headerlink" href="#vaccine-testing" title="Permalink to this headline">#</a></h2>
 <p>Suppose you read a report about a new vaccine and the manufacturer says it is 67% effective at preventing disease.
 You might wonder where that number comes from, what it means, and how confident we should be that it is correct.</p>
-<p>Results like this often come from a randomized controlled trial(RCT), which works like this:</p>
+<p>Results like this often come from a randomized controlled trial (RCT), which works like this:</p>
 <ul class="simple">
 <li><p>You recruit a large group of volunteers and divide them into two groups at random: the “treatment group” receives the vaccine; the “control group” does not.</p></li>
 <li><p>Then you follow both groups for a period of time and record the number of people in each group who are diagnosed with the disease.</p></li>
@@ -611,7 +628,7 @@ Then the function returns the estimated risk.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.298206380356898
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.609556843594541
 </pre></div>
 </div>
 </div>
@@ -697,7 +714,7 @@ If we assume that the observed risk is correct, and we run the same trial many t
 <h2>Simulating the Trial<a class="headerlink" href="#simulating-the-trial" title="Permalink to this headline">#</a></h2>
 <p>If that’s not making sense yet, let’s try another example.  In the previous section we simulated one group and estimated their risk.
 Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
-<p>The following function takes as parameters the size of the two groups and their actual risks.</p>
+<p>The following function takes four parameters: the sizes of the two groups and their actual risks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_trial</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
@@ -790,9 +807,9 @@ As an alternative, we can use percentiles to compute a 90% confidence interval.<
 </div>
 <p>In a scientific paper, we could report these results as 0.67, 90% CI [0.61, 0.72]”.</p>
 <p>The standard error and confidence interval represent nearly the same information.
-In general, I prefer to report a confidence interval because it is easier to interpret.</p>
+In general, I prefer to report a confidence interval because it is easier to interpret:</p>
 <ul class="simple">
-<li><p>Formally, it means that if we run the same experiment again, we expect 90% of the results to fall between 61% and 72% (assuming that the estimated risks are correct).</p></li>
+<li><p>Formally, the confidence interval means that if we run the same experiment again, we expect 90% of the results to fall between 61% and 72% (assuming that the estimated risks are correct).</p></li>
 <li><p>More casually, it means that it is plausible that the actually efficacy is as low as 61%, or as high as 72% (assuming there are no sources of error other than random variation).</p></li>
 </ul>
 </section>
@@ -994,8 +1011,8 @@ The following is a version of <code class="docutils literal notranslate"><span c
 </div>
 <p>Use this function to simulate 1000 samples with size <code class="docutils literal notranslate"><span class="pre">n=103</span></code>, using <code class="docutils literal notranslate"><span class="pre">mean_height</span></code> for <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">std_height</span></code> for <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.  Plot the sampling distribution of the coefficient of variation, and compute a 90% confidence interval.</p>
 </section>
-<section id="gun-control">
-<h2>Gun Control<a class="headerlink" href="#gun-control" title="Permalink to this headline">#</a></h2>
+<section id="support-for-gun-control">
+<h2>Support for Gun Control<a class="headerlink" href="#support-for-gun-control" title="Permalink to this headline">#</a></h2>
 <p>In Chapter 10 we used data from the General Social Survey, specifically a variable called <code class="docutils literal notranslate"><span class="pre">GUNLAW</span></code>, to describe support for a gun control law as a function of age, sex, and years of education.
 Now let’s come back to that dataset and see how the responses have changed over time.</p>
 <p>The following cell reloads the data.</p>
@@ -1025,8 +1042,8 @@ Name: GUNLAW, dtype: int64
 </div>
 </div>
 </div>
-<p>For each year of the survey, I would like to compute the number of respondents and the number who said they favor this law.
-I’ll use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to group the respondents by year of interview and <code class="docutils literal notranslate"><span class="pre">agg</span></code> to compute two aggregation functions, <code class="docutils literal notranslate"><span class="pre">sum</span></code> and <code class="docutils literal notranslate"><span class="pre">count</span></code>.</p>
+<p>For each year of the survey, we’ll compute the number of respondents and the number who said they favor this law.
+We can use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to group the respondents by year of interview and <code class="docutils literal notranslate"><span class="pre">agg</span></code> to compute two aggregation functions, <code class="docutils literal notranslate"><span class="pre">sum</span></code> and <code class="docutils literal notranslate"><span class="pre">count</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;YEAR&#39;</span><span class="p">)[</span><span class="s1">&#39;GUNLAW&#39;</span><span class="p">]</span>
@@ -1121,7 +1138,7 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">groupby<
 </div>
 </div>
 <p>The results vary from year to year.  It is hard to tell how much of this variation is due to real changes in opinion, and how much is due to random sampling.
-We can answer that question by computing confidence intervals for each of these data points.</p>
+In the following exercise, you’ll answer that question by computing confidence intervals for each of these data points.</p>
 <p><strong>Exercise:</strong> Write a loop that goes through the rows in <code class="docutils literal notranslate"><span class="pre">agg</span></code> and computes a confidence interval for each year.
 You can use <code class="docutils literal notranslate"><span class="pre">itertuples</span></code> to iterate the rows, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">agg</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>

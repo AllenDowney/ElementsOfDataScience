@@ -110,7 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -174,6 +179,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -361,8 +378,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sandwiches">
-   Sandwiches
+  <a class="reference internal nav-link" href="#sandwich-prices">
+   Sandwich Prices
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -371,8 +388,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mean-and-standard-deviation">
-   Mean and standard deviation
+  <a class="reference internal nav-link" href="#statistical-summaries">
+   Statistical Summaries
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -425,8 +442,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sandwiches">
-   Sandwiches
+  <a class="reference internal nav-link" href="#sandwich-prices">
+   Sandwich Prices
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -435,8 +452,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mean-and-standard-deviation">
-   Mean and standard deviation
+  <a class="reference internal nav-link" href="#statistical-summaries">
+   Statistical Summaries
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -474,7 +491,7 @@ title="Print to PDF"
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/03_arrays.ipynb">click here to download it</a>.</p>
 <p>In the previous chapter we used tuples to represent latitude and longitude.  In this chapter, you’ll see how to use tuples more generally to represent a sequence of values.  And we’ll see two more ways to represent sequences: lists and arrays.</p>
-<p>You might wonder why we need three ways to represent the same thing.  Most of the time you don’t, but each of them has different capabilities.  For work with data, we will use arrays most of the time.</p>
+<p>You might wonder why we need three ways to represent the same thing.  Most of the time we don’t, but each of them has different capabilities.  For work with data, we will use arrays most of the time.</p>
 <p>As an example, we will use a small dataset from an article in <em>The Economist</em> about the price of sandwiches.  It’s a silly example, but I’ll use it to introduce the idea of relative differences and different ways to summarize them.</p>
 <section id="tuples">
 <h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">#</a></h2>
@@ -568,7 +585,7 @@ To make a tuple with a single element, you need a comma:</p>
 </section>
 <section id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
-<p>Python provides another way to store a sequence of elements: a list.</p>
+<p>Python provides another way to store a sequence of elements: a <strong>list</strong>.</p>
 <p>To create a list, you put a sequence of elements in square brackets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -584,7 +601,7 @@ To make a tuple with a single element, you need a comma:</p>
 </div>
 <p>Lists and tuples are very similar.
 They can contain any number of elements, the elements can be any type, and the elements don’t have to be the same type.
-The difference is that you can modify a list; tuples are immutable (cannot be modified).  This difference will matter later, but for now we can ignore it.</p>
+The difference is that you can modify a list; tuples are <strong>immutable</strong> (cannot be modified).  This difference will matter later, but for now we can ignore it.</p>
 <p>When you make a list, the brackets are required, but if there is a single element, you don’t need a comma.  So you can make a list like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -617,8 +634,8 @@ The difference is that you can modify a list; tuples are immutable (cannot be mo
 <p><strong>Exercise:</strong> Create a list with 4 elements; then use <code class="docutils literal notranslate"><span class="pre">type</span></code> to confirm that it’s a list, and <code class="docutils literal notranslate"><span class="pre">len</span></code> to confirm that it has 4 elements.</p>
 <p>There’s a lot more we could do with lists, but that’s enough to get started.  In the next section, we’ll use lists to store data about sandwich prices.</p>
 </section>
-<section id="sandwiches">
-<h2>Sandwiches<a class="headerlink" href="#sandwiches" title="Permalink to this headline">#</a></h2>
+<section id="sandwich-prices">
+<h2>Sandwich Prices<a class="headerlink" href="#sandwich-prices" title="Permalink to this headline">#</a></h2>
 <p>In September 2019, <em>The Economist</em> published an article comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”.
 It includes this graph showing prices of several sandwiches in the two cities:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" /></p>
@@ -669,11 +686,11 @@ Here are the sandwich prices in Boston:</p>
 </div>
 <p>But it concatenates the two lists, which is not very useful in this example.
 To compute differences between prices, you might try subtracting lists, but you would get an error.<br />
-We can solve this problem with a NumPy array.</p>
+We can solve this problem with NumPy.</p>
 </section>
 <section id="numpy-arrays">
 <h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">#</a></h2>
-<p>We’ve already seen that the NumPy library provides math functions.  It also provides a type of sequence called an array.
+<p>We’ve already seen that the NumPy library provides math functions.  It also provides a type of sequence called an <strong>array</strong>.
 You can create a new array with the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function, starting with a list or tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -713,7 +730,7 @@ If you display an array, Python displays the elements:</p>
 </div>
 </div>
 </div>
-<p>You can also display the “data type” of the array, which is the type of the elements:</p>
+<p>You can also display the <strong>data type</strong> of the array, which is the type of the elements:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_array</span><span class="o">.</span><span class="n">dtype</span>
@@ -743,7 +760,7 @@ Most often the elements are numbers, but you can also make an array of strings.<
 </div>
 </div>
 </div>
-<p>In this example, the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is <code class="docutils literal notranslate"><span class="pre">&lt;U17</span></code>.  The <code class="docutils literal notranslate"><span class="pre">U</span></code> indicates that the elements are Unicode strings; Unicode is the standard Python uses to represent strings.</p>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is <code class="docutils literal notranslate"><span class="pre">&lt;U17</span></code>.  The <code class="docutils literal notranslate"><span class="pre">U</span></code> indicates that the elements are Unicode strings; Unicode is the standard Python uses to represent strings. The number <code class="docutils literal notranslate"><span class="pre">17</span></code> is the length of the longest string in the array.</p>
 <p>Now, here’s why NumPy arrays are useful: they can do arithmetic.  For example, to compute the differences between Boston and London prices, we can write:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -758,10 +775,10 @@ Most often the elements are numbers, but you can also make an array of strings.<
 </div>
 </div>
 </div>
-<p>Subtraction is done “elementwise”; that is, NumPy lines up the two arrays and subtracts corresponding elements.  The result is a new array.</p>
+<p>Subtraction is done <strong>elementwise</strong>; that is, NumPy lines up the two arrays and subtracts corresponding elements.  The result is a new array.</p>
 </section>
-<section id="mean-and-standard-deviation">
-<h2>Mean and standard deviation<a class="headerlink" href="#mean-and-standard-deviation" title="Permalink to this headline">#</a></h2>
+<section id="statistical-summaries">
+<h2>Statistical Summaries<a class="headerlink" href="#statistical-summaries" title="Permalink to this headline">#</a></h2>
 <p>NumPy provides functions that compute statistical summaries like the mean:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -811,13 +828,13 @@ As an aside, many of the NumPy functions also work with lists, so we could also 
 The definition of standard deviation is</p>
 <p><span class="math notranslate nohighlight">\(\sigma = \sqrt{\frac{1}{N} \sum_i (x_i - \mu)^2}\)</span></p>
 <p>Compute the standard deviation of <code class="docutils literal notranslate"><span class="pre">boston_price_list</span></code> using NumPy functions <code class="docutils literal notranslate"><span class="pre">np.mean</span></code> and <code class="docutils literal notranslate"><span class="pre">np.sqrt</span></code> and see if you get the same result as <code class="docutils literal notranslate"><span class="pre">np.std</span></code>.</p>
-<p>Note: You can (and should) do this exercise using only features we have discussed so far.</p>
-<p>Note: This definition of standard deviation is sometimes called the “population standard deviation”.  You might have seen another definition with <span class="math notranslate nohighlight">\(N-1\)</span> in the denominator; that’s the “sample standard deviation”.  We’ll use the population standard deviation for now and come back to this issue later.</p>
+<p>You can (and should) do this exercise using only features we have discussed so far.</p>
+<p>This definition of standard deviation is sometimes called the “population standard deviation”.  You might have seen another definition with <span class="math notranslate nohighlight">\(N-1\)</span> in the denominator; that’s the “sample standard deviation”.  We’ll use the population standard deviation for now and come back to this issue later.</p>
 </section>
 <section id="relative-difference">
 <h2>Relative Difference<a class="headerlink" href="#relative-difference" title="Permalink to this headline">#</a></h2>
 <p>In the previous section we computed differences between prices.
-But often when we make this kind of comparison, we are interested in <strong>relative difference</strong>, which are differences expressed as a fraction or percentage of a quantity.</p>
+But often when we make this kind of comparison, we are interested in <strong>relative differences</strong>, which are differences expressed as a fraction or percentage of a quantity.</p>
 <p>Taking the lobster roll as an example, the difference in price is:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

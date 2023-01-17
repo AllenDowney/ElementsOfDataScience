@@ -110,7 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -174,6 +179,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -356,8 +373,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dates-and-times">
-   Dates and Times
+  <a class="reference internal nav-link" href="#representing-dates-and-times">
+   Representing Dates and Times
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -366,13 +383,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#location">
-   Location
+  <a class="reference internal nav-link" href="#representing-location">
+   Representing Location
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#distance">
-   Distance
+  <a class="reference internal nav-link" href="#calculating-distance">
+   Calculating Distance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -420,8 +437,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dates-and-times">
-   Dates and Times
+  <a class="reference internal nav-link" href="#representing-dates-and-times">
+   Representing Dates and Times
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -430,13 +447,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#location">
-   Location
+  <a class="reference internal nav-link" href="#representing-location">
+   Representing Location
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#distance">
-   Distance
+  <a class="reference internal nav-link" href="#calculating-distance">
+   Calculating Distance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -485,7 +502,7 @@ title="Print to PDF"
 <section id="strings">
 <h2>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">#</a></h2>
 <p>A <strong>string</strong> is a sequence of letters, numbers, and punctuation marks.
-In Python you can create a string by typing letters between single or double quotation marks.</p>
+In Python you can create a string by enclosing text between single or double quotation marks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Elements&#39;</span>
@@ -525,7 +542,7 @@ In Python you can create a string by typing letters between single or double quo
 </div>
 </div>
 </div>
-<p>Some arithmetic operators work with strings, but they might no do what you expect.  For example, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator “concatenates” two strings; that is, it creates a new string that contains the first string followed by the second string:</p>
+<p>Some arithmetic operators work with strings, but they might not do what you expect.  For example, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator <strong>concatenates</strong> two strings; that is, it creates a new string that contains the first string followed by the second string:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">+</span> <span class="n">last</span>
@@ -565,7 +582,7 @@ For example, the following expression causes a <code class="docutils literal not
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>But you don’t always get an error; instead, you might get a surprising result.  For example:</p>
+<p>But you don’t always get an error message; instead, you might get a surprising result.  For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">*</span> <span class="mi">3</span>
@@ -644,8 +661,8 @@ For example, the following expression causes a <code class="docutils literal not
 <p>But names are often displayed different ways in different contexts.  For example, the first time you mention someone in an article, you might give all three names, like “Neil Ellwood Peart”.  But in the index of a book, you might put the family name first, like “Peart, Neil Ellwood”.</p>
 <p>Write Python expressions that use the variables <code class="docutils literal notranslate"><span class="pre">given</span></code>, <code class="docutils literal notranslate"><span class="pre">middle</span></code>, and <code class="docutils literal notranslate"><span class="pre">family</span></code> to display Neil Peart’s name in these two formats.</p>
 </section>
-<section id="dates-and-times">
-<h2>Dates and Times<a class="headerlink" href="#dates-and-times" title="Permalink to this headline">#</a></h2>
+<section id="representing-dates-and-times">
+<h2>Representing Dates and Times<a class="headerlink" href="#representing-dates-and-times" title="Permalink to this headline">#</a></h2>
 <p>If you read data from a file, you might also find that dates and times are represented with strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -896,7 +913,7 @@ Here’s a new <code class="docutils literal notranslate"><span class="pre">Time
 </div>
 </div>
 <p>The result is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.
-These values belong to a type called <code class="docutils literal notranslate"><span class="pre">bool</span></code>, short for “Boolean algebra”, which is a branch of algebra where all values are either true or false.</p>
+These values belong to a type called <code class="docutils literal notranslate"><span class="pre">bool</span></code>; the name comes from “Boolean algebra”, which is a branch of algebra where all values are either true or false.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -933,10 +950,11 @@ With the following dates, the result should be December 19, 2009.</p>
 </div>
 </div>
 </section>
-<section id="location">
-<h2>Location<a class="headerlink" href="#location" title="Permalink to this headline">#</a></h2>
-<p>There are many ways to represent geographical locations, but the most common, at least for global data, is latitude and longitude.</p>
-<p>When stored as strings, latitude and longitude are expressed in degrees with compass directions N, S, E, and W.  For example, this string represents the location of Boston, MA, USA:</p>
+<section id="representing-location">
+<h2>Representing Location<a class="headerlink" href="#representing-location" title="Permalink to this headline">#</a></h2>
+<p>In addition to times and dates, we might also want to represent locations, especially if we are working with geographical data.</p>
+<p>There are many ways to represent locations, but the most common, at least for global data, is latitude and longitude.
+When stored as strings, latitude and longitude are expressed in degrees with compass directions N, S, E, and W.  For example, this string represents the location of Boston, MA, USA:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_lon_string</span> <span class="o">=</span> <span class="s1">&#39;42.3601° N, 71.0589° W&#39;</span>
@@ -1016,8 +1034,8 @@ With the following dates, the result should be December 19, 2009.</p>
 <p><strong>Exercise:</strong> Find the latitude and longitude of the place you were born or someplace you think of as your “home town”.  <a class="reference external" href="https://www.latlong.net/">You can use this web page to look it up</a>.
 Make a tuple of floating-point numbers that represents that location.</p>
 </section>
-<section id="distance">
-<h2>Distance<a class="headerlink" href="#distance" title="Permalink to this headline">#</a></h2>
+<section id="calculating-distance">
+<h2>Calculating Distance<a class="headerlink" href="#calculating-distance" title="Permalink to this headline">#</a></h2>
 <p>If you are given two tuples that represent locations, you can compute the approximate distance between them, along the surface of the globe, using the haversine function.
 If you are curious about it, <a class="reference external" href="https://janakiev.com/blog/gps-points-distance-python/">you can read an explanation in this article</a>.
 To estimate a haversine distance, we have to compute the haversine function, which is defined:</p>
@@ -1059,7 +1077,6 @@ In some other languages it’s <code class="docutils literal notranslate"><span 
 </section>
 <section id="defining-functions">
 <h2>Defining Functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">#</a></h2>
-<p>At this point you don’t have to know how to define a new function.  But you will see function definitions, so I want to explain the basics now.</p>
 <p>If we are planning to use an expression like <code class="docutils literal notranslate"><span class="pre">np.sin(theta/2)**2</span></code> more than a few times, we can define a new function that computes it, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1071,7 +1088,7 @@ In some other languages it’s <code class="docutils literal notranslate"><span 
 </div>
 </div>
 <p>On the first line, <code class="docutils literal notranslate"><span class="pre">def</span></code> indicates that we are defining a function.</p>
-<p>The second line is a “triple-quoted string”, which describes what the function does, but it has no effect when the program runs.</p>
+<p>The second line is a triple-quoted string, which is a <strong>comment</strong>: it describes what the function does, but has no effect when the program runs.</p>
 <p>On the third line, <code class="docutils literal notranslate"><span class="pre">return</span></code> indicates the result of the function.</p>
 <p>When you run the previous cell, it creates a new variable called <code class="docutils literal notranslate"><span class="pre">haversine</span></code>.  You can display its value like this:</p>
 <div class="cell docutils container">
@@ -1100,7 +1117,7 @@ In some other languages it’s <code class="docutils literal notranslate"><span 
 </div>
 </div>
 <p>So <code class="docutils literal notranslate"><span class="pre">haversine</span></code> is a variable that refers to a function.
-To run the function and compute a result, we have to “call” the function and provide a value for <code class="docutils literal notranslate"><span class="pre">theta</span></code>:</p>
+To run the function and compute a result, we have to <strong>call</strong> the function and provide a value for <code class="docutils literal notranslate"><span class="pre">theta</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haversine</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -1146,7 +1163,7 @@ I won’t explain this function in as much detail, but if you read through it, y
 </div>
 </div>
 </div>
-<p>When we call this function, we provide two tuples, each representing a latitude and a longitude.
+<p>When we call this function, we provide two tuples; each is a latitude-longitude pair.
 We already have a tuple that represents the location of Boston.
 Now here’s a tuple that represents the location of London, England, UK:</p>
 <div class="cell docutils container">
@@ -1271,7 +1288,6 @@ You can’t make a map without making visualization decisions.</p>
 <img alt="_images/02_times_137_0.png" src="_images/02_times_137_0.png" />
 </div>
 </div>
-<p>There are a few features in this example I have not explained completely, but hopefully you get the idea.</p>
 <p><strong>Exercise:</strong> Modify the code in this section to plot a point that shows the home town you chose in a previous exercise and a line from there to Boston.</p>
 <p>Then go to <a class="reference external" href="https://forms.gle/2LDcqxJmcWY3Q3X47">this online survey</a> and answer the questions there.</p>
 </section>

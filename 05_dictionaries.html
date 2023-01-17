@@ -108,7 +108,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -172,6 +177,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -359,23 +376,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unique-words">
-   Unique Words
+  <a class="reference internal nav-link" href="#counting-unique-words">
+   Counting Unique Words
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#capitalization">
-   Capitalization
+  <a class="reference internal nav-link" href="#dealing-with-capitalization">
+   Dealing with Capitalization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#punctuation">
-   Punctuation
+  <a class="reference internal nav-link" href="#removing-punctuation">
+   Removing Punctuation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#word-frequencies">
-   Word Frequencies
+  <a class="reference internal nav-link" href="#counting-word-frequencies">
+   Counting Word Frequencies
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -413,23 +430,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unique-words">
-   Unique Words
+  <a class="reference internal nav-link" href="#counting-unique-words">
+   Counting Unique Words
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#capitalization">
-   Capitalization
+  <a class="reference internal nav-link" href="#dealing-with-capitalization">
+   Dealing with Capitalization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#punctuation">
-   Punctuation
+  <a class="reference internal nav-link" href="#removing-punctuation">
+   Removing Punctuation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#word-frequencies">
-   Word Frequencies
+  <a class="reference internal nav-link" href="#counting-word-frequencies">
+   Counting Word Frequencies
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -452,11 +469,11 @@ title="Print to PDF"
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/05_dictionaries.ipynb">click here to download it</a>.</p>
 <p>In the previous chapter we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.  In this chapter, you’ll learn about a new type called a <strong>dictionary</strong>, and we’ll use it to count the number of unique words and the number of times each one appears.</p>
-<p>Along the way, you will also see how to use an index to select an element from a sequence (tuple, list, or array).  And you will learn a little about Unicode, which is used to represent letters, numbers, and punctuation for almost every language in the world.</p>
+<p>You will also see how to select an element from a sequence (tuple, list, or array).  And you will learn a little about Unicode, which is used to represent letters, numbers, and punctuation for almost every language in the world.</p>
 <section id="indexing">
 <h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h2>
 <p>Suppose you have a variable named <code class="docutils literal notranslate"><span class="pre">t</span></code> that refers to a list or tuple.
-You can select an element using the bracket operator, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.
+You can select an element using the <strong>bracket operator</strong>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.
 For example, here’s a tuple of strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -627,7 +644,7 @@ Without them, Python looks for a variable named <code class="docutils literal no
 </div>
 </div>
 </div>
-<p>The word <code class="docutils literal notranslate"><span class="pre">in</span></code> is actually an operator in Python, so you can’t use it as a variable name.</p>
+<p>Because the word <code class="docutils literal notranslate"><span class="pre">in</span></code> is an operator in Python, you can’t use it as a variable name.</p>
 <p>If a key is already in a dictionary, adding it again has no effect:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -717,11 +734,11 @@ three 3
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">items</span></code> method loops through the key-value pairs in the dictionary; each time through the loop, they are assigned to <code class="docutils literal notranslate"><span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
-<p><strong>Exercise:</strong> Make a dictionary with the numbers <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, and <code class="docutils literal notranslate"><span class="pre">3</span></code> as keys and strings as values.  The strings should be the numbers “one”, “two”, and “three” in any language you know.</p>
+<p><strong>Exercise:</strong> Make a dictionary with the integers <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, and <code class="docutils literal notranslate"><span class="pre">3</span></code> as keys and strings as values.  The strings should be the words “one”, “two”, and “three” or their equivalents in any language you know.</p>
 <p>Write a loop that prints just the values from the dictionary.</p>
 </section>
-<section id="unique-words">
-<h2>Unique Words<a class="headerlink" href="#unique-words" title="Permalink to this headline">#</a></h2>
+<section id="counting-unique-words">
+<h2>Counting Unique Words<a class="headerlink" href="#counting-unique-words" title="Permalink to this headline">#</a></h2>
 <p>In the previous chapter we downloaded <em>War and Peace</em> from Project Gutenberg and counted the number of lines and words.
 Now that we have dictionaries, we can also count the number of unique words and the number of times each one appears.</p>
 <p>As we did in the previous chapter, we can read the text of <em>War and Peace</em> and count the number of words.</p>
@@ -742,7 +759,7 @@ Now that we have dictionaries, we can also count the number of unique words and 
 </div>
 </div>
 </div>
-<p>To count the number of unique words, I’ll loop through the words in each line and add them as keys in a dictionary:</p>
+<p>To count the number of unique words, we’ll loop through the words in each line and add them as keys in a dictionary:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
@@ -754,7 +771,7 @@ Now that we have dictionaries, we can also count the number of unique words and 
 </div>
 </div>
 </div>
-<p>This is the first example we’ve seen with one loop inside another.</p>
+<p>This is the first example we’ve seen with one loop <strong>nested</strong> inside another.</p>
 <ul class="simple">
 <li><p>The outer loop runs through the lines in the file.</p></li>
 <li><p>The inner loops runs through the words in each line.</p></li>
@@ -802,7 +819,7 @@ But each word only appears once, so the number of keys is the number of unique w
 </div>
 <p>It looks like there are about 42,000 different words in the book, which is substantially less than the total number of words, about 560,000.
 But that’s not quite right, because we have not taken into account capitalization and punctuation.</p>
-<p><strong>Exercise:</strong> Before we deal with that problem, let’s practice with <strong>nested loops</strong>, that is, one loop inside another.
+<p><strong>Exercise:</strong> Before we deal with that problem, let’s practice with nested loops, that is, one loop inside another.
 Suppose you have a list of words, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -813,8 +830,8 @@ Suppose you have a list of words, like this:</p>
 </div>
 <p>Write a nested loop that iterates through each word in the list, and each letter in each word, and prints the letters on separate lines.</p>
 </section>
-<section id="capitalization">
-<h2>Capitalization<a class="headerlink" href="#capitalization" title="Permalink to this headline">#</a></h2>
+<section id="dealing-with-capitalization">
+<h2>Dealing with Capitalization<a class="headerlink" href="#dealing-with-capitalization" title="Permalink to this headline">#</a></h2>
 <p>When we count unique words, we probably want to treat <code class="docutils literal notranslate"><span class="pre">The</span></code> and <code class="docutils literal notranslate"><span class="pre">the</span></code> as the same word.  We can do that by converting all words to lower case, using the <code class="docutils literal notranslate"><span class="pre">lower</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -865,8 +882,8 @@ Suppose you have a list of words, like this:</p>
 </div>
 <p><strong>Exercise:</strong> Modify the previous loop so it makes a lowercase version of each word before adding it to the dictionary.  How many unique words are there, if we ignore the difference between uppercase and lowercase?</p>
 </section>
-<section id="punctuation">
-<h2>Punctuation<a class="headerlink" href="#punctuation" title="Permalink to this headline">#</a></h2>
+<section id="removing-punctuation">
+<h2>Removing Punctuation<a class="headerlink" href="#removing-punctuation" title="Permalink to this headline">#</a></h2>
 <p>To remove punctuation from the words, we can use <code class="docutils literal notranslate"><span class="pre">strip</span></code>, which removes specified characters from the beginning and end of a string.  Here’s an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1002,11 +1019,12 @@ The problem is that this kind of quotation mark is not in <code class="docutils 
 </div>
 </div>
 </div>
+<p>The result is a string containing all of the punctuation characters that appear in the document, in the order they first appear.</p>
 <p><strong>Exercise:</strong> Modify the word-counting loop from the previous section to convert words to lower case <em>and</em> strip punctuation before adding them to the dictionary.  Now how many unique words are there?</p>
 <p>Optional: You might want to skip over the front matter and start with the text of Chapter 1, and skip over the license at the end, as we did in the previous chapter.</p>
 </section>
-<section id="word-frequencies">
-<h2>Word Frequencies<a class="headerlink" href="#word-frequencies" title="Permalink to this headline">#</a></h2>
+<section id="counting-word-frequencies">
+<h2>Counting Word Frequencies<a class="headerlink" href="#counting-word-frequencies" title="Permalink to this headline">#</a></h2>
 <p>In the previous section we counted the number of unique words, but we might also want to know how often each word appears.  Then we can find the most common and least common words in the book.
 To count the frequency of each word, we’ll make a dictionary that maps from each word to the number of times it appears.</p>
 <p>Here’s an example that loops through a string and counts the number of times each letter appears.</p>
@@ -1094,6 +1112,10 @@ Here’s how it works.</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>This chapter introduces dictionaries, which represent a collection of keys and values.
+We used a dictionary to count the number of unique words in a file and the number of times each one appears.</p>
+<p>It also introduces the bracket operator, which selects an element from a list or tuple, or looks up a key in a dictionary and finds the corresponding value.</p>
+<p>We saw some new methods for working with strings, including <code class="docutils literal notranslate"><span class="pre">lower</span></code> and <code class="docutils literal notranslate"><span class="pre">strip</span></code>. Finally, we used the <code class="docutils literal notranslate"><span class="pre">unicodedata</span></code> library to identify characters that are considered punctuation.</p>
 </section>
 </section>
 

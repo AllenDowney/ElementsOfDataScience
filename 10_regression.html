@@ -110,7 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapters
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_variables.html">
    Variables and Values
@@ -174,6 +179,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="13_hypothesis.html">
    Hypothesis Testing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resample_logit.html">
+   Resampling and Logistic Regression
   </a>
  </li>
 </ul>
@@ -356,13 +373,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-with-statsmodels">
+   Regression with StatsModels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-regression">
    Multiple Regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby">
-   Groupby
+  <a class="reference internal nav-link" href="#grouping-by-age">
+   Grouping by Age
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -372,7 +394,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#categorical-variables">
-   Categorical variables
+   Categorical Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -410,13 +432,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-with-statsmodels">
+   Regression with StatsModels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-regression">
    Multiple Regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#groupby">
-   Groupby
+  <a class="reference internal nav-link" href="#grouping-by-age">
+   Grouping by Age
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -426,7 +453,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#categorical-variables">
-   Categorical variables
+   Categorical Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -453,7 +480,7 @@ title="Print to PDF"
 <h1>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/10_regression.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/10_regression.ipynb">click here to download it</a>.</p>
-<p>In the previous chapter we used simple regression to quantify the relationship between two variables.
+<p>In the previous chapter we used simple linear regression to quantify the relationship between two variables.
 In this chapter we’ll get farther into regression, including multiple regression and one of my all-time favorite tools, logistic regression.</p>
 <p>These tools will allow us to explore relationships among sets of variables.  As an example, we will use data from the General Social Survey (GSS) to explore the relationship between income, education, age, and sex.
 But first let’s understand the limits of simple regression.</p>
@@ -485,7 +512,10 @@ So that’s not a very big difference.</p>
 </ul>
 <p>But in general, regression can’t tell you what causes what.  If you see a relationship between any two variables, A and B, the reason for the relationship might be that A causes B, or B causes A, or there might be other factors that cause both A and B.
 Regression alone can’t tell you which way it goes.</p>
-<p>However, we have tools for teasing apart relationships among multiple variables; one of the most important is multiple regression.</p>
+<p>However, we have tools for quantifying relationships among multiple variables; one of the most important is multiple regression.</p>
+</section>
+<section id="regression-with-statsmodels">
+<h2>Regression with StatsModels<a class="headerlink" href="#regression-with-statsmodels" title="Permalink to this headline">#</a></h2>
 <p>SciPy doesn’t do multiple regression, so we’ll to switch to a new library, StatsModels.  Here’s the import statement.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -505,7 +535,10 @@ Regression alone can’t tell you which way it goes.</p>
 </div>
 </div>
 <p>Now we can use StatsModels to fit a regression model.
-The name of the function is <code class="docutils literal notranslate"><span class="pre">ols</span></code>, which stands for “ordinary least squares”, another name for regression.</p>
+We’ll start with one of the examples from the previous chapter, the relationship between income and vegetable consumption.
+We’ll check that the results from StatsModels are the same as the results from SciPy.
+Then we’ll move on to multiple regression.</p>
+<p>The function we’ll use is <code class="docutils literal notranslate"><span class="pre">ols</span></code>, which stands for “ordinary least squares”, another name for regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;INCOME2 ~ _VEGESU1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">brfss</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -513,10 +546,10 @@ The name of the function is <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 </div>
-<p>The first argument is a <strong>formula string</strong> that specifies that we want to regress income as a function of vegetable consumption.</p>
-<p>The second argument is the BRFSS <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.  The names in the formula correspond to columns in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
-<p>The result from <code class="docutils literal notranslate"><span class="pre">ols</span></code> represents the model; then we run <code class="docutils literal notranslate"><span class="pre">fit</span></code> to get the results.</p>
-<p>Results is a <code class="docutils literal notranslate"><span class="pre">RegressionResultsWrapper</span></code>, which contains a lot of information; the first thing we’ll look at is the attribute <code class="docutils literal notranslate"><span class="pre">params</span></code>, which contains the estimated intercept and the slope associated with <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code>.</p>
+<p>The first argument is a <strong>formula string</strong> that specifies that we want to regress income as a function of vegetable consumption.
+The second argument is the BRFSS <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.  The names in the formula string correspond to columns in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>The result from <code class="docutils literal notranslate"><span class="pre">ols</span></code> is an object that represents the model; it provides a function called <code class="docutils literal notranslate"><span class="pre">fit</span></code> that does the actual computation.</p>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">RegressionResultsWrapper</span></code>, which contains several attributes; the first one we’ll look at is <code class="docutils literal notranslate"><span class="pre">params</span></code>, which contains the estimated intercept and the slope associated with <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">params</span>
@@ -531,8 +564,9 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>And we get the same results we got from SciPy, so that’s good!</p>
-<p>In the next section we’ll move on to multiple regression.  But first, some exercises.</p>
+<p>The results from Statsmodels are the same as the results we got from SciPy, so that’s good!</p>
+<p>There are only two variables in this example, so it is still simple regression.
+In the next section we’ll move on to multiple regression.  But first, some exercises.</p>
 <p><strong>Exercise:</strong> In the BRFSS dataset, there is a strong relationship between vegetable consumption and income. The income of people who eat 8 servings of vegetables per day is double the income of people who eat none, on average.</p>
 <p>Which of the following conclusions can we draw from this data?</p>
 <p>A.  Eating a good diet leads to better health and higher income.</p>
@@ -694,12 +728,12 @@ dtype: float64
 <p>On the right side of the formula string, you can list as many variables as you like, in this case, education and age.
 The <code class="docutils literal notranslate"><span class="pre">plus</span></code> sign indicates that we expect the contributions of the two variables to be additive, which is a common assumption for models like this.</p>
 <p>The estimated slope for <code class="docutils literal notranslate"><span class="pre">EDUC</span></code> is a little less than what we saw before, about $3514 per year.</p>
-<p>The estimated slope for <code class="docutils literal notranslate"><span class="pre">AGE</span></code> is only about $54 per year, which is surprisingly small.
-To see what’s going on, let’s look more closely at the relationship between income and age.</p>
+<p>The estimated slope for <code class="docutils literal notranslate"><span class="pre">AGE</span></code> is only about $54 per year, which is surprisingly small.</p>
 </section>
-<section id="groupby">
-<h2>Groupby<a class="headerlink" href="#groupby" title="Permalink to this headline">#</a></h2>
-<p>I’ll use <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>, which is a Pandas feature we have not seen before, to divide the DataFrame into age groups.  The result is a <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object that contains one group for each value of <code class="docutils literal notranslate"><span class="pre">age</span></code>.</p>
+<section id="grouping-by-age">
+<h2>Grouping by Age<a class="headerlink" href="#grouping-by-age" title="Permalink to this headline">#</a></h2>
+<p>To see what’s going on, let’s look more closely at the relationship between income and age.
+We’ll use a Pandas method we have not seen before, called <code class="docutils literal notranslate"><span class="pre">groupby</span></code>, to divide the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> into age groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;AGE&#39;</span><span class="p">)</span>
@@ -713,7 +747,9 @@ To see what’s going on, let’s look more closely at the relationship between 
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object behaves like a DataFrame in many ways.  You can use brackets to select a column, like <code class="docutils literal notranslate"><span class="pre">REALINC</span></code> in this example, and then invoke a method like <code class="docutils literal notranslate"><span class="pre">mean()</span></code>.</p>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object that contains one group for each value of <code class="docutils literal notranslate"><span class="pre">age</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object behaves like a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> in many ways.
+You can use brackets to select a column, like <code class="docutils literal notranslate"><span class="pre">REALINC</span></code> in this example, and then invoke a method like <code class="docutils literal notranslate"><span class="pre">mean</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_income_by_age</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;REALINC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -721,7 +757,7 @@ To see what’s going on, let’s look more closely at the relationship between 
 </div>
 </div>
 </div>
-<p>The result is a Pandas series that contains the mean income for each age group, which we can plot like this.</p>
+<p>The result is a Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code> that contains the mean income for each age group, which we can plot like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -734,13 +770,13 @@ To see what’s going on, let’s look more closely at the relationship between 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10_regression_37_0.png" src="_images/10_regression_37_0.png" />
+<img alt="_images/10_regression_38_0.png" src="_images/10_regression_38_0.png" />
 </div>
 </div>
 <p>Average income increases from age 20 to age 50, then starts to fall.<br />
 And that explains why the estimated slope is so small, because the relationship is non-linear.  Remember that correlation and simple regression can’t measure non-linear relationships.</p>
 <p>But multiple regression can!  To describe a non-linear relationship, one option is to add a new variable that is a non-linear combination of other variables.</p>
-<p>As an example, I’ll create a new variable called <code class="docutils literal notranslate"><span class="pre">AGE2</span></code> that equals <code class="docutils literal notranslate"><span class="pre">AGE</span></code> squared.</p>
+<p>As an example, we’ll create a new variable called <code class="docutils literal notranslate"><span class="pre">AGE2</span></code> that equals <code class="docutils literal notranslate"><span class="pre">AGE</span></code> squared.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;AGE2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
@@ -767,13 +803,13 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Now the slope associated with <code class="docutils literal notranslate"><span class="pre">AGE</span></code> is substantial, about $1760 per year.</p>
+<p>In this model, the slope associated with <code class="docutils literal notranslate"><span class="pre">AGE</span></code> is substantial, about $1760 per year.</p>
 <p>The slope associated with <code class="docutils literal notranslate"><span class="pre">AGE2</span></code> is about -$17, but that’s harder to interpret.</p>
-<p>In the next section, we’ll see methods to interpret multivariate models and visualize the results.  But first, let’s practice multiple regression.</p>
+<p>In the next section, we’ll see methods to interpret multivariate models and visualize the results.  But first, here are two exercises where you can practice using <code class="docutils literal notranslate"><span class="pre">groupby</span></code> and <code class="docutils literal notranslate"><span class="pre">ols</span></code>.</p>
 <p><strong>Exercise:</strong> To get a closer look at the relationship between income and education, let’s use the variable <code class="docutils literal notranslate"><span class="pre">EDUC</span></code> to group the data, then plot mean income in each group.</p>
 <ul class="simple">
-<li><p>Group <code class="docutils literal notranslate"><span class="pre">gss</span></code> by <code class="docutils literal notranslate"><span class="pre">EDUC</span></code>. Store the result in <code class="docutils literal notranslate"><span class="pre">grouped</span></code>.</p></li>
-<li><p>From <code class="docutils literal notranslate"><span class="pre">grouped</span></code>, extract <code class="docutils literal notranslate"><span class="pre">REALINC</span></code> and compute the mean.</p></li>
+<li><p>Group <code class="docutils literal notranslate"><span class="pre">gss</span></code> by <code class="docutils literal notranslate"><span class="pre">EDUC</span></code>.</p></li>
+<li><p>From the resulting <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> object, extract <code class="docutils literal notranslate"><span class="pre">REALINC</span></code> and compute the mean.</p></li>
 <li><p>Plot mean income in each education group as a scatter plot.</p></li>
 </ul>
 <p>What can you say about the relationship between education and income?  Does it look like a linear relationship?</p>
@@ -813,7 +849,7 @@ dtype: float64
 <p>Sometimes we can understand a model by looking at its parameters, but often it is better to look at its predictions.</p>
 <p>The regression results provide a method called <code class="docutils literal notranslate"><span class="pre">predict</span></code> that uses the model to generate predictions.
 It takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter and returns a <code class="docutils literal notranslate"><span class="pre">Series</span></code> with a prediction for each row in the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.
-To use it, I’ll create a new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with <code class="docutils literal notranslate"><span class="pre">AGE</span></code> running from 18 to 89, and <code class="docutils literal notranslate"><span class="pre">AGE2</span></code> set to <code class="docutils literal notranslate"><span class="pre">AGE</span></code> squared.</p>
+To use it, we’ll create a new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with <code class="docutils literal notranslate"><span class="pre">AGE</span></code> running from 18 to 89, and <code class="docutils literal notranslate"><span class="pre">AGE2</span></code> set to <code class="docutils literal notranslate"><span class="pre">AGE</span></code> squared.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -825,7 +861,7 @@ To use it, I’ll create a new <code class="docutils literal notranslate"><span 
 </div>
 </div>
 </div>
-<p>Next, I’ll pick a level for <code class="docutils literal notranslate"><span class="pre">EDUC</span></code>, like 12 years, which is the most common value.  When you assign a single value to a column in a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, Pandas makes a copy for each row.</p>
+<p>Next, we’ll pick a level for <code class="docutils literal notranslate"><span class="pre">EDUC</span></code>, like 12 years, which is the most common value.  When you assign a single value to a column in a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, Pandas makes a copy for each row.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;EDUC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
@@ -858,7 +894,7 @@ And we can plot the data for comparison.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10_regression_56_0.png" src="_images/10_regression_56_0.png" />
+<img alt="_images/10_regression_57_0.png" src="_images/10_regression_57_0.png" />
 </div>
 </div>
 <p>The dots show the average income in each age group.
@@ -894,7 +930,7 @@ This plot shows the shape of the model, a downward-facing parabola.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10_regression_59_0.png" src="_images/10_regression_59_0.png" />
+<img alt="_images/10_regression_60_0.png" src="_images/10_regression_60_0.png" />
 </div>
 </div>
 <p>The lines show mean income, as predicted by the model, as a function of age, for three levels of education.
@@ -918,9 +954,10 @@ This visualization helps validate the model, since we can compare the prediction
 <p><strong>Optional Exercise:</strong> Extend the previous exercise to include predictions for a few other age levels.</p>
 </section>
 <section id="categorical-variables">
-<h2>Categorical variables<a class="headerlink" href="#categorical-variables" title="Permalink to this headline">#</a></h2>
+<h2>Categorical Variables<a class="headerlink" href="#categorical-variables" title="Permalink to this headline">#</a></h2>
 <p>Most of the variables we have used so far — like income, age, and education — are numerical.
-But variables like sex and race are categorical; that is, each respondent belongs to one of a specified set of categories.</p>
+But variables like sex and race are <strong>categorical</strong>; that is, each respondent belongs to one of a specified set of categories.
+If there are only two categories, we would say the variable is <strong>binary</strong>.</p>
 <p>With StatsModels, it is easy to include a categorical variable as part of a regression model.
 Here’s an example:</p>
 <div class="cell docutils container">
@@ -1017,8 +1054,8 @@ dtype: float64
 </div>
 <p>The parameters are in the form of <strong>log odds</strong>, which you may or may not be familiar with.  I won’t explain them in detail here, except to say that positive values are associated with things that make the outcome more likely, and negative values make the outcome less likely.</p>
 <p>For example, the parameter associated with <code class="docutils literal notranslate"><span class="pre">SEX=2</span></code> is 0.75, which indicates that women are more likely to support this form of gun control.  To see how much more likely, we can generate predictions, as we did with linear regression.</p>
-<p>As an example, I’ll generate predictions for different ages and sexes, with education held constant.</p>
-<p>First we need a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with <code class="docutils literal notranslate"><span class="pre">AGE</span></code> and <code class="docutils literal notranslate"><span class="pre">EDUC</span></code>.</p>
+<p>As an example, we’ll generate predictions for different ages and sexes, with education held constant.
+First we need a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with <code class="docutils literal notranslate"><span class="pre">AGE</span></code> and <code class="docutils literal notranslate"><span class="pre">EDUC</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -1055,7 +1092,9 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Now, to visualize the results, I’ll start by plotting the data.  As we’ve done before, we’ll divide the respondents into age groups and compute the mean in each group.  The mean of a binary variable is the fraction of people in favor.</p>
+<p>Now, to visualize the results, we’ll start by plotting the data.
+As we’ve done before, we’ll divide the respondents into age groups and compute the mean in each group.
+The mean of a binary variable is the fraction of people in favor.</p>
 <p>Then we can plot the predictions, for men and women, as a function of age.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1074,14 +1113,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/10_regression_88_0.png" src="_images/10_regression_88_0.png" />
+<img alt="_images/10_regression_89_0.png" src="_images/10_regression_89_0.png" />
 </div>
 </div>
-<p>According to the model, people near age 50 are least likely to support gun control (at least as this questions was posed).
+<p>According to the model, people near age 50 are least likely to support gun control (at least as this question was posed).
 And women are more likely to support it than men, by almost 15 percentage points.</p>
 <p>Logistic regression is a powerful tool for exploring relationships between a binary variable and the factors that predict it.
 In the exercises, you’ll explore the factors that predict support for legalizing marijuana.</p>
-<p><strong>Exercise:</strong> Let’s use logistic regression to predict a binary variable.  Specifically, we’ll use age, sex, and education level to predict support for legalizing cannabis (marijuana) in the U.S.</p>
+<p><strong>Exercise:</strong> Let’s use logistic regression to predict a binary variable.  Specifically, we’ll use age, sex, and education level to predict support for legalizing marijuana in the U.S.</p>
 <p>In the GSS dataset, the variable <code class="docutils literal notranslate"><span class="pre">GRASS</span></code> records the answer to the question “Do you think the use of marijuana should be made legal or not?”</p>
 <ol class="simple">
 <li><p>First, use <code class="docutils literal notranslate"><span class="pre">replace</span></code> to recode the <code class="docutils literal notranslate"><span class="pre">GRASS</span></code> column so that <code class="docutils literal notranslate"><span class="pre">1</span></code> means yes and <code class="docutils literal notranslate"><span class="pre">0</span></code> means no.  Use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to check.</p></li>
@@ -1094,8 +1133,8 @@ In the exercises, you’ll explore the factors that predict support for legalizi
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>At this point, I’d like to summarize the topics we’ve covered so far, and make some connections that might clarify the big picture.</p>
-<p>A central theme of this book is <strong>exploratory data analysis</strong>, which is a process and a set of techniques for working with data, especially in the early stages of a project, or when you are working with a new data set.</p>
-<p>The last four chapters demonstrate the steps of this process:</p>
+<p>A central theme of this book is <strong>exploratory data analysis</strong>, which a process and set of tools for exploring a dataset, visualizing distributions, and discovering relationships between variables.
+The last four chapters demonstrate the steps of this process:</p>
 <ul class="simple">
 <li><p>Chapter 7 is about importing and cleaning data, and checking for errors and other special conditions.  This might not be the most exciting part of the process, but time spent validating data can save you from embarrassing errors.</p></li>
 <li><p>Chapter 8 is about exploring variables one at a time, visualizing distributions using PMFs, CDFs, and KDE, and choosing appropriate summary statistics.</p></li>
@@ -1112,6 +1151,7 @@ But when you present to audiences that are not familiar with CDFs, you can use P
 <p>But remember that both of these methods only capture linear relationships; if the relationship is non-linear, they can be misleading.  Always look at a visualization, like a scatter plot, before computing correlation or simple regression.</p>
 <p>In Chapter 10 we used multiple regression to add control variables and to describe non-linear relationships.  And finally we used logistic regression to explain and predict binary variables.</p>
 <p>We moved through a lot of material quickly, but if you practice and apply these methods to other questions and other datasets, you will learn more as you go.</p>
+<p>In the next chapter, we will move on to a new topic, resampling, which is a versatile tool for statistical inference.</p>
 </section>
 </section>
 
