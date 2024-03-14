@@ -146,9 +146,9 @@ def resample_by_year(df, column='wtssall'):
 
 def values(series):
     """Count the values and sort.
-    
+
     series: pd.Series
-    
+
     returns: series mapping from values to frequencies
     """
     return series.value_counts().sort_index()
@@ -301,3 +301,90 @@ def anchor_legend(x, y):
     y: axis coordinate
     """
     plt.legend(bbox_to_anchor=(x, y), loc='upper left', ncol=1)
+
+from os.path import basename, exists
+
+def download(url):
+    filename = basename(url)
+    if not exists(filename):
+        from urllib.request import urlretrieve
+        local, _ = urlretrieve(url, filename)
+        print('Downloaded ' + local)
+
+import gzip
+
+def read_gss(dict_file='GSS.dct', data_file='GSS.dat.gz'):
+    from statadict import parse_stata_dict
+
+    download('https://github.com/AllenDowney/' +
+             'ElementsOfDataScience/raw/master/data/' +
+              dict_file)
+
+    download('https://github.com/AllenDowney/' +
+             'ElementsOfDataScience/raw/master/data/' +
+              data_file)
+
+    stata_dict = parse_stata_dict(dict_file)
+    fp = gzip.open(data_file)
+    gss = pd.read_fwf(fp,
+                      names=stata_dict.names,
+                      colspecs=stata_dict.colspecs)
+    return gss
+
+import contextlib
+import io
+import re
+
+from IPython.core.magic import register_cell_magic
+from IPython.core.magic_arguments import argument, magic_arguments, parse_argstring
+
+
+def traceback(mode):
+    """Set the traceback mode.
+
+    mode: string
+    """
+    with contextlib.redirect_stdout(io.StringIO()):
+        get_ipython().run_cell(f'%xmode {mode}')
+    
+
+traceback('Minimal')
+
+
+def extract_function_name(text):
+    """Find a function definition and return its name.
+
+    text: String
+
+    returns: String or None
+    """
+    pattern = r"def\s+(\w+)\s*\("
+    match = re.search(pattern, text)
+    if match:
+        func_name = match.group(1)
+        return func_name
+    else:
+        return None
+
+
+@register_cell_magic
+def expect_error(line, cell):
+    try:
+        get_ipython().run_cell(cell)
+    except Exception as e:
+        get_ipython().run_cell('%tb')
+
+
+@magic_arguments()
+@argument('exception', help='Type of exception to catch')
+@register_cell_magic
+def expect(line, cell):
+    args = parse_argstring(expect, line)
+    exception = eval(args.exception)
+    try:
+        get_ipython().run_cell(cell)
+    except exception as e:
+        get_ipython().run_cell("%tb")
+
+
+
