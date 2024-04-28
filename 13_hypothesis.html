@@ -1,107 +1,169 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Hypothesis Testing &#8212; Elements of Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '13_hypothesis';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Resampling and Logistic Regression" href="resample_logit.html" />
     <link rel="prev" title="Bootstrap Sampling" href="12_bootstrap.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elements of Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,381 +172,231 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_variables.html">
-   Variables and Values
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_times.html">
-   Times and Places
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_arrays.html">
-   Lists and Arrays
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_loops.html">
-   Loops and Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html">
-   DataFrames and Series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_distributions.html">
-   Distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_relationships.html">
-   Relationships
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_resampling.html">
-   Resampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12_bootstrap.html">
-   Bootstrap Sampling
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Hypothesis Testing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hypothesis Testing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="resample_logit.html">
-   Resampling and Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="anderson.html">
-   Never Test for Normality
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="resample_logit.html">Resampling and Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anderson.html">Never Test for Normality</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/13_hypothesis.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ElementsOfDataScience"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/13_hypothesis.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/13_hypothesis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing-medical-treatments">
-   Testing Medical Treatments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-p-values">
-   Computing p-values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">
-   Are first babies more likely to be late?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-hypothesis-testing-framework">
-   The Hypothesis Testing Framework
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing-correlation">
-   Testing Correlation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing-regression-models">
-   Testing Regression Models
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#controlling-for-age">
-   Controlling for Age
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Hypothesis Testing</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing-medical-treatments">
-   Testing Medical Treatments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-p-values">
-   Computing p-values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">
-   Are first babies more likely to be late?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-hypothesis-testing-framework">
-   The Hypothesis Testing Framework
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing-correlation">
-   Testing Correlation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testing-regression-models">
-   Testing Regression Models
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#controlling-for-age">
-   Controlling for Age
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hypothesis Testing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-medical-treatments">Testing Medical Treatments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-p-values">Computing p-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">Are First Babies More Likely To Be Late?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hypothesis-testing-framework">The Hypothesis Testing Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-correlation">Testing Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-regression-models">Testing Regression Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-for-age">Controlling for Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing">
-<h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/13_hypothesis.ipynb">Click here to run this notebook on Colab</a> or
-<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/13_hypothesis.ipynb">click here to download it</a>.</p>
+<h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/13_hypothesis.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_remove-print docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">filename</span>
+
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">utils</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>This chapter introduces statistical hypothesis testing, which is such a contentious topic in the history of statistics, it’s hard to provide a simple definition.
 Instead, I’ll start with an example, present the problem hypothesis testing is intended to solve, and then show a solution.</p>
 <p>The solution I’ll show is different from what you might find in a statistics book.
@@ -493,22 +405,20 @@ This approach has two advantages and one disadvantage:</p>
 <ul class="simple">
 <li><p>Advantage: The standard statistics curriculum includes many different tests, and many people find it hard to remember which one to use. In my opinion, simulation makes it clearer that there is only one testing framework.</p></li>
 <li><p>Advantage: Simulations make modeling decision explicit.  All statistical methods are based on models, but when we use mathematical methods, it is easy to forget the assumptions they are based on. With computation, the assumptions are more visible, and it is easier to try different models.</p></li>
-<li><p>Disadvantage: Simulation uses a lot of computation. Some of the examples in this notebook take several seconds to run and the results are only approximate. For some problems, there are analytic methods that are faster and more accurate.</p></li>
+<li><p>Disadvantage: Simulation uses a lot of computation. Some of the examples in this notebook take several seconds to run; for some of them, there are analytic methods that are much faster.</p></li>
 </ul>
 <p>The examples in this chapter include results from a clinical trial related to peanut allergies, and survey data from the National Survey of Family Growth (NSFG) and the Behavioral Risk Factor Surveillance System (BRFSS).</p>
 <section id="testing-medical-treatments">
-<h2>Testing Medical Treatments<a class="headerlink" href="#testing-medical-treatments" title="Permalink to this headline">#</a></h2>
-<p>The LEAP study was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies (see <a class="reference external" href="http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA">http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA</a>).
+<h2>Testing Medical Treatments<a class="headerlink" href="#testing-medical-treatments" title="Link to this heading">#</a></h2>
+<p>The LEAP study was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies.
 The subjects were infants who were at high risk of developing peanut allergies because they had been diagnosed with other food allergies.
 Over a period of several years, half of the subjects were periodically given a snack containing peanuts; the other half were given no peanuts at all.</p>
 <p>The conclusion of the study, reported in 2015 is:</p>
 <blockquote>
 <div><p>Of the children who avoided peanut, 17% developed peanut allergy by the age of 5 years. Remarkably, only 3% of the children who were randomized to eating the peanut snack developed allergy by age 5. Therefore, in high-risk infants, sustained consumption of peanut beginning in the first 11 months of life was highly effective in preventing the development of peanut allergy.</p>
 </div></blockquote>
-<p>These results seem impressive, but as skeptical data scientists we should wonder whether it is possible that we are getting fooled by randomness.
-Maybe the apparent difference between the groups is due to chance, not the effectiveness of the treatment.
-To see whether this is likely, we will simulate the experiment using a model where the treatment has no effect, and see how often we see such a big difference between the groups.</p>
-<p>Detailed results of the study are reported in the <em>New England Journal of Medicine</em> (see <a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJMoa1414850">https://www.nejm.org/doi/full/10.1056/NEJMoa1414850</a>).
+<p>Read more about the study at <a class="reference external" href="http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA">http://www.leapstudy.co.uk/leap-0#.YEJax3VKikA</a> and <a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJMoa1414850">https://www.nejm.org/doi/full/10.1056/NEJMoa1414850</a>.</p>
+<p>Detailed results of the study are reported in the <em>New England Journal of Medicine</em>
 In that article, Figure 1 shows the number of subjects in the treatment and control groups, which happened to be equal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -570,10 +480,12 @@ To quantify the difference between the groups, we’ll use relative risk, which 
 </div>
 </div>
 </div>
-<p>The risk in the treatment group is about 18% of the risk in the control group.
-So it seems like the treatment is highly effective.
-To check, let’s imagine a world where the treatment is completely ineffective, so the risk is actually the same in both groups, and the difference we saw is due to chance.
-If that’s true, we can estimate the hypothetical risk by combining the two groups:</p>
+<p>The risk in the treatment group is about 18% of the risk in the control group, which means the treatment might prevent 82% of cases.</p>
+<p>These results seem impressive, but as skeptical data scientists we should wonder whether it is possible that we are getting fooled by randomness.
+Maybe the apparent difference between the groups is due to chance, not the effectiveness of the treatment.
+To see whether this is likely, we will simulate the experiment using a model where the treatment has no effect, and see how often we see such a big difference between the groups.</p>
+<p>Let’s imagine a world where the treatment is completely ineffective, so the risk is actually the same in both groups, and the difference we saw is due to chance.
+If that’s true, we can estimate the hypothetical risk by combining the two groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_all</span> <span class="o">=</span> <span class="n">n_control</span> <span class="o">+</span> <span class="n">n_treatment</span>
@@ -643,12 +555,12 @@ Here’s the list for the treatment group.</p>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Relative risk&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relative risks from simulation with risk_all&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relative risks from simulation&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_26_0.png" src="_images/13_hypothesis_26_0.png" />
+<img alt="_images/61f183d28f4be8753feb9001b0aa2bc2a56ba02cb232171aa3f4ba5142593b9a.png" src="_images/61f183d28f4be8753feb9001b0aa2bc2a56ba02cb232171aa3f4ba5142593b9a.png" />
 </div>
 </div>
 <p>Remember that these simulations are based on the assumption that the risk is the same for both groups, so we expect the relative risk to be near 1 most of the time.
@@ -658,10 +570,10 @@ And it is.</p>
 We can conclude that the relative risk we saw is unlikely if the risk is actually the same in both groups.</p>
 </section>
 <section id="computing-p-values">
-<h2>Computing p-values<a class="headerlink" href="#computing-p-values" title="Permalink to this headline">#</a></h2>
+<h2>Computing p-values<a class="headerlink" href="#computing-p-values" title="Link to this heading">#</a></h2>
 <p>Now suppose that in addition to the treatment and control groups, the experiment included a placebo group that was given a snack that contained no peanuts.
 Suppose this group was the same size as the others, and 42 of the subjects developed peanut allergies.</p>
-<p>To be clear, there was no third group, and I made up these numbers, but let’s see how this hypothetical works out.
+<p>To be clear, there was no third group, and I made up these numbers, but let’s see how this hypothetical example works out.
 Here’s the risk in the placebo group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -711,17 +623,21 @@ In fact, we can compute the probability of seeing a relative risk as low or lowe
 </div>
 </div>
 </div>
-<p>This probability is called a <strong>p-value</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/P-value">https://en.wikipedia.org/wiki/P-value</a>).  In this case, the p-value is about 14%, which means that even if the two groups are the same, we expect to see a relative risk as low as 0.77 about 14% of the time.
+<p>This probability is called a <strong>p-value</strong>.
+In this case, it is about 14%, which means that even if the two groups are the same, we expect to see a relative risk as low as 0.77 about 14% of the time.
 So, for this imagined experiment, we can’t rule out the possibility that the apparent difference is due to chance.</p>
 </section>
 <section id="are-first-babies-more-likely-to-be-late">
-<h2>Are first babies more likely to be late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Permalink to this headline">#</a></h2>
-<p>In the previous example, we saw a difference in proportion between two groups.
-As a second example, let’s consider a difference in means.</p>
-<p>When my wife and I were expecting our first child, we heard that first babies are more likely to be born late.  But we also heard that first babies are more likely to be born early.  So which is it? As a data scientist with too much time on my hands, I decided to find out.
-I got data from the National Survey of Family Growth (NSFG), the same survey we have used in previous chapters.
-I’ve put the results from the 2015-2017 survey in an HDF file.
-Here are the first few rows.</p>
+<h2>Are First Babies More Likely To Be Late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Link to this heading">#</a></h2>
+<p>In the previous example, we computed relative risk, which is a ratio of two proportions.
+As a second example, let’s consider a difference between two means.</p>
+<p>When my wife and I were expecting our first child, we heard that first babies are more likely to be born late.
+But we also heard that first babies are more likely to be born early.
+So which is it?
+As a data scientist with too much time on my hands, I decided to find out.
+I used data from the National Survey of Family Growth (NSFG), the same survey we used in Chapter 7.
+At the end of that chapter, we stored a subset of the data in an HDF file.
+Now we can read it back.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -751,16 +667,26 @@ Here are the first few rows.</p>
     <tr style="text-align: right;">
       <th></th>
       <th>CASEID</th>
-      <th>OUTCOME</th>
-      <th>BIRTHWGT_LB1</th>
-      <th>BIRTHWGT_OZ1</th>
-      <th>PRGLNGTH</th>
+      <th>PREGORDR</th>
+      <th>HOWPREG_N</th>
+      <th>HOWPREG_P</th>
+      <th>MOSCURRP</th>
+      <th>NOWPRGDK</th>
+      <th>PREGEND1</th>
+      <th>PREGEND2</th>
+      <th>HOWENDDK</th>
       <th>NBRNALIV</th>
-      <th>AGECON</th>
-      <th>AGEPREG</th>
-      <th>BIRTHORD</th>
-      <th>HPAGELB</th>
-      <th>WGT2015_2017</th>
+      <th>...</th>
+      <th>SECU</th>
+      <th>SEST</th>
+      <th>CMINTVW</th>
+      <th>CMLSTYR</th>
+      <th>CMJAN3YR</th>
+      <th>CMJAN4YR</th>
+      <th>CMJAN5YR</th>
+      <th>QUARTER</th>
+      <th>PHASE</th>
+      <th>INTVWYEAR</th>
     </tr>
   </thead>
   <tbody>
@@ -768,74 +694,125 @@ Here are the first few rows.</p>
       <th>0</th>
       <td>70627</td>
       <td>1</td>
-      <td>7.0</td>
-      <td>8.0</td>
-      <td>40</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>28</td>
-      <td>29.0</td>
-      <td>1.0</td>
-      <td>5.0</td>
-      <td>19877.457610</td>
+      <td>...</td>
+      <td>3</td>
+      <td>322</td>
+      <td>1394</td>
+      <td>1382</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>1333</td>
+      <td>18</td>
+      <td>1</td>
+      <td>2016</td>
     </tr>
     <tr>
       <th>1</th>
       <td>70627</td>
-      <td>4</td>
+      <td>2</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>14</td>
-      <td>NaN</td>
-      <td>32</td>
-      <td>32.0</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>19877.457610</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>3</td>
+      <td>322</td>
+      <td>1394</td>
+      <td>1382</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>1333</td>
+      <td>18</td>
+      <td>1</td>
+      <td>2016</td>
     </tr>
     <tr>
       <th>2</th>
       <td>70627</td>
-      <td>1</td>
-      <td>9.0</td>
-      <td>2.0</td>
-      <td>39</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>33</td>
-      <td>33.0</td>
-      <td>2.0</td>
-      <td>5.0</td>
-      <td>19877.457610</td>
+      <td>...</td>
+      <td>3</td>
+      <td>322</td>
+      <td>1394</td>
+      <td>1382</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>1333</td>
+      <td>18</td>
+      <td>1</td>
+      <td>2016</td>
     </tr>
     <tr>
       <th>3</th>
       <td>70628</td>
       <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>6.0</td>
-      <td>9.0</td>
-      <td>39</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>17</td>
-      <td>18.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>4221.017695</td>
+      <td>...</td>
+      <td>2</td>
+      <td>366</td>
+      <td>1409</td>
+      <td>1397</td>
+      <td>1369</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>23</td>
+      <td>1</td>
+      <td>2017</td>
     </tr>
     <tr>
       <th>4</th>
       <td>70628</td>
-      <td>1</td>
-      <td>7.0</td>
-      <td>0.0</td>
-      <td>39</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>19</td>
-      <td>20.0</td>
-      <td>2.0</td>
-      <td>2.0</td>
-      <td>4221.017695</td>
+      <td>...</td>
+      <td>2</td>
+      <td>366</td>
+      <td>1409</td>
+      <td>1397</td>
+      <td>1369</td>
+      <td>1357</td>
+      <td>1345</td>
+      <td>23</td>
+      <td>1</td>
+      <td>2017</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 248 columns</p>
 </div></div></div>
 </div>
 <p>We’ll use the <code class="docutils literal notranslate"><span class="pre">OUTCOME</span></code> column to select pregnancies that ended with a live birth.</p>
@@ -852,7 +829,7 @@ Here are the first few rows.</p>
 </div>
 </div>
 </div>
-<p>And use <code class="docutils literal notranslate"><span class="pre">PRGLNGTH</span></code> to select babies that were born full term, that is, during or after the 37th week of pregnancy.</p>
+<p>And we’ll use <code class="docutils literal notranslate"><span class="pre">PRGLNGTH</span></code> to select babies that were born full term, that is, during or after the 37th week of pregnancy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">37</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s1">&#39;PRGLNGTH&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">48</span><span class="p">)</span>
@@ -928,9 +905,12 @@ The difference is about 0.2 weeks, or 33 hours.</p>
 </div>
 </div>
 </div>
-<p>Relative to an average length of 39 weeks, that’s not a very big difference.  We might wonder if a difference as big as this would be likely, even if the two groups are the same.
-To answer that question, let’s imagine a world where there is no difference in pregnancy length between first babies and others.  How should we model a world like that?
-As always with modeling decisions, there are many options.  A simple one is to combine the two groups and compute the mean and standard deviation of pregnancy length, like this:</p>
+<p>Relative to an average length of 39 weeks, that’s not a very big difference.
+We might wonder if a difference as big as this would be likely, even if the two groups are the same.
+To answer that question, let’s imagine a world where there is no difference in pregnancy length between first babies and others.
+How should we model a world like that?
+As always with modeling decisions, there are many options.
+A simple one is to combine the two groups and compute the mean and standard deviation of pregnancy length, like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_live_full</span> <span class="o">=</span> <span class="n">length</span><span class="p">[</span><span class="n">live</span><span class="o">&amp;</span><span class="n">fullterm</span><span class="p">]</span>
@@ -941,7 +921,7 @@ As always with modeling decisions, there are many options.  A simple one is to c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(39.29046069532454, 1.1864094701037506)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(39.29046069532454, 1.1864094701037655)
 </pre></div>
 </div>
 </div>
@@ -956,8 +936,8 @@ As always with modeling decisions, there are many options.  A simple one is to c
 </div>
 </div>
 </div>
-<p>If we run it 1000 times, it simulates the sampling and measurement process and returns a list of results from 1000 simulated experiments.
-Here are the simulated results with sample size <code class="docutils literal notranslate"><span class="pre">n_first</span></code>:</p>
+<p>If we run it 1000 times, it runs the sampling and measurement process and returns a list of results from 1000 simulated experiments.
+Here are the results with sample size <code class="docutils literal notranslate"><span class="pre">n_first</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_first</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_first</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">)</span>
@@ -995,18 +975,22 @@ Here are the simulated results with sample size <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_64_0.png" src="_images/13_hypothesis_64_0.png" />
+<img alt="_images/82e0c22ed1c20bbc5d97c29e959963d40faae48cc10d7e8f4535f0c02b9a204a.png" src="_images/82e0c22ed1c20bbc5d97c29e959963d40faae48cc10d7e8f4535f0c02b9a204a.png" />
 </div>
 </div>
 <p>The center of this distribution is near zero, which makes sense if the distribution in both group is the same.
 Just by chance, we sometimes see differences as big as 0.1 weeks, but in 1000 simulations, we never see a difference as big as the observed difference in the data, which is almost 0.2 weeks.</p>
 <p>Based on this result, we can pretty much rule out the possibility that the difference we saw is due to random sampling.
-But we should remember that there are other possible sources of error.  For one, pregnancy lengths in the NSFG are self-reported.  When the respondents are interviewed, their recollection of first babies might be less accurate than their recollection of more recent babies.  Or the estimation of pregnancy length might be less accurate with less experienced mothers.</p>
-<p>A correspondent of mine, who knows more than me about giving birth, suggested yet another possibility.  If a first baby is born by <a class="reference external" href="https://en.wikipedia.org/wiki/Caesarean_section">Caesarean section</a>, it is more likely that subsequent deliveries will be scheduled, and less likely that they will go much past 39 weeks.  So that could bring the average down for non-first babies.</p>
+But we should remember that there are other possible sources of error.
+For one, pregnancy lengths in the NSFG are self-reported.
+When the respondents are interviewed, their recollection of first babies might be less accurate than their recollection of more recent babies.
+Or the estimation of pregnancy length might be less accurate with less experienced mothers.</p>
+<p>A correspondent of mine, who knows more than me about giving birth, suggested yet another possibility.  If a first baby is born by Caesarean section, it is more likely that subsequent deliveries will be scheduled, and less likely that they will go much past 39 weeks.
+So that could bring the average down for non-first babies.</p>
 <p>In summary, the results in this section suggest that the observed difference is unlikely to be due to chance, but there are other possible explanations.</p>
 </section>
 <section id="the-hypothesis-testing-framework">
-<h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Permalink to this headline">#</a></h2>
+<h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Link to this heading">#</a></h2>
 <p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/hypothesis_testing.png" /></p>
 <p>Using data from an experiment, we compute the observed <strong>test statistic</strong>, denoted <span class="math notranslate nohighlight">\(\delta^*\)</span> in the diagram, which quantifies the size of the observed effect.  In the peanut allergy example, the test statistic is relative risk.  In the pregnancy length example, it is the difference in the means.</p>
@@ -1050,7 +1034,7 @@ The return value is the difference in means between the groups.</p>
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> Using this function to run 1000 simulations of the null hypothesis and save the results as <code class="docutils literal notranslate"><span class="pre">diff2</span></code>.  Make a KDE plot to compare the distribution of <code class="docutils literal notranslate"><span class="pre">diff2</span></code> to the results from the normal model, <code class="docutils literal notranslate"><span class="pre">diff</span></code>.</p>
+<p><strong>Exercise:</strong> Use this function to run 1000 simulations of the null hypothesis and save the results as <code class="docutils literal notranslate"><span class="pre">diff2</span></code>.  Make a KDE plot to compare the distribution of <code class="docutils literal notranslate"><span class="pre">diff2</span></code> to the results from the normal model, <code class="docutils literal notranslate"><span class="pre">diff</span></code>.</p>
 <p>Compute the probability of seeing a difference as big as <code class="docutils literal notranslate"><span class="pre">diff_actual</span></code>.  Is this p-value consistent with the results we got with the normal model?</p>
 <p><strong>Exercise:</strong> Are first babies more likely to be <em>light</em>?  To find out, we can use the birth weight data from the NSFG.  The variables we need use special codes to represent missing data, so let’s replace them with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
 <div class="cell docutils container">
@@ -1097,9 +1081,9 @@ Then use <code class="docutils literal notranslate"><span class="pre">simulate_t
 Under the null hypothesis, how often does the difference in means exceed the actual difference in the dataset?  What conclusion can you draw from this result?</p>
 </section>
 <section id="testing-correlation">
-<h2>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Permalink to this headline">#</a></h2>
-<p>The method we used in the previous section is called a <strong>permutation test</strong> because we permuted the pregnancy lengths before dividing them into groups (“permute” is another word for shuffle).
-As another example, in this section we’ll use a permutation tests to check whether an observed correlation might be due to chance.</p>
+<h2>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Link to this heading">#</a></h2>
+<p>The method we used in the previous section is called a <strong>permutation test</strong> because we permuted the pregnancy lengths before splitting them into groups (“permute” is another word for shuffle).
+As another example, in this section we’ll use a permutation test to check whether an observed correlation might be due to chance.</p>
 <p>As an example, let’s look again at the correlations we computed in Chapter 9, using data from the Behavioral Risk Factor Surveillance System (BRFSS).
 The following cell reads the data.</p>
 <div class="cell docutils container">
@@ -1112,7 +1096,7 @@ The following cell reads the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(418268, 9)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(418268, 10)
 </pre></div>
 </div>
 </div>
@@ -1174,8 +1158,8 @@ The following cell reads the data.</p>
 </table>
 </div></div></div>
 </div>
-<p>The correlation between height and weight is about 0.48, which is moderately strong; if you know someone’s height, you can make a better guess about their weight.
-The other correlations are weaker; for example,
+<p>The correlation between height and weight is about 0.48, which is moderately strong – if you know someone’s height, you can make a better guess about their weight.
+The other correlations are weaker – for example,
 knowing someone’s age would not substantially improve your guesses about their height or weight.</p>
 <p>Because these correlations are so small, we might wonder whether they are due to chance.
 To answer this question, we can use permutation to simulate a world where there is actually no correlation between two variables.</p>
@@ -1199,7 +1183,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 </div>
-<p>The idiomatic way to shuffle a <code class="docutils literal notranslate"><span class="pre">Series</span></code> is to use <code class="docutils literal notranslate"><span class="pre">sample</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">frac=1</span></code>, which means that the fraction of the elements we want is <code class="docutils literal notranslate"><span class="pre">1</span></code>, that is, all of them (see <a class="reference external" href="https://stackoverflow.com/questions/29576430/shuffle-dataframe-rows">https://stackoverflow.com/questions/29576430/shuffle-dataframe-rows</a>).
+<p>The idiomatic way to shuffle a <code class="docutils literal notranslate"><span class="pre">Series</span></code> is to use <code class="docutils literal notranslate"><span class="pre">sample</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">frac=1</span></code>, which means that the fraction of the elements we want is <code class="docutils literal notranslate"><span class="pre">1</span></code>, that is, all of them.
 By default, <code class="docutils literal notranslate"><span class="pre">sample</span></code> chooses elements without replacement, so the result contains all of the elements in a random order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1229,7 +1213,7 @@ But let’s see what happens if we use the shuffled <code class="docutils litera
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.47715146283881316
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4771514628388138
 </pre></div>
 </div>
 </div>
@@ -1256,7 +1240,7 @@ So we have to shuffle <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.003417891522999634
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.0034178915229996325
 </pre></div>
 </div>
 </div>
@@ -1281,7 +1265,7 @@ So we have to shuffle <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 </div>
-<p>We only have to shuffle one of the columns; it doesn’t get any more random if we shuffle both.
+<p>We only have to shuffle one of the columns – it doesn’t get any more random if we shuffle both.
 Now we can use this function to generate a sample of correlations with shuffled columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1303,7 +1287,7 @@ Now we can use this function to generate a sample of correlations with shuffled 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_112_0.png" src="_images/13_hypothesis_112_0.png" />
+<img alt="_images/ef72c7246f2d64860b344b0fb6262f40e83084426692eef96298c83568af7939.png" src="_images/ef72c7246f2d64860b344b0fb6262f40e83084426692eef96298c83568af7939.png" />
 </div>
 </div>
 <p>The center of the distribution is near 0, and the largest values (positive or negative) are around 0.005.
@@ -1322,14 +1306,14 @@ With large sample sizes, variability due to randomness tends to be small, so it 
 <p>And hypothesis testing can be a distraction from more important questions.
 In Chapter 9, we saw that the relationship between weight and age is nonlinear.
 But the coefficient of correlation only measures linear relationships, so it does not capture the real strength of the relationship.
-So testing a correlation might not be the more useful thing to do in the first place.
+So testing a correlation might not be the most useful thing to do in the first place.
 We can do better by testing a regression model.</p>
 </section>
 <section id="testing-regression-models">
-<h2>Testing Regression Models<a class="headerlink" href="#testing-regression-models" title="Permalink to this headline">#</a></h2>
+<h2>Testing Regression Models<a class="headerlink" href="#testing-regression-models" title="Link to this heading">#</a></h2>
 <p>In the previous sections we used permutation to simulate a world where there is no correlation between two variables.
-In this section we’ll apply the same method to regression models.</p>
-<p>As an example, we’ll use NSFG data to explore the relationship between a mother’s age and her baby’s birth weight.</p>
+In this section we’ll apply the same method to regression models.
+As an example, we’ll use NSFG data to explore the relationship between a mother’s age and her baby’s birth weight.</p>
 <p>In previous sections we computed birth weight and a Boolean variable that identifies first babies.
 Now we’ll store them as columns in <code class="docutils literal notranslate"><span class="pre">nsfg</span></code>, so we can use them with StatsModels.</p>
 <div class="cell docutils container">
@@ -1340,40 +1324,40 @@ Now we’ll store them as columns in <code class="docutils literal notranslate">
 </div>
 </div>
 </div>
-<p>We can select the subset of the rows that represent live, full-term births, and make a copy so we can modify the subset without affecting the original.</p>
+<p>Next we’ll select the subset of the rows that represent live, full-term births, and make a copy so we can modify the subset without affecting the original.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
 <span class="n">n</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5839
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>418268
 </pre></div>
 </div>
 </div>
 </div>
 <p>To visualize the relationship between mother’s age and birth weight, we’ll use a box plot with mother’s age grouped into 3-year bins.
-We can use <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> to make the bin boundaries, and <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> to put the values from <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> into bins.</p>
+We’ll use <code class="docutils literal notranslate"><span class="pre">np.arange</span></code> to make the bin boundaries, and <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> to put the values from <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> into bins.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="n">subset</span><span class="p">[</span><span class="s1">&#39;AGEGRP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">],</span> 
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;AGEGRP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">],</span> 
                           <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The label for each bin is the midpoint of the range; I used a slice to remove the last label because the number of bins is one less than the number of bin boundaries.</p>
-<p>Here’s the box plot.</p>
+<p>The label for each bin is the midpoint of the range.
+Now here’s the box plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;AGEGRP&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;BIRTHWGT&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span> 
-            <span class="n">whis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;plum&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;AGEGRP&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;BIRTHWGT&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> 
+            <span class="n">whis</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;plum&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mother&#39;s age (years)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Birthweight (pounds)&#39;</span><span class="p">);</span>
@@ -1381,7 +1365,7 @@ We can use <code class="docutils literal notranslate"><span class="pre">np.arang
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13_hypothesis_122_0.png" src="_images/13_hypothesis_122_0.png" />
+<img alt="_images/a7c49a3345b84d58fb9bba70833da3d3cead5e7075e59b92ee976daab4bd59b2.png" src="_images/a7c49a3345b84d58fb9bba70833da3d3cead5e7075e59b92ee976daab4bd59b2.png" />
 </div>
 </div>
 <p>It looks like the average birth weight is highest if the mother is 25-31 years old, and lower if she is younger or older.
@@ -1392,7 +1376,7 @@ Here’s a simple regression of birth weight as a function of the mother’s age
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;BIRTHWGT ~ AGECON&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;BIRTHWGT ~ AGECON&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">params</span>
 </pre></div>
 </div>
@@ -1405,48 +1389,31 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>The slope of the regression line is 0.016 pounds per year, which means that if one mother is a year older than another, we expect her baby to be about 0.016 pounds heavier, which is about a quarter of an ounce.</p>
+<p>The slope of the regression line is 0.016 pounds per year, which means that if one mother is a year older than another, we expect her baby to be about 0.016 pounds heavier (about a quarter of an ounce).</p>
 <p>This parameter is small, so we might wonder whether the apparent effect is due to chance.
-To answer that question, we will use permutation to simulate a world where there is no relationship between mother’s age and birth weight.</p>
-<p>As a test statistic, we’ll use the coefficient of determination, denoted <span class="math notranslate nohighlight">\(R^2\)</span>, which quantifies the predictive power of the model (see <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">https://en.wikipedia.org/wiki/Coefficient_of_determination</a>).
-The regression results include <span class="math notranslate nohighlight">\(R^2\)</span> in a variable called <code class="docutils literal notranslate"><span class="pre">rsquared</span></code>.</p>
+To answer that question, we’ll use permutation to simulate a world where there is no relationship between mother’s age and birth weight.</p>
+<p>The following function takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, shuffles the <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> column, computes a linear regression model, and returns the estimated slope.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">rsquared</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.007578923866134457
-</pre></div>
-</div>
-</div>
-</div>
-<p>The value of <span class="math notranslate nohighlight">\(R^2\)</span> for this model is very small, which means that our guesses about a baby’s weight are barely improved if we know the mother’s age (and use a linear model).
-So it seems possible that the apparent relationship between these variables is due to chance.
-We can test this possibility by using permutation to simulate a world where there is no such relationship.</p>
-<p>The following function takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, shuffles the <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> column, computes a linear regression model, and returns <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_rsquared</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;SHUFFLED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_slope</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SHUFFLED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">])</span>
     <span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ SHUFFLED&#39;</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">rsquared</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;SHUFFLED&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>If we call it many times, we get a sample from the distribution of <span class="math notranslate nohighlight">\(R^2\)</span> under the null hypothesis.</p>
+<p>If we call it many times, we get a sample from the distribution of slopes under the null hypothesis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsquared_null</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_rsquared</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsquared_null</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_slope</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
                  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>After 200 attempts, the largest value of <span class="math notranslate nohighlight">\(R^2\)</span> is about 0.003, which is smaller than the observed value of <span class="math notranslate nohighlight">\(R^2\)</span>, about 0.008.
+<p>After 200 attempts, the largest slope is about 0.009, which is smaller than the observed slope, about 0.016.
 We conclude that the observed effect is bigger than we would expect to see by chance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1455,71 +1422,27 @@ We conclude that the observed effect is bigger than we would expect to see by ch
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0018894074007291817 0.007578923866134457
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.009536120931481635 0.007578923866134457
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> The box plot suggests that the relationship between mother’s age and birth weight is nonlinear, so let’s try a nonlinear model.
-I’ll add a column to the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with the square of mother’s age.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;AGECON2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>And run the model again with both the linear and quadratic terms.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ AGECON + AGECON2&#39;</span>
-<span class="n">results2</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">results2</span><span class="o">.</span><span class="n">params</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept    5.894125
-AGECON       0.109487
-AGECON2     -0.001810
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p>The parameter of <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code> is quite small, so we might wonder whether it actually improves the model, or might be the product of randomness.
-One way to answer this question is to look at the improvement in <span class="math notranslate nohighlight">\(R^2\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results2</span><span class="o">.</span><span class="n">rsquared</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01186101019657615
-</pre></div>
-</div>
-</div>
-</div>
-<p>The value of <span class="math notranslate nohighlight">\(R^2\)</span> is about 0.012, compared to 0.008 with the linear model.
-By this criterion, the quadratic model is a better, but when we add variables to a model, we might get some improvement just by chance.
-To see how much, write a function called <code class="docutils literal notranslate"><span class="pre">simulate_rsquared2</span></code> that takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, runs a regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and the shuffled values, and returns <span class="math notranslate nohighlight">\(R^2\)</span>.
-Run your function 200 times and count how often <span class="math notranslate nohighlight">\(R^2\)</span> from the model exceeds the observed value from the dataset.  What conclusion can you draw?</p>
 </section>
 <section id="controlling-for-age">
-<h2>Controlling for Age<a class="headerlink" href="#controlling-for-age" title="Permalink to this headline">#</a></h2>
-<p>In a previous exercise, you computed the difference in birth weight between first babies and others, which is about 0.17 pounds, and you checked whether we are likely to see a difference as big as that by chance.  If things went according to plan, you found that it is very unlikely.</p>
+<h2>Controlling for Age<a class="headerlink" href="#controlling-for-age" title="Link to this heading">#</a></h2>
+<p>In a previous exercise, you computed the difference in birth weight between first babies and others, which is about 0.17 pounds, and you checked whether we are likely to see a difference as big as that by chance.
+If things went according to plan, you found that it is very unlikely.</p>
 <p>But that doesn’t necessarily mean that there is anything special about first babies that makes them lighter than others.
-Rather, knowing a baby’s birth order might provide information about some other factor that is related to birth weight.
-The mother’s age could be that factor.</p>
-<p>First babies are likely to have younger mothers than other babies, and younger mothers tend to have lighter babies.
+Rather, knowing a baby’s birth order might provide information about some other factor that is related to birth weight.</p>
+<p>The mother’s age could be that factor.
+First babies are likely to have younger mothers than other babies, and younger mothers tend to have lighter babies.
 The difference we see in first babies might be explained by their mothers’ ages.
 So let’s see what happens if we control for age.
 Here’s a simple regression of birth weight as a function of the Boolean variable <code class="docutils literal notranslate"><span class="pre">FIRST</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ FIRST&#39;</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">params</span>
 </pre></div>
 </div>
@@ -1537,7 +1460,7 @@ But now we can add <code class="docutils literal notranslate"><span class="pre">
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ FIRST + AGECON&#39;</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">params</span>
 </pre></div>
 </div>
@@ -1552,12 +1475,19 @@ dtype: float64
 </div>
 </div>
 <p>The age effect accounts for some of the difference between first babies and others.
-After controlling for age, the remaining difference is about 0.12 pounds.
-Since the age effect is nonlinear, we can can control for age more effectively by adding <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>.</p>
+After controlling for age, the remaining difference is about 0.12 pounds.</p>
+<p>Since the age effect is nonlinear, we can can control for age more effectively by adding <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;AGECON2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;AGECON&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ FIRST + AGECON + AGECON2&#39;</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">params</span>
 </pre></div>
 </div>
@@ -1580,7 +1510,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.0993380612156034
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.09933806121560428
 </pre></div>
 </div>
 </div>
@@ -1592,10 +1522,10 @@ To find out, we’ll use the following function, which simulates a world where t
 It takes a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a parameter, shuffles the <code class="docutils literal notranslate"><span class="pre">FIRST</span></code> column, runs the regression model with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code>, and returns the estimated difference.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_slope</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;SHUFFLED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;FIRST&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_slope2</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SHUFFLED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;FIRST&#39;</span><span class="p">])</span>
     <span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ AGECON + AGECON2 + C(SHUFFLED)&#39;</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;C(SHUFFLED)[T.True]&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1604,7 +1534,7 @@ It takes a <code class="docutils literal notranslate"><span class="pre">DataFram
 <p>If we run it many times, we get a sample from the distribution of the test statistic under the null hypothesis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slopes_null</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_slope</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slopes_null</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_slope2</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -1618,12 +1548,12 @@ It takes a <code class="docutils literal notranslate"><span class="pre">DataFram
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.11032834278896282 0.13869713337268225
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.09842209405975708 0.11993351438646496
 </pre></div>
 </div>
 </div>
 </div>
-<p>Our estimate of the p-value is only approximate, but it looks like it’s between 1% and 2%.</p>
+<p>The p-value is between 1% and 2%.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">slopes_null</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">slope_actual</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1632,58 +1562,63 @@ It takes a <code class="docutils literal notranslate"><span class="pre">DataFram
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.015
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.02
 </pre></div>
 </div>
 </div>
 </div>
 <p>This result indicates that an observed difference of 0.1 pounds is possible, but not likely, if the actual difference between the groups is zero.</p>
 <p>So how should we interpret a result like this?
-In the tradition of statistical hypothesis testing, it is common to use 5% as the threshold between results that are considered “statistically significant” or not (see <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_hypothesis_testing">https://en.wikipedia.org/wiki/Statistical_hypothesis_testing</a>).
+In the tradition of statistical hypothesis testing, it is common to use 5% as the threshold between results that are considered “statistically significant” or not.
 By that standard, the weight difference between first babies and others is statistically significant.</p>
 <p>However, there are several problems with this practice:</p>
 <ul class="simple">
-<li><p>First, the choice of the threshold should depend on the context.  For a life-and-death decision, we might choose a more stringent threshold.  For a topic of idle curiosity, like this one, we could be more relaxed.</p></li>
-<li><p>But it might not be useful to apply a threshold at all.  An alternative (which is common in practice) is to report the p-value and let it speak for itself.  It provides no additional value to declare that the result is significant or not.</p></li>
-<li><p>Finally, the use of the word “significant” is dangerously misleading, because it implies that the result is important in practice.  But a small p-value only means that an observed effect would be unlikely to happen by chance.  It doesn’t mean it is important.</p></li>
+<li><p>First, the choice of the threshold should depend on the context. For a life-and-death decision, we might choose a more stringent threshold. For a topic of idle curiosity, like this one, we could be more relaxed.</p></li>
+<li><p>But it might not be useful to apply a threshold at all. An alternative (which is common in practice) is to report the p-value and let it speak for itself. It provides no additional value to declare that the result is significant or not.</p></li>
+<li><p>Finally, the use of the word “significant” is dangerously misleading, because it implies that the result is important in practice. But a small p-value only means that an observed effect would be unlikely to happen by chance. It doesn’t mean it is important.</p></li>
 </ul>
 <p>This last point is particularly problematic with large datasets, because very small effects can be statistically significant.
 We saw an example with the BRFSS dataset, where the correlations we tested were <em>all</em> statistically significant, even the ones that are too small to matter in practice.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>Let’s review the examples in this chapter:</p>
-<ol class="simple">
-<li><p>We started with data from LEAP, which studied the effect of eating peanuts on the development of peanut allergies.  The test statistic was relative risk, and the null hypothesis was that the treatment was ineffective.</p></li>
-<li><p>Then we looked at the difference in pregnancy length for first babies and others.  We used the difference in means as the test statistic, and two models of the null hypothesis: one based on a normal model and the other based on permutation of the data. As an exercise, you tested the difference in weight between first babies and others.</p></li>
+<ol class="arabic simple">
+<li><p>We started with data from LEAP, which studied the effect of eating peanuts on the development of peanut allergies. The test statistic was relative risk, and the null hypothesis was that the treatment was ineffective.</p></li>
+<li><p>Then we looked at the difference in pregnancy length for first babies and others. We used the difference in means as the test statistic, and two models of the null hypothesis: one based on a normal model and the other based on permutation of the data. As an exercise, you tested the difference in weight between first babies and others.</p></li>
 <li><p>Next we used permutation to test correlations, using height, weight, and age data from the BRFSS. This example shows that with large sample sizes, observed effects are often “statistically significant”, even if they are too small to matter in practice.</p></li>
-<li><p>We used regression models to explore the maternal age effect on birth weight.  To see whether the effect might be due to chance, we used permutation to model the null hypothesis and <span class="math notranslate nohighlight">\(R^2\)</span> as a test statistic.</p></li>
+<li><p>We used regression models to explore the effect of maternal age on birth weight. To see whether the effect might be due to chance, we used the slope of the regression line as the test statistic, and permutation to model the null hypothesis.</p></li>
 <li><p>Finally, we explored the possibility that the first baby effect is actually an indirect maternal age effect.  After controlling for the mother’s age, we tested whether the remaining difference between first babies and others might happen by chance. We used permutation to model the null hypothesis and the estimated slope as a test statistic.</p></li>
 </ol>
-<p>As a final exercise, below, you can use the same methods to explore the paternal age effect.</p>
-<p><strong>Exercise:</strong> A paternal age effect is a relationship between the age of a father and a variety of outcomes for their children (see <a class="reference external" href="https://en.wikipedia.org/wiki/Paternal_age_effect">https://en.wikipedia.org/wiki/Paternal_age_effect</a>).  There is some evidence that young fathers and old fathers tend to have lighter babies than fathers in the middle.  Let’s see if that’s true for the babies in the NSFG dataset.
-The <code class="docutils literal notranslate"><span class="pre">HPAGELB</span></code> column encodes the father’s age.  Here are the values, after replacing the codes for missing data with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
-<div class="cell docutils container">
+<p>As a final exercise, below, you can use the same methods to explore the effect of paternal age on birth weight.</p>
+<p><strong>Exercise:</strong> A paternal age effect is a relationship between the age of a father and a variety of outcomes for his children.
+There is some evidence that young fathers and old fathers have lighter babies, on average, than fathers in the middle range of ages.
+Let’s see if that’s true for the babies in the NSFG dataset.
+The <code class="docutils literal notranslate"><span class="pre">HPAGELB</span></code> column encodes the father’s age.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Paternal_age_effect">See here for more about the paternal age effect</a></p>
+<p>Here are the values, after replacing the codes for missing data with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="cell tag_remove-print docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0     478
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HPAGELB
+1.0     478
 2.0    1391
 3.0    1650
 4.0    1225
 5.0     592
 6.0     411
-Name: HPAGELB, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <p>And here’s what the codes mean:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
 <th class="head"><p>Age</p></th>
@@ -1710,19 +1645,21 @@ Name: HPAGELB, dtype: int64
 </tr>
 </tbody>
 </table>
-<p>Let’s create a new column that’s true for the fathers in the youngest and oldest groups.</p>
+<p>Let’s create a new column that’s true for the fathers in the youngest and oldest groups.
+The <code class="docutils literal notranslate"><span class="pre">isin</span></code> method checks whether the values in a <code class="docutils literal notranslate"><span class="pre">Series</span></code> are in the given list.
+The values <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">6</span></code> indicate fathers under 20 years of age or over 40.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s1">&#39;YO_DAD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;YO_DAD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;HPAGELB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can use this column in a regression model to compute the difference in birth weight for young and old fathers compared to the others.</p>
+<p>We can use the result in a regression model to compute the difference in birth weight for young and old fathers compared to the others.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;BIRTHWGT ~ YO_DAD&#39;</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">params</span>
 </pre></div>
 </div>
@@ -1736,10 +1673,13 @@ dtype: float64
 </div>
 </div>
 <p>The difference is negative, which is consistent with the theory, and about 0.14 pounds, which is comparable in size to the (apparent) first baby effect.
-But there is a strong correlation between father’s age and mother’s age.  So what seems like a paternal age effect might actually be an indirect maternal age effect.
+But there is a strong correlation between father’s age and mother’s age.
+So what seems like a paternal effect might actually be an indirect maternal effect.
 To find out, let’s see what happens if we control for the mother’s age.
 Run this model again with <code class="docutils literal notranslate"><span class="pre">AGECON</span></code> and <code class="docutils literal notranslate"><span class="pre">AGECON2</span></code> as predictors.  Does the observed effect of paternal age get smaller?</p>
-<p>To see if the remaining effect could be due to randomness, write a function that shuffles <code class="docutils literal notranslate"><span class="pre">YO_DAD</span></code>, runs the regression model, and returns the parameter associated with the shuffled column.  How often does this parameter exceed the observed value?  What conclusion can we draw from the results?</p>
+<p>To see if the remaining effect could be due to randomness, write a function that shuffles <code class="docutils literal notranslate"><span class="pre">YO_DAD</span></code>, runs the regression model, and returns the parameter associated with the shuffled column.
+How often does this parameter exceed the observed value?
+What conclusion can we draw from the results?</p>
 </section>
 </section>
 
@@ -1755,7 +1695,7 @@ Run this model again with <code class="docutils literal notranslate"><span class
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1763,50 +1703,110 @@ Run this model again with <code class="docutils literal notranslate"><span class
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="12_bootstrap.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Bootstrap Sampling</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="12_bootstrap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bootstrap Sampling</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="resample_logit.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="resample_logit.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Resampling and Logistic Regression</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-medical-treatments">Testing Medical Treatments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-p-values">Computing p-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">Are First Babies More Likely To Be Late?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hypothesis-testing-framework">The Hypothesis Testing Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-correlation">Testing Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-regression-models">Testing Regression Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-for-age">Controlling for Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

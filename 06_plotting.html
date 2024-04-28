@@ -1,107 +1,169 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Plotting &#8212; Elements of Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06_plotting';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="DataFrames and Series" href="07_dataframes.html" />
     <link rel="prev" title="Dictionaries" href="05_dictionaries.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elements of Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,381 +172,246 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_variables.html">
-   Variables and Values
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_times.html">
-   Times and Places
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_arrays.html">
-   Lists and Arrays
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_loops.html">
-   Loops and Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html">
-   DataFrames and Series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_distributions.html">
-   Distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_relationships.html">
-   Relationships
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_resampling.html">
-   Resampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12_bootstrap.html">
-   Bootstrap Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13_hypothesis.html">
-   Hypothesis Testing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="resample_logit.html">
-   Resampling and Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="anderson.html">
-   Never Test for Normality
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="resample_logit.html">Resampling and Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anderson.html">Never Test for Normality</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/06_plotting.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ElementsOfDataScience"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/06_plotting.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/06_plotting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keyword-arguments">
-   Keyword Arguments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graphing-religious-affiliation">
-   Graphing Religious Affiliation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decorating-the-axes">
-   Decorating the Axes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-sandwich-prices">
-   Plotting Sandwich Prices
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#zipf-s-law">
-   Zipf’s Law
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logarithmic-scales">
-   Logarithmic Scales
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Plotting</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keyword-arguments">
-   Keyword Arguments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#graphing-religious-affiliation">
-   Graphing Religious Affiliation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decorating-the-axes">
-   Decorating the Axes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-sandwich-prices">
-   Plotting Sandwich Prices
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#zipf-s-law">
-   Zipf’s Law
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logarithmic-scales">
-   Logarithmic Scales
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Plotting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-arguments">Keyword Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphing-religious-affiliation">Graphing Religious Affiliation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decorating-the-axes">Decorating the Axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-sandwich-prices">Plotting Sandwich Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zipf-s-law">Zipf’s Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-scales">Logarithmic Scales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="plotting">
-<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/06_plotting.ipynb">Click here to run this notebook on Colab</a> or
-<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/06_plotting.ipynb">click here to download it</a>.</p>
+<h1>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/06_plotting.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">filename</span>
+
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">utils</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <p>This chapter presents ways to create figures and graphs, more generally called <strong>data visualizations</strong>.  As examples, we’ll generate three figures:</p>
 <ul class="simple">
-<li><p>We’ll replicate a figure from the Pew Research Center that shows changes in religious affiliation in the U.S. over time.</p></li>
+<li><p>We’ll replicate a figure from the Pew Research Center that shows changes in religious affiliation in the United States over time.</p></li>
 <li><p>We’ll replicate the figure from <em>The Economist</em> that shows the prices of sandwiches in Boston and London (we saw this data back in Chapter 3).</p></li>
 <li><p>We’ll make a plot to test Zipf’s law, which describes the relationship between word frequencies and their ranks.</p></li>
 </ul>
 <p>With the tools in this chapter, you can generate a variety of simple graphs.  We will see more visualization tools in later chapters.
 But before we get started with plotting, we need a new language feature: keyword arguments.</p>
 <section id="keyword-arguments">
-<h2>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">#</a></h2>
+<h2>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Link to this heading">#</a></h2>
 <p>When you call most functions, you have to provide values.  For example, when you call <code class="docutils literal notranslate"><span class="pre">np.exp</span></code>, which raises <span class="math notranslate nohighlight">\(e\)</span> to a given power, the value you provide is a number:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -514,8 +441,9 @@ But before we get started with plotting, we need a new language feature: keyword
 </div>
 </div>
 <p>The values you provide are called <strong>arguments</strong>.  Specifically, the values in these examples are <strong>positional arguments</strong> because their position determines how they are used.
-In the second example, <code class="docutils literal notranslate"><span class="pre">power</span></code> computes <code class="docutils literal notranslate"><span class="pre">10</span></code> to the sixth power, not <code class="docutils literal notranslate"><span class="pre">6</span></code> to the 10th power because of the order of the arguments.</p>
-<p>Many functions also take <strong>keyword arguments</strong>, which are identified by name.  For example, we have previously used <code class="docutils literal notranslate"><span class="pre">int</span></code> to convert a string to an integer.
+In the second example, <code class="docutils literal notranslate"><span class="pre">power</span></code> computes <code class="docutils literal notranslate"><span class="pre">10</span></code> to the sixth power, not <code class="docutils literal notranslate"><span class="pre">6</span></code> to the tenth power – because of the order of the arguments.</p>
+<p>Many functions also take <strong>keyword arguments</strong>, which are identified by name.
+For example, we have previously used <code class="docutils literal notranslate"><span class="pre">int</span></code> to convert a string to an integer.
 Here’s how we use it with a string as a positional argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -545,7 +473,23 @@ For example, the string <code class="docutils literal notranslate"><span class="
 </div>
 <p>The integer value <code class="docutils literal notranslate"><span class="pre">8</span></code> is a keyword argument, with the keyword <code class="docutils literal notranslate"><span class="pre">base</span></code>.</p>
 <p>Specifying a keyword argument looks like an assignment statement, but it does not create a new variable.
-And when you specify a keyword argument, you don’t choose the variable name.  In this example, the keyword name, <code class="docutils literal notranslate"><span class="pre">base</span></code>, is part of the definition of <code class="docutils literal notranslate"><span class="pre">int</span></code>.  If you specify another keyword name, you get an error.</p>
+And when you specify a keyword argument, you don’t choose the variable name.
+In this example, the keyword name, <code class="docutils literal notranslate"><span class="pre">base</span></code>, is part of the definition of the <code class="docutils literal notranslate"><span class="pre">int</span></code> function.
+If you specify another keyword name, you get an error.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> TypeError
+
+int(&#39;123&#39;, bass=11)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span>: &#39;bass&#39; is an invalid keyword argument for int()
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Exercise:</strong> The <code class="docutils literal notranslate"><span class="pre">print</span></code> function takes a keyword argument called <code class="docutils literal notranslate"><span class="pre">end</span></code> that specifies the character it prints at the end of the line.  By default, <code class="docutils literal notranslate"><span class="pre">end</span></code> is the newline character, <code class="docutils literal notranslate"><span class="pre">\n</span></code>.  So if you call <code class="docutils literal notranslate"><span class="pre">print</span></code> more than once, the results normally appear on separate lines, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -566,25 +510,38 @@ And when you specify a keyword argument, you don’t choose the variable name.  
 Then modify it to print an open bracket at the beginning and a close bracket and newline at the end.</p>
 </section>
 <section id="graphing-religious-affiliation">
-<h2>Graphing Religious Affiliation<a class="headerlink" href="#graphing-religious-affiliation" title="Permalink to this headline">#</a></h2>
+<h2>Graphing Religious Affiliation<a class="headerlink" href="#graphing-religious-affiliation" title="Link to this heading">#</a></h2>
 <p>Now we’re ready to make some graphs.
-In October 2019 the Pew Research Center published “In U.S., Decline of Christianity Continues at Rapid Pace” at <a class="reference external" href="https://www.pewresearch.org/religion/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace/">https://www.pewresearch.org/religion/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace/</a>.
+In October 2019 the Pew Research Center published “In U.S., Decline of Christianity Continues at Rapid Pace”.
 It includes this figure, which shows changes in religious affiliation among adults in the U.S. over the previous 10 years.</p>
-<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/pew_religion_figure1.png" width="400">
-<p>As an exercise, we’ll replicate this figure.  It shows results from two sources, Religious Landscape Studies and Pew Research Political Surveys.  The political surveys provide data from more years, so we’ll focus on that.</p>
-<p>The data from the figure are available from Pew Research at <a class="reference external" href="https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf">https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf</a>, but they are in a PDF document.  It is sometimes possible to extract data from PDF documents, but for now we’ll enter the data by hand.</p>
+<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/pew_religion_figure1.png" width="350"><p>You can read the article at <a class="reference external" href="https://www.pewresearch.org/religion/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace/">https://www.pewresearch.org/religion/2019/10/17/in-u-s-decline-of-christianity-continues-at-rapid-pace/</a>.</p>
+<p>As an exercise, we’ll replicate this figure.
+It shows results from two sources, Religious Landscape Studies and Pew Research Political Surveys.
+The political surveys provide data from more years, so we’ll focus on that.</p>
+<p>The data from the figure are available from Pew Research, but they are in a PDF document.  It is sometimes possible to extract data from PDF documents, but for now we’ll enter the data by hand.</p>
+<p>You can download the data from <a class="reference external" href="https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf">https://www.pewforum.org/wp-content/uploads/sites/7/2019/10/Detailed-Tables-v1-FOR-WEB.pdf</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">,</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">2018</span><span class="p">]</span>
-
-<span class="n">christian</span> <span class="o">=</span> <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
-
-<span class="n">unaffiliated</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The library we’ll use for plotting is Matplotlib; more specifically, we’ll use a part of it called Pyplot, which we’ll import with the nickname <code class="docutils literal notranslate"><span class="pre">plt</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">christian</span> <span class="o">=</span> <span class="p">[</span><span class="mi">77</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unaffiliated</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The library we’ll use for plotting is Matplotlib – more specifically, we’ll use a part of it called Pyplot, which we’ll import with the nickname <code class="docutils literal notranslate"><span class="pre">plt</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -600,7 +557,7 @@ It includes this figure, which shows changes in religious affiliation among adul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_23_0.png" src="_images/06_plotting_23_0.png" />
+<img alt="_images/370c447390bbea999f377e8e612146ec195f8331f9563e00b7807c5c95446fa9.png" src="_images/370c447390bbea999f377e8e612146ec195f8331f9563e00b7807c5c95446fa9.png" />
 </div>
 </div>
 <p>The semi-colon at the end of the line prevents the return value from <code class="docutils literal notranslate"><span class="pre">plot</span></code>, which is an object representing the line, from being displayed.</p>
@@ -613,13 +570,15 @@ It includes this figure, which shows changes in religious affiliation among adul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_25_0.png" src="_images/06_plotting_25_0.png" />
+<img alt="_images/f1f4ee001369954bfc0e49092a5b52af277d4d332c9723d984495ea7bf32f9d1.png" src="_images/f1f4ee001369954bfc0e49092a5b52af277d4d332c9723d984495ea7bf32f9d1.png" />
 </div>
 </div>
 <p>Plotting them on the same axes makes it possible to compare them directly.
-However, notice that Pyplot chooses the range for the axes automatically; in this example the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis starts around 15, not zero.</p>
+However, notice that Pyplot chooses the range for the axes automatically.
+In this example the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis starts around <code class="docutils literal notranslate"><span class="pre">15</span></code>, not zero.</p>
 <p>As a result, it provides a misleading picture, making the ratio of the two lines look bigger than it really is.
-We can set the limits of the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis using the function <code class="docutils literal notranslate"><span class="pre">plt.ylim</span></code>.  The argument is a list with two values, the lower bound and the upper bound.</p>
+We can set the limits of the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis using the function <code class="docutils literal notranslate"><span class="pre">plt.ylim</span></code>.
+The argument is a list with two values, the lower bound and the upper bound.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">christian</span><span class="p">)</span>
@@ -630,13 +589,13 @@ We can set the limits of the <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_27_0.png" src="_images/06_plotting_27_0.png" />
+<img alt="_images/15a712aa945d987ae5a36e06256ecd3395cc2a552d770ddecd329e4007615eee.png" src="_images/15a712aa945d987ae5a36e06256ecd3395cc2a552d770ddecd329e4007615eee.png" />
 </div>
 </div>
 <p>That’s better, but this graph is missing some of the most important elements: labels for the axes and a title.</p>
 </section>
 <section id="decorating-the-axes">
-<h2>Decorating the Axes<a class="headerlink" href="#decorating-the-axes" title="Permalink to this headline">#</a></h2>
+<h2>Decorating the Axes<a class="headerlink" href="#decorating-the-axes" title="Link to this heading">#</a></h2>
 <p>To label the axes and add a title, we’ll use Pyplot functions <code class="docutils literal notranslate"><span class="pre">xlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">ylabel</span></code>, and <code class="docutils literal notranslate"><span class="pre">title</span></code>.  All of them take strings as arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -651,7 +610,7 @@ We can set the limits of the <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_30_0.png" src="_images/06_plotting_30_0.png" />
+<img alt="_images/9eb206fbf01e85f9adddf4a2c0c7ebe25948ed04045e68027581b65f311b0ad6.png" src="_images/9eb206fbf01e85f9adddf4a2c0c7ebe25948ed04045e68027581b65f311b0ad6.png" />
 </div>
 </div>
 <p>Now let’s add another important element, a legend that indicates which line is which.
@@ -671,21 +630,23 @@ Then we call <code class="docutils literal notranslate"><span class="pre">plt.le
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_32_0.png" src="_images/06_plotting_32_0.png" />
+<img alt="_images/c507c88933d33871db0863661253252dd1e4860f8846dc7d0a3781a6680ce2b3.png" src="_images/c507c88933d33871db0863661253252dd1e4860f8846dc7d0a3781a6680ce2b3.png" />
 </div>
 </div>
 <p>The legend shows the labels we provided when we created the lines.</p>
 <p><strong>Exercise:</strong> The original figure plots lines between the data points, but it also plots markers showing the location of each data point.  It is generally good practice to include markers, especially if data are not available for every year.</p>
-<p>Modify the previous example to include a keyword argument <code class="docutils literal notranslate"><span class="pre">marker</span></code> with the string value <code class="docutils literal notranslate"><span class="pre">'o'</span></code>, which indicates that you want to plot circles as markers.</p>
-<p><strong>Exercise:</strong> In the original figure, the line labeled <code class="docutils literal notranslate"><span class="pre">'Christian'</span></code> is red and the line labeled <code class="docutils literal notranslate"><span class="pre">'Unaffiliated'</span></code> is grey.</p>
-<p>Find the online documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> and figure out how to use keyword arguments to specify colors.  Choose colors to (roughly) match the original figure.</p>
+<p>Modify the previous example to include a keyword argument <code class="docutils literal notranslate"><span class="pre">marker</span></code> with the string value <code class="docutils literal notranslate"><span class="pre">'.'</span></code>, which indicates that you want to plot small circles as markers.</p>
+<p><strong>Exercise:</strong> In the original figure, the line labeled <code class="docutils literal notranslate"><span class="pre">'Christian'</span></code> is red and the line labeled <code class="docutils literal notranslate"><span class="pre">'Unaffiliated'</span></code> is gray.</p>
+<p>Find the online documentation of <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, or ask a virtual assistant like ChatGPT, and figure out how to use keyword arguments to specify colors.
+Choose colors to (roughly) match the original figure.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">legend</span></code> function takes a keyword argument that specifies the location of the legend.  Read the documentation of this function and move the legend to the center left of the figure.</p>
 </section>
 <section id="plotting-sandwich-prices">
-<h2>Plotting Sandwich Prices<a class="headerlink" href="#plotting-sandwich-prices" title="Permalink to this headline">#</a></h2>
-<p>In Chapter 3 we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “Why Americans pay more for lunch than Britons do” at <a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do</a>.</p>
+<h2>Plotting Sandwich Prices<a class="headerlink" href="#plotting-sandwich-prices" title="Link to this heading">#</a></h2>
+<p>In Chapter 3 we used data from an article in <em>The Economist</em> comparing sandwich prices in Boston and London: “Why Americans pay more for lunch than Britons do”.</p>
+<p>You can read the article at <a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do</a>.</p>
 <p>The article includes this graph showing prices of several sandwiches in the two cities:</p>
-<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png"  width="400">
+<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png"  width="300">
 <p>As an exercise, let’s see if we can replicate this figure.
 Here’s the data from the article again: the names of the sandwiches and the price list for each city.</p>
 <div class="cell docutils container">
@@ -698,8 +659,13 @@ Here’s the data from the article again: the names of the sandwiches and the pr
     <span class="s1">&#39;Tuna and cucumber&#39;</span><span class="p">,</span>
     <span class="s1">&#39;Egg&#39;</span>
 <span class="p">]</span>
-
-<span class="n">boston_price_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">9.99</span><span class="p">,</span> <span class="mf">7.99</span><span class="p">,</span> <span class="mf">7.49</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.29</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">9.99</span><span class="p">,</span> <span class="mf">7.99</span><span class="p">,</span> <span class="mf">7.49</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.29</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span>
 <span class="n">london_price_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">3.75</span><span class="p">,</span> <span class="mf">2.25</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -716,7 +682,7 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_41_0.png" src="_images/06_plotting_41_0.png" />
+<img alt="_images/7ba636d417ba17188f3c4b498a51471a4d7f3e898716b72a547fd2e7cf7736e4.png" src="_images/7ba636d417ba17188f3c4b498a51471a4d7f3e898716b72a547fd2e7cf7736e4.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">name_list</span></code> is a list of strings; Pyplot orders them from top to bottom, equally spaced.</p>
@@ -731,7 +697,7 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_43_0.png" src="_images/06_plotting_43_0.png" />
+<img alt="_images/cf6e12993c8d4004368db1fcdd7798323e46443354133f8a8da730fc353f500a.png" src="_images/cf6e12993c8d4004368db1fcdd7798323e46443354133f8a8da730fc353f500a.png" />
 </div>
 </div>
 <p>Or we can do the same thing more concisely by providing a <strong>format string</strong> as a positional argument.
@@ -749,10 +715,10 @@ You can read the documentation of <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_45_0.png" src="_images/06_plotting_45_0.png" />
+<img alt="_images/07f060320de7f63394675492c17022dbd0643f4eb266cd0ea03e76c02cabeb44.png" src="_images/07f060320de7f63394675492c17022dbd0643f4eb266cd0ea03e76c02cabeb44.png" />
 </div>
 </div>
-<p>Now, to approximate the colors in the original figure, we can use the strings <code class="docutils literal notranslate"><span class="pre">'C3'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C0'</span></code>, which specify colors from the default color sequence.  You can read more about specifying colors in the Pyplot documentation: <a class="reference external" href="https://matplotlib.org/3.1.1/tutorials/colors/colors.html">https://matplotlib.org/3.1.1/tutorials/colors/colors.html</a>.</p>
+<p>Now, to approximate the colors in the original figure, we can use the strings <code class="docutils literal notranslate"><span class="pre">'C3'</span></code> and <code class="docutils literal notranslate"><span class="pre">'C0'</span></code>, which specify colors from the default color sequence.  You can read more about specifying colors in the Pyplot documentation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
@@ -764,7 +730,7 @@ You can read the documentation of <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_47_0.png" src="_images/06_plotting_47_0.png" />
+<img alt="_images/078db9697c990e07947da182781e2640dacffc9d891022ed7dfd7fbf37ea5daf.png" src="_images/078db9697c990e07947da182781e2640dacffc9d891022ed7dfd7fbf37ea5daf.png" />
 </div>
 </div>
 <p>To connect the dots with lines, we’ll use <code class="docutils literal notranslate"><span class="pre">plt.hlines</span></code>, which draws horizontal lines.  It takes three arguments: a sequence of values on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, which are the sandwich names in this example, and two sequences of values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, which are the London prices and Boston prices.</p>
@@ -781,15 +747,15 @@ You can read the documentation of <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_49_0.png" src="_images/06_plotting_49_0.png" />
+<img alt="_images/d0c63f253a58a5e8f99f3a4439e508df9b27208f2c4f04065c6200c6e20a8705.png" src="_images/d0c63f253a58a5e8f99f3a4439e508df9b27208f2c4f04065c6200c6e20a8705.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> To finish off this example, add a legend that identifies the London and Boston prices.  Remember that you have to add a <code class="docutils literal notranslate"><span class="pre">label</span></code> keyword each time you call <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, and then call <code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>.</p>
 <p>Notice that the sandwiches in our figure are in the opposite order of the sandwiches in the original figure.  There is a Pyplot function that inverts the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis; see if you can find it and use it to reverse the order of the sandwich list.</p>
 </section>
 <section id="zipf-s-law">
-<h2>Zipf’s Law<a class="headerlink" href="#zipf-s-law" title="Permalink to this headline">#</a></h2>
-<p>In almost any book, in almost any language, if you count the number of unique words the the number of times each word appears, you will find a remarkable pattern: the most common word appears twice as often as the second most common, at least approximately, three times as often as the third most common, and so on.</p>
+<h2>Zipf’s Law<a class="headerlink" href="#zipf-s-law" title="Link to this heading">#</a></h2>
+<p>In almost any book, in almost any language, if you count the number of unique words and the number of times each word appears, you will find a remarkable pattern: the most common word appears twice as often as the second most common – at least approximately – three times as often as the third most common, and so on.</p>
 <p>In general, if we sort the words in descending order of frequency, there is an inverse relationship between the rank of the words – first, second, third, etc. – and the number of times they appear.
 This observation was most famously made by George Kingsley Zipf, so it is called Zipf’s law.</p>
 <p>To see if this law holds for the words in <em>War and Peace</em>, we’ll make a Zipf plot, which shows:</p>
@@ -848,6 +814,20 @@ Here are the results, which we will need again.</p>
 </div>
 </div>
 <p>Before we plot them, we have to sort them, but the <code class="docutils literal notranslate"><span class="pre">sort</span></code> function doesn’t work with <code class="docutils literal notranslate"><span class="pre">dict_values</span></code>.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> AttributeError
+
+freqs.sort()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">AttributeError</span>: &#39;dict_values&#39; object has no attribute &#39;sort&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">list</span></code> to make a list of frequencies:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -870,8 +850,8 @@ Here are the results, which we will need again.</p>
 </div>
 </div>
 </div>
-<p>Now, for the ranks, we need a sequence that counts from 1 to <code class="docutils literal notranslate"><span class="pre">n</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of elements in <code class="docutils literal notranslate"><span class="pre">freqs</span></code>.  We can use the <code class="docutils literal notranslate"><span class="pre">range</span></code> function, which returns a value with type <code class="docutils literal notranslate"><span class="pre">range</span></code>.</p>
-<p>As a small example, here’s the range from 1 to 5.</p>
+<p>Now, for the ranks, we need a sequence that counts from 1 to <code class="docutils literal notranslate"><span class="pre">n</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of elements in <code class="docutils literal notranslate"><span class="pre">freqs</span></code>.  We can use the <code class="docutils literal notranslate"><span class="pre">range</span></code> function, which returns a value with type <code class="docutils literal notranslate"><span class="pre">range</span></code>.
+As a small example, here’s the range from 1 to 5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -897,8 +877,9 @@ Here are the results, which we will need again.</p>
 </div>
 </div>
 </div>
-<p>That might seem strange, but it is often more convenient to use <code class="docutils literal notranslate"><span class="pre">range</span></code> when it is defined this way, rather than what might seem like the more natural way (see <a class="reference external" href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html">https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html</a>).
+<p>That might seem strange, but it is often more convenient to use <code class="docutils literal notranslate"><span class="pre">range</span></code> when it is defined this way, rather than what might seem like the more natural way.
 Anyway, we can get what we want by increasing the second argument by one:</p>
+<p>Read about the different ways to define <code class="docutils literal notranslate"><span class="pre">range</span></code>, and their pros and cons, at <a class="reference external" href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html">https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -938,17 +919,21 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_78_0.png" src="_images/06_plotting_78_0.png" />
+<img alt="_images/85364804e3ea394b44c293f54746af5215b784eec27c7a554c3b611ee26a0f7b.png" src="_images/85364804e3ea394b44c293f54746af5215b784eec27c7a554c3b611ee26a0f7b.png" />
 </div>
 </div>
-<p>The few most common words are very common, but the great majority of words are rare.  So that’s consistent with Zipf’s law, but Zipf’s law is more specific.  It claims that the frequencies should be inversely proportional to the ranks.  If that’s true, we can write:</p>
+<p>The most common words are very common, but the great majority of words are rare.
+But Zipf’s law is more specific.
+It claims that the frequencies should be inversely proportional to the ranks.
+If that’s true, we can write:</p>
 <p><span class="math notranslate nohighlight">\(f = k / r\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(r\)</span> is the rank of a word, <span class="math notranslate nohighlight">\(f\)</span> is its frequency, and <span class="math notranslate nohighlight">\(k\)</span> is an unknown constant of proportionality.  If we take the log of both sides, we get</p>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the rank of a word, <span class="math notranslate nohighlight">\(f\)</span> is its frequency, and <span class="math notranslate nohighlight">\(k\)</span> is an unknown constant of proportionality.
+If we take the logarithm of both sides, we get</p>
 <p><span class="math notranslate nohighlight">\(\log f = \log k - \log r\)</span></p>
-<p>This equation implies that if we plot <span class="math notranslate nohighlight">\(f\)</span> versus <span class="math notranslate nohighlight">\(r\)</span> on a log-log scale, we expect to see a straight line with intercept at <span class="math notranslate nohighlight">\(\log k\)</span> and slope -1.</p>
+<p>This equation implies that if we plot <span class="math notranslate nohighlight">\(f\)</span> versus <span class="math notranslate nohighlight">\(r\)</span> on a log-log scale, we expect to see a straight line with intercept at <span class="math notranslate nohighlight">\(\log k\)</span> and slope <span class="math notranslate nohighlight">\(-1\)</span>.</p>
 </section>
 <section id="logarithmic-scales">
-<h2>Logarithmic Scales<a class="headerlink" href="#logarithmic-scales" title="Permalink to this headline">#</a></h2>
+<h2>Logarithmic Scales<a class="headerlink" href="#logarithmic-scales" title="Link to this heading">#</a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">plt.xscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis on a log scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -962,7 +947,7 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_81_0.png" src="_images/06_plotting_81_0.png" />
+<img alt="_images/7714258f405b37bb5a1ee47fb573552c64c98a689f05024ba98c5935042a8002.png" src="_images/7714258f405b37bb5a1ee47fb573552c64c98a689f05024ba98c5935042a8002.png" />
 </div>
 </div>
 <p>And <code class="docutils literal notranslate"><span class="pre">plt.yscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis on a log scale.</p>
@@ -979,11 +964,11 @@ Anyway, we can get what we want by increasing the second argument by one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_83_0.png" src="_images/06_plotting_83_0.png" />
+<img alt="_images/c01d524687635f030a18ca3f66ce521ee2042fca9562b8a317faadd6da48f92e.png" src="_images/c01d524687635f030a18ca3f66ce521ee2042fca9562b8a317faadd6da48f92e.png" />
 </div>
 </div>
 <p>The result is not quite a straight line, but it is close.  We can get a sense of the slope by connecting the end points with a line.
-We’ll select the first and last elements from <code class="docutils literal notranslate"><span class="pre">xs</span></code>.</p>
+First, we’ll select the first and last elements from <code class="docutils literal notranslate"><span class="pre">xs</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">ranks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ranks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -1026,11 +1011,11 @@ We’ll select the first and last elements from <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06_plotting_89_0.png" src="_images/06_plotting_89_0.png" />
+<img alt="_images/e1fe6ecb1738ccda5716997fd4317d25c4287d1dcdbc09008003136d0aafbf27.png" src="_images/e1fe6ecb1738ccda5716997fd4317d25c4287d1dcdbc09008003136d0aafbf27.png" />
 </div>
 </div>
-<p>The slope of this line is the “rise over run”, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis divided by the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.</p>
-<p>We can compute the rise using <code class="docutils literal notranslate"><span class="pre">np.log10</span></code> to compute the log base 10 of the first and last values:</p>
+<p>The slope of this line is the “rise over run”, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis divided by the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.
+We can compute the rise using <code class="docutils literal notranslate"><span class="pre">np.log10</span></code> to compute the log base 10 of the first and last values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
@@ -1038,7 +1023,7 @@ We’ll select the first and last elements from <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.53640692, 0.        ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.53856117, 0.        ])
 </pre></div>
 </div>
 </div>
@@ -1052,18 +1037,19 @@ We’ll select the first and last elements from <code class="docutils literal no
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-4.53640692])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-4.53856117])
 </pre></div>
 </div>
 </div>
 </div>
 <p>In the following exercise, you’ll compute the run and the slope of the gray line.</p>
 <p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">log10</span></code> and <code class="docutils literal notranslate"><span class="pre">diff</span></code> to compute the run, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  Then divide the rise by the run to get the slope of the grey line.
-Is it close to -1, as Zipf’s law predicts?</p>
+Is it close to <span class="math notranslate nohighlight">\(-1\)</span>, as Zipf’s law predicts?</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>This chapter introduces the Matplotlib library, which we used to replicate two figures a Zipf plot.
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This chapter introduces Pyplot, which is part of the Matplotlib library.
+We used to replicate two figures and make a Zipf plot.
 These examples demonstrate the most common elements of data visualization, including lines and markers, values and labels on the axes, a legend and a title.
 The Zipf plot also shows the power of plotting data on logarithmic scales.</p>
 </section>
@@ -1081,7 +1067,7 @@ The Zipf plot also shows the power of plotting data on logarithmic scales.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1089,50 +1075,109 @@ The Zipf plot also shows the power of plotting data on logarithmic scales.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="05_dictionaries.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Dictionaries</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_dictionaries.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Dictionaries</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="07_dataframes.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="07_dataframes.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">DataFrames and Series</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-arguments">Keyword Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphing-religious-affiliation">Graphing Religious Affiliation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decorating-the-axes">Decorating the Axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-sandwich-prices">Plotting Sandwich Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zipf-s-law">Zipf’s Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-scales">Logarithmic Scales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

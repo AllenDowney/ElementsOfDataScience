@@ -1,105 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Dictionaries &#8212; Elements of Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05_dictionaries';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Plotting" href="06_plotting.html" />
     <link rel="prev" title="Loops and Files" href="04_loops.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elements of Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -108,381 +170,223 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_variables.html">
-   Variables and Values
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_times.html">
-   Times and Places
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_arrays.html">
-   Lists and Arrays
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_loops.html">
-   Loops and Files
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html">
-   DataFrames and Series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_distributions.html">
-   Distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_relationships.html">
-   Relationships
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_resampling.html">
-   Resampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12_bootstrap.html">
-   Bootstrap Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13_hypothesis.html">
-   Hypothesis Testing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="resample_logit.html">
-   Resampling and Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="anderson.html">
-   Never Test for Normality
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="resample_logit.html">Resampling and Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anderson.html">Never Test for Normality</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/05_dictionaries.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ElementsOfDataScience"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/05_dictionaries.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/05_dictionaries.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indexing">
-   Indexing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Dictionaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-unique-words">
-   Counting Unique Words
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dealing-with-capitalization">
-   Dealing with Capitalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removing-punctuation">
-   Removing Punctuation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-word-frequencies">
-   Counting Word Frequencies
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Dictionaries</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indexing">
-   Indexing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Dictionaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-unique-words">
-   Counting Unique Words
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dealing-with-capitalization">
-   Dealing with Capitalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removing-punctuation">
-   Removing Punctuation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-word-frequencies">
-   Counting Word Frequencies
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dictionaries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-unique-words">Counting Unique Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-capitalization">Dealing with Capitalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-punctuation">Removing Punctuation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-word-frequencies">Counting Word Frequencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="dictionaries">
-<h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h1>
+<h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/05_dictionaries.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/05_dictionaries.ipynb">click here to download it</a>.</p>
-<p>In the previous chapter we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.  In this chapter, you’ll learn about a new type called a <strong>dictionary</strong>, and we’ll use it to count the number of unique words and the number of times each one appears.</p>
+<p>In the previous chapter we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.
+In this chapter we’ll count the number of <em>unique</em> words and the number of times each one appears.
+To do that, we’ll use one of Python’s most useful features, a <strong>dictionary</strong>.</p>
 <p>You will also see how to select an element from a sequence (tuple, list, or array).  And you will learn a little about Unicode, which is used to represent letters, numbers, and punctuation for almost every language in the world.</p>
 <section id="indexing">
-<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h2>
+<h2>Indexing<a class="headerlink" href="#indexing" title="Link to this heading">#</a></h2>
 <p>Suppose you have a variable named <code class="docutils literal notranslate"><span class="pre">t</span></code> that refers to a list or tuple.
 You can select an element using the <strong>bracket operator</strong>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.
 For example, here’s a tuple of strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="s1">&#39;zero&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;zero&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -527,7 +431,7 @@ For example, here’s a tuple of strings:</p>
 </div>
 </div>
 <p>The number in brackets is called an <strong>index</strong> because it indicates which element we want.
-Tuples and lists use zero-based numbering; that is, the index of the first element is 0.  Some other programming languages use one-based numbering.  There are pros and cons of both systems (see <a class="reference external" href="https://en.wikipedia.org/wiki/Zero-based_numbering">https://en.wikipedia.org/wiki/Zero-based_numbering</a>).</p>
+Tuples and lists use zero-based numbering – that is, the index of the first element is 0.  Some other programming languages use one-based numbering.</p>
 <p>The index in brackets can also be a variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,12 +459,54 @@ Tuples and lists use zero-based numbering; that is, the index of the first eleme
 </div>
 </div>
 </div>
-<p>But if the index goes past the end of the list or tuple, you get an error.</p>
-<p>Also, the index has to be an integer; if it is any other type, you get an error.</p>
+<p>But if the index goes past the end of the sequence, you get an error.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> IndexError
+
+t[3]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">IndexError</span>: tuple index out of range
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also, the index has to be an integer – if it is any other type, you get an error.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> TypeError
+
+t[1.5]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span>: tuple indices must be integers or slices, not float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> TypeError
+
+t[&#39;1&#39;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span>: tuple indices must be integers or slices, not str
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Exercise:</strong> You can use negative integers as indices.  Try using <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">-2</span></code> as indices, and see if you can figure out what they do.</p>
 </section>
 <section id="id1">
-<h2>Dictionaries<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Dictionaries<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>A dictionary is similar to a tuple or list, but in a dictionary, the index can be almost any type, not just an integer.
 We can create an empty dictionary like this:</p>
 <div class="cell docutils container">
@@ -579,7 +525,7 @@ We can create an empty dictionary like this:</p>
 </div>
 </div>
 </div>
-<p>In this example, the indices are the strings, <code class="docutils literal notranslate"><span class="pre">'one'</span></code> and <code class="docutils literal notranslate"><span class="pre">'two'</span></code>
+<p>In this example, the indices are the strings, <code class="docutils literal notranslate"><span class="pre">'one'</span></code> and <code class="docutils literal notranslate"><span class="pre">'two'</span></code>.
 If you display the dictionary, it shows each index and the corresponding value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,8 +553,9 @@ If you display the dictionary, it shows each index and the corresponding value.<
 </div>
 </div>
 </div>
-<p>When we are talking about dictionaries, an index is usually called a <strong>key</strong>.  In this example, the keys are strings and the corresponding values are integers.</p>
-<p>A dictionary is also called a <strong>map</strong>, because it represents correspondence or “mapping”, between keys and values.  So we might say that this dictionary maps from English number names to the corresponding integers.</p>
+<p>When we are talking about dictionaries, an index is usually called a <strong>key</strong>.  In this example, the keys are strings and the corresponding values are integers.
+A dictionary is also called a <strong>map</strong>, because it represents a correspondence or “mapping”, between keys and values.
+So we might say that this dictionary maps from English number names to the corresponding integers.</p>
 <p>You can use the bracket operator to select an element from a dictionary, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -624,7 +571,21 @@ If you display the dictionary, it shows each index and the corresponding value.<
 </div>
 <p>But don’t forget the quotation marks.
 Without them, Python looks for a variable named <code class="docutils literal notranslate"><span class="pre">two</span></code> and doesn’t find one.</p>
-<p>To check whether a particular key is in a dictionary, you can use the special word <code class="docutils literal notranslate"><span class="pre">in</span></code>:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> NameError
+
+d[two]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;two&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>To check whether a particular key is in a dictionary, you can use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;one&#39;</span> <span class="ow">in</span> <span class="n">d</span>
@@ -650,19 +611,25 @@ Without them, Python looks for a variable named <code class="docutils literal no
 </div>
 </div>
 <p>Because the word <code class="docutils literal notranslate"><span class="pre">in</span></code> is an operator in Python, you can’t use it as a variable name.</p>
-<p>If a key is already in a dictionary, adding it again has no effect:</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> SyntaxError
+
+in = 5
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;one&#39;: 1, &#39;two&#39;: 2, &#39;three&#39;: 3}
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="ow">in</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
 </div>
+<p>Each key in a dictionary can only appear once.
+Adding the same key again has no effect:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -738,12 +705,13 @@ three 3
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">items</span></code> method loops through the key-value pairs in the dictionary; each time through the loop, they are assigned to <code class="docutils literal notranslate"><span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">items</span></code> method loops through the key-value pairs in the dictionary.
+Each time through the loop, they are assigned to <code class="docutils literal notranslate"><span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
 <p><strong>Exercise:</strong> Make a dictionary with the integers <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, and <code class="docutils literal notranslate"><span class="pre">3</span></code> as keys and strings as values.  The strings should be the words “one”, “two”, and “three” or their equivalents in any language you know.</p>
 <p>Write a loop that prints just the values from the dictionary.</p>
 </section>
 <section id="counting-unique-words">
-<h2>Counting Unique Words<a class="headerlink" href="#counting-unique-words" title="Permalink to this headline">#</a></h2>
+<h2>Counting Unique Words<a class="headerlink" href="#counting-unique-words" title="Link to this heading">#</a></h2>
 <p>In the previous chapter we downloaded <em>War and Peace</em> from Project Gutenberg and counted the number of lines and words.
 Now that we have dictionaries, we can also count the number of unique words and the number of times each one appears.</p>
 <p>As we did in the previous chapter, we can read the text of <em>War and Peace</em> and count the number of words.</p>
@@ -759,7 +727,7 @@ Now that we have dictionaries, we can also count the number of unique words and 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>566317
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>566316
 </pre></div>
 </div>
 </div>
@@ -781,35 +749,25 @@ Now that we have dictionaries, we can also count the number of unique words and 
 <li><p>The outer loop runs through the lines in the file.</p></li>
 <li><p>The inner loops runs through the words in each line.</p></li>
 </ul>
-<p>Each time through the inner loop, we add a word as a key in the dictionary, with the value 1.  If the same word appears more than once, it gets added to the dictionary again, which has no effect.  So the dictionary contains only one copy of each unique word in the file.</p>
-<p>At the end of the loop, we can display the first 10 keys:</p>
+<p>Each time through the inner loop, we add a word as a key in the dictionary, with the value <code class="docutils literal notranslate"><span class="pre">1</span></code>.
+If a word that is already in the dictionary appears again, adding it to the dictionary again has no effect.
+So the dictionary gets only one copy of each unique word in the file.
+At the end of the loop, we can display the first eight keys like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">unique_words</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="k">break</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">unique_words</span><span class="p">)[:</span><span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The
-Project
-Gutenberg
-EBook
-of
-War
-and
-Peace,
-by
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;The&#39;, &#39;Project&#39;, &#39;Gutenberg&#39;, &#39;EBook&#39;, &#39;of&#39;, &#39;War&#39;, &#39;and&#39;, &#39;Peace,&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p>The dictionary contains all the words in the file, in order of first appearance.
-But each word only appears once, so the number of keys is the number of unique words:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">list</span></code> function puts the keys from the dictionary in a list.
+In the bracket operator, <code class="docutils literal notranslate"><span class="pre">:8</span></code> is a special index called a <em>slice</em> that selects the first eight elements.</p>
+<p>Each word only appears once, so the number of keys is the number of unique words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">unique_words</span><span class="p">)</span>
@@ -822,9 +780,9 @@ But each word only appears once, so the number of keys is the number of unique w
 </div>
 </div>
 </div>
-<p>It looks like there are about 42,000 different words in the book, which is substantially less than the total number of words, about 560,000.
-But that’s not quite right, because we have not taken into account capitalization and punctuation.</p>
-<p><strong>Exercise:</strong> Before we deal with that problem, let’s practice with nested loops, that is, one loop inside another.
+<p>There are about 42,000 different words in the book, which is substantially less than the total number of words, about 560,000.</p>
+<p>But this count is not correct yet, because we have not taken into account capitalization and punctuation.</p>
+<p><strong>Exercise:</strong> Before we deal with those problems, let’s practice with nested loops – that is, one loop inside another.
 Suppose you have a list of words, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -836,7 +794,7 @@ Suppose you have a list of words, like this:</p>
 <p>Write a nested loop that iterates through each word in the list, and each letter in each word, and prints the letters on separate lines.</p>
 </section>
 <section id="dealing-with-capitalization">
-<h2>Dealing with Capitalization<a class="headerlink" href="#dealing-with-capitalization" title="Permalink to this headline">#</a></h2>
+<h2>Dealing with Capitalization<a class="headerlink" href="#dealing-with-capitalization" title="Link to this heading">#</a></h2>
 <p>When we count unique words, we probably want to treat <code class="docutils literal notranslate"><span class="pre">The</span></code> and <code class="docutils literal notranslate"><span class="pre">the</span></code> as the same word.  We can do that by converting all words to lower case, using the <code class="docutils literal notranslate"><span class="pre">lower</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,8 +846,9 @@ Suppose you have a list of words, like this:</p>
 <p><strong>Exercise:</strong> Modify the previous loop so it makes a lowercase version of each word before adding it to the dictionary.  How many unique words are there, if we ignore the difference between uppercase and lowercase?</p>
 </section>
 <section id="removing-punctuation">
-<h2>Removing Punctuation<a class="headerlink" href="#removing-punctuation" title="Permalink to this headline">#</a></h2>
-<p>To remove punctuation from the words, we can use <code class="docutils literal notranslate"><span class="pre">strip</span></code>, which removes specified characters from the beginning and end of a string.  Here’s an example:</p>
+<h2>Removing Punctuation<a class="headerlink" href="#removing-punctuation" title="Link to this heading">#</a></h2>
+<p>To remove punctuation from the words, we can use <code class="docutils literal notranslate"><span class="pre">strip</span></code>, which removes characters from the beginning and end of a string.
+Here’s an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;abracadabra&#39;</span>
@@ -904,7 +863,7 @@ Suppose you have a list of words, like this:</p>
 </div>
 </div>
 <p>In this example, <code class="docutils literal notranslate"><span class="pre">strip</span></code> removes all instances of <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> from the beginning and end of the word, but not from the middle.
-But note that it makes a new word; it doesn’t modify the original:</p>
+Like <code class="docutils literal notranslate"><span class="pre">lower</span></code>, this function makes a new word – it doesn’t modify the original:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span>
@@ -993,14 +952,14 @@ them.”
 </div>
 </div>
 </div>
-<p>It removes the comma after <code class="docutils literal notranslate"><span class="pre">anyone</span></code>, but not the period and quotation mark after <code class="docutils literal notranslate"><span class="pre">them</span></code>.
-The problem is that this kind of quotation mark is not in <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code>.</p>
-<p>To fix this problem, we’ll use the following loop, which</p>
-<ol class="simple">
+<p>The comma after <code class="docutils literal notranslate"><span class="pre">anyone</span></code> is removed, but not the quotation mark at the end of the last word.
+The problem is that this kind of quotation mark is not in <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code>, so <code class="docutils literal notranslate"><span class="pre">strip</span></code> doesn’t remove it.
+To fix this problem, we’ll use the following loop, which</p>
+<ol class="arabic simple">
 <li><p>Reads the file and builds a dictionary that contains all punctuation marks that appear in the book, then</p></li>
 <li><p>It uses the <code class="docutils literal notranslate"><span class="pre">join</span></code> function to concatenate the keys of the dictionary in a single string.</p></li>
 </ol>
-<p>You don’t have to understand everything about how it works, but you should read it and see how much you can figure out.  You can read the documentation of the <code class="docutils literal notranslate"><span class="pre">unicodedata</span></code> library here at <a class="reference external" href="https://docs.python.org/3/library/unicodedata.html">https://docs.python.org/3/library/unicodedata.html</a>.</p>
+<p>You don’t have to understand everything about how it works, but I suggest you read it and see how much you can figure out.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span>
@@ -1026,10 +985,30 @@ The problem is that this kind of quotation mark is not in <code class="docutils 
 </div>
 <p>The result is a string containing all of the punctuation characters that appear in the document, in the order they first appear.</p>
 <p><strong>Exercise:</strong> Modify the word-counting loop from the previous section to convert words to lower case <em>and</em> strip punctuation before adding them to the dictionary.  Now how many unique words are there?</p>
-<p>Optional: You might want to skip over the front matter and start with the text of Chapter 1, and skip over the license at the end, as we did in the previous chapter.</p>
+<p>To get you started, here’s the code from the previous chapter that skips over the front matter at the beginning and the license at the end, as we did in the previous chapter.</p>
+<div class="cell tag_remove-print docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_line</span> <span class="o">=</span> <span class="s2">&quot;CHAPTER I</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">last_line</span> <span class="o">=</span> <span class="s2">&quot;End of the Project Gutenberg EBook of War and Peace, by Leo Tolstoy</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">first_line</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">last_line</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="counting-word-frequencies">
-<h2>Counting Word Frequencies<a class="headerlink" href="#counting-word-frequencies" title="Permalink to this headline">#</a></h2>
+<h2>Counting Word Frequencies<a class="headerlink" href="#counting-word-frequencies" title="Link to this heading">#</a></h2>
 <p>In the previous section we counted the number of unique words, but we might also want to know how often each word appears.  Then we can find the most common and least common words in the book.
 To count the frequency of each word, we’ll make a dictionary that maps from each word to the number of times it appears.</p>
 <p>Here’s an example that loops through a string and counts the number of times each letter appears.</p>
@@ -1054,15 +1033,15 @@ To count the frequency of each word, we’ll make a dictionary that maps from ea
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement here uses a feature we have not seen before, an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause.
+<p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement includes a feature we have not seen before, an <code class="docutils literal notranslate"><span class="pre">else</span></code> clause.
 Here’s how it works.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>First, it checks whether the letter, <code class="docutils literal notranslate"><span class="pre">x</span></code>, is already a key in the dictionary, <code class="docutils literal notranslate"><span class="pre">letter_counts</span></code>.</p></li>
 <li><p>If so, it runs the first statement, <code class="docutils literal notranslate"><span class="pre">letter_counts[x]</span> <span class="pre">+=</span> <span class="pre">1</span></code>, which increments the value associated with the letter.</p></li>
 <li><p>Otherwise, it runs the second statement, <code class="docutils literal notranslate"><span class="pre">letter_counts[x]</span> <span class="pre">=</span> <span class="pre">1</span></code>, which adds <code class="docutils literal notranslate"><span class="pre">x</span></code> as a new key, with the value <code class="docutils literal notranslate"><span class="pre">1</span></code> indicating that we have seen the new letter once.</p></li>
 </ol>
-<p>The result is a dictionary that maps from each letter to the number of times it appears.</p>
-<p>To get the most common letters, we can use a <code class="docutils literal notranslate"><span class="pre">Counter</span></code>, which is similar to a dictionary.  To use it, we have to import a library called <code class="docutils literal notranslate"><span class="pre">collections</span></code>:</p>
+<p>The result is a dictionary that maps from each letter to the number of times it appears.
+To get the most common letters, we can use a <code class="docutils literal notranslate"><span class="pre">Counter</span></code>, which is similar to a dictionary.  To use it, we have to import a library called <code class="docutils literal notranslate"><span class="pre">collections</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
@@ -1097,14 +1076,15 @@ Here’s how it works.</p>
 </div>
 </div>
 </div>
-<p>The result is a list of tuples, where each tuple contains a character and an integer.</p>
-<p><strong>Exercise:</strong> Modify the loop from the previous exercise to count the frequency of the words in <em>War and Peace</em>; then print the 20 most common words and the number of times each one appears.</p>
+<p>The result is a list of tuples, where each tuple contains a character and count, sorted by count.</p>
+<p><strong>Exercise:</strong> Modify the loop from the previous exercise to count the frequency of the words in <em>War and Peace</em>. Then print the 20 most common words and the number of times each one appears.</p>
 <p><strong>Exercise:</strong> You can run <code class="docutils literal notranslate"><span class="pre">most_common</span></code> with no value in parentheses, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">word_freq_pairs</span> <span class="o">=</span> <span class="n">counter</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The result is a list of tuples, with one tuple for every unique word in the book.  Assign the result to a variable so it doesn’t get displayed.  Then answer the following questions:</p>
-<ol class="simple">
+<p>The result is a list of tuples, with one tuple for every unique word in the book.
+Use it to answer the following questions:</p>
+<ol class="arabic simple">
 <li><p>How many times does the #1 ranked word appear (that is, the first element of the list)?</p></li>
 <li><p>How many times does the #10 ranked word appear?</p></li>
 <li><p>How many times does the #100 ranked word appear?</p></li>
@@ -1116,11 +1096,12 @@ Here’s how it works.</p>
 <p><strong>Optional:</strong> If you know how to define a function, write a function that takes a <code class="docutils literal notranslate"><span class="pre">Counter</span></code> and a frequency as arguments, prints all words with that frequency, and returns the number of words with that frequency.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>This chapter introduces dictionaries, which represent a collection of keys and values.
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This chapter introduces dictionaries, which are collections of keys and corresponding values.
 We used a dictionary to count the number of unique words in a file and the number of times each one appears.</p>
 <p>It also introduces the bracket operator, which selects an element from a list or tuple, or looks up a key in a dictionary and finds the corresponding value.</p>
-<p>We saw some new methods for working with strings, including <code class="docutils literal notranslate"><span class="pre">lower</span></code> and <code class="docutils literal notranslate"><span class="pre">strip</span></code>. Finally, we used the <code class="docutils literal notranslate"><span class="pre">unicodedata</span></code> library to identify characters that are considered punctuation.</p>
+<p>We saw some new methods for working with strings, including <code class="docutils literal notranslate"><span class="pre">lower</span></code> and <code class="docutils literal notranslate"><span class="pre">strip</span></code>.
+Also, we used the <code class="docutils literal notranslate"><span class="pre">unicodedata</span></code> library to identify characters that are considered punctuation.</p>
 </section>
 </section>
 
@@ -1136,7 +1117,7 @@ We used a dictionary to count the number of unique words in a file and the numbe
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1144,50 +1125,109 @@ We used a dictionary to count the number of unique words in a file and the numbe
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="04_loops.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Loops and Files</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_loops.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Loops and Files</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="06_plotting.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="06_plotting.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Plotting</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-unique-words">Counting Unique Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-capitalization">Dealing with Capitalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-punctuation">Removing Punctuation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-word-frequencies">Counting Word Frequencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,105 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Resampling &#8212; Elements of Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '11_resampling';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bootstrap Sampling" href="12_bootstrap.html" />
     <link rel="prev" title="Regression" href="10_regression.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elements of Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -108,375 +170,234 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_variables.html">
-   Variables and Values
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_times.html">
-   Times and Places
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_arrays.html">
-   Lists and Arrays
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_loops.html">
-   Loops and Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html">
-   DataFrames and Series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_distributions.html">
-   Distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_relationships.html">
-   Relationships
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Resampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12_bootstrap.html">
-   Bootstrap Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13_hypothesis.html">
-   Hypothesis Testing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="resample_logit.html">
-   Resampling and Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="anderson.html">
-   Never Test for Normality
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="resample_logit.html">Resampling and Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anderson.html">Never Test for Normality</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/11_resampling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ElementsOfDataScience"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/11_resampling.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/11_resampling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vaccine-testing">
-   Vaccine Testing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulating-one-group">
-   Simulating One Group
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulating-the-trial">
-   Simulating the Trial
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estimating-means">
-   Estimating Means
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-resampling-framework">
-   The Resampling Framework
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#support-for-gun-control">
-   Support for Gun Control
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Resampling</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vaccine-testing">
-   Vaccine Testing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulating-one-group">
-   Simulating One Group
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulating-the-trial">
-   Simulating the Trial
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estimating-means">
-   Estimating Means
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-resampling-framework">
-   The Resampling Framework
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#support-for-gun-control">
-   Support for Gun Control
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Resampling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccine-testing">Vaccine Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-one-group">Simulating One Group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-the-trial">Simulating the Trial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-means">Estimating Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-resampling-framework">The Resampling Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="resampling">
-<h1>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/11_resampling.ipynb">Click here to run this notebook on Colab</a> or
-<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/11_resampling.ipynb">click here to download it</a>.</p>
+<h1>Resampling<a class="headerlink" href="#resampling" title="Link to this heading">#</a></h1>
+<div class="cell tag_remove-print docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">filename</span>
+
+<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">utils</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/11_resampling.ipynb">Click here to run this notebook on Colab</a>.</p>
 <p>This chapter introduces <strong>resampling methods</strong>, which are used to quantify the precision of an estimate.
-As examples, we’ll use results from a vaccine trial to estimate the efficacy of the vaccine, data from the Behavioral Risk Factor Surveillance System to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
+As a first example, we’ll use results from a vaccine trial to estimate the efficacy of the vaccine.
+Then we’ll use data from the Behavioral Risk Factor Surveillance System to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
 <section id="vaccine-testing">
-<h2>Vaccine Testing<a class="headerlink" href="#vaccine-testing" title="Permalink to this headline">#</a></h2>
+<h2>Vaccine Testing<a class="headerlink" href="#vaccine-testing" title="Link to this heading">#</a></h2>
 <p>Suppose you read a report about a new vaccine and the manufacturer says it is 67% effective at preventing disease.
 You might wonder where that number comes from, what it means, and how confident we should be that it is correct.</p>
 <p>Results like this often come from a randomized controlled trial (RCT), which works like this:</p>
@@ -559,7 +480,7 @@ Equivalently, we could report the complement of relative risk, which is <strong>
 </div>
 </div>
 </div>
-<p>In this example the efficacy is <code class="docutils literal notranslate"><span class="pre">0.67</span></code>, which means that the vaccine reduces the risk of disease by 67%.
+<p>In this example the efficacy is 0.67, which means that the vaccine reduces the risk of disease by 67%.
 That’s good news, but as skeptical data scientists, we should not assume that it is perfectly accurate.
 There are any number of things that might have gone wrong.</p>
 <p>For example, if people in the treatment group know they have been vaccinated, they might take fewer precautions to prevent disease, and people in the control group might be more careful.
@@ -572,8 +493,8 @@ For example, someone in the treatment group might not complete treatment, or som
 In the next section, I’ll explain what they mean and show how to compute them.</p>
 </section>
 <section id="simulating-one-group">
-<h2>Simulating One Group<a class="headerlink" href="#simulating-one-group" title="Permalink to this headline">#</a></h2>
-<p>In our hypothetical example, there are 21 911 people in the treatment group and 116 of them got the disease, so the estimated risk is about 5 cases per 1000 people.</p>
+<h2>Simulating One Group<a class="headerlink" href="#simulating-one-group" title="Link to this heading">#</a></h2>
+<p>In our hypothetical example, there are 21,911 people in the treatment group and 116 of them got the disease, so the estimated risk is about 5 cases per 1000 people.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_treatment</span><span class="p">,</span> <span class="n">k_treatment</span><span class="p">,</span> <span class="n">risk_treatment</span>
@@ -623,7 +544,7 @@ We’ll answer that question in three steps:</p>
 <p>The first line generates an array of <code class="docutils literal notranslate"><span class="pre">n</span></code> random values between 0 and 1.
 The values are distributed uniformly in this range, so the probability that each one is less than <code class="docutils literal notranslate"><span class="pre">p</span></code> is… <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
 <p>The second line counts how many of the values are less than <code class="docutils literal notranslate"><span class="pre">p</span></code>, that is, how many people in the simulated group get the disease.
-Then the function returns the estimated risk.</p>
+Then the function returns the risk in cases per 1000 people.</p>
 <p>Here’s how we call this function, passing as arguments the size of the treatment group and the estimated risk:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -633,12 +554,12 @@ Then the function returns the estimated risk.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.609556843594541
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.157226963625576
 </pre></div>
 </div>
 </div>
 </div>
-<p>The result is the estimated risk from a simulated trial.
+<p>The result is a risk from a single simulated trial.
 If we run this function 1000 times, it’s like running the trial over and over.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
@@ -648,8 +569,8 @@ If we run this function 1000 times, it’s like running the trial over and over.
 </div>
 </div>
 </div>
-<p>The result is a list of estimated risks that shows how much we expect the results of the trial to vary due to randomness.
-We can use a KDE plot to visualize the distribution of these estimates.</p>
+<p>The result is a list of risks that shows how much we expect the results of the trial to vary due to randomness.
+We can use a KDE plot to visualize the distribution of these results.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -659,12 +580,12 @@ We can use a KDE plot to visualize the distribution of these estimates.</p>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Risk of disease (cases per 1000)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimated Risks from Simulation&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Risks from Simulations&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11_resampling_28_0.png" src="_images/11_resampling_28_0.png" />
+<img alt="_images/1f19b64da9eb102e38cf042f6162b95f1a97244bd6dc0a26df9e8260f9d8fd63.png" src="_images/1f19b64da9eb102e38cf042f6162b95f1a97244bd6dc0a26df9e8260f9d8fd63.png" />
 </div>
 </div>
 <p>The mean of this distribution is about 5.3, which is close to the observed risk, as we should expect.</p>
@@ -695,9 +616,9 @@ One way to quantify the width of the distribution is the standard deviation.</p>
 </div>
 </div>
 </div>
-<p>This result is called the <strong>standard error</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Standard_error">https://en.wikipedia.org/wiki/Standard_error</a>).</p>
+<p>This result is called the <strong>standard error</strong>.</p>
 <p>Another way to quantify the width of the distribution is an interval between two percentiles.
-For example, if we compute the 5th and 95th percentiles, the interval we get contains 90% of the simulated estimates.</p>
+For example, if we compute the 5th and 95th percentiles, the interval we get contains 90% of the simulated results.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confidence_interval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span>
@@ -711,13 +632,14 @@ For example, if we compute the 5th and 95th percentiles, the interval we get con
 </div>
 </div>
 </div>
-<p>This result is called a <strong>confidence interval</strong> ; specifically, this one is a “90% confidence interval”, or 90% CI (see <a class="reference external" href="https://en.wikipedia.org/wiki/Confidence_interval">https://en.wikipedia.org/wiki/Confidence_interval</a>).
-If we assume that the observed risk is correct, and we run the same trial many times, we expect 90% of the estimates to fall in this interval.</p>
+<p>This result is called a <strong>confidence interval</strong>; specifically, this one is a “90% confidence interval”, or 90% CI.
+If we assume that the observed risk is correct, and we run the same trial many times, we expect 90% of the results to fall in this interval.</p>
 <p>Standard errors and confidence intervals quantify our uncertainty about the estimate due to random variation from one trial to another.</p>
 </section>
 <section id="simulating-the-trial">
-<h2>Simulating the Trial<a class="headerlink" href="#simulating-the-trial" title="Permalink to this headline">#</a></h2>
-<p>If that’s not making sense yet, let’s try another example.  In the previous section we simulated one group and estimated their risk.
+<h2>Simulating the Trial<a class="headerlink" href="#simulating-the-trial" title="Link to this heading">#</a></h2>
+<p>If that’s not making sense yet, let’s try another example.
+In the previous section we simulated one group and estimated their risk.
 Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 <p>The following function takes four parameters: the sizes of the two groups and their actual risks.</p>
 <div class="cell docutils container">
@@ -731,7 +653,7 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 </div>
-<p>If we call this function once, it simulates both groups, computes the risks in each group, and uses the results to estimate the efficacy of the treatment (assuming that the first group is the control).</p>
+<p>If we call this function once, it simulates both groups, computes the risks in each group, and uses the results to compute the efficacy of the treatment (assuming that the first group is the control).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">k_control</span> <span class="o">/</span> <span class="n">n_control</span>
@@ -746,7 +668,7 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 </div>
-<p>If we call it 1000 times, the result is a list of estimated efficacies from 1000 simulated trials.</p>
+<p>If we call it 1000 times, the result is a list of efficacies from 1000 simulated trials.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_trial</span><span class="p">(</span><span class="n">n_control</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n_treatment</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
@@ -755,19 +677,19 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 </div>
-<p>We can use a KDE plot to visualize the distribution of these estimates.</p>
+<p>We can use a KDE plot to visualize the distribution of the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Efficacy&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimated Efficacy from Simulation&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Efficacies from Simulations&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11_resampling_43_0.png" src="_images/11_resampling_43_0.png" />
+<img alt="_images/53b9b197d443038141602d629e542a2acabf470033771f0fc6460549edfd22dc.png" src="_images/53b9b197d443038141602d629e542a2acabf470033771f0fc6460549edfd22dc.png" />
 </div>
 </div>
 <p>The mean of this distribution is close to the efficacy we computed with the results of the actual trial.</p>
@@ -810,7 +732,7 @@ As an alternative, we can use percentiles to compute a 90% confidence interval.<
 </div>
 </div>
 </div>
-<p>In a scientific paper, we could report these results as 0.67, 90% CI [0.61, 0.72]”.</p>
+<p>We could report these results as 0.67, 90% CI [0.61, 0.72]”.</p>
 <p>The standard error and confidence interval represent nearly the same information.
 In general, I prefer to report a confidence interval because it is easier to interpret:</p>
 <ul class="simple">
@@ -819,20 +741,20 @@ In general, I prefer to report a confidence interval because it is easier to int
 </ul>
 </section>
 <section id="estimating-means">
-<h2>Estimating Means<a class="headerlink" href="#estimating-means" title="Permalink to this headline">#</a></h2>
-<p>In the previous examples, we’ve estimated risk, which is a proportion, and efficacy, which is a ratio of two proportions.
+<h2>Estimating Means<a class="headerlink" href="#estimating-means" title="Link to this heading">#</a></h2>
+<p>In the previous examples, we estimated risk, which is a proportion, and efficacy, which is a ratio of two proportions.
 As a third example, let’s estimate a mean.</p>
 <p>Suppose we want to estimate the average height of men in the United States.
-It would be impractical to measure everyone in the country, but if we choose a random sample of the population and measure the people in the sample, we can use the mean of the measurements to estimate the mean of the population.</p>
+It would be impractical to measure everyone in the country, but if we choose a random sample of the population and measure the people in the sample, we can use the mean of the measurements to estimate the actual average in the population.</p>
 <p>Ideally, the sample should be <strong>representative</strong>, which means that everyone in the population has an equal chance of appearing in the sample.
 In general, that’s not easy to do.
 Depending on how you recruit people, your sample might have too many tall people or too many short people.</p>
 <p>But let’s suppose we have a representative sample of 103 adult male residents of the United States, the average height in the sample is 177 cm, and the standard deviation is 8.4 cm.</p>
-<p>If someone asks for your best guess about the height of mean in the U.S., you would report 177 cm.
+<p>If someone asks for your best guess about the height of men in the U.S., you would report 177 cm.
 But how accurate do you think this estimate is?
 If you only measure 103 people from a population of about 100 million adult males, it seems like the actual average in the population might be substantially higher or lower.</p>
 <p>Again, we can use random simulation to quantify the uncertainty of this estimate.
-As we did in the previous examples, we will assume for purposes of simulation that the estimates are correct, and simulate the sampling process 1000 times.</p>
+As we did in the previous examples, we’ll assume for purposes of simulation that the estimates are correct, and simulate the sampling process 1000 times.</p>
 <p>The following function takes as parameters the size of the sample, <code class="docutils literal notranslate"><span class="pre">n</span></code>, the presumed average height in the population, <code class="docutils literal notranslate"><span class="pre">mu</span></code>, and the presumed standard deviation, <code class="docutils literal notranslate"><span class="pre">std</span></code>.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
@@ -882,11 +804,11 @@ As we did in the previous examples, we will assume for purposes of simulation th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11_resampling_58_0.png" src="_images/11_resampling_58_0.png" />
+<img alt="_images/fb7319aeff99e2be2b7b88bf34651f9352db8005c74234a4d6e9cc96fbc631e4.png" src="_images/fb7319aeff99e2be2b7b88bf34651f9352db8005c74234a4d6e9cc96fbc631e4.png" />
 </div>
 </div>
-<p>This distribution is called a <strong>sampling distribution</strong> because it represents the variation in the results due to the random sampling process.
-If we recruit 100 people and compute the mean of their heights, the result might be as low as 175 cm, or as high as 179 cm, due to chance.</p>
+<p>This result is called a <strong>sampling distribution</strong> because it represents the variation in the results due to the random sampling process.
+If we recruit 103 people and compute the mean of their heights, the result might be as low as 176 cm, or as high as 180 cm, due to chance.</p>
 <p>The average of the sampling distribution is close to the presumed mean of the population.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -903,7 +825,8 @@ If we recruit 100 people and compute the mean of their heights, the result might
 <p>The standard deviation of the sampling distribution is the standard error of the estimate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standard_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span>
+<span class="n">standard_error</span>
 </pre></div>
 </div>
 </div>
@@ -916,7 +839,8 @@ If we recruit 100 people and compute the mean of their heights, the result might
 <p>And we can use <code class="docutils literal notranslate"><span class="pre">percentile</span></code> to compute a 90% confidence interval.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">t3</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ci90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">t3</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span>
+<span class="n">ci90</span>
 </pre></div>
 </div>
 </div>
@@ -926,20 +850,19 @@ If we recruit 100 people and compute the mean of their heights, the result might
 </div>
 </div>
 </div>
-<p>If I reported this result in a paper, I would say that the estimated height of adult male residents of the U.S. is 177 cm, 90% CI [176, 178] cm.</p>
-<p>Informally, that means that the estimate could plausibly be off by about a centimeter either way, just due to random sampling.
+<p>If I reported this result in a paper, I would say that the estimated height of adult male residents of the U.S. is 177 cm, 90% CI [176, 179] cm.</p>
+<p>Informally, that means that the estimate could plausibly be off by about a centimeter either way, due to random sampling.
 But we should remember that there are other possible sources of error, so we might be off by more than that.</p>
-<p>The confidence interval puts a best-case bound on the precision of the estimate; in this example, the precision of the estimate is 1 cm at best, and might be worse.</p>
 </section>
 <section id="the-resampling-framework">
-<h2>The Resampling Framework<a class="headerlink" href="#the-resampling-framework" title="Permalink to this headline">#</a></h2>
+<h2>The Resampling Framework<a class="headerlink" href="#the-resampling-framework" title="Link to this heading">#</a></h2>
 <p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/resampling.png" /></p>
 <p>Using data from an experiment, we compute a sample statistic.  In the vaccine example, we computed risks for each group and efficacy.  In the height example, we computed the average height in the sample.</p>
 <p>Then we build a model of the sampling process.
 In the vaccine example, the model assumes that everyone in each group has the same probability of getting sick, and we use the data to choose the probability.
 In the height example, the model assumes that heights are drawn from a normal distribution, and we use the data to choose the parameters <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.</p>
-<p>We use the model to simulate the experiment many times.  Each simulation generates a dataset which we use to compute the sample statistic.</p>
+<p>We use the model to simulate the experiment many times. Each simulation generates a dataset which we use to compute the sample statistic.</p>
 <p>Finally, we collect the sample statistics from the simulations, plot the sampling distribution, and compute standard error and a confidence interval.</p>
 <p>I emphasize the role of the model in this framework because for a given experiment there might be several possible models, each including some elements of the real world and ignoring others.</p>
 <p>For example, our model of the vaccine experiment assumes that everyone in each group has the same risk, but that’s probably not true.
@@ -975,8 +898,8 @@ Then it compares <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 <p>The return value is the number of cases per 1000.</p>
 <p><strong>Exercise:</strong> Use this function to run 1000 simulations of the treatment group.  Compute the mean of the results and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">risk_treatment</span></code>.  To quantify the spread of the sampling distribution, compute the standard error.  How does it compare to the standard error we computed with the original model, where everyone in the group has the same risk?</p>
-<p><strong>Exercise:</strong> The following is a version of <code class="docutils literal notranslate"><span class="pre">simulate_trial</span></code> that uses <code class="docutils literal notranslate"><span class="pre">simulate_variable_group</span></code>, from the previous exercise, to simulate the vaccine trial using the modified model, with variation in risk within the groups.</p>
-<p>Use this function to simulate 1000 trials.  Compute the mean of the sampling distribution and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">efficacy</span></code>.  Compute the standard error and compare it to the standard error we computed for the original model.</p>
+<p><strong>Exercise:</strong> The following is a version of <code class="docutils literal notranslate"><span class="pre">simulate_trial</span></code> that uses <code class="docutils literal notranslate"><span class="pre">simulate_variable_group</span></code>, from the previous exercise, to simulate the vaccine trial using the modified model, which includes variation in risk within the groups.</p>
+<p>Use this function to simulate 1000 trials. Compute the mean of the sampling distribution and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">efficacy</span></code>. Compute the standard error and compare it to the standard error we computed for the original model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_variable_trial</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
@@ -988,8 +911,8 @@ Then it compares <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> One nice thing about the resampling framework is that it is easy to compute the sampling distribution for other statistics.</p>
-<p>For example, suppose we want to estimate the coefficient of variation (standard deviation as a fraction of the mean) for adult male height.  Here’s how we can compute it.</p>
+<p><strong>Exercise:</strong> One nice thing about the resampling framework is that it is easy to compute the sampling distribution for other statistics.
+For example, suppose we want to estimate the coefficient of variation (standard deviation as a fraction of the mean) for adult male height.  Here’s how we can compute it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">std_height</span> <span class="o">/</span> <span class="n">mean_height</span>
@@ -1016,164 +939,14 @@ The following is a version of <code class="docutils literal notranslate"><span c
 </div>
 <p>Use this function to simulate 1000 samples with size <code class="docutils literal notranslate"><span class="pre">n=103</span></code>, using <code class="docutils literal notranslate"><span class="pre">mean_height</span></code> for <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">std_height</span></code> for <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.  Plot the sampling distribution of the coefficient of variation, and compute a 90% confidence interval.</p>
 </section>
-<section id="support-for-gun-control">
-<h2>Support for Gun Control<a class="headerlink" href="#support-for-gun-control" title="Permalink to this headline">#</a></h2>
-<p>In Chapter 10 we used data from the General Social Survey, specifically a variable called <code class="docutils literal notranslate"><span class="pre">GUNLAW</span></code>, to describe support for a gun control law as a function of age, sex, and years of education.
-Now let’s come back to that dataset and see how the responses have changed over time.</p>
-<p>The following cell reloads the data.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;gss_eda.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;gss&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The column named <code class="docutils literal notranslate"><span class="pre">GUNLAW</span></code> records responses to the question “Would you favor or oppose a law which would require a person to obtain a police permit before he or she could buy a gun?”</p>
-<p>The response code <code class="docutils literal notranslate"><span class="pre">1</span></code> means yes; <code class="docutils literal notranslate"><span class="pre">2</span></code> means no.  It will be easier to work with this variable if we recode it so <code class="docutils literal notranslate"><span class="pre">0</span></code> means no.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;GUNLAW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">gss</span><span class="p">[</span><span class="s1">&#39;GUNLAW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0    32038
-0.0     9975
-Name: GUNLAW, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>For each year of the survey, we’ll compute the number of respondents and the number who said they favor this law.
-We can use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to group the respondents by year of interview and <code class="docutils literal notranslate"><span class="pre">agg</span></code> to compute two aggregation functions, <code class="docutils literal notranslate"><span class="pre">sum</span></code> and <code class="docutils literal notranslate"><span class="pre">count</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;YEAR&#39;</span><span class="p">)[</span><span class="s1">&#39;GUNLAW&#39;</span><span class="p">]</span>
-<span class="n">agg</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
-<span class="n">agg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>sum</th>
-      <th>count</th>
-    </tr>
-    <tr>
-      <th>YEAR</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1972</th>
-      <td>1131.0</td>
-      <td>1562</td>
-    </tr>
-    <tr>
-      <th>1973</th>
-      <td>1099.0</td>
-      <td>1470</td>
-    </tr>
-    <tr>
-      <th>1974</th>
-      <td>1112.0</td>
-      <td>1459</td>
-    </tr>
-    <tr>
-      <th>1975</th>
-      <td>1096.0</td>
-      <td>1450</td>
-    </tr>
-    <tr>
-      <th>1976</th>
-      <td>1068.0</td>
-      <td>1472</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>The result is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with two columns: <code class="docutils literal notranslate"><span class="pre">sum</span></code> is the number of respondents who said “yes”; <code class="docutils literal notranslate"><span class="pre">count</span></code> is the number of respondents who were asked the question.</p>
-<p>In some years the question was not asked, so I’ll use <code class="docutils literal notranslate"><span class="pre">drop</span></code> to remove those rows.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zero</span> <span class="o">=</span> <span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">agg</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">zero</span><span class="p">]</span>
-<span class="n">agg</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we can plot the percentage of respondents who favor gun control (at least for this wording of the question) during each year.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent</span> <span class="o">=</span> <span class="n">agg</span><span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">agg</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
-<span class="n">percent</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year of survey&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Percent in favor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Support for gun control over time&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/11_resampling_102_0.png" src="_images/11_resampling_102_0.png" />
-</div>
-</div>
-<p>The results vary from year to year.  It is hard to tell how much of this variation is due to real changes in opinion, and how much is due to random sampling.
-In the following exercise, you’ll answer that question by computing confidence intervals for each of these data points.</p>
-<p><strong>Exercise:</strong> Write a loop that goes through the rows in <code class="docutils literal notranslate"><span class="pre">agg</span></code> and computes a confidence interval for each year.
-You can use <code class="docutils literal notranslate"><span class="pre">itertuples</span></code> to iterate the rows, like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">agg</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>For each row, compute a 90% confidence interval and plot it as a vertical line.
-Then plot the data points and label the axes.
-The result should give you a sense of how much variation we expect to see from year to year due to random sampling.</p>
-<p>You might want to use this version of <code class="docutils literal notranslate"><span class="pre">simulate_group</span></code>, which returns results as a percentage, rather than per 1000.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_group_percent</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xs</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">k</span> <span class="o">/</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>Let’s review the examples in this chapter:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>We started with results from a vaccine trial.  We estimated the effectiveness of the vaccine and used simulation to draw a random sample from the sampling distribution of effectiveness.  We used that sample to compute a standard error and a 90% confidence interval, which measure the variability we would expect if we ran the experiment again (assuming that the observed efficacy is correct).</p></li>
 <li><p>As a second example, we estimated the height of adult males in the U.S. and used simulation based on a normal model to compute the sampling distribution of the mean, standard error, and a confidence interval.</p></li>
 <li><p>I presented the resampling framework, which shows what these examples have in common. We implemented a second model of the vaccine trial, based on the assumption that there is variation in risk within the treatment and control groups. The results from both models are similar, which suggests that the simple model is good enough for practical purposes.</p></li>
 <li><p>One of the advantages of resampling, compared to mathematical analysis, is that it is easy to compute the sampling distribution of almost any statistic.  As an exercise, you computed the sampling distribution of the coefficient of variation.</p></li>
-<li><p>Finally, we used data from the General Social Survey to explore changes in support for gun control over time.  We used resampling to compute and plot a confidence interval for the percentage of respondents in favor of a proposed law, for each year of the survey.</p></li>
 </ol>
 <p>The next chapter presents bootstrap sampling, which is a kind of resampling particularly well suited for the kind of survey data we’ve been working with.</p>
 </section>
@@ -1191,7 +964,7 @@ The result should give you a sense of how much variation we expect to see from y
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1199,50 +972,108 @@ The result should give you a sense of how much variation we expect to see from y
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="10_regression.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Regression</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10_regression.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Regression</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="12_bootstrap.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="12_bootstrap.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Bootstrap Sampling</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccine-testing">Vaccine Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-one-group">Simulating One Group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-the-trial">Simulating the Trial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-means">Estimating Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-resampling-framework">The Resampling Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

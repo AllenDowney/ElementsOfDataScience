@@ -1,107 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lists and Arrays &#8212; Elements of Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03_arrays';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Loops and Files" href="04_loops.html" />
     <link rel="prev" title="Times and Places" href="02_times.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elements of Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,417 +170,228 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_variables.html">
-   Variables and Values
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_times.html">
-   Times and Places
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Lists and Arrays
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_loops.html">
-   Loops and Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html">
-   DataFrames and Series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_distributions.html">
-   Distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_relationships.html">
-   Relationships
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_resampling.html">
-   Resampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12_bootstrap.html">
-   Bootstrap Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13_hypothesis.html">
-   Hypothesis Testing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="resample_logit.html">
-   Resampling and Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="anderson.html">
-   Never Test for Normality
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="resample_logit.html">Resampling and Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anderson.html">Never Test for Normality</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/03_arrays.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ElementsOfDataScience"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/03_arrays.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03_arrays.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tuples">
-   Tuples
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lists">
-   Lists
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sandwich-prices">
-   Sandwich Prices
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy-arrays">
-   NumPy Arrays
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#statistical-summaries">
-   Statistical Summaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#relative-difference">
-   Relative Difference
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-relative-differences">
-   Summarizing Relative Differences
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#debugging">
-   Debugging
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lists and Arrays</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tuples">
-   Tuples
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lists">
-   Lists
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sandwich-prices">
-   Sandwich Prices
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy-arrays">
-   NumPy Arrays
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#statistical-summaries">
-   Statistical Summaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#relative-difference">
-   Relative Difference
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-relative-differences">
-   Summarizing Relative Differences
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#debugging">
-   Debugging
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lists and Arrays</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sandwich-prices">Sandwich Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-summaries">Statistical Summaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-difference">Relative Difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-relative-differences">Summarizing Relative Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="lists-and-arrays">
-<h1>Lists and Arrays<a class="headerlink" href="#lists-and-arrays" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/03_arrays.ipynb">Click here to run this notebook on Colab</a> or
-<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/03_arrays.ipynb">click here to download it</a>.</p>
-<p>In the previous chapter we used tuples to represent latitude and longitude.  In this chapter, you’ll see how to use tuples more generally to represent a sequence of values.  And we’ll see two more ways to represent sequences: lists and arrays.</p>
-<p>You might wonder why we need three ways to represent the same thing.  Most of the time we don’t, but each of them has different capabilities.  For work with data, we will use arrays most of the time.</p>
-<p>As an example, we will use a small dataset from an article in <em>The Economist</em> about the price of sandwiches.  It’s a silly example, but I’ll use it to introduce the idea of relative differences and different ways to summarize them.</p>
+<h1>Lists and Arrays<a class="headerlink" href="#lists-and-arrays" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/03_arrays.ipynb">Click here to run this notebook on Colab</a>.</p>
+<p>In the previous chapter we used tuples to represent latitude and longitude.  In this chapter, we’ll use tuples more generally to represent a sequence of values.
+And we’ll see two more ways to represent sequences: lists and arrays.</p>
+<p>You might wonder why we need three ways to represent the same thing.
+Most of the time we don’t, but each of them has different capabilities.
+For work with data, we will use arrays most of the time.</p>
+<p>As an example, we will use a small dataset from an article in <em>The Economist</em> about the price of sandwiches.
+It’s a silly example, but I’ll use it to introduce relative differences and ways to summarize them.</p>
 <section id="tuples">
-<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">#</a></h2>
-<p>A tuple is a sequence of elements.  When we use a tuple to represent latitude and longitude, the sequence only contains two elements, and they are both floating-point numbers.
+<h2>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h2>
+<p>A tuple is a sequence of elements.
+When we use a tuple to represent latitude and longitude, the sequence only contains two elements, and they are both floating-point numbers.
 But in general a tuple can contain any number of elements, and the elements can be values of any type.
-The following is a tuple of three integers:</p>
+For example, here’s a tuple of two strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2, 3)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Notice that when Python displays a tuple, it puts the elements in parentheses.
-When you type a tuple, you can put it in parentheses if you think it is easier to read that way, but you don’t have to.</p>
-<p>The elements can be any type.  Here’s a tuple of strings:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Science&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Science&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -530,10 +401,11 @@ When you type a tuple, you can put it in parentheses if you think it is easier t
 </div>
 </div>
 </div>
-<p>The elements don’t have to be the same type.  Here’s a tuple with a string, an integer, and a floating-point number.</p>
+<p>The elements don’t have to be the same type.
+Here’s a tuple with a string, an integer, and a floating-point number.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14159</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14159</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -543,21 +415,9 @@ When you type a tuple, you can put it in parentheses if you think it is easier t
 </div>
 </div>
 </div>
-<p>If you have a string, you can convert it to a tuple using the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> function:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;DataScience&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;D&#39;, &#39;a&#39;, &#39;t&#39;, &#39;a&#39;, &#39;S&#39;, &#39;c&#39;, &#39;i&#39;, &#39;e&#39;, &#39;n&#39;, &#39;c&#39;, &#39;e&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<p>The result is a tuple of single-character strings.</p>
-<p>When you create a tuple, the parentheses are optional, but the commas are required.  So how do you think you create a tuple with a single element?  You might be tempted to write:</p>
+<p>When you create a tuple, the parentheses are optional, but the commas are required.
+So how do you think you create a tuple with a single element?
+You might be tempted to write:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -575,7 +435,7 @@ When you type a tuple, you can put it in parentheses if you think it is easier t
 To make a tuple with a single element, you need a comma:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,)</span>
 <span class="n">t</span>
 </pre></div>
 </div>
@@ -587,11 +447,38 @@ To make a tuple with a single element, you need a comma:</p>
 </div>
 </div>
 <p>That might look funny, but it does the job.</p>
+<p>If you have a string, you can convert it to a tuple using the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;DataScience&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;D&#39;, &#39;a&#39;, &#39;t&#39;, &#39;a&#39;, &#39;S&#39;, &#39;c&#39;, &#39;i&#39;, &#39;e&#39;, &#39;n&#39;, &#39;c&#39;, &#39;e&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is a sequence of single-character strings.
+You can also use the <code class="docutils literal notranslate"><span class="pre">tuple</span></code> function to make an empty tuple – that is, one that has no elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">tuple</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
-<p>Python provides another way to store a sequence of elements: a <strong>list</strong>.</p>
-<p>To create a list, you put a sequence of elements in square brackets.</p>
+<h2>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
+<p>Python provides another way to store a sequence of elements: a <strong>list</strong>.
+To create a list, you put a sequence of elements in square brackets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
@@ -606,8 +493,10 @@ To make a tuple with a single element, you need a comma:</p>
 </div>
 <p>Lists and tuples are very similar.
 They can contain any number of elements, the elements can be any type, and the elements don’t have to be the same type.
-The difference is that you can modify a list; tuples are <strong>immutable</strong> (cannot be modified).  This difference will matter later, but for now we can ignore it.</p>
-<p>When you make a list, the brackets are required, but if there is a single element, you don’t need a comma.  So you can make a list like this:</p>
+The difference is that you can modify a list and you can’t modify a tuple – that is, tuples are <strong>immutable</strong>.
+This difference will matter later, but for now we can ignore it.</p>
+<p>When you make a list, the brackets are required, but if there is a single element, you don’t need a comma.
+So you can make a list like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
@@ -636,15 +525,16 @@ The difference is that you can modify a list; tuples are <strong>immutable</stro
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> Create a list with 4 elements; then use <code class="docutils literal notranslate"><span class="pre">type</span></code> to confirm that it’s a list, and <code class="docutils literal notranslate"><span class="pre">len</span></code> to confirm that it has 4 elements.</p>
-<p>There’s a lot more we could do with lists, but that’s enough to get started.  In the next section, we’ll use lists to store data about sandwich prices.</p>
+<p>There’s more we could do with lists, but that’s enough to get started.
+In the next section, we’ll use lists to store data about sandwich prices.</p>
+<p><strong>Exercise:</strong> Create a list with 4 elements. Then use <code class="docutils literal notranslate"><span class="pre">type</span></code> to confirm that it’s a list, and <code class="docutils literal notranslate"><span class="pre">len</span></code> to confirm that it has 4 elements.</p>
 </section>
 <section id="sandwich-prices">
-<h2>Sandwich Prices<a class="headerlink" href="#sandwich-prices" title="Permalink to this headline">#</a></h2>
-<p>In September 2019, <em>The Economist</em> published an article comparing sandwich prices in Boston and London: “<a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">Why Americans pay more for lunch than Britons do</a>”.
-It includes this graph showing prices of several sandwiches in the two cities:</p>
-<p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/20190907_FNC941.png" /></p>
-<p>Here are the sandwich names from the graph, as a list of strings.</p>
+<h2>Sandwich Prices<a class="headerlink" href="#sandwich-prices" title="Link to this heading">#</a></h2>
+<p>In September 2019, <em>The Economist</em> published an article comparing sandwich prices in Boston and London, called “Why Americans pay more for lunch than Britons do”.</p>
+<p>You can read the article at <a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do</a>.</p>
+<p>It includes this graph showing prices of several sandwiches in the two cities:</p>
+<img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/20190907_FNC941.png"  width="300"><p>Here are the sandwich names from the graph, as a list of strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span>
@@ -676,7 +566,8 @@ Here are the sandwich prices in Boston:</p>
 </div>
 </div>
 </div>
-<p>Lists provide some arithmetic operators, but they might not do what you want.  For example, you can “add” two lists:</p>
+<p>Lists provide some arithmetic operators, but they might not do what you want.
+For example, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator works with lists:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">+</span> <span class="n">london_price_list</span>
@@ -690,12 +581,27 @@ Here are the sandwich prices in Boston:</p>
 </div>
 </div>
 <p>But it concatenates the two lists, which is not very useful in this example.
-To compute differences between prices, you might try subtracting lists, but you would get an error.<br />
-We can solve this problem with NumPy.</p>
+To compute differences between prices, you might try subtracting lists, but it doesn’t work.</p>
+<div class="cell tag_raises-exception tag_remove-print docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> TypeError
+
+boston_price_list - london_price_list
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;list&#39; and &#39;list&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can solve this problem with NumPy.</p>
 </section>
 <section id="numpy-arrays">
-<h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">#</a></h2>
-<p>We’ve already seen that the NumPy library provides math functions.  It also provides a type of sequence called an <strong>array</strong>.
+<h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h2>
+<p>We’ve already seen that the NumPy library provides math functions.
+It also provides a type of sequence called an <strong>array</strong>.
 You can create a new array with the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function, starting with a list or tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -748,8 +654,8 @@ If you display an array, Python displays the elements:</p>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">float64</span></code> means that the elements are floating-point numbers that take up 64 bits each.  You don’t need to know about the storage format of these numbers, but if you are curious, you can read about it at <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Internal_representation">https://en.wikipedia.org/wiki/Floating-point_arithmetic#Internal_representation</a>.</p>
-<p>The elements of a NumPy array can be any type, but they all have to be the same type.
+<p><code class="docutils literal notranslate"><span class="pre">float64</span></code> means that the elements are floating-point numbers that take up 64 bits each.
+The elements of a NumPy array can be any type, but they all have to be the same type.
 Most often the elements are numbers, but you can also make an array of strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,8 +671,11 @@ Most often the elements are numbers, but you can also make an array of strings.<
 </div>
 </div>
 </div>
-<p>In this example, the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is <code class="docutils literal notranslate"><span class="pre">&lt;U17</span></code>.  The <code class="docutils literal notranslate"><span class="pre">U</span></code> indicates that the elements are Unicode strings; Unicode is the standard Python uses to represent strings. The number <code class="docutils literal notranslate"><span class="pre">17</span></code> is the length of the longest string in the array.</p>
-<p>Now, here’s why NumPy arrays are useful: they can do arithmetic.  For example, to compute the differences between Boston and London prices, we can write:</p>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> is <code class="docutils literal notranslate"><span class="pre">&lt;U17</span></code>.  The <code class="docutils literal notranslate"><span class="pre">U</span></code> indicates that the elements are Unicode strings.
+Unicode is the standard Python uses to represent strings.
+The number <code class="docutils literal notranslate"><span class="pre">17</span></code> is the length of the longest string in the array.</p>
+<p>Now, here’s why NumPy arrays are useful – they can do arithmetic.
+For example, to compute the differences between Boston and London prices, we can write:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">differences</span> <span class="o">=</span> <span class="n">boston_price_array</span> <span class="o">-</span> <span class="n">london_price_array</span>
@@ -780,10 +689,11 @@ Most often the elements are numbers, but you can also make an array of strings.<
 </div>
 </div>
 </div>
-<p>Subtraction is done <strong>elementwise</strong>; that is, NumPy lines up the two arrays and subtracts corresponding elements.  The result is a new array.</p>
+<p>Subtraction is done <strong>elementwise</strong> – that is, NumPy lines up the two arrays and subtracts corresponding elements.
+The result is a new array.</p>
 </section>
 <section id="statistical-summaries">
-<h2>Statistical Summaries<a class="headerlink" href="#statistical-summaries" title="Permalink to this headline">#</a></h2>
+<h2>Statistical Summaries<a class="headerlink" href="#statistical-summaries" title="Link to this heading">#</a></h2>
 <p>NumPy provides functions that compute statistical summaries like the mean:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -811,7 +721,7 @@ We could also compute the means first, and then compute their difference:</p>
 </div>
 </div>
 </div>
-<p>And that turns out to be the same thing: the difference in means is the same as the mean of the differences.
+<p>And that turns out to be the same thing – the difference in means is the same as the mean of the differences.
 As an aside, many of the NumPy functions also work with lists, so we could also do this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -827,20 +737,12 @@ As an aside, many of the NumPy functions also work with lists, so we could also 
 </div>
 <p><strong>Exercise:</strong> Standard deviation is way to quantify the variability in a set of numbers.  The NumPy function that computes standard deviation is <code class="docutils literal notranslate"><span class="pre">np.std</span></code>.</p>
 <p>Compute the standard deviation of sandwich prices in Boston and London.  By this measure, which set of prices is more variable?</p>
-<p><strong>Exercise:</strong> The definition of the mean, in math notation, is</p>
-<p><span class="math notranslate nohighlight">\(\mu = \frac{1}{N} \sum_i x_i\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> is a sequence of elements, <span class="math notranslate nohighlight">\(x_i\)</span> is the element with index <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(N\)</span> is the number of elements.
-The definition of standard deviation is</p>
-<p><span class="math notranslate nohighlight">\(\sigma = \sqrt{\frac{1}{N} \sum_i (x_i - \mu)^2}\)</span></p>
-<p>Compute the standard deviation of <code class="docutils literal notranslate"><span class="pre">boston_price_list</span></code> using NumPy functions <code class="docutils literal notranslate"><span class="pre">np.mean</span></code> and <code class="docutils literal notranslate"><span class="pre">np.sqrt</span></code> and see if you get the same result as <code class="docutils literal notranslate"><span class="pre">np.std</span></code>.</p>
-<p>You can (and should) do this exercise using only features we have discussed so far.</p>
-<p>This definition of standard deviation is sometimes called the “population standard deviation”.  You might have seen another definition with <span class="math notranslate nohighlight">\(N-1\)</span> in the denominator; that’s the “sample standard deviation”.  We’ll use the population standard deviation for now and come back to this issue later.</p>
 </section>
 <section id="relative-difference">
-<h2>Relative Difference<a class="headerlink" href="#relative-difference" title="Permalink to this headline">#</a></h2>
+<h2>Relative Difference<a class="headerlink" href="#relative-difference" title="Link to this heading">#</a></h2>
 <p>In the previous section we computed differences between prices.
-But often when we make this kind of comparison, we are interested in <strong>relative differences</strong>, which are differences expressed as a fraction or percentage of a quantity.</p>
-<p>Taking the lobster roll as an example, the difference in price is:</p>
+But often when we make this kind of comparison, we are interested in <strong>relative differences</strong>, which are differences expressed as a fraction or percentage of a quantity.
+Taking the lobster roll as an example, the difference in price is:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">9.99</span> <span class="o">-</span> <span class="mf">7.5</span>
@@ -896,7 +798,7 @@ But putting London in the denominator was an arbitrary choice.  We could also co
 <p>If we do that calculation, we might say the lobster roll is 25% cheaper in London.
 When you read this kind of comparison, you should make sure you understand which quantity is in the denominator, and you might want to think about why that choice was made.
 In this example, if you want to make the difference seem bigger, you might put London prices in the denominator.</p>
-<p>If we do the same calculation with the arrays <code class="docutils literal notranslate"><span class="pre">boston_price_array</span></code> and <code class="docutils literal notranslate"><span class="pre">boston_price_array</span></code>, we can compute the relative differences for all sandwiches:</p>
+<p>If we do the same calculation with the arrays of prices, we can compute the relative differences for all sandwiches:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">differences</span> <span class="o">=</span> <span class="n">boston_price_array</span> <span class="o">-</span> <span class="n">london_price_array</span>
@@ -929,7 +831,7 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </section>
 <section id="summarizing-relative-differences">
-<h2>Summarizing Relative Differences<a class="headerlink" href="#summarizing-relative-differences" title="Permalink to this headline">#</a></h2>
+<h2>Summarizing Relative Differences<a class="headerlink" href="#summarizing-relative-differences" title="Link to this heading">#</a></h2>
 <p>Now let’s think about how to summarize an array of percentage differences.
 One option is to report the range, which we can compute with <code class="docutils literal notranslate"><span class="pre">np.min</span></code> and <code class="docutils literal notranslate"><span class="pre">np.max</span></code>.</p>
 <div class="cell docutils container">
@@ -959,7 +861,7 @@ One option is to report the range, which we can compute with <code class="docuti
 </div>
 </div>
 </div>
-<p>So we might say, on average, sandwiches are 65% more expensive in Boston.
+<p>So we might say that sandwiches are 65% more expensive in Boston, on average.
 But another way to summarize the data is to compute the mean price in each city, and then compute the percentage difference of the means:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -976,7 +878,7 @@ But another way to summarize the data is to compute the mean price in each city,
 </div>
 </div>
 </div>
-<p>So we might say that the average sandwich price is 56% higher in Boston.
+<p>Based on this calculation we might say that the average sandwich price is 56% higher in Boston.
 As this example demonstrates:</p>
 <ul class="simple">
 <li><p>With relative and percentage differences, the mean of the differences is not the same as the difference of the means.</p></li>
@@ -986,14 +888,17 @@ As this example demonstrates:</p>
 <p>In this example, I think the second option (the relative difference in the means) is more meaningful, because it reflects the difference in price between “baskets of goods” that include one of each sandwich.</p>
 </section>
 <section id="debugging">
-<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">#</a></h2>
-<p>So far, most of the exercises have only required a few lines of code.  If you made errors along the way, you probably found them quickly.</p>
-<p>As we go along, the exercises will be more substantial, and you may find yourself spending more time debugging.  Here are a couple of suggestions to help you find errors quickly – and avoid them in the first place.</p>
+<h2>Debugging<a class="headerlink" href="#debugging" title="Link to this heading">#</a></h2>
+<p>So far, most of the exercises have only required a few lines of code.
+If you made errors along the way, you probably found them quickly.</p>
+<p>As we go along, the exercises will be more substantial, and you may find yourself spending more time debugging.
+Here are a couple of suggestions to help you find errors quickly – and avoid them in the first place.</p>
 <ul class="simple">
-<li><p>Most importantly, you should develop code incrementally; that is, you should write a small amount of code and test it.  If it works, add more code; otherwise, debug what you have.</p></li>
+<li><p>Most importantly, you should develop code incrementally – that is, you should write a small amount of code and test it.  If it works, add more code; otherwise, debug what you have.</p></li>
 <li><p>Conversely, if you have written too much code, and you are having a hard time debugging it, split it into smaller chunks and debug them separately.</p></li>
 </ul>
-<p>For example, suppose you want to compute, for each sandwich in the sandwich list, the midpoint of the Boston and London prices.  As a first draft, you might write something like this:</p>
+<p>For example, suppose you want to compute, for each sandwich in the sandwich list, the midpoint of the Boston and London prices.
+As a first draft, you might write something like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">9.99</span><span class="p">,</span> <span class="mf">7.99</span><span class="p">,</span> <span class="mf">7.49</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">6.29</span><span class="p">,</span> <span class="mf">4.99</span><span class="p">]</span>
@@ -1012,7 +917,8 @@ As this example demonstrates:</p>
 </div>
 <p>This code runs, and it produces an answer, but the answer is a single number rather than the list we were expecting.</p>
 <p>You might have already spotted the error, but let’s suppose you did not.
-To debug this code, I would start by splitting the computation into smaller steps and displaying the intermediate results.  For example, we might add the two lists and display the result, like this.</p>
+To debug this code, I would start by splitting the computation into smaller steps and displaying the intermediate results.
+For example, we might add the two lists and display the result, like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_price</span> <span class="o">=</span> <span class="n">boston_price_list</span> <span class="o">+</span> <span class="n">london_price_list</span>
@@ -1026,14 +932,12 @@ To debug this code, I would start by splitting the computation into smaller step
 </div>
 </div>
 </div>
-<p>Looking at the result, we see that it did not add the sandwich prices elementwise, as we intended.  Because the arguments are lists, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator concatenates them rather than adding the elements.</p>
-<p>We can solve this problem by converting the lists to arrays.</p>
+<p>Looking at the result, we see that it did not add the sandwich prices elementwise, as we intended.
+Because the arguments are lists, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator concatenates them rather than adding the elements.
+We can solve this problem by using the arrays rather than the lists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boston_price_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">boston_price_list</span><span class="p">)</span>
-<span class="n">london_price_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">london_price_list</span><span class="p">)</span>
-
-<span class="n">total_price_array</span> <span class="o">=</span> <span class="n">boston_price_array</span> <span class="o">+</span> <span class="n">london_price_array</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_price_array</span> <span class="o">=</span> <span class="n">boston_price_array</span> <span class="o">+</span> <span class="n">london_price_array</span>
 <span class="n">total_price_array</span>
 </pre></div>
 </div>
@@ -1059,12 +963,13 @@ To debug this code, I would start by splitting the computation into smaller step
 </div>
 </div>
 <p>As you gain experience, you will be able to write bigger chunks of code before testing.  But while you are getting started, keep it simple!
-As a general rule, each line of code should perform a small number of operations, and each cell should contain a small number of statements.  When you are getting started, this number should be one.</p>
+As a general rule, each line of code should perform a small number of operations, and each cell should contain a small number of statements.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>This chapter presents three ways to represent a sequence of values: tuples, list, and Numpy arrays. Working with data, we will primarily use arrays.</p>
-<p>It also introduces three ways to represent differences: absolute, relative, and percentage; and several ways to summarize a set of values: minimum, maximum, mean, and standard deviation.</p>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This chapter presents three ways to represent a sequence of values: tuples, lists, and Numpy arrays.
+Working with data, we will primarily use arrays.</p>
+<p>It also introduces three ways to represent differences: absolute, relative, and percentage – and several ways to summarize a set of values: minimum, maximum, mean, and standard deviation.</p>
 <p>In the next chapter we’ll start working with data files, and we’ll use loops to process letters and words.</p>
 </section>
 </section>
@@ -1081,7 +986,7 @@ As a general rule, each line of code should perform a small number of operations
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1089,50 +994,111 @@ As a general rule, each line of code should perform a small number of operations
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="02_times.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Times and Places</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_times.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Times and Places</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="04_loops.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="04_loops.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Loops and Files</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sandwich-prices">Sandwich Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-summaries">Statistical Summaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-difference">Relative Difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-relative-differences">Summarizing Relative Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

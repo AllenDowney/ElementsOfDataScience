@@ -1,105 +1,167 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Loops and Files &#8212; Elements of Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_loops';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dictionaries" href="05_dictionaries.html" />
     <link rel="prev" title="Lists and Arrays" href="03_arrays.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elements of Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -108,390 +170,221 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_variables.html">
-   Variables and Values
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_times.html">
-   Times and Places
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_arrays.html">
-   Lists and Arrays
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Loops and Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html">
-   DataFrames and Series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_distributions.html">
-   Distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_relationships.html">
-   Relationships
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_resampling.html">
-   Resampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12_bootstrap.html">
-   Bootstrap Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13_hypothesis.html">
-   Hypothesis Testing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="resample_logit.html">
-   Resampling and Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="anderson.html">
-   Never Test for Normality
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="resample_logit.html">Resampling and Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anderson.html">Never Test for Normality</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/04_loops.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ElementsOfDataScience"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/04_loops.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/04_loops.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loops">
-   Loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-with-loops">
-   Counting with Loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#files">
-   Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if-statements">
-   if Statements
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-break-statement">
-   The break Statement
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#whitespace">
-   Whitespace
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-words">
-   Counting Words
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Loops and Files</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loops">
-   Loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-with-loops">
-   Counting with Loops
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#files">
-   Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#if-statements">
-   if Statements
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-break-statement">
-   The break Statement
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#whitespace">
-   Whitespace
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-words">
-   Counting Words
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Loops and Files</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-with-loops">Counting with Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements">if Statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-break-statement">The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace">Whitespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-words">Counting Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="loops-and-files">
-<h1>Loops and Files<a class="headerlink" href="#loops-and-files" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/04_loops.ipynb">Click here to run this notebook on Colab</a> or
-<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/04_loops.ipynb">click here to download it</a>.</p>
-<p>This chapter presents loops, which are used to represent repeated computation, and files, which are used to store data.  As an example, we will download the famous book <em>War and Peace</em> from Project Gutenberg and write a loop that reads the book and counts the words.
-This example presents some new computational tools; it is also an introduction to working with textual data.</p>
+<h1>Loops and Files<a class="headerlink" href="#loops-and-files" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/04_loops.ipynb">Click here to run this notebook on Colab</a>.</p>
+<p>This chapter presents loops, which are used to perform repeated computation, and files, which are used to store data.
+As an example, we will download the famous book <em>War and Peace</em> and write a loop that reads the book and counts the words.
+This example presents some new computational tools – it is also an introduction to working with textual data.</p>
 <section id="loops">
-<h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">#</a></h2>
-<p>One of the most important elements of computation is repetition, and the most common way to represent repetition is a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.
+<h2>Loops<a class="headerlink" href="#loops" title="Link to this heading">#</a></h2>
+<p>One of the most important elements of computation is repetition, and the most common way to perform repetitive computations is a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.
 As a simple example, suppose we want to display the elements of a tuple.  Here’s a tuple of three integers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -512,16 +405,15 @@ As a simple example, suppose we want to display the elements of a tuple.  Here�
 </div>
 </div>
 </div>
-<p>The first line of the loop is a <strong>header</strong> that specifies the tuple, <code class="docutils literal notranslate"><span class="pre">t</span></code>, and a variable name, <code class="docutils literal notranslate"><span class="pre">x</span></code>.  The tuple already exists, but <code class="docutils literal notranslate"><span class="pre">x</span></code> does not; the loop will create it.  Note that the header ends with a colon, <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
-<p>Inside the loop is a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, which displays the value of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
-<p>So here’s what happens:</p>
-<ol class="simple">
+<p>The first line of the loop is a <strong>header</strong> that specifies the tuple, <code class="docutils literal notranslate"><span class="pre">t</span></code>, and a variable name, <code class="docutils literal notranslate"><span class="pre">x</span></code>.  The tuple must already exists, but if <code class="docutils literal notranslate"><span class="pre">x</span></code> does not, the loop will create it.  Note that the header ends with a colon, <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
+<p>Inside the loop is a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, which displays the value of <code class="docutils literal notranslate"><span class="pre">x</span></code>. So here’s what happens:</p>
+<ol class="arabic simple">
 <li><p>When the loop starts, it gets the first element of <code class="docutils literal notranslate"><span class="pre">t</span></code>, which is <code class="docutils literal notranslate"><span class="pre">1</span></code>, and assigns it to <code class="docutils literal notranslate"><span class="pre">x</span></code>.  It executes the <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, which displays the value <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
 <li><p>Then it gets the second element of <code class="docutils literal notranslate"><span class="pre">t</span></code>, which is <code class="docutils literal notranslate"><span class="pre">2</span></code>, and displays it.</p></li>
 <li><p>Then it gets the third element of <code class="docutils literal notranslate"><span class="pre">t</span></code>, which is <code class="docutils literal notranslate"><span class="pre">3</span></code>, and displays it.</p></li>
 </ol>
-<p>After printing the last element of the tuple, the loop ends.</p>
-<p>We can also loop through the letters in a string:</p>
+<p>After printing the last element of the tuple, the loop ends.
+We can also loop through the letters in a string:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;Data&#39;</span>
@@ -540,9 +432,11 @@ a
 </div>
 </div>
 </div>
-<p>When the loop begins, <code class="docutils literal notranslate"><span class="pre">word</span></code> already exists, but <code class="docutils literal notranslate"><span class="pre">letter</span></code> does not.  Again, the loop creates <code class="docutils literal notranslate"><span class="pre">letter</span></code> and assigns values to it.</p>
-<p>The variable created by the loop is called the <strong>loop variable</strong>.  You can give it any name you like; in this example, I chose <code class="docutils literal notranslate"><span class="pre">letter</span></code> to remind me what kind of value it contains.</p>
-<p>After the loop ends, the loop variable contains the last value.</p>
+<p>When the loop begins, <code class="docutils literal notranslate"><span class="pre">word</span></code> already exists, but <code class="docutils literal notranslate"><span class="pre">letter</span></code> does not.
+Again, the loop creates <code class="docutils literal notranslate"><span class="pre">letter</span></code> and assigns values to it.
+The variable created by the loop is called the <strong>loop variable</strong>.
+You can give it any name you like – in this example, I chose <code class="docutils literal notranslate"><span class="pre">letter</span></code> to remind me what kind of value it contains.
+After the loop ends, the loop variable contains the last value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">letter</span>
@@ -555,27 +449,14 @@ a
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> Create a list, called <code class="docutils literal notranslate"><span class="pre">sequence</span></code> with four elements of any type. Write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that prints the elements.  Call the loop variable <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p>
-<p>You might wonder why I didn’t call the list <code class="docutils literal notranslate"><span class="pre">list</span></code>.  I avoided it because Python has a function named <code class="docutils literal notranslate"><span class="pre">list</span></code> that makes new lists.  For example, if you have a string, you can make a list of letters, like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;s&#39;, &#39;t&#39;, &#39;r&#39;, &#39;i&#39;, &#39;n&#39;, &#39;g&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you create a variable named <code class="docutils literal notranslate"><span class="pre">list</span></code>, you can’t use the function any more.</p>
+<p><strong>Exercise:</strong> Create a list called <code class="docutils literal notranslate"><span class="pre">sequence</span></code> with four elements of any type.
+Write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that prints the elements.
+Call the loop variable <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p>
 </section>
 <section id="counting-with-loops">
-<h2>Counting with Loops<a class="headerlink" href="#counting-with-loops" title="Permalink to this headline">#</a></h2>
-<p><em>War and Peace</em> is a famously long book; let’s see how long it is.  To count the words we need two elements: looping through the words in a text, and counting.
-We’ll start with counting.</p>
-<p>We’ve already seen that you can create a variable and give it a value, like this:</p>
+<h2>Counting with Loops<a class="headerlink" href="#counting-with-loops" title="Link to this heading">#</a></h2>
+<p>Inside a loop, it is common to use a variable to count the number of times something happens.
+We’ve already seen that you can create a variable and give it a value, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
@@ -617,7 +498,8 @@ We’ll start with counting.</p>
 </div>
 </div>
 </div>
-<p>Increasing the value of a variable is called <strong>incrementing</strong>; decreasing the value is called <strong>decrementing</strong>.  These operations are so common that there are special operators for them.</p>
+<p>Increasing the value of a variable is called <strong>incrementing</strong> and decreasing the value is called <strong>decrementing</strong>.
+These operations are so common that there are special operators for them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -633,7 +515,7 @@ We’ll start with counting.</p>
 </div>
 <p>In this example, the <code class="docutils literal notranslate"><span class="pre">+=</span></code> operator reads the value of <code class="docutils literal notranslate"><span class="pre">count</span></code>, adds <code class="docutils literal notranslate"><span class="pre">1</span></code>, and assigns the result back to <code class="docutils literal notranslate"><span class="pre">count</span></code>.
 Python also provides <code class="docutils literal notranslate"><span class="pre">-=</span></code> and other update operators like <code class="docutils literal notranslate"><span class="pre">*=</span></code> and <code class="docutils literal notranslate"><span class="pre">/=</span></code>.</p>
-<p><strong>Exercise:</strong> The following is a number trick from <em>Learn With Math Games</em> at <a class="reference external" href="https://www.learn-with-math-games.com/math-number-tricks.html">https://www.learn-with-math-games.com/math-number-tricks.html</a>:</p>
+<p><strong>Exercise:</strong> The following is a number trick from the website <em>Learn With Math Games</em>:</p>
 <blockquote>
 <div><p><em>Finding Someone’s Age</em></p>
 <ul class="simple">
@@ -644,12 +526,16 @@ Python also provides <code class="docutils literal notranslate"><span class="pre
 <li><p>Deduct 6 and you will have their age.</p></li>
 </ul>
 </div></blockquote>
-<p>Test this algorithm using your age.  Use a single variable and update it using <code class="docutils literal notranslate"><span class="pre">+=</span></code> and other update operators.</p>
+<p>Test this algorithm using your age.
+Use a single variable and update it using <code class="docutils literal notranslate"><span class="pre">+=</span></code> and other update operators.</p>
+<p>The original game is at <a class="reference external" href="https://www.learn-with-math-games.com/math-number-tricks.html">https://www.learn-with-math-games.com/math-number-tricks.html</a></p>
 </section>
 <section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">#</a></h2>
-<p>Now that we know how to count, let’s see how we can read words from a file.
-We can download <em>War and Peace</em> from Project Gutenberg, which is a repository of free books at <a class="reference external" href="https://www.gutenberg.org">https://www.gutenberg.org</a>.</p>
+<h2>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
+<p>Now that we know how to count, let’s see how to read words from a file.
+As an example, we’ll read a file that contains the text of Tolstoy’s famous novel, <em>War and Peace</em>.
+We can download it from Project Gutenberg, which is a repository of free books.
+Instructions are in the notebook for this chapter.</p>
 <p>In order to read the contents of the file, you have to <strong>open</strong> it, which you can do with the <code class="docutils literal notranslate"><span class="pre">open</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -666,7 +552,7 @@ We can download <em>War and Peace</em> from Project Gutenberg, which is a reposi
 </div>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">TextIOWrapper</span></code>, which is a type of <strong>file pointer</strong>.
 It contains the name of the file, the mode (which is <code class="docutils literal notranslate"><span class="pre">r</span></code> for “reading”) and the encoding (which is <code class="docutils literal notranslate"><span class="pre">UTF</span></code> for “Unicode Transformation Format”).
-A file pointer is like a bookmark; it keeps track of which parts of the file you have read.</p>
+A file pointer is like a bookmark – it keeps track of which parts of the file you have read.</p>
 <p>If you use a file pointer in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, it loops through the lines in the file.
 So we can count the number of lines like this:</p>
 <div class="cell docutils container">
@@ -695,9 +581,10 @@ So we can count the number of lines like this:</p>
 <p>There are about 66,000 lines in this file.</p>
 </section>
 <section id="if-statements">
-<h2>if Statements<a class="headerlink" href="#if-statements" title="Permalink to this headline">#</a></h2>
-<p>We’ve already see comparison operators, like <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, which compare values and produce a Boolean result, <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.
-For example, we can compare the final value of <code class="docutils literal notranslate"><span class="pre">count</span></code> to a number:</p>
+<h2>if Statements<a class="headerlink" href="#if-statements" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> statements are used to check whether a condition is true and, depending on the result, perform different computations.
+A condition is an expression whose value is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+For example, the following expression compares the final value of <code class="docutils literal notranslate"><span class="pre">count</span></code> to a number:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">60000</span>
@@ -710,7 +597,8 @@ For example, we can compare the final value of <code class="docutils literal not
 </div>
 </div>
 </div>
-<p>We can use a comparison operator in an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to check for a condition and take action accordingly.</p>
+<p>For <em>War and Peace</em>, the result is <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+We can use this condition in an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to display a message, or not, depending on the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">60000</span><span class="p">:</span>
@@ -724,7 +612,8 @@ For example, we can compare the final value of <code class="docutils literal not
 </div>
 </div>
 </div>
-<p>The first line of the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement specifies the condition we’re checking for. Like the header of a <code class="docutils literal notranslate"><span class="pre">for</span></code> statement, the first line of an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement has to end with a colon.</p>
+<p>The first line specifies the condition we’re checking for.
+Like the header of a <code class="docutils literal notranslate"><span class="pre">for</span></code> statement, the first line of an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement has to end with a colon.</p>
 <p>If the condition is true, the indented statement runs; otherwise, it doesn’t.
 In the previous example, the condition is true, so the <code class="docutils literal notranslate"><span class="pre">print</span></code> statement runs.
 In the following example, the condition is false, so the <code class="docutils literal notranslate"><span class="pre">print</span></code> statement doesn’t run.</p>
@@ -736,7 +625,8 @@ In the following example, the condition is false, so the <code class="docutils l
 </div>
 </div>
 </div>
-<p>We can put a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement inside a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.  In this example, we only print a line from the book when <code class="docutils literal notranslate"><span class="pre">count</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>.
+<p>We can put an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement inside a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.
+The following example only prints a line from the book when <code class="docutils literal notranslate"><span class="pre">count</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>.
 The other lines are read, but not displayed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -755,16 +645,16 @@ The other lines are read, but not displayed.</p>
 </div>
 </div>
 </div>
-<p>Notice the indentation in this example:</p>
+<p>Notice that we use <code class="docutils literal notranslate"><span class="pre">==</span></code> to compare values and check if they are equal, not <code class="docutils literal notranslate"><span class="pre">=</span></code>, which is used in assignment statements. Also, notice the indentation in this example:</p>
 <ul class="simple">
 <li><p>Statements inside the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop are indented.</p></li>
 <li><p>The statement inside the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is indented.</p></li>
 <li><p>The statement <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">+=</span> <span class="pre">1</span></code> is <strong>outdented</strong> from the previous line, so it ends the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.  But it is still inside the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p></li>
 </ul>
-<p>It is legal in Python to use spaces or tabs for indentation, but the most common convention is to use four spaces, never tabs.  That’s what I’ll do in my code and I strongly suggest you follow the convention.</p>
+<p>It is legal in Python to use spaces or tabs for indentation, but the most common convention is to use four spaces, never tabs.</p>
 </section>
 <section id="the-break-statement">
-<h2>The break Statement<a class="headerlink" href="#the-break-statement" title="Permalink to this headline">#</a></h2>
+<h2>The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement<a class="headerlink" href="#the-break-statement" title="Link to this heading">#</a></h2>
 <p>If we display the final value of <code class="docutils literal notranslate"><span class="pre">count</span></code>, we see that the loop reads the entire file, but only prints one line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -797,7 +687,7 @@ The other lines are read, but not displayed.</p>
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement ends the loop immediately, skipping the rest of the file.  We can confirm that by checking the last value of <code class="docutils literal notranslate"><span class="pre">count</span></code>:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement ends the loop immediately, skipping the rest of the file, as we can confirm that by checking the final value of <code class="docutils literal notranslate"><span class="pre">count</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>
@@ -813,7 +703,7 @@ The other lines are read, but not displayed.</p>
 <p><strong>Exercise:</strong> Write a loop that prints the first 5 lines of the file and then breaks out of the loop.</p>
 </section>
 <section id="whitespace">
-<h2>Whitespace<a class="headerlink" href="#whitespace" title="Permalink to this headline">#</a></h2>
+<h2>Whitespace<a class="headerlink" href="#whitespace" title="Link to this heading">#</a></h2>
 <p>If we run the loop again and display the final value of <code class="docutils literal notranslate"><span class="pre">line</span></code>, we see the special sequence <code class="docutils literal notranslate"><span class="pre">\n</span></code> at the end.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -848,17 +738,17 @@ If we use a <code class="docutils literal notranslate"><span class="pre">print</
 </div>
 </div>
 </div>
-<p>In other strings, you might see the sequence <code class="docutils literal notranslate"><span class="pre">\t</span></code>, which represents a “tab” character.
+<p>In other strings, you might see the sequence <code class="docutils literal notranslate"><span class="pre">\t</span></code>, which represents a tab character.
 When you print a tab character, it adds enough space to make the next character appear in a column that is a multiple of 8.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;01234567&#39;</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;|       &#39;</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a</span><span class="se">\t</span><span class="s1">bc</span><span class="se">\t</span><span class="s1">def</span><span class="se">\t</span><span class="s1">ghij</span><span class="se">\t</span><span class="s1">klmno</span><span class="se">\t</span><span class="s1">pqrstu&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>012345670123456701234567012345670123456701234567
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|       |       |       |       |       |       
 a	bc	def	ghij	klmno	pqrstu
 </pre></div>
 </div>
@@ -867,10 +757,10 @@ a	bc	def	ghij	klmno	pqrstu
 <p>Newline characters, tabs, and spaces are called <strong>whitespace</strong> because when they are printed they leave white space on the page (assuming that the background color is white).</p>
 </section>
 <section id="counting-words">
-<h2>Counting Words<a class="headerlink" href="#counting-words" title="Permalink to this headline">#</a></h2>
-<p>So far we’ve managed to count the lines in a file, but each line contains several words.
-To split a line into words, we can use a function called <code class="docutils literal notranslate"><span class="pre">split</span></code> that returns a list of words.
-To be more precise, <code class="docutils literal notranslate"><span class="pre">split</span></code> doesn’t actually know what a word is; it just splits the line wherever there’s a space or other whitespace character.</p>
+<h2>Counting Words<a class="headerlink" href="#counting-words" title="Link to this heading">#</a></h2>
+<p>So far we’ve counted the lines in a file – now let’s count the words.
+To split a line into words, we can use a function called <code class="docutils literal notranslate"><span class="pre">split</span></code> that takes a string and returns a list of words.
+To be more precise, <code class="docutils literal notranslate"><span class="pre">split</span></code> doesn’t actually know what a word is – it just splits the line wherever there’s a space or other whitespace character.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
@@ -894,7 +784,22 @@ To be more precise, <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 <p>Notice that the syntax for <code class="docutils literal notranslate"><span class="pre">split</span></code> is different from other functions we have seen.  Normally when we call a function, we name the function and provide values in parentheses.  So you might have expected to write <code class="docutils literal notranslate"><span class="pre">split(line)</span></code>.  Sadly, that doesn’t work.</p>
-<p>The problem is that the <code class="docutils literal notranslate"><span class="pre">split</span></code> function belongs to the string <code class="docutils literal notranslate"><span class="pre">line</span></code>; in a sense, the function is attached to the string, so we can only refer to it using the string and the <strong>dot operator</strong> (the period between <code class="docutils literal notranslate"><span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>).
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> NameError
+
+split(line)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">NameError</span>: name &#39;split&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The problem is that the <code class="docutils literal notranslate"><span class="pre">split</span></code> function belongs to the string <code class="docutils literal notranslate"><span class="pre">line</span></code>.
+In a sense, the function is attached to the string, so we can only refer to it using the string and the <strong>dot operator</strong>, which is the period between <code class="docutils literal notranslate"><span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>.
 For historical reasons, functions like this are called <strong>methods</strong>.</p>
 <p>Now that we can split a line into a list of words, we can use <code class="docutils literal notranslate"><span class="pre">len</span></code> to get the number of words in each list, and increment <code class="docutils literal notranslate"><span class="pre">count</span></code> accordingly.</p>
 <div class="cell docutils container">
@@ -903,13 +808,8 @@ For historical reasons, functions like this are called <strong>methods</strong>.
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
     <span class="n">count</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>
+
+<span class="n">count</span>
 </pre></div>
 </div>
 </div>
@@ -919,24 +819,24 @@ For historical reasons, functions like this are called <strong>methods</strong>.
 </div>
 </div>
 </div>
-<p>By this count, there are more than half a million words in <em>War and Peace</em>.</p>
-<p>Actually, there aren’t quite that many, because the file we got from Project Gutenberg has some introductory text and a table of contents before the text.  And it has some license information at the end.
-To skip this “front matter”, we can use one loop to read lines until we get to <code class="docutils literal notranslate"><span class="pre">CHAPTER</span> <span class="pre">I</span></code>, and then a second loop to count the words in the remaining lines.</p>
-<p>The file pointer, <code class="docutils literal notranslate"><span class="pre">fp</span></code>, keeps track of where it is in the file, so the second loop picks up where the first loop leaves off.
+<p>By this count, there are more than half a million words in <em>War and Peace</em>.
+Actually, there aren’t quite that many, because the file we got from Project Gutenberg has some introductory material before the text and some license information at the end.
+To skip the “front matter”, we can use one loop to read lines until we get to <code class="docutils literal notranslate"><span class="pre">CHAPTER</span> <span class="pre">I</span></code>, and then a second loop to count the words in the remaining lines.</p>
+<p>The file pointer, <code class="docutils literal notranslate"><span class="pre">fp</span></code>, keeps track of where it is in the file, so the second loop picks up where the first leaves off.
 In the second loop, we check for the end of the book and stop, so we ignore the “back matter” at the end of the file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_line</span> <span class="o">=</span> <span class="s2">&quot;CHAPTER I</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="n">last_line</span> <span class="o">=</span> <span class="s2">&quot;End of the Project Gutenberg EBook of War and Peace, by Leo Tolstoy</span><span class="se">\n</span><span class="s2">&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="s2">&quot;CHAPTER I</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="n">last</span> <span class="o">=</span> <span class="s2">&quot;End of the Project Gutenberg EBook of War and Peace, by Leo Tolstoy</span><span class="se">\n</span><span class="s2">&quot;</span>
 
 <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">first_line</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">first</span><span class="p">:</span>
         <span class="k">break</span>
 
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">last_line</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">last</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
         <span class="k">break</span>
     <span class="n">count</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
@@ -961,30 +861,28 @@ In the second loop, we check for the end of the book and stop, so we ignore the 
 </div>
 </div>
 </div>
-<p>Two things to notice about this program:</p>
-<ul class="simple">
-<li><p>When we compare two values to see if they are equal, we use the <code class="docutils literal notranslate"><span class="pre">==</span></code> operator, not to be confused with <code class="docutils literal notranslate"><span class="pre">=</span></code>, which is the assignment operator.</p></li>
-<li><p>The string we compare <code class="docutils literal notranslate"><span class="pre">line</span></code> to has a newline at the end.  If we leave that out, it doesn’t work.</p></li>
-</ul>
+<p>Notice that the strings <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> have a newline at the end.
+If we leave that out, the program doesn’t work, because the lines from the file have a newline at the end, and when strings are compared, whitespace counts.</p>
 <p><strong>Exercise:</strong></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>In the previous program, replace <code class="docutils literal notranslate"><span class="pre">==</span></code> with <code class="docutils literal notranslate"><span class="pre">=</span></code> and see what happens.  This is a common error, so it is good to see what the error message looks like.</p></li>
 <li><p>Correct the previous error, then remove the newline character after <code class="docutils literal notranslate"><span class="pre">CHAPTER</span> <span class="pre">I</span></code>, and see what happens.</p></li>
 </ol>
-<p>The first error is a <strong>syntax error</strong>, which means that the program violates the rules of Python.  If your program has a syntax error, the Python interpreter prints an error message, and the program never runs.</p>
-<p>The second error is a <strong>logic error</strong>, which means that there is something wrong with the logic of the program.  The syntax is legal, and the program runs, but it doesn’t do what we wanted.  Logic errors can be hard to find because we don’t get any error messages.</p>
+<p>The first error is a <strong>syntax error</strong>, which means that the program violates the rules of Python.  If your program has a syntax error, an error message is displayed, and the program is never run.</p>
+<p>The second error is a <strong>logic error</strong>, which means that there is something wrong with the logic of the program.
+The syntax is legal, and the program runs, but it doesn’t do what we wanted.  Logic errors can be hard to find because they don’t display error messages.</p>
 <p>If you have a logic error, here are two strategies for debugging:</p>
-<ol class="simple">
-<li><p>Add print statements so the program displays additional information while it runs.</p></li>
+<ol class="arabic simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">print</span></code> statements so the program displays additional information while it runs.</p></li>
 <li><p>Simplify the program until it does what you expect, and then gradually add more code, testing as you go.</p></li>
 </ol>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>This chapter presents loops, <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, and the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement.
 It also introduces tools for working with letters and words, and a simple kind of textual analysis, word counting.</p>
 <p>In the next chapter we’ll continue this example, counting the number of unique words in a text and the number of times each word appears.
-And we’ll see one more way to represent a collection of values, a Python dictionary.</p>
+And we’ll see another way to represent a collection of values, a Python dictionary.</p>
 </section>
 </section>
 
@@ -1000,7 +898,7 @@ And we’ll see one more way to represent a collection of values, a Python dicti
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1008,50 +906,110 @@ And we’ll see one more way to represent a collection of values, a Python dicti
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="03_arrays.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lists and Arrays</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_arrays.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lists and Arrays</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="05_dictionaries.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="05_dictionaries.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Dictionaries</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-with-loops">Counting with Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements">if Statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-break-statement">The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace">Whitespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-words">Counting Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

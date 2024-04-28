@@ -1,107 +1,169 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Times and Places &#8212; Elements of Data Science</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_times';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Lists and Arrays" href="03_arrays.html" />
     <link rel="prev" title="Variables and Values" href="01_variables.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Elements of Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,394 +172,214 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Chapters
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01_variables.html">
-   Variables and Values
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Times and Places
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_arrays.html">
-   Lists and Arrays
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_loops.html">
-   Loops and Files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06_plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07_dataframes.html">
-   DataFrames and Series
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08_distributions.html">
-   Distributions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09_relationships.html">
-   Relationships
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10_regression.html">
-   Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11_resampling.html">
-   Resampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="12_bootstrap.html">
-   Bootstrap Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13_hypothesis.html">
-   Hypothesis Testing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Examples
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="resample_logit.html">
-   Resampling and Logistic Regression
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="anderson.html">
-   Never Test for Normality
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="resample_logit.html">Resampling and Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anderson.html">Never Test for Normality</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/02_times.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ElementsOfDataScience"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/02_times.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02_times.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#strings">
-   Strings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representing-dates-and-times">
-   Representing Dates and Times
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#timedelta">
-   Timedelta
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representing-location">
-   Representing Location
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculating-distance">
-   Calculating Distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-functions">
-   Defining Functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#haversine-distance">
-   Haversine Distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#geopandas">
-   Geopandas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Times and Places</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#strings">
-   Strings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representing-dates-and-times">
-   Representing Dates and Times
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#timedelta">
-   Timedelta
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#representing-location">
-   Representing Location
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculating-distance">
-   Calculating Distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-functions">
-   Defining Functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#haversine-distance">
-   Haversine Distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#geopandas">
-   Geopandas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Times and Places</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-dates-and-times">Representing Dates and Times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timedelta">Timedelta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-location">Representing Location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-distance">Calculating Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-functions">Defining Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haversine-distance">Haversine Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geopandas">Geopandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="times-and-places">
-<h1>Times and Places<a class="headerlink" href="#times-and-places" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb">Run this notebook on Colab</a> or<br />
-<a class="reference external" href="https://studiolab.sagemaker.aws/import/github/AllenDowney/ElementsOfDataScience/blob/master/02_times.ipynb">Run this notebook on Sagemaker Studio Lab</a> or<br />
-<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/02_times.ipynb">Download this notebook</a>.</p>
-<p>In the previous chapter, you learned about variables and two kinds of values: integers and floating-point numbers.</p>
-<p>In this chapter, you’ll see some additional types:</p>
+<h1>Times and Places<a class="headerlink" href="#times-and-places" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/02_times.ipynb">Click here to run this notebook on Colab</a>.</p>
+<p>The previous chapter introduces variables and two kinds of values: integers and floating-point numbers.
+This chapter presents these additional types:</p>
 <ul class="simple">
 <li><p>Strings, which represent text.</p></li>
 <li><p>Time stamps, which represent dates and times.</p></li>
@@ -505,7 +387,7 @@ title="Print to PDF"
 </ul>
 <p>Not every data science project uses all of these types, but many projects use at least one.</p>
 <section id="strings">
-<h2>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">#</a></h2>
+<h2>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h2>
 <p>A <strong>string</strong> is a sequence of letters, numbers, and punctuation marks.
 In Python you can create a string by enclosing text between single or double quotation marks.</p>
 <div class="cell docutils container">
@@ -536,18 +418,12 @@ In Python you can create a string by enclosing text between single or double quo
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="s1">&#39;Data&#39;</span>
+<span class="n">last</span> <span class="o">=</span> <span class="s2">&quot;Science&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">last</span> <span class="o">=</span> <span class="s2">&quot;Science&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Some arithmetic operators work with strings, but they might not do what you expect.  For example, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator <strong>concatenates</strong> two strings; that is, it creates a new string that contains the first string followed by the second string:</p>
+<p>Some arithmetic operators work with strings, but they might not do what you expect.  For example, the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator <strong>concatenates</strong> two strings – that is, it creates a new string that contains the first string followed by the second string:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">+</span> <span class="n">last</span>
@@ -573,8 +449,8 @@ In Python you can create a string by enclosing text between single or double quo
 </div>
 </div>
 </div>
-<p>Strings are used to store text data like names, addresses, titles, etc.</p>
-<p>When you read data from a file, you might see values that look like numbers, but they are actually strings, like this:</p>
+<p>Strings are used to store text data like names, addresses, titles, etc.
+When you read data from a file, you might see values that look like numbers, but they are actually strings, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">=</span> <span class="s1">&#39;123&#39;</span>
@@ -582,12 +458,23 @@ In Python you can create a string by enclosing text between single or double quo
 </div>
 </div>
 </div>
-<p>If you try to do math with these strings, you <em>might</em> get an error.
-For example, the following expression causes a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> with the message “can only concatenate <code class="docutils literal notranslate"><span class="pre">str</span></code> (not <code class="docutils literal notranslate"><span class="pre">int</span></code>) to <code class="docutils literal notranslate"><span class="pre">str</span></code>”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">+</span> <span class="mi">1</span>
+<p>If you try to do math with these strings, you <em>might</em> get an error.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> TypeError
+
+not_actually_a_number + 1
 </pre></div>
 </div>
-<p>But you don’t always get an error message; instead, you might get a surprising result.  For example:</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span>: can only concatenate str (not &quot;int&quot;) to str
+</pre></div>
+</div>
+</div>
+</div>
+<p>But you might not – instead, you might get a surprising result.
+For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_actually_a_number</span> <span class="o">*</span> <span class="mi">3</span>
@@ -617,17 +504,31 @@ For example, the following expression causes a <code class="docutils literal not
 <p>Or you can convert it to a floating-point number using <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;12.3&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.3
 </pre></div>
 </div>
 </div>
 </div>
 <p>But if the string contains a decimal point, you can’t convert it to an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">expect</span> ValueError
+
+int(&#39;12.3&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;12.3&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <p>Going in the other direction, you can convert any type of value to a string using <code class="docutils literal notranslate"><span class="pre">str</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,22 +554,22 @@ For example, the following expression causes a <code class="docutils literal not
 </div>
 </div>
 </div>
-<p><strong>Exercise</strong>: When personal names are stored in a database, they are often stored in three variables: a given name, a family name, and sometimes a middle name.  For example, a list of great rock drummers might include:</p>
+<p><strong>Exercise</strong>: When personal names are stored in a database, they might be stored in variables representing one or more given names, family names, and maybe additional middle names.  For example, a list of early statisticians might include:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">given</span> <span class="o">=</span> <span class="s1">&#39;Neil&#39;</span>
-<span class="n">middle</span> <span class="o">=</span> <span class="s1">&#39;Ellwood&#39;</span>
-<span class="n">family</span> <span class="o">=</span> <span class="s1">&#39;Peart&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">given</span> <span class="o">=</span> <span class="s1">&#39;William&#39;</span>
+<span class="n">middle</span> <span class="o">=</span> <span class="s1">&#39;Sealy&#39;</span>
+<span class="n">family</span> <span class="o">=</span> <span class="s1">&#39;Gosset&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>But names are often displayed different ways in different contexts.  For example, the first time you mention someone in an article, you might give all three names, like “Neil Ellwood Peart”.  But in the index of a book, you might put the family name first, like “Peart, Neil Ellwood”.</p>
-<p>Write Python expressions that use the variables <code class="docutils literal notranslate"><span class="pre">given</span></code>, <code class="docutils literal notranslate"><span class="pre">middle</span></code>, and <code class="docutils literal notranslate"><span class="pre">family</span></code> to display Neil Peart’s name in these two formats.</p>
+<p>But names are often displayed different ways in different contexts.  For example, the first time you mention someone in a book, you might give all three names, like “William Sealy Gosset”. But in the index, you might put the family name first, like “Gosset, William Sealy”.
+Write Python expressions that use the variables <code class="docutils literal notranslate"><span class="pre">given</span></code>, <code class="docutils literal notranslate"><span class="pre">middle</span></code>, and <code class="docutils literal notranslate"><span class="pre">family</span></code> to display Gosset’s name in these two formats.</p>
 </section>
 <section id="representing-dates-and-times">
-<h2>Representing Dates and Times<a class="headerlink" href="#representing-dates-and-times" title="Permalink to this headline">#</a></h2>
-<p>If you read data from a file, you might also find that dates and times are represented with strings.</p>
+<h2>Representing Dates and Times<a class="headerlink" href="#representing-dates-and-times" title="Link to this heading">#</a></h2>
+<p>When you read data from a file, you might find that dates and times are represented with strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">not_really_a_date</span> <span class="o">=</span> <span class="s1">&#39;June 4, 1989&#39;</span>
@@ -676,7 +577,7 @@ For example, the following expression causes a <code class="docutils literal not
 </div>
 </div>
 </div>
-<p>To confirm that this value is a string, we can use the <code class="docutils literal notranslate"><span class="pre">type</span></code> function, which takes a value and reports its type.</p>
+<p>To check the type of a value, we can use the <code class="docutils literal notranslate"><span class="pre">type</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">not_really_a_date</span><span class="p">)</span>
@@ -689,7 +590,7 @@ For example, the following expression causes a <code class="docutils literal not
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">str</span></code> indicates that the value of <code class="docutils literal notranslate"><span class="pre">not_really_a_date</span></code> is a string.</p>
+<p>The result indicates that the value of <code class="docutils literal notranslate"><span class="pre">not_really_a_date</span></code> is a string.</p>
 <p>We get the same result with <code class="docutils literal notranslate"><span class="pre">not_really_a_time</span></code>, below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -704,9 +605,10 @@ For example, the following expression causes a <code class="docutils literal not
 </div>
 </div>
 </div>
-<p>Strings that represent dates and times a readable for people, but they are not useful for computation.</p>
-<p>Fortunately, Python provides libraries for working with date and time data; the one we’ll use is called Pandas.
-As always, we have to import a library before we use it; it is conventional to import Pandas with the abbreviated name <code class="docutils literal notranslate"><span class="pre">pd</span></code>:</p>
+<p>Strings that represent dates and times are readable for people, but they are not useful for computation.
+Fortunately, Python provides libraries for working with date and time data – the one we’ll use is called Pandas.
+As always, we have to import a library before we use it.
+It is conventional to import Pandas with the abbreviated name <code class="docutils literal notranslate"><span class="pre">pd</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -714,8 +616,8 @@ As always, we have to import a library before we use it; it is conventional to i
 </div>
 </div>
 </div>
-<p>Pandas provides a type called <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>, which represents a date and time.</p>
-<p>It also provides a function called <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>, which we can use to convert a string to a <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>:</p>
+<p>Pandas provides a type called <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>, which represents a date and time.
+If we have a string that contains a time or date, we can convert it to a <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;6:30:00&#39;</span><span class="p">)</span>
@@ -723,7 +625,7 @@ As always, we have to import a library before we use it; it is conventional to i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2022-01-25 06:30:00&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2024-04-22 06:30:00&#39;)
 </pre></div>
 </div>
 </div>
@@ -736,22 +638,22 @@ As always, we have to import a library before we use it; it is conventional to i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2022-01-25 06:30:00&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2024-04-22 06:30:00&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>In this example, the string specifies a time but no date, so Pandas fills in today’s date.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> is a value, so you can assign it to a variable.</p>
+<p>In this example, the string specifies a time but no date, so Pandas fills in today’s date.
+A <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> is a value, so you can assign it to a variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_of_birth</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;June 4, 1989&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_of_birth</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;May 11, 1967&#39;</span><span class="p">)</span>
 <span class="n">date_of_birth</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;1989-06-04 00:00:00&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;1967-05-11 00:00:00&#39;)
 </pre></div>
 </div>
 </div>
@@ -765,7 +667,7 @@ As always, we have to import a library before we use it; it is conventional to i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1989, 6, 4)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1967, 5, 11)
 </pre></div>
 </div>
 </div>
@@ -778,7 +680,7 @@ As always, we have to import a library before we use it; it is conventional to i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Sunday&#39;, &#39;June&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Thursday&#39;, &#39;May&#39;)
 </pre></div>
 </div>
 </div>
@@ -792,7 +694,7 @@ As always, we have to import a library before we use it; it is conventional to i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2022-01-25 14:26:11.312256&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2024-04-22 17:35:20.306774&#39;)
 </pre></div>
 </div>
 </div>
@@ -800,7 +702,7 @@ As always, we have to import a library before we use it; it is conventional to i
 <p><strong>Exercise:</strong> Use the value of <code class="docutils literal notranslate"><span class="pre">now</span></code> to display the name of the current month and day of the week.</p>
 </section>
 <section id="timedelta">
-<h2>Timedelta<a class="headerlink" href="#timedelta" title="Permalink to this headline">#</a></h2>
+<h2>Timedelta<a class="headerlink" href="#timedelta" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> values support some arithmetic operations.
 For example, you can compute the difference between two <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> objects:</p>
 <div class="cell docutils container">
@@ -811,7 +713,7 @@ For example, you can compute the difference between two <code class="docutils li
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timedelta(&#39;11923 days 14:26:11.312256&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timedelta(&#39;20801 days 17:35:20.306774&#39;)
 </pre></div>
 </div>
 </div>
@@ -820,12 +722,15 @@ For example, you can compute the difference between two <code class="docutils li
 The <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> contains <code class="docutils literal notranslate"><span class="pre">components</span></code> that store the number of days, hours, etc. between the two <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span><span class="o">.</span><span class="n">components</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">wrap</span>
+
+<span class="n">wrap</span><span class="p">(</span><span class="n">age</span><span class="o">.</span><span class="n">components</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Components(days=11923, hours=14, minutes=26, seconds=11, milliseconds=312, microseconds=256, nanoseconds=0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Components(days=20801, hours=17, minutes=35, seconds=20,
+    milliseconds=306, microseconds=774, nanoseconds=0)
 </pre></div>
 </div>
 </div>
@@ -838,14 +743,17 @@ The <code class="docutils literal notranslate"><span class="pre">Timedelta</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11923
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20801
 </pre></div>
 </div>
 </div>
 </div>
-<p>The biggest component of <code class="docutils literal notranslate"><span class="pre">Timedelta</span></code> is days, not years, because days are well defined and years are problematic.</p>
-<p>Most years are 365 days, but some are 366.  The average calendar year is 365.24 days, which is a very good approximation of a solar year, but it is not exact (see <a class="reference external" href="https://pumas.jpl.nasa.gov/files/04_21_97_1.pdf">https://pumas.jpl.nasa.gov/files/04_21_97_1.pdf</a>).</p>
-<p>One way to compute age in years is to divide age in days by 365.24:</p>
+<p>It might seem strange to measure a large interval in days rather than years.
+The problem is that the duration of a year is not clearly defined.
+Most years are <code class="docutils literal notranslate"><span class="pre">365</span></code> days, but some are <code class="docutils literal notranslate"><span class="pre">366</span></code>.
+The average calendar year is <code class="docutils literal notranslate"><span class="pre">365.24</span></code> days, which is a very good approximation of a solar year, but even that’s not exact.</p>
+<p>Expressing a duration in days is clearly defined – but it is not easy to interpret.
+To express <code class="docutils literal notranslate"><span class="pre">age</span></code> in years, we can divide by <code class="docutils literal notranslate"><span class="pre">365.24</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span><span class="o">.</span><span class="n">days</span> <span class="o">/</span> <span class="mf">365.24</span>
@@ -853,7 +761,7 @@ The <code class="docutils literal notranslate"><span class="pre">Timedelta</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.64428868689081
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56.951593472785014
 </pre></div>
 </div>
 </div>
@@ -868,7 +776,7 @@ The <code class="docutils literal notranslate"><span class="pre">Timedelta</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>56.0
 </pre></div>
 </div>
 </div>
@@ -881,7 +789,7 @@ The <code class="docutils literal notranslate"><span class="pre">Timedelta</span
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57.0
 </pre></div>
 </div>
 </div>
@@ -899,12 +807,13 @@ Here’s a new <code class="docutils literal notranslate"><span class="pre">Time
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2022-06-04 00:00:00&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2024-05-11 00:00:00&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>The result represents the person’s birthday this year.  Now we can use the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> operator to check whether <code class="docutils literal notranslate"><span class="pre">now</span></code> is later than the birthday:</p>
+<p>The result represents the person’s birthday this year.
+Now we can use the “greater than” operator, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, to check whether <code class="docutils literal notranslate"><span class="pre">now</span></code> is later than the birthday:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">now</span> <span class="o">&gt;</span> <span class="n">bday_this_year</span>
@@ -918,7 +827,8 @@ Here’s a new <code class="docutils literal notranslate"><span class="pre">Time
 </div>
 </div>
 <p>The result is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.
-These values belong to a type called <code class="docutils literal notranslate"><span class="pre">bool</span></code>; the name comes from “Boolean algebra”, which is a branch of algebra where all values are either true or false.</p>
+These values belong to a type called <code class="docutils literal notranslate"><span class="pre">bool</span></code>.
+The name comes from “Boolean algebra”, which is a branch of algebra where all values are either true or false.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -956,10 +866,11 @@ With the following dates, the result should be December 19, 2009.</p>
 </div>
 </section>
 <section id="representing-location">
-<h2>Representing Location<a class="headerlink" href="#representing-location" title="Permalink to this headline">#</a></h2>
-<p>In addition to times and dates, we might also want to represent locations, especially if we are working with geographical data.</p>
-<p>There are many ways to represent locations, but the most common, at least for global data, is latitude and longitude.
-When stored as strings, latitude and longitude are expressed in degrees with compass directions N, S, E, and W.  For example, this string represents the location of Boston, MA, USA:</p>
+<h2>Representing Location<a class="headerlink" href="#representing-location" title="Link to this heading">#</a></h2>
+<p>In addition to times and dates, we might also want to represent locations, especially if we are working with geographical data.
+There are many ways to represent locations, but the most common, at least for global data, is latitude and longitude.
+When stored in a string, latitude and longitude are expressed in degrees with compass directions N, S, E, and W.
+For example, this string represents the location of Boston, Massachusetts, USA:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_lon_string</span> <span class="o">=</span> <span class="s1">&#39;42.3601° N, 71.0589° W&#39;</span>
@@ -967,13 +878,13 @@ When stored as strings, latitude and longitude are expressed in degrees with com
 </div>
 </div>
 </div>
-<p>When we compute with location information, we use floating-point numbers, with</p>
+<p>But for purposes of computation it is more common to represent longitude and latitude with two floating-point numbers, with</p>
 <ul class="simple">
-<li><p>Positive latitude for the northern hemisphere, negative latitude for the southern hemisphere, and</p></li>
-<li><p>Positive longitude for the eastern hemisphere and negative longitude for the western hemisphere.</p></li>
+<li><p>Positive latitude for locations in the northern hemisphere, negative latitude for the southern hemisphere, and</p></li>
+<li><p>Positive longitude locations in the eastern hemisphere and negative longitude for the western hemisphere.</p></li>
 </ul>
-<p>Of course, the choice of the origin and the orientation of positive and negative are arbitrary choices that were made for historical reasons.  We might not be able to change conventions like these, but we should be aware that they are conventions.</p>
-<p>Here’s how we might represent the location of Boston with two variables.</p>
+<p>The location of the origin and the orientation of positive and negative are arbitrary choices that were made for historical reasons.
+Here’s how we might represent the location of Boston with two variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="mf">42.3601</span>
@@ -996,7 +907,9 @@ When stored as strings, latitude and longitude are expressed in degrees with com
 </div>
 </div>
 </div>
-<p>The type of this variable is <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, which is a mathematical term for a value that contains a sequence of elements.  Math people pronounce it “tuh’ ple”, but computational people usually say “too’ ple”.  Take your pick.</p>
+<p>The type of this variable is <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, which is a mathematical term for a value that contains a sequence of elements.
+Math people pronounce it “tuh’ ple”, but computational people usually say “too’ ple”.
+Either is fine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">boston</span><span class="p">)</span>
@@ -1036,14 +949,12 @@ When stored as strings, latitude and longitude are expressed in degrees with com
 </div>
 </div>
 <p>Notice that I assigned latitude to <code class="docutils literal notranslate"><span class="pre">y</span></code> and longitude to <code class="docutils literal notranslate"><span class="pre">x</span></code>, because a <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinate usually goes up and down like latitude, and an <code class="docutils literal notranslate"><span class="pre">x</span></code> coordinate usually goes side-to-side like longitude.</p>
-<p><strong>Exercise:</strong> Find the latitude and longitude of the place you were born or someplace you think of as your “home town”.  <a class="reference external" href="https://www.latlong.net/">You can use this web page to look it up</a>.
+<p><strong>Exercise:</strong> Find the latitude and longitude of the place you were born or someplace you think of as your “home town”.
 Make a tuple of floating-point numbers that represents that location.</p>
 </section>
 <section id="calculating-distance">
-<h2>Calculating Distance<a class="headerlink" href="#calculating-distance" title="Permalink to this headline">#</a></h2>
-<p>If you are given two tuples that represent locations, you can compute the approximate distance between them, along the surface of the globe, using the haversine function.
-If you are curious about it, <a class="reference external" href="https://janakiev.com/blog/gps-points-distance-python/">you can read an explanation in this article</a>.
-To estimate a haversine distance, we have to compute the haversine function, which is defined:</p>
+<h2>Calculating Distance<a class="headerlink" href="#calculating-distance" title="Link to this heading">#</a></h2>
+<p>If you are given two tuples that represent locations, you can compute the approximate distance between them, along the surface of the globe, using the haversine function:</p>
 <p><span class="math notranslate nohighlight">\(\mathrm{haversine}(\theta)=\sin^2(\theta/2)\)</span></p>
 <p>Where <span class="math notranslate nohighlight">\(\theta\)</span> is an angle in radians.
 We can compute this function in Python like this:</p>
@@ -1062,8 +973,8 @@ We can compute this function in Python like this:</p>
 </div>
 </div>
 </div>
-<p>You can use Greek letters in variable names, but there is currently no way to type them in Jupyter/Colab, so I usually copy them from a web page and paste them in.</p>
-<p>To avoid the inconvenience, it is more common to write out letter names, like this:</p>
+<p>You can use Greek letters in variable names, but there is currently no way to type them in Jupyter/Colab, so I usually copy them from a web page and paste them in.
+To avoid the inconvenience, it is common to write out letter names, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1077,24 +988,24 @@ We can compute this function in Python like this:</p>
 </div>
 </div>
 </div>
-<p>Remember that the operator for exponentiation is <code class="docutils literal notranslate"><span class="pre">**</span></code>.<br />
+<p>Remember that the operator for exponentiation is <code class="docutils literal notranslate"><span class="pre">**</span></code>.
 In some other languages it’s <code class="docutils literal notranslate"><span class="pre">^</span></code>, which is also an operator in Python, but it performs another operation altogether.</p>
 </section>
 <section id="defining-functions">
-<h2>Defining Functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">#</a></h2>
+<h2>Defining Functions<a class="headerlink" href="#defining-functions" title="Link to this heading">#</a></h2>
 <p>If we are planning to use an expression like <code class="docutils literal notranslate"><span class="pre">np.sin(theta/2)**2</span></code> more than a few times, we can define a new function that computes it, like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">haversine</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the haversine function of theta.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the haversine function of theta.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>On the first line, <code class="docutils literal notranslate"><span class="pre">def</span></code> indicates that we are defining a function.</p>
-<p>The second line is a triple-quoted string, which is a <strong>comment</strong>: it describes what the function does, but has no effect when the program runs.</p>
-<p>On the third line, <code class="docutils literal notranslate"><span class="pre">return</span></code> indicates the result of the function.</p>
+<p>On the first line, <code class="docutils literal notranslate"><span class="pre">def</span></code> indicates that we are defining a function.
+The second line is a triple-quoted string, which is a <strong>comment</strong>: it describes what the function does, but has no effect when the program runs.
+On the third line, <code class="docutils literal notranslate"><span class="pre">return</span></code> indicates the result of the function.</p>
 <p>When you run the previous cell, it creates a new variable called <code class="docutils literal notranslate"><span class="pre">haversine</span></code>.  You can display its value like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1138,13 +1049,13 @@ To run the function and compute a result, we have to <strong>call</strong> the f
 <p>When you define a function, you create a new variable.  But the function doesn’t actually run until you call it.</p>
 </section>
 <section id="haversine-distance">
-<h2>Haversine Distance<a class="headerlink" href="#haversine-distance" title="Permalink to this headline">#</a></h2>
+<h2>Haversine Distance<a class="headerlink" href="#haversine-distance" title="Link to this heading">#</a></h2>
 <p>Now we can use <code class="docutils literal notranslate"><span class="pre">haversine</span></code> as part of a function that computes haversine distances.
-I won’t explain this function in as much detail, but if you read through it, you might get a sense of how it works.</p>
+I won’t explain this function in as much detail, but if you read through it, you can get a sense of how it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">haversine_distance</span><span class="p">(</span><span class="n">coord1</span><span class="p">,</span> <span class="n">coord2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Haversine distance between two locations.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Haversine distance between two locations.</span>
 <span class="sd">    </span>
 <span class="sd">    coord1: lat-lon as tuple of float </span>
 <span class="sd">    coord2: lat-lon as tuple of float</span>
@@ -1156,12 +1067,12 @@ I won’t explain this function in as much detail, but if you read through it, y
     <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span> <span class="o">=</span> <span class="n">coord2</span>
     
     <span class="n">phi1</span><span class="p">,</span> <span class="n">phi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span> 
-    <span class="n">dphi</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span>
-    <span class="n">dlambda</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span>
+    <span class="n">dphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span>
+    <span class="n">dlambda</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span>
     
-    <span class="n">a</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="n">dphi</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi2</span><span class="p">)</span><span class="o">*</span><span class="n">haversine</span><span class="p">(</span><span class="n">dlambda</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="n">dphi</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi2</span><span class="p">)</span> <span class="o">*</span> <span class="n">haversine</span><span class="p">(</span><span class="n">dlambda</span><span class="p">)</span>
     
-    <span class="n">distance</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
     
     <span class="k">return</span> <span class="n">distance</span>
 </pre></div>
@@ -1192,12 +1103,11 @@ Now here’s a tuple that represents the location of London, England, UK:</p>
 </div>
 </div>
 <p>The actual geographic distance is slightly different because Earth is not a perfect sphere.  But the error of this estimate is less than 1%.</p>
-<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">haversine_distance</span></code> to compute the distance between Boston and your home town from the previous exercise.</p>
-<p>If possible, use an online map to check the result.</p>
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">haversine_distance</span></code> to compute the distance between Boston and your home town from the previous exercise. If possible, use an online map to check the result.</p>
 </section>
 <section id="geopandas">
-<h2>Geopandas<a class="headerlink" href="#geopandas" title="Permalink to this headline">#</a></h2>
-<p>Python provides libraries for working with geographical data.  One of the most popular is Geopandas, which is based on another library called Shapely.
+<h2>Geopandas<a class="headerlink" href="#geopandas" title="Link to this heading">#</a></h2>
+<p>Python provides libraries for working with geographical data.  One of the most popular is Geopandas, which is based on Pandas and another library called Shapely.
 Shapely provides <code class="docutils literal notranslate"><span class="pre">Point</span></code> and <code class="docutils literal notranslate"><span class="pre">LineString</span></code> values, which we’ll use to represent geographic locations and lines between them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1206,7 +1116,7 @@ Shapely provides <code class="docutils literal notranslate"><span class="pre">Po
 </div>
 </div>
 </div>
-<p>We can use the tuples we defined in the previous section to create Shapely <code class="docutils literal notranslate"><span class="pre">Point</span></code> values, but we have to reverse the order of the coordinates, providing them in <span class="math notranslate nohighlight">\(x\)</span>-<span class="math notranslate nohighlight">\(y\)</span> order rather than <code class="docutils literal notranslate"><span class="pre">lat</span></code>-<code class="docutils literal notranslate"><span class="pre">lon</span></code> order, because that’s the order the <code class="docutils literal notranslate"><span class="pre">Point</span></code> function expects.</p>
+<p>We can use the tuples we defined in the previous section to create Shapely <code class="docutils literal notranslate"><span class="pre">Point</span></code> values, but we have to reverse the order of the coordinates, providing them in <code class="docutils literal notranslate"><span class="pre">x</span></code>-<code class="docutils literal notranslate"><span class="pre">y</span></code> order rather than <code class="docutils literal notranslate"><span class="pre">lat</span></code>-<code class="docutils literal notranslate"><span class="pre">lon</span></code> order, because that’s the order the <code class="docutils literal notranslate"><span class="pre">Point</span></code> function expects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">boston</span>
@@ -1231,22 +1141,55 @@ Shapely provides <code class="docutils literal notranslate"><span class="pre">Po
 </div>
 </div>
 </div>
+<p>The following cell installs Geopandas, if necessary.</p>
+<div class="cell tag_remove-print docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geodatasets
+</pre></div>
+</div>
+</div>
+</div>
 <p>Now we can use Geopandas to show these points and lines on a map.
-The following code loads a map of the world and plots it.</p>
+The following cells load a map of the world and plot it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geodatasets</span> <span class="kn">import</span> <span class="n">fetch</span>
+
+<span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;naturalearth.land&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geodatasets</span> <span class="kn">import</span> <span class="n">get_path</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth.land&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-
-<span class="n">path</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">)</span>
 <span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/d6a8d48703ab47be26f9407b9f1d2ab21cfb0668ca88b8ad1ddb0db7d3ecd55b.png" src="_images/d6a8d48703ab47be26f9407b9f1d2ab21cfb0668ca88b8ad1ddb0db7d3ecd55b.png" />
 </div>
-<p>By default, Geopandas uses an equirectangular projection, which provides a misleading picture of relative land areas (see <a class="reference external" href="https://en.wikipedia.org/wiki/Equirectangular_projection">https://en.wikipedia.org/wiki/Equirectangular_projection</a>).
+</div>
+<p>By default, Geopandas uses an equirectangular projection, which provides a misleading picture of relative land areas.
+Other projections are available that show land areas accurately, but they can be misleading in other ways.
 You can’t make a map without making visualization decisions.</p>
-<p>Now let’s put dots on the map for Boston and London.  We have to put the <code class="docutils literal notranslate"><span class="pre">Point</span></code> values and the <code class="docutils literal notranslate"><span class="pre">LineString</span></code> into a <code class="docutils literal notranslate"><span class="pre">GeoSeries</span></code>.</p>
+<p>Now let’s put dots on the map for Boston and London.
+First, we have to put the <code class="docutils literal notranslate"><span class="pre">Point</span></code> values and the <code class="docutils literal notranslate"><span class="pre">LineString</span></code> into a <code class="docutils literal notranslate"><span class="pre">GeoSeries</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">line</span><span class="p">]</span>
@@ -1267,8 +1210,8 @@ You can’t make a map without making visualization decisions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_133_0.png" src="_images/02_times_133_0.png" />
-<img alt="_images/02_times_133_1.png" src="_images/02_times_133_1.png" />
+<img alt="_images/d6a8d48703ab47be26f9407b9f1d2ab21cfb0668ca88b8ad1ddb0db7d3ecd55b.png" src="_images/d6a8d48703ab47be26f9407b9f1d2ab21cfb0668ca88b8ad1ddb0db7d3ecd55b.png" />
+<img alt="_images/e706945609487d752b2558a6e12922ea4be78e7e687caecdda6fdf214d9afd82.png" src="_images/e706945609487d752b2558a6e12922ea4be78e7e687caecdda6fdf214d9afd82.png" />
 </div>
 </div>
 <p>The two plots are on different axes, which is not what we want in this case.</p>
@@ -1280,7 +1223,8 @@ You can’t make a map without making visualization decisions.</p>
 </div>
 </div>
 </div>
-<p>The function is <code class="docutils literal notranslate"><span class="pre">gca</span></code>, which stands for “get current axes”.  We can use the result to tell <code class="docutils literal notranslate"><span class="pre">plot</span></code> to put the points and lines on the current axes, rather than create a new one.</p>
+<p>From Matplotlib, we’ll use the function <code class="docutils literal notranslate"><span class="pre">gca</span></code>, which stands for “get current axes”.
+With the result we can tell <code class="docutils literal notranslate"><span class="pre">plot</span></code> to put the points and lines on the current axes, rather than create a new one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
@@ -1290,16 +1234,17 @@ You can’t make a map without making visualization decisions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_times_137_0.png" src="_images/02_times_137_0.png" />
+<img alt="_images/6eb5df9cc45a32e1550f22c0ee992dbf90722f0d721b7ed9fbb7c85f5aaaa7a3.png" src="_images/6eb5df9cc45a32e1550f22c0ee992dbf90722f0d721b7ed9fbb7c85f5aaaa7a3.png" />
 </div>
 </div>
 <p><strong>Exercise:</strong> Modify the code in this section to plot a point that shows the home town you chose in a previous exercise and a line from there to Boston.</p>
-<p>Then go to <a class="reference external" href="https://forms.gle/2LDcqxJmcWY3Q3X47">this online survey</a> and answer the questions there.</p>
+<p>Then go to <a class="reference external" href="https://forms.gle/2LDcqxJmcWY3Q3X47">this online survey</a> and answer the questions there.
+When you are done, <a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/geo_example.ipynb">run this notebook</a> to see the results.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>This chapter presents three new data types: strings to represent letters and words, <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> objects to represent dates and times, and tuples to represent latitude, longitude pairs.</p>
-<p>It also introduces Geopandas, a library for working with location data.</p>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This chapter presents three new data types: strings to represent letters and words, <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> objects to represent dates and times, and tuples to represent latitude, longitude pairs.
+It also introduces Geopandas, a library for working with location data.</p>
 <p>In the next chapter we’ll see two ways to represent a collection of data, a Python list and a Numpy array.</p>
 </section>
 </section>
@@ -1316,7 +1261,7 @@ You can’t make a map without making visualization decisions.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1324,50 +1269,111 @@ You can’t make a map without making visualization decisions.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="01_variables.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Variables and Values</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_variables.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Variables and Values</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="03_arrays.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="03_arrays.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Lists and Arrays</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-dates-and-times">Representing Dates and Times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timedelta">Timedelta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-location">Representing Location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-distance">Calculating Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-functions">Defining Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#haversine-distance">Haversine Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geopandas">Geopandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
