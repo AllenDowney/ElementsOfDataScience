@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -819,24 +819,36 @@ For historical reasons, functions like this are called <strong>methods</strong>.
 </div>
 </div>
 </div>
-<p>By this count, there are more than half a million words in <em>War and Peace</em>.
-Actually, there aren’t quite that many, because the file we got from Project Gutenberg has some introductory material before the text and some license information at the end.
-To skip the “front matter”, we can use one loop to read lines until we get to <code class="docutils literal notranslate"><span class="pre">CHAPTER</span> <span class="pre">I</span></code>, and then a second loop to count the words in the remaining lines.</p>
-<p>The file pointer, <code class="docutils literal notranslate"><span class="pre">fp</span></code>, keeps track of where it is in the file, so the second loop picks up where the first leaves off.
-In the second loop, we check for the end of the book and stop, so we ignore the “back matter” at the end of the file.</p>
+<p>By this count, there are more than half a million words in <em>War and Peace</em>.</p>
+<p>Actually, there aren’t quite that many, because the file we got from Project Gutenberg has some introductory material before the text and some license information at the end.
+To mark the beginning and end of the text, the file includes special lines that begin with <code class="docutils literal notranslate"><span class="pre">'***'</span></code>.
+We can identify these lines with the <code class="docutils literal notranslate"><span class="pre">startswith</span></code> function, which checks whether a string begins with a particular sequence of characters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="s2">&quot;CHAPTER I</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="n">last</span> <span class="o">=</span> <span class="s2">&quot;End of the Project Gutenberg EBook of War and Peace, by Leo Tolstoy</span><span class="se">\n</span><span class="s2">&quot;</span>
-
-<span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;*** START OF THIS PROJECT GUTENBERG EBOOK WAR AND PEACE ***&#39;</span>
+<span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;***&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>To skip the front matter, we can use a loop to read lines until it finds the first line that starts with this sequence.</p>
+<p>Then we can use a second loop to read lines and count words until it finds the second line that starts with this sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;2600-0.txt&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">first</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;***&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
         <span class="k">break</span>
 
 <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="n">last</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;***&#39;</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
         <span class="k">break</span>
     <span class="n">count</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
@@ -844,11 +856,14 @@ In the second loop, we check for the end of the book and stop, so we ignore the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>End of the Project Gutenberg EBook of War and Peace, by Leo Tolstoy
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** START OF THIS PROJECT GUTENBERG EBOOK WAR AND PEACE ***
+
+*** END OF THIS PROJECT GUTENBERG EBOOK WAR AND PEACE ***
 </pre></div>
 </div>
 </div>
 </div>
+<p>When the second loop exits, <code class="docutils literal notranslate"><span class="pre">count</span></code> contains the number of words in the text.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span>
@@ -861,21 +876,6 @@ In the second loop, we check for the end of the book and stop, so we ignore the 
 </div>
 </div>
 </div>
-<p>Notice that the strings <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> have a newline at the end.
-If we leave that out, the program doesn’t work, because the lines from the file have a newline at the end, and when strings are compared, whitespace counts.</p>
-<p><strong>Exercise:</strong></p>
-<ol class="arabic simple">
-<li><p>In the previous program, replace <code class="docutils literal notranslate"><span class="pre">==</span></code> with <code class="docutils literal notranslate"><span class="pre">=</span></code> and see what happens.  This is a common error, so it is good to see what the error message looks like.</p></li>
-<li><p>Correct the previous error, then remove the newline character after <code class="docutils literal notranslate"><span class="pre">CHAPTER</span> <span class="pre">I</span></code>, and see what happens.</p></li>
-</ol>
-<p>The first error is a <strong>syntax error</strong>, which means that the program violates the rules of Python.  If your program has a syntax error, an error message is displayed, and the program is never run.</p>
-<p>The second error is a <strong>logic error</strong>, which means that there is something wrong with the logic of the program.
-The syntax is legal, and the program runs, but it doesn’t do what we wanted.  Logic errors can be hard to find because they don’t display error messages.</p>
-<p>If you have a logic error, here are two strategies for debugging:</p>
-<ol class="arabic simple">
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">print</span></code> statements so the program displays additional information while it runs.</p></li>
-<li><p>Simplify the program until it does what you expect, and then gradually add more code, testing as you go.</p></li>
-</ol>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
