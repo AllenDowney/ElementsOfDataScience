@@ -579,9 +579,9 @@ The political surveys provide data from more years, so we’ll focus on that.</p
 </div>
 <p>Plotting them on the same axes makes it possible to compare them directly.
 However, notice that Pyplot chooses the range for the axes automatically.
-In this example the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis starts around <code class="docutils literal notranslate"><span class="pre">15</span></code>, not zero.</p>
+In this example the y-axis starts around 15, not zero.</p>
 <p>As a result, it provides a misleading picture, making the ratio of the two lines look bigger than it really is.
-We can set the limits of the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis using the function <code class="docutils literal notranslate"><span class="pre">plt.ylim</span></code> – the arguments are the lower bound and the upper bounds.</p>
+We can set the limits of the y-axis using the function <code class="docutils literal notranslate"><span class="pre">plt.ylim</span></code> – the arguments are the lower bound and the upper bounds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">christian</span><span class="p">)</span>
@@ -673,8 +673,8 @@ Here’s the data from the article again.</p>
 </div>
 </div>
 </div>
-<p>In the previous section we plotted percentages on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis versus time on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.
-Now we want to plot the sandwich names on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis and the prices on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.
+<p>In the previous section we plotted percentages on the y-axis versus time on the x-axis.
+Now we want to plot the sandwich names on the y-axis and the prices on the x-axis.
 Here’s how:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -732,7 +732,7 @@ You can read the documentation of <code class="docutils literal notranslate"><sp
 <img alt="_images/5383a9dc4c6f1a9fa2e370c5bad522b35a3c32347995f0bcf649c65e22d5d768.png" src="_images/5383a9dc4c6f1a9fa2e370c5bad522b35a3c32347995f0bcf649c65e22d5d768.png" />
 </div>
 </div>
-<p>To connect the dots with lines, we’ll use <code class="docutils literal notranslate"><span class="pre">plt.hlines</span></code>, which draws horizontal lines.  It takes three arguments: a sequence of values on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, which are the sandwich names in this example, and two sequences of values on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, which are the London prices and Boston prices.</p>
+<p>To connect the dots with lines, we’ll use <code class="docutils literal notranslate"><span class="pre">plt.hlines</span></code>, which draws horizontal lines.  It takes three arguments: a sequence of values on the y-axis, which are the sandwich names in this example, and two sequences of values on the x-axis, which are the London prices and Boston prices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">name_list</span><span class="p">,</span> <span class="n">london_price_list</span><span class="p">,</span> <span class="n">boston_price_list</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
@@ -750,7 +750,7 @@ You can read the documentation of <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <p><strong>Exercise:</strong> To finish off this example, add a legend that identifies the London and Boston prices.  Remember that you have to add a <code class="docutils literal notranslate"><span class="pre">label</span></code> keyword each time you call <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>, and then call <code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>.</p>
-<p>Notice that the sandwiches in our figure are in the opposite order of the sandwiches in the original figure.  There is a Pyplot function that inverts the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis; see if you can find it and use it to reverse the order of the sandwich list.</p>
+<p>Notice that the sandwiches in our figure are in the opposite order of the sandwiches in the original figure.  There is a Pyplot function that inverts the y-axis; see if you can find it and use it to reverse the order of the sandwich list.</p>
 </section>
 <section id="zipf-s-law">
 <h2>Zipf’s Law<a class="headerlink" href="#zipf-s-law" title="Link to this heading">#</a></h2>
@@ -759,8 +759,8 @@ You can read the documentation of <code class="docutils literal notranslate"><sp
 This observation was most famously made by George Kingsley Zipf, so it is called Zipf’s law.</p>
 <p>To see if this law holds for the words in <em>War and Peace</em>, we’ll make a Zipf plot, which shows:</p>
 <ul class="simple">
-<li><p>The frequency of each word on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis, and</p></li>
-<li><p>The rank of each word on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis, starting from 1.</p></li>
+<li><p>The frequency of each word on the y-axis, and</p></li>
+<li><p>The rank of each word on the x-axis, starting from 1.</p></li>
 </ul>
 <p>In the previous chapter, we looped through the book and made a string that contains all punctuation characters.
 Here are the results, which we will need again.</p>
@@ -928,7 +928,7 @@ If we take the logarithm of both sides, we get</p>
 </section>
 <section id="logarithmic-scales">
 <h2>Logarithmic Scales<a class="headerlink" href="#logarithmic-scales" title="Link to this heading">#</a></h2>
-<p>We can use <code class="docutils literal notranslate"><span class="pre">plt.xscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis on a log scale.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">plt.xscale</span></code> to plot the x-axis on a log scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranks</span><span class="p">,</span> <span class="n">freq_list</span><span class="p">)</span>
@@ -944,7 +944,7 @@ If we take the logarithm of both sides, we get</p>
 <img alt="_images/329072caf8939213ad7f866bc6fc1fd42224d40d6f1b8e0db2e204a0e709c7eb.png" src="_images/329072caf8939213ad7f866bc6fc1fd42224d40d6f1b8e0db2e204a0e709c7eb.png" />
 </div>
 </div>
-<p>And <code class="docutils literal notranslate"><span class="pre">plt.yscale</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis on a log scale.</p>
+<p>And <code class="docutils literal notranslate"><span class="pre">plt.yscale</span></code> to plot the y-axis on a log scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranks</span><span class="p">,</span> <span class="n">freq_list</span><span class="p">)</span>
@@ -1008,7 +1008,7 @@ First, we’ll select the first and last elements from <code class="docutils lit
 <img alt="_images/92b6d5e8cb9065d4b5b7e8ea0d56738437c9b08f97e05d0ceab47925c228ab62.png" src="_images/92b6d5e8cb9065d4b5b7e8ea0d56738437c9b08f97e05d0ceab47925c228ab62.png" />
 </div>
 </div>
-<p>The slope of this line is the “rise over run”, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis divided by the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.
+<p>The slope of this line is the “rise over run”, that is, the difference on the y-axis divided by the difference on the x-axis.
 We can compute the rise using <code class="docutils literal notranslate"><span class="pre">np.log10</span></code> to compute the log base 10 of the first and last values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1036,7 +1036,7 @@ We can compute the rise using <code class="docutils literal notranslate"><span c
 </div>
 </div>
 </div>
-<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">log10</span></code> and <code class="docutils literal notranslate"><span class="pre">diff</span></code> to compute the run, that is, the difference on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.  Then divide the rise by the run to get the slope of the grey line.
+<p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">log10</span></code> and <code class="docutils literal notranslate"><span class="pre">diff</span></code> to compute the run, that is, the difference on the x-axis.  Then divide the rise by the run to get the slope of the grey line.
 Is it close to <span class="math notranslate nohighlight">\(-1\)</span>, as Zipf’s law predicts?</p>
 </section>
 <section id="summary">
