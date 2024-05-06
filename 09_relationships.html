@@ -57,8 +57,6 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '09_relationships';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -405,7 +403,7 @@ document.write(`
 <h2>Exploring relationships<a class="headerlink" href="#exploring-relationships" title="Link to this heading">#</a></h2>
 <p>So far we have mostly considered one variable at a time.  Now it’s time to explore relationships between variables.
 As a first example, we’ll look at the relationship between height and weight.
-We’ll use data from the Behavioral Risk Factor Surveillance System (BRFSS), which is run by the Centers for Disease Control (CDC).
+We’ll use data from the Behavioral Risk Factor Surveillance System (BRFSS), which is run by the Centers for Disease Control.
 Based on the BRFSS data from 2021, I have created an extract with one row for each survey respondent and one column for each of the variables I selected.</p>
 <p>You can read about the BRFSS at  at <a class="reference external" href="https://www.cdc.gov/brfss">https://www.cdc.gov/brfss</a>.</p>
 <div class="cell docutils container">
@@ -418,7 +416,7 @@ Based on the BRFSS data from 2021, I have created an extract with one row for ea
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(438693, 9)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(438693, 10)
 </pre></div>
 </div>
 </div>
@@ -455,6 +453,7 @@ Based on the BRFSS data from 2021, I have created an extract with one row for ea
       <th>_AGEG5YR</th>
       <th>_VEGESU1</th>
       <th>_INCOMG1</th>
+      <th>_LLCPWT</th>
       <th>_HTM4G10</th>
       <th>AGE</th>
     </tr>
@@ -462,58 +461,63 @@ Based on the BRFSS data from 2021, I have created an extract with one row for ea
   <tbody>
     <tr>
       <th>0</th>
-      <td>160.0</td>
-      <td>65.77</td>
-      <td>2</td>
-      <td>1.0</td>
-      <td>3.14</td>
-      <td>5.0</td>
       <td>150.0</td>
-      <td>22.0</td>
+      <td>32.66</td>
+      <td>2</td>
+      <td>11.0</td>
+      <td>2.14</td>
+      <td>3.0</td>
+      <td>744.745531</td>
+      <td>140.0</td>
+      <td>72.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>168.0</td>
-      <td>78.93</td>
-      <td>1</td>
-      <td>8.0</td>
       <td>NaN</td>
-      <td>6.0</td>
+      <td>2</td>
+      <td>10.0</td>
+      <td>1.28</td>
+      <td>NaN</td>
+      <td>299.137394</td>
       <td>160.0</td>
-      <td>57.0</td>
+      <td>67.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>NaN</td>
-      <td>58.97</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>1.00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>165.0</td>
+      <td>77.11</td>
+      <td>2</td>
+      <td>11.0</td>
+      <td>0.71</td>
+      <td>2.0</td>
+      <td>587.862986</td>
+      <td>160.0</td>
+      <td>72.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>168.0</td>
-      <td>74.84</td>
-      <td>1</td>
-      <td>3.0</td>
-      <td>2.28</td>
-      <td>7.0</td>
+      <td>163.0</td>
+      <td>88.45</td>
+      <td>2</td>
+      <td>9.0</td>
+      <td>1.65</td>
+      <td>5.0</td>
+      <td>1099.621570</td>
       <td>160.0</td>
-      <td>32.0</td>
+      <td>62.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>168.0</td>
-      <td>81.65</td>
-      <td>2</td>
+      <td>180.0</td>
+      <td>93.44</td>
+      <td>1</td>
+      <td>12.0</td>
+      <td>2.58</td>
       <td>2.0</td>
-      <td>1.28</td>
-      <td>4.0</td>
-      <td>160.0</td>
-      <td>27.0</td>
+      <td>1711.825870</td>
+      <td>170.0</td>
+      <td>77.0</td>
     </tr>
   </tbody>
 </table>
@@ -546,13 +550,13 @@ As a first attempt, we’ll use <code class="docutils literal notranslate"><span
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f4617188abc48fb9e4fc4bb887a4af6f8f18b2ab0eb1468b25750e0f2a5ab55f.png" src="_images/f4617188abc48fb9e4fc4bb887a4af6f8f18b2ab0eb1468b25750e0f2a5ab55f.png" />
+<img alt="_images/cc8f3a9f24568061129ba1ad2bfbb8612bb0c40faf9b4038dc5a2495aa57ec7a.png" src="_images/cc8f3a9f24568061129ba1ad2bfbb8612bb0c40faf9b4038dc5a2495aa57ec7a.png" />
 </div>
 </div>
 <p>Each marker represents the height and weight of one person.
 Based on the shape of the result, it looks like taller people are heavier, but there are a few things about this plot that make it hard to interpret.
 Most importantly, it is <strong>overplotted</strong>, which means that there are markers piled on top of each other so you can’t tell where there are a lot of data points and where there is just one.
-When that happens, the results can be misleading.</p>
+When that happens, the picture can be misleading.</p>
 <p>One way to improve the plot is to use transparency, which we can do with the keyword argument <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.
 The lower the value of alpha, the more transparent each data point is.<br />
 Here’s what it looks like with <code class="docutils literal notranslate"><span class="pre">alpha=0.01</span></code>.</p>
@@ -567,7 +571,7 @@ Here’s what it looks like with <code class="docutils literal notranslate"><spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/acb5c69ebf865007740f39480faed639eeea3d99d91fd5887e6f1d58b51fa61b.png" src="_images/acb5c69ebf865007740f39480faed639eeea3d99d91fd5887e6f1d58b51fa61b.png" />
+<img alt="_images/5d24921f5bc270f428e7467eb099cd1df053f1d9780f01a05bb62a135e496974.png" src="_images/5d24921f5bc270f428e7467eb099cd1df053f1d9780f01a05bb62a135e496974.png" />
 </div>
 </div>
 <p>This is better, but there are so many data points, the scatter plot is still overplotted.  The next step is to make the markers smaller.
@@ -584,14 +588,13 @@ Here’s what it looks like.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d95e44a267ed351b6eb1bd981a5ec40b49a933861e958d635d82fee855bfc7a9.png" src="_images/d95e44a267ed351b6eb1bd981a5ec40b49a933861e958d635d82fee855bfc7a9.png" />
+<img alt="_images/f75936395ade273e3d901d2a99bd0e81107f5557459a7c285faa39c4a2a6c8a6.png" src="_images/f75936395ade273e3d901d2a99bd0e81107f5557459a7c285faa39c4a2a6c8a6.png" />
 </div>
 </div>
 <p>Again, this is better, but now we can see that the points fall in discrete columns.
 That’s because most heights were reported in inches and converted to centimeters.
-We can break up the columns by adding some random noise to the values – in effect, we are filling in the values that got rounded off.
-Adding random noise like this is called <strong>jittering</strong>.
-We can use NumPy to add noise from a normal distribution with mean <code class="docutils literal notranslate"><span class="pre">0</span></code> and standard deviation <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+We can break up the columns by adding random noise to the values, which is called <strong>jittering</strong>.
+We’ll can use NumPy to generate noise from a normal distribution with mean 0 and standard deviation 2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -614,7 +617,7 @@ We can use NumPy to add noise from a normal distribution with mean <code class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3fcfb464540bfba941e2a9911b239b23d49acf3ca298a776768f806c4286af1b.png" src="_images/3fcfb464540bfba941e2a9911b239b23d49acf3ca298a776768f806c4286af1b.png" />
+<img alt="_images/04bfe018098ffa06a45e66b51d04da86f9213842624176b5f837a1d38317439d.png" src="_images/04bfe018098ffa06a45e66b51d04da86f9213842624176b5f837a1d38317439d.png" />
 </div>
 </div>
 <p>The columns are gone, but now we can see that there are rows where people rounded off their weight.
@@ -640,11 +643,11 @@ We can fix that by jittering weight, too.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aa36321c9198e3b723a3cd86d1e4f26416cb2054360f42889e662a538f4f7ef7.png" src="_images/aa36321c9198e3b723a3cd86d1e4f26416cb2054360f42889e662a538f4f7ef7.png" />
+<img alt="_images/5ccfe21459ba897a5846e785a5cc733ff161f3fa5376aa8e634c5af088d18d53.png" src="_images/5ccfe21459ba897a5846e785a5cc733ff161f3fa5376aa8e634c5af088d18d53.png" />
 </div>
 </div>
 <p>Finally, let’s zoom in on the area where most of the data points are.
-The functions <code class="docutils literal notranslate"><span class="pre">xlim</span></code> and <code class="docutils literal notranslate"><span class="pre">ylim</span></code> set the lower and upper limits of the <span class="math notranslate nohighlight">\(x\)</span>-axis and <span class="math notranslate nohighlight">\(y\)</span>-axis; in this case, we plot heights from 140 to 200 centimeters and weights up to 160 kilograms.
+The functions <code class="docutils literal notranslate"><span class="pre">xlim</span></code> and <code class="docutils literal notranslate"><span class="pre">ylim</span></code> set the lower and upper limits of the x-axis and y-axis; in this case, we plot heights from 140 to 200 centimeters and weights up to 160 kilograms.
 Here’s what it looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -659,7 +662,7 @@ Here’s what it looks like.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/17a577539aa1441248213d84989bb556d7738a96e7516615e9e31a28b6ab088b.png" src="_images/17a577539aa1441248213d84989bb556d7738a96e7516615e9e31a28b6ab088b.png" />
+<img alt="_images/c24ee4bdb8e096880388fb73219f6882f18a68e5fefa9148c5fbfdd6bdb46858.png" src="_images/c24ee4bdb8e096880388fb73219f6882f18a68e5fefa9148c5fbfdd6bdb46858.png" />
 </div>
 </div>
 <p>Now we have a reliable picture of the relationship between height and weight.
@@ -673,7 +676,7 @@ They are clearly different, and they suggest different relationships between the
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the figure size</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
 
 <span class="c1"># Create subplots with 2 rows, 1 column, and start plot 1</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -702,7 +705,7 @@ They are clearly different, and they suggest different relationships between the
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/6c3a8283bd548435c2e41fcdd2e1c229df2be05cc67dc1272350d41e504d411d.png" src="_images/6c3a8283bd548435c2e41fcdd2e1c229df2be05cc67dc1272350d41e504d411d.png" />
+<img alt="_images/5d1d763ecda943e17f6b224671cc0aac809f6a54e6d0193787cc409ab2c6add7.png" src="_images/5d1d763ecda943e17f6b224671cc0aac809f6a54e6d0193787cc409ab2c6add7.png" />
 </div>
 </div>
 <p>The point of this example is that it takes some effort to make an effective scatter plot.</p>
@@ -716,20 +719,13 @@ The values in <code class="docutils literal notranslate"><span class="pre">AGE</
 <li><p>Extract the variable <code class="docutils literal notranslate"><span class="pre">'AGE'</span></code> from <code class="docutils literal notranslate"><span class="pre">brfss</span></code> and assign it to <code class="docutils literal notranslate"><span class="pre">age</span></code>.</p></li>
 <li><p>Plot the PMF of <code class="docutils literal notranslate"><span class="pre">age</span></code> as a bar chart, using <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> from <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code>.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong>Exercise:</strong> Now let’s look at the distribution of weight.
 The column that contains weight in kilograms is <code class="docutils literal notranslate"><span class="pre">WTKG3</span></code>.
 Because this column contains many unique values, displaying it as a PMF doesn’t work very well.
 Instead, use <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> from <code class="docutils literal notranslate"><span class="pre">empiricaldist</span></code> to plot the CDF of weight.</p>
 <p><strong>Exercise:</strong> Now make a scatter plot of <code class="docutils literal notranslate"><span class="pre">weight</span></code> versus <code class="docutils literal notranslate"><span class="pre">age</span></code>.
 Adjust <code class="docutils literal notranslate"><span class="pre">alpha</span></code> and <code class="docutils literal notranslate"><span class="pre">markersize</span></code> to avoid overplotting.
-Use <code class="docutils literal notranslate"><span class="pre">ylim</span></code> to limit the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis from 0 to 200 kilograms.</p>
+Use <code class="docutils literal notranslate"><span class="pre">ylim</span></code> to limit the y-axis from 0 to 200 kilograms.</p>
 <p><strong>Exercise:</strong> In the previous exercise, the ages fall in columns because they’ve been rounded into 5-year bins.
 If we jitter them, the scatter plot will show the relationship more clearly.</p>
 <ul class="simple">
@@ -739,9 +735,9 @@ If we jitter them, the scatter plot will show the relationship more clearly.</p>
 </section>
 <section id="visualizing-relationships">
 <h2>Visualizing relationships<a class="headerlink" href="#visualizing-relationships" title="Link to this heading">#</a></h2>
-<p>In the previous section we used scatter plots to visualize relationships between variables, and in the exercises, you explored the relationship between age and weight.
-In this section, we’ll see other ways to visualize these relationships, including box plots and violin plots.
-Let’s start with a scatter plot of weight versus age.</p>
+<p>In the previous section we used scatter plots to visualize the relationship between weight and height.
+In this section, we’ll explore the relationship between weight and <em>age</em>, and we’ll see two new ways to visualize relationships: box plots and violin plots.</p>
+<p>Let’s start with a scatter plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">]</span>
@@ -752,20 +748,18 @@ Let’s start with a scatter plot of weight versus age.</p>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Weight in kg&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Weight versus age&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c651fafb18b48c74a4b4087e7eef0fa172c29a0a57d723b151fc15fe6936edd.png" src="_images/8c651fafb18b48c74a4b4087e7eef0fa172c29a0a57d723b151fc15fe6936edd.png" />
+<img alt="_images/62620ad402b5e136f2874b3b480778b6ed22d572f1c34bdb73a90c9baa06e171.png" src="_images/62620ad402b5e136f2874b3b480778b6ed22d572f1c34bdb73a90c9baa06e171.png" />
 </div>
 </div>
-<p>In this version of the scatter plot, the ages are jittered, but there’s still space between the columns.
-That makes it possible to see the shape of the distribution in each age group, and the differences between groups.
-With this view, it looks like average weights increase until age 40 or 50, and then start to decrease.</p>
+<p>The ages are jittered, but the standard deviation of the noise is small enough that there’s still space between the columns.
+That makes it possible to see the shape of the distribution in each age group, as well as the differences between groups.</p>
 <p>If we take this idea one step farther, we can use KDE to estimate the density function in each column and plot it.
-And there’s a name for that – it’s called a <strong>violin plot</strong>.
+This way of visualizing the data is called a <strong>violin plot</strong>.
 Seaborn provides a function that makes violin plots, but before we can use it, we have to get rid of any rows with missing data.
 Here’s how:</p>
 <div class="cell docutils container">
@@ -776,13 +770,13 @@ Here’s how:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(393047, 9)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(393080, 10)
 </pre></div>
 </div>
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">dropna</span></code> creates a new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> that omits the rows in <code class="docutils literal notranslate"><span class="pre">brfss</span></code> where <code class="docutils literal notranslate"><span class="pre">AGE</span></code> or <code class="docutils literal notranslate"><span class="pre">WTKG3</span></code> are <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.
-Now we can call <code class="docutils literal notranslate"><span class="pre">violinplot</span></code>.</p>
+Now we can call <code class="docutils literal notranslate"><span class="pre">violinplot</span></code> like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -796,16 +790,16 @@ Now we can call <code class="docutils literal notranslate"><span class="pre">vio
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3aded7c417775acb37f5df16ec4dc2544f97a4d9f28d76aa82de97801d9f2bcd.png" src="_images/3aded7c417775acb37f5df16ec4dc2544f97a4d9f28d76aa82de97801d9f2bcd.png" />
+<img alt="_images/257536c99c4d472ef2df481175328ef6b65bbaf4f1cd9f31647ff70a9567bcb9.png" src="_images/257536c99c4d472ef2df481175328ef6b65bbaf4f1cd9f31647ff70a9567bcb9.png" />
 </div>
 </div>
 <p>Documentation of <code class="docutils literal notranslate"><span class="pre">violinplot</span></code> is at <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.violinplot.html">https://seaborn.pydata.org/generated/seaborn.violinplot.html</a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">data</span></code> is the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> we just created; the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arguments are the names of columns from <code class="docutils literal notranslate"><span class="pre">data</span></code>.
-The argument <code class="docutils literal notranslate"><span class="pre">inner=None</span></code> simplifies the plot a little.
+<p>The <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> arguments are the names of columns from <code class="docutils literal notranslate"><span class="pre">data</span></code>, which is the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> we just created.
+The argument <code class="docutils literal notranslate"><span class="pre">inner=None</span></code> simplifies the plot.
 In the result each shape shows the distribution of weight in one age group.
 The width of each shape is proportional to the estimated density, so it’s like two vertical KDEs plotted back to back.</p>
-<p>Another, related way to look at data like this is called a <strong>box plot</strong>, which represents summary statistics for the values in each group.<br />
-The code to generate a box plot is very similar.</p>
+<p>Another, related way to look at data like this is called a <strong>box plot</strong>, which shows summary statistics of the values in each group.
+Seaborn provides a function that makes box plots – we can call it like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;WTKG3&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">whis</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -817,23 +811,22 @@ The code to generate a box plot is very similar.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/49dbc32cff899850ef6e5cca9f014a9f651dad69eb880ade75721ca675ac690a.png" src="_images/49dbc32cff899850ef6e5cca9f014a9f651dad69eb880ade75721ca675ac690a.png" />
+<img alt="_images/380058eba50d87ff58cc6d2ec61c62ef89f5c8280941a69ef5c3b4c644123fa4.png" src="_images/380058eba50d87ff58cc6d2ec61c62ef89f5c8280941a69ef5c3b4c644123fa4.png" />
 </div>
 </div>
-<p>The argument <code class="docutils literal notranslate"><span class="pre">whis=10</span></code> turns off a feature we don’t need.
-If you are curious about it, you can read about it in the Seaborn documentation.</p>
 <p>Documentation of <code class="docutils literal notranslate"><span class="pre">boxplot</span></code> is at <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.boxplot.html">https://seaborn.pydata.org/generated/seaborn.boxplot.html</a>.</p>
 <p>Each box represents the distribution of weight in an age group.
-The height of each box represents the range from the 25th to the 75th percentile.
-The line in the middle of each box is the median.
-The spines sticking out of the top and bottom show the minimum and maximum values.</p>
+The height of each box represents the interquartile range, which is the range from the 25th to the 75th percentile.
+The line in the middle of each box is the median.</p>
+<p>The keyword argument <code class="docutils literal notranslate"><span class="pre">whis</span></code> determines the behavior of the whiskers that extend above and below the boxes.
+With <code class="docutils literal notranslate"><span class="pre">whis=10</span></code>, they extend far enough to show the minimum and maximum values.</p>
 <p>In my opinion, this plot gives us the best view of the relationship between weight and age.</p>
 <ul class="simple">
-<li><p>Looking at the medians, it seems like people in their 40s are the heaviest; younger and older people are lighter.</p></li>
+<li><p>Looking at the medians, we can see that people in their 40s are the heaviest; younger and older people are lighter.</p></li>
 <li><p>Looking at the sizes of the boxes, it seems like people in their 40s have the most variability in weight, too.</p></li>
-<li><p>These plots also show how skewed the distribution of weight is – that is, the heaviest people are much farther from the median than the lightest people.</p></li>
+<li><p>Looking at the whiskers, we can see that the distribution of weight is skewed – that is, the heaviest people are farther from the median than the lightest people.</p></li>
 </ul>
-<p>For data that skews toward higher values, it is sometimes useful to look at it on a logarithmic scale.
+<p>When a distribution is skewed toward higher values, it is sometimes useful to plot it on a logarithmic scale.
 We can do that with the Pyplot function <code class="docutils literal notranslate"><span class="pre">yscale</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -847,11 +840,11 @@ We can do that with the Pyplot function <code class="docutils literal notranslat
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/128ff078ebafff3051d8297debe7f54c38e55da4bfb5cad9a1f4fba9acf662c7.png" src="_images/128ff078ebafff3051d8297debe7f54c38e55da4bfb5cad9a1f4fba9acf662c7.png" />
+<img alt="_images/7a038eb44cbeb86c654acc6a25c30d6698e4b44aed26e5c498e4540b8514cfae.png" src="_images/7a038eb44cbeb86c654acc6a25c30d6698e4b44aed26e5c498e4540b8514cfae.png" />
 </div>
 </div>
-<p>On a log scale, the distributions are symmetric – so the spines extend about the same distance in both directions, the boxes are close to the middle of the figure, and we can see the relationship between age and weight clearly.</p>
-<p>In the following exercises, you’ll have a chance to generate violin and box plots for other variables.</p>
+<p>On a log scale, the distributions are symmetric, so the whiskers extend about the same distance in both directions, the boxes are close to the middle of the figure, and we can see the relationship between age and weight clearly.</p>
+<p>In the following exercises, you can generate violin and box plots for other variables.</p>
 <p><strong>Exercise:</strong> Previously we looked at a scatter plot of height and weight, and saw that taller people tend to be heavier.
 Now let’s take a closer look using a box plot.
 The <code class="docutils literal notranslate"><span class="pre">brfss</span></code> DataFrame contains a column named <code class="docutils literal notranslate"><span class="pre">_HTMG10</span></code> that represents height in centimeters, binned into 10 cm groups.</p>
@@ -859,23 +852,21 @@ The <code class="docutils literal notranslate"><span class="pre">brfss</span></c
 <li><p>Make a box plot that shows the distribution of weight in each height group.</p></li>
 <li><p>Plot the y-axis on a logarithmic scale.</p></li>
 </ul>
-<p>Suggestion: If the labels on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis collide, you can rotate them like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>Suggestion: If the labels on the x-axis collide, you can rotate them with <code class="docutils literal notranslate"><span class="pre">plt.xticks(rotation=45)</span></code>.</p>
 <p><strong>Exercise:</strong> As a second example, let’s look at the relationship between income and height.  In the BRFSS, income is represented as a categorical variable – that is, respondents are assigned to one of seven income categories.
 The column name is <code class="docutils literal notranslate"><span class="pre">_INCOMG1</span></code>.
 Before we connect income with anything else, let’s look at the distribution by computing the PMF.
-Extract <code class="docutils literal notranslate"><span class="pre">_INCOMG1</span></code> from <code class="docutils literal notranslate"><span class="pre">brfss</span></code> and assign it to <code class="docutils literal notranslate"><span class="pre">income</span></code> – then plot the PMF of <code class="docutils literal notranslate"><span class="pre">income</span></code> as a bar chart.</p>
+Extract <code class="docutils literal notranslate"><span class="pre">_INCOMG1</span></code> from <code class="docutils literal notranslate"><span class="pre">brfss</span></code> and assign it to <code class="docutils literal notranslate"><span class="pre">income</span></code>.
+Then plot the PMF of <code class="docutils literal notranslate"><span class="pre">income</span></code> as a bar chart.</p>
 <p><strong>Exercise:</strong> Generate a violin plot that shows the distribution of height in each income group.
 Can you see a relationship between these variables?</p>
 </section>
 <section id="quantifying-correlation">
 <h2>Quantifying Correlation<a class="headerlink" href="#quantifying-correlation" title="Link to this heading">#</a></h2>
 <p>In the previous section, we visualized relationships between pairs of variables.
-Now we’ll learn about the <strong>coefficient of correlation</strong>, which quantifies the strength of these relationships.
-When people say “correlation” casually, they might mean any relationship between two variables.
-In statistics, it usually means Pearson’s correlation coefficient, which is a number between <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> that quantifies the strength of a linear relationship between variables.
+Now we’ll quantify the strength of those relationships by computing their correlation.</p>
+<p>When people say “correlation” casually, they might mean any relationship between two variables.
+In statistics, it usually means a <strong>correlation coefficient</strong>, which is a number between -1 and 1 that quantifies the strength of a linear relationship between variables.
 To demonstrate, we’ll select three columns from the BRFSS dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -921,19 +912,19 @@ With this subset of the data, we can use the <code class="docutils literal notra
     <tr>
       <th>HTM4</th>
       <td>1.000000</td>
-      <td>0.453259</td>
-      <td>-0.092798</td>
+      <td>0.469398</td>
+      <td>-0.122187</td>
     </tr>
     <tr>
       <th>WTKG3</th>
-      <td>0.453259</td>
+      <td>0.469398</td>
       <td>1.000000</td>
-      <td>0.001107</td>
+      <td>-0.067902</td>
     </tr>
     <tr>
       <th>AGE</th>
-      <td>-0.092798</td>
-      <td>0.001107</td>
+      <td>-0.122187</td>
+      <td>-0.067902</td>
       <td>1.000000</td>
     </tr>
   </tbody>
@@ -941,12 +932,14 @@ With this subset of the data, we can use the <code class="docutils literal notra
 </div></div></div>
 </div>
 <p>The result is a <strong>correlation matrix</strong>.
-Reading across the first row, the correlation of <code class="docutils literal notranslate"><span class="pre">HTM4</span></code> with itself is <code class="docutils literal notranslate"><span class="pre">1</span></code>.
-That’s expected – the correlation of anything with itself is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
-<p>The next entry is more interesting: the correlation of height and weight is about <code class="docutils literal notranslate"><span class="pre">0.45</span></code>.  It’s positive, which means taller people are heavier, and it’s moderate in strength, which means it has some predictive value – if you know someone’s height, you can make a somewhat better guess about their weight.</p>
-<p>The correlation between height and age is about <code class="docutils literal notranslate"><span class="pre">-0.09</span></code>.
+Reading across the first row, the correlation of <code class="docutils literal notranslate"><span class="pre">HTM4</span></code> with itself is 1.
+That’s expected – the correlation of anything with itself is 1.</p>
+<p>The next entry is more interesting: the correlation of height and weight is about 0.45.
+It’s positive, which means taller people are heavier, and it’s moderate in strength, which means it has some predictive value – if you know someone’s height, you can make a somewhat better guess about their weight.</p>
+<p>The correlation between height and age is about -0.09.
 It’s negative, which means that older people tend to be shorter, but it’s weak, which means that knowing someone’s age would not help much if you were trying to guess their height.</p>
-<p>The correlation between weight and age is even smaller.
+<p>Reading across the second row, we can see that the correlation of height and weight is the same as the correlation of weight and height – because correlation is commutative.</p>
+<p>And we can see that the correlation of weight and age is only 0.001, which is very small.
 It is tempting to conclude that there is no relationship between age and weight, but we have already seen that there is.
 So why is the correlation so low?
 Remember that the relationship between weight and age looks like this.</p>
@@ -968,14 +961,13 @@ Remember that the relationship between weight and age looks like this.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/49dbc32cff899850ef6e5cca9f014a9f651dad69eb880ade75721ca675ac690a.png" src="_images/49dbc32cff899850ef6e5cca9f014a9f651dad69eb880ade75721ca675ac690a.png" />
+<img alt="_images/380058eba50d87ff58cc6d2ec61c62ef89f5c8280941a69ef5c3b4c644123fa4.png" src="_images/380058eba50d87ff58cc6d2ec61c62ef89f5c8280941a69ef5c3b4c644123fa4.png" />
 </div>
 </div>
-<p>People in their forties are the heaviest; younger and older people are lighter.
-So this relationship is nonlinear.
+<p>As age increases, weight goes up and then down, so the relationship is nonlinear.
 But correlation only measures linear relationships.
-If the relationship is nonlinear, correlation generally underestimates how strong it is.</p>
-<p>To demonstrate this point, I’ll generate some fake data: <code class="docutils literal notranslate"><span class="pre">xs</span></code> contains equally-spaced points between <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>; <code class="docutils literal notranslate"><span class="pre">ys</span></code> is <code class="docutils literal notranslate"><span class="pre">xs</span></code> squared plus some random noise.</p>
+When the relationship is nonlinear, correlation generally underestimates how strong it is.</p>
+<p>To demonstrate this point more clearly, let’s generate some fake data: <code class="docutils literal notranslate"><span class="pre">xs</span></code> contains equally-spaced points between -1 and 1; <code class="docutils literal notranslate"><span class="pre">ys</span></code> is <code class="docutils literal notranslate"><span class="pre">xs</span></code> squared plus some random noise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -984,7 +976,7 @@ If the relationship is nonlinear, correlation generally underestimates how stron
 </div>
 </div>
 </div>
-<p>Here’s the scatter plot of <code class="docutils literal notranslate"><span class="pre">xs</span></code> and <code class="docutils literal notranslate"><span class="pre">ys</span></code>.</p>
+<p>Here’s the scatter plot of these values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -995,10 +987,10 @@ If the relationship is nonlinear, correlation generally underestimates how stron
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/83c9982e43b754c248a63d6f6258b8f22e9808bae617b8e0b5d7bea8c79f0191.png" src="_images/83c9982e43b754c248a63d6f6258b8f22e9808bae617b8e0b5d7bea8c79f0191.png" />
+<img alt="_images/095d8a8a376e1ddf9bccb310409789148da09c0a3a9541a80a4fc41f369ba00e.png" src="_images/095d8a8a376e1ddf9bccb310409789148da09c0a3a9541a80a4fc41f369ba00e.png" />
 </div>
 </div>
-<p>It’s clear that this is a strong relationship – if you are given <code class="docutils literal notranslate"><span class="pre">x</span></code>, you can make a much better guess about <code class="docutils literal notranslate"><span class="pre">y</span></code>.
+<p>This is a strong relationship in the sense that you can make a much better guess about <code class="docutils literal notranslate"><span class="pre">y</span></code> if you are given <code class="docutils literal notranslate"><span class="pre">x</span></code>.
 But here’s the correlation matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1007,73 +999,69 @@ But here’s the correlation matrix:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.01993483],
-       [0.01993483, 1.        ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.02751105],
+       [0.02751105, 1.        ]])
 </pre></div>
 </div>
 </div>
 </div>
-<p>Even though there is a strong non-linear relationship, the computed correlation is close to <code class="docutils literal notranslate"><span class="pre">0</span></code>.
-In general, if correlation is high – that is, close to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code> – you can conclude that there is a strong linear relationship.
-But if correlation is close to <code class="docutils literal notranslate"><span class="pre">0</span></code>, that doesn’t mean there is no relationship; there might be a non-linear relationship.
+<p>Even though there is a strong non-linear relationship, the computed correlation is close to zero.
+In general, if correlation is high – that is, close to 1 or -1 – you can conclude that there is a strong linear relationship.
+But if correlation is close to zero, that doesn’t mean there is no relationship; there might be a non-linear relationship.
 This is one reason correlation can be misleading.</p>
 <p>And there’s another reason to be careful with correlation – it doesn’t mean what people take it to mean.
-Specifically, correlation says nothing about slope.
+Specifically, correlation says nothing about the slope of the line that fits the data.
 If we say that two variables are correlated, that means we can use one to predict the other.  But that might not be what we care about.</p>
 <p>For example, suppose we are concerned about the health effects of weight gain, so we plot weight versus age from 20 to 50 years old.
 I’ll generate two fake datasets to demonstrate the point.
 In each dataset, <code class="docutils literal notranslate"><span class="pre">xs</span></code> represents age and <code class="docutils literal notranslate"><span class="pre">ys</span></code> represents weight.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">xs1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">ys1</span> <span class="o">=</span> <span class="mi">75</span> <span class="o">+</span> <span class="mf">0.02</span> <span class="o">*</span> <span class="n">xs1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs1</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span> <span class="n">ys1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Weight in kg&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake dataset #1&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
-</details>
-<div class="cell_output docutils container">
-<img alt="_images/d186167c2f966dae37b7e4d9e7e370df3936e6e8fdd3f5b632ae0f3a11155846.png" src="_images/d186167c2f966dae37b7e4d9e7e370df3936e6e8fdd3f5b632ae0f3a11155846.png" />
 </div>
-</div>
-<p>And here’s the second dataset:</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">xs2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">ys2</span> <span class="o">=</span> <span class="mi">65</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">xs2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs2</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span> <span class="n">ys2</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Weight in kg&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake dataset #2&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
-</details>
+</div>
+<p>Here’s what the two scatter plots look like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span> <span class="n">ys1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Weight in kg&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake dataset #1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span> <span class="n">ys2</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Weight in kg&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake dataset #2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
-<img alt="_images/817e2365704d2f37fcb6860c0d61b756d5cf85637a7e03af321b18b43752d6a2.png" src="_images/817e2365704d2f37fcb6860c0d61b756d5cf85637a7e03af321b18b43752d6a2.png" />
+<img alt="_images/f48973daa6bce59d65bf37d1e2c35924bbb32ef319cd38486dd4cb7430cdfab2.png" src="_images/f48973daa6bce59d65bf37d1e2c35924bbb32ef319cd38486dd4cb7430cdfab2.png" />
 </div>
 </div>
 <p>I constructed these examples so they look similar, but they have substantially different correlations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span> <span class="n">ys1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span> <span class="n">ys1</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">rho1</span>
 </pre></div>
 </div>
@@ -1086,7 +1074,7 @@ In each dataset, <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span> <span class="n">ys2</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span> <span class="n">ys2</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">rho2</span>
 </pre></div>
 </div>
@@ -1097,14 +1085,14 @@ In each dataset, <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 </div>
 </div>
-<p>In the first example, the correlation is strong, close to <code class="docutils literal notranslate"><span class="pre">0.75</span></code>.
-In the second example, the correlation is moderate, close to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.
+<p>In the first dataset, the correlation is strong, close to 0.75.
+In the second dataset, the correlation is moderate, close to 0.5.
 So we might think the first relationship is more important.
-But look more closely at the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis in both figures.</p>
+But look more closely at the y-axis in both figures.</p>
 <p>In the first example, the average weight gain over 30 years is less than 1 kilogram; in the second it is more than 5 kilograms!
-If we are concerned about the health effects of weight gain, the second relationship is probably more important, even though the correlation is lower.<br />
-In this scenario, the statistic we really care about is the line of best fit, not the coefficient of correlation.
-In the next section, we’ll see how to fit a line to this data, but first let’s practice with correlation.</p>
+If we are concerned about the health effects of weight gain, the second relationship is probably more important, even though the correlation is lower.
+In this scenario, the statistic we really care about is the slope of the line that fits the data, not the coefficient of correlation.
+In the next section, we’ll use linear regression to compute that slope, but first let’s practice with correlation.</p>
 <p><strong>Exercise:</strong> The purpose of the BRFSS is to explore health risk factors, so it includes questions about diet.
 The column <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code> represents the number of servings of vegetables respondents reported eating per day.
 Before we compute correlations, let’s look at the distribution of this variable.
@@ -1126,41 +1114,10 @@ How would you describe the relationship, if any?</p>
 <p>In the previous section we saw that correlation does not always measure what we really want to know.
 In this section, we look at an alternative: simple linear regression.
 Here “simple” means there are only two variables, as opposed to “multiple” regression, which can work with any number of variables.</p>
-<p>Let’s look again at the relationship between weight and age.
-In the previous section, I generated two fake datasets to make a point:</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span> <span class="n">ys1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Weight in kg&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake dataset #1&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span> <span class="n">ys2</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Weight in kg&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fake dataset #2&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<img alt="_images/238626719ebb18738662c783563277fc496185049bec051efb8290720c128f7e.png" src="_images/238626719ebb18738662c783563277fc496185049bec051efb8290720c128f7e.png" />
-</div>
-</div>
-<p>The one on the left has higher correlation, about <code class="docutils literal notranslate"><span class="pre">0.75</span></code> compared to <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.
-But in this context, the statistic we probably care about is the slope of the line, not the correlation coefficient.
-To estimate the slope, we can use <code class="docutils literal notranslate"><span class="pre">linregress</span></code> from the SciPy <code class="docutils literal notranslate"><span class="pre">stats</span></code> library.</p>
+<p>In the previous section, I generated fake datasets showing two hypothetical relationships between weight and age.
+We computed correlations for both datasets, now let’s compute lines of best fit.
+We can use <code class="docutils literal notranslate"><span class="pre">linregress</span></code> from the SciPy <code class="docutils literal notranslate"><span class="pre">stats</span></code> library, which takes two sequences as arguments.
+Here are the results for Fake Dataset #1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
@@ -1181,9 +1138,8 @@ To estimate the slope, we can use <code class="docutils literal notranslate"><sp
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">linregress</span></code> takes two sequences as arguments.
-The result is a <code class="docutils literal notranslate"><span class="pre">LinregressResult</span></code> object that contains five values: <code class="docutils literal notranslate"><span class="pre">slope</span></code> is the slope of the line of best fit for the data; <code class="docutils literal notranslate"><span class="pre">intercept</span></code> is the intercept; and <code class="docutils literal notranslate"><span class="pre">rvalue</span></code> is correlation.
-We’ll interpret some of the other values later.</p>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">LinregressResult</span></code> object that contains five values: <code class="docutils literal notranslate"><span class="pre">slope</span></code> is the slope of the line of best fit for the data, <code class="docutils literal notranslate"><span class="pre">intercept</span></code> is the intercept, and <code class="docutils literal notranslate"><span class="pre">rvalue</span></code> is correlation.
+We’ll ignore the other values for now.</p>
 <p>For Fake Dataset #1, the estimated slope is about 0.019 kilograms per year or about 0.56 kilograms over the 30-year range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1216,7 +1172,7 @@ We’ll interpret some of the other values later.</p>
 </div>
 </div>
 </div>
-<p>The estimated slope is almost 10 times higher: about 0.18 kilograms per year or about 5.3 kilograms per 30 years.</p>
+<p>The estimated slope is almost 10 times higher, about 0.18 kilograms per year or about 5.3 kilograms per 30 years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res2</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">30</span>
@@ -1229,30 +1185,22 @@ We’ll interpret some of the other values later.</p>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">rvalue</span></code> confirms what we saw before – the first example has higher correlation, about 0.75 compared to 0.5.</p>
+<p>We can use the results from <code class="docutils literal notranslate"><span class="pre">linregress</span></code> to plot the line of best fit and see how it relates to the data.
+First we get the minimum and maximum of the observed <code class="docutils literal notranslate"><span class="pre">xs</span></code>.
+Then we multiply by the slope and add the intercept.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res1</span><span class="o">.</span><span class="n">rvalue</span><span class="p">,</span> <span class="n">res2</span><span class="o">.</span><span class="n">rvalue</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">xs1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xs1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">])</span>
+<span class="n">fy</span> <span class="o">=</span> <span class="n">res1</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res1</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">fx</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.7579660563439402, 0.47827769765763173)
-</pre></div>
 </div>
-</div>
-</div>
-<p>But the strength of the effect, as measured by the slope of the line, is about 10 times higher in the second example.</p>
-<p>We can use the results from <code class="docutils literal notranslate"><span class="pre">linregress</span></code> to compute the line of best fit.
-First we get the minimum and maximum of the observed <code class="docutils literal notranslate"><span class="pre">xs</span></code>; then we multiply by the slope and add the intercept.
-Here’s what that looks like for the first example.</p>
+<p>Here’s what the result looks like for the first example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span> <span class="n">ys1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">xs1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xs1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">])</span>
-<span class="n">fy</span> <span class="o">=</span> <span class="n">res1</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res1</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">fx</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
@@ -1262,17 +1210,23 @@ Here’s what that looks like for the first example.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1d08b698f32be1fcb5e86216a03189a7c266e7c9e8d6072e8a2cd2aebbfaa01a.png" src="_images/1d08b698f32be1fcb5e86216a03189a7c266e7c9e8d6072e8a2cd2aebbfaa01a.png" />
+<img alt="_images/58e383aa80f655178aa3d2ca0c9c7d49e9b101404f886fd2f191fbd387cee4f2.png" src="_images/58e383aa80f655178aa3d2ca0c9c7d49e9b101404f886fd2f191fbd387cee4f2.png" />
 </div>
 </div>
-<p>And here’s what it looks like for the second example.</p>
+<p>We can do the same thing for the second example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">xs2</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xs2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">])</span>
+<span class="n">fy</span> <span class="o">=</span> <span class="n">res2</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res2</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">fx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here’s what the result looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span> <span class="n">ys2</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">xs2</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xs2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">])</span>
-<span class="n">fy</span> <span class="o">=</span> <span class="n">res2</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res2</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">fx</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age in years&#39;</span><span class="p">)</span>
@@ -1282,10 +1236,11 @@ Here’s what that looks like for the first example.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/45fca1aa0f97503133af3a78636d31ac7fec1cbe8d1c073a7c142a7626779c48.png" src="_images/45fca1aa0f97503133af3a78636d31ac7fec1cbe8d1c073a7c142a7626779c48.png" />
+<img alt="_images/5255ed73b1f8f4eba03b8962d1a7dd52628521b468c9e6122d8cc1b40c3b0c8b.png" src="_images/5255ed73b1f8f4eba03b8962d1a7dd52628521b468c9e6122d8cc1b40c3b0c8b.png" />
 </div>
 </div>
-<p>The visualization here might be misleading unless you look closely at the vertical scales – the slope in the second figure is almost 10 times higher.</p>
+<p>At first glance it might seem like the slope is steeper in the first figure, but don’t be fooled.
+If you look closely at the vertical scales, the slope in the second figure is almost 10 times higher.</p>
 </section>
 <section id="regression-of-height-and-weight">
 <h2>Regression of Height and Weight<a class="headerlink" href="#regression-of-height-and-weight" title="Link to this heading">#</a></h2>
@@ -1305,7 +1260,7 @@ Here’s the scatter plot of height and weight one more time.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/17a577539aa1441248213d84989bb556d7738a96e7516615e9e31a28b6ab088b.png" src="_images/17a577539aa1441248213d84989bb556d7738a96e7516615e9e31a28b6ab088b.png" />
+<img alt="_images/c24ee4bdb8e096880388fb73219f6882f18a68e5fefa9148c5fbfdd6bdb46858.png" src="_images/c24ee4bdb8e096880388fb73219f6882f18a68e5fefa9148c5fbfdd6bdb46858.png" />
 </div>
 </div>
 <p>To compute the regression line, we’ll use <code class="docutils literal notranslate"><span class="pre">linregress</span></code> again.
@@ -1326,12 +1281,12 @@ But it can’t handle <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;slope&#39;: 0.9012473927929429,
- &#39;intercept&#39;: -70.83347519772558,
- &#39;rvalue&#39;: 0.45325892670525614,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;slope&#39;: 0.9366891536604244,
+ &#39;intercept&#39;: -76.44247680097321,
+ &#39;rvalue&#39;: 0.4693981914367916,
  &#39;pvalue&#39;: 0.0,
- &#39;stderr&#39;: 0.0028318189296177936,
- &#39;intercept_stderr&#39;: 0.48327199271627963}
+ &#39;stderr&#39;: 0.002806793650907722,
+ &#39;intercept_stderr&#39;: 0.47939863668166327}
 </pre></div>
 </div>
 </div>
@@ -1363,7 +1318,7 @@ As before, we can compute the line of best fit:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a76a519e33d30225c1cfa6b1dc18ce0b44c2d85ab97e07b8c8775433598f491d.png" src="_images/a76a519e33d30225c1cfa6b1dc18ce0b44c2d85ab97e07b8c8775433598f491d.png" />
+<img alt="_images/bf03da861e26658abe724570f53478e40b338bf43674ec3316ca061107dee9f1.png" src="_images/bf03da861e26658abe724570f53478e40b338bf43674ec3316ca061107dee9f1.png" />
 </div>
 </div>
 <p>The slope of this line seems consistent with the scatter plot.
@@ -1381,12 +1336,11 @@ As another example, here’s the scatter plot of weight versus age, which we saw
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3871aa46b71b87b855272caac969b43351104d917982445378cfc00f65bfe141.png" src="_images/3871aa46b71b87b855272caac969b43351104d917982445378cfc00f65bfe141.png" />
+<img alt="_images/7e6e77fdcf0fcf574ec376b61052d05e041cbfa2912b35c8cab67306f6cb9acc.png" src="_images/7e6e77fdcf0fcf574ec376b61052d05e041cbfa2912b35c8cab67306f6cb9acc.png" />
 </div>
 </div>
-<p>People in their 40s are the heaviest; younger and older people are lighter.
-So the relationship is nonlinear.
-If we don’t look at the scatter plot and blindly compute the regression line, here’s what we get.</p>
+<p>As we have seen before, the relationship is nonlinear.
+Let’s see what we get if we compute a linear regression.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">brfss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WTKG3&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">])</span> 
@@ -1396,18 +1350,18 @@ If we don’t look at the scatter plot and blindly compute the regression line, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;slope&#39;: 0.0013125832660571195,
- &#39;intercept&#39;: 82.50816942598159,
- &#39;rvalue&#39;: 0.0011068212407106782,
- &#39;pvalue&#39;: 0.4877433280947321,
- &#39;stderr&#39;: 0.001891594202330922,
- &#39;intercept_stderr&#39;: 0.09723506804688767}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;slope&#39;: -0.08138685042569352,
+ &#39;intercept&#39;: 87.66340016901641,
+ &#39;rvalue&#39;: -0.06790235862083926,
+ &#39;pvalue&#39;: 0.0,
+ &#39;stderr&#39;: 0.0019073328587490353,
+ &#39;intercept_stderr&#39;: 0.11019675319089409}
 </pre></div>
 </div>
 </div>
 </div>
 <p>The estimated slope is close to zero.
-And here’s what the line of best fit looks like.</p>
+Here’s what the line of best fit looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age_jitter</span><span class="p">,</span> <span class="n">weight_jitter</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> 
@@ -1426,30 +1380,31 @@ And here’s what the line of best fit looks like.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c1f5e4a0d53973996311ade1df1368e5eef2c9b59d2097da60e4ecb11ac91c96.png" src="_images/c1f5e4a0d53973996311ade1df1368e5eef2c9b59d2097da60e4ecb11ac91c96.png" />
+<img alt="_images/0682f5c7478844958b6c76d9012351bf7565a7d2fd3dd4cbd24d3c5c56d2d70c.png" src="_images/0682f5c7478844958b6c76d9012351bf7565a7d2fd3dd4cbd24d3c5c56d2d70c.png" />
 </div>
 </div>
 <p>A straight line does not capture the relationship between these variables well.
 That’s because linear regression has the same problem as correlation – it only measures the strength of a linear relationship.</p>
-<p>In the next chapter, we’ll see how to use multiple regression to estimate non-linear relationships.  But first, let’s practice simple regression.</p>
+<p>In the next chapter, we’ll see how to use multiple regression to quantify non-linear relationships.
+But first, let’s practice using simple regression.</p>
 <p><strong>Exercise:</strong> Who do you think eats more vegetables, people with low income, or people with high income?
 Let’s find out.
 As we’ve seen previously, the column <code class="docutils literal notranslate"><span class="pre">_INCOMG1</span></code> represents income level and <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code> represents the number of vegetable servings respondents reported eating per day.
-Make a scatter plot with vegetable servings versus income, that is, with vegetable servings on the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis and income group on the <code class="docutils literal notranslate"><span class="pre">x</span></code> axis.
-You might want to use <code class="docutils literal notranslate"><span class="pre">ylim</span></code> to zoom in on the bottom half of the <code class="docutils literal notranslate"><span class="pre">y</span></code> axis.</p>
-<p><strong>Exercise:</strong> Now let’s estimate the slope of the relationship between vegetable consumption and income.</p>
+Make a scatter plot with vegetable servings versus income, that is, with vegetable servings on the y-axis and income group on the x-axis.
+You might want to use <code class="docutils literal notranslate"><span class="pre">ylim</span></code> to zoom in on the bottom half of the y-axis.</p>
+<p><strong>Exercise:</strong> Now estimate the slope of the relationship between vegetable consumption and income.</p>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">dropna</span></code> to select rows where <code class="docutils literal notranslate"><span class="pre">_INCOMG1</span></code> and <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code> are not <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
 <li><p>Extract <code class="docutils literal notranslate"><span class="pre">_INCOMG1</span></code> and <code class="docutils literal notranslate"><span class="pre">_VEGESU1</span></code> and compute the simple linear regression of these variables.</p></li>
+<li><p>Finally, plot the regression line on top of the scatter plot.</p></li>
 </ul>
 <p>What is the slope of the regression line?  What does this slope means in the context of the question we are exploring?</p>
-<p><strong>Exercise:</strong> Finally, plot the regression line on top of the scatter plot.</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>This chapter presents three ways to visualize the relationship between two variables: a scatter plot, violin plot, and box plot.
 A scatter plot is often a good choice when you are exploring a new data set, but it can take some attention to avoid overplotting.
-Violin plots and box plots are particularly useful when one of the variables only takes on a few discrete values.</p>
+Violin plots and box plots are particularly useful when one of the variables has only a few unique values or the values have been rounded into bins.</p>
 <p>We considered two ways to quantify the strength of a relationship: the coefficient of correlation and the slope of a regression line.
 These statistics capture different aspect of what we might mean by “strength”.
 The coefficient of correlation indicates how well we can predict one variable, given the other.
