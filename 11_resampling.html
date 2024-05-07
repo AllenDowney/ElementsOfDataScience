@@ -395,13 +395,12 @@ document.write(`
 </div>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/11_resampling.ipynb">Click here to run this notebook on Colab</a>.</p>
 <p>This chapter introduces <strong>resampling methods</strong>, which are used to quantify the precision of an estimate.
-As a first example, we’ll use results from a vaccine trial to estimate the efficacy of the vaccine.
-Then we’ll use data from the Behavioral Risk Factor Surveillance System to estimate the average height of men in the U.S., and data from the General Social Survey to see how support for gun control has changed over time.</p>
+As a first example, we’ll use results from a medical trial to estimate the efficacy of the vaccine.</p>
 <section id="vaccine-testing">
 <h2>Vaccine Testing<a class="headerlink" href="#vaccine-testing" title="Link to this heading">#</a></h2>
 <p>Suppose you read a report about a new vaccine and the manufacturer says it is 67% effective at preventing disease.
-You might wonder where that number comes from, what it means, and how confident we should be that it is correct.</p>
-<p>Results like this often come from a randomized controlled trial (RCT), which works like this:</p>
+You might wonder where that number comes from, what it means, and how confident we should be that it is correct.
+Results like this often come from a randomized controlled trial (RCT), which works like this:</p>
 <ul class="simple">
 <li><p>You recruit a large group of volunteers and divide them into two groups at random: the “treatment group” receives the vaccine; the “control group” does not.</p></li>
 <li><p>Then you follow both groups for a period of time and record the number of people in each group who are diagnosed with the disease.</p></li>
@@ -452,7 +451,7 @@ You might wonder where that number comes from, what it means, and how confident 
 </div>
 </div>
 <p>The risk is substantially lower in the treatment group – about 5 per 1000, compared to 16 – which suggests that the vaccine is effective.
-We can summarize these results by computing relative risk, which is the ratio of the two risks (see <a class="reference external" href="https://en.wikipedia.org/wiki/Relative_risk">https://en.wikipedia.org/wiki/Relative_risk</a>):</p>
+We can summarize these results by computing relative risk, which is the ratio of the two risks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">relative_risk</span> <span class="o">=</span> <span class="n">risk_treatment</span> <span class="o">/</span> <span class="n">risk_control</span>
@@ -466,7 +465,7 @@ We can summarize these results by computing relative risk, which is the ratio of
 </div>
 </div>
 </div>
-<p>The relative risk in this example is about 0.33, which means that the risk of disease in the treatment group is 33% of the risk in the control group.
+<p>The relative risk is about 0.33, which means that the risk of disease in the treatment group is 33% of the risk in the control group.
 Equivalently, we could report the complement of relative risk, which is <strong>efficacy</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -487,15 +486,15 @@ There are any number of things that might have gone wrong.</p>
 <p>For example, if people in the treatment group know they have been vaccinated, they might take fewer precautions to prevent disease, and people in the control group might be more careful.
 That would affect the estimated efficacy, which is why a lot of trials are “blinded”, meaning that the subjects don’t know which group they are in.</p>
 <p>The estimate would also be less accurate if people in either group don’t follow the protocol.
-For example, someone in the treatment group might not complete treatment, or someone in the control group might receive treatment from another source.</p>
-<p>And there are many other possible sources of error, including honest mistakes and deliberate fraud.</p>
-<p>In general it is hard to know whether estimates like this are accurate; nevertheless, there are things we can do to assess their quality.</p>
-<p>When estimates are reported in scientific journals, they almost always include one of two measurements of uncertainty: a standard error or a confidence interval.
+For example, someone in the treatment group might not complete treatment, or someone in the control group might receive treatment from another source.
+And there are many other possible sources of error, including honest mistakes and deliberate fraud.</p>
+<p>In general it is hard to know whether estimates like this are accurate; nevertheless, there are things we can do to assess their quality.
+When estimates are reported in scientific journals, they almost always include one of two measurements of uncertainty: a standard error or a confidence interval.
 In the next section, I’ll explain what they mean and show how to compute them.</p>
 </section>
 <section id="simulating-one-group">
 <h2>Simulating One Group<a class="headerlink" href="#simulating-one-group" title="Link to this heading">#</a></h2>
-<p>In our hypothetical example, there are 21,911 people in the treatment group and 116 of them got the disease, so the estimated risk is about 5 cases per 1000 people.</p>
+<p>In the example, there are 21,911 people in the treatment group and 116 of them got the disease, so the estimated risk is about 5 cases per 1000 people.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_treatment</span><span class="p">,</span> <span class="n">k_treatment</span><span class="p">,</span> <span class="n">risk_treatment</span>
@@ -512,12 +511,24 @@ In the next section, I’ll explain what they mean and show how to compute them.
 For example, if there had been 10 more cases, the estimated risk would be 5.8 per 1000, and if there had been 10 fewer, it would be 4.8.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">k_treatment</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_treatment</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="p">(</span><span class="n">k_treatment</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_treatment</span> <span class="o">*</span> <span class="mi">1000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">k_treatment</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_treatment</span> <span class="o">*</span> <span class="mi">1000</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.750536260325863, 4.837752726940806)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.750536260325863
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">k_treatment</span> <span class="o">-</span> <span class="mi">10</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_treatment</span> <span class="o">*</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.837752726940806
 </pre></div>
 </div>
 </div>
@@ -526,27 +537,40 @@ For example, if there had been 10 more cases, the estimated risk would be 5.8 pe
 We’ll answer that question in three steps:</p>
 <ul class="simple">
 <li><p>We’ll write a function that uses a random number generator to simulate the trial.</p></li>
-<li><p>Then we’ll run the function 1000 times to see how much the estimate varies.</p></li>
+<li><p>Then we’ll run the function many times to see how much the estimate varies.</p></li>
 <li><p>And we’ll summarize the results.</p></li>
 </ul>
-<p>The following function takes two parameters: <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of people in the group (treatment or control) and <code class="docutils literal notranslate"><span class="pre">p</span></code> is the probability that any of them gets the disease.</p>
-<div class="cell tag_fill-in docutils container">
+<p>To simulate the trial, we’ll use the <code class="docutils literal notranslate"><span class="pre">bernoulli</span></code> object from SciPy, which provides a function called <code class="docutils literal notranslate"><span class="pre">rvs</span></code> that simulates what we can think of as biased coin tosses.
+For example, suppose we flip 10 coins where the probability is 70% that each coin comes up heads.
+We can simulate that scenario like this.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">bernoulli</span>
 
-<span class="k">def</span> <span class="nf">simulate_group</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xs</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">k</span> <span class="o">/</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 0, 0, 0, 0, 1, 1, 1, 1, 1])
 </pre></div>
 </div>
 </div>
 </div>
-<p>The first line generates an array of <code class="docutils literal notranslate"><span class="pre">n</span></code> random values between 0 and 1.
-The values are distributed uniformly in this range, so the probability that each one is less than <code class="docutils literal notranslate"><span class="pre">p</span></code> is… <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
-<p>The second line counts how many of the values are less than <code class="docutils literal notranslate"><span class="pre">p</span></code>, that is, how many people in the simulated group get the disease.
-Then the function returns the risk in cases per 1000 people.</p>
-<p>Here’s how we call this function, passing as arguments the size of the treatment group and the estimated risk:</p>
+<p>The result is an array where <code class="docutils literal notranslate"><span class="pre">1</span></code> represents heads and <code class="docutils literal notranslate"><span class="pre">0</span></code> represents tails.</p>
+<p>We can use this function to simulate a group of <code class="docutils literal notranslate"><span class="pre">n</span></code> patients, where the probability is <code class="docutils literal notranslate"><span class="pre">p</span></code> that each of them gets the disease.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_group</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">risk</span> <span class="o">=</span> <span class="n">k</span> <span class="o">/</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">risk</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function uses <code class="docutils literal notranslate"><span class="pre">rvs</span></code> to generate an array of <code class="docutils literal notranslate"><span class="pre">1</span></code>s and <code class="docutils literal notranslate"><span class="pre">0</span></code>s, adds them up the number of cases, and returns the risk in cases per 1000 people.
+Here’s how we call this function, passing as arguments the size of the treatment group and the estimated risk as a proportion:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">k_treatment</span> <span class="o">/</span> <span class="n">n_treatment</span>
@@ -555,24 +579,24 @@ Then the function returns the risk in cases per 1000 people.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.157226963625576
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.883391903610059
 </pre></div>
 </div>
 </div>
 </div>
 <p>The result is a risk from a single simulated trial.
-If we run this function 1000 times, it’s like running the trial over and over.</p>
-<div class="cell tag_fill-in docutils container">
+If we run this function many times, it’s like running the trial over and over.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_group</span><span class="p">(</span><span class="n">n_treatment</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_group</span><span class="p">(</span><span class="n">n_treatment</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> 
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>The result is a list of risks that shows how much we expect the results of the trial to vary due to randomness.
 We can use a KDE plot to visualize the distribution of these results.</p>
-<div class="cell tag_fill-in docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -586,7 +610,7 @@ We can use a KDE plot to visualize the distribution of these results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1f19b64da9eb102e38cf042f6162b95f1a97244bd6dc0a26df9e8260f9d8fd63.png" src="_images/1f19b64da9eb102e38cf042f6162b95f1a97244bd6dc0a26df9e8260f9d8fd63.png" />
+<img alt="_images/7e682b79c3b9f906fe34e4b50034c6d3f2b1650479a4419fb910e842833e9383.png" src="_images/7e682b79c3b9f906fe34e4b50034c6d3f2b1650479a4419fb910e842833e9383.png" />
 </div>
 </div>
 <p>The mean of this distribution is about 5.3, which is close to the observed risk, as we should expect.</p>
@@ -597,7 +621,7 @@ We can use a KDE plot to visualize the distribution of these results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.299210442243623, 5.294144493633334)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.284478654019068, 5.294144493633334)
 </pre></div>
 </div>
 </div>
@@ -612,7 +636,7 @@ One way to quantify the width of the distribution is the standard deviation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.48944411243624414
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.48237692869481597
 </pre></div>
 </div>
 </div>
@@ -628,7 +652,7 @@ For example, if we compute the 5th and 95th percentiles, the interval we get con
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.47263931, 6.11793163])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.51827849, 6.11564967])
 </pre></div>
 </div>
 </div>
@@ -639,8 +663,7 @@ If we assume that the observed risk is correct, and we run the same trial many t
 </section>
 <section id="simulating-the-trial">
 <h2>Simulating the Trial<a class="headerlink" href="#simulating-the-trial" title="Link to this heading">#</a></h2>
-<p>If that’s not making sense yet, let’s try another example.
-In the previous section we simulated one group and estimated their risk.
+<p>In the previous section we simulated one group and estimated their risk.
 Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 <p>The following function takes four parameters: the sizes of the two groups and their actual risks.</p>
 <div class="cell docutils container">
@@ -664,16 +687,16 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6891301291299345
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7022507535102278
 </pre></div>
 </div>
 </div>
 </div>
-<p>If we call it 1000 times, the result is a list of efficacies from 1000 simulated trials.</p>
+<p>If we call it many times, the result is a list of efficacies from multiple simulated trials.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_trial</span><span class="p">(</span><span class="n">n_control</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n_treatment</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -690,7 +713,7 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53b9b197d443038141602d629e542a2acabf470033771f0fc6460549edfd22dc.png" src="_images/53b9b197d443038141602d629e542a2acabf470033771f0fc6460549edfd22dc.png" />
+<img alt="_images/3e6d2409a2cf89a0d4454fca0b6a901c28dc57d342b507edb2254e9ce25599dc.png" src="_images/3e6d2409a2cf89a0d4454fca0b6a901c28dc57d342b507edb2254e9ce25599dc.png" />
 </div>
 </div>
 <p>The mean of this distribution is close to the efficacy we computed with the results of the actual trial.</p>
@@ -701,7 +724,7 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6713727268668117, 0.6708455902182797)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6697923695446464, 0.6708455902182797)
 </pre></div>
 </div>
 </div>
@@ -714,7 +737,7 @@ Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.035068503707114076
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03654909244711291
 </pre></div>
 </div>
 </div>
@@ -728,12 +751,12 @@ As an alternative, we can use percentiles to compute a 90% confidence interval.<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.61344412, 0.72785182])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.60861545, 0.7251222 ])
 </pre></div>
 </div>
 </div>
 </div>
-<p>We could report these results as 0.67, 90% CI [0.61, 0.72]”.</p>
+<p>We could report these results as 0.67, 90% CI [0.61, 0.72].</p>
 <p>The standard error and confidence interval represent nearly the same information.
 In general, I prefer to report a confidence interval because it is easier to interpret:</p>
 <ul class="simple">
@@ -755,8 +778,8 @@ Depending on how you recruit people, your sample might have too many tall people
 But how accurate do you think this estimate is?
 If you only measure 103 people from a population of about 100 million adult males, it seems like the actual average in the population might be substantially higher or lower.</p>
 <p>Again, we can use random simulation to quantify the uncertainty of this estimate.
-As we did in the previous examples, we’ll assume for purposes of simulation that the estimates are correct, and simulate the sampling process 1000 times.</p>
-<p>The following function takes as parameters the size of the sample, <code class="docutils literal notranslate"><span class="pre">n</span></code>, the presumed average height in the population, <code class="docutils literal notranslate"><span class="pre">mu</span></code>, and the presumed standard deviation, <code class="docutils literal notranslate"><span class="pre">std</span></code>.</p>
+As we did in the previous examples, we’ll assume for purposes of simulation that the estimates are correct, and simulate the sampling process many times.</p>
+<p>The following function takes as parameters the size of the sample, <code class="docutils literal notranslate"><span class="pre">n</span></code>, the presumed average height in the population, <code class="docutils literal notranslate"><span class="pre">mu</span></code>, and the presumed standard deviation, <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.</p>
 <div class="cell tag_fill-in docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_sample_mean</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
@@ -766,29 +789,29 @@ As we did in the previous examples, we’ll assume for purposes of simulation th
 </div>
 </div>
 </div>
-<p>This function generates <code class="docutils literal notranslate"><span class="pre">n</span></code> random values from a normal distribution with the given mean and standard deviation, and returns their mean.</p>
-<p>We can run it like this, using the observed mean and standard deviation from the sample as the presumed mean and standard deviation of the population.</p>
+<p>This function generates <code class="docutils literal notranslate"><span class="pre">n</span></code> random values from a normal distribution with the given mean and standard deviation, and returns their mean.
+We can run it like this, using the observed mean and standard deviation from the sample as the presumed mean and standard deviation of the population.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_height</span> <span class="o">=</span> <span class="mi">103</span>
-<span class="n">mean_height</span> <span class="o">=</span> <span class="mi">178</span>
-<span class="n">std_height</span> <span class="o">=</span> <span class="mf">7.97</span>
+<span class="n">mean_height</span> <span class="o">=</span> <span class="mi">177</span>
+<span class="n">std_height</span> <span class="o">=</span> <span class="mf">8.4</span>
 
 <span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_height</span><span class="p">,</span> <span class="n">mean_height</span><span class="p">,</span> <span class="n">std_height</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>178.64931744931997
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>177.0925279328183
 </pre></div>
 </div>
 </div>
 </div>
-<p>If we run it 1000 times, it simulates the sampling and measurement process and returns a list of results from 1000 simulated experiments.</p>
+<p>If we run it many times, it simulates the sampling and measurement process and returns a list of results from many simulated experiments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t3</span> <span class="o">=</span> <span class="p">[</span><span class="n">simulate_sample_mean</span><span class="p">(</span><span class="n">n_height</span><span class="p">,</span> <span class="n">mean_height</span><span class="p">,</span> <span class="n">std_height</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -805,7 +828,7 @@ As we did in the previous examples, we’ll assume for purposes of simulation th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fb7319aeff99e2be2b7b88bf34651f9352db8005c74234a4d6e9cc96fbc631e4.png" src="_images/fb7319aeff99e2be2b7b88bf34651f9352db8005c74234a4d6e9cc96fbc631e4.png" />
+<img alt="_images/26b923ed3af86a65bb522dfab77040ee3a6ea9c1a3c0af91e2bbd95e659a9b0c.png" src="_images/26b923ed3af86a65bb522dfab77040ee3a6ea9c1a3c0af91e2bbd95e659a9b0c.png" />
 </div>
 </div>
 <p>This result is called a <strong>sampling distribution</strong> because it represents the variation in the results due to the random sampling process.
@@ -818,7 +841,7 @@ If we recruit 103 people and compute the mean of their heights, the result might
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(177.96271260304573, 178)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(176.97693409905207, 177)
 </pre></div>
 </div>
 </div>
@@ -832,12 +855,12 @@ If we recruit 103 people and compute the mean of their heights, the result might
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7646185415617497
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8255649832811274
 </pre></div>
 </div>
 </div>
 </div>
-<p>And we can use <code class="docutils literal notranslate"><span class="pre">percentile</span></code> to compute a 90% confidence interval.</p>
+<p>The interval between the 5th and 95th percentiles is a 90% confidence interval.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ci90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">t3</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span>
@@ -846,18 +869,18 @@ If we recruit 103 people and compute the mean of their heights, the result might
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([176.7094124 , 179.22734483])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([175.57572755, 178.34974372])
 </pre></div>
 </div>
 </div>
 </div>
-<p>If I reported this result in a paper, I would say that the estimated height of adult male residents of the U.S. is 177 cm, 90% CI [176, 179] cm.</p>
+<p>If I reported this result in a paper, I would say that the estimated height of adult male residents of the U.S. is 177 cm, 90% CI [176, 178] cm.</p>
 <p>Informally, that means that the estimate could plausibly be off by about a centimeter either way, due to random sampling.
 But we should remember that there are other possible sources of error, so we might be off by more than that.</p>
 </section>
 <section id="the-resampling-framework">
 <h2>The Resampling Framework<a class="headerlink" href="#the-resampling-framework" title="Link to this heading">#</a></h2>
-<p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
+<p>The examples in this chapter fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/figs/resampling.png" /></p>
 <p>Using data from an experiment, we compute a sample statistic.  In the vaccine example, we computed risks for each group and efficacy.  In the height example, we computed the average height in the sample.</p>
 <p>Then we build a model of the sampling process.
@@ -865,25 +888,23 @@ In the vaccine example, the model assumes that everyone in each group has the sa
 In the height example, the model assumes that heights are drawn from a normal distribution, and we use the data to choose the parameters <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.</p>
 <p>We use the model to simulate the experiment many times. Each simulation generates a dataset which we use to compute the sample statistic.</p>
 <p>Finally, we collect the sample statistics from the simulations, plot the sampling distribution, and compute standard error and a confidence interval.</p>
-<p>I emphasize the role of the model in this framework because for a given experiment there might be several possible models, each including some elements of the real world and ignoring others.</p>
-<p>For example, our model of the vaccine experiment assumes that everyone in each group has the same risk, but that’s probably not true.
+<p>I emphasize the role of the model in this framework because for a given experiment there might be several possible models, each including some elements of the real world and ignoring others.
+For example, our model of the vaccine experiment assumes that everyone in each group has the same risk, but that’s probably not true.
 Here’s another version of <code class="docutils literal notranslate"><span class="pre">simulate_group</span></code> that includes variation in risk within each group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_variable_group</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xs</span> <span class="o">&lt;</span> <span class="n">ps</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">k</span> <span class="o">/</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">1000</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>This version of the function assumes that each person has a different probability of getting sick, drawn from a uniform distribution between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">2*p</span></code>.
-Of course, that’s just a guess about how the probabilities might be distributed in the group, but we can use it to get a sense of what effect this distribution has on the results.</p>
-<p>The rest of the function is the same as the previous version: it generates <code class="docutils literal notranslate"><span class="pre">xs</span></code>, which is an array of random values between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>.
-Then it compares <code class="docutils literal notranslate"><span class="pre">xs</span></code> and <code class="docutils literal notranslate"><span class="pre">ps</span></code>, counting the number of times <code class="docutils literal notranslate"><span class="pre">p</span></code> exceeds <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
-<p>Here’s how we call this function, simulating the treatment group.</p>
+Of course, that’s just a guess about how the probabilities might be distributed, but we can use it to get a sense of what effect this distribution has on the results.</p>
+<p>The rest of the function is the same as the previous version: it uses <code class="docutils literal notranslate"><span class="pre">bernoulli</span></code> to simulate <code class="docutils literal notranslate"><span class="pre">n</span></code> patients, where each element of <code class="docutils literal notranslate"><span class="pre">ps</span></code> is the probability that one patient gets the disease.
+Here’s how we call this function, simulating the treatment group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">k_treatment</span> <span class="o">/</span> <span class="n">n_treatment</span>
@@ -892,15 +913,15 @@ Then it compares <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.339783670302587
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.290082606909771
 </pre></div>
 </div>
 </div>
 </div>
 <p>The return value is the number of cases per 1000.</p>
-<p><strong>Exercise:</strong> Use this function to run 1000 simulations of the treatment group.  Compute the mean of the results and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">risk_treatment</span></code>.  To quantify the spread of the sampling distribution, compute the standard error.  How does it compare to the standard error we computed with the original model, where everyone in the group has the same risk?</p>
+<p><strong>Exercise:</strong> Use this function to run 1001 simulations of the treatment group.  Compute the mean of the results and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">risk_treatment</span></code>.  To quantify the spread of the sampling distribution, compute the standard error.  How does it compare to the standard error we computed with the original model, where everyone in the group has the same risk?</p>
 <p><strong>Exercise:</strong> The following is a version of <code class="docutils literal notranslate"><span class="pre">simulate_trial</span></code> that uses <code class="docutils literal notranslate"><span class="pre">simulate_variable_group</span></code>, from the previous exercise, to simulate the vaccine trial using the modified model, which includes variation in risk within the groups.</p>
-<p>Use this function to simulate 1000 trials. Compute the mean of the sampling distribution and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">efficacy</span></code>. Compute the standard error and compare it to the standard error we computed for the original model.</p>
+<p>Use this function to simulate 1001 trials. Compute the mean of the sampling distribution and confirm that it is close to the observed <code class="docutils literal notranslate"><span class="pre">efficacy</span></code>. Compute the standard error and compare it to the standard error we computed for the original model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_variable_trial</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
@@ -922,7 +943,7 @@ For example, suppose we want to estimate the coefficient of variation (standard 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.044775280898876405
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.04745762711864407
 </pre></div>
 </div>
 </div>
@@ -938,7 +959,8 @@ The following is a version of <code class="docutils literal notranslate"><span c
 </div>
 </div>
 </div>
-<p>Use this function to simulate 1000 samples with size <code class="docutils literal notranslate"><span class="pre">n=103</span></code>, using <code class="docutils literal notranslate"><span class="pre">mean_height</span></code> for <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">std_height</span></code> for <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.  Plot the sampling distribution of the coefficient of variation, and compute a 90% confidence interval.</p>
+<p>Use this function to simulate 1001 samples with size <code class="docutils literal notranslate"><span class="pre">n=103</span></code>, using <code class="docutils literal notranslate"><span class="pre">mean_height</span></code> for <code class="docutils literal notranslate"><span class="pre">mu</span></code> and <code class="docutils literal notranslate"><span class="pre">std_height</span></code> for <code class="docutils literal notranslate"><span class="pre">sigma</span></code>.
+Plot the sampling distribution of the coefficient of variation, and compute a 90% confidence interval.</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
@@ -946,7 +968,7 @@ The following is a version of <code class="docutils literal notranslate"><span c
 <ol class="arabic simple">
 <li><p>We started with results from a vaccine trial.  We estimated the effectiveness of the vaccine and used simulation to draw a random sample from the sampling distribution of effectiveness.  We used that sample to compute a standard error and a 90% confidence interval, which measure the variability we would expect if we ran the experiment again (assuming that the observed efficacy is correct).</p></li>
 <li><p>As a second example, we estimated the height of adult males in the U.S. and used simulation based on a normal model to compute the sampling distribution of the mean, standard error, and a confidence interval.</p></li>
-<li><p>I presented the resampling framework, which shows what these examples have in common. We implemented a second model of the vaccine trial, based on the assumption that there is variation in risk within the treatment and control groups. The results from both models are similar, which suggests that the simple model is good enough for practical purposes.</p></li>
+<li><p>We implemented a second model of the vaccine trial, based on the assumption that there is variation in risk within the groups. The results from the two models are similar, which suggests that the simple model is good enough for practical purposes.</p></li>
 <li><p>One of the advantages of resampling, compared to mathematical analysis, is that it is easy to compute the sampling distribution of almost any statistic.  As an exercise, you computed the sampling distribution of the coefficient of variation.</p></li>
 </ol>
 <p>The next chapter presents bootstrap sampling, which is a kind of resampling particularly well suited for the kind of survey data we’ve been working with.</p>
