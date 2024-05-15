@@ -454,7 +454,7 @@ For that, we’ll use a Python library called <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7fb671d85a80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7fe63035c7f0&gt;
 </pre></div>
 </div>
 </div>
@@ -484,12 +484,14 @@ For that, we’ll use a Python library called <code class="docutils literal notr
 </div>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, which is the primary type Pandas uses to store data.
 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> has a method called <code class="docutils literal notranslate"><span class="pre">head</span></code> that shows the first 5 rows:</p>
-<div class="cell tag_truncate-output docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell tag_solution tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -516,20 +518,6 @@ For that, we’ll use a Python library called <code class="docutils literal notr
       <th>MOSCURRP</th>
       <th>NOWPRGDK</th>
       <th>PREGEND1</th>
-      <th>PREGEND2</th>
-      <th>HOWENDDK</th>
-      <th>NBRNALIV</th>
-      <th>...</th>
-      <th>SECU</th>
-      <th>SEST</th>
-      <th>CMINTVW</th>
-      <th>CMLSTYR</th>
-      <th>CMJAN3YR</th>
-      <th>CMJAN4YR</th>
-      <th>CMJAN5YR</th>
-      <th>QUARTER</th>
-      <th>PHASE</th>
-      <th>INTVWYEAR</th>
     </tr>
   </thead>
   <tbody>
@@ -542,20 +530,6 @@ For that, we’ll use a Python library called <code class="docutils literal notr
       <td>NaN</td>
       <td>NaN</td>
       <td>6.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>3</td>
-      <td>322</td>
-      <td>1394</td>
-      <td>1382</td>
-      <td>1357</td>
-      <td>1345</td>
-      <td>1333</td>
-      <td>18</td>
-      <td>1</td>
-      <td>2016</td>
     </tr>
     <tr>
       <th>1</th>
@@ -566,20 +540,6 @@ For that, we’ll use a Python library called <code class="docutils literal notr
       <td>NaN</td>
       <td>NaN</td>
       <td>1.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>3</td>
-      <td>322</td>
-      <td>1394</td>
-      <td>1382</td>
-      <td>1357</td>
-      <td>1345</td>
-      <td>1333</td>
-      <td>18</td>
-      <td>1</td>
-      <td>2016</td>
     </tr>
     <tr>
       <th>2</th>
@@ -590,20 +550,6 @@ For that, we’ll use a Python library called <code class="docutils literal notr
       <td>NaN</td>
       <td>NaN</td>
       <td>6.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>3</td>
-      <td>322</td>
-      <td>1394</td>
-      <td>1382</td>
-      <td>1357</td>
-      <td>1345</td>
-      <td>1333</td>
-      <td>18</td>
-      <td>1</td>
-      <td>2016</td>
     </tr>
     <tr>
       <th>3</th>
@@ -614,20 +560,6 @@ For that, we’ll use a Python library called <code class="docutils literal notr
       <td>NaN</td>
       <td>NaN</td>
       <td>6.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>2</td>
-      <td>366</td>
-      <td>1409</td>
-      <td>1397</td>
-      <td>1369</td>
-      <td>1357</td>
-      <td>1345</td>
-      <td>23</td>
-      <td>1</td>
-      <td>2017</td>
     </tr>
     <tr>
       <th>4</th>
@@ -638,24 +570,9 @@ For that, we’ll use a Python library called <code class="docutils literal notr
       <td>NaN</td>
       <td>NaN</td>
       <td>6.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>...</td>
-      <td>2</td>
-      <td>366</td>
-      <td>1409</td>
-      <td>1397</td>
-      <td>1369</td>
-      <td>1357</td>
-      <td>1345</td>
-      <td>23</td>
-      <td>1</td>
-      <td>2017</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 248 columns</p>
 </div></div></div>
 </div>
 <p>The first two columns are <code class="docutils literal notranslate"><span class="pre">CASEID</span></code> and <code class="docutils literal notranslate"><span class="pre">PREGORDR</span></code>, which I mentioned earlier.
@@ -750,8 +667,9 @@ Name: BIRTHWGT_LB1, dtype: float64
 <p>One of the values is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, which stands for “Not a Number”.
 <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is a special value used to indicate invalid or missing data.
 In this example, the pregnancy did not end in live birth, so birth weight is inapplicable.</p>
-<p><strong>Exercise:</strong>  The column <code class="docutils literal notranslate"><span class="pre">BIRTHWGT_OZ1</span></code> contains the ounces part of birth weight.</p>
-<p>Select the column <code class="docutils literal notranslate"><span class="pre">'BIRTHWGT_OZ1'</span></code> from <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> and assign it to a new variable called <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.  Then display the first 5 elements of <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p>
+<p><strong>Exercise:</strong>  The column <code class="docutils literal notranslate"><span class="pre">BIRTHWGT_OZ1</span></code> contains the ounces part of birth weight.
+Select this column from <code class="docutils literal notranslate"><span class="pre">nsfg</span></code> and assign it to a new variable called <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.
+Then display the first 5 elements of <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p>
 <p><strong>Exercise:</strong> The Pandas types we have seen so far are <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="docutils literal notranslate"><span class="pre">Index</span></code>, and <code class="docutils literal notranslate"><span class="pre">Series</span></code>.  You can find the documentation of these types at:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html</a></p></li>
@@ -813,76 +731,75 @@ The most frequent values are 6-8 pounds, but there are some very light babies, a
 <p>We can validate the results by comparing them to the codebook, which lists the values and their frequencies.</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>value</p></th>
-<th class="head"><p>label</p></th>
-<th class="head"><p>Total</p></th>
+<tr class="row-odd"><th class="head text-right"><p>Value</p></th>
+<th class="head text-left"><p>Label</p></th>
+<th class="head text-right"><p>Total</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>.</p></td>
-<td><p>INAPPLICABLE</p></td>
-<td><p>2863</p></td>
+<tr class="row-even"><td class="text-right"><p>.</p></td>
+<td class="text-left"><p>INAPPLICABLE</p></td>
+<td class="text-right"><p>2863</p></td>
 </tr>
-<tr class="row-odd"><td><p>0-5</p></td>
-<td><p>UNDER 6 POUNDS</p></td>
-<td><p>901</p></td>
+<tr class="row-odd"><td class="text-right"><p>0-5</p></td>
+<td class="text-left"><p>UNDER 6 POUNDS</p></td>
+<td class="text-right"><p>901</p></td>
 </tr>
-<tr class="row-even"><td><p>6</p></td>
-<td><p>6 POUNDS</p></td>
-<td><p>1644</p></td>
+<tr class="row-even"><td class="text-right"><p>6</p></td>
+<td class="text-left"><p>6 POUNDS</p></td>
+<td class="text-right"><p>1644</p></td>
 </tr>
-<tr class="row-odd"><td><p>7</p></td>
-<td><p>7 POUNDS</p></td>
-<td><p>2268</p></td>
+<tr class="row-odd"><td class="text-right"><p>7</p></td>
+<td class="text-left"><p>7 POUNDS</p></td>
+<td class="text-right"><p>2268</p></td>
 </tr>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>8 POUNDS</p></td>
-<td><p>1287</p></td>
+<tr class="row-even"><td class="text-right"><p>8</p></td>
+<td class="text-left"><p>8 POUNDS</p></td>
+<td class="text-right"><p>1287</p></td>
 </tr>
-<tr class="row-odd"><td><p>9-95</p></td>
-<td><p>9 POUNDS OR MORE</p></td>
-<td><p>499</p></td>
+<tr class="row-odd"><td class="text-right"><p>9-95</p></td>
+<td class="text-left"><p>9 POUNDS OR MORE</p></td>
+<td class="text-right"><p>499</p></td>
 </tr>
-<tr class="row-even"><td><p>98</p></td>
-<td><p>Refused</p></td>
-<td><p>2</p></td>
+<tr class="row-even"><td class="text-right"><p>98</p></td>
+<td class="text-left"><p>Refused</p></td>
+<td class="text-right"><p>2</p></td>
 </tr>
-<tr class="row-odd"><td><p>99</p></td>
-<td><p>Don’t know</p></td>
-<td><p>89</p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p>Total</p></td>
-<td><p>9553</p></td>
+<tr class="row-odd"><td class="text-right"><p>99</p></td>
+<td class="text-left"><p>Don’t know</p></td>
+<td class="text-right"><p>89</p></td>
 </tr>
 </tbody>
 </table>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>   | Total             | 9553  
+</pre></div>
+</div>
 <p>The results from <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> agree with the codebook, so we can be confident that we are reading and interpreting the data correctly.</p>
 <p><strong>Exercise:</strong> In <code class="docutils literal notranslate"><span class="pre">nsfg</span></code>, the <code class="docutils literal notranslate"><span class="pre">OUTCOME</span></code> column encodes the outcome of each pregnancy as shown below:</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Value</p></th>
-<th class="head"><p>Meaning</p></th>
+<tr class="row-odd"><th class="head text-right"><p>Value</p></th>
+<th class="head text-left"><p>Meaning</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td><p>Live birth</p></td>
+<tr class="row-even"><td class="text-right"><p>1</p></td>
+<td class="text-left"><p>Live birth</p></td>
 </tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td><p>Induced abortion</p></td>
+<tr class="row-odd"><td class="text-right"><p>2</p></td>
+<td class="text-left"><p>Induced abortion</p></td>
 </tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>Stillbirth</p></td>
+<tr class="row-even"><td class="text-right"><p>3</p></td>
+<td class="text-left"><p>Stillbirth</p></td>
 </tr>
-<tr class="row-odd"><td><p>4</p></td>
-<td><p>Miscarriage</p></td>
+<tr class="row-odd"><td class="text-right"><p>4</p></td>
+<td class="text-left"><p>Miscarriage</p></td>
 </tr>
-<tr class="row-even"><td><p>5</p></td>
-<td><p>Ectopic pregnancy</p></td>
+<tr class="row-even"><td class="text-right"><p>5</p></td>
+<td class="text-left"><p>Ectopic pregnancy</p></td>
 </tr>
-<tr class="row-odd"><td><p>6</p></td>
-<td><p>Current pregnancy</p></td>
+<tr class="row-odd"><td class="text-right"><p>6</p></td>
+<td class="text-left"><p>Current pregnancy</p></td>
 </tr>
 </tbody>
 </table>
@@ -1333,18 +1250,12 @@ The parameters are the name of the new file, the name of the object we’re stor
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_237821/2334651271.py:2: FutureWarning: Starting with pandas version 3.0 all arguments of to_hdf except for the argument &#39;path_or_buf&#39; will be keyword-only.
-  nsfg.to_hdf(filename, &#39;nsfg&#39;, complevel=6)
-</pre></div>
-</div>
-</div>
 </div>
 <p>The result is much smaller than the original fixed-width file, and faster to read.
 We can read it back like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;nsfg&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;nsfg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
