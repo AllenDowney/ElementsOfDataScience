@@ -2,7 +2,7 @@ name: tests
 
 on:
   push:
-    branches: [master]
+    branches: [v1]
   pull_request:
   schedule:
     # Run every Sunday
