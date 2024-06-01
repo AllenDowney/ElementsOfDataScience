@@ -5,7 +5,7 @@ matplotlib
 plotly
 seaborn
 shapely
-tables
+# tables
 scipy
 statsmodels
 
