@@ -1,11 +1,12 @@
+empiricaldist
 geopandas
+geodatasets
 jupyter
 numpy
 matplotlib
 plotly
 seaborn
 shapely
-tables
 scipy
 statsmodels
-
+tables

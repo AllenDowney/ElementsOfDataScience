@@ -2,10 +2,13 @@ PROJECT_NAME = ElementsOfDataScience
 PYTHON_VERSION = 3.10
 PYTHON_INTERPRETER = python
 
-# installing pytables with conda is a (hopefully) temporary fix
-# to make installation work on GitHub Actions
+.PHONY: default
+
+default:
+	@echo "No command specified. Please specify a target."
+
 create_environment:
-	conda create -y --name $(PROJECT_NAME) python=$(PYTHON_VERSION) pytables
+	conda create -y --name $(PROJECT_NAME) python=$(PYTHON_VERSION)
 	@echo ">>> conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
 
 delete_environment:
