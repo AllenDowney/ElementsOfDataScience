@@ -14,39 +14,39 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -71,27 +71,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,8 +109,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -138,6 +139,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="README.html">
   
@@ -153,7 +156,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -206,7 +209,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -215,14 +218,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -315,10 +318,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -326,14 +329,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -371,7 +374,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="relationships">
+  <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>.</p>
+<p>From July 17 to July 31, <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">get 20% off at Lulu.com</a>.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="relationships">
 <h1>Relationships<a class="headerlink" href="#relationships" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/09_relationships.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_remove-print docutils container">
@@ -423,12 +428,14 @@ Based on the BRFSS data from 2021, I have created an extract with one row for ea
 </div>
 </div>
 <p>Here are the first few rows.</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;SEQNO&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell tag_solution tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -618,7 +625,7 @@ We’ll can use NumPy to generate noise from a normal distribution with mean 0 a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/04bfe018098ffa06a45e66b51d04da86f9213842624176b5f837a1d38317439d.png" src="_images/04bfe018098ffa06a45e66b51d04da86f9213842624176b5f837a1d38317439d.png" />
+<img alt="_images/ddeac427dfa81321658ccab7217be0a9bcdbc70d2f518adbe3688670bc1225a4.png" src="_images/ddeac427dfa81321658ccab7217be0a9bcdbc70d2f518adbe3688670bc1225a4.png" />
 </div>
 </div>
 <p>The columns are gone, but now we can see that there are rows where people rounded off their weight.
@@ -644,7 +651,7 @@ We can fix that by jittering weight, too.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5ccfe21459ba897a5846e785a5cc733ff161f3fa5376aa8e634c5af088d18d53.png" src="_images/5ccfe21459ba897a5846e785a5cc733ff161f3fa5376aa8e634c5af088d18d53.png" />
+<img alt="_images/16cba7e0767c897eef002b7103cb28fcdffd6d1f67edf4f888876bcde4948828.png" src="_images/16cba7e0767c897eef002b7103cb28fcdffd6d1f67edf4f888876bcde4948828.png" />
 </div>
 </div>
 <p>Finally, let’s zoom in on the area where most of the data points are.
@@ -663,7 +670,7 @@ Here’s what it looks like.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c24ee4bdb8e096880388fb73219f6882f18a68e5fefa9148c5fbfdd6bdb46858.png" src="_images/c24ee4bdb8e096880388fb73219f6882f18a68e5fefa9148c5fbfdd6bdb46858.png" />
+<img alt="_images/93647ffcd3cdd373ae777e2af5c9ee69a701eda616d55826a23f04c827067f32.png" src="_images/93647ffcd3cdd373ae777e2af5c9ee69a701eda616d55826a23f04c827067f32.png" />
 </div>
 </div>
 <p>Now we have a reliable picture of the relationship between height and weight.
@@ -677,7 +684,7 @@ They are clearly different, and they suggest different relationships between the
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the figure size</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">8.75</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">))</span>
 
 <span class="c1"># Create subplots with 2 rows, 1 column, and start plot 1</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -706,7 +713,7 @@ They are clearly different, and they suggest different relationships between the
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5d1d763ecda943e17f6b224671cc0aac809f6a54e6d0193787cc409ab2c6add7.png" src="_images/5d1d763ecda943e17f6b224671cc0aac809f6a54e6d0193787cc409ab2c6add7.png" />
+<img alt="_images/85818d24b198b72453dd712b5c32b9b5a776a809bc0338605bf72878b30b1546.png" src="_images/85818d24b198b72453dd712b5c32b9b5a776a809bc0338605bf72878b30b1546.png" />
 </div>
 </div>
 <p>The point of this example is that it takes some effort to make an effective scatter plot.</p>
@@ -754,7 +761,7 @@ In this section, we’ll explore the relationship between weight and <em>age</em
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/62620ad402b5e136f2874b3b480778b6ed22d572f1c34bdb73a90c9baa06e171.png" src="_images/62620ad402b5e136f2874b3b480778b6ed22d572f1c34bdb73a90c9baa06e171.png" />
+<img alt="_images/202da93a94bc3585ce9876633a2902a859f1860113d9ddcfd3a669e788ddef14.png" src="_images/202da93a94bc3585ce9876633a2902a859f1860113d9ddcfd3a669e788ddef14.png" />
 </div>
 </div>
 <p>The ages are jittered, but the standard deviation of the noise is small enough that there’s still space between the columns.
@@ -988,7 +995,7 @@ When the relationship is nonlinear, correlation generally underestimates how str
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/095d8a8a376e1ddf9bccb310409789148da09c0a3a9541a80a4fc41f369ba00e.png" src="_images/095d8a8a376e1ddf9bccb310409789148da09c0a3a9541a80a4fc41f369ba00e.png" />
+<img alt="_images/7eefb74cd4afc44edf64fc2d2f05f692625fa4beb3a4582bb905ae5c0d04068c.png" src="_images/7eefb74cd4afc44edf64fc2d2f05f692625fa4beb3a4582bb905ae5c0d04068c.png" />
 </div>
 </div>
 <p>This is a strong relationship in the sense that you can make a much better guess about <code class="docutils literal notranslate"><span class="pre">y</span></code> if you are given <code class="docutils literal notranslate"><span class="pre">x</span></code>.
@@ -1000,8 +1007,8 @@ But here’s the correlation matrix:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.        , 0.02751105],
-       [0.02751105, 1.        ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.        , -0.01716181],
+       [-0.01716181,  1.        ]])
 </pre></div>
 </div>
 </div>
@@ -1035,9 +1042,14 @@ In each dataset, <code class="docutils literal notranslate"><span class="pre">xs
 </div>
 </div>
 <p>Here’s what the two scatter plots look like.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">8.75</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs1</span><span class="p">,</span> <span class="n">ys1</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -1055,8 +1067,9 @@ In each dataset, <code class="docutils literal notranslate"><span class="pre">xs
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/f48973daa6bce59d65bf37d1e2c35924bbb32ef319cd38486dd4cb7430cdfab2.png" src="_images/f48973daa6bce59d65bf37d1e2c35924bbb32ef319cd38486dd4cb7430cdfab2.png" />
+<img alt="_images/4d967458b3b2502220d5feb9ed7d1000ab8f6c0071147bacda05e2cf1485f865.png" src="_images/4d967458b3b2502220d5feb9ed7d1000ab8f6c0071147bacda05e2cf1485f865.png" />
 </div>
 </div>
 <p>I constructed these examples so they look similar, but they have substantially different correlations.</p>
@@ -1261,7 +1274,7 @@ Here’s the scatter plot of height and weight one more time.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c24ee4bdb8e096880388fb73219f6882f18a68e5fefa9148c5fbfdd6bdb46858.png" src="_images/c24ee4bdb8e096880388fb73219f6882f18a68e5fefa9148c5fbfdd6bdb46858.png" />
+<img alt="_images/93647ffcd3cdd373ae777e2af5c9ee69a701eda616d55826a23f04c827067f32.png" src="_images/93647ffcd3cdd373ae777e2af5c9ee69a701eda616d55826a23f04c827067f32.png" />
 </div>
 </div>
 <p>To compute the regression line, we’ll use <code class="docutils literal notranslate"><span class="pre">linregress</span></code> again.
@@ -1319,7 +1332,7 @@ As before, we can compute the line of best fit:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bf03da861e26658abe724570f53478e40b338bf43674ec3316ca061107dee9f1.png" src="_images/bf03da861e26658abe724570f53478e40b338bf43674ec3316ca061107dee9f1.png" />
+<img alt="_images/847c1099dfba0b2ec5696d8f709183f88f99591221f3dd38fa48c8e73594bc11.png" src="_images/847c1099dfba0b2ec5696d8f709183f88f99591221f3dd38fa48c8e73594bc11.png" />
 </div>
 </div>
 <p>The slope of this line seems consistent with the scatter plot.
@@ -1337,7 +1350,7 @@ As another example, here’s the scatter plot of weight versus age, which we saw
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7e6e77fdcf0fcf574ec376b61052d05e041cbfa2912b35c8cab67306f6cb9acc.png" src="_images/7e6e77fdcf0fcf574ec376b61052d05e041cbfa2912b35c8cab67306f6cb9acc.png" />
+<img alt="_images/bad1d0de44860b8fa01b79d57fce3bb6210f3412424bc929bb1f78fde06e7b77.png" src="_images/bad1d0de44860b8fa01b79d57fce3bb6210f3412424bc929bb1f78fde06e7b77.png" />
 </div>
 </div>
 <p>As we have seen before, the relationship is nonlinear.
@@ -1381,7 +1394,7 @@ Here’s what the line of best fit looks like.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0682f5c7478844958b6c76d9012351bf7565a7d2fd3dd4cbd24d3c5c56d2d70c.png" src="_images/0682f5c7478844958b6c76d9012351bf7565a7d2fd3dd4cbd24d3c5c56d2d70c.png" />
+<img alt="_images/f68daabd7b98dd97dc6fd6dc62c74a6b2243279def221f5514773a4dd56ab3ee.png" src="_images/f68daabd7b98dd97dc6fd6dc62c74a6b2243279def221f5514773a4dd56ab3ee.png" />
 </div>
 </div>
 <p>A straight line does not capture the relationship between these variables well.
@@ -1441,7 +1454,7 @@ One or the other might be more relevant, depending on the context.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1532,8 +1545,8 @@ By Allen B. Downey
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

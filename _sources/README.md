@@ -1,10 +1,12 @@
 # Elements of Data Science
 
-*Elements of Data Science* is an introduction to data science for people with no programming experience.  My goal is to present a small, powerful subset of Python that allows you to do real work in data science as quickly as possible.  
+Printed copies of *Elements of Data Science* are available now, with a **full color interior**. From July 17 to July 31, [get 20% off at Lulu.com](https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html).
+
+*Elements of Data Science* is an introduction to data science for people with no programming experience.  My goal is to present a small, powerful subset of Python that lets you do real work with data as quickly as possible.  
 
 I don't assume that the reader knows anything about programming, statistics, or data science.  When I use a term, I try to define it immediately, and when I use a programming feature, I try to explain it.
 
-This book is in the form of Jupyter notebooks.  Jupyter is a software development tool you can run in a web browser, so you don't have to install any software.  A Jupyter notebook is a document that contains text, Python code, and results.  So you can read it like a book, but you can also modify the code, run it, develop new programs, and test them.
+This book is in the form of Jupyter notebooks. Jupyter is a software development tool you can run in a web browser, so you don't have to install any software.  A Jupyter notebook is a document that contains text, Python code, and results.  So you can read it like a book, but you can also modify the code, run it, develop new programs, and test them.
 
 The notebooks contains exercises where you can practice what you learn.  Most of the exercises are meant to be quick, but a few are more substantial.
 

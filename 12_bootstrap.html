@@ -14,39 +14,39 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -57,8 +57,6 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '12_bootstrap';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -73,27 +71,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -115,8 +109,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -140,6 +139,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="README.html">
   
@@ -155,7 +156,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -208,7 +209,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -217,14 +218,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -317,10 +318,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -328,14 +329,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -376,7 +377,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="bootstrap-sampling">
+  <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>.</p>
+<p>From July 17 to July 31, <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">get 20% off at Lulu.com</a>.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="bootstrap-sampling">
 <h1>Bootstrap Sampling<a class="headerlink" href="#bootstrap-sampling" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/12_bootstrap.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_remove-print docutils container">
@@ -853,7 +856,7 @@ For example, the following function takes a <code class="docutils literal notran
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary3</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">summary1</span><span class="p">,</span> <span class="n">summary3</span><span class="p">])</span>
-<span class="n">table</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;normal model&#39;</span><span class="p">,</span> <span class="s1">&#39;bootstrapping&#39;</span><span class="p">]</span>
+<span class="n">table</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;normal model&#39;</span><span class="p">,</span> <span class="s1">&#39;bootstrapping&#39;</span><span class="p">]</span>
 <span class="n">table</span>
 </pre></div>
 </div>
@@ -926,7 +929,7 @@ The following function generates a bootstrapped sample and returns the 10th perc
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary2</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
 <span class="n">summary4</span> <span class="o">=</span> <span class="n">summarize</span><span class="p">(</span><span class="n">t4</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">summary2</span><span class="p">,</span> <span class="n">summary4</span><span class="p">])</span>
-<span class="n">table</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;normal model&#39;</span><span class="p">,</span> <span class="s1">&#39;bootstrapping&#39;</span><span class="p">]</span>
+<span class="n">table</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;normal model&#39;</span><span class="p">,</span> <span class="s1">&#39;bootstrapping&#39;</span><span class="p">]</span>
 <span class="n">table</span>
 </pre></div>
 </div>
@@ -999,12 +1002,14 @@ Instructions for downloading it are in the notebook for this chapter.</p>
 </div>
 <p>This dataset contains 438,693 rows, one for each respondent, and 10 columns, one for each variable in the extract.
 Here are the first few rows.</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell tag_solution tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1024,7 +1029,6 @@ Here are the first few rows.</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>SEQNO</th>
       <th>HTM4</th>
       <th>WTKG3</th>
       <th>_SEX</th>
@@ -1039,7 +1043,6 @@ Here are the first few rows.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>2021000001</td>
       <td>150.0</td>
       <td>32.66</td>
       <td>2</td>
@@ -1052,7 +1055,6 @@ Here are the first few rows.</p>
     </tr>
     <tr>
       <th>1</th>
-      <td>2021000002</td>
       <td>168.0</td>
       <td>NaN</td>
       <td>2</td>
@@ -1065,7 +1067,6 @@ Here are the first few rows.</p>
     </tr>
     <tr>
       <th>2</th>
-      <td>2021000003</td>
       <td>165.0</td>
       <td>77.11</td>
       <td>2</td>
@@ -1078,7 +1079,6 @@ Here are the first few rows.</p>
     </tr>
     <tr>
       <th>3</th>
-      <td>2021000004</td>
       <td>163.0</td>
       <td>88.45</td>
       <td>2</td>
@@ -1091,7 +1091,6 @@ Here are the first few rows.</p>
     </tr>
     <tr>
       <th>4</th>
-      <td>2021000005</td>
       <td>180.0</td>
       <td>93.44</td>
       <td>1</td>
@@ -1128,10 +1127,10 @@ Here are the first few rows.</p>
 </div>
 </div>
 </div>
-<p>We can use <code class="docutils literal notranslate"><span class="pre">notna</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code> to count the number of male respondents with valid height data.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">count</span></code> to count the number of male respondents with valid height data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_height</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">male</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_height</span> <span class="o">=</span> <span class="n">height</span><span class="p">[</span><span class="n">male</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="n">n_height</span>
 </pre></div>
 </div>
@@ -1459,7 +1458,7 @@ To demonstrate, I’ll select data from the GSS for one year, 2018:</p>
 </div>
 </div>
 </div>
-<p>And I’ll use bootstrapping to generate values from the sampling distribution of the 10th percentile.</p>
+<p>And use bootstrapping to generate values from the sampling distribution of the 10th percentile.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t9</span> <span class="o">=</span> <span class="p">[</span><span class="n">bootstrap_income_percentile</span><span class="p">(</span><span class="n">gss2018</span><span class="p">)</span>
@@ -1554,7 +1553,7 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<p>There are only four different values, and one of them appears more than 95% of the time.
+<p>There are a small number different values, and one of them appears more than 95% of the time.
 When we compute a 90% confidence interval, this value is both the 5th and the 95th percentile.</p>
 <p>Bootstrapping works well for most distributions and most statistics, but the one thing it can’t handle is lack of diversity in the data.
 Fortunately, this problem can be solved.
@@ -1566,8 +1565,7 @@ Another is to use kernel density estimation (KDE).</p>
 <h2>Resampling with KDE<a class="headerlink" href="#resampling-with-kde" title="Link to this heading">#</a></h2>
 <p>We have used KDE several times to estimate and plot a probability density based on a sample.
 We can also use it to smooth data that have been discretized.</p>
-<p>In Chapter 8 we saw that the distribution of income is well modeled by a lognormal distribution, so if we take the log of income, it is well modeled by a normal distribution.
-Here are the logarithms of the income data.</p>
+<p>For this example, we’ll compute the logarithms of the income values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_realinc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">gss2018</span><span class="p">[</span><span class="s1">&#39;realinc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
@@ -1575,7 +1573,9 @@ Here are the logarithms of the income data.</p>
 </div>
 </div>
 </div>
-<p>And here’s what the estimated density looks like.</p>
+<p>We’ve seen that the distribution of income is skewed so the tail extends farther to the right than the left.
+The logarithms of income have a more symmetric distribution that makes them work better with KDE.
+Here’s what the estimated density looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">log_realinc</span><span class="p">)</span>
@@ -1600,7 +1600,7 @@ Here are the logarithms of the income data.</p>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">kde</span></code> provides a method called <code class="docutils literal notranslate"><span class="pre">resample</span></code> that draws random values from the estimated density.
+<p>The resulting object provides a method called <code class="docutils literal notranslate"><span class="pre">resample</span></code> that draws random values from the estimated density.
 As we’ve done in previous examples, we’ll generate a resampled dataset with the same size as the original – which is stored as <code class="docutils literal notranslate"><span class="pre">kde.n</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1617,7 +1617,7 @@ As we’ve done in previous examples, we’ll generate a resampled dataset with 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5235.936465561343
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5272.140381990193
 </pre></div>
 </div>
 </div>
@@ -1648,7 +1648,7 @@ The following function encapsulates these steps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">summary9</span><span class="p">,</span> <span class="n">summary10</span><span class="p">])</span>
-<span class="n">table</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bootstrapping&#39;</span><span class="p">,</span> <span class="s1">&#39;KDE resampling&#39;</span><span class="p">]</span>
+<span class="n">table</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bootstrapping&#39;</span><span class="p">,</span> <span class="s1">&#39;KDE resampling&#39;</span><span class="p">]</span>
 <span class="n">table</span>
 </pre></div>
 </div>
@@ -1686,9 +1686,9 @@ The following function encapsulates these steps.</p>
     </tr>
     <tr>
       <th>KDE resampling</th>
-      <td>5097.59</td>
-      <td>246.25</td>
-      <td>[4692.62, 5485.93]</td>
+      <td>5103.64</td>
+      <td>257.08</td>
+      <td>[4687.54, 5537.92]</td>
     </tr>
   </tbody>
 </table>
@@ -1761,52 +1761,6 @@ Subtracting 1990 from <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>Logit Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>         <td>grass</td>      <th>  No. Observations:  </th>  <td> 38669</td> 
-</tr>
-<tr>
-  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td> 38666</td> 
-</tr>
-<tr>
-  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     2</td> 
-</tr>
-<tr>
-  <th>Date:</th>            <td>Wed, 08 May 2024</td> <th>  Pseudo R-squ.:     </th>  <td>0.07506</td>
-</tr>
-<tr>
-  <th>Time:</th>                <td>14:15:47</td>     <th>  Log-Likelihood:    </th> <td> -22624.</td>
-</tr>
-<tr>
-  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -24460.</td>
-</tr>
-<tr>
-  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th>  <td> 0.000</td> 
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th> <td>  -42.0901</td> <td>    2.372</td> <td>  -17.746</td> <td> 0.000</td> <td>  -46.739</td> <td>  -37.441</td>
-</tr>
-<tr>
-  <th>year</th>      <td>    0.0205</td> <td>    0.001</td> <td>   17.203</td> <td> 0.000</td> <td>    0.018</td> <td>    0.023</td>
-</tr>
-<tr>
-  <th>year2</th>     <td>    0.0016</td> <td>  6.3e-05</td> <td>   25.436</td> <td> 0.000</td> <td>    0.001</td> <td>    0.002</td>
-</tr>
-</table></div></div>
 </div>
 <p>To generate predictions, I’ll create a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with a range of values of <code class="docutils literal notranslate"><span class="pre">year</span></code> up to 2030, and corresponding values of <code class="docutils literal notranslate"><span class="pre">year2</span></code>.</p>
 <div class="cell docutils container">
@@ -1895,7 +1849,7 @@ To visualize the results, you have two options:</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1989,8 +1943,8 @@ By Allen B. Downey
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
