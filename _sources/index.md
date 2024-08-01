@@ -1,7 +1,7 @@
 # Elements of Data Science
 
 <p style="float: right; margin-left: 20px;">
-  <a href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html"
+  <a href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">
     <img src="https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/eds_cover.png" alt="Cover of Elements of DataScience" width="200">
   </a>
 </p>
