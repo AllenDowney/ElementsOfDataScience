@@ -16,7 +16,8 @@ jobs:
     strategy:
       matrix:
         # don't run on windows-latest; it can't handle Unicode
-        os: [ubuntu-latest, macos-latest]  
+        # don't run on macos-latest; it can't install pytables
+        os: [ubuntu-latest]  
         python-version: ['3.10']
 
     steps:
