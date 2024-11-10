@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Loops and Files &#8212; Elements of Data Science</title>
+    <title>4. Loops and Files &#8212; Elements of Data Science</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '04_loops';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Dictionaries" href="05_dictionaries.html" />
-    <link rel="prev" title="Lists and Arrays" href="03_arrays.html" />
+    <link rel="next" title="5. Dictionaries" href="05_dictionaries.html" />
+    <link rel="prev" title="3. Lists and Arrays" href="03_arrays.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -237,7 +237,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -357,14 +357,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-with-loops">Counting with Loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements">if Statements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-break-statement">The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace">Whitespace</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-words">Counting Words</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">4.1. Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-with-loops">4.2. Counting with Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">4.3. Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements">4.4. if Statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-break-statement">4.5. The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace">4.6. Whitespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-words">4.7. Counting Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.8. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -378,13 +378,13 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="loops-and-files">
-<h1>Loops and Files<a class="headerlink" href="#loops-and-files" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Loops and Files<a class="headerlink" href="#loops-and-files" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/04_loops.ipynb">Click here to run this notebook on Colab</a>.</p>
 <p>This chapter presents loops, which are used to perform repeated computation, and files, which are used to store data.
 As an example, we will download the famous book <em>War and Peace</em> and write a loop that reads the book and counts the words.
 This example presents some new computational tools – it is also an introduction to working with textual data.</p>
 <section id="loops">
-<h2>Loops<a class="headerlink" href="#loops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Loops<a class="headerlink" href="#loops" title="Link to this heading">#</a></h2>
 <p>One of the most important elements of computation is repetition, and the most common way to perform repetitive computations is a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.
 As a simple example, suppose we want to display the elements of a tuple.  Here’s a tuple of three integers:</p>
 <div class="cell docutils container">
@@ -459,7 +459,7 @@ Write a <code class="docutils literal notranslate"><span class="pre">for</span><
 Call the loop variable <code class="docutils literal notranslate"><span class="pre">element</span></code>.</p>
 </section>
 <section id="counting-with-loops">
-<h2>Counting with Loops<a class="headerlink" href="#counting-with-loops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Counting with Loops<a class="headerlink" href="#counting-with-loops" title="Link to this heading">#</a></h2>
 <p>Inside a loop, it is common to use a variable to count the number of times something happens.
 We’ve already seen that you can create a variable and give it a value, like this:</p>
 <div class="cell docutils container">
@@ -536,7 +536,7 @@ Use a single variable and update it using <code class="docutils literal notransl
 <p>The original game is at <a class="reference external" href="https://www.learn-with-math-games.com/math-number-tricks.html">https://www.learn-with-math-games.com/math-number-tricks.html</a></p>
 </section>
 <section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
 <p>Now that we know how to count, let’s see how to read words from a file.
 As an example, we’ll read a file that contains the text of Tolstoy’s famous novel, <em>War and Peace</em>.
 We can download it from Project Gutenberg, which is a repository of free books.
@@ -586,7 +586,7 @@ So we can count the number of lines like this:</p>
 <p>There are about 66,000 lines in this file.</p>
 </section>
 <section id="if-statements">
-<h2>if Statements<a class="headerlink" href="#if-statements" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>if Statements<a class="headerlink" href="#if-statements" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">if</span></code> statements are used to check whether a condition is true and, depending on the result, perform different computations.
 A condition is an expression whose value is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.
 For example, the following expression compares the final value of <code class="docutils literal notranslate"><span class="pre">count</span></code> to a number:</p>
@@ -659,7 +659,7 @@ The other lines are read, but not displayed.</p>
 <p>It is legal in Python to use spaces or tabs for indentation, but the most common convention is to use four spaces, never tabs.</p>
 </section>
 <section id="the-break-statement">
-<h2>The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement<a class="headerlink" href="#the-break-statement" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.5. </span>The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement<a class="headerlink" href="#the-break-statement" title="Link to this heading">#</a></h2>
 <p>If we display the final value of <code class="docutils literal notranslate"><span class="pre">count</span></code>, we see that the loop reads the entire file, but only prints one line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,7 +708,7 @@ The other lines are read, but not displayed.</p>
 <p><strong>Exercise:</strong> Write a loop that prints the first 5 lines of the file and then breaks out of the loop.</p>
 </section>
 <section id="whitespace">
-<h2>Whitespace<a class="headerlink" href="#whitespace" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.6. </span>Whitespace<a class="headerlink" href="#whitespace" title="Link to this heading">#</a></h2>
 <p>If we run the loop again and display the final value of <code class="docutils literal notranslate"><span class="pre">line</span></code>, we see the special sequence <code class="docutils literal notranslate"><span class="pre">\n</span></code> at the end.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -762,7 +762,7 @@ a	bc	def	ghij	klmno	pqrstu
 <p>Newline characters, tabs, and spaces are called <strong>whitespace</strong> because when they are printed they leave white space on the page (assuming that the background color is white).</p>
 </section>
 <section id="counting-words">
-<h2>Counting Words<a class="headerlink" href="#counting-words" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.7. </span>Counting Words<a class="headerlink" href="#counting-words" title="Link to this heading">#</a></h2>
 <p>So far we’ve counted the lines in a file – now let’s count the words.
 To split a line into words, we can use a function called <code class="docutils literal notranslate"><span class="pre">split</span></code> that takes a string and returns a list of words.
 To be more precise, <code class="docutils literal notranslate"><span class="pre">split</span></code> doesn’t actually know what a word is – it just splits the line wherever there’s a space or other whitespace character.</p>
@@ -883,7 +883,7 @@ We can identify these lines with the <code class="docutils literal notranslate">
 </div>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.8. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>This chapter presents loops, <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, and the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement.
 It also introduces tools for working with letters and words, and a simple kind of textual analysis, word counting.</p>
 <p>In the next chapter we’ll continue this example, counting the number of unique words in a text and the number of times each word appears.
@@ -927,7 +927,7 @@ And we’ll see another way to represent a collection of values, a Python dictio
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lists and Arrays</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Lists and Arrays</p>
       </div>
     </a>
     <a class="right-next"
@@ -935,7 +935,7 @@ And we’ll see another way to represent a collection of values, a Python dictio
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Dictionaries</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Dictionaries</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -955,14 +955,14 @@ And we’ll see another way to represent a collection of values, a Python dictio
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-with-loops">Counting with Loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements">if Statements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-break-statement">The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace">Whitespace</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-words">Counting Words</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">4.1. Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-with-loops">4.2. Counting with Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">4.3. Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements">4.4. if Statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-break-statement">4.5. The <code class="docutils literal notranslate"><span class="pre">break</span></code> Statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace">4.6. Whitespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-words">4.7. Counting Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.8. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1001,7 +1001,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

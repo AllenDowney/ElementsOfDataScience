@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hypothesis Testing &#8212; Elements of Data Science</title>
+    <title>13. Hypothesis Testing &#8212; Elements of Data Science</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '13_hypothesis';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Further Reading" href="14_outro.html" />
-    <link rel="prev" title="Bootstrap Sampling" href="12_bootstrap.html" />
+    <link rel="next" title="14. Further Reading" href="14_outro.html" />
+    <link rel="prev" title="12. Bootstrap Sampling" href="12_bootstrap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,20 +177,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -239,7 +239,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -359,14 +359,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-medical-treatments">Testing Medical Treatments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-p-values">Computing p-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">Are First Babies More Likely To Be Late?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hypothesis-testing-framework">The Hypothesis Testing Framework</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-correlation">Testing Correlation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-regression-models">Testing Regression Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-for-age">Controlling for Age</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-medical-treatments">13.1. Testing Medical Treatments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-p-values">13.2. Computing p-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">13.3. Are First Babies More Likely To Be Late?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hypothesis-testing-framework">13.4. The Hypothesis Testing Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-correlation">13.5. Testing Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-regression-models">13.6. Testing Regression Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-for-age">13.7. Controlling for Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">13.8. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -380,28 +380,8 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="hypothesis-testing">
-<h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">13. </span>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/13_hypothesis.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_remove-print docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">filename</span>
-
-<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">utils</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>This chapter introduces statistical hypothesis testing, which is such a contentious topic in the history of statistics, it’s hard to provide a simple definition.
 Instead, I’ll start with an example, present the problem hypothesis testing is intended to solve, and then show a solution.</p>
 <p>The solution I’ll show is different from what you might find in a statistics book.
@@ -414,7 +394,7 @@ This approach has two advantages and one disadvantage:</p>
 </ul>
 <p>The examples in this chapter include results from a clinical trial related to peanut allergies, and survey data from the National Survey of Family Growth (NSFG) and the Behavioral Risk Factor Surveillance System (BRFSS).</p>
 <section id="testing-medical-treatments">
-<h2>Testing Medical Treatments<a class="headerlink" href="#testing-medical-treatments" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.1. </span>Testing Medical Treatments<a class="headerlink" href="#testing-medical-treatments" title="Link to this heading">#</a></h2>
 <p>The LEAP study was a randomized trial that tested the effect of eating peanut snacks on the development of peanut allergies.
 The subjects were infants who were at high risk of developing peanut allergies because they had been diagnosed with other food allergies.
 Over a period of several years, half of the subjects were periodically given a snack containing peanuts; the other half were given no peanuts at all.</p>
@@ -574,7 +554,7 @@ And it is.</p>
 We can conclude that the relative risk we saw is unlikely if the risk is actually the same in both groups.</p>
 </section>
 <section id="computing-p-values">
-<h2>Computing p-values<a class="headerlink" href="#computing-p-values" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.2. </span>Computing p-values<a class="headerlink" href="#computing-p-values" title="Link to this heading">#</a></h2>
 <p>Now suppose that in addition to the treatment and control groups, the experiment included a placebo group that was given a snack that contained no peanuts.
 Suppose this group was the same size as the others, and 42 of the subjects developed peanut allergies.</p>
 <p>To be clear, there was no third group, and I made up these numbers, but let’s see how this hypothetical example works out.
@@ -632,7 +612,7 @@ In this case, it is about 13%, which means that even if the two groups are the s
 So, for this imagined experiment, we can’t rule out the possibility that the apparent difference is due to chance.</p>
 </section>
 <section id="are-first-babies-more-likely-to-be-late">
-<h2>Are First Babies More Likely To Be Late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.3. </span>Are First Babies More Likely To Be Late?<a class="headerlink" href="#are-first-babies-more-likely-to-be-late" title="Link to this heading">#</a></h2>
 <p>In the previous example, we computed relative risk, which is a ratio of two proportions.
 As a second example, let’s consider a difference between two means.</p>
 <p>When my wife and I were expecting our first child, we heard that first babies are more likely to be born late.
@@ -911,7 +891,7 @@ So that could bring the average down for non-first babies.</p>
 <p>In summary, the results in this section suggest that the observed difference is unlikely to be due to chance, but there are other possible explanations.</p>
 </section>
 <section id="the-hypothesis-testing-framework">
-<h2>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.4. </span>The Hypothesis Testing Framework<a class="headerlink" href="#the-hypothesis-testing-framework" title="Link to this heading">#</a></h2>
 <p>The examples we’ve done so far fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/hypothesis_testing.png" /></p>
 <p>Using data from an experiment, we compute the observed <strong>test statistic</strong>, denoted <span class="math notranslate nohighlight">\(\delta^*\)</span> in the diagram, which quantifies the size of the observed effect.  In the peanut allergy example, the test statistic is relative risk.  In the pregnancy length example, it is the difference in the means.</p>
@@ -1002,7 +982,7 @@ Then use <code class="docutils literal notranslate"><span class="pre">simulate_t
 Under the null hypothesis, how often does the difference in means exceed the actual difference in the dataset?  What conclusion can you draw from this result?</p>
 </section>
 <section id="testing-correlation">
-<h2>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.5. </span>Testing Correlation<a class="headerlink" href="#testing-correlation" title="Link to this heading">#</a></h2>
 <p>The method we used in the previous section is called a <strong>permutation test</strong> because we shuffled the pregnancy lengths before splitting them into groups (“permute” is another word for shuffle).
 In this section we’ll use a permutation test to check whether an observed correlation might be due to chance.</p>
 <p>Let’s look again at the correlations we computed in Chapter 9, using data from the Behavioral Risk Factor Surveillance System (BRFSS).
@@ -1231,7 +1211,7 @@ So testing a correlation might not be the most useful thing to do in the first p
 We can do better by testing a regression model.</p>
 </section>
 <section id="testing-regression-models">
-<h2>Testing Regression Models<a class="headerlink" href="#testing-regression-models" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.6. </span>Testing Regression Models<a class="headerlink" href="#testing-regression-models" title="Link to this heading">#</a></h2>
 <p>In the previous sections we used permutation to simulate a world where there is no correlation between two variables.
 In this section we’ll apply the same method to regression models.
 As an example, we’ll use NSFG data to explore the relationship between a mother’s age and her baby’s birth weight.</p>
@@ -1346,7 +1326,7 @@ We conclude that the observed effect is bigger than we would expect to see by ch
 </div>
 </section>
 <section id="controlling-for-age">
-<h2>Controlling for Age<a class="headerlink" href="#controlling-for-age" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.7. </span>Controlling for Age<a class="headerlink" href="#controlling-for-age" title="Link to this heading">#</a></h2>
 <p>In a previous exercise, you computed the difference in birth weight between first babies and others, which is about 0.17 pounds, and you checked whether we are likely to see a difference as big as that by chance.
 If things went according to plan, you found that it is very unlikely.</p>
 <p>But that doesn’t necessarily mean that there is anything special about first babies that makes them lighter than others.
@@ -1497,7 +1477,7 @@ By that standard, the weight difference between first babies and others is stati
 We saw an example with the BRFSS dataset, where the correlations we tested were <em>all</em> statistically significant, even the ones that are too small to matter in practice.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.8. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>Let’s review the examples in this chapter:</p>
 <ol class="arabic simple">
 <li><p>We started with data from LEAP, which studied the effect of eating peanuts on the development of peanut allergies. The test statistic was relative risk, and the null hypothesis was that the treatment was ineffective.</p></li>
@@ -1636,7 +1616,7 @@ What conclusion can we draw from the results?</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Bootstrap Sampling</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Bootstrap Sampling</p>
       </div>
     </a>
     <a class="right-next"
@@ -1644,7 +1624,7 @@ What conclusion can we draw from the results?</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Further Reading</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Further Reading</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1664,14 +1644,14 @@ What conclusion can we draw from the results?</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-medical-treatments">Testing Medical Treatments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-p-values">Computing p-values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">Are First Babies More Likely To Be Late?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hypothesis-testing-framework">The Hypothesis Testing Framework</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-correlation">Testing Correlation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-regression-models">Testing Regression Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-for-age">Controlling for Age</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-medical-treatments">13.1. Testing Medical Treatments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-p-values">13.2. Computing p-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-first-babies-more-likely-to-be-late">13.3. Are First Babies More Likely To Be Late?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hypothesis-testing-framework">13.4. The Hypothesis Testing Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-correlation">13.5. Testing Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-regression-models">13.6. Testing Regression Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-for-age">13.7. Controlling for Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">13.8. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1710,7 +1690,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

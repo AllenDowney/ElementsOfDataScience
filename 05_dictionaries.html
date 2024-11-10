@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Dictionaries &#8212; Elements of Data Science</title>
+    <title>5. Dictionaries &#8212; Elements of Data Science</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '05_dictionaries';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Plotting" href="06_plotting.html" />
-    <link rel="prev" title="Loops and Files" href="04_loops.html" />
+    <link rel="next" title="6. Plotting" href="06_plotting.html" />
+    <link rel="prev" title="4. Loops and Files" href="04_loops.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -237,7 +237,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -357,13 +357,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-unique-words">Counting Unique Words</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-capitalization">Dealing with Capitalization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-punctuation">Removing Punctuation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-word-frequencies">Counting Word Frequencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">5.1. Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2. Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-unique-words">5.3. Counting Unique Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-capitalization">5.4. Dealing with Capitalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-punctuation">5.5. Removing Punctuation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-word-frequencies">5.6. Counting Word Frequencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.7. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -377,7 +377,7 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="dictionaries">
-<h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/05_dictionaries.ipynb">Click here to run this notebook on Colab</a> or
 <a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/05_dictionaries.ipynb">click here to download it</a>.</p>
 <p>In the previous chapter we used a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to read a file and count the words.
@@ -385,7 +385,7 @@ In this chapter we’ll count the number of <em>unique</em> words and the number
 To do that, we’ll use one of Python’s most useful features, a <strong>dictionary</strong>.</p>
 <p>You will also see how to select an element from a sequence (tuple, list, or array).  And you will learn a little about Unicode, which is used to represent letters, numbers, and punctuation for almost every language in the world.</p>
 <section id="indexing">
-<h2>Indexing<a class="headerlink" href="#indexing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Indexing<a class="headerlink" href="#indexing" title="Link to this heading">#</a></h2>
 <p>Suppose you have a variable named <code class="docutils literal notranslate"><span class="pre">t</span></code> that refers to a list or tuple.
 You can select an element using the <strong>bracket operator</strong>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>.
 For example, here’s a tuple of strings:</p>
@@ -511,7 +511,7 @@ t[&#39;1&#39;]
 <p><strong>Exercise:</strong> You can use negative integers as indices.  Try using <code class="docutils literal notranslate"><span class="pre">-1</span></code> and <code class="docutils literal notranslate"><span class="pre">-2</span></code> as indices, and see if you can figure out what they do.</p>
 </section>
 <section id="id1">
-<h2>Dictionaries<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2. </span>Dictionaries<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>A dictionary is similar to a tuple or list, but in a dictionary, the index can be almost any type, not just an integer.
 We can create an empty dictionary like this:</p>
 <div class="cell docutils container">
@@ -716,7 +716,7 @@ Each time through the loop, they are assigned to <code class="docutils literal n
 <p>Write a loop that prints just the values from the dictionary.</p>
 </section>
 <section id="counting-unique-words">
-<h2>Counting Unique Words<a class="headerlink" href="#counting-unique-words" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Counting Unique Words<a class="headerlink" href="#counting-unique-words" title="Link to this heading">#</a></h2>
 <p>In the previous chapter we downloaded <em>War and Peace</em> from Project Gutenberg and counted the number of lines and words.
 Now that we have dictionaries, we can also count the number of unique words and the number of times each one appears.</p>
 <p>As we did in the previous chapter, we can read the text of <em>War and Peace</em> and count the number of words.</p>
@@ -799,7 +799,7 @@ Suppose you have a list of words, like this:</p>
 <p>Write a nested loop that iterates through each word in the list, and each letter in each word, and prints the letters on separate lines.</p>
 </section>
 <section id="dealing-with-capitalization">
-<h2>Dealing with Capitalization<a class="headerlink" href="#dealing-with-capitalization" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>Dealing with Capitalization<a class="headerlink" href="#dealing-with-capitalization" title="Link to this heading">#</a></h2>
 <p>When we count unique words, we probably want to treat <code class="docutils literal notranslate"><span class="pre">The</span></code> and <code class="docutils literal notranslate"><span class="pre">the</span></code> as the same word.  We can do that by converting all words to lower case, using the <code class="docutils literal notranslate"><span class="pre">lower</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -851,7 +851,7 @@ Suppose you have a list of words, like this:</p>
 <p><strong>Exercise:</strong> Modify the previous loop so it makes a lowercase version of each word before adding it to the dictionary.  How many unique words are there, if we ignore the difference between uppercase and lowercase?</p>
 </section>
 <section id="removing-punctuation">
-<h2>Removing Punctuation<a class="headerlink" href="#removing-punctuation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>Removing Punctuation<a class="headerlink" href="#removing-punctuation" title="Link to this heading">#</a></h2>
 <p>To remove punctuation from the words, we can use <code class="docutils literal notranslate"><span class="pre">strip</span></code>, which removes characters from the beginning and end of a string.
 Here’s an example:</p>
 <div class="cell docutils container">
@@ -1010,7 +1010,7 @@ To fix this problem, we’ll use the following loop, which</p>
 </div>
 </section>
 <section id="counting-word-frequencies">
-<h2>Counting Word Frequencies<a class="headerlink" href="#counting-word-frequencies" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6. </span>Counting Word Frequencies<a class="headerlink" href="#counting-word-frequencies" title="Link to this heading">#</a></h2>
 <p>In the previous section we counted the number of unique words, but we might also want to know how often each word appears.  Then we can find the most common and least common words in the book.
 To count the frequency of each word, we’ll make a dictionary that maps from each word to the number of times it appears.</p>
 <p>Here’s an example that loops through a string and counts the number of times each letter appears.</p>
@@ -1098,7 +1098,7 @@ Use it to answer the following questions:</p>
 <p><strong>Optional:</strong> If you know how to define a function, write a function that takes a <code class="docutils literal notranslate"><span class="pre">Counter</span></code> and a frequency as arguments, prints all words with that frequency, and returns the number of words with that frequency.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.7. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>This chapter introduces dictionaries, which are collections of keys and corresponding values.
 We used a dictionary to count the number of unique words in a file and the number of times each one appears.</p>
 <p>It also introduces the bracket operator, which selects an element from a list or tuple, or looks up a key in a dictionary and finds the corresponding value.</p>
@@ -1143,7 +1143,7 @@ Also, we used the <code class="docutils literal notranslate"><span class="pre">u
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Loops and Files</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Loops and Files</p>
       </div>
     </a>
     <a class="right-next"
@@ -1151,7 +1151,7 @@ Also, we used the <code class="docutils literal notranslate"><span class="pre">u
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plotting</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Plotting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1171,13 +1171,13 @@ Also, we used the <code class="docutils literal notranslate"><span class="pre">u
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">Indexing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-unique-words">Counting Unique Words</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-capitalization">Dealing with Capitalization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-punctuation">Removing Punctuation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-word-frequencies">Counting Word Frequencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing">5.1. Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2. Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-unique-words">5.3. Counting Unique Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-capitalization">5.4. Dealing with Capitalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-punctuation">5.5. Removing Punctuation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-word-frequencies">5.6. Counting Word Frequencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.7. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1216,7 +1216,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

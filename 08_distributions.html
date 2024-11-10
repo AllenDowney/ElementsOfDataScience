@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Distributions &#8212; Elements of Data Science</title>
+    <title>8. Distributions &#8212; Elements of Data Science</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '08_distributions';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Relationships" href="09_relationships.html" />
-    <link rel="prev" title="DataFrames and Series" href="07_dataframes.html" />
+    <link rel="next" title="9. Relationships" href="09_relationships.html" />
+    <link rel="prev" title="7. DataFrames and Series" href="07_dataframes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,20 +177,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -239,7 +239,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -359,16 +359,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-social-survey">The General Social Survey</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-education">Distribution of Education</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-functions">Cumulative Distribution Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-age">CDF of Age</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-distributions">Comparing Distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-incomes">Comparing Incomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-distributions">Modeling Distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-density-estimation">Kernel Density Estimation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1. Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-social-survey">8.2. The General Social Survey</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-education">8.3. Distribution of Education</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-functions">8.4. Cumulative Distribution Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-age">8.5. CDF of Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-distributions">8.6. Comparing Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-incomes">8.7. Comparing Incomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-distributions">8.8. Modeling Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-density-estimation">8.9. Kernel Density Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.10. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -382,28 +382,8 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="distributions">
-<h1>Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/08_distributions.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_remove-print docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">filename</span>
-
-<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">utils</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>In this chapter we’ll see three ways to describe a distribution:</p>
 <ul class="simple">
 <li><p>A probability mass function (PMF), which represents a set of values and the number of times each one appears in a dataset.</p></li>
@@ -413,7 +393,7 @@ document.write(`
 <p>As examples, we’ll use data from the General Social Survey (GSS) to look at distributions of age and income, and to explore the relationship between income and education.
 But we’ll start with one of the most important ideas in statistics, the distribution.</p>
 <section id="id1">
-<h2>Distributions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>Distributions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>A distribution is a set of values and their corresponding probabilities.  For example, if you roll a six-sided die, there are six possible outcomes – the numbers 1 through 6 – and they all have the same probability, <span class="math notranslate nohighlight">\(1/6\)</span>.
 We can represent this distribution of outcomes with a table, like this:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -516,7 +496,7 @@ We can display the result like this.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> object is a specialized version of a Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>, so it provides all of the methods of a <code class="docutils literal notranslate"><span class="pre">Series</span></code>, plus some additional methods we’ll see soon.</p>
 </section>
 <section id="the-general-social-survey">
-<h2>The General Social Survey<a class="headerlink" href="#the-general-social-survey" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>The General Social Survey<a class="headerlink" href="#the-general-social-survey" title="Link to this heading">#</a></h2>
 <p>We’ll use <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> objects to represent distributions of values from a new dataset, the General Social Survey (GSS).
 The GSS surveys a representative sample of adult residents of the U.S. and asks questions about demographics, personal history, and beliefs about social and political issues.
 It is widely used by politicians, policy makers, and researchers.</p>
@@ -653,7 +633,7 @@ Here are the first few rows.</p>
 In the GSS documentation, you’ll see that they use the term “variable” for a column that contains answers to survey questions.</p>
 </section>
 <section id="distribution-of-education">
-<h2>Distribution of Education<a class="headerlink" href="#distribution-of-education" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>Distribution of Education<a class="headerlink" href="#distribution-of-education" title="Link to this heading">#</a></h2>
 <p>To get started with this dataset, let’s look at the <code class="docutils literal notranslate"><span class="pre">educ</span></code> column, which records the number of years of education for each respondent.
 We can select this column from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> like this:</p>
 <div class="cell docutils container">
@@ -907,7 +887,7 @@ Make an unnormalized <code class="docutils literal notranslate"><span class="pre
 Use the bracket operator to look up the number of respondents interviewed in 2022.</p>
 </section>
 <section id="cumulative-distribution-functions">
-<h2>Cumulative Distribution Functions<a class="headerlink" href="#cumulative-distribution-functions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4. </span>Cumulative Distribution Functions<a class="headerlink" href="#cumulative-distribution-functions" title="Link to this heading">#</a></h2>
 <p>If we compute the cumulative sum of a PMF, the result is a cumulative distribution function (CDF).
 To see what that means, and why it is useful, let’s look at a simple example.
 Suppose we have a sequence of five values.</p>
@@ -1037,7 +1017,7 @@ Suppose we have a sequence of five values.</p>
 As with <code class="docutils literal notranslate"><span class="pre">Pmf</span></code> and PMF, I’ll use <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> to refer to a Python object and CDF to refer to the concept.</p>
 </section>
 <section id="cdf-of-age">
-<h2>CDF of Age<a class="headerlink" href="#cdf-of-age" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.5. </span>CDF of Age<a class="headerlink" href="#cdf-of-age" title="Link to this heading">#</a></h2>
 <p>To see why CDFs are useful, let’s consider the distribution of ages for respondents in the General Social Survey.
 The column we’ll use is <code class="docutils literal notranslate"><span class="pre">age</span></code>.</p>
 <p>Documentation of <code class="docutils literal notranslate"><span class="pre">age</span></code> is at <a class="reference external" href="https://gssdataexplorer.norc.org/variables/53/vshow">https://gssdataexplorer.norc.org/variables/53/vshow</a>.</p>
@@ -1200,7 +1180,7 @@ Select <code class="docutils literal notranslate"><span class="pre">realinc</spa
 Use the <code class="docutils literal notranslate"><span class="pre">Cdf</span></code> object to compute the fraction of respondents whose income is at or below the mean.</p>
 </section>
 <section id="comparing-distributions">
-<h2>Comparing Distributions<a class="headerlink" href="#comparing-distributions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.6. </span>Comparing Distributions<a class="headerlink" href="#comparing-distributions" title="Link to this heading">#</a></h2>
 <p>So far we’ve seen two ways to represent distributions, PMFs and CDFs.
 Now we’ll use PMFs and CDFs to compare distributions, and we’ll see the pros and cons of each.
 One way to compare distributions is to plot multiple PMFs on the same axes.
@@ -1301,7 +1281,7 @@ For example, the median age woman is older than the median age man, by about one
 <p><strong>Exercise:</strong> What fraction of men are over 80?  What fraction of women?</p>
 </section>
 <section id="comparing-incomes">
-<h2>Comparing Incomes<a class="headerlink" href="#comparing-incomes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.7. </span>Comparing Incomes<a class="headerlink" href="#comparing-incomes" title="Link to this heading">#</a></h2>
 <p>As another example, let’s look at household income and compare the distribution before and after 1995 (I chose 1995 because it’s roughly the midpoint of the survey).
 We’ll make two Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> objects to select respondents interviewed before and after 1995.</p>
 <div class="cell docutils container">
@@ -1381,7 +1361,7 @@ Write a few sentences that describe and interpret the results.</p>
 </div>
 </section>
 <section id="modeling-distributions">
-<h2>Modeling Distributions<a class="headerlink" href="#modeling-distributions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.8. </span>Modeling Distributions<a class="headerlink" href="#modeling-distributions" title="Link to this heading">#</a></h2>
 <p>Some distributions have names.
 For example, you might be familiar with the normal distribution, also called the Gaussian distribution or the bell curve.
 And you might have heard of others like the exponential distribution, binomial distribution, or maybe Poisson distribution.
@@ -1484,7 +1464,7 @@ In the next exercise, we’ll try it and see.</p>
 </div>
 </section>
 <section id="kernel-density-estimation">
-<h2>Kernel Density Estimation<a class="headerlink" href="#kernel-density-estimation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.9. </span>Kernel Density Estimation<a class="headerlink" href="#kernel-density-estimation" title="Link to this heading">#</a></h2>
 <p>We have seen two ways to represent distributions, PMFs and CDFs.
 Now we’ll learn another way: a probability density function, or PDF.
 The <code class="docutils literal notranslate"><span class="pre">norm</span></code> function, which we used to compute the normal CDF, can also compute the normal PDF.</p>
@@ -1596,7 +1576,7 @@ We can see places where the data deviate from the model, but because we know the
 </div>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.10. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>In this chapter, we’ve seen three ways to visualize distributions: PMFs, CDFs, and KDE plots.
 In general, I use CDFs when I am exploring data – that way, I get the best view of what’s going on without getting distracted by noise.
 Then, if I am presenting results to an audience unfamiliar with CDFs, I might use a PMF if the dataset contains a small number of unique values, or KDE if there are many unique values.</p>
@@ -1639,7 +1619,7 @@ Then, if I am presenting results to an audience unfamiliar with CDFs, I might us
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DataFrames and Series</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>DataFrames and Series</p>
       </div>
     </a>
     <a class="right-next"
@@ -1647,7 +1627,7 @@ Then, if I am presenting results to an audience unfamiliar with CDFs, I might us
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Relationships</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Relationships</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1667,16 +1647,16 @@ Then, if I am presenting results to an audience unfamiliar with CDFs, I might us
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-social-survey">The General Social Survey</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-education">Distribution of Education</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-functions">Cumulative Distribution Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-age">CDF of Age</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-distributions">Comparing Distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-incomes">Comparing Incomes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-distributions">Modeling Distributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-density-estimation">Kernel Density Estimation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.1. Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-social-survey">8.2. The General Social Survey</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-education">8.3. Distribution of Education</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-functions">8.4. Cumulative Distribution Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-age">8.5. CDF of Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-distributions">8.6. Comparing Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-incomes">8.7. Comparing Incomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-distributions">8.8. Modeling Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-density-estimation">8.9. Kernel Density Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">8.10. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1715,7 +1695,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

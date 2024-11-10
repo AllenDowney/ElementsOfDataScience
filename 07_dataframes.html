@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DataFrames and Series &#8212; Elements of Data Science</title>
+    <title>7. DataFrames and Series &#8212; Elements of Data Science</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '07_dataframes';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Distributions" href="08_distributions.html" />
-    <link rel="prev" title="Plotting" href="06_plotting.html" />
+    <link rel="next" title="8. Distributions" href="08_distributions.html" />
+    <link rel="prev" title="6. Plotting" href="06_plotting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -237,7 +237,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -357,17 +357,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">Reading the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics">Summary Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series-arithmetic">Series Arithmetic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-series">Boolean Series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-means">Weighted Means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-an-extract">Making an Extract</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">7.1. Reading the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">7.2. Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">7.3. Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics">7.4. Summary Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series-arithmetic">7.5. Series Arithmetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">7.6. Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-series">7.7. Boolean Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">7.8. Filtering Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-means">7.9. Weighted Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-an-extract">7.10. Making an Extract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.11. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -381,28 +381,8 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="dataframes-and-series">
-<h1>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>DataFrames and Series<a class="headerlink" href="#dataframes-and-series" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/07_dataframes.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_remove-print docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">filename</span>
-
-<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">utils</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>This chapter introduces Pandas, a Python library that provides functions for reading and writing data files, exploring and analyzing data, and generating visualizations.
 And it provides two new types for working with data, <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> and <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
 <p>We will use these tools to answer a data question – what is the average birth weight of babies in the United States?
@@ -418,7 +398,7 @@ This example will demonstrate important steps in almost any data science project
 </ol>
 <p>Let’s start by getting the data.</p>
 <section id="reading-the-data">
-<h2>Reading the Data<a class="headerlink" href="#reading-the-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>Reading the Data<a class="headerlink" href="#reading-the-data" title="Link to this heading">#</a></h2>
 <p>To estimate average birth weight, we’ll use data from the National Survey of Family Growth (NSFG), which is available from the National Center for Health Statistics.
 To download the data, you have to agree to the Data User’s Agreement.
 URLs for the data and the agreement are in the notebook for this chapter.</p>
@@ -632,7 +612,7 @@ Instructions for downloading it are in the notebook for this chapter.</p>
 For now we will focus on the first baby from each pregnancy, and we will come back to the issue of multiple births.</p>
 </section>
 <section id="series">
-<h2>Series<a class="headerlink" href="#series" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>Series<a class="headerlink" href="#series" title="Link to this heading">#</a></h2>
 <p>In many ways a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is like a Python dictionary, where the column names are the keys and the columns are the values.
 You can select a column from a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> using the bracket operator, with a string as the key.</p>
 <div class="cell docutils container">
@@ -684,7 +664,7 @@ Then display the first 5 elements of <code class="docutils literal notranslate">
 But you might want to skim it so you know where to look later.</p>
 </section>
 <section id="validation">
-<h2>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
 <p>At this point we have identified the columns we need to answer the question and assigned them to variables named <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -812,7 +792,7 @@ The most frequent values are 6-8 pounds, but there are some very light babies, a
 <p>Use <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> to display the values in this column and how many times each value appears.  Are the results consistent with the codebook?</p>
 </section>
 <section id="summary-statistics">
-<h2>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Link to this heading">#</a></h2>
 <p>Another way to validate the data is with <code class="docutils literal notranslate"><span class="pre">describe</span></code>, which computes statistics that summarize the data, like the mean, standard deviation, minimum, and maximum.
 Here are the results for <code class="docutils literal notranslate"><span class="pre">pounds</span></code>.</p>
 <div class="cell docutils container">
@@ -887,7 +867,7 @@ Run <code class="docutils literal notranslate"><span class="pre">describe</span>
 How much does this cleaning affect the results?</p>
 </section>
 <section id="series-arithmetic">
-<h2>Series Arithmetic<a class="headerlink" href="#series-arithmetic" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>Series Arithmetic<a class="headerlink" href="#series-arithmetic" title="Link to this heading">#</a></h2>
 <p>Now we want to combine <code class="docutils literal notranslate"><span class="pre">pounds</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces</span></code> into a single <code class="docutils literal notranslate"><span class="pre">Series</span></code> that contains total birth weight.
 With <code class="docutils literal notranslate"><span class="pre">Series</span></code> objects, the arithmetic operators work elementwise, as they do with NumPy arrays.</p>
 <p>So, to convert <code class="docutils literal notranslate"><span class="pre">pounds</span></code> to ounces, we can write <code class="docutils literal notranslate"><span class="pre">pounds</span> <span class="pre">*</span> <span class="pre">16</span></code>.
@@ -895,7 +875,7 @@ Then, to add in <code class="docutils literal notranslate"><span class="pre">oun
 <p><strong>Exercise:</strong> Use <code class="docutils literal notranslate"><span class="pre">pounds_clean</span></code> and <code class="docutils literal notranslate"><span class="pre">ounces_clean</span></code> to compute the total birth weight expressed in kilograms (there are roughly 2.2 pounds per kilogram).  What is the mean birth weight in kilograms?</p>
 </section>
 <section id="histograms">
-<h2>Histograms<a class="headerlink" href="#histograms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>Histograms<a class="headerlink" href="#histograms" title="Link to this heading">#</a></h2>
 <p>Let’s get back to the original question: what is the average birth weight for babies in the U.S.?<br />
 As an answer we <em>could</em> take the results from the previous section and compute the mean:</p>
 <div class="cell docutils container">
@@ -944,7 +924,7 @@ Select this column from the <code class="docutils literal notranslate"><span cla
 Label the axes and add a title.</p>
 </section>
 <section id="boolean-series">
-<h2>Boolean Series<a class="headerlink" href="#boolean-series" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>Boolean Series<a class="headerlink" href="#boolean-series" title="Link to this heading">#</a></h2>
 <p>We have seen that the distribution of birth weights is <strong>skewed</strong> to the left – that is, the left tail extends farther from the center than the right tail.
 That’s because preterm babies tend to be lighter.
 To see which babies are preterm, we can use the <code class="docutils literal notranslate"><span class="pre">PRGLNGTH</span></code> column, which records pregnancy length in weeks.
@@ -1050,7 +1030,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">~prete
 Of all live births, what fraction are full term?</p>
 </section>
 <section id="filtering-data">
-<h2>Filtering Data<a class="headerlink" href="#filtering-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.8. </span>Filtering Data<a class="headerlink" href="#filtering-data" title="Link to this heading">#</a></h2>
 <p>We can use a Boolean <code class="docutils literal notranslate"><span class="pre">Series</span></code> as a filter – that is, we can select only rows that satisfy a condition or meet some criterion.
 For example, we can use <code class="docutils literal notranslate"><span class="pre">preterm</span></code> and the bracket operator to select values from <code class="docutils literal notranslate"><span class="pre">birth_weight</span></code>, so <code class="docutils literal notranslate"><span class="pre">preterm_weight</span></code> gets birth weights for preterm babies.</p>
 <div class="cell docutils container">
@@ -1131,7 +1111,7 @@ Of all multiple births, what fraction are preterm?</p>
 <p><strong>Exercise:</strong> What is the average birth weight for live, single, full-term births?</p>
 </section>
 <section id="weighted-means">
-<h2>Weighted Means<a class="headerlink" href="#weighted-means" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.9. </span>Weighted Means<a class="headerlink" href="#weighted-means" title="Link to this heading">#</a></h2>
 <p>We are almost done, but there’s one more problem we have to solve: oversampling.
 The NSFG sample is not exactly representative of the U.S. population.
 By design, some groups are more likely to appear in the sample than others – that is, they are <strong>oversampled</strong>.
@@ -1220,7 +1200,7 @@ You should find that the weighted mean is a little higher than the unweighted me
 That’s because the groups that are oversampled in the NSFG tend to have lighter babies, on average.</p>
 </section>
 <section id="making-an-extract">
-<h2>Making an Extract<a class="headerlink" href="#making-an-extract" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.10. </span>Making an Extract<a class="headerlink" href="#making-an-extract" title="Link to this heading">#</a></h2>
 <p>The NSFG dataset is large, and reading a fixed-width file is relatively slow.
 So now that we’ve read it, let’s save a smaller version in a more efficient format.
 When we come back to this dataset in Chapter 13, here are the columns we’ll need.</p>
@@ -1268,7 +1248,7 @@ We can read it back like this.</p>
 </div>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.11. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>This chapter poses what seems like a simple question: what is the average birth weight of babies in the United States?</p>
 <p>To answer it, we found an appropriate dataset and downloaded the files.
 We used Pandas to read the files and create a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.
@@ -1323,7 +1303,7 @@ But you might see this use of the term elsewhere, so I thought I would mention i
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Plotting</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Plotting</p>
       </div>
     </a>
     <a class="right-next"
@@ -1331,7 +1311,7 @@ But you might see this use of the term elsewhere, so I thought I would mention i
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Distributions</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Distributions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1351,17 +1331,17 @@ But you might see this use of the term elsewhere, so I thought I would mention i
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">Reading the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">Series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics">Summary Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series-arithmetic">Series Arithmetic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-series">Boolean Series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-means">Weighted Means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-an-extract">Making an Extract</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">7.1. Reading the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series">7.2. Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">7.3. Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics">7.4. Summary Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#series-arithmetic">7.5. Series Arithmetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">7.6. Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-series">7.7. Boolean Series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">7.8. Filtering Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-means">7.9. Weighted Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-an-extract">7.10. Making an Extract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.11. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1400,7 +1380,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

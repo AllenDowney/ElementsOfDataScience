@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Relationships &#8212; Elements of Data Science</title>
+    <title>9. Relationships &#8212; Elements of Data Science</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '09_relationships';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Regression" href="10_regression.html" />
-    <link rel="prev" title="Distributions" href="08_distributions.html" />
+    <link rel="next" title="10. Regression" href="10_regression.html" />
+    <link rel="prev" title="8. Distributions" href="08_distributions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -237,7 +237,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -357,12 +357,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-relationships">Exploring relationships</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-relationships">Visualizing relationships</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-correlation">Quantifying Correlation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">Simple Linear Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-of-height-and-weight">Regression of Height and Weight</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-relationships">9.1. Exploring relationships</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-relationships">9.2. Visualizing relationships</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-correlation">9.3. Quantifying Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">9.4. Simple Linear Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-of-height-and-weight">9.5. Regression of Height and Weight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">9.6. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -376,28 +376,8 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="relationships">
-<h1>Relationships<a class="headerlink" href="#relationships" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Relationships<a class="headerlink" href="#relationships" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/09_relationships.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_remove-print docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">filename</span>
-
-<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">utils</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>This chapter explores relationships between variables.</p>
 <ul class="simple">
 <li><p>We will visualize relationships using scatter plots, box plots, and violin plots,</p></li>
@@ -405,7 +385,7 @@ document.write(`
 </ul>
 <p>The most important lesson in this chapter is that you should always visualize the relationship between variables before you try to quantify it – otherwise, you are likely to be misled.</p>
 <section id="exploring-relationships">
-<h2>Exploring relationships<a class="headerlink" href="#exploring-relationships" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Exploring relationships<a class="headerlink" href="#exploring-relationships" title="Link to this heading">#</a></h2>
 <p>So far we have mostly considered one variable at a time.  Now it’s time to explore relationships between variables.
 As a first example, we’ll look at the relationship between height and weight.
 We’ll use data from the Behavioral Risk Factor Surveillance System (BRFSS), which is run by the Centers for Disease Control.
@@ -741,7 +721,7 @@ If we jitter them, the scatter plot will show the relationship more clearly.</p>
 </ul>
 </section>
 <section id="visualizing-relationships">
-<h2>Visualizing relationships<a class="headerlink" href="#visualizing-relationships" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>Visualizing relationships<a class="headerlink" href="#visualizing-relationships" title="Link to this heading">#</a></h2>
 <p>In the previous section we used scatter plots to visualize the relationship between weight and height.
 In this section, we’ll explore the relationship between weight and <em>age</em>, and we’ll see two new ways to visualize relationships: box plots and violin plots.</p>
 <p>Let’s start with a scatter plot.</p>
@@ -869,7 +849,7 @@ Then plot the PMF of <code class="docutils literal notranslate"><span class="pre
 Can you see a relationship between these variables?</p>
 </section>
 <section id="quantifying-correlation">
-<h2>Quantifying Correlation<a class="headerlink" href="#quantifying-correlation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>Quantifying Correlation<a class="headerlink" href="#quantifying-correlation" title="Link to this heading">#</a></h2>
 <p>In the previous section, we visualized relationships between pairs of variables.
 Now we’ll quantify the strength of those relationships by computing their correlation.</p>
 <p>When people say “correlation” casually, they might mean any relationship between two variables.
@@ -1123,7 +1103,7 @@ How would you describe the relationship, if any?</p>
 <p>Is the correlation between age and vegetable servings what you expected based on the box plot?</p>
 </section>
 <section id="simple-linear-regression">
-<h2>Simple Linear Regression<a class="headerlink" href="#simple-linear-regression" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>Simple Linear Regression<a class="headerlink" href="#simple-linear-regression" title="Link to this heading">#</a></h2>
 <p>In the previous section we saw that correlation does not always measure what we really want to know.
 In this section, we look at an alternative: simple linear regression.
 Here “simple” means there are only two variables, as opposed to “multiple” regression, which can work with any number of variables.</p>
@@ -1256,7 +1236,7 @@ Then we multiply by the slope and add the intercept.</p>
 If you look closely at the vertical scales, the slope in the second figure is almost 10 times higher.</p>
 </section>
 <section id="regression-of-height-and-weight">
-<h2>Regression of Height and Weight<a class="headerlink" href="#regression-of-height-and-weight" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>Regression of Height and Weight<a class="headerlink" href="#regression-of-height-and-weight" title="Link to this heading">#</a></h2>
 <p>Now let’s look at an example of regression with real data.
 Here’s the scatter plot of height and weight one more time.</p>
 <div class="cell docutils container">
@@ -1414,7 +1394,7 @@ You might want to use <code class="docutils literal notranslate"><span class="pr
 <p>What is the slope of the regression line?  What does this slope means in the context of the question we are exploring?</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.6. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>This chapter presents three ways to visualize the relationship between two variables: a scatter plot, violin plot, and box plot.
 A scatter plot is often a good choice when you are exploring a new data set, but it can take some attention to avoid overplotting.
 Violin plots and box plots are particularly useful when one of the variables has only a few unique values or the values have been rounded into bins.</p>
@@ -1462,7 +1442,7 @@ One or the other might be more relevant, depending on the context.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Distributions</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Distributions</p>
       </div>
     </a>
     <a class="right-next"
@@ -1470,7 +1450,7 @@ One or the other might be more relevant, depending on the context.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Regression</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1490,12 +1470,12 @@ One or the other might be more relevant, depending on the context.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-relationships">Exploring relationships</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-relationships">Visualizing relationships</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-correlation">Quantifying Correlation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">Simple Linear Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-of-height-and-weight">Regression of Height and Weight</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-relationships">9.1. Exploring relationships</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-relationships">9.2. Visualizing relationships</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-correlation">9.3. Quantifying Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">9.4. Simple Linear Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-of-height-and-weight">9.5. Regression of Height and Weight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">9.6. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1534,7 +1514,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

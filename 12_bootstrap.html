@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Bootstrap Sampling &#8212; Elements of Data Science</title>
+    <title>12. Bootstrap Sampling &#8212; Elements of Data Science</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '12_bootstrap';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Hypothesis Testing" href="13_hypothesis.html" />
-    <link rel="prev" title="Resampling" href="11_resampling.html" />
+    <link rel="next" title="13. Hypothesis Testing" href="13_hypothesis.html" />
+    <link rel="prev" title="11. Resampling" href="11_resampling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -237,7 +237,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -357,15 +357,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-average-income">Estimating Average Income</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-percentiles">Estimating Percentiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrapping">Bootstrapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-bigger-data">Working with Bigger Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-bootstrapping">Weighted Bootstrapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-and-regression">Correlation and Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-bootstrapping">Limitations of Bootstrapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-with-kde">Resampling with KDE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-average-income">12.1. Estimating Average Income</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-percentiles">12.2. Estimating Percentiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrapping">12.3. Bootstrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-bigger-data">12.4. Working with Bigger Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-bootstrapping">12.5. Weighted Bootstrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-and-regression">12.6. Correlation and Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-bootstrapping">12.7. Limitations of Bootstrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-with-kde">12.8. Resampling with KDE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">12.9. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -379,28 +379,8 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="bootstrap-sampling">
-<h1>Bootstrap Sampling<a class="headerlink" href="#bootstrap-sampling" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Bootstrap Sampling<a class="headerlink" href="#bootstrap-sampling" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/12_bootstrap.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_remove-print docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">filename</span>
-
-<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">utils</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>In the previous chapter we used resampling to compute sampling distributions, which quantify the variability in an estimate due to random sampling.</p>
 <p>In this chapter, we’ll use data from the General Social Survey (GSS) to estimate average income and the 10th percentile of income.
 We’ll see that the resampling method we used in the previous chapter works for the average but not for the 10th percentile.
@@ -408,7 +388,7 @@ To solve this problem, we’ll use another kind of resampling, called bootstrapp
 <p>Then we’ll use bootstrapping to compute sampling distributions for correlations and the parameters of linear regression.
 Finally, I’ll point out a problem with bootstrap resampling when there are not enough different values in a dataset, and a way to solve it with KDE resampling.</p>
 <section id="estimating-average-income">
-<h2>Estimating Average Income<a class="headerlink" href="#estimating-average-income" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Estimating Average Income<a class="headerlink" href="#estimating-average-income" title="Link to this heading">#</a></h2>
 <p>As a first example, we’ll use data from the General Social Survey to estimate average family income.
 We’ll work with an extract that contains just the columns we need, as we did in Chapter 8.
 Instructions for downloading the extract are in the notebook for this chapter.</p>
@@ -690,7 +670,7 @@ In the next section we’ll see an example where the normal distribution is not 
 Then we’ll see how to fix the problem.</p>
 </section>
 <section id="estimating-percentiles">
-<h2>Estimating Percentiles<a class="headerlink" href="#estimating-percentiles" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Estimating Percentiles<a class="headerlink" href="#estimating-percentiles" title="Link to this heading">#</a></h2>
 <p>Suppose that, instead of estimating the average income, we want to estimate the 10th percentile.
 Computing percentiles of income is often relevant to discussions of income inequality.</p>
 <p>To compute the 10th percentile of the data, we can use the Pandas method <code class="docutils literal notranslate"><span class="pre">quantile</span></code>, which is similar to the NumPy function <code class="docutils literal notranslate"><span class="pre">percentile</span></code>, except that it drops <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.
@@ -775,7 +755,7 @@ To see what happened, let’s look at the distribution of reported incomes again
 Fortunately there is a simple alternative that is more robust: bootstrapping.</p>
 </section>
 <section id="bootstrapping">
-<h2>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Link to this heading">#</a></h2>
 <p>Bootstrapping is a kind of resampling, based on the framework we saw in the previous chapter:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/resampling.png" /></p>
 <p>The idea is that we treat the original sample as if it were the entire population, and simulate the sampling process by choosing random rows with replacement.
@@ -979,7 +959,7 @@ The following function generates a bootstrapped sample and returns the 10th perc
 However, at the end of the chapter, we’ll see one example where it fails.</p>
 </section>
 <section id="working-with-bigger-data">
-<h2>Working with Bigger Data<a class="headerlink" href="#working-with-bigger-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Working with Bigger Data<a class="headerlink" href="#working-with-bigger-data" title="Link to this heading">#</a></h2>
 <p>As sample size increases, errors due to random sampling get smaller.
 To demonstrate this effect, we’ll use data from the Behavioral Risk Factor Surveillance System (BRFSS) to estimate the average height for men in the United States.</p>
 <p>First, let’s read the 2021 data, which I have stored in an HDF file.
@@ -1216,7 +1196,7 @@ I suspect that many of them are six feet tall, or six feet and one inch, and som
 <p>In fact, there is another source of error in this example that we have not taken into account: oversampling.</p>
 </section>
 <section id="weighted-bootstrapping">
-<h2>Weighted Bootstrapping<a class="headerlink" href="#weighted-bootstrapping" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>Weighted Bootstrapping<a class="headerlink" href="#weighted-bootstrapping" title="Link to this heading">#</a></h2>
 <p>By design, the BRFSS oversamples some demographic groups – that is, people in some groups are more likely than others to appear in the sample.
 If people in these groups are taller than others on average, or shorter, our estimated mean would not be accurate.</p>
 <p>We encountered this issue in Chapter 7, where we used data from the National Survey of Family Growth (NSFG) to compute the average birth weight for babies in the United States.
@@ -1386,7 +1366,7 @@ If we compare it to the unweighted mean we computed, it is a little lower.</p>
 So in this example the error if we fail to correct for oversampling is bigger than variability due to random sampling.</p>
 </section>
 <section id="correlation-and-regression">
-<h2>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.6. </span>Correlation and Regression<a class="headerlink" href="#correlation-and-regression" title="Link to this heading">#</a></h2>
 <p>Bootstrap resampling can be used to estimate other statistics and their sampling distributions.
 For example, in Chapter 9 we computed the correlation between height and weight, which is about 0.47.</p>
 <div class="cell docutils container">
@@ -1442,7 +1422,7 @@ Here’s the result.</p>
 <p>Run it 101 times and collect the results.  Use the sampling distribution to compute the mean of the slope estimates, standard error, and a 90% confidence interval.</p>
 </section>
 <section id="limitations-of-bootstrapping">
-<h2>Limitations of Bootstrapping<a class="headerlink" href="#limitations-of-bootstrapping" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.7. </span>Limitations of Bootstrapping<a class="headerlink" href="#limitations-of-bootstrapping" title="Link to this heading">#</a></h2>
 <p>One limitation of bootstrapping is that it can be computationally expensive.
 With small datasets, it is usually fast enough that we can generate a thousand values from the sampling distribution, which means that we can compute standard errors and confidence intervals precisely.
 With larger datasets, we can cut the computation time by generating fewer values.
@@ -1561,7 +1541,7 @@ Jittering is one option.
 Another is to use kernel density estimation (KDE).</p>
 </section>
 <section id="resampling-with-kde">
-<h2>Resampling with KDE<a class="headerlink" href="#resampling-with-kde" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.8. </span>Resampling with KDE<a class="headerlink" href="#resampling-with-kde" title="Link to this heading">#</a></h2>
 <p>We have used KDE several times to estimate and plot a probability density based on a sample.
 We can also use it to smooth data that have been discretized.</p>
 <p>For this example, we’ll compute the logarithms of the income values.</p>
@@ -1697,7 +1677,7 @@ The following function encapsulates these steps.</p>
 But the confidence interval we get from KDE resampling is sensible.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.9. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>There are ten examples in this chapter, so let’s review them:</p>
 <ol class="arabic simple">
 <li><p>First we used resampling based on a normal model to estimate average family income in the GSS and compute a confidence interval.</p></li>
@@ -1857,7 +1837,7 @@ To visualize the results, you have two options:</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Resampling</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Resampling</p>
       </div>
     </a>
     <a class="right-next"
@@ -1865,7 +1845,7 @@ To visualize the results, you have two options:</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Hypothesis Testing</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Hypothesis Testing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1885,15 +1865,15 @@ To visualize the results, you have two options:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-average-income">Estimating Average Income</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-percentiles">Estimating Percentiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrapping">Bootstrapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-bigger-data">Working with Bigger Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-bootstrapping">Weighted Bootstrapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-and-regression">Correlation and Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-bootstrapping">Limitations of Bootstrapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-with-kde">Resampling with KDE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-average-income">12.1. Estimating Average Income</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-percentiles">12.2. Estimating Percentiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrapping">12.3. Bootstrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-bigger-data">12.4. Working with Bigger Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-bootstrapping">12.5. Weighted Bootstrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-and-regression">12.6. Correlation and Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-bootstrapping">12.7. Limitations of Bootstrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-with-kde">12.8. Resampling with KDE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">12.9. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1932,7 +1912,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

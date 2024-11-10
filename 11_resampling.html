@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Resampling &#8212; Elements of Data Science</title>
+    <title>11. Resampling &#8212; Elements of Data Science</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '11_resampling';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bootstrap Sampling" href="12_bootstrap.html" />
-    <link rel="prev" title="Regression" href="10_regression.html" />
+    <link rel="next" title="12. Bootstrap Sampling" href="12_bootstrap.html" />
+    <link rel="prev" title="10. Regression" href="10_regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -237,7 +237,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -357,12 +357,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccine-testing">Vaccine Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-one-group">Simulating One Group</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-the-trial">Simulating the Trial</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-means">Estimating Means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-resampling-framework">The Resampling Framework</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccine-testing">11.1. Vaccine Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-one-group">11.2. Simulating One Group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-the-trial">11.3. Simulating the Trial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-means">11.4. Estimating Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-resampling-framework">11.5. The Resampling Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.6. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -376,32 +376,12 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="resampling">
-<h1>Resampling<a class="headerlink" href="#resampling" title="Link to this heading">#</a></h1>
-<div class="cell tag_remove-print docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">filename</span>
-
-<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">utils</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h1><span class="section-number">11. </span>Resampling<a class="headerlink" href="#resampling" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/11_resampling.ipynb">Click here to run this notebook on Colab</a>.</p>
 <p>This chapter introduces <strong>resampling methods</strong>, which are used to quantify the precision of an estimate.
 As a first example, we’ll use results from a medical trial to estimate the efficacy of the vaccine.</p>
 <section id="vaccine-testing">
-<h2>Vaccine Testing<a class="headerlink" href="#vaccine-testing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Vaccine Testing<a class="headerlink" href="#vaccine-testing" title="Link to this heading">#</a></h2>
 <p>Suppose you read a report about a new vaccine and the manufacturer says it is 67% effective at preventing disease.
 You might wonder where that number comes from, what it means, and how confident we should be that it is correct.
 Results like this often come from a randomized controlled trial (RCT), which works like this:</p>
@@ -497,7 +477,7 @@ When estimates are reported in scientific journals, they almost always include o
 In the next section, I’ll explain what they mean and show how to compute them.</p>
 </section>
 <section id="simulating-one-group">
-<h2>Simulating One Group<a class="headerlink" href="#simulating-one-group" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Simulating One Group<a class="headerlink" href="#simulating-one-group" title="Link to this heading">#</a></h2>
 <p>In the example, there are 21,911 people in the treatment group and 116 of them got the disease, so the estimated risk is about 5 cases per 1000 people.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -666,7 +646,7 @@ If we assume that the observed risk is correct, and we run the same trial many t
 <p>Standard errors and confidence intervals quantify our uncertainty about the estimate due to random variation from one trial to another.</p>
 </section>
 <section id="simulating-the-trial">
-<h2>Simulating the Trial<a class="headerlink" href="#simulating-the-trial" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Simulating the Trial<a class="headerlink" href="#simulating-the-trial" title="Link to this heading">#</a></h2>
 <p>In the previous section we simulated one group and estimated their risk.
 Now we’ll simulate both groups and estimate the efficacy of the vaccine.</p>
 <p>The following function takes four parameters: the sizes of the two groups and their actual risks.</p>
@@ -769,7 +749,7 @@ In general, I prefer to report a confidence interval because it is easier to int
 </ul>
 </section>
 <section id="estimating-means">
-<h2>Estimating Means<a class="headerlink" href="#estimating-means" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>Estimating Means<a class="headerlink" href="#estimating-means" title="Link to this heading">#</a></h2>
 <p>In the previous examples, we estimated risk, which is a proportion, and efficacy, which is a ratio of two proportions.
 As a third example, let’s estimate a mean.</p>
 <p>Suppose we want to estimate the average height of men in the United States.
@@ -883,7 +863,7 @@ If we recruit 103 people and compute the mean of their heights, the result might
 But we should remember that there are other possible sources of error, so we might be off by more than that.</p>
 </section>
 <section id="the-resampling-framework">
-<h2>The Resampling Framework<a class="headerlink" href="#the-resampling-framework" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>The Resampling Framework<a class="headerlink" href="#the-resampling-framework" title="Link to this heading">#</a></h2>
 <p>The examples in this chapter fit into the framework shown in this diagram:</p>
 <p><img alt="" src="https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/resampling.png" /></p>
 <p>Using data from an experiment, we compute a sample statistic.  In the vaccine example, we computed risks for each group and efficacy.  In the height example, we computed the average height in the sample.</p>
@@ -967,7 +947,7 @@ The following is a version of <code class="docutils literal notranslate"><span c
 Plot the sampling distribution of the coefficient of variation, and compute a 90% confidence interval.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.6. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>Let’s review the examples in this chapter:</p>
 <ol class="arabic simple">
 <li><p>We started with results from a vaccine trial.  We estimated the effectiveness of the vaccine and used simulation to draw a random sample from the sampling distribution of effectiveness.  We used that sample to compute a standard error and a 90% confidence interval, which measure the variability we would expect if we ran the experiment again (assuming that the observed efficacy is correct).</p></li>
@@ -1014,7 +994,7 @@ Plot the sampling distribution of the coefficient of variation, and compute a 90
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Regression</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Regression</p>
       </div>
     </a>
     <a class="right-next"
@@ -1022,7 +1002,7 @@ Plot the sampling distribution of the coefficient of variation, and compute a 90
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bootstrap Sampling</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Bootstrap Sampling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1042,12 +1022,12 @@ Plot the sampling distribution of the coefficient of variation, and compute a 90
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccine-testing">Vaccine Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-one-group">Simulating One Group</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-the-trial">Simulating the Trial</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-means">Estimating Means</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-resampling-framework">The Resampling Framework</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccine-testing">11.1. Vaccine Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-one-group">11.2. Simulating One Group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-the-trial">11.3. Simulating the Trial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-means">11.4. Estimating Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-resampling-framework">11.5. The Resampling Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.6. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1086,7 +1066,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

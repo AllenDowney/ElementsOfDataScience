@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Regression &#8212; Elements of Data Science</title>
+    <title>10. Regression &#8212; Elements of Data Science</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '10_regression';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Resampling" href="11_resampling.html" />
-    <link rel="prev" title="Relationships" href="09_relationships.html" />
+    <link rel="next" title="11. Resampling" href="11_resampling.html" />
+    <link rel="prev" title="9. Relationships" href="09_relationships.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_arrays.html">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -237,7 +237,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -357,13 +357,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-with-statsmodels">Regression with StatsModels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression">Multiple Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-by-age">Grouping by Age</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-regression-results">Visualizing regression results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-variables">Categorical Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-with-statsmodels">10.1. Regression with StatsModels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression">10.2. Multiple Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-by-age">10.3. Grouping by Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-regression-results">10.4. Visualizing regression results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-variables">10.5. Categorical Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">10.6. Logistic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.7. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -377,27 +377,7 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="regression">
-<h1>Regression<a class="headerlink" href="#regression" title="Link to this heading">#</a></h1>
-<div class="cell tag_remove-print docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">filename</span>
-
-<span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/AllenDowney/ElementsOfDataScience/v1/utils.py&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">utils</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h1><span class="section-number">10. </span>Regression<a class="headerlink" href="#regression" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/10_regression.ipynb">Click here to run this notebook on Colab</a>.</p>
 <p>In the previous chapter we used simple linear regression to quantify the relationship between two variables.
 In this chapter we’ll get farther into regression, including multiple regression and one of my all-time favorite tools, logistic regression.
@@ -544,7 +524,7 @@ First we’ll select the subset of the data where both variables are valid.</p>
 </div>
 <p>The estimated slope is about 3450, which means that each additional year of education is associated with an additional $3450 of income.</p>
 <section id="regression-with-statsmodels">
-<h2>Regression with StatsModels<a class="headerlink" href="#regression-with-statsmodels" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1. </span>Regression with StatsModels<a class="headerlink" href="#regression-with-statsmodels" title="Link to this heading">#</a></h2>
 <p>SciPy doesn’t do multiple regression, so we’ll to switch to a new library, StatsModels.  Here’s the import statement.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -587,7 +567,7 @@ Confirm that the intercept and slope are the same.
 Remember to use <code class="docutils literal notranslate"><span class="pre">dropna</span></code> to select the rows with valid data in both columns.</p>
 </section>
 <section id="multiple-regression">
-<h2>Multiple Regression<a class="headerlink" href="#multiple-regression" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2. </span>Multiple Regression<a class="headerlink" href="#multiple-regression" title="Link to this heading">#</a></h2>
 <p>In the previous section, we saw that income depends on education, and in the exercise we saw that it also depends on <code class="docutils literal notranslate"><span class="pre">age</span></code>.
 Now let’s put them together in a single model.</p>
 <div class="cell docutils container">
@@ -617,7 +597,7 @@ The <code class="docutils literal notranslate"><span class="pre">+</span></code>
 <p>In this model, the contribution of age is quite small, but as we’ll see in the next section that might be misleading.</p>
 </section>
 <section id="grouping-by-age">
-<h2>Grouping by Age<a class="headerlink" href="#grouping-by-age" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3. </span>Grouping by Age<a class="headerlink" href="#grouping-by-age" title="Link to this heading">#</a></h2>
 <p>Let’s look more closely at the relationship between income and age.
 We’ll use a Pandas method we have not seen before, called <code class="docutils literal notranslate"><span class="pre">groupby</span></code>, to divide the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> into age groups.</p>
 <div class="cell docutils container">
@@ -705,7 +685,7 @@ Does it look like a linear relationship?</p>
 </ul>
 </section>
 <section id="visualizing-regression-results">
-<h2>Visualizing regression results<a class="headerlink" href="#visualizing-regression-results" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4. </span>Visualizing regression results<a class="headerlink" href="#visualizing-regression-results" title="Link to this heading">#</a></h2>
 <p>In the previous section we ran a multiple regression model to characterize the relationships between income, age, and education.
 Because the model includes quadratic terms, the parameters are hard to interpret.
 For example, you might notice that the parameter for <code class="docutils literal notranslate"><span class="pre">educ</span></code> is negative, and that might be a surprise, because it suggests that higher education is associated with lower income.
@@ -843,7 +823,7 @@ Now let’s see what it predicts for different levels of education, holding age 
 <p>How do the predictions compare with the data?</p>
 </section>
 <section id="categorical-variables">
-<h2>Categorical Variables<a class="headerlink" href="#categorical-variables" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.5. </span>Categorical Variables<a class="headerlink" href="#categorical-variables" title="Link to this heading">#</a></h2>
 <p>Most of the variables we have used so far – like income, age, and education – are numerical.
 But variables like sex and race are <strong>categorical</strong> – that is, each respondent belongs to one of a specified set of categories.
 If there are only two categories, the variable is <strong>binary</strong>.</p>
@@ -877,7 +857,7 @@ If the respondent is married, it includes both their own income and their spouse
 So we cannot interpret this result as an estimate of a gender gap in income.</p>
 </section>
 <section id="logistic-regression">
-<h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.6. </span>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h2>
 <p>In the previous section, we added a categorical variable on the right side of a regression formula – that is, we used it as a predictive variable.</p>
 <p>But what if the categorical variable is on the left side of the regression formula – that is, it’s the value we are trying to predict?
 In that case, we can use <strong>logistic regression</strong>.</p>
@@ -1025,7 +1005,7 @@ Let’s use logistic regression to explore relationships between this variable a
 </ol>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.7. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>At this point, I’d like to summarize the topics we’ve covered so far, and make some connections that might clarify the big picture.
 A central theme of this book is <strong>exploratory data analysis</strong>, which is a process and set of tools for exploring a dataset, visualizing distributions, and discovering relationships between variables.
 The last four chapters demonstrate the steps of this process:</p>
@@ -1076,7 +1056,7 @@ In the next chapter, we will move on to a new topic, resampling, which is a vers
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Relationships</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Relationships</p>
       </div>
     </a>
     <a class="right-next"
@@ -1084,7 +1064,7 @@ In the next chapter, we will move on to a new topic, resampling, which is a vers
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Resampling</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Resampling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1104,13 +1084,13 @@ In the next chapter, we will move on to a new topic, resampling, which is a vers
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-with-statsmodels">Regression with StatsModels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression">Multiple Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-by-age">Grouping by Age</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-regression-results">Visualizing regression results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-variables">Categorical Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-with-statsmodels">10.1. Regression with StatsModels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-regression">10.2. Multiple Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-by-age">10.3. Grouping by Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-regression-results">10.4. Visualizing regression results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorical-variables">10.5. Categorical Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">10.6. Logistic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">10.7. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1149,7 +1129,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lists and Arrays &#8212; Elements of Data Science</title>
+    <title>3. Lists and Arrays &#8212; Elements of Data Science</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '03_arrays';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Loops and Files" href="04_loops.html" />
-    <link rel="prev" title="Times and Places" href="02_times.html" />
+    <link rel="next" title="4. Loops and Files" href="04_loops.html" />
+    <link rel="prev" title="2. Times and Places" href="02_times.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_variables.html">Variables and Values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_times.html">Times and Places</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lists and Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_loops.html">Loops and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">Dictionaries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">DataFrames and Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">Relationships</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_regression.html">Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">Resampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">Bootstrap Sampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">Hypothesis Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14_outro.html">Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_variables.html">1. Variables and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_times.html">2. Times and Places</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Lists and Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_loops.html">4. Loops and Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_dictionaries.html">5. Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_plotting.html">6. Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframes.html">7. DataFrames and Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_distributions.html">8. Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_relationships.html">9. Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_regression.html">10. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_resampling.html">11. Resampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_bootstrap.html">12. Bootstrap Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_hypothesis.html">13. Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_outro.html">14. Further Reading</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -237,7 +237,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AllenDowney/ElementsOfDataScience" target="_blank"
+<a href="https://github.com/AllenDowney/ElementsOfDataScience/tree/v1" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -357,15 +357,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sandwich-prices">Sandwich Prices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-summaries">Statistical Summaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-difference">Relative Difference</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-relative-differences">Summarizing Relative Differences</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">3.1. Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">3.2. Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sandwich-prices">3.3. Sandwich Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">3.4. NumPy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-summaries">3.5. Statistical Summaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-difference">3.6. Relative Difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-relative-differences">3.7. Summarizing Relative Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">3.8. Debugging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">3.9. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -379,7 +379,7 @@ document.write(`
                   
   <p>Printed copies of <em>Elements of Data Science</em> are available now, with a <strong>full color interior</strong>, from <a class="reference external" href="https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html">Lulu.com</a>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="lists-and-arrays">
-<h1>Lists and Arrays<a class="headerlink" href="#lists-and-arrays" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3. </span>Lists and Arrays<a class="headerlink" href="#lists-and-arrays" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/03_arrays.ipynb">Click here to run this notebook on Colab</a>.</p>
 <p>In the previous chapter we used tuples to represent latitude and longitude.  In this chapter, we’ll use tuples more generally to represent a sequence of values.
 And we’ll see two more ways to represent sequences: lists and arrays.</p>
@@ -389,7 +389,7 @@ For work with data, we will use arrays most of the time.</p>
 <p>As an example, we will use a small dataset from an article in <em>The Economist</em> about the price of sandwiches.
 It’s a silly example, but I’ll use it to introduce relative differences and ways to summarize them.</p>
 <section id="tuples">
-<h2>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h2>
 <p>A tuple is a sequence of elements.
 When we use a tuple to represent latitude and longitude, the sequence only contains two elements, and they are both floating-point numbers.
 But in general a tuple can contain any number of elements, and the elements can be values of any type.
@@ -481,7 +481,7 @@ You can also use the <code class="docutils literal notranslate"><span class="pre
 </div>
 </section>
 <section id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
 <p>Python provides another way to store a sequence of elements: a <strong>list</strong>.
 To create a list, you put a sequence of elements in square brackets.</p>
 <div class="cell docutils container">
@@ -535,7 +535,7 @@ In the next section, we’ll use lists to store data about sandwich prices.</p>
 <p><strong>Exercise:</strong> Create a list with 4 elements. Then use <code class="docutils literal notranslate"><span class="pre">type</span></code> to confirm that it’s a list, and <code class="docutils literal notranslate"><span class="pre">len</span></code> to confirm that it has 4 elements.</p>
 </section>
 <section id="sandwich-prices">
-<h2>Sandwich Prices<a class="headerlink" href="#sandwich-prices" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Sandwich Prices<a class="headerlink" href="#sandwich-prices" title="Link to this heading">#</a></h2>
 <p>In September 2019, <em>The Economist</em> published an article comparing sandwich prices in Boston and London, called “Why Americans pay more for lunch than Britons do”.</p>
 <p>You can read the article at <a class="reference external" href="https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do">https://www.economist.com/finance-and-economics/2019/09/07/why-americans-pay-more-for-lunch-than-britons-do</a>.</p>
 <p>It includes this graph showing prices of several sandwiches in the two cities:</p>
@@ -604,7 +604,7 @@ boston_price_list - london_price_list
 <p>We can solve this problem with NumPy.</p>
 </section>
 <section id="numpy-arrays">
-<h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h2>
 <p>We’ve already seen that the NumPy library provides math functions.
 It also provides a type of sequence called an <strong>array</strong>.
 You can create a new array with the <code class="docutils literal notranslate"><span class="pre">np.array</span></code> function, starting with a list or tuple.</p>
@@ -698,7 +698,7 @@ For example, to compute the differences between Boston and London prices, we can
 The result is a new array.</p>
 </section>
 <section id="statistical-summaries">
-<h2>Statistical Summaries<a class="headerlink" href="#statistical-summaries" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>Statistical Summaries<a class="headerlink" href="#statistical-summaries" title="Link to this heading">#</a></h2>
 <p>NumPy provides functions that compute statistical summaries like the mean:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -744,7 +744,7 @@ As an aside, many of the NumPy functions also work with lists, so we could also 
 <p>Compute the standard deviation of sandwich prices in Boston and London.  By this measure, which set of prices is more variable?</p>
 </section>
 <section id="relative-difference">
-<h2>Relative Difference<a class="headerlink" href="#relative-difference" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>Relative Difference<a class="headerlink" href="#relative-difference" title="Link to this heading">#</a></h2>
 <p>In the previous section we computed differences between prices.
 But often when we make this kind of comparison, we are interested in <strong>relative differences</strong>, which are differences expressed as a fraction or percentage of a quantity.
 Taking the lobster roll as an example, the difference in price is:</p>
@@ -836,7 +836,7 @@ In this example, if you want to make the difference seem bigger, you might put L
 </div>
 </section>
 <section id="summarizing-relative-differences">
-<h2>Summarizing Relative Differences<a class="headerlink" href="#summarizing-relative-differences" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span>Summarizing Relative Differences<a class="headerlink" href="#summarizing-relative-differences" title="Link to this heading">#</a></h2>
 <p>Now let’s think about how to summarize an array of percentage differences.
 One option is to report the range, which we can compute with <code class="docutils literal notranslate"><span class="pre">np.min</span></code> and <code class="docutils literal notranslate"><span class="pre">np.max</span></code>.</p>
 <div class="cell docutils container">
@@ -893,7 +893,7 @@ As this example demonstrates:</p>
 <p>In this example, I think the second option (the relative difference in the means) is more meaningful, because it reflects the difference in price between “baskets of goods” that include one of each sandwich.</p>
 </section>
 <section id="debugging">
-<h2>Debugging<a class="headerlink" href="#debugging" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Debugging<a class="headerlink" href="#debugging" title="Link to this heading">#</a></h2>
 <p>So far, most of the exercises have only required a few lines of code.
 If you made errors along the way, you probably found them quickly.</p>
 <p>As we go along, the exercises will be more substantial, and you may find yourself spending more time debugging.
@@ -971,7 +971,7 @@ We can solve this problem by using the arrays rather than the lists.</p>
 As a general rule, each line of code should perform a small number of operations, and each cell should contain a small number of statements.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.9. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>This chapter presents three ways to represent a sequence of values: tuples, lists, and Numpy arrays.
 Working with data, we will primarily use arrays.</p>
 <p>It also introduces three ways to represent differences: absolute, relative, and percentage – and several ways to summarize a set of values: minimum, maximum, mean, and standard deviation.</p>
@@ -1015,7 +1015,7 @@ Working with data, we will primarily use arrays.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Times and Places</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Times and Places</p>
       </div>
     </a>
     <a class="right-next"
@@ -1023,7 +1023,7 @@ Working with data, we will primarily use arrays.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Loops and Files</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Loops and Files</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1043,15 +1043,15 @@ Working with data, we will primarily use arrays.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sandwich-prices">Sandwich Prices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-summaries">Statistical Summaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-difference">Relative Difference</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-relative-differences">Summarizing Relative Differences</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">3.1. Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">3.2. Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sandwich-prices">3.3. Sandwich Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">3.4. NumPy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-summaries">3.5. Statistical Summaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-difference">3.6. Relative Difference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-relative-differences">3.7. Summarizing Relative Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">3.8. Debugging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">3.9. Summary</a></li>
 </ul>
   </nav></div>
 
@@ -1090,7 +1090,7 @@ By Allen B. Downey
   <div class="footer-item">
     
 <div class="extra_footer">
-  <div style="text-align: center;">
+  <div style="text-align: left;">
   <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="Creative Commons License" style="border-width:0"
          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
