@@ -501,7 +501,7 @@ We can display the result like this.</p>
 The GSS surveys a representative sample of adult residents of the U.S. and asks questions about demographics, personal history, and beliefs about social and political issues.
 It is widely used by politicians, policy makers, and researchers.</p>
 <p>The GSS dataset contains hundreds of columns.
-I’ve selected just a few and save the extract in an HDF file, which is more compact than the original fixed-width file, and faster to read.
+I selected just a few and saved the extract in an HDF file, which is more compact than the original fixed-width file, and faster to read.
 Instructions for downloading the file are in the notebook for this chapter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1421,10 +1421,11 @@ I’ll demonstrate with a sample from a normal distribution, then we’ll try it
 </div>
 </div>
 <p>First we import <code class="docutils literal notranslate"><span class="pre">norm</span></code> from <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>, which is a collection of functions related to statistics.
-Then we use <code class="docutils literal notranslate"><span class="pre">linspace()</span></code> to create an array of equally-spaced values from -3 to 3 – those are the <code class="docutils literal notranslate"><span class="pre">qs</span></code> where we will evaluate the normal CDF.
+Then we use <code class="docutils literal notranslate"><span class="pre">linspace()</span></code> to create an array of equally-spaced values from 6 to 14 – those are the <code class="docutils literal notranslate"><span class="pre">qs</span></code> where we will evaluate the normal CDF.
 Next, <code class="docutils literal notranslate"><span class="pre">norm(10,</span> <span class="pre">1)</span></code> creates an object that represents a normal distribution with mean 10 and standard deviation 1.
-Finally, <code class="docutils literal notranslate"><span class="pre">cdf</span></code> computes the CDF of the normal distribution, evaluated at each of the <code class="docutils literal notranslate"><span class="pre">qs</span></code>.</p>
-<p>I’ll plot the normal CDF with a gray line and then plot the CDF of the data again.</p>
+Finally, <code class="docutils literal notranslate"><span class="pre">cdf</span></code> computes the CDF of the normal distribution, evaluated at each of the <code class="docutils literal notranslate"><span class="pre">qs</span></code>.
+|
+I’ll plot the normal CDF with a gray line and then plot the CDF of the data again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normal CDF&#39;</span><span class="p">)</span>
