@@ -438,7 +438,7 @@ For that, we’ll use a Python library called <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7fe63035c7f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;statadict.base.StataDict at 0x7f7c1e677670&gt;
 </pre></div>
 </div>
 </div>
@@ -910,7 +910,7 @@ One way to visualize a distribution is a <strong>histogram</strong>, which shows
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/487a0082eabb31ec583d826d5506962105f363183d4f34b040153244606f4ddb.png" src="_images/487a0082eabb31ec583d826d5506962105f363183d4f34b040153244606f4ddb.png" />
+<img alt="_images/7856d199b3fb4357e0599c91950ab6309c2cdd1989b882a1ec4c2dd27fb49744.png" src="_images/7856d199b3fb4357e0599c91950ab6309c2cdd1989b882a1ec4c2dd27fb49744.png" />
 </div>
 </div>
 <p>The keyword argument, <code class="docutils literal notranslate"><span class="pre">bins</span></code>, tells <code class="docutils literal notranslate"><span class="pre">hist</span></code> to divide the range of weights into 30 intervals, called <strong>bins</strong>, and count how many values fall in each bin.
@@ -1232,7 +1232,7 @@ The parameters are the name of the new file, the name of the object we’re stor
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;nsfg.hdf&#39;</span>
-<span class="n">nsfg</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;nsfg&#39;</span><span class="p">,</span> <span class="n">complevel</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;nsfg&#39;</span><span class="p">,</span> <span class="n">complevel</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1241,7 +1241,13 @@ The parameters are the name of the new file, the name of the object we’re stor
 We can read it back like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;nsfg&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">read_back</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;nsfg&#39;</span><span class="p">)</span>
+<span class="n">read_back</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9553, 11)
 </pre></div>
 </div>
 </div>
