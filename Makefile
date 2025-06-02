@@ -1,5 +1,5 @@
 PROJECT_NAME = ElementsOfDataScience
-PYTHON_VERSION = 3.10
+PYTHON_VERSION = 3.11
 PYTHON_INTERPRETER = python
 
 .PHONY: default
