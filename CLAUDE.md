@@ -36,7 +36,8 @@ examples/    supplementary notebooks. Two are generated from soln/ with the
              resampling_example_gun (from the same name in soln/)
 jb/          Jupyter Book website (build.sh, publish.sh, _toc.yml)
 figs/        static figures; the print book's pipeline copies from here
-archive/     kept for the record (2019 video scripts, quizzes); unused
+archive/     kept for the record (video scripts, quizzes, pre-v1 cleaning
+             notebooks); unused
 planning/    project board and write-ups
 ```
 

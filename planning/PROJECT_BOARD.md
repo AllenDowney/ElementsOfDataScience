@@ -24,10 +24,9 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed), **Task 19** (pandas 3: chained `inplace`, positional `to_hdf`), **Tasks 10, 14, 15** (soln tests in CI, build/publish split, `CLAUDE.md`), **Task 9** (README), **Task 12** (keep extracts)
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed), **Task 19** (pandas 3: chained `inplace`, positional `to_hdf`), **Tasks 10, 14, 15** (soln tests in CI, build/publish split, `CLAUDE.md`), **Task 9** (README), **Task 12** (keep extracts), **Task 13** (top level pruned)
 - **Next:** ready to create the `v2` branch; nothing on the board blocks it
 - **Before branching:** none left
-- **Worth doing, not blocking:** Task 13
 - **v2 prep:** Task 16
 
 ---
@@ -236,13 +235,21 @@ The notebooks download them from GitHub.
 
 ## Task 13: Prune stale tracked files at the top level
 
-**Status:** Not started. Low priority.
+**Status:** Done 2026-09-24.
 
-Pre-v1 files are still tracked at the top level: `nsfg.hdf5`, `gss.hdf5`,
-`brfss.hdf5`, `brfss_clean.ipynb`, `nsfg_clean.ipynb`, `central_limit.ipynb`,
-the `pew_religion_*` files, a Jekyll `_config.yml`, and `machine_bias_table.png`
-(deleted in the working tree, with a copy in `figs/`). No current notebook
-references them, but outside links might, so check before removing.
+- `brfss_clean.ipynb` and `nsfg_clean.ipynb` → `archive/pre_v1_cleaning/`.
+  They are the 2017 BRFSS and 2013–2015 NSFG predecessors of the
+  `soln/clean_*` notebooks, not duplicates.
+- `nsfg.hdf5`, `gss.hdf5`, `brfss.hdf5` removed from `v1`. No chapter used
+  them; the chapters download `data/*.hdf`. The only user,
+  `examples/correlation2.ipynb`, downloaded `brfss.hdf5` from `raw/master/`.
+  It is now pinned to `raw/852dd2e/` (the same file) and passes.
+- `central_limit.ipynb` and the three `pew_religion_*` files →
+  `examples/`. `central_limit` passes there.
+- `_config.yml` (a Jekyll theme) deleted: Pages serves from `gh-pages`.
+- Kept, though nothing in the repo uses them, because images are the
+  likeliest targets of outside links: `eds_interior_page.png`,
+  `run_on_colab_small.png`, `machine_bias_table.png`.
 
 ## Task 14: Split `build.sh` into build and publish
 

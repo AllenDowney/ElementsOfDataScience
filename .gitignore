@@ -116,9 +116,6 @@ jb/*.ipynb
 # data/ itself is tracked: the notebooks download from it on GitHub.
 /*.hdf
 /*.hdf5
-!/brfss.hdf5
-!/gss.hdf5
-!/nsfg.hdf5
 /2600-0.txt
 /*FemPreg*
 /GSS.dat.gz
