@@ -1,6 +1,9 @@
 PROJECT_NAME = ElementsOfDataScience
-PYTHON_VERSION = 3.11
 PYTHON_INTERPRETER = python
+
+## mamba solves this environment much faster than conda; use conda if that is
+## what you have
+CONDA = mamba
 
 .PHONY: default
 
@@ -8,8 +11,11 @@ default:
 	@echo "No command specified. Please specify a target."
 
 create_environment:
-	conda create -y --name $(PROJECT_NAME) python=$(PYTHON_VERSION)
+	$(CONDA) env create -f environment.yml
 	@echo ">>> conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
+
+update_environment:
+	$(CONDA) env update -f environment.yml --prune
 
 delete_environment:
 	conda env remove --name $(PROJECT_NAME)

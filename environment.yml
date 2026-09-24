@@ -1,21 +1,39 @@
+# Environment for running the Elements of Data Science notebooks locally.
+# Create it with:
+#     mamba env create -f environment.yml     (or conda env create ...)
+#     conda activate ElementsOfDataScience
+#
+# requirements.txt lists the same chapter dependencies for pip, and is what
+# CI installs; keep the two in step.
+
 name: ElementsOfDataScience
 
+channels:
+  - conda-forge
+
 dependencies:
-  - python=3.7
+  - python=3.13
   - jupyter
+
+  # used by the chapters
   - numpy
-  - matplotlib
-  - statsmodels
-  - seaborn
   - pandas
-  - lxml
-  - xlrd
-  - pytables
   - scipy
-  - scikit-learn
-  - geopandas
-  - descartes
+  - matplotlib
+  - seaborn
+  - statsmodels
+  - pytables          # read_hdf
+  - geopandas         # chapter 2
+  - shapely
+  - geodatasets
+  - empiricaldist     # chapters 8 and 9
+
+  # used only by the extra notebooks
+  - scikit-learn      # clustering.ipynb
+  - plotly            # examples/vaccine.ipynb
+  - xlrd              # examples/happiness.ipynb reads an .xls file
+  - lxml              # read_html in the soln/clean_brfss notebooks
+
   - pip
   - pip:
-    - empiricaldist
-
+    - statadict       # chapter 7 and utils.py read Stata dictionaries
