@@ -22,9 +22,9 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained)
-- **Next:** Task 11, then Tasks 8 and 7
-- **Before branching:** Tasks 7, 8, 11
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected)
+- **Next:** Task 8, then Task 7
+- **Before branching:** Tasks 7, 8
 - **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
 - **v2 prep:** Tasks 12, 16
 
@@ -168,15 +168,24 @@ workflow step.
 
 ## Task 11: Protect `v1`
 
-**Status:** Not started.
+**Status:** Done 2026-09-24, except the `CLAUDE.md` note, which waits for
+Task 15.
 
 The printed first edition links to Colab through `blob/v1/...`, and every
 notebook downloads `utils.py` and `data/*` from `raw/v1/...`. Deleting `v1`
 or force-pushing to it would break the printed book.
 
-- [ ] Tag the published state (for example `edition-1`)
-- [ ] Add a GitHub branch protection rule on `v1` that blocks deletion and
-      force pushes
+- [x] Tag the published state. Tags follow the print version numbers.
+      `v1.0.1` (annotated) is on `4e3b461`, the last commit before print
+      1.0.1 was finalized (Book repo `1ec3aca`, 2024-08-10). The 21 later
+      commits (post-print fixes and this cleanup) are untagged until the next
+      real release. The older `v1.0` tag is unrelated: it marks the
+      April 2021 spring-course snapshot (`952704e`, same as the `spring2021`
+      branch).
+- [x] GitHub ruleset `23938388` ("Protect v1") blocks deletion and
+      non-fast-forward pushes on `v1`, with no bypass actors, so it applies
+      to the owner too. Normal pushes still work. Other branches are
+      unaffected.
 - [ ] Note in `CLAUDE.md` (Task 15) that files under `data/` and `utils.py`
       on `v1` are downloaded by URL and must not move
 
