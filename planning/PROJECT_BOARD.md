@@ -22,7 +22,7 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 22 in limbo)
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo)
 - **Next:** **Task 6** (mostly done by Task 5), then Tasks 7, 8, 11
 - **Before branching:** Tasks 6, 7, 8, 11
 - **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
@@ -96,7 +96,7 @@ ignored, or deleted, apart from a short, named list left in limbo.
       (`jb/_toc.yml`, `jb/build.sh`, `jb/prep_notebooks.py`)
 - [x] Review and commit, or restore, the modified tracked files
 - [x] Delete the obvious junk (each file checked first; see the outcome notes)
-- [x] Record what is left in limbo (22 paths)
+- [x] Record what is left in limbo (21 paths)
 
 ## Task 6: Make `soln/` self-contained
 

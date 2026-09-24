@@ -1,0 +1,232 @@
+# Video 1 - Probability mass functions
+
+In the previous chapter, we used histograms to visualize distributions.  In this chapter, I'll present two more ways to represent distributions and you'll learn when to use each of them.  And we'll work with a new dataset, the General Social Survey.
+
+> The General Social Survey, or GSS, has run annually since 1972; it surveys a representative sample of the adult population in the U.S. and asks questions about demographics and beliefs about social and political issues.
+
+It is widely used by politicians, policy makers, and researchers, including me.
+
+> The GSS contains hundreds of variables; I've selected just a few.  And I have already cleaned and validated them, so we just have to read the file, like this.
+
+If you run `gss.head()`, you can see the first few rows.
+
+> To get started with this dataset, let's look at the distribution of `educ`, which records the number of years of education for each respondent.  First I'll select a column from the DataFrame.
+
+We've already seen one way to visualize a distribution, a histogram.  Here's the code that generates it, and here's the histogram for this variable.
+
+Based on the histogram, we can see the general shape of the distribution and the central tendency -- it looks like the peak is near 12 years of education.
+
+But a histogram is not the best way to visualize this distribution.
+
+> An alternative is a probability mass function, or PMF, that contains the unique values in the dataset and how often each one appears.
+
+I've provided a class called `Pmf` that computes a probability mass function.  This class is based on a Pandas Series, but it provides some methods that aren't in Pandas.
+
+The first argument can be any kind of sequence; in this case, it's a Series object.  The second argument indicates that we don't want to normalize this PMF.  I'll explain what that means soon.
+
+The result is a Series that contains the values on the left and the counts on the right.  In this dataset, there are 566 respondents who report that they have zero years of formal education.
+
+> You can use the bracket operator to look up a value in a Pmf and get a count.  This example shows that there are 47689 respondents with 12 years of school, which is the most frequent value.
+
+> Usually when we make a PMF, we want to know the fraction of respondents with each value, rather than the counts.  We can do that by setting `normalize=True`; then we get a normalized PMF, that is, a PMF where the frequencies add up to 1.
+
+Now if we use the bracket operator, the result is a fraction.  In this example, the fraction of people with 12 years of education is 0.3086, a little more than 30%.
+
+> The `Pmf` class provides a `.bar()` method that plots a PMF as a bar chart.
+
+And here's what it looks like.
+
+In this figure, we can see more clearly that the most common value is 12 years, but there are also peaks at 14 and 16, which correspond to two and four years of college.
+
+> For this data, the PMF is probably a better choice than the histogram.  The PMF shows all unique values, so we can see exactly where the peaks are.
+
+Because the histogram puts values into bins, it obscures some details.  In this example, we can't see the peaks at 14 and 16 years.
+
+> PMFs have limitations, too, as we'll see in the next lesson.  But first, let's get some practice with PMFs.
+
+---
+
+# Video 2 - Cumulative distribution functions
+
+In the previous lesson, we saw the probability mass function, or PMF, which represents the possible values in a distribution and their probabilities.
+
+In this lesson, we'll see another way to represent a distribution, the cumulative distribution function, or CDF.
+
+CDFs are useful for some computations; they are also a great way to visualize and compare distributions.
+
+> You might remember that a PMF tells you -- if you draw a random value from a distribution -- what's the chance of getting x, for any given value of x.
+
+The CDF is similar; if you draw a random value from a distribution, it tells you the chance of getting a value less than or equal to x.
+
+> As an small example, suppose the distribution only has 5 elements, 1, 2, 2, 3, and 5.
+
+The PMF says that the probability of value 1 is 1/5; the probability of value 2 is 2/5, and the probabilities for 3 and 5 are 1/5.
+
+The CDF is the cumulative sum of the probabilities from the PMF.
+
+For example, the CDF of 2 is three fifths, because three out of 5 values in the distribution are less than or equal to 2.
+
+The CDF of 5 is 1, or 100%, because all of the values in the distribution are less than or equal to 5.
+
+> In the code for this class, I provide a `Cdf` class which is similar to the `Pmf` class we've seen.
+
+As a function, `Cdf` takes any kind of sequence and returns a new Cdf object.
+In this example, the sequence is the ages of respondents in the General Social Survey.
+
+The `Cdf` provides `plot`, which plots the CDF as a line.  Here's what it looks like.
+
+The x-axis is the ages, from 18 to 89.  The y-axis is the cumulative probabilities, from 0 to 1.
+
+> The `Cdf` object can be used as a function, so if you give it an age, it returns the corresponding probability.
+
+In this example, the age is the quantity, `q`, which is 51.
+
+The corresponding probability is `p`, which is 0.66.
+
+That means that about 66% of the respondents are 51 years old or younger.
+
+The arrow in the figure shows how you could read this value from the CDF, at least approximately.
+
+> The CDF is an invertible function, which means that if you have a probability, `p`, you can look up the corresponding quantity, `q`.
+
+In this example, I look up the probability 0.25, which returns 30.  That means that 25% of the respondents are age 30 or less.
+
+Another way to say the same thing is "age 30 is the 25th percentile of this distribution".
+
+I also look up probability 0.75, which returns 57, so 75% of the respondents are 57 or younger.
+
+Again, the arrows in the figure show how you could read these values from the CDF.
+
+By the way, the distance from the 25th to the 75th percentile is called the interquartile range, or IQR.  It measures the spread of the distribution, so it is similar to standard deviation or variance.  Because it is based on percentiles, it doesn't get thrown off by extreme values or outliers, the way variance does.  So IQR can be more "robust" than variance, which means it works well even if there are errors in the data or extreme values.
+
+> In the next chapter, we'll use CDFs to compare distributions between groups.
+
+But first, you can practice making and plotting CDFs, and reading them forward and backward.
+
+---
+
+# Video 3 - Comparing distributions
+
+So far we've seen two ways to represent distributions, PMFs and CDFs.  In this lesson, we'll use PMFs and CDFs to compare distributions, and we'll see the pros and cons of each.
+
+> One way to compare distributions is to plot multiple PMFs on the same axes.  For example, suppose we want to compare the distribution of age for male and female respondents.
+
+First I'll create a boolean Series that's true for male respondents.
+
+And I'll extract the `age` column.
+
+Now I can select ages for the male and female respondents.
+
+And plot a Pmf for each.
+
+Of course I always remember to label the axes!
+
+> Here's the result.
+
+It looks like there are more men in their twenties, maybe.  And there are more women in their 70s and 80s.
+
+In between, the plot is pretty noisy; most of these differences are just random variations.
+
+> We can do the same thing with CDFs.
+
+Here's the code: everything is the same except I replaced Pmf with Cdf.
+
+> And here is the result.
+
+In general, CDFs are smoother than PMFs.  Because they smooth out randomness, we can often get a better view of real differences between distributions.
+
+In this case, the lines overlap over the whole range; that is, the distributions are nearly identical.
+
+But we can see the blue line to the left of the orange line across the distribution, which shows that men are younger at every percentile.
+
+Or, another way to think of it: for every age, the fraction of men below that age is more than the fraction of women below that age.
+
+But not by very much.
+
+> As another example, let's look at household income and compare the distribution before and after 1995 (I chose 1995 because it's roughly the midpoint of the survey).
+
+The variable `realinc` represents household income in 1986 dollars.
+
+I'll make a boolean Series to select respondents interviewed before 1995.
+
+Now I can plot the PMFs.
+
+And label the axes.
+
+> Here's what it looks like.  There are a lot of unique values in this distribution, and none of them appear very often.  The PMF is so noisy, we can't really see the shape of the distribution.
+
+It looks like there are more people with high incomes after 1995, but it's hard to tell.  We can get a clearer picture with a CDF.
+
+> Here's the code to generate the CDFs.
+
+> And here are the results.
+
+Below $30,000 the CDFs are almost identical; above that, we can see that the orange distribution is shifted to the right.
+
+In other words, the fraction of people with high incomes is about the same, but the income of high earners has increased.
+
+> In general, I recommend CDFs for exploratory analysis.  They give you a clear view of the distribution, without too much noise, and they are good for comparing distributions, especially if you have more than two.
+
+In the exercises for this lesson, you'll have a chance to compare incomes for respondents with different education levels.
+
+---
+
+# Video 4 - Modeling distributions
+
+In the previous lesson we used PMFs and CDFs to plot and compare distributions.  We saw that PMFs don't work very well when the data have a large number of unique values.  In this lesson you'll learn about probability density functions, or PDFs, and learn how to estimate PDFs from data.
+
+> Let's start with the normal distribution, also called the Gaussian distribution.  It turns out that many things we measure in the world have distributions that are well approximated by a normal distribution.
+
+To get a sense of what the normal distribution looks like, I'll use the NumPy random module to generate 1000 random values from a normal distribution.  And plot their CDF.
+
+This sigmoid shape is what we expect to see with values from a normal distribution.
+
+> SciPy provides an object called `norm` that represents the normal distribution.
+
+I'll use `.linspace()` to create an array of equally-spaced points from -3 to 3.
+
+`norm(0, 1)` creates an object that represents a normal distribution with mean 0 and standard deviation 1. `.cdf()` evaluates the CDF of the normal distribution.
+
+I'll plot the results with a gray line.
+
+And then plot the CDF of the sample again.
+
+> Here's the result.
+
+The CDF from the sample is pretty close to the normal CDF over the whole range.
+
+If this were real data, we would conclude that the normal distribution is a good model for the data.
+
+> The `norm` object also provides `.pdf()`, which evaluate the probability density function, or PDF.
+
+And here's what that looks like.  It's the classic bell curve.
+
+Unfortunately, if we compare this PDF to the PMF of the sample, it doesn't work very well.
+
+> Here's what it looks like.  The PMF of the sample is a flat line across the bottom.  In the random sample, every value is unique, so they all have the same probability, one in 1000.
+
+However, we can use the points in the sample to estimate the PDF of the distribution they came from.
+
+This process is called kernel density estimation, or KDE.  It's a way of getting from a PMF, a probability mass function, to a PDF, a probability density function.
+
+> To generate a KDE plot, we'll use Seaborn, which I'll import as sns.
+
+Seaborn provides `kdeplot`, which takes the sample, estimates the PDF, and plots it.
+
+Here's what it looks like.
+
+> Now we can compare the KDE plot and the normal PDF.
+
+Here's the code.  There's nothing there we haven't already seen.
+
+And here's the result.  The KDE plot matches the normal PDF pretty well, although the differences look bigger when we compare PDFs than they did with the CDFs.
+
+On one hand, that means that the PDF is a more sensitive way to look for differences, but often it is too sensitive.  It's hard to tell whether apparent differences mean anything, or if they are just random, as in this case.
+
+> To summarize, we've seen three ways to visualize distributions, PMFs, CDFs, and KDE.
+
+In general, I use CDFs when I am exploring data.  I think they give the best view of what's going on without getting distracted by noise.
+
+The biggest drawback of CDFs is that they are less well known.  If I am presenting results to an audience unfamiliar with CDFs, I'll use a PMF for distributions with a small number of unique values and KDE if there are a lot of values.
+
+> Now let's practice what we learned in this lesson.

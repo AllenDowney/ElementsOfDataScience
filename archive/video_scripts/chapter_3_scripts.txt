@@ -1,0 +1,241 @@
+# Video 1 - Exploring relationships
+
+So far we have only looked at one variable at a time.  Now it's time to explore relationships between variables.
+
+> As a first example, we'll look at the relationship between height and weight.
+
+I'll use data from the Behavioral Risk Factor Surveillance Survey, or BRFSS, which is run by the Centers for Disease Control.  The survey includes more than 400,000 respondents, but to keep things manageable, we'll use a random subsample of 100,000.
+
+> A common way to visualize the relationship between two variables is a scatter plot.
+
+Scatter plots are common and readily understood, but they are surprisingly hard to get right.
+
+To demonstrate, I'll load the BRFSS dataset and extract the variables for height in centimeters and weight in kilograms.
+
+PyPlot provides a `.scatter()` function that makes a scatter plot, but it is more versatile than we need and slower than we want.
+
+It is faster to use `.plot()` with the format string `o`, which plots a circle for each data point.
+
+And, as always, we have to label the axes.
+
+> Here's what it looks like.
+
+In general, it looks like taller people are heavier, but there are a few things about this scatter plot that make it hard to interpret.
+
+Most importantly, it is "overplotted", which means that there are data points piled on top of each other so you can't tell where there are a lot of points and where there is just one.
+
+When that happens, the result can be really misleading.
+
+> One way to improve it is to use transparency, which we can do with the `alpha` parameter.  The lower the value of alpha, the more transparent each data point is.  
+
+Here's what it looks like with `alpha=0.02`.
+
+This is better, but there are so many data points, the scatter plot is still overplotted.  The next step is to make the markers smaller.
+
+> With `markersize=1` and a low value of alpha, the scatter plot is less saturated.
+
+Here's what it looks like.
+
+Again, this is better, but now we can see that the points fall in discrete columns.  That's because most heights were reported in inches and converted to centimeters.
+
+We can break up the columns by adding some random noise to the values; in effect, we are filling in the values that got rounded off.
+
+> Adding random noise like this is called "jittering".
+
+In this example, I added noise with mean 0 and standard deviation 2.
+
+Here's what the plot looks like when we jitter height.
+
+The columns are gone, but now we can see that there are rows where people rounded off their weight.  We can fix that by jittering weight, too.
+
+> Here's the code.
+
+And here's the result.
+
+Finally, let's zoom in on the area where most of the data points are.
+
+> The Pyplot function `.axis()` sets the lower and upper bounds for the x- and y-axis; in this case, we plot heights from 140 to 200 centimeters and weights up to 160 kilograms.
+
+Here's what it looks like.
+
+Finally, we have a reliable picture of the relationship between height and weight.
+
+> Here's the plot we started with and the one we ended with.  Clearly, they are very different, and they suggest very different stories about the relationship between these variables.
+
+The point of this example is that it takes some effort to make an effective scatter plot.
+
+> In the next lesson we'll see other ways to visualize relationships between variables, but first you'll have a chance to explore the relationship between age and weight.
+
+---
+
+# Video 2 - Visualizing relationships
+
+In the previous lesson we used scatter plots to visualize relationships between variables, and in the exercise, you explored the relationship between age and weight.  In this lesson, we'll see other ways to visualize these relationships, including boxplots and violin plots.
+
+> In a previous exercise, you made a scatter plot of weight versus age.
+
+Your code probably looked like this.
+
+And the results looked like this.  It looks like older people might be heavier, but it is hard to see clearly.
+
+> For the exercise, you worked with a small subset of the data.  Now let's see what it looks like with more data.
+
+Here's the code.
+
+And here's the plot.  
+
+I made a few changes in the code:
+
+* First, I reduced the marker size, because we have more data now,
+
+* Second, I jittered the weights, so the horizontal rows are not visible.
+
+* I jitter the ages, too, but less than in the exercise, so the data points are spread out, but there's still space between the columns.
+
+That makes it possible to see the shape of the distribution in each age group, and the differences between groups.
+
+If we take this idea one step farther, we can use KDE to estimate the density function in each column and plot it.
+
+> And there's a name for that; it's called a violin plot.  Seaborn provides a function that makes violin plots, but before we can use it, we have to get rid of any rows with missing data.
+
+Here's how.  `.dropna()` creates a new DataFrame that contains the rows from `brfss` where `AGE` and `WTKG3` are not NaN.
+
+Now we can call `.violinplot()`.  The `x` and `y` parameters mean we want `AGE` on the x-axis and `WTKG3` on the y-axis.  `data` is the DataFrame we just created, which contains the variables we're going to plot.  The parameter `inner=None` simplifies the plot a little.
+
+Here's what it looks like.  Each column is a graphical representation of the distribution of weight in one age group.  The width of these shapes is proportional to the estimated density, so it's like two vertical PDFs plotted back to back, and filled in with nice colors.
+
+There's one other way to look at data like this, called a box plot.
+
+> The code to generate a box plot is very similar.  I put in the parameter `whis=10` to turn off a feature we don't need.  If you are curious about it, you can read the documentation.
+
+Here's what it looks like.  Each box represents the interquartile range, or IQR, from the 25th to the 75th percentile.  The line in the middle of each box is the median.
+
+The spines sticking out of the top and bottom show the minimum and maximum values.
+
+In my opinion, this plot gives us the best view of the relationship between weight and age.
+
+Looking at the medians, it seems like people in their 40s are the heaviest; younger and older people are lighter.
+
+Looking at the sizes of the boxes, it seems like people in their 40s have the most variability in weight, too.
+
+These plots also show how skewed the distribution of weight is; that is, the heaviest people are much farther from the median than the lightest people.
+
+> For data that skews toward higher values, it is sometimes useful to look at it on a logarithmic scale.
+
+We can do that with the Pyplot function `.yscale()`.
+
+Here's what it looks like.  To show the relationship between age and weight most clearly, this is probably the figure I would use.
+
+> In the exercises, you'll have a chance to generate violin and box plots.
+
+---
+
+# Video 3 - Correlation
+
+In the previous lesson, we visualized relationships between pairs of variables.  In this lesson we'll learn about the coefficient of correlation, which quantifies the strength of these relationships.
+
+> When people say "correlation" casually, they might mean any relationship between two variables.  In statistics, it usually means Pearson's correlation coefficient, which is a number between -1 and 1 that quantifies the strength of a linear relationship between variables.
+
+To demonstrate, I'll select three columns from the BRFSS dataset, like this.  The result is a DataFrame with just those columns.
+
+Now we can use the `.corr()` method, like this.
+
+> The result is a "correlation matrix".  Reading across the first row, the correlation of `HTM4` with itself is 1.  That's expected; the correlation of anything with itself is 1.
+
+The next entry is more interesting; the correlation of height and weight is about 0.47.  It's positive, which means taller people are heavier, and it is moderate in strength, which means it has some predictive value.  If you know someone's height, you can make a better guess about their weight, and vice versa.
+
+The correlation between height and age is about -0.09.  It's negative, which means that older people tend to be shorter, but it's weak, which means that knowing someone's age would not help much if you were trying to guess their height.
+
+The correlation between age and weight is even smaller.  It is tempting to conclude that there is no relationship between age and weight, but we have already seen that there is.  So why is the correlation so low?
+
+> Remember that the relationship between weight and age looks like this.  People in their 40s are the heaviest; younger and older people are lighter.  So this relationship is nonlinear.
+
+> But correlation only works for linear relationships.  If the relationship is nonlinear, correlation generally underestimates how strong it is.
+
+To demonstrate, I'll generate some fake data: `xs` contains equally-spaced points between -1 and 1.  `ys` is `xs` squared plus some random noise.
+
+Here's the scatter plot of `xs` and `ys`.  It's clear that this is a strong relationship; if you are given `x`, you can make a much better guess about `y`.
+
+But here's the correlation matrix; the computed correlation is close to 0.
+
+In general, if correlation is high -- that is, close to 1 or -1, you can conclude that there is a strong linear relationship.
+
+But if correlation is close to 0, that doesn't mean there is no relationship; there might be a strong, non-linear relationship.
+
+This is one of the reasons I think correlation is not such a great statistic.
+
+> There's another reason to be careful with correlation; it doesn't mean what people take it to mean.
+
+Specifically, correlation says nothing about slope.  If we say that two variables are correlated, that means we can use one to predict the other.  But that might not be what we care about.
+
+> For example, suppose we are concerned about the health effects of weight gain, so we plot weight versus age, from 20 to 50 years old.
+
+Here are two fake datasets I generated.  The one on the left has higher correlation, about 0.76 compared to 0.47.
+
+But on the left, the average weight gain over 30 years is less than 1 kg; on the right, it is almost 10 kilograms!
+
+In this scenario, the relationship on the right is probably more important, even though the correlation is lower.  The statistic we really care about is the slope of the line.
+
+> In the next lesson, you'll learn how to estimate that slope.  But first, let's practice with correlation.
+
+---
+
+# Video 4 - Simple regression
+
+In the previous lesson we saw that correlation does not always measure what we really want to know.  In this lesson, we look at an alternative, simple linear regression.
+
+> Let's look again at an example from the previous lesson, a hypothetical relationship between weight and age.  I generated two fake datasets to make a point:
+
+The one on the left has higher correlation, about 0.76 compared to 0.47.
+
+But in the one on the left, the average weight gain over 30 years is less than 1 kg; on the right, it is almost 10 kilograms!
+
+In this context, the statistic we probably care about is the slope of the line, not the correlation coefficient.
+
+> To estimate the slope of the line, we can use `linregress()` from the SciPy stats module.
+
+The result is a `LinRegressResult` object that contains five values: `slope` is the slope of the line of best fit for the data; `intercept` is the intercept.
+
+For Hypothetical #1, the estimated slope is about 0.019 kilograms per year or about 0.6 kilograms over the 30-year range.
+
+> Here are the results for Hypothetical #2.  The estimated slope is about 10 times higher: about 0.18 kilograms per year or 6 kilograms per 30 years,
+
+What's called `rvalue` here is correlation, which confirms what we saw before; the first example has higher correlation, about 0.76 compared to 0.48.
+
+But the strength of the effect, as measured by the slope of the line, is about 10 times higher in the second example.
+
+> We can use the results from `linregress()` to compute the line of best fit: first we get the min and max of the observed xs; then we multiply by the slope and add the intercept.  And plot the line.
+
+Here's what that looks like for the first example.  
+
+And the same thing for the second example.  
+
+The visualization here might be misleading unless you look closely at the vertical scales; the slope on the right is almost 10 times higher.
+
+> Now let's look at an example with real data.
+
+Here's the scatter plot of height and weight again, from Lesson 1.
+
+> Now we can compute the regression line.  `linregress()` can't handle NaNs, so we have to use `.dropna()` to remove rows that are missing the data we need.
+
+Now we can compute the linear regression.
+
+And here are the results.  The slope is about 0.9 kilograms per centimeter, which means that we expect a person one centimeter taller to be almost a kilogram heavier.  That's quite a lot.
+
+> As before, we can compute the line of best fit and plot it. And here's what that looks like.  The slope of this line seems consistent with the scatter plot.
+
+> However, linear regression has the same problem as correlation; it only measures the strength of a linear relationship.
+
+Here's the scatter plot of weight versus age, which you saw in a previous exercise.
+
+People in their 40s are the heaviest; younger and older people are lighter.  So the relationship is nonlinear.
+
+> If we don't look at the scatter plot and blindly compute the regression line, here's what we get.
+
+The estimated slope is only 0.02 kilograms per year, or 0.6 kilograms in 30 years.
+
+> And here's what the line of best fit looks like.
+
+A straight line does not capture the relationship between these variables well.
+
+> In the next lesson, we'll learn how to use multiple regression to estimate non-linear relationships.  But first, let's practice simple regression.

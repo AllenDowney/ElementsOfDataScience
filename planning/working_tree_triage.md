@@ -25,7 +25,7 @@ ways:
 - `eds.gss.hdf5` and `nsfg_sample.hdf5` are now ignored by `/*.hdf5`, not in
   limbo. They are still on disk.
 
-**Left in limbo (22 paths):**
+**Left in limbo (21 paths; `scripts/` moved to `archive/video_scripts/` on 2026-09-24):**
 
 | Path | Why it is waiting |
 |---|---|
@@ -35,7 +35,6 @@ ways:
 | `unfilled/04_worldview.ipynb`, `unfilled/build.sh`, `unfilled/remove_soln.py` | Belong in PACS, or in v2 |
 | `figs/confusion_matrix{1,2}.png`, `figs/resampling_alternative.{png,svg}` | Not referenced anywhere |
 | `eds_cover_small.png` | Not referenced anywhere |
-| `scripts/` | Purpose unclear |
 | `feedback/` | Early copies of chapters 1–2 |
 | `hypothesis.ipynb`, `trig.ipynb`, `family_survey.ipynb`, `deaths2008.csv`, `all_sandwich_data.csv` | Old experiments (2019–2020) |
 

@@ -1,0 +1,141 @@
+# Video 1 - DataFrames and Series
+
+The goal of exploratory data analysis is to use data to answer questions and guide decision making.
+
+> As a first example, we'll start with a simple question: what is the average birth weight of babies in the United States?
+
+To answer a question like this, we have to find an appropriate dataset or run an experiment to collect it.  Then we have to get the data into our development environment and prepare it for analysis, which involves cleaning and validation.
+
+> For this question we'll use data from the National Survey of Family Growth, which is available from the National Center for Health Statistics.
+
+The 2013-2015 dataset includes information about a representative sample of women in the U.S. and their children.
+
+> The Python module we'll use to read and analyze data is Pandas, which we'll import as `pd`.
+
+Pandas can read data in most common formats, including CSV, Excel, and the format the NSFG data is in, HDF5.
+
+The result from `read_hdf()` is a DataFrame, which is the primary data structure Pandas uses to store data.
+
+> `head()` shows the first 5 rows of the DataFrame, which contains one row for each pregnancy for each of the women who participated in the survey, and one column for each variable.
+
+The figure shows what the output from `head()` looks like in a Jupyter notebook.
+
+> The DataFrame has an attribute called `shape`, which is the number of rows and columns; there are 9358 rows in this dataset, one for each pregnancy, and 10 columns, one for each variable.
+
+The DataFrame also has an attribute called `columns`, which is an `Index`.  That's another Pandas data structure, similar to a list; in this case it's a list of variables names, which are strings.
+
+Based on the names, you might be able to guess what some of the variables are, but in general you have to read the documentation.
+
+> This figure shows an entry from the codebook for `birthwgt_lb1`, which is the weight in pounds of the first baby from this pregnancy, for cases of live birth.
+
+> In many ways a DataFrame is like a Python dictionary, where the variable names are the keys and the columns are the values.  You can select a column from a DataFrame using the bracket operator, with a string as the key.
+
+The result is a Series, which is another Pandas data structure.  In this case the Series contains the birth weights, in pounds, of the live births (or in the case of multiple births, the first baby).
+
+> `head()` shows the first five values in the series, the name of the series, and the datatype; float64 means that these values are 64-bit floating-point numbers.
+
+Notice that one of the values is `NaN`, which stands for "Not a Number".  NaN is a special value that can indicate invalid or missing data.  In this example, the pregnancy did not end in live birth, so birth weight is inapplicable.
+
+> We'll start exploring this data in the next lesson.
+
+But first, let's work on some exercises.
+
+---
+
+# Video 2 - Clean and Validate
+
+In the previous lesson, we read data from the National Survey of Family Growth and selected a column from a DataFrame.  In this lesson, we'll check for errors and prepare the data for analysis.
+
+> We'll use the same DataFrame we used in the previous lesson, `nsfg`, which contains one row for each pregnancy in the survey.
+
+I'll select the variable `birthwgt_lb1`, which contains the pound part of birth weight, and assign it to `pounds`.
+
+And `birthwgt_oz1` contains the ounce part of birth weight, so I'll assign that to `ounces`.
+
+> Before we do anything with this data, we have to validate it.  One part of validation is confirming that we are interpreting the data correctly.
+
+We can use `value_counts()` to see what values appear in `pounds` and how many times each value appears.
+
+By default, the results are sorted with the most frequent value first, so I use `sort_index()` to sort them by value instead, with the lightest babies first and heaviest babies last.
+
+As we'd expect, the most frequent values are 6-8 pounds, but there are some very light babies, a few very heavy babies, and two values, 98, and 99, that indicate missing data.
+
+> We can validate the results by comparing them to the codebook, which lists the values and their frequencies.  The results here agree with the codebook, so we have some confidence that we are reading and interpreting the data correctly.
+
+> Another way to validate the data is with `describe`, which computes summary statistics like the mean, standard deviation, min, and max.
+
+Here are the results for `pounds`.  `count` is the number of values.  The minimum and maximum values are 0 and 99, and the 50th percentile, which is the median, is 7.
+
+The mean is about 8.05, but that doesn't mean much because it includes the special values 98 and 99.  Before we can really compute the mean, we have to replace those values with `NaN` to represent missing data.
+
+> The `replace()` method does what we want; it takes a list of values we want to replace and the value we want to replace them with.  `np.nan` means we are getting the special value `NaN` from the NumPy library, which is imported as `np`.
+
+The result from `replace()` is a new Series, which I assign back to `pounds`.
+
+Remember that the mean of the original series was about 8.05 pounds.  The mean of the new series is about 6.7 pounds.  It makes a big difference when you remove a few 99-pound babies!
+
+Instead of making a new Series, you can call `replace()` with `inplace=True`, which modifies the existing Series "in place", that is, without making a copy.  Here's what that looks like for `ounces`.  Since we didn't make a new series, we don't have to assign it back to `ounces`.
+
+> Now we want to combine `pounds` and `ounces` into a single Series that contains total birth weight.
+
+Arithmetic operators work with Series objects; so, to convert from ounces to pounds, we can divide by 16 (there are 16 ounces in a pound).  Then we can add the two Series objects to get the total.
+
+Here are the results.  The mean is about 7.1, which is a little more than what we got before we added in the ounces part.
+
+Now we're close to answering our question, the average birth weight for babies in the U.S., but as we'll see in the next lesson, we're not done yet.
+
+> But first, let's practice what we learned in this lesson.
+
+---
+
+# Video 3 - Filter and visualize
+
+Let's get back to the motivating question for this chapter: what is the average birth weight for babies in the U.S.?
+
+> In the previous lesson, we used data from the NSFG to compute birth weight in pounds and we stored the result in a Series called `birth_weight`.
+
+Let's see what the distribution of those values looks like.  We'll use the `pyplot` submodule from the `matplotlib` library, which we import as `plt`.
+
+Pyplot provides `hist()`, which takes a Series and plots a histogram; that is, it shows the values and how often they appear.
+
+However, Pyplot doesn't work with NaNs, so we have to use `dropna()`, which makes a new Series that contains only the valid values.
+
+The second argument, `bins`, tells `hist` to divide the range of weights into 30 intervals, called "bins", and count how many values fall in each bin.
+
+`hist()` takes other arguments that specify the type and appearance of the histogram; you will have a chance to explore these options in the next exercise.
+
+Finally, to label the axes we'll use `xlabel()` and `ylabel()`.
+
+> And here's what the results look like.
+
+The x-axis is birth weight in pounds, divided into 30 bins.  The y-axis is the number of births in each bin.  
+
+The distribution looks a little like a bell curve, but the tail is longer on the left than on the right; that is, there are more light babies than heavy babies.
+
+That makes sense because the distribution includes some babies that were born preterm.  The most common duration for pregnancy is 39 weeks, which is "full term"; "preterm" is usually defined to be less than 37 weeks.
+
+> To see which babies are preterm, we can use `prglngth`, which records pregnancy length in weeks.
+
+When you compare a Series to a value, the result is a boolean Series; that is, each element is a boolean value, True or False.  In this case, it's True for each preterm baby and False otherwise.  We can use `head` to see the first 5 elements.
+
+> If you compute the sum of a boolean Series, it treats True as 1 and False as 0, so the sum is the number of Trues, which is the number of preterm babies, about 3700.
+
+If you compute the mean, you get the *fraction* of Trues; in this case, it's close to 0.4; that is, about 40% of the births in this dataset are preterm.
+
+> We can use a boolean Series as a filter; that is, we can select only rows that satisfy a condition or meet some criterion.
+
+For example, we can use `preterm` and the bracket operator to select values from `birth_weight`, so `preterm_weight` contains birth weights for preterm babies. 
+
+To select full-term babies, we can use the tilde operator, which is "logical NOT" or inverse; it makes the Trues false and the Falses true.
+
+Not surprisingly, full term babies are heavier, on average, than preterm babies.
+
+> If you have two boolean Series, you can use logical operators to combine them; ampersand is the logical AND operator, and the vertical bar or pipe is logical OR.
+
+> We are almost ready to answer the question, but there's one more thing we have to do: resampling.
+
+The NSFG is not exactly representative of the U.S. population; by design, some groups are more likely to appear in the sample than others; they are "oversampled".  Oversampling helps to ensure that you have enough people in every subgroup to get reliable statistics, but it makes the analysis a little more complicated.
+
+However, we can correct for oversampling by resampling.  I won't get into the details here, but I have provided a function called `resample_rows_weighted()` that you can use for the exercises.
+
+> Now we have everything we need to answer the motivating question.  Let's get to it.
