@@ -111,7 +111,6 @@ DS10-Python-HW/
 # website build: output, and files copied in by jb/build.sh
 jb/_build/
 jb/*.ipynb
-jb/utils.py
 
 # data the notebooks download when they run.
 # data/ itself is tracked: the notebooks download from it on GitHub.

@@ -2,7 +2,6 @@
 
 # copy the notebooks with solutions
 cp soln/[01]*.ipynb .
-cp soln/utils.py .
 cp soln/jupyter_intro.ipynb .
 cp soln/geo_example.ipynb .
 cp soln/clustering_soln.ipynb ./clustering.ipynb

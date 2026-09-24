@@ -22,9 +22,9 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo)
-- **Next:** **Task 6** (mostly done by Task 5), then Tasks 7, 8, 11
-- **Before branching:** Tasks 6, 7, 8, 11
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained)
+- **Next:** Task 11, then Tasks 8 and 7
+- **Before branching:** Tasks 7, 8, 11
 - **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
 - **v2 prep:** Tasks 12, 16
 
@@ -100,8 +100,7 @@ ignored, or deleted, apart from a short, named list left in limbo.
 
 ## Task 6: Make `soln/` self-contained
 
-**Status:** Mostly done by Task 5 (`a2fe490`). One item left: the duplicate
-`utils.py`.
+**Status:** Done 2026-09-24 (`a2fe490`, plus the `utils.py` links).
 
 Only the 14 chapter notebooks in `soln/` are tracked. `build.sh` also copies
 `soln/utils.py`, `soln/jupyter_intro.ipynb`, `soln/geo_example.ipynb`, and
@@ -111,10 +110,10 @@ that build `data/` are also untracked here; they are tracked only in the
 Solutions repo.
 
 - [x] Track the files `build.sh` reads, and the `clean_*.ipynb` notebooks
-- [ ] `soln/utils.py`, `jb/utils.py`, and the top-level `utils.py` are
-      currently identical. Keep one source (`soln/utils.py`, since `build.sh`
-      copies it to the top level). The top-level copy must stay tracked,
-      because the notebooks download it from `raw/v1/utils.py`.
+- [x] The top-level `utils.py` is canonical (the notebooks download it from
+      `raw/v1/utils.py`). `soln/utils.py` and `jb/utils.py` are relative
+      symlinks to it, and `build.sh` no longer copies it. Checked:
+      `soln/03_arrays.ipynb` passes under nbmake through the link.
 - [x] Gitignore the data that the notebooks in `soln/` download when run
 
 ## Task 7: Mark the Solutions repo as superseded
@@ -160,6 +159,12 @@ job for `examples/`.
 A local run on 2026-09-23 (Python 3.13, clean export of `origin/v1` plus
 `utils.py`) passed all 14 `soln/` notebooks in 3m 16s, so adding them
 should not turn CI red.
+
+Caveat: `soln/utils.py` is now a symlink (Task 6). Git on Windows checks
+symlinks out as plain text files unless `core.symlinks` is enabled, so a
+Windows leg that runs `soln/` notebooks would fail to import `utils`. Run the
+`soln/` tests on Ubuntu and macOS only, or copy `utils.py` into `soln/` in the
+workflow step.
 
 ## Task 11: Protect `v1`
 
