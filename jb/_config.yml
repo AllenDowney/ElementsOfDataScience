@@ -10,12 +10,12 @@ execute:
   execute_notebooks: 'off'
 
 repository:
-  url: https://github.com/AllenDowney/ElementsOfDataScience
+  url: https://github.com/AllenDowney/ElementsOfDataScience/tree/v1
 html:
   use_repository_button: true
 
   extra_footer: |
-    <div style="text-align: center;">
+    <div style="text-align: left;">
       <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
         <img alt="Creative Commons License" style="border-width:0"
              src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />

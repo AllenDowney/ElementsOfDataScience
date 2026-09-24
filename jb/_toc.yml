@@ -1,0 +1,24 @@
+format: jb-book
+root: index
+parts:
+- caption: Chapters
+  numbered: True
+  chapters:
+  - file: 01_variables.ipynb
+  - file: 02_times.ipynb
+  - file: 03_arrays.ipynb
+  - file: 04_loops.ipynb
+  - file: 05_dictionaries.ipynb
+  - file: 06_plotting.ipynb
+  - file: 07_dataframes.ipynb
+  - file: 08_distributions.ipynb
+  - file: 09_relationships.ipynb
+  - file: 10_regression.ipynb
+  - file: 11_resampling.ipynb
+  - file: 12_bootstrap.ipynb
+  - file: 13_hypothesis.ipynb
+  - file: 14_outro.ipynb
+- caption: Examples
+  chapters:
+  - file: resample_logit
+  - file: anderson
