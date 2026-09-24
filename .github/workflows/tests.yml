@@ -5,6 +5,7 @@ on:
     branches: [v1]
   pull_request:
   schedule:
+    # Run on the first of every month
     - cron: "0 0 1 * *"
   workflow_dispatch:
 
@@ -13,27 +14,28 @@ jobs:
     name: Tests (${{ matrix.os }}, Python ${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
+      # Report every leg; one broken notebook should not hide the others.
+      fail-fast: false
       matrix:
-        # don't run on windows-latest; it can't handle Unicode
-        # don't run on macos-latest; it can't install pytables
-        os: [ubuntu-latest]  
-        python-version: ['3.11']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.13"]
+
+    env:
+      # Windows defaults to cp1252, which cannot read the UTF-8 text
+      # of War and Peace in chapters 4, 5, and 6.
+      PYTHONUTF8: "1"
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements-dev.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-dev.txt
 
       - name: Install dependencies
         run: |
