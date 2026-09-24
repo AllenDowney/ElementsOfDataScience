@@ -207,7 +207,7 @@ def fill_missing(df, varname, badvals=[98, 99]):
     badvals: list of values to be replaced
     """
     # replace badvals with NaN
-    df[varname].replace(badvals, np.nan, inplace=True)
+    df[varname] = df[varname].replace(badvals, np.nan)
 
     # get the index of rows missing varname
     null = df[varname].isnull()

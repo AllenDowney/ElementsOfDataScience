@@ -22,7 +22,7 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed)
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed), **Task 19** (pandas 3: chained `inplace`, positional `to_hdf`)
 - **Next:** ready to create the `v2` branch; nothing on the board blocks it
 - **Before branching:** none left
 - **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
@@ -317,3 +317,47 @@ leaves the 2s in place.
   `gss['gunlaw'] = gss['gunlaw'].replace(2, 0)`.
 
 After fixing `soln/`, regenerate the `examples/` copy.
+
+## Task 19: pandas 3 fixes outside the chapters
+
+**Status:** Done 2026-09-24, except the two notebooks listed at the end.
+
+pandas 3's copy-on-write makes a chained in-place call such as
+`df['col'].replace(..., inplace=True)` a silent no-op. pandas 3 also makes the
+`key` argument of `to_hdf` keyword-only, so `to_hdf(path, 'key')` raises a
+`TypeError`. None of the 14 chapter notebooks had either problem. Fixed
+elsewhere, editing through jupytext `--update`:
+
+- `utils.py` `fill_missing`: its `replace` did nothing, so it reported 0 values
+  filled. Every notebook downloads `utils.py`, but only `missing_values` and
+  `examples/resampling` call this function.
+- `soln/missing_values.ipynb` and `examples/resampling.ipynb`:
+  - `fill_missing_values` now returns a new Series, and both call sites
+    assign it. Before, the imputed values never reached `gss`, and the prose
+    said "modifies it in place".
+  - The data URL now points to PACS commit `34b22cb`, because PACS deleted
+    `master/gss_eda.hdf5` in 2022 (`5c5971c`). So these notebooks had not
+    run on a fresh machine since then.
+- `examples/resample_logit.ipynb`: the chained `replace`, and a `raw/master`
+  data link changed to `raw/v1`.
+- The data-cleaning notebooks: 13 chained `replace` calls in `clean_gss` and
+  the `clean_brfss*` notebooks, plus 7 positional `to_hdf` calls, including
+  `clean_nsfg`.
+
+Verified by executing under pandas 3.0.6 in scratch copies. `clean_gss`,
+`clean_nsfg`, `clean_brfss`, `clean_brfss-2019`, and `clean_brfss-2021`
+regenerate files **identical** to the committed `data/` files. The pre-fix
+`clean_gss` under pandas 3 produced no NaNs at all: every missing-data code
+became an answer (22,801 `GUNLAW`, 27,268 `GRASS`). `missing_values`,
+`examples/resampling`, and `examples/resample_logit` run, and after imputation
+`age` and `educ` have no NaNs. Executed outputs were committed with the
+nbconvert timestamps stripped.
+
+Two notebooks got the source fixes but can't run, for reasons that predate
+pandas 3:
+
+- [ ] `soln/clean_brfss-2022.ipynb` reads `LLCP2019.ASC.gz` but the 2022
+      column layout, and fails with `KeyError: ['_VEGESU1', '_INCOMG']`
+      (renamed in 2022). It looks unfinished.
+- [ ] `soln/brfss_validate.ipynb` imports a module `distribution` that no
+      longer exists.
