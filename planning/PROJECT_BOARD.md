@@ -262,6 +262,8 @@ allow a diff review and a test run first.
 Short working notes for this repo: `soln/` is canonical and the top-level
 notebooks are generated; `v1` files are downloaded by URL; how to build,
 test, and publish. MarriageNSFG's `CLAUDE.md` is the model.
+Leave out its "Writing markdown" rules (unwrapped paragraphs, no bold);
+they don't apply here (decided 2026-09-24).
 
 Include the notebook-editing workflow (decided 2026-09-24). The `.ipynb` is the
 canonical source. For non-trivial edits:
