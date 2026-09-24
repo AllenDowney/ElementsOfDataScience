@@ -48,7 +48,7 @@ plan.
 
 ## Task 3: Point the README links at `v1`
 
-**Status:** Done 2026-09-23, not yet committed.
+**Status:** Done 2026-09-23 (`600a0aa`).
 
 All 26 Colab and download links in `README.md` pointed to `master`, which
 holds the pre-publication notebooks from March 2024. They now point to `v1`.
@@ -154,6 +154,10 @@ which each solution cell is replaced by `# Solution goes here`. So the
 solution code is never executed in CI, and neither is anything in
 `examples/`. Add `soln/[01]*.ipynb` to `make tests`, and perhaps a separate
 job for `examples/`.
+
+A local run on 2026-09-23 (Python 3.13, clean export of `origin/v1` plus
+`utils.py`) passed all 14 `soln/` notebooks in 3m 16s, so adding them
+should not turn CI red.
 
 ## Task 11: Protect `v1`
 
