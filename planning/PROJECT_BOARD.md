@@ -15,18 +15,20 @@ Planning documents:
   Choose Now*
 - [working_tree_triage.md](working_tree_triage.md): every untracked and
   modified path, and what to do with it
+- [site_versions.md](site_versions.md): serving the 1e and 2e websites
+  side by side (Task 16)
 
-### Current focus (2026-09-23)
+### Current focus (2026-09-24)
 
 Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed), **Task 19** (pandas 3: chained `inplace`, positional `to_hdf`), **Tasks 10, 14, 15** (soln tests in CI, build/publish split, `CLAUDE.md`)
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed), **Task 19** (pandas 3: chained `inplace`, positional `to_hdf`), **Tasks 10, 14, 15** (soln tests in CI, build/publish split, `CLAUDE.md`), **Task 9** (README), **Task 12** (keep extracts)
 - **Next:** ready to create the `v2` branch; nothing on the board blocks it
 - **Before branching:** none left
-- **Worth doing, not blocking:** Tasks 9, 13
-- **v2 prep:** Tasks 12, 16
+- **Worth doing, not blocking:** Task 13
+- **v2 prep:** Task 16
 
 ---
 
@@ -174,12 +176,13 @@ It also ships to readers inside `EDS_notebooks.zip`.
 
 ## Task 9: Reconcile the README with `jb/index.md`
 
-**Status:** Not started.
-
-The two started as the same text and have drifted. `jb/index.md` mentions the
-printed edition (Lulu) and has the cover; the README does not, lists only
-notebooks 1–13, and still calls the book "a work in progress". Pick one as
-the source and update the other.
+**Status:** Done 2026-09-24. `jb/index.md` was current. After Task 3's link
+fix, the README lacked only its cover image and the Lulu print notice. The
+README is now the index plus two deliberate differences: it keeps the license
+paragraph (GitHub doesn't show the site's footer), and it floats the cover
+with `<img align="right">` (GitHub strips `style`). Also fixed the index typo
+"The notebooks contains". That fix reaches the website at the next
+`make publish-site`.
 
 ## Task 10: Test the solution notebooks too
 
@@ -228,15 +231,8 @@ or force-pushing to it would break the printed book.
 
 ## Task 12: Decide the policy on survey microdata in the repo
 
-**Status:** Not started. Decision needed.
-
-`data/` holds respondent-level extracts from NSFG, BRFSS, and GSS, and the
-notebooks download them from GitHub. In MarriageNSFG the NSFG files were
-purged because the public-use files may not be redistributed. For `v1`,
-removing them would break the printed book's notebooks, so this is mostly a
-question for v2: download from the source at run time, or keep extracts
-that the terms allow (GSS). ANES (see [v2_plan.md](v2_plan.md)) raises the
-same question.
+**Status:** Decided 2026-09-24: keep the extracts in `data/` as they are.
+The notebooks download them from GitHub.
 
 ## Task 13: Prune stale tracked files at the top level
 
@@ -265,10 +261,9 @@ the way:
 Rebuilding changed none of the generated notebooks: they were already in step
 with `soln/`.
 
-Open question: `remove_soln.py` only processes `[01]*.ipynb`, so the
-published `clustering.ipynb` (built from `soln/clustering_soln.ipynb`) still
-has its 8 solutions. Nothing in the repo, the website, or the print book
-links to it.
+`remove_soln.py` only processes `[01]*.ipynb`, so the published
+`clustering.ipynb` (built from `soln/clustering_soln.ipynb`) keeps its 8
+solutions. Decided 2026-09-24 to leave it that way.
 
 `build.sh` regenerates the student notebooks, then immediately commits with
 the message "Updating notebooks" and pushes. That is why so much of the
@@ -300,87 +295,12 @@ canonical source. For non-trivial edits:
 
 ## Task 16: Keep the 1e website at `/v1/` when v2 takes over
 
-**Status:** Not started. v2 prep; needed before `v2` becomes the default branch.
+**Status:** Not started. Options in [site_versions.md](site_versions.md).
+Needed before 2e publishes anything to the site, not before the `v2` branch
+is created.
 
-GitHub Pages serves one site per repo, and `jb/build.sh` publishes with
-`ghp-import`, which replaces the whole site. Before v2 publishes, change the
-deploy so the 1e build lives at `/v1/`, and add a banner to each site
-pointing to the other.
-
-## Task 17: Tag the `%%expect` cell in `jupyter_intro`
-
-**Status:** Done 2026-09-24. Tag added in `soln/` and copied to the top level;
-passes under nbmake in both the pip and the `environment.yml` environments.
-Consider adding `jupyter_intro.ipynb` to `make tests` along with Task 10.
-
-`jupyter_intro.ipynb` fails under nbmake in every environment tried. Cell 12
-(`%%expect SyntaxError` / `abs 42`) uses the magic from `utils.py`, which runs
-the cell with `run_cell`, so the `SyntaxError` is recorded as an error output
-and nbmake counts that as a failure. The chapter notebooks avoid this because
-their `%%expect` cells carry the `raises-exception` tag, which
-`remove_soln.py` preserves. Add the tag to that cell in
-`soln/jupyter_intro.ipynb` (the build copies it to the top level). CI does
-not run `jupyter_intro`, so nothing is red today.
-
-## Task 18: Fix `resampling_example_gun`
-
-**Status:** Done 2026-09-24. Both notebooks pass under nbmake. The re-executed
-outputs match the old ones, which were computed under a pandas where the
-in-place call still worked. Verified that under pandas 3.0.6 the old line
-leaves the 2s in place.
-
-`soln/resampling_example_gun.ipynb` (and the generated
-`examples/resampling_example_gun.ipynb`) fail under nbmake:
-
-- It uses `plt` and `np` without importing them.
-- Cell 8, `gss['gunlaw'].replace(2, 0, inplace=True)`, is a chained in-place
-  change. Under pandas 3 copy-on-write it does not modify `gss`, so the 2s
-  ("oppose") stay in the sums. The consistency `assert` compares counts
-  only, so it would not catch this. Use
-  `gss['gunlaw'] = gss['gunlaw'].replace(2, 0)`.
-
-After fixing `soln/`, regenerate the `examples/` copy.
-
-## Task 19: pandas 3 fixes outside the chapters
-
-**Status:** Done 2026-09-24, except the two notebooks listed at the end.
-
-pandas 3's copy-on-write makes a chained in-place call such as
-`df['col'].replace(..., inplace=True)` a silent no-op. pandas 3 also makes the
-`key` argument of `to_hdf` keyword-only, so `to_hdf(path, 'key')` raises a
-`TypeError`. None of the 14 chapter notebooks had either problem. Fixed
-elsewhere, editing through jupytext `--update`:
-
-- `utils.py` `fill_missing`: its `replace` did nothing, so it reported 0 values
-  filled. Every notebook downloads `utils.py`, but only `missing_values` and
-  `examples/resampling` call this function.
-- `soln/missing_values.ipynb` and `examples/resampling.ipynb`:
-  - `fill_missing_values` now returns a new Series, and both call sites
-    assign it. Before, the imputed values never reached `gss`, and the prose
-    said "modifies it in place".
-  - The data URL now points to PACS commit `34b22cb`, because PACS deleted
-    `master/gss_eda.hdf5` in 2022 (`5c5971c`). So these notebooks had not
-    run on a fresh machine since then.
-- `examples/resample_logit.ipynb`: the chained `replace`, and a `raw/master`
-  data link changed to `raw/v1`.
-- The data-cleaning notebooks: 13 chained `replace` calls in `clean_gss` and
-  the `clean_brfss*` notebooks, plus 7 positional `to_hdf` calls, including
-  `clean_nsfg`.
-
-Verified by executing under pandas 3.0.6 in scratch copies. `clean_gss`,
-`clean_nsfg`, `clean_brfss`, `clean_brfss-2019`, and `clean_brfss-2021`
-regenerate files **identical** to the committed `data/` files. The pre-fix
-`clean_gss` under pandas 3 produced no NaNs at all: every missing-data code
-became an answer (22,801 `GUNLAW`, 27,268 `GRASS`). `missing_values`,
-`examples/resampling`, and `examples/resample_logit` run, and after imputation
-`age` and `educ` have no NaNs. Executed outputs were committed with the
-nbconvert timestamps stripped.
-
-Two notebooks got the source fixes but can't run, for reasons that predate
-pandas 3:
-
-- [ ] `soln/clean_brfss-2022.ipynb` reads `LLCP2019.ASC.gz` but the 2022
-      column layout, and fails with `KeyError: ['_VEGESU1', '_INCOMG']`
-      (renamed in 2022). It looks unfinished.
-- [ ] `soln/brfss_validate.ipynb` imports a module `distribution` that no
-      longer exists.
+`/v1/` here is a folder in the `gh-pages` branch, which Pages keeps serving
+from; it is not the `v1` git branch. `ghp-import -x v1` replaces only that
+folder, while the current `jb/publish.sh` (no prefix) replaces the whole site.
+Recommended: 2e at the root, 1e under `/v1/`, and a 2e publish step that
+preserves `/v1/`.

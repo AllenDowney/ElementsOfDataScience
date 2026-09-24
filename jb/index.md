@@ -14,7 +14,7 @@ I don't assume that the reader knows anything about programming, statistics, or 
 
 This book is in the form of Jupyter notebooks. Jupyter is a software development tool you can run in a web browser, so you don't have to install any software.  A Jupyter notebook is a document that contains text, Python code, and results.  So you can read it like a book, but you can also modify the code, run it, develop new programs, and test them.
 
-The notebooks contains exercises where you can practice what you learn.  Most of the exercises are meant to be quick, but a few are more substantial.
+The notebooks contain exercises where you can practice what you learn.  Most of the exercises are meant to be quick, but a few are more substantial.
 
 This material is a work in progress, so suggestions are welcome.  The best way to provide feedback is to [click here and create an issue in this GitHub repository](https://github.com/AllenDowney/ElementsOfDataScience/issues).
 
