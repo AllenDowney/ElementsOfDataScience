@@ -22,8 +22,7 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links)
-- **In progress:** **Task 4**: update the test workflow and confirm the tests pass
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes)
 - **Next:** **Task 5**: triage the working tree
 - **Before branching:** Tasks 5, 6, 7, 8, 11
 - **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
@@ -57,7 +56,8 @@ Each target was checked to exist on `origin/v1`.
 
 ## Task 4: Update the test workflow; confirm the tests pass
 
-**Status:** In progress.
+**Status:** Done 2026-09-23 (`51d3fe6`). CI run `35936598928` passed on
+Ubuntu, Windows, and macOS.
 
 The monthly scheduled run has passed every month from February to September
 2026, so the tests have been running. But the workflow is out of date:
@@ -65,18 +65,19 @@ The monthly scheduled run has passed every month from February to September
 deprecated, and it tests only Python 3.11 on Ubuntu.
 
 - [x] Bring `.github/workflows/tests.yml` in line with ThinkStats (`301f61b`):
-      actions v7, Python 3.12 and 3.13, `fail-fast: false`, pip caching keyed
-      on both requirements files (written, not committed)
+      actions v7, Python 3.13, `fail-fast: false`, pip caching keyed on both
+      requirements files. (The commit message says 3.12/3.13; 3.12 was
+      dropped from the matrix before the commit.)
 - [x] Put Windows and macOS back in the matrix. They had been excluded
       because of Unicode on Windows and `pytables` installs on macOS. Chapters
       4–6 call `open('2600-0.txt')` without an encoding, which fails under
       Windows' default cp1252, so the workflow sets `PYTHONUTF8=1`. `tables`
-      now ships macOS wheels. Neither fix is confirmed until CI runs.
+      now ships macOS wheels. Both fixes work: all three OSes pass.
 - [x] Run the tests locally: **14/14 pass** (2m 34s) in a clean Python 3.13
       environment built from `requirements-dev.txt` (pandas 3.0.6, numpy
       2.5.3, matplotlib 3.11.2, geopandas 1.1.4), on a clean export of
       `origin/v1`
-- [ ] Push and confirm a green run on all six legs
+- [x] Push and confirm a green run on all three legs
 
 ## Task 5: Triage the working tree
 
