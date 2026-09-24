@@ -22,10 +22,10 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed), **Task 19** (pandas 3: chained `inplace`, positional `to_hdf`)
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed), **Task 19** (pandas 3: chained `inplace`, positional `to_hdf`), **Tasks 10, 14, 15** (soln tests in CI, build/publish split, `CLAUDE.md`)
 - **Next:** ready to create the `v2` branch; nothing on the board blocks it
 - **Before branching:** none left
-- **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
+- **Worth doing, not blocking:** Tasks 9, 13
 - **v2 prep:** Tasks 12, 16
 
 ---
@@ -183,7 +183,10 @@ the source and update the other.
 
 ## Task 10: Test the solution notebooks too
 
-**Status:** Not started.
+**Status:** Done 2026-09-24. `make tests-soln` runs `soln/[01]*.ipynb`; CI runs it
+on Ubuntu and macOS (not Windows, because of the `soln/utils.py` symlink).
+`make tests` now includes `jupyter_intro.ipynb`. Locally: 15 and 14 passed.
+`examples/` is still untested.
 
 CI runs `pytest --nbmake [01]*.ipynb` on the generated student notebooks, in
 which each solution cell is replaced by `# Solution goes here`. So the
@@ -203,8 +206,7 @@ workflow step.
 
 ## Task 11: Protect `v1`
 
-**Status:** Done 2026-09-24, except the `CLAUDE.md` note, which waits for
-Task 15.
+**Status:** Done 2026-09-24.
 
 The printed first edition links to Colab through `blob/v1/...`, and every
 notebook downloads `utils.py` and `data/*` from `raw/v1/...`. Deleting `v1`
@@ -221,7 +223,7 @@ or force-pushing to it would break the printed book.
       non-fast-forward pushes on `v1`, with no bypass actors, so it applies
       to the owner too. Normal pushes still work. Other branches are
       unaffected.
-- [ ] Note in `CLAUDE.md` (Task 15) that files under `data/` and `utils.py`
+- [x] Note in `CLAUDE.md` (Task 15) that files under `data/` and `utils.py`
       on `v1` are downloaded by URL and must not move
 
 ## Task 12: Decide the policy on survey microdata in the repo
@@ -248,7 +250,25 @@ references them, but outside links might, so check before removing.
 
 ## Task 14: Split `build.sh` into build and publish
 
-**Status:** Not started. Optional.
+**Status:** Done 2026-09-24. `build.sh` and `jb/build.sh` now only build;
+`publish.sh` (commit message required) and `jb/publish.sh` push. Makefile
+targets: `notebooks`, `publish MSG=...`, `site`, `publish-site`. Two fixes on
+the way:
+
+- `zip -r` added to the existing archive, so dropped files stayed in it. The
+  zip is now rebuilt from scratch.
+- The old `git add` list left out `EDS_notebooks.zip`, so the committed zip
+  was still the one from `3342ec3` (2021-05-11, 16 files). The rebuilt zip
+  (18 files, with the Python 3.13 `environment.yml`) is committed with this
+  task.
+
+Rebuilding changed none of the generated notebooks: they were already in step
+with `soln/`.
+
+Open question: `remove_soln.py` only processes `[01]*.ipynb`, so the
+published `clustering.ipynb` (built from `soln/clustering_soln.ipynb`) still
+has its 8 solutions. Nothing in the repo, the website, or the print book
+links to it.
 
 `build.sh` regenerates the student notebooks, then immediately commits with
 the message "Updating notebooks" and pushes. That is why so much of the
@@ -257,7 +277,8 @@ allow a diff review and a test run first.
 
 ## Task 15: Write `CLAUDE.md`
 
-**Status:** Not started.
+**Status:** Done 2026-09-24. The Task 11 note (`data/` and `utils.py` must not
+move) is in it.
 
 Short working notes for this repo: `soln/` is canonical and the top-level
 notebooks are generated; `v1` files are downloaded by URL; how to build,
