@@ -1,5 +1,46 @@
 # Working tree triage (Task 5)
 
+## Outcome (2026-09-24)
+
+Done in `2151a4e`..`718a97c`. `git status` went from 147 paths to 22. The
+tables below are the original plan; the outcome differs from it in these
+ways:
+
+- `machine_bias_table.png` was **restored** at the top level, not left
+  deleted, because it is identical to the `figs/` copy and outside links may
+  use `raw/v1/machine_bias_table.png`. The `figs/` copy is tracked too.
+- Of the Recidivism figures, only `figs/calibration1.png` and
+  `figs/machine_bias_table.png` were tracked. They are the two the print book
+  includes. `confusion_matrix{1,2}.png` are not referenced, so they are in limbo.
+- `figs/resampling_alternative.{png,svg}` are referenced nowhere, so they are
+  in limbo.
+- `soln/GSS.dat.gz` needed an extra rule (`soln/*.dat.gz`), and the
+  `data/*FemPreg*` rule was narrowed so it does not match the tracked codebook
+  PDF.
+- Deleted files were checked first. `soln/jntools.py`, `soln/test.sh`, and
+  `soln/remove_header.py` are identical to copies in
+  `~/ElementsOfDataScienceSolutions`, and `remove_header.py` was tracked, not
+  deleted. The deleted `prep_notebooks.py` differed from `jb/prep_notebooks.py`
+  only in its glob. `Untitled.ipynb` had no cells.
+- `eds.gss.hdf5` and `nsfg_sample.hdf5` are now ignored by `/*.hdf5`, not in
+  limbo. They are still on disk.
+
+**Left in limbo (22 paths):**
+
+| Path | Why it is waiting |
+|---|---|
+| `EDS_notebooks.zip` (modified) | Commit with the next `build.sh` run |
+| `soln/odds_soln.ipynb`, `soln/testing_means_soln.ipynb`, `soln/resampling.ipynb`, `soln/resampling_example_gun.ipynb` | Extra exercises; decide with Task 7 |
+| `examples/odds_soln.ipynb`, `examples/scrub_code.py` | Duplicates of files in `soln/` or the Solutions repo |
+| `unfilled/04_worldview.ipynb`, `unfilled/build.sh`, `unfilled/remove_soln.py` | Belong in PACS, or in v2 |
+| `figs/confusion_matrix{1,2}.png`, `figs/resampling_alternative.{png,svg}` | Not referenced anywhere |
+| `eds_cover_small.png` | Not referenced anywhere |
+| `scripts/` | Purpose unclear |
+| `feedback/` | Early copies of chapters 1–2 |
+| `hypothesis.ipynb`, `trig.ipynb`, `family_survey.ipynb`, `deaths2008.csv`, `all_sandwich_data.csv` | Old experiments (2019–2020) |
+
+## Original plan
+
 Snapshot 2026-09-23: `git status` lists 147 paths, of which 13 are modified or
 deleted tracked files and 134 are untracked. This file proposes what to do
 with each one. "Runtime download" means a notebook fetches the file into its

@@ -22,9 +22,9 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes)
-- **Next:** **Task 5**: triage the working tree
-- **Before branching:** Tasks 5, 6, 7, 8, 11
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 22 in limbo)
+- **Next:** **Task 6** (mostly done by Task 5), then Tasks 7, 8, 11
+- **Before branching:** Tasks 6, 7, 8, 11
 - **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
 - **v2 prep:** Tasks 12, 16
 
@@ -81,8 +81,8 @@ deprecated, and it tests only Python 3.11 on Ubuntu.
 
 ## Task 5: Triage the working tree
 
-**Status:** Not started. Inventory in
-[working_tree_triage.md](working_tree_triage.md).
+**Status:** Done 2026-09-24 (`2151a4e`..`718a97c`). Outcome and the limbo
+list are at the top of [working_tree_triage.md](working_tree_triage.md).
 
 `git status` shows 147 paths: 13 modified or deleted tracked files and 134
 untracked paths, including 92 MB of another repo's clone
@@ -90,17 +90,18 @@ untracked paths, including 92 MB of another repo's clone
 Real changes are invisible in the noise. Goal: every path is tracked,
 ignored, or deleted, apart from a short, named list left in limbo.
 
-- [ ] Add `.gitignore` rules for runtime downloads, build output, and
+- [x] Add `.gitignore` rules for runtime downloads, build output, and
       separate clones
-- [ ] Track the website build sources that are currently untracked
+- [x] Track the website build sources that were untracked
       (`jb/_toc.yml`, `jb/build.sh`, `jb/prep_notebooks.py`)
-- [ ] Review and commit, or restore, the modified tracked files
-- [ ] Delete the obvious junk
-- [ ] Record what is left in limbo
+- [x] Review and commit, or restore, the modified tracked files
+- [x] Delete the obvious junk (each file checked first; see the outcome notes)
+- [x] Record what is left in limbo (22 paths)
 
 ## Task 6: Make `soln/` self-contained
 
-**Status:** Not started.
+**Status:** Mostly done by Task 5 (`a2fe490`). One item left: the duplicate
+`utils.py`.
 
 Only the 14 chapter notebooks in `soln/` are tracked. `build.sh` also copies
 `soln/utils.py`, `soln/jupyter_intro.ipynb`, `soln/geo_example.ipynb`, and
@@ -109,11 +110,12 @@ that exist only on this machine. The data-cleaning notebooks (`clean_*.ipynb`)
 that build `data/` are also untracked here; they are tracked only in the
 Solutions repo.
 
-- [ ] Track the files `build.sh` reads, and the `clean_*.ipynb` notebooks
-- [ ] Decide whether `soln/utils.py` and the top-level `utils.py` are one
-      file (the notebooks download the top-level one) and remove the
-      duplicate
-- [ ] Gitignore the data that the notebooks in `soln/` download when run
+- [x] Track the files `build.sh` reads, and the `clean_*.ipynb` notebooks
+- [ ] `soln/utils.py`, `jb/utils.py`, and the top-level `utils.py` are
+      currently identical. Keep one source (`soln/utils.py`, since `build.sh`
+      copies it to the top level). The top-level copy must stay tracked,
+      because the notebooks download it from `raw/v1/utils.py`.
+- [x] Gitignore the data that the notebooks in `soln/` download when run
 
 ## Task 7: Mark the Solutions repo as superseded
 
