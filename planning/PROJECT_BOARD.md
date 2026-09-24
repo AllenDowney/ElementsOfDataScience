@@ -22,10 +22,10 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded)
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded), **Task 18** (`resampling_example_gun` fixed)
 - **Next:** ready to create the `v2` branch; nothing on the board blocks it
 - **Before branching:** none left
-- **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15, 18
+- **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
 - **v2 prep:** Tasks 12, 16
 
 ---
@@ -119,7 +119,8 @@ Solutions repo.
 ## Task 7: Mark the Solutions repo as superseded
 
 **Status:** Done 2026-09-24. The Solutions repo README now says it is
-unmaintained and points to `soln/` (Solutions commit `2807c55`). The repo is
+unmaintained and points to `soln/` (Solutions commit `f4e4085`, rebuilt on
+top of a shorter README note made on GitHub in May 2025). The repo is
 not archived on GitHub.
 
 The Solutions repo has an older version of `07_dataframes.ipynb`, and its
@@ -139,7 +140,7 @@ The Solutions repo has an older version of `07_dataframes.ipynb`, and its
         from 2020 until `e5f8829` (May 2025) deleted it.
       - `resampling_example_gun.ipynb` tracked, and
         `examples/resampling_example_gun.ipynb` generated from it with the
-        one solution removed. Both fail; see Task 18.
+        one solution removed. Both failed; fixed in Task 18.
       - `resampling.ipynb` renamed `missing_values.ipynb` (no solutions).
         `examples/resampling.ipynb` is still the same notebook under the old
         name. It fails outside this machine: it reads a local `gss_eda.hdf5`
@@ -262,6 +263,18 @@ Short working notes for this repo: `soln/` is canonical and the top-level
 notebooks are generated; `v1` files are downloaded by URL; how to build,
 test, and publish. MarriageNSFG's `CLAUDE.md` is the model.
 
+Include the notebook-editing workflow (decided 2026-09-24). The `.ipynb` is the
+canonical source. For non-trivial edits:
+
+1. `jupytext --to md -o <scratch>/X.md soln/X.ipynb` (keep the `.md` out of
+   the repo)
+2. edit the `.md`
+3. `jupytext --to ipynb --update -o soln/X.ipynb <scratch>/X.md`. `--update`
+   keeps outputs and metadata; plain `--to ipynb` discards them.
+4. `jupyter nbconvert --to notebook --execute --inplace soln/X.ipynb`
+5. strip the per-cell `execution` timestamps that nbconvert adds
+6. if an `examples/` copy is generated from it, regenerate that
+
 ## Task 16: Keep the 1e website at `/v1/` when v2 takes over
 
 **Status:** Not started. v2 prep; needed before `v2` becomes the default branch.
@@ -288,7 +301,10 @@ not run `jupyter_intro`, so nothing is red today.
 
 ## Task 18: Fix `resampling_example_gun`
 
-**Status:** Not started. Small.
+**Status:** Done 2026-09-24. Both notebooks pass under nbmake. The re-executed
+outputs match the old ones, which were computed under a pandas where the
+in-place call still worked. Verified that under pandas 3.0.6 the old line
+leaves the 2s in place.
 
 `soln/resampling_example_gun.ipynb` (and the generated
 `examples/resampling_example_gun.ipynb`) fail under nbmake:
