@@ -1,7 +1,11 @@
+#!/bin/bash
 # pip install jupyter-book
-# pip install ghp-import
 
-# Build the Jupyter book version
+# Build the Jupyter book version into _build/html. This does not publish;
+# check the result in a browser, then run ./publish.sh.
+
+set -e
+cd "$(dirname "$0")"
 
 # copy the chapter notebooks
 cp ../soln/[01][0-9]*.ipynb .
@@ -14,5 +18,5 @@ python prep_notebooks.py
 # build the HTML version
 jb build .
 
-# push it to GitHub
-ghp-import -n -p -f _build/html
+echo
+echo "Built jb/_build/html. Next: check it, then jb/publish.sh"

@@ -5,7 +5,7 @@ PYTHON_INTERPRETER = python
 ## what you have
 CONDA = mamba
 
-.PHONY: default
+.PHONY: default notebooks publish site publish-site tests tests-soln
 
 default:
 	@echo "No command specified. Please specify a target."
@@ -28,5 +28,26 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
+## Build and publish. The build targets only change the working tree; the
+## publish targets push to GitHub, which is what readers see.
+notebooks:
+	./build.sh
+
+publish:
+	@test -n "$(MSG)" || (echo 'usage: make publish MSG="commit message"'; exit 1)
+	./publish.sh "$(MSG)"
+
+site:
+	jb/build.sh
+
+publish-site:
+	jb/publish.sh
+
+## The student notebooks (solutions removed), and jupyter_intro
 tests:
-	pytest --nbmake [01]*.ipynb
+	pytest --nbmake [01]*.ipynb jupyter_intro.ipynb
+
+## The notebooks with solutions. soln/utils.py is a symlink, which Windows
+## checks out as a text file, so CI runs this only on Linux and macOS.
+tests-soln:
+	cd soln && pytest --nbmake [01]*.ipynb
