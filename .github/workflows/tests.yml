@@ -45,3 +45,9 @@ jobs:
       - name: Run tests
         run: |
           make tests
+
+      # soln/utils.py is a symlink, which Windows checks out as a text file
+      - name: Run tests on the notebooks with solutions
+        if: runner.os != 'Windows'
+        run: |
+          make tests-soln
