@@ -5,5 +5,10 @@ the website, or the book.
 
 - `video_scripts/`: narration scripts for the online class videos (2019)
   that were the basis of Part II of the book, *Exploratory Data Analysis*
-  (chapters 7–10: DataFrames, distributions, relationships, regression). `scripts.zip` holds the March 2019 versions of the four files;
+  (chapters 7–10: DataFrames, distributions, relationships, regression).
+  `scripts.zip` holds the March 2019 versions of the four files;
   `chapter_3_scripts.txt` was edited once more after that.
+- `quizzes/`: seven quizzes (`quiz01`–`quiz07`), copied from
+  `ElementsOfDataScienceSolutions/quizzes` at commit `887e660` (2024-04-01).
+  Only the notebooks are archived; the data files beside them were never
+  committed there.

@@ -22,10 +22,10 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes)
-- **Next:** Task 7
-- **Before branching:** Task 7
-- **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes), **Task 7** (Solutions repo superseded)
+- **Next:** ready to create the `v2` branch; nothing on the board blocks it
+- **Before branching:** none left
+- **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15, 18
 - **v2 prep:** Tasks 12, 16
 
 ---
@@ -118,15 +118,33 @@ Solutions repo.
 
 ## Task 7: Mark the Solutions repo as superseded
 
-**Status:** Not started.
+**Status:** Done 2026-09-24. The Solutions repo README now says it is
+unmaintained and points to `soln/` (Solutions commit `2807c55`). The repo is
+not archived on GitHub.
 
 The Solutions repo has an older version of `07_dataframes.ipynb`, and its
 `manuscript/` directory is deleted locally but still tracked.
 
-- [ ] Move anything it has that this repo lacks (`quizzes/`, the
-      `clean_brfss-*` notebooks) into `soln/`, or decide to leave it behind
-- [ ] Add a README note pointing to `soln/` here; consider archiving the
-      repo on GitHub
+- [x] `quizzes/`: the seven quiz notebooks (as committed there, `887e660`)
+      are in `archive/quizzes/`. Their data files were never committed and
+      were not copied.
+- [x] The `clean_brfss-*` notebooks were already in `soln/` (Task 5).
+- [x] Extra notebooks in `soln/`, with the convention that `soln/X_soln.ipynb`
+      is the source and `examples/X.ipynb` has the solutions removed:
+      - `odds_soln.ipynb` tracked; it is the source of `examples/odds.ipynb`
+        (10 solution cells). The duplicate `examples/odds_soln.ipynb` was
+        deleted.
+      - `testing_means_soln.ipynb` tracked. It has 12 solution cells and no
+        counterpart in `examples/`. A top-level `testing_means.ipynb` existed
+        from 2020 until `e5f8829` (May 2025) deleted it.
+      - `resampling_example_gun.ipynb` tracked, and
+        `examples/resampling_example_gun.ipynb` generated from it with the
+        one solution removed. Both fail; see Task 18.
+      - `resampling.ipynb` renamed `missing_values.ipynb` (no solutions).
+        `examples/resampling.ipynb` is still the same notebook under the old
+        name. It fails outside this machine: it reads a local `gss_eda.hdf5`
+        and never downloads it.
+- [x] README note in the Solutions repo. Not archived on GitHub.
 
 ## Task 8: Refresh `environment.yml`
 
@@ -267,3 +285,19 @@ their `%%expect` cells carry the `raises-exception` tag, which
 `remove_soln.py` preserves. Add the tag to that cell in
 `soln/jupyter_intro.ipynb` (the build copies it to the top level). CI does
 not run `jupyter_intro`, so nothing is red today.
+
+## Task 18: Fix `resampling_example_gun`
+
+**Status:** Not started. Small.
+
+`soln/resampling_example_gun.ipynb` (and the generated
+`examples/resampling_example_gun.ipynb`) fail under nbmake:
+
+- It uses `plt` and `np` without importing them.
+- Cell 8, `gss['gunlaw'].replace(2, 0, inplace=True)`, is a chained in-place
+  change. Under pandas 3 copy-on-write it does not modify `gss`, so the 2s
+  ("oppose") stay in the sums. The consistency `assert` compares counts
+  only, so it would not catch this. Use
+  `gss['gunlaw'] = gss['gunlaw'].replace(2, 0)`.
+
+After fixing `soln/`, regenerate the `examples/` copy.

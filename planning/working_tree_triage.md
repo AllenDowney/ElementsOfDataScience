@@ -25,13 +25,14 @@ ways:
 - `eds.gss.hdf5` and `nsfg_sample.hdf5` are now ignored by `/*.hdf5`, not in
   limbo. They are still on disk.
 
-**Left in limbo (21 paths; `scripts/` moved to `archive/video_scripts/` on 2026-09-24):**
+**Left in limbo (16 paths).** Since the first pass, `scripts/` moved to
+`archive/video_scripts/`, and Task 7 dealt with the `soln/` extras and
+`examples/odds_soln.ipynb`:
 
 | Path | Why it is waiting |
 |---|---|
 | `EDS_notebooks.zip` (modified) | Commit with the next `build.sh` run |
-| `soln/odds_soln.ipynb`, `soln/testing_means_soln.ipynb`, `soln/resampling.ipynb`, `soln/resampling_example_gun.ipynb` | Extra exercises; decide with Task 7 |
-| `examples/odds_soln.ipynb`, `examples/scrub_code.py` | Duplicates of files in `soln/` or the Solutions repo |
+| `examples/scrub_code.py` | Duplicate of the Solutions repo's `scrub_code.py` |
 | `unfilled/04_worldview.ipynb`, `unfilled/build.sh`, `unfilled/remove_soln.py` | Belong in PACS, or in v2 |
 | `figs/confusion_matrix{1,2}.png`, `figs/resampling_alternative.{png,svg}` | Not referenced anywhere |
 | `eds_cover_small.png` | Not referenced anywhere |
@@ -108,6 +109,7 @@ for now, and say why).
 | `figs/calibration1.png`, `figs/confusion_matrix{1,2}.png`, `figs/machine_bias_table.png` | track | Probably figures for the Recidivism chapters of the print book; the Book pipeline copies all of `figs/` |
 | `examples/anderson{1,2}.png`, `examples/cocoa{1,2}.png` | ignore | Written by the `savefig` calls above |
 | `examples/odds_soln.ipynb`, `examples/scrub_code.py` | limbo | Duplicates of files in `soln/` |
+| `examples/scrub_code.py` | Duplicate of the Solutions repo's `scrub_code.py` |
 | `unfilled/04_worldview.ipynb`, `unfilled/build.sh`, `unfilled/remove_soln.py` | limbo | An unfilled copy of PACS `04_worldview`; belongs in PACS, or in v2 |
 | `eds_cover_small.png` | limbo | Not referenced anywhere yet |
 | `scripts/` (chapter script text files and a zip) | limbo | Purpose unclear |
