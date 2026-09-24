@@ -22,10 +22,10 @@ Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
 once it is ready (see [v2_plan.md](v2_plan.md)).
 
-- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`)
+- **Done:** **Task 1** (repo survey), **Task 3** (README links), **Task 4** (test workflow; CI green on all three OSes), **Task 5** (working tree: 147 paths → 21 in limbo), **Task 6** (`soln/` self-contained), **Task 11** (`v1.0.1` tag; `v1` protected), **Task 8** (`environment.yml`), **Task 17** (`jupyter_intro` passes)
 - **Next:** Task 7
 - **Before branching:** Task 7
-- **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15, 17
+- **Worth doing, not blocking:** Tasks 9, 10, 13, 14, 15
 - **v2 prep:** Tasks 12, 16
 
 ---
@@ -148,8 +148,8 @@ It also ships to readers inside `EDS_notebooks.zip`.
       env.
 - [x] Checked: `mamba env create` solves in about 1.5 minutes (pandas 3.0.6,
       numpy 2.5.3, geopandas 1.1.4). In that env the 14 chapter notebooks,
-      `clustering`, and `geo_example` pass. `jupyter_intro` fails in every
-      environment tried, including the old one; see Task 17.
+      `clustering`, and `geo_example` pass. `jupyter_intro` failed in every
+      environment tried, including the old one; fixed in Task 17.
 - [ ] `EDS_notebooks.zip` still contains the old `environment.yml` until the
       next `build.sh` run.
 
@@ -255,7 +255,9 @@ pointing to the other.
 
 ## Task 17: Tag the `%%expect` cell in `jupyter_intro`
 
-**Status:** Not started. Small.
+**Status:** Done 2026-09-24. Tag added in `soln/` and copied to the top level;
+passes under nbmake in both the pip and the `environment.yml` environments.
+Consider adding `jupyter_intro.ipynb` to `make tests` along with Task 10.
 
 `jupyter_intro.ipynb` fails under nbmake in every environment tried. Cell 12
 (`%%expect SyntaxError` / `abs 42`) uses the magic from `utils.py`, which runs
