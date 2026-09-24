@@ -102,3 +102,53 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# ---- Elements of Data Science (see planning/working_tree_triage.md) ----
+
+# separate repos cloned inside this one
+DS10-Python-HW/
+
+# website build: output, and files copied in by jb/build.sh
+jb/_build/
+jb/*.ipynb
+jb/utils.py
+
+# data the notebooks download when they run.
+# data/ itself is tracked: the notebooks download from it on GitHub.
+/*.hdf
+/*.hdf5
+!/brfss.hdf5
+!/gss.hdf5
+!/nsfg.hdf5
+/2600-0.txt
+/*FemPreg*
+/GSS.dat.gz
+/GSS.dct
+soln/*.hdf
+soln/*.hdf5
+soln/*.dat
+soln/*.dct
+soln/*.ASC.gz
+soln/*.dat.gz
+soln/*.tar.gz
+soln/2600-0.txt
+soln/penguins_raw.csv
+soln/fig*.pdf
+soln/fig*.png
+examples/*.hdf
+examples/*.hdf5
+examples/*.csv
+examples/*.xls
+examples/*.png
+
+# raw inputs kept locally
+data/*FemPregData*
+data/*FemPregSetup*
+data/CodebookPDFs_*/
+data/GSS.do
+data/brfss_2019.hdf
+data/gss_eda.tar.gz
+nlsy97/
+
+# editor backups
+*~
