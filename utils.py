@@ -52,7 +52,7 @@ class FixedWidthVariables(object):
         self.colspecs = variables[["start", "end"]] - index_base
 
         # convert colspecs to a list of pair of int
-        self.colspecs = self.colspecs.astype(np.int).values.tolist()
+        self.colspecs = self.colspecs.astype(int).values.tolist()
         self.names = variables["name"]
 
     def read_fixed_width(self, filename, **options):

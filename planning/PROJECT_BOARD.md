@@ -311,3 +311,12 @@ from; it is not the `v1` git branch. `ghp-import -x v1` replaces only that
 folder, while the current `jb/publish.sh` (no prefix) replaces the whole site.
 Recommended: 2e at the root, 1e under `/v1/`, and a 2e publish step that
 preserves `/v1/`.
+
+## Task 20: Keep fixed-width dictionary parsing compatible with NumPy 2
+
+**Status:** Fix prepared 2026-10-23; synthetic reproduction confirmed.
+
+`FixedWidthVariables` used `np.int`, removed in NumPy 2, so parsing even a
+small Stata dictionary fails in the current Python 3.13 environment. Replace
+the deprecated alias with built-in `int` without changing the resulting
+column-spec integer values.
