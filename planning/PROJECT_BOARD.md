@@ -314,7 +314,7 @@ preserves `/v1/`.
 
 ## Task 20: Keep fixed-width dictionary parsing compatible with NumPy 2
 
-**Status:** Fix prepared 2026-10-23; synthetic reproduction confirmed.
+**Status:** Submitted in [PR #26](https://github.com/AllenDowney/ElementsOfDataScience/pull/26) on 2026-10-23; synthetic regression probe passes.
 
 `FixedWidthVariables` used `np.int`, removed in NumPy 2, so parsing even a
 small Stata dictionary fails in the current Python 3.13 environment. Replace
