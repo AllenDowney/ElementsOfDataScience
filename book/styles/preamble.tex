@@ -1,0 +1,64 @@
+% PDF typography for the EDS ebook (Task 22).
+% Body text follows CultureWar's book/pdf/preamble.tex (Source Serif 4,
+% ragged right, fixed paragraph spacing, short pages over stretched ones).
+% Code colors come from the 1e print edition
+% (ElementsOfDataScienceBook latex/settings.tex), through eds.theme.
+% \codesize is defined per layout in _quarto.yml.
+
+\usepackage{fontspec}
+\setmainfont{Source Serif 4}
+\setmonofont{Source Code Pro}[Scale=MatchLowercase]
+\KOMAoptions{sfdefaults=false}
+
+\setkomafont{chapter}{\rmfamily\huge\bfseries}
+\setkomafont{section}{\rmfamily\Large\bfseries}
+\setkomafont{subsection}{\rmfamily\large\bfseries}
+
+\usepackage{xcolor}
+\definecolor{codeblue}{RGB}{8, 68, 136}    % Bl30
+\definecolor{darkpurple}{RGB}{83, 38, 143} % Pu30
+\definecolor{outputgray}{gray}{0.3}
+\definecolor{codebg}{gray}{0.95}
+\definecolor{rulegray}{gray}{0.7}
+
+\usepackage{microtype}
+\usepackage{ragged2e}
+\setlength{\RaggedRightRightskip}{0pt plus 3em}
+\AtBeginDocument{\RaggedRight}
+
+% Paragraphs: no indent, fixed space between, short pages over stretched ones.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000
+
+% Page number and chapter title in the header, in dark purple.
+\usepackage{scrlayer-scrpage}
+\clearpairofpagestyles
+\automark{chapter}
+\ihead{\color{darkpurple}\headmark}
+\ohead{\color{darkpurple}\pagemark}
+
+\AtBeginDocument{\hypersetup{linkcolor=codeblue, urlcolor=codeblue}}
+
+% Source code: Quarto wraps it in Shaded (background from code-block-bg)
+% and Highlighting. Long lines wrap rather than run into the margin.
+\usepackage{fvextra}
+\AtBeginDocument{%
+  \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{%
+    commandchars=\\\{\}, fontsize=\codesize,
+    breaklines, breakanywhere, breaksymbolleft={\tiny\ensuremath{\hookrightarrow}}}}
+
+% Text output: gray, unshaded, with a rule at the left.
+\DefineVerbatimEnvironment{bookoutput}{Verbatim}{%
+  fontsize=\codesize, formatcom=\color{outputgray},
+  frame=leftline, framerule=0.6pt, rulecolor=\color{rulegray}, framesep=6pt,
+  xleftmargin=0.25em, breaklines, breakanywhere}
+
+% DataFrames (from df.to_latex): shrink to the text width if wider.
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\newenvironment{booktable}
+  {\par\smallskip\noindent\small\begin{adjustbox}{max width=\linewidth}}
+  {\end{adjustbox}\par\smallskip}

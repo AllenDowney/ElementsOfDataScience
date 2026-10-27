@@ -1,0 +1,14 @@
+# Book metadata for the PDF and EPUB builds (Task 22).
+# Strings match the 1e print edition (ElementsOfDataScienceBook latex/settings.tex).
+
+title: Elements of Data Science
+subtitle: Getting Started with Data Science and Python
+author: Allen B. Downey
+version: "1.0.1"
+publisher: Green Tea Press
+copyright_year: "2024"
+
+# Chapters, in order. Stems resolve to soln/{stem}.ipynb.
+# The spike builds one chapter; the full list comes later.
+chapters:
+  - 07_dataframes
