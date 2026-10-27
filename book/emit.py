@@ -8,7 +8,7 @@ difference between formats is decided here; Quarto only renders.
 
 Cells are selected as in the 1e print converter: code cells whose source
 starts with "# Solution" are dropped (the `solution` tag alone is not
-enough), and so are cells tagged remove-cell or hide-cell, the inputs of
+enough), and so is setup code (see is_setup), and so are cells tagged remove-cell or hide-cell, the inputs of
 remove-input / hide-input cells, and the outputs of remove-output /
 hide-output cells. Cells tagged remove-print are dropped only from print
 formats: they hold links, which work on a screen.
@@ -46,8 +46,12 @@ BOOK = Path(__file__).resolve().parent
 REPO = BOOK.parent
 STAGE = BOOK / "build" / "stage"
 RELEASE = BOOK / "leanpub"
+# Images the notebooks load from GitHub (this repo or RecidivismCaseStudy,
+# in either URL form) are used from this repo's figs/, which has copies.
 REPO_FIG_URL = re.compile(
-    r"https://github\.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/([^)\s\"]+)")
+    r"https://(?:github\.com/AllenDowney/(?:ElementsOfDataScience|RecidivismCaseStudy)/raw"
+    r"|raw\.githubusercontent\.com/AllenDowney/(?:ElementsOfDataScience|RecidivismCaseStudy))"
+    r"/v1/(?:figs/)?([^)\s\"]+)")
 REPO_FIG = re.compile(r"!\[([^\]]*)\]\(" + REPO_FIG_URL.pattern + r"\)")
 
 # Figures are 6 x 3.5 in (utils.py); 1e printed them at two-thirds size.
@@ -72,20 +76,43 @@ def load_metadata():
     return yaml.safe_load((BOOK / "metadata.yml").read_text())
 
 
+def stem_of(entry):
+    """A chapter entry is a stem, or a mapping for a case-study chapter."""
+    return entry if isinstance(entry, str) else entry["stem"]
+
+
+def part_stems(part):
+    return [stem_of(e) for e in part["chapters"]]
+
+
 def all_chapters(meta):
     """Every chapter stem in the book, in order."""
-    return [s for part in meta["parts"] for s in part["chapters"]] + meta.get("back", [])
+    return [s for part in meta["parts"] for s in part_stems(part)] + meta.get("back", [])
 
 
 def chapter_numbers(meta):
     """Map from stem to chapter number, for the chapters in parts."""
-    stems = [s for part in meta["parts"] for s in part["chapters"]]
+    stems = [s for part in meta["parts"] for s in part_stems(part)]
     return {stem: n for n, stem in enumerate(stems, 1)}
 
 
+def external_chapters(meta):
+    """Map from stem to its entry, for chapters from other repos."""
+    return {e["stem"]: e for part in meta["parts"] for e in part["chapters"]
+            if not isinstance(e, str)}
+
+
+def staged_path(meta, stem):
+    """Where stage.py puts the executed notebook for a chapter."""
+    if stem in external_chapters(meta):
+        return STAGE / "ext" / stem / f"{stem}.ipynb"
+    return STAGE / f"{stem}.ipynb"
+
+
 class Emitter:
-    def __init__(self, fmt, outdir):
+    def __init__(self, fmt, outdir, meta):
         self.fmt = fmt
+        self.meta = meta
         self.is_pdf = fmt.startswith("pdf")
         self.outdir = outdir
         self.issues = []
@@ -97,7 +124,7 @@ class Emitter:
 
     def chapter(self, stem, number=None):
         """Markdown for one chapter; number is None for an unnumbered one."""
-        nb = nbformat.read(STAGE / f"{stem}.ipynb", as_version=4)
+        nb = nbformat.read(staged_path(self.meta, stem), as_version=4)
         blocks = []
         started = False
         self.nfig = 0
@@ -129,7 +156,7 @@ class Emitter:
             if cell.cell_type == "markdown":
                 blocks.append(self.markdown(stem, i, source))
             elif cell.cell_type == "code":
-                if source.startswith("# Solution"):
+                if source.startswith("# Solution") or is_setup(source):
                     continue
                 if source and not tags & {"remove-input", "hide-input"}:
                     blocks.append(f"```python\n{source}\n```")
@@ -138,11 +165,12 @@ class Emitter:
         return "\n\n".join(b for b in blocks if b) + "\n"
 
     def markdown(self, stem, i, source):
-        # Images from this repo's figs/ are used from the local copy.
+        # Images from GitHub with a copy in figs/ use the copy; others stay
+        # remote, and are reported below.
         def local_fig(m):
             alt, name = m.groups()
-            (self.outdir / "figs").mkdir(exist_ok=True)
-            shutil.copy2(REPO / "figs" / name, self.outdir / "figs" / name)
+            if not self.copy_fig(name):
+                return m.group(0)
             return f"![{alt}](figs/{name}){{width=100%}}"
         source = REPO_FIG.sub(local_fig, source)
 
@@ -152,8 +180,8 @@ class Emitter:
             tag = m.group(0)
             name = REPO_FIG_URL.search(tag).group(1)
             width = re.search(r'width="(\d+)"', tag)
-            (self.outdir / "figs").mkdir(exist_ok=True)
-            shutil.copy2(REPO / "figs" / name, self.outdir / "figs" / name)
+            if not self.copy_fig(name):
+                return tag
             attr = f"{{width={width.group(1)}}}" if width else ""
             return f"![](figs/{name}){attr}"
         source = re.sub(r"<img[^>]*" + REPO_FIG_URL.pattern + r"[^>]*>", html_fig, source)
@@ -166,6 +194,14 @@ class Emitter:
         if self.number is not None and not self.is_pdf:
             source = self.number_sections(source)
         return source
+
+    def copy_fig(self, name):
+        """Copy figs/{name} into the project; False if there is no copy."""
+        if not (REPO / "figs" / name).exists():
+            return False
+        (self.outdir / "figs").mkdir(exist_ok=True)
+        shutil.copy2(REPO / "figs" / name, self.outdir / "figs" / name)
+        return True
 
     def number_sections(self, source):
         """Write section numbers into ## headings (EPUB)."""
@@ -252,6 +288,16 @@ class Emitter:
                 return f"![](figs/{name}.pdf){{width={width_in:.2f}in}}"
             return f"![](figs/{name}.png){{width={width_in:.2f}in}}"
         return f"![](figs/{name}.png)"
+
+
+def is_setup(source):
+    """True for a notebook's setup code, which the book leaves out: the
+    download function, cells that only call it, and pip-install fallbacks.
+    The EDS chapters tag these remove-cell; the case studies tag them
+    remove-print, which the screen formats otherwise keep."""
+    return ("def download(" in source
+            or re.fullmatch(r"(download\([^()]*\)\s*)+", source) is not None
+            or ("except ImportError" in source and "pip install" in source))
 
 
 def png_size(png):
@@ -387,7 +433,7 @@ def emit(fmt, edition="book", strict=False, render=False):
     if outdir.exists():
         shutil.rmtree(outdir)
     outdir.mkdir(parents=True)
-    emitter = Emitter(fmt, outdir)
+    emitter = Emitter(fmt, outdir, meta)
 
     # Front matter. Quarto always starts with index.md: in the PDF that is
     # the preface (the title page comes from KOMA); in the EPUB it is the
@@ -431,10 +477,10 @@ def emit(fmt, edition="book", strict=False, render=False):
                     f"# Part {ROMAN[n]}: {part['title']} {{.unnumbered}}\n")
                 files.append(name)
                 entries.append(f"    - {name}")
-                entries += [f"    - {write_chapter(s)}" for s in part["chapters"]]
+                entries += [f"    - {write_chapter(s)}" for s in part_stems(part)]
             else:
                 entries.append(f'    - part: "{part["title"]}"\n      chapters:')
-                entries += [f"        - {write_chapter(s)}" for s in part["chapters"]]
+                entries += [f"        - {write_chapter(s)}" for s in part_stems(part)]
         back = meta.get("back", []) + ([ed["back"]] if "back" in ed else [])
     entries += [f"    - {write_chapter(s)}" for s in back]
     (outdir / "_quarto.yml").write_text(quarto_yml(fmt, meta, "\n".join(entries)))

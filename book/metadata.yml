@@ -21,10 +21,11 @@ cover_credit: Cover design by Liana Moisescu.
 site_url: https://allendowney.github.io/ElementsOfDataScience
 # leanpub_url: ""   # the sample's back page links here once the book exists
 
-# The book, in order. Stems resolve to soln/{stem}.ipynb. Chapters in parts
-# are numbered in this order, in every edition; chapters in `back` are not.
-# The case-study chapters (printed as 14-17, parts IV and V) come later,
-# from their repos (Task 21).
+# The book, in order. Stems resolve to soln/{stem}.ipynb; a case-study
+# chapter is a mapping with the repo, the full commit, and the file, which
+# stage.py downloads from GitHub. Chapters in parts are numbered in this
+# order, in every edition; chapters in `back` are not. To update a case
+# study, move its commit after its CI passes.
 parts:
   - title: From Python to Pandas
     chapters:
@@ -45,6 +46,26 @@ parts:
       - 11_resampling
       - 12_bootstrap
       - 13_hypothesis
+  - title: "Case Study: Political Alignment"
+    chapters:
+      - stem: 14_polviews
+        repo: PoliticalAlignmentCaseStudy
+        commit: 1910faddd0b13e379a850218657f2f19f0417797
+        file: 02_polviews_soln.ipynb
+      - stem: 15_outlook
+        repo: PoliticalAlignmentCaseStudy
+        commit: 1910faddd0b13e379a850218657f2f19f0417797
+        file: 03_outlook.ipynb
+  - title: "Case Study: Algorithmic Fairness"
+    chapters:
+      - stem: 16_classification
+        repo: RecidivismCaseStudy
+        commit: e9dc7f47a55bffcffb25bdff1b4a19055d455730
+        file: 01_classification.ipynb
+      - stem: 17_calibration
+        repo: RecidivismCaseStudy
+        commit: e9dc7f47a55bffcffb25bdff1b4a19055d455730
+        file: 02_calibration.ipynb
 back:
   - 14_outro
 

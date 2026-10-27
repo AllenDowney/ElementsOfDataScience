@@ -1,7 +1,7 @@
 # PDF and EPUB from the notebooks (Task 22)
 
-Status: phases 1, 2 and 4 done, 2026-10-27 (see "Spike results", "Phase 2
-results" and "Phase 4 results"). Phase 3 waits for Task 21.
+Status: phases 1–4 done, 2026-10-27 (see the results sections). Next: QA and
+the first LeanPub upload (phase 5).
 
 ## Goal
 
@@ -349,6 +349,32 @@ PROJ error into chapter 2's output, which `--strict` caught.
 Still to check: Thorium; `epubcheck` (Java is installed, epubcheck isn't);
 code-block padding in the PDF, which is generous.
 
+## Phase 3 results (2026-10-27)
+
+Parts IV and V are in: chapters 14–17 from PoliticalAlignmentCaseStudy
+(`02_polviews_soln`, `03_outlook`) and RecidivismCaseStudy
+(`01_classification`, `02_calibration`), after Task 21 formatted both repos
+with the same `ruff.toml`. The book PDF is 316 pages and 7.0 MB; the EPUB
+is 11 MB.
+
+- In `metadata.yml`, a case-study chapter is a mapping (stem, repo, full
+  commit, file). `stage.py` downloads the notebook at that commit from
+  GitHub, so the build doesn't depend on local clones. To take later fixes,
+  move the commit after the repo's CI passes.
+- Each external chapter runs in its own directory (`stage/ext/{stem}/`):
+  PoliticalAlignment downloads its own `utils.py`, which EDS's `utils.py`
+  would otherwise shadow.
+- Three images came from GitHub (`machine_bias_table.png`,
+  `calibration1.png`). The emitter now uses any GitHub image from this repo
+  or Recidivism that has a copy in `figs/` (checked identical).
+- The case studies tag their setup cells (the `download` function and
+  calls, pip fallbacks) `remove-print`, not `remove-cell`, and their long
+  URLs overflowed the page by up to 184 pt. The screen formats keep
+  `remove-print` cells, many of which are content cut from print for
+  space, so the emitter now drops setup code by what it is (`is_setup`).
+  1e print left these cells out too. No overfull boxes over 0.2 pt remain;
+  no missing glyphs.
+
 ## Phase 4 results (2026-10-27)
 
 `python book/emit.py --release` builds both editions in both formats,
@@ -401,7 +427,7 @@ book PDF is 244 pages.
    gets simpler).
 2. **The 14 chapters.** Done 2026-10-27. Fix what `--strict` finds;
    long code lines handled by formatting with Ruff (decision 6).
-3. **Case-study chapters**, after Task 21 (decision 2 includes them).
+3. **Case-study chapters.** Done 2026-10-27.
 4. **Book chrome.** Done 2026-10-27.
    Title page, copyright, preface, Contents, parts, the sample edition.
 5. **QA and release.** Smoke tests (page size, fonts, a code block's

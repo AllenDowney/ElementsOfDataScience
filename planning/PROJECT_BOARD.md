@@ -497,9 +497,9 @@ commit the 2024 print edits; work from this session; same `ruff.toml`):
 
 Still to do:
 
-- [ ] Recidivism: uncommitted `jb/_toc.yml` and `jb/index.md` (a 2024
-      site update: links `master` → `v1`, typo fixes, `jb-article`);
-      untracked `compas.ipynb` and `environment.yml~`
+- [x] Recidivism: committed the 2024 `jb/` edits (`bf039df`; `master`
+      fast-forwarded after CI), deleted `environment.yml~`. Untracked
+      `compas.ipynb` left for Allen
 - [ ] Both: the rest of the refresh checklist (warnings as errors,
       `np.set_printoptions(legacy='1.25')`, notebook layout and license,
       README shape, site rebuild with SEO)
@@ -509,8 +509,8 @@ Still to do:
 
 ## Task 22: PDF and EPUB for LeanPub
 
-**Status:** In progress. Spike, all 14 chapters, front matter and editions
-done 2026-10-27. Plan in
+**Status:** In progress. All 18 chapters, front matter and editions done
+2026-10-27; next, QA and the first upload. Plan in
 [ebook_pipeline.md](ebook_pipeline.md).
 
 Build a PDF and an EPUB of the book from the notebooks, to sell on LeanPub
@@ -532,7 +532,8 @@ same pipeline should later build the v2 print edition.
       clean; fixed missing raw-HTML figures. Results in the plan.
 - [x] Code style (2026-10-27): Ruff at 60 columns on `soln/[01]*.ipynb`
       (`ruff.toml`, `make format`); tests pass; notebooks and zip rebuilt
-- [ ] The four case-study chapters (after Task 21)
+- [x] The four case-study chapters (2026-10-27): parts IV and V, from the
+      case-study repos at pinned commits; 316-page PDF
 - [x] Front matter, parts, book and sample editions (2026-10-27;
       `emit.py --release`); version 1.1.0, © 2024–2026; back page with the
       support ask
