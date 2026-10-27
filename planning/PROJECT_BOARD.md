@@ -424,8 +424,9 @@ for a Jupyter Book 1 site"), and the rollout is GreenTeaPress Task 22. Audit
 
 ## Task 21: Refresh the two case studies
 
-**Status:** Not started. Moved here on 2026-10-27 from an untracked top-level
-`PROJECT_BOARD.md`, where it was Task 2. GreenTeaPress's board
+**Status:** In progress. Branches, packaging and formatting done 2026-10-27
+(below). Moved here on 2026-10-27 from an
+untracked top-level `PROJECT_BOARD.md`, where it was Task 2. GreenTeaPress's board
 (`PROJECT_BOARD.md`, Task 24 notes) still calls it "ElementsOfDataScience
 Task 2".
 
@@ -442,6 +443,67 @@ PoliticalAlignment README).
 - [ ] PoliticalAlignmentCaseStudy (default branch `v1`; PyData Global 2020,
       four videos)
 - [ ] RecidivismCaseStudy (default branch `master`; Olin Data Science class)
+
+Survey, 2026-10-27 (read-only: fetch, status, branches, Pages):
+
+- **PoliticalAlignment** was largely refreshed on 2026-09-24 from its own
+  board (`planning/PROJECT_BOARD.md` there, Tasks 1–9 done: branch layout,
+  CI on three OSes, pandas 3, data URLs, environment, README). Left: its
+  Task 10 (split build from publish), and the checklist items added since
+  (warnings as errors, `np.set_printoptions(legacy='1.25')`, notebook
+  layout and license, SEO). Local `v1` is one commit behind `origin/v1`
+  (`a4877e6`, README venues, from GreenTeaPress on 2026-10-19); two stray
+  GIFs are untracked. Pages: `gh-pages`. The book uses
+  `02_polviews_soln.ipynb` (chapter 14) and `03_outlook.ipynb` (15).
+- **Recidivism** hasn't been touched since May 2024. GitHub's default
+  branch is `master`, but the local clone is on `v1`, which has 7 commits
+  `master` lacks (2024-04 to 2024-05: "Starting v1", `rcs_utils`, tests,
+  revisions); `master` has 2 that `v1` lacks (`tests.yml`, 2024-07; README,
+  2026-10-19). No tags. Uncommitted on `v1`: edits to
+  `01_classification` and `02_calibration` (the book's chapters 16 and 17)
+  that look like 2024 print prep (`remove-print` tags, calls rewrapped,
+  small text fixes), changes to `jb/_toc.yml` and `jb/index.md`, plus
+  untracked `compas.ipynb`, the data CSV, `environment.yml~`, and copies
+  of the notebooks in `jb/`. Pages: `gh-pages`.
+- For the ebook (Task 22 phase 3), the four chapters also need Ruff's
+  60-column formatting, and `book/stage.py` has to fetch them, with their
+  helper modules (`utils.py` in PoliticalAlignment, `rcs_utils.py` in
+  Recidivism), at pinned commits.
+
+Done 2026-10-27 (Allen's decisions: `v1` default in Recidivism as in PACS;
+commit the 2024 print edits; work from this session; same `ruff.toml`):
+
+- **Recidivism:** backed up the uncommitted work (scratchpad); tagged
+  `pre-refresh-2026` (`083203f`); committed the print edits and tagged that
+  commit `v1.0.1` (the printed chapters were built from the working tree,
+  so no earlier commit matches them); merged `master`'s two commits into
+  `v1`; kept `master`'s `utils.py` on `v1`, because older notebooks
+  download `raw/master/utils.py`; rewrote `environment.yml` (it had
+  committed merge-conflict markers), `requirements*.txt` (pandas and
+  scikit-learn were missing; plotly, seaborn, tables unused), the Makefile
+  and `tests.yml` (as in EDS; the workflow had been disabled for
+  inactivity, now re-enabled); formatted with Ruff (four docstrings wrapped
+  by hand). 7/7 pass locally and in CI on three OSes. Then made `v1` the
+  default branch, fast-forwarded `master` to it (`e9dc7f4`), pushed both
+  tags, and added ruleset `25993124` (no deletion or force push on
+  `master`, `v1`). The six printed `blob/master/` links, the slides PDF and
+  `raw/master/utils.py` all resolve. The local `RecidivismCaseStudy` env
+  was updated to the new `environment.yml` (Python 3.13).
+- **PoliticalAlignment:** pulled `a4877e6`; formatted the five maintained
+  notebooks with Ruff and regenerated `02_polviews.ipynb` (without
+  `build.sh`, which pushes); `make tests` 5 passed, `make tests-clean`
+  data match; pushed `1910fad`; CI passed on three OSes; fast-forwarded
+  `master` to it (PACS's standing rule).
+
+Still to do:
+
+- [ ] Recidivism: uncommitted `jb/_toc.yml` and `jb/index.md` (a 2024
+      site update: links `master` → `v1`, typo fixes, `jb-article`);
+      untracked `compas.ipynb` and `environment.yml~`
+- [ ] Both: the rest of the refresh checklist (warnings as errors,
+      `np.set_printoptions(legacy='1.25')`, notebook layout and license,
+      README shape, site rebuild with SEO)
+- [ ] PoliticalAlignment: its own Task 10 (split build from publish)
 - [ ] Both: hub entries on `allendowney.github.io` still right; SEO pass on
       their sites (GreenTeaPress Task 22)
 
