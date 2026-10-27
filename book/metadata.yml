@@ -6,10 +6,10 @@
 title: Elements of Data Science
 subtitle: Getting Started with Data Science and Python
 author: Allen B. Downey
-version: "1.0.1"
+version: "1.1.0"   # 1e revised for the ebook (Allen, 2026-10-27)
 publisher: Green Tea Press
 publisher_place: Needham, Massachusetts
-copyright_year: "2024"
+copyright_year: "2024–2026"
 license: >-
   Permission is granted to copy, distribute, transmit and adapt this work
   under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
@@ -48,11 +48,12 @@ parts:
 back:
   - 14_outro
 
-# LeanPub editions. The book is everything above; the sample is the preface,
-# the chapters listed, and book/front/sample_back.md. The badge goes on the
-# title page. Files: book/leanpub/downey-elements-of-data-science-{version}[-{edition}].{pdf,epub}
+# LeanPub editions. The book is everything above, then its `back` page; the
+# sample is the preface, the chapters listed, and its `back` page. The badge
+# goes on the title page. Files: book/leanpub/downey-elements-of-data-science-{version}[-{edition}].{pdf,epub}
 editions:
-  book: {}
+  book:
+    back: front/book_back
   sample:
     badge: [Free sample, Chapters 6 and 7]
     chapters:

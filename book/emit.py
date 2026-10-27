@@ -435,7 +435,7 @@ def emit(fmt, edition="book", strict=False, render=False):
             else:
                 entries.append(f'    - part: "{part["title"]}"\n      chapters:')
                 entries += [f"        - {write_chapter(s)}" for s in part["chapters"]]
-        back = meta.get("back", [])
+        back = meta.get("back", []) + ([ed["back"]] if "back" in ed else [])
     entries += [f"    - {write_chapter(s)}" for s in back]
     (outdir / "_quarto.yml").write_text(quarto_yml(fmt, meta, "\n".join(entries)))
 

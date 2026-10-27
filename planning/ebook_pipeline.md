@@ -228,12 +228,15 @@ Decided 2026-10-27:
    columns (`ruff.toml`, `make format`), for one standard style, rather
    than hand-wrapping the long lines. Done; see "Code formatting".
 
+7. **Version:** 1.1.0, © 2024–2026: 1e revised for the ebook (the code
+   has been reformatted). LeanPub versions continue from there.
+8. **Support ask:** yes, on a back page of the full book
+   (`book/front/book_back.md`), with links to the site and notebooks.
+
 Open:
 
-7. **Free PDF link:** GreenTeaPress Task 18's open question (keep a free
+9. **Free PDF link:** GreenTeaPress Task 18's open question (keep a free
    download alongside LeanPub, or make LeanPub at $0 the download).
-8. **Support ask:** add the end-of-chapter note from GreenTeaPress Task 19
-   (`/support/?book=eds`) to the ebook too?
 
 ## Spike results (2026-10-27)
 
@@ -383,9 +386,10 @@ strict, into `book/leanpub/` (gitignored), named as for YWCN:
   title.
 
 The copyright page uses 1e's text without the print ISBN (it identifies
-the paperback). Version 1.0.1 and copyright 2024 are 1e's, so they need a
-decision (below). The full book has no back page yet; the support ask
-(decision 8) would go there.
+the paperback), with version 1.1.0 and © 2024–2026 (decision 7). The full
+book ends with a "Thank You" page: the notebooks, and the support ask
+(decision 8). Files are now `downey-elements-of-data-science-1.1.0*`; the
+book PDF is 244 pages.
 
 ## Phases
 
@@ -398,7 +402,7 @@ decision (below). The full book has no back page yet; the support ask
 2. **The 14 chapters.** Done 2026-10-27. Fix what `--strict` finds;
    long code lines handled by formatting with Ruff (decision 6).
 3. **Case-study chapters**, after Task 21 (decision 2 includes them).
-4. **Book chrome.** Done 2026-10-27, except the full book's back page.
+4. **Book chrome.** Done 2026-10-27.
    Title page, copyright, preface, Contents, parts, the sample edition.
 5. **QA and release.** Smoke tests (page size, fonts, a code block's
    presence); `epubcheck` (install it); proofread a sample on a tablet and a

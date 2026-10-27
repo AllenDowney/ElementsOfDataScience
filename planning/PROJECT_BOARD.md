@@ -472,6 +472,6 @@ same pipeline should later build the v2 print edition.
       (`ruff.toml`, `make format`); tests pass; notebooks and zip rebuilt
 - [ ] The four case-study chapters (after Task 21)
 - [x] Front matter, parts, book and sample editions (2026-10-27;
-      `emit.py --release`). Still open: version and copyright year, the
-      full book's back page
+      `emit.py --release`); version 1.1.0, © 2024–2026; back page with the
+      support ask
 - [ ] QA on screen and e-readers; first upload
