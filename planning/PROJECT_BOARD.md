@@ -17,8 +17,15 @@ Planning documents:
   modified path, and what to do with it
 - [site_versions.md](site_versions.md): serving the 1e and 2e websites
   side by side (Task 16)
+- [ebook_pipeline.md](ebook_pipeline.md): PDF and EPUB from the notebooks,
+  for LeanPub (Task 22)
 
-### Current focus (2026-09-24)
+### Current focus (2026-10-27)
+
+Refreshing the book: the case studies (Task 21), the site (Task 20), and a
+PDF and EPUB for LeanPub (Task 22). The 2026-09-24 focus below still stands.
+
+### Earlier focus (2026-09-24)
 
 Getting `v1` into a clean state before creating the `v2` branch. The second
 edition keeps the title, so v2 will be a branch of this repo, made the default
@@ -311,3 +318,153 @@ from; it is not the `v1` git branch. `ghp-import -x v1` replaces only that
 folder, while the current `jb/publish.sh` (no prefix) replaces the whole site.
 Recommended: 2e at the root, 1e under `/v1/`, and a 2e publish step that
 preserves `/v1/`.
+
+## Task 17: Tag the `%%expect` cell in `jupyter_intro`
+
+**Status:** Done 2026-09-24. Tag added in `soln/` and copied to the top level;
+passes under nbmake in both the pip and the `environment.yml` environments.
+Consider adding `jupyter_intro.ipynb` to `make tests` along with Task 10.
+
+`jupyter_intro.ipynb` fails under nbmake in every environment tried. Cell 12
+(`%%expect SyntaxError` / `abs 42`) uses the magic from `utils.py`, which runs
+the cell with `run_cell`, so the `SyntaxError` is recorded as an error output
+and nbmake counts that as a failure. The chapter notebooks avoid this because
+their `%%expect` cells carry the `raises-exception` tag, which
+`remove_soln.py` preserves. Add the tag to that cell in
+`soln/jupyter_intro.ipynb` (the build copies it to the top level). CI does
+not run `jupyter_intro`, so nothing is red today.
+
+## Task 18: Fix `resampling_example_gun`
+
+**Status:** Done 2026-09-24. Both notebooks pass under nbmake. The re-executed
+outputs match the old ones, which were computed under a pandas where the
+in-place call still worked. Verified that under pandas 3.0.6 the old line
+leaves the 2s in place.
+
+`soln/resampling_example_gun.ipynb` (and the generated
+`examples/resampling_example_gun.ipynb`) fail under nbmake:
+
+- It uses `plt` and `np` without importing them.
+- Cell 8, `gss['gunlaw'].replace(2, 0, inplace=True)`, is a chained in-place
+  change. Under pandas 3 copy-on-write it does not modify `gss`, so the 2s
+  ("oppose") stay in the sums. The consistency `assert` compares counts
+  only, so it would not catch this. Use
+  `gss['gunlaw'] = gss['gunlaw'].replace(2, 0)`.
+
+After fixing `soln/`, regenerate the `examples/` copy.
+
+## Task 19: pandas 3 fixes outside the chapters
+
+**Status:** Done 2026-09-24, except the two notebooks listed at the end.
+
+pandas 3's copy-on-write makes a chained in-place call such as
+`df['col'].replace(..., inplace=True)` a silent no-op. pandas 3 also makes the
+`key` argument of `to_hdf` keyword-only, so `to_hdf(path, 'key')` raises a
+`TypeError`. None of the 14 chapter notebooks had either problem. Fixed
+elsewhere, editing through jupytext `--update`:
+
+- `utils.py` `fill_missing`: its `replace` did nothing, so it reported 0 values
+  filled. Every notebook downloads `utils.py`, but only `missing_values` and
+  `examples/resampling` call this function.
+- `soln/missing_values.ipynb` and `examples/resampling.ipynb`:
+  - `fill_missing_values` now returns a new Series, and both call sites
+    assign it. Before, the imputed values never reached `gss`, and the prose
+    said "modifies it in place".
+  - The data URL now points to PACS commit `34b22cb`, because PACS deleted
+    `master/gss_eda.hdf5` in 2022 (`5c5971c`). So these notebooks had not
+    run on a fresh machine since then.
+- `examples/resample_logit.ipynb`: the chained `replace`, and a `raw/master`
+  data link changed to `raw/v1`.
+- The data-cleaning notebooks: 13 chained `replace` calls in `clean_gss` and
+  the `clean_brfss*` notebooks, plus 7 positional `to_hdf` calls, including
+  `clean_nsfg`.
+
+Verified by executing under pandas 3.0.6 in scratch copies. `clean_gss`,
+`clean_nsfg`, `clean_brfss`, `clean_brfss-2019`, and `clean_brfss-2021`
+regenerate files **identical** to the committed `data/` files. The pre-fix
+`clean_gss` under pandas 3 produced no NaNs at all: every missing-data code
+became an answer (22,801 `GUNLAW`, 27,268 `GRASS`). `missing_values`,
+`examples/resampling`, and `examples/resample_logit` run, and after imputation
+`age` and `educ` have no NaNs. Executed outputs were committed with the
+nbconvert timestamps stripped.
+
+Two notebooks got the source fixes but can't run, for reasons that predate
+pandas 3:
+
+- [ ] `soln/clean_brfss-2022.ipynb` reads `LLCP2019.ASC.gz` but the 2022
+      column layout, and fails with `KeyError: ['_VEGESU1', '_INCOMG']`
+      (renamed in 2022). It looks unfinished.
+- [ ] `soln/brfss_validate.ipynb` imports a module `distribution` that no
+      longer exists.
+
+## Task 20: SEO for the book site
+
+**Status:** Not started. Do it at the next site rebuild. Moved here on
+2026-10-27 from an untracked top-level `PROJECT_BOARD.md`, where it was
+Task 1.
+
+Help people searching for the book's topics find
+`https://allendowney.github.io/ElementsOfDataScience/`, using ordinary good
+practice only. The steps were worked out on *Probably Overthinking It*
+(2026-10-18); the shared guide is `~/GreenTeaPress/plans/seo.md` ("Checklist
+for a Jupyter Book 1 site"), and the rollout is GreenTeaPress Task 22. Audit
+2026-10-18: no meta descriptions, no sitemap; the landing-page title repeats
+("Elements of Data Science — Elements of Data Science").
+
+- [ ] `split_at_heading = true` comes from the user-level
+      `~/.config/jupytext/jupytext.toml` (a repo `jupytext.toml` would
+      override it); check that the first `--update` splits no tagged cells
+- [ ] `sphinx-sitemap` + `sphinxext-opengraph`, base URL, social image (the
+      book cover) in `_config.yml`; add the page-view counter `extra_footer`
+      if it isn't there yet (GreenTeaPress Task 15)
+- [ ] Description for each page in the notebook metadata (Allen reviews)
+- [ ] Test build, publish; add the `Sitemap:` line to
+      `~/AllenDowney.github.io/robots.txt`; Allen submits it in Search Console
+- [ ] GitHub repo website field and README link to the site
+
+## Task 21: Refresh the two case studies
+
+**Status:** Not started. Moved here on 2026-10-27 from an untracked top-level
+`PROJECT_BOARD.md`, where it was Task 2. GreenTeaPress's board
+(`PROJECT_BOARD.md`, Task 24 notes) still calls it "ElementsOfDataScience
+Task 2".
+
+`PoliticalAlignmentCaseStudy` and `RecidivismCaseStudy` (separate repos, each
+with a site) work on their own and are also chapters 14–17 of the printed
+book. Allen (2026-10-21): refresh them with the book, from this board, rather
+than as stand-alone workshops (GreenTeaPress Task 24). Use the workshop
+refresh checklist, `~/GreenTeaPress/plans/workshops.md` ("Refresh
+checklist"; BayesMadeSimple and CompStats are worked examples), on Python
+3.13 (Colab's), and keep the book's chapters and the case-study repos in step
+(which notebooks appear as Chapters 14 and 15 of the printed book, per the
+PoliticalAlignment README).
+
+- [ ] PoliticalAlignmentCaseStudy (default branch `v1`; PyData Global 2020,
+      four videos)
+- [ ] RecidivismCaseStudy (default branch `master`; Olin Data Science class)
+- [ ] Both: hub entries on `allendowney.github.io` still right; SEO pass on
+      their sites (GreenTeaPress Task 22)
+
+## Task 22: PDF and EPUB for LeanPub
+
+**Status:** In progress. Spike done 2026-10-27. Plan in
+[ebook_pipeline.md](ebook_pipeline.md).
+
+Build a PDF and an EPUB of the book from the notebooks, to sell on LeanPub
+pay-what-you-want (GreenTeaPress Task 18), borrowing what fits from
+CultureWar's Quarto pipeline (`~/CultureWar/book/BUILD.md`). CultureWar has
+no code in it, so code blocks, outputs, DataFrame tables and figures from
+notebooks are the new work. The screen formats get shorter lines than the
+print layout, which uses a wide text block to keep the page count down. The
+same pipeline should later build the v2 print edition.
+
+- [x] Rights, chapter set, solutions (2026-10-27): GTP holds the rights;
+      all 18 printed chapters; no solutions
+- [ ] The other decisions in the plan (editions, page size, free PDF link,
+      support ask)
+- [x] Spike: one chapter (`07_dataframes`) to screen PDF and EPUB
+      (2026-10-27; `book/stage.py`, `book/emit.py`, `book/styles/`). It
+      works; 6 × 9 recommended. Results in the plan.
+- [ ] All 14 chapters, then the four case-study chapters
+- [ ] Front and back matter, metadata, LeanPub editions
+- [ ] QA on screen and e-readers; first upload
