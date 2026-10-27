@@ -1,7 +1,7 @@
 # PDF and EPUB from the notebooks (Task 22)
 
-Status: phases 1 and 2 done, 2026-10-27 (see "Spike results" and "Phase 2
-results"). Phase 3 waits for Task 21.
+Status: phases 1, 2 and 4 done, 2026-10-27 (see "Spike results", "Phase 2
+results" and "Phase 4 results"). Phase 3 waits for Task 21.
 
 ## Goal
 
@@ -346,6 +346,47 @@ PROJ error into chapter 2's output, which `--strict` caught.
 Still to check: Thorium; `epubcheck` (Java is installed, epubcheck isn't);
 code-block padding in the PDF, which is generous.
 
+## Phase 4 results (2026-10-27)
+
+`python book/emit.py --release` builds both editions in both formats,
+strict, into `book/leanpub/` (gitignored), named as for YWCN:
+
+| File | Size | Pages |
+|---|---:|---:|
+| `downey-elements-of-data-science-1.0.1.pdf` | 6.7 MB | 243 |
+| `downey-elements-of-data-science-1.0.1.epub` | 9.3 MB | |
+| `downey-elements-of-data-science-1.0.1-sample.pdf` | 1.2 MB | 47 |
+| `downey-elements-of-data-science-1.0.1-sample.epub` | 2.3 MB | |
+
+- `metadata.yml` holds the parts, the back matter, the editions, and the
+  copyright text. Working projects are in `book/build/{edition}/{format}/`.
+- Front matter follows CultureWar: in the PDF, a KOMA title page (with the
+  edition badge as `\subject`), then the copyright page (through
+  `include-before-body`, because KOMA prints the back of the title page
+  only in two-sided layouts), then Contents; `index.md` is the preface. In
+  the EPUB, `index.md` is the title and copyright page and `preface.md`
+  follows.
+- The preface is 1e's (`intro.tex`, converted with Pandoc into
+  `book/front/preface.md`), with one typo fixed ("In introduces"). It still
+  describes all five parts and 17 chapters, which is right once the case
+  studies are in. `latex/preface.md` in the Book repo is an older draft.
+- Chapter numbers come from the chapter's position in the full book, so
+  the sample's chapters are 6 and 7. The PDF sets LaTeX's counter at the
+  end of the previous file; setting it before the heading in the same file
+  didn't work, because Quarto moves the heading above it. The EPUB writes
+  the numbers into the headings and gets a page per part, since Quarto
+  leaves parts out of EPUBs.
+- Figures with large vector PDFs (12, mostly the chapter 9 scatter plots,
+  6–8 MB each) use their PNG instead: the book PDF went from 62 MB to
+  6.7 MB.
+- Fixed: chapter 1's removed `# Welcome` cell was taken as the chapter
+  title.
+
+The copyright page uses 1e's text without the print ISBN (it identifies
+the paperback). Version 1.0.1 and copyright 2024 are 1e's, so they need a
+decision (below). The full book has no back page yet; the support ask
+(decision 8) would go there.
+
 ## Phases
 
 1. **Spike, one chapter.** `07_dataframes` (code, text output, wide
@@ -357,9 +398,8 @@ code-block padding in the PDF, which is generous.
 2. **The 14 chapters.** Done 2026-10-27. Fix what `--strict` finds;
    long code lines handled by formatting with Ruff (decision 6).
 3. **Case-study chapters**, after Task 21 (decision 2 includes them).
-4. **Book chrome.** Title page, copyright, preface (from `jb/index.md` and
-   the 1e front matter), TOC, back matter with the support and LeanPub
-   links; `metadata.yml`; `editions.yml`.
+4. **Book chrome.** Done 2026-10-27, except the full book's back page.
+   Title page, copyright, preface, Contents, parts, the sample edition.
 5. **QA and release.** Smoke tests (page size, fonts, a code block's
    presence); `epubcheck` (install it); proofread a sample on a tablet and a
    phone; LeanPub landing page; upload; tag (`v1.0.x-leanpub`, or follow the

@@ -15,7 +15,8 @@ import sys
 from pathlib import Path
 
 import nbformat
-import yaml
+
+from emit import all_chapters, load_metadata
 
 BOOK = Path(__file__).resolve().parent
 REPO = BOOK.parent
@@ -68,7 +69,7 @@ def stage(stem):
 
 
 def main(args):
-    stems = args or yaml.safe_load((BOOK / "metadata.yml").read_text())["chapters"]
+    stems = args or all_chapters(load_metadata())
     for stem in stems:
         print("staging", stem)
         stage(stem)

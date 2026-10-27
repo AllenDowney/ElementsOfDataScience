@@ -148,3 +148,7 @@ nlsy97/
 
 # editor backups
 *~
+
+# LeanPub release files (book/emit.py --release)
+book/leanpub/*.pdf
+book/leanpub/*.epub

@@ -65,9 +65,12 @@ env activated (`conda activate`, not `conda run`: under `conda run` here,
 
 ```bash
 python book/stage.py                           # execute chapters into book/build/stage/
-python book/emit.py pdf-screen --strict --render
-python book/emit.py epub --strict --render
+python book/emit.py pdf-screen --strict --render   # one format (--edition sample)
+python book/emit.py --release                  # all editions and formats -> book/leanpub/
 ```
+
+Chapters, parts, editions and the copyright text are in `book/metadata.yml`;
+the preface and the sample's back page are in `book/front/`.
 
 Never run a publish target as a way to test something. Edit `soln/`, never
 the generated top-level notebooks; `make notebooks` overwrites them.

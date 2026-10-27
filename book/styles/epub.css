@@ -124,3 +124,23 @@ blockquote {
   margin: 0.5em 0;
   padding-left: 1em;
 }
+
+/* Title page and copyright: one spine item, with a page break between. */
+div.epub-titlepage p {
+  padding-bottom: 0.8em;
+}
+
+p.epub-badge {
+  font-style: italic;
+  color: #53268F;
+}
+
+p.epub-subtitle {
+  font-size: 1.2em;
+}
+
+div.epub-copyright {
+  page-break-before: always;
+  font-size: 0.85em;
+  padding-top: 2em;
+}

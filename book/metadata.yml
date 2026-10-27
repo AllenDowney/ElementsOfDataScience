@@ -1,32 +1,61 @@
 # Book metadata for the PDF and EPUB builds (Task 22).
-# Strings match the 1e print edition (ElementsOfDataScienceBook latex/settings.tex).
+# Strings match the 1e print edition (ElementsOfDataScienceBook latex/settings.tex
+# and front_matter.tex), except that the print ISBN identifies the paperback
+# and is left out.
 
 title: Elements of Data Science
 subtitle: Getting Started with Data Science and Python
 author: Allen B. Downey
 version: "1.0.1"
 publisher: Green Tea Press
+publisher_place: Needham, Massachusetts
 copyright_year: "2024"
+license: >-
+  Permission is granted to copy, distribute, transmit and adapt this work
+  under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+  International License: <https://creativecommons.org/licenses/by-nc-sa/4.0>.
+commercial: >-
+  If you are interested in distributing a commercial version of this work,
+  please contact the author.
+cover_credit: Cover design by Liana Moisescu.
+site_url: https://allendowney.github.io/ElementsOfDataScience
+# leanpub_url: ""   # the sample's back page links here once the book exists
 
-# Chapters, in order. Stems resolve to soln/{stem}.ipynb.
-# Chapters 1-13 and the outro; the case-study chapters (printed as 14-17)
-# come later, from their repos (Task 21).
-chapters:
-  - 01_variables
-  - 02_times
-  - 03_arrays
-  - 04_loops
-  - 05_dictionaries
-  - 06_plotting
-  - 07_dataframes
-  - 08_distributions
-  - 09_relationships
-  - 10_regression
-  - 11_resampling
-  - 12_bootstrap
-  - 13_hypothesis
+# The book, in order. Stems resolve to soln/{stem}.ipynb. Chapters in parts
+# are numbered in this order, in every edition; chapters in `back` are not.
+# The case-study chapters (printed as 14-17, parts IV and V) come later,
+# from their repos (Task 21).
+parts:
+  - title: From Python to Pandas
+    chapters:
+      - 01_variables
+      - 02_times
+      - 03_arrays
+      - 04_loops
+      - 05_dictionaries
+      - 06_plotting
+  - title: Exploratory Data Analysis
+    chapters:
+      - 07_dataframes
+      - 08_distributions
+      - 09_relationships
+      - 10_regression
+  - title: Statistical Inference
+    chapters:
+      - 11_resampling
+      - 12_bootstrap
+      - 13_hypothesis
+back:
   - 14_outro
 
-# Chapters without a number, as in print ("Further Reading").
-unnumbered:
-  - 14_outro
+# LeanPub editions. The book is everything above; the sample is the preface,
+# the chapters listed, and book/front/sample_back.md. The badge goes on the
+# title page. Files: book/leanpub/downey-elements-of-data-science-{version}[-{edition}].{pdf,epub}
+editions:
+  book: {}
+  sample:
+    badge: [Free sample, Chapters 6 and 7]
+    chapters:
+      - 06_plotting
+      - 07_dataframes
+    back: front/sample_back

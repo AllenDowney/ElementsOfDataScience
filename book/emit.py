@@ -1,9 +1,10 @@
 """Write a Quarto book project from the staged notebooks (Task 22).
 
 Reads the executed notebooks in book/build/stage/ (see stage.py) and writes,
-for one format, a complete Quarto project in book/build/{format}/: one
-Markdown file per chapter, the figures, _quarto.yml, and the style files.
-Every difference between formats is decided here; Quarto only renders.
+for one format and edition, a complete Quarto project in
+book/build/{edition}/{format}/: one Markdown file per chapter, the front
+and back matter, the figures, _quarto.yml, and the style files. Every
+difference between formats is decided here; Quarto only renders.
 
 Cells are selected as in the 1e print converter: code cells whose source
 starts with "# Solution" are dropped (the `solution` tag alone is not
@@ -12,8 +13,17 @@ remove-input / hide-input cells, and the outputs of remove-output /
 hide-output cells. Cells tagged remove-print are dropped only from print
 formats: they hold links, which work on a screen.
 
-Usage: python book/emit.py FORMAT [--render] [--strict]
-FORMAT is one of: pdf-screen, epub
+Chapters keep their numbers from the full book in every edition, so the
+sample's chapters are 6 and 7, as the text's cross references expect. The
+PDF sets LaTeX's chapter counter at the end of the file before each
+chapter (Quarto moves a chapter's heading above anything that precedes it
+in the same file); the EPUB writes the numbers into the headings.
+
+Usage:
+    python book/emit.py FORMAT [--edition NAME] [--render] [--strict]
+    python book/emit.py --release      # every edition and format, rendered
+                                       # and strict, into book/leanpub/
+FORMAT is one of: pdf-screen, epub. Editions are in metadata.yml.
 """
 
 import argparse
@@ -35,6 +45,7 @@ import yaml
 BOOK = Path(__file__).resolve().parent
 REPO = BOOK.parent
 STAGE = BOOK / "build" / "stage"
+RELEASE = BOOK / "leanpub"
 REPO_FIG_URL = re.compile(
     r"https://github\.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/([^)\s\"]+)")
 REPO_FIG = re.compile(r"!\[([^\]]*)\]\(" + REPO_FIG_URL.pattern + r"\)")
@@ -42,10 +53,11 @@ REPO_FIG = re.compile(r"!\[([^\]]*)\]\(" + REPO_FIG_URL.pattern + r"\)")
 # Figures are 6 x 3.5 in (utils.py); 1e printed them at two-thirds size.
 FIGURE_SCALE = 2 / 3
 PNG_DPI = 200  # set in stage.py
+MAX_VECTOR_FIGURE = 500_000  # bytes; larger figures use the PNG
 
 PDF_LAYOUTS = {
     # O'Reilly / No Starch trim, 7 x 9.1875 in (decided 2026-10-27).
-    # Text block 5.0 in: prose about 70 characters, code about 66.
+    # Text block 5.0 in: prose about 70 characters, code about 60.
     "pdf-screen": dict(paper=(7, 9.1875), margins=(1.0, 1.0, 0.8, 0.85),
                        fontsize="11pt", codesize=(9, 11)),
 }
@@ -53,6 +65,22 @@ FORMATS = list(PDF_LAYOUTS) + ["epub"]
 PRINT_FORMATS = set()  # a pdf-print layout will go here
 
 ANSI = re.compile(r"\x1b\[[0-9;]*m")
+ROMAN = ["", "I", "II", "III", "IV", "V"]
+
+
+def load_metadata():
+    return yaml.safe_load((BOOK / "metadata.yml").read_text())
+
+
+def all_chapters(meta):
+    """Every chapter stem in the book, in order."""
+    return [s for part in meta["parts"] for s in part["chapters"]] + meta.get("back", [])
+
+
+def chapter_numbers(meta):
+    """Map from stem to chapter number, for the chapters in parts."""
+    stems = [s for part in meta["parts"] for s in part["chapters"]]
+    return {stem: n for n, stem in enumerate(stems, 1)}
 
 
 class Emitter:
@@ -67,29 +95,36 @@ class Emitter:
 
     # --- cells ---
 
-    def chapter(self, stem, numbered=True):
+    def chapter(self, stem, number=None):
+        """Markdown for one chapter; number is None for an unnumbered one."""
         nb = nbformat.read(STAGE / f"{stem}.ipynb", as_version=4)
         blocks = []
         started = False
         self.nfig = 0
+        self.number, self.nsection = number, 0
         for i, cell in enumerate(nb.cells):
             tags = set(cell.metadata.get("tags", []))
             source = cell.source.strip()
+
+            # Removed cells go first: chapter 1 has a removed "# Welcome"
+            # cell before its title.
+            if tags & {"remove-cell", "hide-cell", "book-setup"}:
+                continue
+            if "remove-print" in tags and self.fmt in PRINT_FORMATS:
+                continue
 
             # Everything before the chapter title (the Lulu notice) is dropped.
             if not started:
                 if cell.cell_type == "markdown" and source.startswith("# "):
                     started = True
-                    if not numbered:
-                        title, _, rest = source.partition("\n")
-                        source = f"{title} {{.unnumbered}}\n{rest}"
+                    title, _, rest = source.partition("\n")
+                    if number is None:
+                        title += " {.unnumbered}"
+                    elif not self.is_pdf:
+                        title = f"# {number} {title[2:]}"
+                    source = f"{title}\n{rest}"
                 else:
                     continue
-
-            if tags & {"remove-cell", "hide-cell", "book-setup"}:
-                continue
-            if "remove-print" in tags and self.fmt in PRINT_FORMATS:
-                continue
 
             if cell.cell_type == "markdown":
                 blocks.append(self.markdown(stem, i, source))
@@ -127,7 +162,22 @@ class Emitter:
             self.issue(stem, i, f"remote image {url}")
         if "<img" in source:
             self.issue(stem, i, "raw <img> tag")
+
+        if self.number is not None and not self.is_pdf:
+            source = self.number_sections(source)
         return source
+
+    def number_sections(self, source):
+        """Write section numbers into ## headings (EPUB)."""
+        lines, fenced = [], False
+        for line in source.split("\n"):
+            if line.startswith("```"):
+                fenced = not fenced
+            if not fenced and line.startswith("## "):
+                self.nsection += 1
+                line = f"## {self.number}.{self.nsection} {line[3:]}"
+            lines.append(line)
+        return "\n".join(lines)
 
     # --- outputs ---
 
@@ -188,13 +238,19 @@ class Emitter:
         (figdir / f"{name}.png").write_bytes(png)
         width_px, _ = png_size(png)
         width_in = width_px / PNG_DPI * FIGURE_SCALE
-        if self.is_pdf and "application/pdf" in data:
+        if self.is_pdf:
             # Wide figures (side-by-side panels) shrink to the text block.
             lay = PDF_LAYOUTS[self.fmt]
             text_width = lay["paper"][0] - lay["margins"][0] - lay["margins"][1]
             width_in = min(width_in, text_width)
-            (figdir / f"{name}.pdf").write_bytes(base64.b64decode(data["application/pdf"]))
-            return f"![](figs/{name}.pdf){{width={width_in:.2f}in}}"
+            # Vector PDF, except for figures with so many marks (the
+            # scatter plots in chapter 9) that the PDF runs to megabytes;
+            # their PNG at two-thirds size is effectively 300 dpi.
+            pdf = base64.b64decode(data.get("application/pdf", ""))
+            if 0 < len(pdf) <= MAX_VECTOR_FIGURE:
+                (figdir / f"{name}.pdf").write_bytes(pdf)
+                return f"![](figs/{name}.pdf){{width={width_in:.2f}in}}"
+            return f"![](figs/{name}.png){{width={width_in:.2f}in}}"
         return f"![](figs/{name}.png)"
 
 
@@ -202,10 +258,62 @@ def png_size(png):
     return struct.unpack(">II", png[16:24])
 
 
+# --- front matter ---
+
+def latex_text(text):
+    """Metadata text to LaTeX: <URL> becomes \\url{URL}."""
+    return re.sub(r"<(https?://[^>]+)>", r"\\url{\1}", text)
+
+
+def frontmatter_tex(meta, badge):
+    """KOMA title page additions: publisher and edition badge (PDF)."""
+    lines = [r"\publishers{" + meta["publisher"] + "}", r"\date{}"]
+    if badge:
+        lines.append(r"\subject{" + r"\\".join(badge) + "}")
+    return "\n".join(lines) + "\n"
+
+
+def copyright_tex(meta):
+    """The copyright page, after the title page (PDF). KOMA prints the back
+    of the title page only in two-sided layouts."""
+    lines = [
+        r"\thispagestyle{empty}",
+        r"{\small\RaggedRight",
+        rf"\textbf{{{meta['title']}}}\\",
+        rf"{meta['subtitle']}\\",
+        rf"by {meta['author']}\par",
+        rf"Version {meta['version']}\par",
+        rf"{meta['publisher']}, {meta['publisher_place']}\par",
+        rf"Copyright \textcopyright\ {meta['copyright_year']} {meta['author']}.\par",
+        latex_text(meta["license"]) + r"\par",
+        latex_text(meta["commercial"]) + r"\par",
+        meta["cover_credit"] + r"\par}",
+        r"\clearpage",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def title_page_md(meta, badge):
+    """Title and copyright, one spine item with a page break (EPUB)."""
+    blocks = [f"# {meta['title']} {{.unnumbered}}", "",
+              '<div class="epub-titlepage">', ""]
+    if badge:
+        blocks += [f'<p class="epub-badge">{"<br/>".join(badge)}</p>', ""]
+    blocks += [f'<p class="epub-subtitle">{meta["subtitle"]}</p>', "",
+               f'<p class="epub-author">{meta["author"]}</p>', "",
+               f'<p class="epub-publisher">{meta["publisher"]}</p>', "",
+               "</div>", "", '<div class="epub-copyright">', "",
+               f"Version {meta['version']}", "",
+               f"{meta['publisher']}, {meta['publisher_place']}", "",
+               f"Copyright © {meta['copyright_year']} {meta['author']}.", "",
+               meta["license"], "", meta["commercial"], "", meta["cover_credit"], "",
+               "</div>", ""]
+    return "\n".join(blocks)
+
+
 # --- project ---
 
 def quarto_yml(fmt, meta, chapters):
-    chapter_lines = "\n".join(f"    - {c}.md" for c in ["index"] + chapters)
     head = f"""\
 project:
   type: book
@@ -215,9 +323,10 @@ book:
   subtitle: "{meta['subtitle']}"
   author: "{meta['author']}"
   chapters:
-{chapter_lines}
+{chapters}
 
 highlight-style: eds.theme
+toc-title: Contents
 """
     if fmt == "epub":
         return head + """
@@ -225,7 +334,8 @@ format:
   epub:
     toc: true
     toc-depth: 1
-    number-sections: true
+    number-sections: false
+    epub-title-page: false
     fig-cap: false
     css: epub.css
     epub-fonts:
@@ -242,7 +352,7 @@ format:
   pdf:
     documentclass: scrbook
     pdf-engine: lualatex
-    classoption: [oneside, openany, fontsize={lay['fontsize']}]
+    classoption: [oneside, openany, numbers=noendperiod, fontsize={lay['fontsize']}]
     toc: true
     toc-depth: 1
     number-sections: true
@@ -261,30 +371,73 @@ format:
     include-in-header:
       - text: \\newcommand{{\\codesize}}{{\\fontsize{{{size}}}{{{skip}}}\\selectfont}}
       - file: preamble.tex
+      - file: frontmatter.tex
+    include-before-body:
+      - file: copyright.tex
 """
 
 
-INDEX_MD = """\
-# Preface {.unnumbered}
-
-Spike build of *Elements of Data Science* (Task 22): one chapter, to compare
-page layouts and check how code, output, tables, and figures render.
-"""
-
-
-def emit(fmt, strict=False, render=False):
-    meta = yaml.safe_load((BOOK / "metadata.yml").read_text())
-    outdir = BOOK / "build" / fmt
+def emit(fmt, edition="book", strict=False, render=False):
+    """Write (and optionally render) one format of one edition; return the output path."""
+    meta = load_metadata()
+    ed = meta["editions"][edition]
+    badge = ed.get("badge")
+    numbers = chapter_numbers(meta)
+    outdir = BOOK / "build" / edition / fmt
     if outdir.exists():
         shutil.rmtree(outdir)
     outdir.mkdir(parents=True)
-
     emitter = Emitter(fmt, outdir)
-    for stem in meta["chapters"]:
-        numbered = stem not in meta.get("unnumbered", [])
-        (outdir / f"{stem}.md").write_text(emitter.chapter(stem, numbered))
-    (outdir / "index.md").write_text(INDEX_MD)
-    (outdir / "_quarto.yml").write_text(quarto_yml(fmt, meta, meta["chapters"]))
+
+    # Front matter. Quarto always starts with index.md: in the PDF that is
+    # the preface (the title page comes from KOMA); in the EPUB it is the
+    # title and copyright, and the preface follows.
+    preface = (BOOK / "front" / "preface.md").read_text()
+    if fmt == "epub":
+        (outdir / "index.md").write_text(title_page_md(meta, badge))
+        (outdir / "preface.md").write_text(preface)
+        entries = ["    - index.md", "    - preface.md"]
+    else:
+        (outdir / "index.md").write_text(preface)
+        (outdir / "frontmatter.tex").write_text(frontmatter_tex(meta, badge))
+        (outdir / "copyright.tex").write_text(copyright_tex(meta))
+        entries = ["    - index.md"]
+
+    files = ["index.md"] if fmt != "epub" else ["index.md", "preface.md"]
+
+    def write_chapter(stem):
+        if stem.startswith("front/"):
+            name = Path(stem).name
+            shutil.copy2(BOOK / f"{stem}.md", outdir / f"{name}.md")
+            files.append(f"{name}.md")
+            return f"{name}.md"
+        number = numbers.get(stem)
+        if number and fmt != "epub":
+            with open(outdir / files[-1], "a") as f:
+                f.write(f"\n```{{=latex}}\n\\setcounter{{chapter}}{{{number - 1}}}\n```\n")
+        (outdir / f"{stem}.md").write_text(emitter.chapter(stem, number))
+        files.append(f"{stem}.md")
+        return f"{stem}.md"
+
+    if "chapters" in ed:  # a selection, without parts
+        entries += [f"    - {write_chapter(s)}" for s in ed["chapters"]]
+        back = [ed["back"]] if "back" in ed else []
+    else:
+        for n, part in enumerate(meta["parts"], 1):
+            if fmt == "epub":
+                # Quarto leaves parts out of the EPUB, so each part gets a page.
+                name = f"part{n}.md"
+                (outdir / name).write_text(
+                    f"# Part {ROMAN[n]}: {part['title']} {{.unnumbered}}\n")
+                files.append(name)
+                entries.append(f"    - {name}")
+                entries += [f"    - {write_chapter(s)}" for s in part["chapters"]]
+            else:
+                entries.append(f'    - part: "{part["title"]}"\n      chapters:')
+                entries += [f"        - {write_chapter(s)}" for s in part["chapters"]]
+        back = meta.get("back", [])
+    entries += [f"    - {write_chapter(s)}" for s in back]
+    (outdir / "_quarto.yml").write_text(quarto_yml(fmt, meta, "\n".join(entries)))
 
     shutil.copy2(BOOK / "styles" / "eds.theme", outdir)
     if fmt == "epub":
@@ -301,8 +454,10 @@ def emit(fmt, strict=False, render=False):
     if render:
         subprocess.run(["quarto", "render", "--to", "epub" if fmt == "epub" else "pdf"],
                        cwd=outdir, check=True)
+        output = next((outdir / "_book").glob("*.epub" if fmt == "epub" else "*.pdf"))
         if fmt == "epub":
-            check_epub(next((outdir / "_book").glob("*.epub")))
+            check_epub(output)
+        return output
 
 
 def check_epub(path):
@@ -319,13 +474,33 @@ def check_epub(path):
         sys.exit("malformed XHTML in the EPUB:\n" + "\n".join(bad))
 
 
+def release():
+    """Every edition in every format, into book/leanpub/ with LeanPub names."""
+    meta = load_metadata()
+    RELEASE.mkdir(exist_ok=True)
+    for edition in meta["editions"]:
+        suffix = "" if edition == "book" else f"-{edition}"
+        for fmt in FORMATS:
+            output = emit(fmt, edition, strict=True, render=True)
+            name = f"downey-elements-of-data-science-{meta['version']}{suffix}{output.suffix}"
+            shutil.copy2(output, RELEASE / name)
+            print("wrote", RELEASE / name)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    parser.add_argument("format", choices=FORMATS)
+    parser.add_argument("format", nargs="?", choices=FORMATS)
+    parser.add_argument("--edition", default="book")
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--strict", action="store_true")
+    parser.add_argument("--release", action="store_true")
     args = parser.parse_args()
-    emit(args.format, strict=args.strict, render=args.render)
+    if args.release:
+        release()
+    elif args.format:
+        emit(args.format, args.edition, strict=args.strict, render=args.render)
+    else:
+        parser.error("give a FORMAT or --release")
 
 
 if __name__ == "__main__":
