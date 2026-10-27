@@ -131,8 +131,9 @@ leave `df` unchanged. Nothing raises, so tests don't catch it. Assign
 instead: `df['col'] = df['col'].replace(...)`. pandas 3 also makes the key of
 `to_hdf` keyword-only (`to_hdf(path, key='gss')`).
 
-`utils.py` calls `get_ipython()` at import, so it only imports inside
-Jupyter or IPython. To test it from a script, run the script with `ipython`.
+`utils.py` imports outside IPython too (since `95fcbef`), but there the
+`%%expect` cell magics aren't registered and `traceback()` does nothing. To
+test those from a script, run the script with `ipython`.
 
 Chapters 4–6 open `2600-0.txt` without an encoding, which fails under
 Windows' default cp1252. CI sets `PYTHONUTF8=1`.
