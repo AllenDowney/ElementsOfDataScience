@@ -24,13 +24,20 @@ import shutil
 import struct
 import subprocess
 import sys
+import xml.dom.minidom
+import xml.parsers.expat
+import zipfile
 from pathlib import Path
 
 import nbformat
 import yaml
 
 BOOK = Path(__file__).resolve().parent
+REPO = BOOK.parent
 STAGE = BOOK / "build" / "stage"
+REPO_FIG_URL = re.compile(
+    r"https://github\.com/AllenDowney/ElementsOfDataScience/raw/v1/figs/([^)\s\"]+)")
+REPO_FIG = re.compile(r"!\[([^\]]*)\]\(" + REPO_FIG_URL.pattern + r"\)")
 
 # Figures are 6 x 3.5 in (utils.py); 1e printed them at two-thirds size.
 FIGURE_SCALE = 2 / 3
@@ -60,7 +67,7 @@ class Emitter:
 
     # --- cells ---
 
-    def chapter(self, stem):
+    def chapter(self, stem, numbered=True):
         nb = nbformat.read(STAGE / f"{stem}.ipynb", as_version=4)
         blocks = []
         started = False
@@ -73,6 +80,9 @@ class Emitter:
             if not started:
                 if cell.cell_type == "markdown" and source.startswith("# "):
                     started = True
+                    if not numbered:
+                        title, _, rest = source.partition("\n")
+                        source = f"{title} {{.unnumbered}}\n{rest}"
                 else:
                     continue
 
@@ -93,8 +103,30 @@ class Emitter:
         return "\n\n".join(b for b in blocks if b) + "\n"
 
     def markdown(self, stem, i, source):
+        # Images from this repo's figs/ are used from the local copy.
+        def local_fig(m):
+            alt, name = m.groups()
+            (self.outdir / "figs").mkdir(exist_ok=True)
+            shutil.copy2(REPO / "figs" / name, self.outdir / "figs" / name)
+            return f"![{alt}](figs/{name}){{width=100%}}"
+        source = REPO_FIG.sub(local_fig, source)
+
+        # Raw <img> tags: Pandoc drops them from LaTeX, and leaves them
+        # unclosed (invalid XHTML) in EPUB. Width is in pixels, as in HTML.
+        def html_fig(m):
+            tag = m.group(0)
+            name = REPO_FIG_URL.search(tag).group(1)
+            width = re.search(r'width="(\d+)"', tag)
+            (self.outdir / "figs").mkdir(exist_ok=True)
+            shutil.copy2(REPO / "figs" / name, self.outdir / "figs" / name)
+            attr = f"{{width={width.group(1)}}}" if width else ""
+            return f"![](figs/{name}){attr}"
+        source = re.sub(r"<img[^>]*" + REPO_FIG_URL.pattern + r"[^>]*>", html_fig, source)
+
         for url in re.findall(r"!\[[^\]]*\]\((https?://[^)]+)\)", source):
             self.issue(stem, i, f"remote image {url}")
+        if "<img" in source:
+            self.issue(stem, i, "raw <img> tag")
         return source
 
     # --- outputs ---
@@ -105,7 +137,10 @@ class Emitter:
             kind = out.output_type
             if kind == "stream":
                 if out.name == "stderr":
-                    self.issue(stem, i, f"stderr output dropped: {out.text[:60]!r}")
+                    # Warnings are dropped quietly (Python 3.13 adds a
+                    # SyntaxWarning to the %%expect example in chapter 1).
+                    if "Warning:" not in out.text:
+                        self.issue(stem, i, f"stderr output dropped: {out.text[:60]!r}")
                     continue
                 blocks.append(self.text_output(out.text))
             elif kind == "error":
@@ -154,6 +189,10 @@ class Emitter:
         width_px, _ = png_size(png)
         width_in = width_px / PNG_DPI * FIGURE_SCALE
         if self.is_pdf and "application/pdf" in data:
+            # Wide figures (side-by-side panels) shrink to the text block.
+            lay = PDF_LAYOUTS[self.fmt]
+            text_width = lay["paper"][0] - lay["margins"][0] - lay["margins"][1]
+            width_in = min(width_in, text_width)
             (figdir / f"{name}.pdf").write_bytes(base64.b64decode(data["application/pdf"]))
             return f"![](figs/{name}.pdf){{width={width_in:.2f}in}}"
         return f"![](figs/{name}.png)"
@@ -186,7 +225,7 @@ format:
   epub:
     toc: true
     toc-depth: 1
-    number-sections: false
+    number-sections: true
     fig-cap: false
     css: epub.css
     epub-fonts:
@@ -206,7 +245,7 @@ format:
     classoption: [oneside, openany, fontsize={lay['fontsize']}]
     toc: true
     toc-depth: 1
-    number-sections: false
+    number-sections: true
     colorlinks: true
     fig-pos: 'H'
     keep-tex: true
@@ -242,7 +281,8 @@ def emit(fmt, strict=False, render=False):
 
     emitter = Emitter(fmt, outdir)
     for stem in meta["chapters"]:
-        (outdir / f"{stem}.md").write_text(emitter.chapter(stem))
+        numbered = stem not in meta.get("unnumbered", [])
+        (outdir / f"{stem}.md").write_text(emitter.chapter(stem, numbered))
     (outdir / "index.md").write_text(INDEX_MD)
     (outdir / "_quarto.yml").write_text(quarto_yml(fmt, meta, meta["chapters"]))
 
@@ -261,6 +301,22 @@ def emit(fmt, strict=False, render=False):
     if render:
         subprocess.run(["quarto", "render", "--to", "epub" if fmt == "epub" else "pdf"],
                        cwd=outdir, check=True)
+        if fmt == "epub":
+            check_epub(next((outdir / "_book").glob("*.epub")))
+
+
+def check_epub(path):
+    """Fail if any XHTML file in the EPUB is not well-formed XML."""
+    bad = []
+    with zipfile.ZipFile(path) as z:
+        for name in z.namelist():
+            if name.endswith(".xhtml"):
+                try:
+                    xml.dom.minidom.parseString(z.read(name))
+                except xml.parsers.expat.ExpatError as e:
+                    bad.append(f"{name}: {e}")
+    if bad:
+        sys.exit("malformed XHTML in the EPUB:\n" + "\n".join(bad))
 
 
 def main():

@@ -9,6 +9,24 @@ publisher: Green Tea Press
 copyright_year: "2024"
 
 # Chapters, in order. Stems resolve to soln/{stem}.ipynb.
-# The spike builds one chapter; the full list comes later.
+# Chapters 1-13 and the outro; the case-study chapters (printed as 14-17)
+# come later, from their repos (Task 21).
 chapters:
+  - 01_variables
+  - 02_times
+  - 03_arrays
+  - 04_loops
+  - 05_dictionaries
+  - 06_plotting
   - 07_dataframes
+  - 08_distributions
+  - 09_relationships
+  - 10_regression
+  - 11_resampling
+  - 12_bootstrap
+  - 13_hypothesis
+  - 14_outro
+
+# Chapters without a number, as in print ("Further Reading").
+unnumbered:
+  - 14_outro

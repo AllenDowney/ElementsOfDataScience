@@ -35,6 +35,8 @@ examples/    supplementary notebooks. Two are generated from soln/ with the
              solutions removed: odds (from soln/odds_soln) and
              resampling_example_gun (from the same name in soln/)
 jb/          Jupyter Book website (build.sh, publish.sh, _toc.yml)
+book/        PDF and EPUB for LeanPub, through Quarto (Task 22); output in
+             book/build/ (ignored)
 figs/        static figures; the print book's pipeline copies from here
 archive/     kept for the record (video scripts, quizzes, pre-v1 cleaning
              notebooks); unused
@@ -53,6 +55,15 @@ make tests-soln         # notebooks with solutions (CI skips this on Windows)
 make publish MSG="..."  # publish.sh: commit and push the generated files
 make site               # jb/build.sh: build the website into jb/_build/html
 make publish-site       # jb/publish.sh: ghp-import, replaces the live site
+```
+
+PDF and EPUB (`planning/ebook_pipeline.md`), in the `ElementsOfDataScience`
+env:
+
+```bash
+python book/stage.py                           # execute chapters into book/build/stage/
+python book/emit.py pdf-screen --strict --render
+python book/emit.py epub --strict --render
 ```
 
 Never run a publish target as a way to test something. Edit `soln/`, never

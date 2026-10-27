@@ -1,6 +1,7 @@
 # PDF and EPUB from the notebooks (Task 22)
 
-Status: spike done, 2026-10-27 (see "Spike results"). Phase 2 next.
+Status: phases 1 and 2 done, 2026-10-27 (see "Spike results" and "Phase 2
+results"). Phase 3 waits for Task 21.
 
 ## Goal
 
@@ -220,14 +221,17 @@ Decided 2026-10-27:
 4. **Screen PDF page:** 7 × 9.1875 in, the O'Reilly / No Starch trim
    (Allen, 2026-10-27, after the spike compared 6 × 9 and 7 × 10). Text
    block 5.0 in, 11 pt body, 9 pt code: prose lines of 70–75 characters.
-5. **Editions:** the book plus a free sample. The sample might be 1–3
-   chapters that are more compelling than Chapter 1; to be proposed.
+5. **Editions:** the book plus a free sample: the preface and chapters 6
+   (Plotting) and 7 (DataFrames and Series), chosen as more compelling than
+   Chapter 1.
+6. **Long code lines:** hand-wrap the 13 that are over 66 characters, in
+   `soln/`.
 
 Open:
 
-6. **Free PDF link:** GreenTeaPress Task 18's open question (keep a free
+7. **Free PDF link:** GreenTeaPress Task 18's open question (keep a free
    download alongside LeanPub, or make LeanPub at $0 the download).
-7. **Support ask:** add the end-of-chapter note from GreenTeaPress Task 19
+8. **Support ask:** add the end-of-chapter note from GreenTeaPress Task 19
    (`/support/?book=eds`) to the ebook too?
 
 ## Spike results (2026-10-27)
@@ -241,9 +245,9 @@ conda run -n ElementsOfDataScience python book/emit.py pdf-screen --render
 conda run -n ElementsOfDataScience python book/emit.py epub --render
 ```
 
-The local `ElementsOfDataScience` env has pandas 2.2.2 and NumPy 1.26, not
-CI's pandas 3. Rebuild it (`make update_environment`) before building
-anything to release.
+The spike ran in an old `ElementsOfDataScience` env (pandas 2.2.2). Phase 2
+recreated it from `environment.yml` (Python 3.13.18, pandas 3.1.0, NumPy
+2.5.4).
 
 What worked:
 
@@ -267,10 +271,42 @@ What worked:
   16 in print (which also left out the `remove-print` cells). Roughly
   320–330 pages for the whole book.
 
+## Phase 2 results (2026-10-27)
+
+All 14 chapters (1–13 and "Further Reading") stage in about 5 minutes and
+build to both formats with `--strict` and no issues.
+
+- PDF: 232 pages, 7 × 9.1875 in, all fonts embedded, no missing glyphs.
+  Chapters 1–13 take about 224 pages against about 208 in print (8% more),
+  so the 18-chapter book should come to about 315 pages.
+- EPUB: 9.3 MB. `emit.py --render` now fails if any XHTML file is not
+  well-formed.
+- Chapters and sections are numbered as in print (1, 1.1, ...); chapters
+  listed under `unnumbered` in `metadata.yml` aren't (the outro).
+
+Fixed on the way:
+
+- Three markdown images pointed at `raw/v1/figs/...` on GitHub, two of them
+  as raw HTML `<img width=...>`. Pandoc drops raw HTML from LaTeX, so those
+  figures were silently missing from the PDF, and in the EPUB the tag was
+  unclosed (invalid XHTML). The emitter now uses the local `figs/` copies
+  and keeps the pixel width; `--strict` flags any other raw `<img>`. (The
+  xkcd comic in chapter 10 is `remove-cell`, so it never reaches the book,
+  which matters because xkcd is CC BY-NC.)
+- Side-by-side figures (chapter 9) came out 5.79 in wide; figure width is
+  now capped at the text block.
+- Python 3.13 adds a `SyntaxWarning` on stderr to the `%%expect` example in
+  chapter 1. stderr warnings are dropped quietly; any other stderr is an
+  issue.
+
+`%%expect` cells print as in 1e: the magic line, the code, then
+`TypeError: ...`.
+
+Lines that wrap (with a ↪ mark in the PDF, a hanging indent in the EPUB):
+13 code lines and 5 output lines over 66 characters in all 14 chapters.
+
 Still to check: Thorium; `epubcheck` (Java is installed, epubcheck isn't);
-chapters with `%%expect` error output, `hide-input`, and markdown images;
-chapter numbering (the spike turns it off); code-block padding in the PDF,
-which is generous.
+code-block padding in the PDF, which is generous.
 
 ## Phases
 
@@ -280,8 +316,8 @@ which is generous.
    sharp, EPUB in Thorium. This settles decision 5 and shows whether
    Quarto's own notebook handling would have done (if it would, the emitter
    gets simpler).
-2. **The 14 chapters.** Fix what `--strict` finds; hand-wrap the long code
-   lines in `soln/` (with `make tests-soln`).
+2. **The 14 chapters.** Done 2026-10-27. Fix what `--strict` finds;
+   hand-wrap the 13 long code lines in `soln/` (decision 6).
 3. **Case-study chapters**, after Task 21 (decision 2 includes them).
 4. **Book chrome.** Title page, copyright, preface (from `jb/index.md` and
    the 1e front matter), TOC, back matter with the support and LeanPub

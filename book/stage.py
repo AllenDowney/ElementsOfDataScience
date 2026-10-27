@@ -50,8 +50,10 @@ def stage(stem):
     setup.metadata["tags"] = ["book-setup"]
     if nb.nbformat_minor < 5:
         del setup["id"]  # cell ids arrived in nbformat 4.5
-    index = next(i for i, cell in enumerate(nb.cells)
-                 if cell.cell_type == "code" and "import utils" in cell.source)
+    # After the cell that imports utils (which sets the figure size), or
+    # first if there is none (the outro).
+    index = next((i for i, cell in enumerate(nb.cells)
+                  if cell.cell_type == "code" and "import utils" in cell.source), -1)
     nb.cells.insert(index + 1, setup)
 
     STAGE.mkdir(parents=True, exist_ok=True)

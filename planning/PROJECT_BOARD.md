@@ -447,7 +447,7 @@ PoliticalAlignment README).
 
 ## Task 22: PDF and EPUB for LeanPub
 
-**Status:** In progress. Spike done 2026-10-27. Plan in
+**Status:** In progress. Spike and all 14 chapters done 2026-10-27. Plan in
 [ebook_pipeline.md](ebook_pipeline.md).
 
 Build a PDF and an EPUB of the book from the notebooks, to sell on LeanPub
@@ -465,6 +465,8 @@ same pipeline should later build the v2 print edition.
 - [x] Spike: one chapter (`07_dataframes`) to screen PDF and EPUB
       (2026-10-27; `book/stage.py`, `book/emit.py`, `book/styles/`). It
       works; 6 × 9 recommended. Results in the plan.
-- [ ] All 14 chapters, then the four case-study chapters
+- [x] All 14 chapters (2026-10-27): 232-page PDF and EPUB, `--strict`
+      clean; fixed missing raw-HTML figures. Results in the plan.
+- [ ] The four case-study chapters (after Task 21)
 - [ ] Front and back matter, metadata, LeanPub editions
 - [ ] QA on screen and e-readers; first upload
