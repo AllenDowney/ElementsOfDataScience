@@ -34,6 +34,11 @@ dependencies:
   - xlrd              # examples/happiness.ipynb reads an .xls file
   - lxml              # read_html in the soln/clean_brfss notebooks
 
+  # for make tests and make format
+  - pytest
+  - nbmake
+  - ruff
+
   - pip
   - pip:
     - statadict       # chapter 7 and utils.py read Stata dictionaries

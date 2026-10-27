@@ -467,6 +467,8 @@ same pipeline should later build the v2 print edition.
       works; 6 × 9 recommended. Results in the plan.
 - [x] All 14 chapters (2026-10-27): 232-page PDF and EPUB, `--strict`
       clean; fixed missing raw-HTML figures. Results in the plan.
+- [x] Code style (2026-10-27): Ruff at 60 columns on `soln/[01]*.ipynb`
+      (`ruff.toml`, `make format`); tests pass; notebooks and zip rebuilt
 - [ ] The four case-study chapters (after Task 21)
 - [ ] Front and back matter, metadata, LeanPub editions
 - [ ] QA on screen and e-readers; first upload

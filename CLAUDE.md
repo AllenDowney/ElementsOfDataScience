@@ -52,13 +52,16 @@ pushing is what readers see.
 make notebooks          # build.sh: soln/ -> [01]*.ipynb, rebuild EDS_notebooks.zip
 make tests              # student notebooks + jupyter_intro
 make tests-soln         # notebooks with solutions (CI skips this on Windows)
+make format             # ruff format soln/[01]*.ipynb (ruff.toml: 60 columns)
 make publish MSG="..."  # publish.sh: commit and push the generated files
 make site               # jb/build.sh: build the website into jb/_build/html
 make publish-site       # jb/publish.sh: ghp-import, replaces the live site
 ```
 
-PDF and EPUB (`planning/ebook_pipeline.md`), in the `ElementsOfDataScience`
-env:
+PDF and EPUB (`planning/ebook_pipeline.md`), with the `ElementsOfDataScience`
+env activated (`conda activate`, not `conda run`: under `conda run` here,
+`PROJ_DATA` goes missing and GDAL prints a PROJ error into chapter 2, which
+`--strict` reports):
 
 ```bash
 python book/stage.py                           # execute chapters into book/build/stage/
@@ -93,6 +96,12 @@ jupyter nbconvert --to notebook --execute --inplace soln/X.ipynb
   path. A `pip install` fallback cell does this when a package is missing.
 - If an `examples/` notebook is generated from the one you edited, regenerate
   it.
+- After changing code in a chapter notebook, run `make format`. The code
+  style is Ruff's (Black-like, quotes as written), at 60 columns because
+  that's what fits in the PDF. Ruff doesn't wrap strings or comments; it
+  lists the long ones, and the comments should be split by hand. Ruff also
+  removes parentheses it considers redundant, so to break a long expression
+  differently, use an intermediate variable.
 
 A cell that is meant to raise needs the `raises-exception` tag, or nbmake
 fails it. That includes cells using the `%%expect` magic from `utils.py`.

@@ -5,7 +5,7 @@ PYTHON_INTERPRETER = python
 ## what you have
 CONDA = mamba
 
-.PHONY: default notebooks publish site publish-site tests tests-soln
+.PHONY: default notebooks publish site publish-site tests tests-soln format
 
 default:
 	@echo "No command specified. Please specify a target."
@@ -51,3 +51,9 @@ tests:
 ## checks out as a text file, so CI runs this only on Linux and macOS.
 tests-soln:
 	cd soln && pytest --nbmake [01]*.ipynb
+
+## Format the code in soln/ (ruff.toml), then list lines still over the
+## limit (strings and comments, which the formatter doesn't wrap).
+format:
+	ruff format
+	ruff check --select E501 --output-format concise || true

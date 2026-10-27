@@ -1,0 +1,13 @@
+# Code style for the chapter notebooks (Task 22): `make format`.
+# 60 characters is what fits in a code block in the LeanPub PDF
+# (book/emit.py pdf-screen). Strings and comments aren't wrapped by the
+# formatter; `make format` lists any that are still too long.
+
+# Only the chapter notebooks with solutions; the generated top-level
+# notebooks get the formatted code from build.sh. utils.py and data/ are
+# downloaded from v1 by URL, so leave them alone.
+include = ["soln/[01]*.ipynb"]
+line-length = 60
+
+[format]
+quote-style = "preserve"

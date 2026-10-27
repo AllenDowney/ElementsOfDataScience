@@ -224,8 +224,9 @@ Decided 2026-10-27:
 5. **Editions:** the book plus a free sample: the preface and chapters 6
    (Plotting) and 7 (DataFrames and Series), chosen as more compelling than
    Chapter 1.
-6. **Long code lines:** hand-wrap the 13 that are over 66 characters, in
-   `soln/`.
+6. **Code style:** format all the chapter notebooks with Ruff at 60
+   columns (`ruff.toml`, `make format`), for one standard style, rather
+   than hand-wrapping the long lines. Done; see "Code formatting".
 
 Open:
 
@@ -303,7 +304,44 @@ Fixed on the way:
 `TypeError: ...`.
 
 Lines that wrap (with a ↪ mark in the PDF, a hanging indent in the EPUB):
-13 code lines and 5 output lines over 66 characters in all 14 chapters.
+the 66-character estimate was wrong. `Scale=MatchLowercase` enlarges
+Source Code Pro by about 6% and the code box has padding, so code fits
+about 60 characters at 9 pt, and 26 printed code lines wrapped.
+
+## Code formatting (2026-10-27)
+
+Allen chose Ruff's formatter, which imposes one standard style, over
+hand-wrapping (Black and nbblack are no longer used). `ruff.toml`:
+`line-length = 60`, `quote-style = "preserve"`, and `include` limited to
+`soln/[01]*.ipynb`, so `utils.py` and the rest of `v1` are never touched.
+`make format` formats, then lists lines still too long.
+
+- Ruff changed only cell sources (checked: metadata, outputs and JSON
+  layout unchanged), in 13 notebooks. Besides wrapping it made style
+  changes, such as `2 ** 3` → `2**3` and `np.sin(theta/2)**2` →
+  `np.sin(theta / 2) ** 2`, so the `v1` notebooks no longer match the
+  printed code character for character. One markdown cell quoted changed
+  code (`np.sin(theta / 2) ** 2` in chapter 2) and was updated; a script
+  found no others.
+- Hand fixes: Ruff split the haversine line in chapter 2 inside a call
+  (`np.cos(` / `phi2` / `) * ...`). Parentheses don't help, since Ruff
+  removes them, so the function now uses an intermediate `cos_product`.
+  An 82-character comment in chapter 8 was split in two.
+- Left alone: two string literals over 60 (chapter 4's Gutenberg marker,
+  chapter 5's quotation), which would need implicit concatenation.
+- `make tests-soln` 14 passed; `make notebooks` regenerated the student
+  notebooks and the zip; `make tests` 15 passed.
+- Book: 235 pages (Ruff's taller code adds 3). Seven wrapped lines remain:
+  the two strings and a few outputs (list and `Index` reprs, an error
+  message).
+
+Environment notes: `environment.yml` now lists pytest, nbmake and ruff
+(it had no test tools). nbmake 1.5.5 pins `nbclient` below 0.7, so
+installing it downgraded `nbclient` 0.11.0 → 0.6.8; nbconvert under that
+version prints a Python 3.13 `DeprecationWarning` (cpython #70647) when it
+runs, which is harmless. Run the build with the env activated, not with
+`conda run`: under `conda run`, `PROJ_DATA` went missing and GDAL printed a
+PROJ error into chapter 2's output, which `--strict` caught.
 
 Still to check: Thorium; `epubcheck` (Java is installed, epubcheck isn't);
 code-block padding in the PDF, which is generous.
@@ -317,7 +355,7 @@ code-block padding in the PDF, which is generous.
    Quarto's own notebook handling would have done (if it would, the emitter
    gets simpler).
 2. **The 14 chapters.** Done 2026-10-27. Fix what `--strict` finds;
-   hand-wrap the 13 long code lines in `soln/` (decision 6).
+   long code lines handled by formatting with Ruff (decision 6).
 3. **Case-study chapters**, after Task 21 (decision 2 includes them).
 4. **Book chrome.** Title page, copyright, preface (from `jb/index.md` and
    the 1e front matter), TOC, back matter with the support and LeanPub
