@@ -4,6 +4,8 @@
 
 Printed copies of *Elements of Data Science* are available now, with a **full color interior** from [Lulu.com](https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html).
 
+The PDF and EPUB are available from [LeanPub](https://leanpub.com/eldasci), where you can pay what you want, and you can download a free sample.
+
 *Elements of Data Science* is an introduction to data science for people with no programming experience.  My goal is to present a small, powerful subset of Python that lets you do real work with data as quickly as possible.  
 
 I don't assume that the reader knows anything about programming, statistics, or data science.  When I use a term, I try to define it immediately, and when I use a programming feature, I try to explain it.
