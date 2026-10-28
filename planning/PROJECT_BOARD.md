@@ -539,4 +539,8 @@ same pipeline should later build the v2 print edition.
       support ask
 - [x] Automated QA (2026-10-28): epubcheck clean; `make tests-book`
       15 passed; links checked (8 to check in a browser)
-- [ ] Allen's proofread (list in the plan); LeanPub landing page; first upload
+- [x] LeanPub landing page drafted (`book/leanpub/landing-page.txt`);
+      pay what you want from $0, Lulu print edition mentioned
+- [x] Short links, `greenteapress.com/eds/N` (2026-10-28): 57 links in
+      `book/links.csv`; `.htaccess` committed in GreenTeaPress, not deployed
+- [ ] Deploy the short links; Allen's proofread (list in the plan); first upload

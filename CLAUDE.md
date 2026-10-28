@@ -73,6 +73,14 @@ make tests-book                                # smoke tests on book/leanpub/ (E
 Chapters, parts, editions and the copyright text are in `book/metadata.yml`;
 the preface and the sample's back page are in `book/front/`.
 
+External links in the PDF and EPUB go through short links,
+`greenteapress.com/eds/N`; the notebooks and the website keep the direct
+URLs. `book/links.csv` is the catalog, and its numbers are permanent: never
+renumber; to fix a dead link, change its target. After adding a link to a
+chapter, run `python book/shortlinks.py update` (after `stage.py`), then
+`htaccess`, and deploy from `~/GreenTeaPress` (`scripts/deploy_gtp.sh eds`).
+`emit.py --strict` fails on a link missing from the catalog.
+
 Never run a publish target as a way to test something. Edit `soln/`, never
 the generated top-level notebooks; `make notebooks` overwrites them.
 

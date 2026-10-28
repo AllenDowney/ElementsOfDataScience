@@ -445,6 +445,31 @@ For Allen's proofread (what the automated checks can't judge):
   well?
 - The two string literals that wrap (chapters 4 and 5).
 
+## Short links (2026-10-28)
+
+Allen: every external link in the PDF and EPUB goes through
+`greenteapress.com/eds/N` (code `eds`, without an edition number, Allen's
+choice), following GreenTeaPress Task 12 and The Little Book of Semaphores
+(`sem2`). The notebooks, Colab and the website keep direct URLs.
+
+- `book/links.csv`: 57 links, numbered in reading order of first use;
+  numbers are permanent. `book/shortlinks.py update | check | htaccess`;
+  `update` runs the emitter's own cell selection, so the catalog holds
+  exactly the links that reach the book.
+- `emit.py` rewrites links in markdown only (never in code): `<url>`
+  shows `greenteapress.com/eds/N`, `[text](url)` keeps its text. Links to
+  greenteapress.com (the support page) and the CC license stay direct.
+  `--strict` fails on a link missing from the catalog, and on any URL the
+  rewriting missed.
+- `greenteapress.com/eds` goes to the book's page,
+  `/wp/elements-of-data-science/`; unknown numbers go there too.
+- The `.htaccess` is in `~/GreenTeaPress/greenteapress/eds/` (committed
+  there, `9099db8`, and `eds` added to its README code list), **not
+  deployed yet**. Deploy before uploading to LeanPub.
+- Target check: all resolve except the seven in "QA results" (403 to a
+  script, or the GSS certificate chain). If one is dead, change its target
+  in `links.csv` and redeploy; the book doesn't change.
+
 ## Phases
 
 1. **Spike, one chapter.** `07_dataframes` (code, text output, wide

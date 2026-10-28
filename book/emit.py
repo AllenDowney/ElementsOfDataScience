@@ -28,6 +28,7 @@ FORMAT is one of: pdf-screen, epub. Editions are in metadata.yml.
 
 import argparse
 import base64
+import csv
 import html
 import re
 import shutil
@@ -54,6 +55,15 @@ REPO_FIG_URL = re.compile(
     r"/v1/(?:figs/)?([^)\s\"]+)")
 REPO_FIG = re.compile(r"!\[([^\]]*)\]\(" + REPO_FIG_URL.pattern + r"\)")
 
+# External links in the PDF and EPUB go through short links,
+# greenteapress.com/eds/N (book/links.csv, book/shortlinks.py), so a link
+# that rots can be repointed after readers have downloaded the book. The
+# notebooks and the website keep the direct URLs. Links to greenteapress.com
+# itself and the license stay direct.
+LINKS = BOOK / "links.csv"
+SHORT_BASE = "https://greenteapress.com/eds/"
+DIRECT = re.compile(r"https?://(?:greenteapress\.com|creativecommons\.org)/")
+
 # Figures are 6 x 3.5 in (utils.py); 1e printed them at two-thirds size.
 FIGURE_SCALE = 2 / 3
 PNG_DPI = 200  # set in stage.py
@@ -70,6 +80,14 @@ PRINT_FORMATS = set()  # a pdf-print layout will go here
 
 ANSI = re.compile(r"\x1b\[[0-9;]*m")
 ROMAN = ["", "I", "II", "III", "IV", "V"]
+
+
+def load_links():
+    """Map from target URL to short-link number."""
+    if not LINKS.exists():
+        return {}
+    with open(LINKS, newline="") as f:
+        return {row["target"]: int(row["n"]) for row in csv.DictReader(f)}
 
 
 def load_metadata():
@@ -113,6 +131,8 @@ class Emitter:
     def __init__(self, fmt, outdir, meta):
         self.fmt = fmt
         self.meta = meta
+        self.links = load_links()
+        self.seen = []  # (url, stem) for every external link, in book order
         self.is_pdf = fmt.startswith("pdf")
         self.outdir = outdir
         self.issues = []
@@ -191,8 +211,44 @@ class Emitter:
         if "<img" in source:
             self.issue(stem, i, "raw <img> tag")
 
+        source = self.short_links(stem, i, source)
         if self.number is not None and not self.is_pdf:
             source = self.number_sections(source)
+        return source
+
+    def short_links(self, stem, i, source):
+        """Point the external links in markdown at their short links."""
+        def short(url):
+            if DIRECT.match(url):
+                return None
+            self.seen.append((url, stem))
+            n = self.links.get(url)
+            if n is None:
+                self.issue(stem, i, f"link not in links.csv: {url} "
+                                    "(python book/shortlinks.py update)")
+                return None
+            return f"{SHORT_BASE}{n}"
+
+        def autolink(m):
+            url = short(m.group(1))
+            return m.group(0) if url is None else f"[{url[8:]}]({url})"
+
+        def link(m):
+            text, target = m.groups()
+            url = short(target)
+            if url is None:
+                return m.group(0)
+            if text in (target, target.removeprefix("https://")):
+                text = url[8:]
+            return f"[{text}]({url})"
+
+        source = re.sub(r"<(https?://[^>\s]+)>", autolink, source)
+        source = re.sub(r"(?<!!)\[([^\]]*)\]\((https?://[^)\s]+)\)", link, source)
+        for url in re.findall(r"https?://[^\s)>\]`'\"]+", source):
+            if not (url.startswith(SHORT_BASE) or DIRECT.match(url)
+                    or url.startswith("https://github.com/AllenDowney/")
+                    and "/figs/" in url):
+                self.issue(stem, i, f"URL not converted to a short link: {url}")
         return source
 
     def copy_fig(self, name):
@@ -438,7 +494,7 @@ def emit(fmt, edition="book", strict=False, render=False):
     # Front matter. Quarto always starts with index.md: in the PDF that is
     # the preface (the title page comes from KOMA); in the EPUB it is the
     # title and copyright, and the preface follows.
-    preface = (BOOK / "front" / "preface.md").read_text()
+    preface = emitter.short_links("preface", 0, (BOOK / "front" / "preface.md").read_text())
     if fmt == "epub":
         (outdir / "index.md").write_text(title_page_md(meta, badge))
         (outdir / "preface.md").write_text(preface)
@@ -454,7 +510,8 @@ def emit(fmt, edition="book", strict=False, render=False):
     def write_chapter(stem):
         if stem.startswith("front/"):
             name = Path(stem).name
-            shutil.copy2(BOOK / f"{stem}.md", outdir / f"{name}.md")
+            text = (BOOK / f"{stem}.md").read_text()
+            (outdir / f"{name}.md").write_text(emitter.short_links(name, 0, text))
             files.append(f"{name}.md")
             return f"{name}.md"
         number = numbers.get(stem)
