@@ -537,4 +537,6 @@ same pipeline should later build the v2 print edition.
 - [x] Front matter, parts, book and sample editions (2026-10-27;
       `emit.py --release`); version 1.1.0, © 2024–2026; back page with the
       support ask
-- [ ] QA on screen and e-readers; first upload
+- [x] Automated QA (2026-10-28): epubcheck clean; `make tests-book`
+      15 passed; links checked (8 to check in a browser)
+- [ ] Allen's proofread (list in the plan); LeanPub landing page; first upload

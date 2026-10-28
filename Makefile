@@ -5,7 +5,7 @@ PYTHON_INTERPRETER = python
 ## what you have
 CONDA = mamba
 
-.PHONY: default notebooks publish site publish-site tests tests-soln format
+.PHONY: default notebooks publish site publish-site tests tests-soln format tests-book
 
 default:
 	@echo "No command specified. Please specify a target."
@@ -57,3 +57,8 @@ tests-soln:
 format:
 	ruff format
 	ruff check --select E501 --output-format concise || true
+
+## Smoke tests for the LeanPub files in book/leanpub/ (run book/emit.py
+## --release first). Set EPUBCHECK=/path/to/epubcheck.jar to validate the EPUBs.
+tests-book:
+	cd book && pytest test_book.py

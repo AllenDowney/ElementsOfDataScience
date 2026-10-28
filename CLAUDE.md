@@ -67,6 +67,7 @@ env activated (`conda activate`, not `conda run`: under `conda run` here,
 python book/stage.py                           # execute chapters into book/build/stage/
 python book/emit.py pdf-screen --strict --render   # one format (--edition sample)
 python book/emit.py --release                  # all editions and formats -> book/leanpub/
+make tests-book                                # smoke tests on book/leanpub/ (EPUBCHECK=epubcheck.jar)
 ```
 
 Chapters, parts, editions and the copyright text are in `book/metadata.yml`;

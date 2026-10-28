@@ -1,7 +1,7 @@
 # PDF and EPUB from the notebooks (Task 22)
 
-Status: phases 1–4 done, 2026-10-27 (see the results sections). Next: QA and
-the first LeanPub upload (phase 5).
+Status: phases 1–4 done 2026-10-27; automated QA done 2026-10-28 ("QA
+results"). Next: Allen's proofread, then the first LeanPub upload.
 
 ## Goal
 
@@ -417,6 +417,33 @@ book ends with a "Thank You" page: the notebooks, and the support ask
 (decision 8). Files are now `downey-elements-of-data-science-1.1.0*`; the
 book PDF is 244 pages.
 
+## QA results (2026-10-28)
+
+- **epubcheck 5.4.0** (W3C): both EPUBs, no errors, warnings or infos.
+- **`make tests-book`** (`book/test_book.py`, 15 checks on the release
+  files): page size, embedded fonts and no Type 3, size under 15 MB, the
+  copyright page, parts I–V and chapters 1–17 in order in the book,
+  chapters 6 and 7 numbered as such in the sample, a code block and its
+  output, the EPUB navigation, and epubcheck when `EPUBCHECK` points to the
+  jar. Checked that the tests fail on a wrong page size or chapter count.
+- **Links:** 60 external links in the EPUB; 52 return 200. Six return 403
+  to a script (cdc.gov ×3, economist.com, nejm.org, pewresearch.org), which
+  these sites do to non-browser clients; check them in a browser. The two
+  GSS Data Explorer links (chapter 8) fail here because the server sends an
+  incomplete certificate chain; browsers usually cope, so check them too.
+
+For Allen's proofread (what the automated checks can't judge):
+
+- The EPUBs in Thorium (publisher styles on), and on a phone: code
+  wrapping, wide DataFrames scrolling, the title and copyright page.
+- The PDF on a tablet: figure sizes, the 12 scatter plots now as PNG
+  (chapter 9), page breaks around code and output.
+- The `remove-print` cells the screen editions add back (Colab links,
+  documentation links, content cut from print for space, such as the
+  confusion matrices in chapter 16): does the text around them still read
+  well?
+- The two string literals that wrap (chapters 4 and 5).
+
 ## Phases
 
 1. **Spike, one chapter.** `07_dataframes` (code, text output, wide
@@ -430,7 +457,7 @@ book PDF is 244 pages.
 3. **Case-study chapters.** Done 2026-10-27.
 4. **Book chrome.** Done 2026-10-27.
    Title page, copyright, preface, Contents, parts, the sample edition.
-5. **QA and release.** Smoke tests (page size, fonts, a code block's
+5. **QA and release.** Automated part done 2026-10-28. Smoke tests (page size, fonts, a code block's
    presence); `epubcheck` (install it); proofread a sample on a tablet and a
    phone; LeanPub landing page; upload; tag (`v1.0.x-leanpub`, or follow the
    print version if a reprint coincides).
