@@ -370,13 +370,13 @@ def read_gss(dict_file="GSS.dct", data_file="GSS.dat.gz"):
 
     download(
         "https://github.com/AllenDowney/"
-        + "ElementsOfDataScience/raw/master/data/"
+        + "ElementsOfDataScience/raw/v1/data/"
         + dict_file
     )
 
     download(
         "https://github.com/AllenDowney/"
-        + "ElementsOfDataScience/raw/master/data/"
+        + "ElementsOfDataScience/raw/v1/data/"
         + data_file
     )
 
