@@ -19,6 +19,7 @@ import csv
 import sys
 import tempfile
 from pathlib import Path
+from urllib.parse import unquote
 
 from emit import (BOOK, LINKS, Emitter, all_chapters, chapter_numbers,
                   load_links, load_metadata)
@@ -93,6 +94,10 @@ def htaccess(path=DEFAULT):
              "book/links.csv. Do not edit here.",
              f"RedirectMatch 302 ^/{CODE}/?$ {HOME}"]
     for n, target, note in load_rows():
+        if "%" in target:
+            # Apache escapes a redirect target again (%20 would become
+            # %2520), so give it the unescaped URL, quoted for the spaces.
+            target = f'"{unquote(target)}"'
         lines.append(f"# {note}")
         lines.append(f"RedirectMatch 302 ^/{CODE}/{n}/?$ {target}")
     lines.append("# Unknown numbers go to the book page")

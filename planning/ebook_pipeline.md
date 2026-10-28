@@ -463,9 +463,11 @@ choice), following GreenTeaPress Task 12 and The Little Book of Semaphores
   rewriting missed.
 - `greenteapress.com/eds` goes to the book's page,
   `/wp/elements-of-data-science/`; unknown numbers go there too.
-- The `.htaccess` is in `~/GreenTeaPress/greenteapress/eds/` (committed
-  there, `9099db8`, and `eds` added to its README code list), **not
-  deployed yet**. Deploy before uploading to LeanPub.
+- The `.htaccess` is in `~/GreenTeaPress/greenteapress/eds/` (`eds` added
+  to its README code list). Deployed 2026-10-28 (`63f4231`); all 57
+  redirect to their catalog targets. Targets with `%20` were first broken:
+  Apache escapes a redirect target again (`%2520`), so `shortlinks.py`
+  writes such targets unescaped and quoted.
 - Target check: all resolve except the seven in "QA results" (403 to a
   script, or the GSS certificate chain). If one is dead, change its target
   in `links.csv` and redeploy; the book doesn't change.

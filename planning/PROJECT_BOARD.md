@@ -542,5 +542,5 @@ same pipeline should later build the v2 print edition.
 - [x] LeanPub landing page drafted (`book/leanpub/landing-page.txt`);
       pay what you want from $0, Lulu print edition mentioned
 - [x] Short links, `greenteapress.com/eds/N` (2026-10-28): 57 links in
-      `book/links.csv`; `.htaccess` committed in GreenTeaPress, not deployed
-- [ ] Deploy the short links; Allen's proofread (list in the plan); first upload
+      `book/links.csv`; deployed to greenteapress.com, all 57 checked
+- [ ] Allen's proofread (list in the plan); create the LeanPub book; first upload
