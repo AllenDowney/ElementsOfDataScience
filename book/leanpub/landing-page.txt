@@ -1,6 +1,6 @@
 # LeanPub book page snippets for Elements of Data Science (Task 22).
 # Copy each block into the matching field on the dashboard.
-# Book URL: not created yet (metadata.yml leanpub_url).
+# Book URL: https://leanpub.com/eldasci (live 2026-10-28)
 #
 # About, Teaser, Meta description, and Release notes: plain text.
 # Table of Contents: HTML only (LeanPub custom TOC field).
@@ -33,7 +33,7 @@ Two editions are available in PDF and EPUB:
 * Free Sample: the preface and Chapters 6 and 7
 * Complete Book: all 17 chapters
 
-The complete book is pay what you want, starting at $0. If you find it useful, paying for it supports free, open educational materials from Green Tea Press.
+The complete book is pay what you want, from $9, with a suggested price of $29. Paying for it supports free, open educational materials from Green Tea Press.
 
 A printed edition, with a full-color interior, is available from Lulu: https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html
 
@@ -64,34 +64,93 @@ Version 1.1.0 is the first LeanPub edition: the complete text of the first editi
 
 =============================================================================
 TABLE OF CONTENTS (HTML)
-Chapters only, from book/metadata.yml and each chapter's title.
-# Allen: CultureWar uses <ul class='toc no-parts'>; this list puts the part
-# titles in as plain items, which may need LeanPub's markup for parts.
+LeanPub's own markup (from leanpub.com/fpmortals and /rprogramming):
+<ul class="toc no-parts">, the number in <span class="section-number">,
+the next level as a nested <ul>. Parts at the top level, chapters under them.
+Keep this file as the backup: LeanPub may clear the field without warning.
 =============================================================================
 
-<ul class='toc no-parts'>
-<li>Preface</li>
-<li>Part I: From Python to Pandas</li>
-<li>1. Variables and Values</li>
-<li>2. Times and Places</li>
-<li>3. Lists and Arrays</li>
-<li>4. Loops and Files</li>
-<li>5. Dictionaries</li>
-<li>6. Plotting</li>
-<li>Part II: Exploratory Data Analysis</li>
-<li>7. DataFrames and Series</li>
-<li>8. Distributions</li>
-<li>9. Relationships</li>
-<li>10. Regression</li>
-<li>Part III: Statistical Inference</li>
-<li>11. Resampling</li>
-<li>12. Bootstrap Sampling</li>
-<li>13. Hypothesis Testing</li>
-<li>Part IV: Case Study: Political Alignment</li>
-<li>14. Political Alignment and Polarization</li>
-<li>15. Political Alignment and Outlook</li>
-<li>Part V: Case Study: Algorithmic Fairness</li>
-<li>16. Predicting Crime</li>
-<li>17. Algorithmic Fairness</li>
-<li>Further Reading</li>
+<ul class="toc no-parts">
+  <li>
+    Preface
+  </li>
+  <li>
+    Part I: From Python to Pandas
+    <ul>
+      <li>
+        <span class="section-number">1. </span>Variables and Values
+      </li>
+      <li>
+        <span class="section-number">2. </span>Times and Places
+      </li>
+      <li>
+        <span class="section-number">3. </span>Lists and Arrays
+      </li>
+      <li>
+        <span class="section-number">4. </span>Loops and Files
+      </li>
+      <li>
+        <span class="section-number">5. </span>Dictionaries
+      </li>
+      <li>
+        <span class="section-number">6. </span>Plotting
+      </li>
+    </ul>
+  </li>
+  <li>
+    Part II: Exploratory Data Analysis
+    <ul>
+      <li>
+        <span class="section-number">7. </span>DataFrames and Series
+      </li>
+      <li>
+        <span class="section-number">8. </span>Distributions
+      </li>
+      <li>
+        <span class="section-number">9. </span>Relationships
+      </li>
+      <li>
+        <span class="section-number">10. </span>Regression
+      </li>
+    </ul>
+  </li>
+  <li>
+    Part III: Statistical Inference
+    <ul>
+      <li>
+        <span class="section-number">11. </span>Resampling
+      </li>
+      <li>
+        <span class="section-number">12. </span>Bootstrap Sampling
+      </li>
+      <li>
+        <span class="section-number">13. </span>Hypothesis Testing
+      </li>
+    </ul>
+  </li>
+  <li>
+    Part IV: Case Study: Political Alignment
+    <ul>
+      <li>
+        <span class="section-number">14. </span>Political Alignment and Polarization
+      </li>
+      <li>
+        <span class="section-number">15. </span>Political Alignment and Outlook
+      </li>
+    </ul>
+  </li>
+  <li>
+    Part V: Case Study: Algorithmic Fairness
+    <ul>
+      <li>
+        <span class="section-number">16. </span>Predicting Crime
+      </li>
+      <li>
+        <span class="section-number">17. </span>Algorithmic Fairness
+      </li>
+    </ul>
+  </li>
+  <li>
+    Further Reading
+  </li>
 </ul>

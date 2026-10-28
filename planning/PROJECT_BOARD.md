@@ -540,7 +540,9 @@ same pipeline should later build the v2 print edition.
 - [x] Automated QA (2026-10-28): epubcheck clean; `make tests-book`
       15 passed; links checked (8 to check in a browser)
 - [x] LeanPub landing page drafted (`book/leanpub/landing-page.txt`);
-      pay what you want from $0, Lulu print edition mentioned
+      pay what you want, $9 to $29 suggested; Lulu print edition mentioned
 - [x] Short links, `greenteapress.com/eds/N` (2026-10-28): 57 links in
       `book/links.csv`; deployed to greenteapress.com, all 57 checked
-- [ ] Allen's proofread (list in the plan); create the LeanPub book; first upload
+- [x] LeanPub book live at https://leanpub.com/eldasci (2026-10-28);
+      `leanpub_url` in metadata.yml, linked from the sample's back page
+- [ ] Allen's proofread (list in the plan)

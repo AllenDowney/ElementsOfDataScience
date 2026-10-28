@@ -62,7 +62,7 @@ REPO_FIG = re.compile(r"!\[([^\]]*)\]\(" + REPO_FIG_URL.pattern + r"\)")
 # itself and the license stay direct.
 LINKS = BOOK / "links.csv"
 SHORT_BASE = "https://greenteapress.com/eds/"
-DIRECT = re.compile(r"https?://(?:greenteapress\.com|creativecommons\.org)/")
+DIRECT = re.compile(r"https?://(?:greenteapress\.com|creativecommons\.org|leanpub\.com)/")
 
 # Figures are 6 x 3.5 in (utils.py); 1e printed them at two-thirds size.
 FIGURE_SCALE = 2 / 3
@@ -557,6 +557,7 @@ def emit(fmt, edition="book", strict=False, render=False):
         if stem.startswith("front/"):
             name = Path(stem).name
             text = (BOOK / f"{stem}.md").read_text()
+            text = text.replace("{{leanpub_url}}", meta["leanpub_url"])
             (outdir / f"{name}.md").write_text(emitter.short_links(name, 0, text))
             files.append(f"{name}.md")
             return f"{name}.md"

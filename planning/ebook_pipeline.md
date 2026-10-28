@@ -235,7 +235,8 @@ Decided 2026-10-27:
 
 Open:
 
-9. **Price:** pay what you want, $0 minimum (Allen, 2026-10-28). The
+9. **Price:** pay what you want, $9 minimum, $29 suggested (Allen,
+   2026-10-28; first planned as $0 minimum). The
    landing page also points to the Lulu print edition. Still open in
    GreenTeaPress Task 18: whether a free PDF link stays elsewhere.
 

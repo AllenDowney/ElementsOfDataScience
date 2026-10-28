@@ -19,7 +19,7 @@ commercial: >-
   please contact the author.
 cover_credit: Cover design by Liana Moisescu.
 site_url: https://allendowney.github.io/ElementsOfDataScience
-# leanpub_url: ""   # the sample's back page links here once the book exists
+leanpub_url: https://leanpub.com/eldasci   # {{leanpub_url}} in book/front/
 
 # The book, in order. Stems resolve to soln/{stem}.ipynb; a case-study
 # chapter is a mapping with the repo, the full commit, and the file, which
