@@ -20,18 +20,18 @@ You don't need to know anything about programming, statistics, or data science, 
 
 The book has five parts:
 
-* From Python to Pandas: variables, strings, dates and locations, lists and NumPy arrays, loops and files, dictionaries, and plotting
-* Exploratory Data Analysis: DataFrames, distributions, relationships between variables, and linear and logistic regression
-* Statistical Inference: resampling, bootstrapping, and hypothesis testing, using computation instead of mathematical analysis
-* Case Study: Political Alignment, using fifty years of General Social Survey data on polarization and changing beliefs
-* Case Study: Algorithmic Fairness, on COMPAS, an algorithm used in the criminal justice system, and why fairness is hard to define
+• From Python to Pandas: variables, strings, dates and locations, lists and NumPy arrays, loops and files, dictionaries, and plotting
+• Exploratory Data Analysis: DataFrames, distributions, relationships between variables, and linear and logistic regression
+• Statistical Inference: resampling, bootstrapping, and hypothesis testing, using computation instead of mathematical analysis
+• Case Study: Political Alignment, using fifty years of General Social Survey data on polarization and changing beliefs
+• Case Study: Algorithmic Fairness, on COMPAS, an algorithm used in the criminal justice system, and why fairness is hard to define
 
 Every chapter is also a Jupyter notebook you can run on Colab, with no software to install, from https://allendowney.github.io/ElementsOfDataScience. The notebooks contain the code from the book and exercises to practice what you learn.
 
 Two editions are available in PDF and EPUB:
 
-* Free Sample: the preface and Chapters 6 and 7
-* Complete Book: all 17 chapters
+• Free Sample: the preface and Chapters 6 and 7
+• Complete Book: all 17 chapters
 
 The complete book is pay what you want, from $9, with a suggested price of $29. Paying for it supports free, open educational materials from Green Tea Press.
 
