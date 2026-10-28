@@ -20,6 +20,10 @@ notebook downloads `utils.py` and files in `data/` from `raw/v1/...`. So:
 - Don't move or rename `utils.py`, anything in `data/`, or the top-level
   chapter notebooks. Removing a file from `v1` breaks every copy of the book
   that points to it.
+- `v1` is the default branch. `master` is kept equal to it, because
+  `utils.py` (`read_gss`), the examples and copies in other repos load
+  files from `raw/master/...`: after pushing `v1`, fast-forward `master`
+  (`git push origin v1:master`). Never delete `master`.
 - Tags follow the print version numbers: `v1.0.1` is the state at the 1.0.1
   print release. The older `v1.0` tag is an unrelated 2021 course snapshot.
 
