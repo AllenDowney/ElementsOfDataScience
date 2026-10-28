@@ -457,7 +457,8 @@ For Allen's proofread (what the automated checks can't judge):
 3. **Case-study chapters.** Done 2026-10-27.
 4. **Book chrome.** Done 2026-10-27.
    Title page, copyright, preface, Contents, parts, the sample edition.
-5. **QA and release.** Automated part done 2026-10-28. Smoke tests (page size, fonts, a code block's
+5. **QA and release.** Automated part done 2026-10-28; landing page drafted
+   (`book/leanpub/landing-page.txt`). Smoke tests (page size, fonts, a code block's
    presence); `epubcheck` (install it); proofread a sample on a tablet and a
    phone; LeanPub landing page; upload; tag (`v1.0.x-leanpub`, or follow the
    print version if a reprint coincides).

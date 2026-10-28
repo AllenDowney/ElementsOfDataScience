@@ -1,0 +1,96 @@
+# LeanPub book page snippets for Elements of Data Science (Task 22).
+# Copy each block into the matching field on the dashboard.
+# Book URL: not created yet (metadata.yml leanpub_url).
+#
+# About, Teaser, Meta description, and Release notes: plain text.
+# Table of Contents: HTML only (LeanPub custom TOC field).
+#
+# Draft, 2026-10-28. Facts are from the preface (book/front/preface.md).
+# Lines starting with "# Allen:" are open questions, not copy.
+
+
+=============================================================================
+ABOUT YOUR BOOK
+Shown prominently on the book landing page. Plain text.
+=============================================================================
+
+Elements of Data Science is an introduction to data science for people with no programming experience. It presents a small, powerful subset of Python that lets you do real work with data as quickly as possible: choosing questions, finding and cleaning data, exploring and visualizing it, modeling it, and communicating what you find.
+
+You don't need to know anything about programming, statistics, or data science, and there is little math beyond arithmetic and logarithms. When the book uses a term, it defines it; when it uses a programming feature, it explains it.
+
+The book has five parts:
+
+* From Python to Pandas: variables, strings, dates and locations, lists and NumPy arrays, loops and files, dictionaries, and plotting
+* Exploratory Data Analysis: DataFrames, distributions, relationships between variables, and linear and logistic regression
+* Statistical Inference: resampling, bootstrapping, and hypothesis testing, using computation instead of mathematical analysis
+* Case Study: Political Alignment, using fifty years of General Social Survey data on polarization and changing beliefs
+* Case Study: Algorithmic Fairness, on COMPAS, an algorithm used in the criminal justice system, and why fairness is hard to define
+
+Every chapter is also a Jupyter notebook you can run on Colab, with no software to install, from https://allendowney.github.io/ElementsOfDataScience. The notebooks contain the code from the book and exercises to practice what you learn.
+
+Two editions are available in PDF and EPUB:
+
+* Free Sample: the preface and Chapters 6 and 7
+* Complete Book: all 17 chapters
+
+# Allen: a line on pricing (pay what you want, $0 minimum?) once GreenTeaPress
+# Task 18 settles it, and whether to mention the print edition (Lulu).
+
+
+=============================================================================
+TEASER
+1–3 sentences. Plain text.
+=============================================================================
+
+An introduction to data science for people with no programming experience. Learn a small, powerful subset of Python and use it to answer real questions with real data, from survey responses to the fairness of a criminal justice algorithm.
+
+
+=============================================================================
+META DESCRIPTION
+Search-engine snippet; aim for ~160 characters. Plain text.
+=============================================================================
+
+Learn data science with Python from scratch: no programming experience needed. Real data, real questions, and notebooks you can run on Colab.
+
+
+=============================================================================
+RELEASE NOTES
+Included in the email to readers. Plain text. Update each release.
+=============================================================================
+
+Version 1.1.0 is the first LeanPub edition: the complete text of the first edition, with the code reformatted to fit the page and checked with current versions of Python and its libraries.
+
+
+=============================================================================
+TABLE OF CONTENTS (HTML)
+Chapters only, from book/metadata.yml and each chapter's title.
+# Allen: CultureWar uses <ul class='toc no-parts'>; this list puts the part
+# titles in as plain items, which may need LeanPub's markup for parts.
+=============================================================================
+
+<ul class='toc no-parts'>
+<li>Preface</li>
+<li>Part I: From Python to Pandas</li>
+<li>1. Variables and Values</li>
+<li>2. Times and Places</li>
+<li>3. Lists and Arrays</li>
+<li>4. Loops and Files</li>
+<li>5. Dictionaries</li>
+<li>6. Plotting</li>
+<li>Part II: Exploratory Data Analysis</li>
+<li>7. DataFrames and Series</li>
+<li>8. Distributions</li>
+<li>9. Relationships</li>
+<li>10. Regression</li>
+<li>Part III: Statistical Inference</li>
+<li>11. Resampling</li>
+<li>12. Bootstrap Sampling</li>
+<li>13. Hypothesis Testing</li>
+<li>Part IV: Case Study: Political Alignment</li>
+<li>14. Political Alignment and Polarization</li>
+<li>15. Political Alignment and Outlook</li>
+<li>Part V: Case Study: Algorithmic Fairness</li>
+<li>16. Predicting Crime</li>
+<li>17. Algorithmic Fairness</li>
+<li>Further Reading</li>
+</ul>
