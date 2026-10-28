@@ -33,8 +33,9 @@ Two editions are available in PDF and EPUB:
 * Free Sample: the preface and Chapters 6 and 7
 * Complete Book: all 17 chapters
 
-# Allen: a line on pricing (pay what you want, $0 minimum?) once GreenTeaPress
-# Task 18 settles it, and whether to mention the print edition (Lulu).
+The complete book is pay what you want, starting at $0. If you find it useful, paying for it supports free, open educational materials from Green Tea Press.
+
+A printed edition, with a full-color interior, is available from Lulu: https://www.lulu.com/shop/allen-downey/elements-of-data-science/paperback/product-9dyrwn.html
 
 
 =============================================================================

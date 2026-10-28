@@ -235,8 +235,9 @@ Decided 2026-10-27:
 
 Open:
 
-9. **Free PDF link:** GreenTeaPress Task 18's open question (keep a free
-   download alongside LeanPub, or make LeanPub at $0 the download).
+9. **Price:** pay what you want, $0 minimum (Allen, 2026-10-28). The
+   landing page also points to the Lulu print edition. Still open in
+   GreenTeaPress Task 18: whether a free PDF link stays elsewhere.
 
 ## Spike results (2026-10-27)
 
