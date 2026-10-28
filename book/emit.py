@@ -127,6 +127,15 @@ def staged_path(meta, stem):
     return STAGE / f"{stem}.ipynb"
 
 
+# Longer text output is abridged to its first and last lines, with an
+# ellipsis between (one output in the book: years in chapter 14).
+MAX_OUTPUT_LINES = 25
+ABRIDGED_LINES = 5
+
+# Text output blocks, as text_output writes them
+OUTPUT_START = ("```{=latex}\n\\begin{outbox}", '```{=html}\n<pre class="output">')
+
+
 class Emitter:
     def __init__(self, fmt, outdir, meta):
         self.fmt = fmt
@@ -178,20 +187,33 @@ class Emitter:
             elif cell.cell_type == "code":
                 if source.startswith("# Solution") or is_setup(source):
                     continue
-                if source and not tags & {"remove-input", "hide-input"}:
+                shown = source and not tags & {"remove-input", "hide-input"}
+                if shown:
                     blocks.append(f"```python\n{source}\n```")
                 if not tags & {"remove-output", "hide-output"}:
-                    blocks.extend(self.outputs(stem, i, cell.get("outputs", [])))
+                    # Text output right under its code (or under more text
+                    # output from the same cell) is joined to the box above.
+                    joined = shown
+                    for block in self.outputs(stem, i, cell.get("outputs", [])):
+                        if block.startswith(OUTPUT_START):
+                            if joined:
+                                block = self.join_output(block)
+                            joined = True
+                        else:
+                            joined = False
+                        blocks.append(block)
         return "\n\n".join(b for b in blocks if b) + "\n"
 
     def markdown(self, stem, i, source):
         # Images from GitHub with a copy in figs/ use the copy; others stay
         # remote, and are reported below.
+        scales = self.meta.get("figure_scale", {})
+
         def local_fig(m):
             alt, name = m.groups()
             if not self.copy_fig(name):
                 return m.group(0)
-            return f"![{alt}](figs/{name}){{width=100%}}"
+            return f"![{alt}](figs/{name}){{width={100 * scales.get(name, 1):.0f}%}}"
         source = REPO_FIG.sub(local_fig, source)
 
         # Raw <img> tags: Pandoc drops them from LaTeX, and leaves them
@@ -202,7 +224,11 @@ class Emitter:
             width = re.search(r'width="(\d+)"', tag)
             if not self.copy_fig(name):
                 return tag
-            attr = f"{{width={width.group(1)}}}" if width else ""
+            scale = scales.get(name, 1)
+            if width:
+                attr = f"{{width={round(int(width.group(1)) * scale)}}}"
+            else:
+                attr = f"{{width={100 * scale:.0f}%}}" if scale != 1 else ""
             return f"![](figs/{name}){attr}"
         source = re.sub(r"<img[^>]*" + REPO_FIG_URL.pattern + r"[^>]*>", html_fig, source)
 
@@ -210,6 +236,17 @@ class Emitter:
             self.issue(stem, i, f"remote image {url}")
         if "<img" in source:
             self.issue(stem, i, "raw <img> tag")
+
+        # A fence with no language in the text is code the reader isn't
+        # meant to run; set it like a code cell.
+        lines = source.split("\n")
+        inside = False
+        for j, line in enumerate(lines):
+            if line.startswith("```"):
+                if not inside and line.strip() == "```":
+                    lines[j] = "```python"
+                inside = not inside
+        source = "\n".join(lines)
 
         source = self.short_links(stem, i, source)
         if self.number is not None and not self.is_pdf:
@@ -307,10 +344,19 @@ class Emitter:
 
     def text_output(self, text):
         text = ANSI.sub("", text).rstrip("\n")
+        lines = text.split("\n")
+        if len(lines) > MAX_OUTPUT_LINES:
+            keep = ABRIDGED_LINES
+            text = "\n".join(lines[:keep] + ["..."] + lines[-keep:])
         if self.is_pdf:
-            return ("```{=latex}\n\\begin{bookoutput}\n"
-                    f"{text}\n\\end{{bookoutput}}\n```")
+            return ("```{=latex}\n\\begin{outbox}\n\\begin{bookoutput}\n"
+                    f"{text}\n\\end{{bookoutput}}\n\\end{{outbox}}\n```")
         return f'```{{=html}}\n<pre class="output">{html.escape(text)}</pre>\n```'
+
+    def join_output(self, block):
+        if self.is_pdf:
+            return block.replace("\\begin{outbox}", "\\begin{outbox}[joined]", 1)
+        return block.replace('<pre class="output">', '<pre class="output joined">', 1)
 
     def latex_table(self, latex):
         return ("```{=latex}\n\\begin{booktable}\n"

@@ -10,6 +10,23 @@
 \setmonofont{Source Code Pro}[Scale=MatchLowercase]
 \KOMAoptions{sfdefaults=false}
 
+% Title page: left-aligned, as in CultureWar (Task 121 there). KOMA centers
+% the block and sets the author in a centered, padded tabular.
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\@maketitle}{\begin{center}}{\begin{flushleft}}{}{%
+  \PackageWarning{EDS}{Could not patch \@maketitle to flushleft (begin)}}
+\xpatchcmd{\@maketitle}{\end{center}\par}{\end{flushleft}\par}{}{%
+  \PackageWarning{EDS}{Could not patch \@maketitle to flushleft (end)}}
+\xpatchcmd{\@maketitle}{\begin{tabular}[t]{c}}{\begin{tabular}[t]{@{}l@{}}}{}{%
+  \PackageWarning{EDS}{Could not patch \@maketitle author tabular}}
+\makeatother
+\addtokomafont{title}{\raggedright}
+\addtokomafont{subtitle}{\raggedright}
+\addtokomafont{subject}{\raggedright}
+\addtokomafont{author}{\raggedright\setlength{\tabcolsep}{0pt}}
+\addtokomafont{publishers}{\raggedright}
+
 \setkomafont{chapter}{\rmfamily\huge\bfseries}
 \setkomafont{section}{\rmfamily\Large\bfseries}
 \setkomafont{subsection}{\rmfamily\large\bfseries}
@@ -40,21 +57,44 @@
 \ihead{\color{darkpurple}\headmark}
 \ohead{\color{darkpurple}\pagemark}
 
-\AtBeginDocument{\hypersetup{linkcolor=codeblue, urlcolor=codeblue}}
+% Internal links (contents, cross-references) in black, URLs in blue, as in
+% the print edition.
+\AtBeginDocument{\hypersetup{linkcolor=black, urlcolor=codeblue}}
 
 % Source code: Quarto wraps it in Shaded (background from code-block-bg)
 % and Highlighting. Long lines wrap rather than run into the margin.
 \usepackage{fvextra}
+\usepackage[skins,breakable]{tcolorbox}
 \AtBeginDocument{%
   \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{%
     commandchars=\\\{\}, fontsize=\codesize,
     breaklines, breakanywhere, breaksymbolleft={\tiny\ensuremath{\hookrightarrow}}}}
 
-% Text output: gray, unshaded, with a rule at the left.
+% The code box: the same padding on all four sides. Quarto defines Shaded
+% after this file, so redefine it at the beginning of the document.
+\newcommand{\codepad}{2mm}
+\AtBeginDocument{%
+  \renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, breakable,
+    sharp corners, frame hidden, boxrule=0pt, colback=codebgcolor,
+    boxsep=0pt, left=\codepad, right=\codepad, top=\codepad,
+    bottom=\codepad]}{\end{tcolorbox}}}
+
+% Inline code in the color of code in a code block.
+\let\plaintexttt\texttt
+\renewcommand{\texttt}[1]{{\color{codeblue}\plaintexttt{#1}}}
+
+% Text output: gray, in a box with the code box's padding, framed in the
+% code box's gray. Joined to the box above when it follows its code (emit.py).
 \DefineVerbatimEnvironment{bookoutput}{Verbatim}{%
-  fontsize=\codesize, formatcom=\color{outputgray},
-  frame=leftline, framerule=0.6pt, rulecolor=\color{rulegray}, framesep=6pt,
-  xleftmargin=0.25em, breaklines, breakanywhere}
+  fontsize=\codesize, breaklines, breakanywhere}
+\newtcolorbox{outbox}[1][]{enhanced, breakable, sharp corners,
+  colback=white, colframe=codebgcolor, boxrule=1pt,
+  boxsep=0pt, left=\codepad, right=\codepad, top=\codepad, bottom=\codepad,
+  before upper={\color{outputgray}}, #1}
+\tcbset{joined/.style={before={\par\vspace{-\parskip}\noindent}}}
+
+% Tables in the text (Pandoc's longtable) at the size of DataFrames.
+\AtBeginEnvironment{longtable}{\small}
 
 % DataFrames (from df.to_latex): shrink to the text width if wider.
 \usepackage{booktabs}

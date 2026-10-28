@@ -26,6 +26,14 @@ site_url: https://allendowney.github.io/ElementsOfDataScience
 # stage.py downloads from GitHub. Chapters in parts are numbered in this
 # order, in every edition; chapters in `back` are not. To update a case
 # study, move its commit after its CI passes.
+# Images from the repos, scaled from their width in the notebook (Allen,
+# 2026-10-28)
+figure_scale:
+  20190907_FNC941.png: 0.8       # The Economist, chapters 3 and 6
+  pew_religion_figure1.png: 0.5  # Pew, chapter 6
+  resampling.png: 0.8            # chapters 11 and 12
+  hypothesis_testing.png: 0.8    # chapter 13
+
 parts:
   - title: From Python to Pandas
     chapters:

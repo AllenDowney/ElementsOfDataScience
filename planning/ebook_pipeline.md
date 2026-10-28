@@ -472,6 +472,35 @@ choice), following GreenTeaPress Task 12 and The Little Book of Semaphores
   script, or the GSS certificate chain). If one is dead, change its target
   in `links.csv` and redeploy; the book doesn't change.
 
+## Design revisions (2026-10-28)
+
+Allen's review of the interior, tried on a test page (four output designs)
+before changing the book:
+
+- Title page left-aligned, with CultureWar's `\@maketitle` patch.
+- Contents and other internal links in black; URLs stay `codeblue`, as in
+  the print edition. (The contents were already `codeblue`; as bold serif
+  text it read as a different blue.)
+- Code box: 2mm padding on all four sides (was about 5mm across and 3mm
+  down), which also gives a code line a few more characters of room.
+- Text output: the code box's padding, in a 1pt frame of the code box's
+  gray, joined to the code above it (`outbox[joined]`; emit.py joins text
+  output that follows its code or more output from the same cell). One
+  line of code over one line of output now balances. The EPUB matches
+  (`pre.output.joined`), and its code box lost its border.
+- Inline code in `codeblue`, like code in a block (`\texttt` in the PDF;
+  `:not(pre) > code` in the EPUB, at 0.88em).
+- A ``` block with no language in a markdown cell (three: chapters 1 and
+  5) is set as Python, like a code cell, instead of plain verbatim.
+- Figure sizes: `figure_scale` in metadata.yml scales images from the
+  repos by file name (Economist and diagrams 0.8, Pew 0.5).
+- Tables in the text (Pandoc's longtable, such as the codebook in
+  chapter 7) at `\small`, the size of DataFrames.
+- Text output over 25 lines is abridged to the first and last 5, with
+  `...` between. Only the years in chapter 14 qualify; the 20-line
+  birth weights in chapter 7 stay whole, since the text discusses the
+  whole range.
+
 ## Phases
 
 1. **Spike, one chapter.** `07_dataframes` (code, text output, wide
