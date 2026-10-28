@@ -18,7 +18,7 @@ n,target,note
 17,https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html,06_plotting
 18,https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/v1/07_dataframes.ipynb,07_dataframes
 19,https://www.cdc.gov/nchs/nsfg,07_dataframes
-20,https://www.cdc.gov/nchs/data_access/ftp_dua.htm,07_dataframes
+20,https://www.cdc.gov/nchs/policy/data-user-agreement.html,07_dataframes
 21,https://github.com/AllenDowney/ElementsOfDataScience/raw/v1/data/2015-2017_NSFG_FemPregFile_Codebook-508.pdf,07_dataframes
 22,https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html,07_dataframes
 23,https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html,07_dataframes
