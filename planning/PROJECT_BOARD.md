@@ -177,8 +177,8 @@ It also ships to readers inside `EDS_notebooks.zip`.
       numpy 2.5.3, geopandas 1.1.4). In that env the 14 chapter notebooks,
       `clustering`, and `geo_example` pass. `jupyter_intro` failed in every
       environment tried, including the old one; fixed in Task 17.
-- [ ] `EDS_notebooks.zip` still contains the old `environment.yml` until the
-      next `build.sh` run.
+- [x] `EDS_notebooks.zip` rebuilt with the new `environment.yml`
+      (2026-10-28, with the master-to-v1 link changes).
 
 ## Task 9: Reconcile the README with `jb/index.md`
 
@@ -523,8 +523,10 @@ same pipeline should later build the v2 print edition.
 
 - [x] Rights, chapter set, solutions (2026-10-27): GTP holds the rights;
       all 18 printed chapters; no solutions
-- [ ] The other decisions in the plan (editions, page size, free PDF link,
-      support ask)
+- [x] The other decisions in the plan (2026-10-28): book plus sample,
+      7 × 9.1875 screen page, support ask on a back page, pay what you want
+      from $9 ($29 suggested). Whether a free PDF link stays elsewhere is
+      GreenTeaPress Task 18.
 - [x] Spike: one chapter (`07_dataframes`) to screen PDF and EPUB
       (2026-10-27; `book/stage.py`, `book/emit.py`, `book/styles/`). It
       works; 6 × 9 recommended. Results in the plan.

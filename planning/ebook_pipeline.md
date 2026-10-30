@@ -233,7 +233,7 @@ Decided 2026-10-27:
 8. **Support ask:** yes, on a back page of the full book
    (`book/front/book_back.md`), with links to the site and notebooks.
 
-Open:
+Decided 2026-10-28:
 
 9. **Price:** pay what you want, $9 minimum, $29 suggested (Allen,
    2026-10-28; first planned as $0 minimum). The
