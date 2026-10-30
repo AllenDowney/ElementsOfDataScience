@@ -152,3 +152,14 @@ nlsy97/
 # LeanPub release files (book/emit.py --release)
 book/leanpub/*.pdf
 book/leanpub/*.epub
+
+# Old local files kept off the record (Task 5 limbo, settled 2026-10-30)
+/all_sandwich_data.csv
+/eds_cover_small.png
+/family_survey.ipynb
+/hypothesis.ipynb
+/trig.ipynb
+/feedback/
+/examples/scrub_code.py
+/figs/confusion_matrix[12].png
+/figs/resampling_alternative.*

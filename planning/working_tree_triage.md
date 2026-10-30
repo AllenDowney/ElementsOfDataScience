@@ -25,6 +25,12 @@ ways:
 - `eds.gss.hdf5` and `nsfg_sample.hdf5` are now ignored by `/*.hdf5`, not in
   limbo. They are still on disk.
 
+**Settled 2026-10-30.** The duplicates were deleted: `deaths2008.csv` (now
+committed as `data/deaths2008.csv`) and the three `unfilled/` files
+(committed in PoliticalAlignmentCaseStudy's `unfilled/`). The rest are
+ignored in `.gitignore` and still on disk. The zip was committed with the
+link changes (`a6b6b88`).
+
 **Left in limbo (16 paths).** Since the first pass, `scripts/` moved to
 `archive/video_scripts/`, and Task 7 dealt with the `soln/` extras and
 `examples/odds_soln.ipynb`:
