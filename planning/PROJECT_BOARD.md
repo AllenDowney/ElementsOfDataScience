@@ -355,7 +355,7 @@ After fixing `soln/`, regenerate the `examples/` copy.
 
 ## Task 19: pandas 3 fixes outside the chapters
 
-**Status:** Done 2026-09-24, except the two notebooks listed at the end.
+**Status:** Done 2026-09-24; the last two notebooks deleted 2026-10-30.
 
 pandas 3's copy-on-write makes a chained in-place call such as
 `df['col'].replace(..., inplace=True)` a silent no-op. pandas 3 also makes the
@@ -391,11 +391,15 @@ nbconvert timestamps stripped.
 Two notebooks got the source fixes but can't run, for reasons that predate
 pandas 3:
 
-- [ ] `soln/clean_brfss-2022.ipynb` reads `LLCP2019.ASC.gz` but the 2022
-      column layout, and fails with `KeyError: ['_VEGESU1', '_INCOMG']`
-      (renamed in 2022). It looks unfinished.
-- [ ] `soln/brfss_validate.ipynb` imports a module `distribution` that no
-      longer exists.
+- [x] `soln/clean_brfss-2022.ipynb` read `LLCP2019.ASC.gz` but the 2022
+      column layout, and failed with `KeyError: ['_VEGESU1', '_INCOMG']`.
+      Deleted 2026-10-30: it was `clean_brfss` with the 2022 layout URL, and
+      its own note says 2022 has no vegetable servings, so it stuck with
+      2019.
+- [x] `soln/brfss_validate.ipynb` imported a module `distribution` that no
+      longer exists. Deleted 2026-10-30: it was an earlier draft of
+      `archive/pre_v1_cleaning/brfss_clean.ipynb` (2017 data, writing the
+      retired `brfss.hdf5`).
 
 ## Task 20: SEO for the book site
 
